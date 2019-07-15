@@ -1,0 +1,129 @@
+{
+  "name": "template-core",
+  "version": "0.00.00",
+  "description": "A template core for React project",
+  "main": "./src/index.js",
+  "repository": "git@github.com:peoplelab/template-core.git",
+  "author": "peoplelab",
+  "scripts": {
+    "build:dev": "better-npm-run build:dev",
+    "build:system": "better-npm-run build:system",
+    "build:prod": "better-npm-run build:prod",
+    "lint": "eslint **/*.js?(x)",
+    "lint:fix": "eslint --fix **/*.js?(x)",
+    "start:mocks": "better-npm-run start:mocks",
+    "start": "better-npm-run start:dev",
+    "start:staging": "better-npm-run start:staging",
+    "start:system": "better-npm-run start:system",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint --fix **/*.scss"
+  },
+  "betterScripts": {
+    "build:dev": {
+      "command": "webpack --progress --colors",
+      "env": {
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "DEVELOPMENT",
+        "COMPILE": "COMPILE"
+      }
+    },
+    "build:system": {
+      "command": "webpack --progress --colors",
+      "env": {
+        "BABEL_ENV": "prod",
+        "NODE_ENV": "SYSTEM"
+      }
+    },
+    "build:prod": {
+      "command": "webpack --progress --colors --optimize-minimize",
+      "env": {
+        "BABEL_ENV": "prod",
+        "NODE_ENV": "PRODUCTION",
+        "COMPILE": "COMPILE"
+      }
+    },
+    "start:mocks": {
+      "command": "node ./server/main.js",
+      "env": {
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "MOCKS"
+      }
+    },
+    "start:dev": {
+      "command": "node ./server/main.js",
+      "env": {
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "DEVELOPMENT"
+      }
+    },
+    "start:staging": {
+      "command": "node ./server/main.js",
+      "env": {
+        "BABEL_ENV": "prod",
+        "NODE_ENV": "STAGING"
+      }
+    },
+    "start:system": {
+      "command": "node ./server/main.js",
+      "env": {
+        "BABEL_ENV": "prod",
+        "NODE_ENV": "SYSTEM"
+      }
+    }
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "16.8.6",
+    "prop-types": "15.7.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-hot-loader": "4.12.6",
+    "react-intl": "2.9.0",
+    "react-redux": "7.1.0",
+    "react-router": "5.0.1",
+    "react-router-dom": "5.0.1",
+    "redux": "4.0.4",
+    "redux-saga": "1.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.4",
+    "@babel/plugin-proposal-class-properties": "7.5.0",
+    "@babel/plugin-proposal-export-namespace-from": "7.5.2",
+    "@babel/plugin-proposal-throw-expressions": "7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-transform-spread": "7.2.2",
+    "@babel/polyfill": "7.4.4",
+    "@babel/preset-env": "7.5.4",
+    "@babel/preset-react": "7.0.0",
+    "autoprefixer": "9.6.1",
+    "babel-eslint": "10.0.2",
+    "babel-loader": "8.0.6",
+    "better-npm-run": "0.1.1",
+    "clean-webpack-plugin": "3.0.0",
+    "compression": "1.7.4",
+    "css-loader": "3.0.0",
+    "eslint": "6.0.1",
+    "eslint-config-airbnb": "17.1.1",
+    "eslint-loader": "2.2.1",
+    "eslint-plugin-import": "2.18.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.14.2",
+    "express": "4.17.1",
+    "file-loader": "4.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "http-proxy-middleware": "0.19.1",
+    "node-sass": "4.12.0",
+    "postcss": "7.0.17",
+    "postcss-loader": "3.0.0",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.1",
+    "stylelint": "10.1.0",
+    "stylelint-scss": "3.9.1",
+    "stylelint-selector-bem-pattern": "2.1.0",
+    "url-loader": "2.0.1",
+    "webpack": "4.35.3",
+    "webpack-cli": "3.3.6",
+    "webpack-dev-middleware": "3.7.0",
+    "webpack-hot-middleware": "2.25.0",
+    "webpack-merge": "4.2.1"
+  }
+}

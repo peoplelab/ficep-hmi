@@ -1,9 +1,8 @@
-/build/
-/dist/
 /node_modules/
+/dist/
+/build/
 /batch/
+/config/
+/server/
 /.vs/
 /.*/
-
-*.suo
-*.log

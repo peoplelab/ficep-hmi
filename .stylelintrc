@@ -1,0 +1,31 @@
+{
+  plugins: [
+    'stylelint-scss',
+    'stylelint-selector-bem-pattern'
+  ],
+  rules: {
+    'string-quotes': 'single',
+    'number-leading-zero': 'always',
+    'property-no-unknown': [true, {
+      ignoreProperties: [
+        'composes',
+        'compose-with',
+      ],
+    }],
+    'plugin/selector-bem-pattern': {
+      implicitComponents: true,
+      componentName: '[A-Za-z]+(-[A-Za-z\\d]+)?',
+      componentSelectors: {
+        initial: "^\\.{componentName}(?:[\\w-]+)?$",
+        combined: "\\.{componentName}(__[A-Za-z]+(-[A-Za-z\\d]+)?)?(--[A-Za-z]+(-[A-Za-z\\d]+)?)?$"
+      },
+      utilitySelectors: /^\..*$/,
+      ignoreSelectors: [
+        '.*\\.no-js.*',
+        '.*\\.js-.*',
+        '.*\\.lt-ie.*',
+      ],
+    },
+    'function-name-case': ['lower', { ignoreFunctions: ['/.*$/'] }],
+  },
+}

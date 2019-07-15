@@ -19,7 +19,7 @@ const PATH_FILES = {
   KEY: path.join(__dirname, './SSL/localhost/server.key'),
   CERT: path.join(__dirname, './SSL/localhost/server.crt'),
 };
-const PORT = 3000;
+const PORT = 3500;
 
 const ssl = {
   key: fs.readFileSync(PATH_FILES.KEY),

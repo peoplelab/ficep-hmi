@@ -11,6 +11,7 @@
     "build:prod": "better-npm-run build:prod",
     "lint": "eslint **/*.js?(x)",
     "lint:fix": "eslint --fix **/*.js?(x)",
+    "mocks": "better-npm-run mocks",
     "start:mocks": "better-npm-run start:mocks",
     "start": "better-npm-run start:dev",
     "start:staging": "better-npm-run start:staging",
@@ -40,6 +41,13 @@
         "BABEL_ENV": "prod",
         "NODE_ENV": "PRODUCTION",
         "COMPILE": "COMPILE"
+      }
+    },
+    "mocks": {
+      "command": "node ./server/mocks.js",
+      "env": {
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "MOCKS"
       }
     },
     "start:mocks": {

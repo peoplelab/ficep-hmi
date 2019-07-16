@@ -7,12 +7,12 @@ const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSSZ';
 const RESPONSE = {
   200: () => ({
     username: global.login.username,
-    accessToken: "1GF5H4F1G5D158GFD1GD1FG5FDG1F81DF18G4F41DF7G44DF",
+    accessToken: global.logged.accessToken,
     refreshToken: global.login.refreshToken,
     culture: "it-IT",
     groups: [],
     permissions: [],
-    sessionId: "123054712",
+    sessionId: global.logged.sessionId,
     expiredAt: global.login.expiredAt,
     sessionLogId: 1455,
     refreshExpiredAt: global.login.refreshExpiredAt,

@@ -17,11 +17,11 @@ class TestModelComponent extends PureComponent {
 	constructor(props) {			// Schema da seguire per defi. costruttore e binding deegli aggiornamenti dello store di React. NOTA: props non è obbligatorio
 		
 		super(props);
-//		this.state = {
-//			...props,
-//			value1: '',
-//			value2: '2'
-//		};
+		this.state = {
+			...props,
+			value1: '',
+			value2: '2'
+		};
 
 		this.onChange      = this.onChange.bind(this);
 		this.onButtonClick = this.onButtonClick.bind(this);
@@ -29,7 +29,7 @@ class TestModelComponent extends PureComponent {
 
 
 	onChange(event) {
-		const { value } = event.target;
+		//const { value } = event.target;
 		//this.setState({ value1: value });
 	}
 
@@ -44,6 +44,7 @@ class TestModelComponent extends PureComponent {
 	render() {
 
 		const { myInputValue } = this.props;
+		const { value1 } = '';
 		const a = true;
 
 		if (!a) {
@@ -69,12 +70,16 @@ class TestModelComponent extends PureComponent {
 					<MyBox className="casella">
 						<MyTextInput style={({ margin: '30px 10px 0', border: '1px solid black' })}
 							name="txt01"
-							value={myInputValue}
+							value={value1}
 							onChange={this.onChange}
 						/>
 					</MyBox>
 
 					<MyBox className="restResult">
+						{ 
+							JSON.stringify( myInputValue )
+							//myInputValue
+						}
 					</MyBox>
 
 					<MyBox className="pulsante" style={({ margin: '30px 10px 0'})} >
@@ -93,11 +98,13 @@ TestModelComponent.propTypes = {
 
 	MyFunc: PropTypes.func.isRequired,
 	myInputValue: PropTypes.arrayOf(PropTypes.object)
+	//myInputValue: PropTypes.number
 
 };
 
 TestModelComponent.defaultProps = {
 	myInputValue: []
+	//myInputValue: 0
 };
 
 

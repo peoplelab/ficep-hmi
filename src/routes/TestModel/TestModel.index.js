@@ -4,7 +4,7 @@ import reducers from './controllers/reducers';
 import sagas from './controllers/testModel.controller.js';
 
 
-const KEY = 'TestModel';
+const KEY = 'TestModel_pippo';
 
 
 export default TestModel(Component, KEY, reducers, sagas);

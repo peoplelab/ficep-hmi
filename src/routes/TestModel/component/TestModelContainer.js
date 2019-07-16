@@ -13,10 +13,12 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-	data: state.TestModel.data,
+	//data: state.TestModel.data,
+	data: state.TestModel_pippo.data,
 
 	// Gestione ritorno
-	myInputValue: state.TestModel.data,
+	myInputValue: state.TestModel_pippo.data,
+	//myInputValue: state.TestModel_pippo.total_pages,
 
 });
 

@@ -2,7 +2,7 @@ import {
     fork, takeEvery,
 } from 'redux-saga/effects';
 import { types } from './actions';
-import { callSagaBase } from './models/testModel.model';
+import { callSagaBase } from '../models/testModel.model';
 
 
 //

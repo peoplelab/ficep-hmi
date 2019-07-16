@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import createRoutes from '../../routes';
+import createRoutes from '../../routes/routes.index.js';
 
 const mapRoutes = (routeProps) => {
   const {

@@ -1,6 +1,6 @@
 import AsyncComponent from '../generators/AsyncComponent';
-import Home from './Home';
-//import TestModelView from './TestModel';
+//import Home from './Home';
+import Home from './Home/Home.index.js';
 
 
 const createRoutes = store => ({
@@ -15,7 +15,7 @@ const createRoutes = store => ({
       path: '/test-model',
       key: 'test-model',
       exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncTestModel" */ './TestModel')),
+      component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncTestModel" */ './TestModel/TestModel.index.js')),
     },
     {
       path: '/async',

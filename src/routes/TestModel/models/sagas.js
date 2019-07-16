@@ -18,14 +18,14 @@ function* fetchData_gen(params) {
         console.log('-> REST API executed.');
 
         const data = yield call([response, response.json]);
-        yield put({ type: types.RESTAPI_RESPONSE_OK, data });
+        yield put({ type: types.RESTAPI_RESPONSE_OK, payload: data });
 
 
     } catch (error) {
         //eslint-disable-next-line
         console.log('-> REST API failed.');
 
-        yield put({ type: types.RESTAPI_RESPONSE_KO, error });
+        yield put({ type: types.RESTAPI_RESPONSE_KO, payload: error });
     }
 }
 

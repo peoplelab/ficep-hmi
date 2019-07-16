@@ -3,7 +3,9 @@ import { types } from './actions';
 
 
 const actionHandlers = {
-  [types.ACTION_TYPE]: (state, { payload }) => ({ ...state, ...payload }),
+    [types.RESTAPI_CALL]: (state, { payload }) => ({ ...state, ...payload }),
+    [types.RESTAPI_RESPONSE_OK]: (state, { payload }) => ({ ...state, ...payload }),
+    [types.RESTAPI_RESPONSE_KO]: (state, { payload }) => ({ ...state, ...payload }),
 };
 
 

@@ -5,19 +5,21 @@ import { types } from '../controllers/actions';
 
 
 //
-function* fetchData(params) {
+function* fetchData_gen(params) {
     try {
 
         //eslint-disable-next-line
-        console.log('-> Calling REST API (GET):' + params.url);        
+        console.log('-> Calling REST API (GET):' + params.payload.url);
 
         const response = yield call(fetch, params.payload.url, params.payload.request);
+        //const response = yield call(fetch, params.payload.url);
+
+        //eslint-disable-next-line
+        console.log('-> REST API executed.');
 
         const data = yield call([response, response.json]);
         yield put({ type: types.RESTAPI_RESPONSE_OK, data });
 
-        //eslint-disable-next-line
-        console.log('-> REST API executed.');
 
     } catch (error) {
         //eslint-disable-next-line
@@ -27,8 +29,8 @@ function* fetchData(params) {
     }
 }
 
-function* fetch() {
-    yield takeEvery(types.RESTAPI_CALL, fetchData);
+function* fetchData() {
+    yield takeEvery(types.RESTAPI_CALL, fetchData_gen);
 }
 
 
@@ -52,4 +54,4 @@ function* fetch() {
 //  yield all(sagasList);
 //}
 
-export { fetch, fetchData };
+export { fetchData_gen, fetchData };

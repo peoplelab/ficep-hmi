@@ -2,7 +2,7 @@ import {
     fork, takeEvery,
 } from 'redux-saga/effects';
 //import { types } from './actions';
-import { fetchData } from './sagas';
+import { fetchData_gen } from './sagas';
 
 
 //
@@ -15,10 +15,10 @@ function* callSagaBase(params) {
         headers: new Headers({
             "Content-Type": "application/json"
         }),
-        body: JSON.stringify(params.payload)
+        //body: JSON.stringify(params.payload)
     });    
 
-    const task1 = yield fork(fetchData, { payload: { url, request } });
+    const task1 = yield fork(fetchData_gen, { payload: { url, request } });
 }
 
 //export function* getData() {

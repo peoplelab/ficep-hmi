@@ -1,15 +1,23 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'; // only for route components
 import TestModel from './TestModelView';
-import { actionCreator } from '../controllers/actions';
+import { actionCreator, types } from '../controllers/actions';
 
 
 const mapDispatchToProps = {
-  actionCreator
+	
+	MyFunc: (data) => {													// Funzione invocata al click
+		return actionCreator( types.TESTMODEL_CALL, data )
+	}
+
 };
 
 const mapStateToProps = state => ({
-  data: state.TestModel.data,
+	data: state.TestModel.data,
+
+	// Gestione ritorno
+	myInputValue: state.TestModel.data,
+
 });
 
 

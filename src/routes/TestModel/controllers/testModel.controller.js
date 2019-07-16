@@ -24,7 +24,9 @@ function* getData_gen(params) {
     const task = yield fork(callSagaBase, { payload });
 }
 
-export function* getData() {
+export default function* getData() {
+
+	console.log('> getData');
     yield takeEvery(types.TESTMODEL_CALL, getData_gen);
 }
 

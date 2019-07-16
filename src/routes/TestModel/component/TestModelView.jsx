@@ -7,20 +7,21 @@ import MyBox		from '../../../components/layout/myBox';
 import MyTextInput	from '../../../components/forms/TextInput';
 import MyButton		from '../../../components/forms/Button';
 
-//import '../../../style/template/Primary.scss';			// Andr√† definito il SCSS
+//import '../../../style/template/Primary.scss';			// Andr‡ definito il SCSS
 
 
 class TestModelComponent extends PureComponent {
 
 
 	//--- Copiato paro paro ---
-	constructor(props) {			// Schema da seguire per defi. costruttore e binding deegli aggiornamenti dello store di React. NOTA: props non √® obbligatorio
-
+	constructor(props) {			// Schema da seguire per defi. costruttore e binding deegli aggiornamenti dello store di React. NOTA: props non Ë obbligatorio
+		
 		super(props);
-		this.state = {
-      //	...props,
-			value1: '',
-		};
+//		this.state = {
+//			...props,
+//			value1: '',
+//			value2: '2'
+//		};
 
 		this.onChange      = this.onChange.bind(this);
 		this.onButtonClick = this.onButtonClick.bind(this);
@@ -29,7 +30,7 @@ class TestModelComponent extends PureComponent {
 
 	onChange(event) {
 		const { value } = event.target;
-		this.setState({ value1: value });
+		//this.setState({ value1: value });
 	}
 
 
@@ -43,7 +44,6 @@ class TestModelComponent extends PureComponent {
 	render() {
 
 		const { myInputValue } = this.props;
-		const { value1 } = this.state;
 		const a = true;
 
 		if (!a) {
@@ -69,13 +69,12 @@ class TestModelComponent extends PureComponent {
 					<MyBox className="casella">
 						<MyTextInput style={({ margin: '30px 10px 0', border: '1px solid black' })}
 							name="txt01"
-							value={value1}
+							value={myInputValue}
 							onChange={this.onChange}
 						/>
 					</MyBox>
 
 					<MyBox className="restResult">
-            {JSON.stringify(myInputValue)}
 					</MyBox>
 
 					<MyBox className="pulsante" style={({ margin: '30px 10px 0'})} >

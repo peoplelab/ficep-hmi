@@ -1,3 +1,3 @@
-import TestModel from './TestModelContainer';
+import TestModel from './testModel.container';
 
 export default TestModel;

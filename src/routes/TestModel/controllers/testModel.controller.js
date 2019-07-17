@@ -1,13 +1,13 @@
 import {
     fork, takeEvery,
 } from 'redux-saga/effects';
-import { types } from './actions';
+import { types } from './testModel.actions';
 import { callSagaBase } from '../models/testModel.model';
 
 
 //
 function* getData_gen(params) {
-    
+
     //if (params.username.length === 0) {
     //    throw Error("Username empty!");
     //}
@@ -29,4 +29,3 @@ export default function* getData() {
 	console.log('> getData');
     yield takeEvery(types.TESTMODEL_CALL, getData_gen);
 }
-

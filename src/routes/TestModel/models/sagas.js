@@ -1,5 +1,5 @@
 import {
-  call, put, takeEvery, 
+  call, put, takeEvery,
 } from 'redux-saga/effects';
 import { types } from '../controllers/actions';
 
@@ -29,9 +29,9 @@ function* fetchData_gen(params) {
     }
 }
 
-function* fetchData() {
-    yield takeEvery(types.RESTAPI_CALL, fetchData_gen);
-}
+// function* fetchData() {
+//     yield takeEvery(types.RESTAPI_CALL, fetchData_gen);
+// }
 
 
 
@@ -54,4 +54,5 @@ function* fetchData() {
 //  yield all(sagasList);
 //}
 
-export { fetchData_gen, fetchData };
+// export { fetchData_gen, fetchData };
+export { fetchData_gen };

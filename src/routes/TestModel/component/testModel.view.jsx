@@ -7,21 +7,21 @@ import MyBox		from '../../../components/layout/myBox';
 import MyTextInput	from '../../../components/forms/TextInput';
 import MyButton		from '../../../components/forms/Button';
 
-//import '../../../style/template/Primary.scss';			// Andrà definito il SCSS
+//import '../../../style/template/Primary.scss';			// Andrï¿½ definito il SCSS
 
 
 class TestModelComponent extends PureComponent {
 
 
 	//--- Copiato paro paro ---
-	constructor(props) {			// Schema da seguire per defi. costruttore e binding deegli aggiornamenti dello store di React. NOTA: props non è obbligatorio
-		
+	constructor(props) {			// Schema da seguire per defi. costruttore e binding deegli aggiornamenti dello store di React. NOTA: props non ï¿½ obbligatorio
+
 		super(props);
-		this.state = {
-			...props,
-			value1: '',
-			value2: '2'
-		};
+		// this.state = {
+		// 	...props,
+		// 	value1: '',
+		// 	value2: '2'
+		// };
 
 		this.onChange      = this.onChange.bind(this);
 		this.onButtonClick = this.onButtonClick.bind(this);
@@ -76,10 +76,7 @@ class TestModelComponent extends PureComponent {
 					</MyBox>
 
 					<MyBox className="restResult">
-						{ 
-							JSON.stringify( myInputValue )
-							//myInputValue
-						}
+						{myInputValue}
 					</MyBox>
 
 					<MyBox className="pulsante" style={({ margin: '30px 10px 0'})} >
@@ -97,14 +94,12 @@ class TestModelComponent extends PureComponent {
 TestModelComponent.propTypes = {
 
 	MyFunc: PropTypes.func.isRequired,
-	myInputValue: PropTypes.arrayOf(PropTypes.object)
-	//myInputValue: PropTypes.number
+	myInputValue: PropTypes.string
 
 };
 
 TestModelComponent.defaultProps = {
-	myInputValue: []
-	//myInputValue: 0
+	myInputValue: ''
 };
 
 

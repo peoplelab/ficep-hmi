@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from './Login.view';
 import { onChange, restApiCallLogin } from '../controllers/Login.actions';
-import { grantType, disabled, data } from '../controllers/Login.selectors';
+import { grantType, disabled, data } from '../presenters';
 
 
 const mapDispatchToProps = {

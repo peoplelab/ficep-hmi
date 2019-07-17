@@ -1,21 +1,32 @@
 import Enum from './Enum';
 
 
-export const createTypes = (...types) => Enum.from(...types);
+export const createPayloadTypes = (...types) => Enum.from(...types);
+
+const reduceApiTypes = (acc, type) => {
+  const enumerator = Enum.from(
+    `${type}_CALL`,
+    `${type}_OK`,
+    `${type}_KO`,
+  );
+
+  return { ...acc, ...enumerator };
+};
+export const createApiTypes = (...types) => types.reduce(reduceApiTypes, {});
 
 
-const modelPayloadAction = (acc, type) => {
-  acc[type] = payload => ({ type, payload });
+const reducePayloadAction = (acc, type) => {
+  acc[type] = (payload => ({ type, payload }));
   return acc;
 };
-export const createPayloadAction = (...types) => types.reduce(modelPayloadAction, {});
+export const createPayloadAction = (...types) => types.reduce(reducePayloadAction, {});
 
-const modelApiAction = (acc, type) => {
+const reduceApiAction = (acc, type) => {
   acc[type] = {
-    CALL: () => ({ type }),
-    OK: response => ({ type, response }),
-    KO: error => ({ type, error }),
+    CALL: () => ({ type: `${type}_CALL` }),
+    OK: response => ({ type: `${type}_OK`, response }),
+    KO: error => ({ type: `${type}_KO`, error }),
   };
   return acc;
 };
-export const createApiAction = (...types) => types.reduce(modelApiAction, {});
+export const createApiAction = (...types) => types.reduce(reduceApiAction, {});

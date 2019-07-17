@@ -1,20 +1,10 @@
 import { call, put } from 'redux-saga/effects';
-import { restApiResponse } from '../controllers/Login.actions';
 
 
-//
-function* fetchData_gen(body, url) {
+export function* fetchData_gen(actionAPI, request, url) {
   try {
-    const request = {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body),
-    };
-
     //eslint-disable-next-line
-    console.log('> Calling REST API (GET):' + url);
+    console.log('> Calling REST API:' + url);
     console.log(request);
 
     const response = yield call(fetch, url, request);
@@ -25,16 +15,13 @@ function* fetchData_gen(body, url) {
     const status = response.status;
     const response_dataraw = yield call([response, response.json]);
 
-    yield put(restApiResponse.OK({ status, data: response_dataraw }));
+    yield put(actionAPI.OK(status, response_dataraw));
 
   } catch (error) {
     //eslint-disable-next-line
     console.log('> REST API failed.');
     console.log(error);
 
-    yield put(restApiResponse.KO(error));
+    yield put(actionAPI.KO(error));
   }
 }
-
-
-export { fetchData_gen };

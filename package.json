@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "16.8.6",
+    "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -90,7 +91,8 @@
     "react-router": "5.0.1",
     "react-router-dom": "5.0.1",
     "redux": "4.0.4",
-    "redux-saga": "1.0.5"
+    "redux-saga": "1.0.5",
+    "reselect": "4.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
@@ -111,7 +113,6 @@
     "compression": "1.7.4",
     "css-loader": "3.0.0",
     "eslint": "6.0.1",
-    "eslint-config-airbnb": "17.1.1",
     "eslint-loader": "2.2.1",
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jsx-a11y": "6.2.3",

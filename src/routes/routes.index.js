@@ -23,6 +23,12 @@ const createRoutes = store => ({
       exact: true,
       component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncChunk" */ './AsyncRoute')),
     },
+    {
+      path: '/login',
+      key: 'login',
+      exact: true,
+      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Login" */ './Login/Login.index')),
+    },
   ],
   // secondary
   // logged

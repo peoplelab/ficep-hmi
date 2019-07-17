@@ -8,7 +8,7 @@ const actionHandlers = {
 	// [types.RESTAPI_RESPONSE_OK]: (state, { payload }) => ({ ...state, ...payload }),
 	[types.RESTAPI_RESPONSE_OK]: (state, { response_dataraw }) => {
     const {
-      // data,
+      data,
       page,
       per_page,
       total,
@@ -22,7 +22,7 @@ const actionHandlers = {
       per_page,
       total,
       total_pages,
-      // data:
+      data
     };
   },
   [types.RESTAPI_RESPONSE_KO]: (state, { error }) => ({ ...state, ...error }),

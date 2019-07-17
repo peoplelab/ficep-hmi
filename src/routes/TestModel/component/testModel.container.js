@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'; // only for route components
 import TestModel from './testModel.view';
-import { actionCreator, types } from '../controllers/actions';
+import { actionCreator, types } from '../controllers/testModel.actions';
 import { stringifyData } from '../controllers/testModel.selectors';
 
 

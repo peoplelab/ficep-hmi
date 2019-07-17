@@ -4,8 +4,8 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
 import sagas from './sagas';
-import { injectAsyncReducers, reducerConstructor } from '../generators/reducers';
-// import SagaHandler from '../generators/sagas';
+import { injectAsyncReducers, reducerConstructor } from '../commons/reducers';
+// import SagaHandler from '../commons/sagas';
 
 
 const { NODE_ENV } = process.env;

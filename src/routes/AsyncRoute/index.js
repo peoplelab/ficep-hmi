@@ -1,4 +1,4 @@
-import AsyncRoute from '../../generators/AsyncRoute';
+import AsyncRoute from '../../commons/AsyncRoute';
 import Component from './component';
 import reducers from './controllers/reducers';
 import sagas from './controllers/sagas';

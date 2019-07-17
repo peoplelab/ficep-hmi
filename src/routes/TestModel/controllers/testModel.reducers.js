@@ -1,4 +1,4 @@
-import { createReducer } from '../../../generators/reducers';
+import { createReducer } from '../../../commons/reducers';
 import { types } from './testModel.actions';
 import initialState from './testModel.store';
 

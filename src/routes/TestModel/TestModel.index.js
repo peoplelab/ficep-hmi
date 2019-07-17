@@ -1,4 +1,4 @@
-import TestModel from '../../generators/AsyncRoute';
+import TestModel from '../../commons/AsyncRoute';
 import Component from './component';
 import reducers from './controllers/testModel.reducers';
 import sagas from './controllers/testModel.controller.js';

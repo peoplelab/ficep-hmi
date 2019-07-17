@@ -1,4 +1,4 @@
-import { createReducer } from '../../../generators/reducers';
+import { createReducer } from '../../../commons/reducers';
 import { types } from './Login.actions';
 import initialState from './Login.store';
 

@@ -8,11 +8,11 @@ import { fetchData_gen } from '../models/Login.api';
 const getGrantType = state => state.Login.form.grantType;
 
 const getPassword = state => ({
-  username: state.Login.form.username,
-  password: state.Login.form.password,
+  UserName: state.Login.form.username,
+  Password: state.Login.form.password,
 });
 
-const getRefreshToken = state => ({refreshToken: state.Login.form.refreshToken});
+const getRefreshToken = state => ({RefreshToken: state.Login.form.refreshToken});
 
 
 function* setData() {
@@ -26,7 +26,7 @@ function* setData() {
     data = yield select(getRefreshToken);
   }
 
-  data.grantType = grantType;
+  data.GrantType = grantType;
 
   return data;
 }

@@ -5,16 +5,17 @@ import { restApiResponse } from '../controllers/Login.actions';
 //
 function* fetchData_gen(body, url) {
   try {
-    const request = new Request(url, {
-        method: "post",
-        headers: new Headers({
-            "Content-Type": "application/json"
-        }),
-        body: JSON.stringify(body)
-    });
+    const request = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body),
+    };
 
     //eslint-disable-next-line
     console.log('> Calling REST API (GET):' + url);
+    console.log(request);
 
     const response = yield call(fetch, url, request);
 

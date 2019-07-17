@@ -1,10 +1,10 @@
 import AsyncRoute from '../../commons/AsyncRoute';
 import Component from './component/Login';
 import reducers from './controllers/Login.reducers';
-import sagas from './controllers/Login.controller';
+import watcher from './controllers/Login.watcher';
 
 
 const KEY = 'Login';
 
 
-export default AsyncRoute(Component, KEY, reducers, sagas);
+export default AsyncRoute(Component, KEY, reducers, watcher);

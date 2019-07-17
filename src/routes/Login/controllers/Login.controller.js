@@ -1,8 +1,7 @@
 import {
-  all, fork, takeEvery, select, put
+  fork, select, put
 } from 'redux-saga/effects';
-import { types } from './Login.actions';
-import { restApiResponse, dataForView } from './Login.actions';
+import { action } from './Login.actions';
 import { doCallLogin } from '../models/Login.model';
 
 
@@ -16,7 +15,7 @@ const getPassword = state => ({
 const getRefreshToken = state => ({refreshtoken: state.Login.form.refreshtoken});
 
 
-function* setCallLogin() {
+export function* setCallLogin() {
   let data = {};
 
   const grantType = yield select(getGrantType);
@@ -29,14 +28,11 @@ function* setCallLogin() {
 
   data.grantType = grantType;
 
-  yield fork(doCallLogin, restApiResponse, data);
-}
-function* watchCallLogin() {
-  yield takeEvery(types.RESTAPI_CALL_LOGIN, setCallLogin);
+  yield fork(doCallLogin, action.RESTAPI_LOGIN, data);
 }
 
 
-function* setDataForView(action) {
+export function* setDataForView(action) {
   const { response } = action;
   // const {
   //   username,
@@ -51,21 +47,10 @@ function* setDataForView(action) {
   //   refreshExpiredAt,
   //   issuedAt,
   // } = response;
-console.log(action);
-  yield put(dataForView(response));
+
+  // console.log(typeof action.DATA_FOR_VIEW);
+  // console.log(action.DATA_FOR_VIEW.toString());
+  // console.log(JSON.stringify(action.DATA_FOR_VIEW));
+
+  yield put(action.DATA_FOR_VIEW(response));
 }
-function* watchRestApiResponseOK() {
-  yield takeEvery(types.RESTAPI_RESPONSE_OK, setDataForView);
-}
-
-
-const list = [
-  fork(watchCallLogin),
-  fork(watchRestApiResponseOK),
-];
-
-function* root() {
-  yield all(list);
-}
-
-export default root;

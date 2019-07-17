@@ -12,13 +12,6 @@ const actionHandlers = {
 
     return { ...rest, form };
   },
-	// [types.RESTAPI_RESPONSE_OK]: (state, { response }) => ({
-  //   ...state,
-  //   logged: {
-  //     status: response.status,
-  //     data: response.data,
-  //   },
-  // }),
 	[types.DATA_FOR_VIEW]: (state, { payload }) => ({
     ...state,
     logged: {
@@ -26,7 +19,7 @@ const actionHandlers = {
       data: payload.data,
     },
   }),
-	[types.RESTAPI_RESPONSE_KO]: (state, { error }) => ({ ...state, error }),
+	[types.RESTAPI_LOGIN_KO]: (state, { error }) => ({ ...state, error }),
 };
 
 

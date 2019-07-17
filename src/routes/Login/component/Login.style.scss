@@ -1,0 +1,80 @@
+@import '../../../style/colors.scss';
+
+/** @define login */
+
+.login {
+  display: block;
+  font-size: 1rem;
+  margin: 1rem auto;
+  width: 720px;
+
+  .login__title {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  // .login__paragraph {
+
+  // }
+
+  .login__group {
+    border: 1px solid $border-dark-grey;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: 0.5rem;
+
+    // stylelint-disable-next-line plugin/selector-bem-pattern
+    > * {
+      align-items: center;
+      display: flex;
+      justify-content: left;
+      padding: 0.5rem;
+    }
+
+    .login__subtitle {
+      display: block;
+      font-size: 1.2rem;
+      width: 100%;
+    }
+    .login__radio-box {
+      background-color: $bg-dark-grey;
+      color: $text-light-grey;
+      flex: 1;
+    }
+    .login__text-box {
+      background-color: $bg-light-grey;
+      color: $text-dark-grey;
+      flex: 1;
+      margin: 0.5rem;
+    }
+    .login__button-box {
+      width: 100%;
+    }
+  }
+
+  .login__form {
+    .login__button {
+      font-weight: bold;
+      padding: 0.5rem;
+      width: 100%;
+
+      &:enabled {
+        background-color: $bg-dark-grey;
+        color: $text-light-grey;
+        cursor: pointer;
+      }
+    }
+    .login__label {
+      margin: 0 0.5rem;
+    }
+    // .login__radio-button {
+      //
+    // }
+    .login__text-input {
+      flex: 1;
+      padding: 0.2rem;
+    }
+  }
+}

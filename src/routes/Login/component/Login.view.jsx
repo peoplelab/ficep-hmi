@@ -133,9 +133,14 @@ class LoginRoute extends PureComponent {
             </Box>
           </Box>
         </form>
-        <p className="login__paragraph">
-          {data}
-        </p>
+          <Box className="login__group">
+            <h2 className="login__subtitle">
+              Response
+            </h2>
+            <p className="login__paragraph">
+              {data}
+            </p>
+          </Box>
       </Box>
     );
 	}

@@ -9,14 +9,11 @@
   width: 720px;
 
   .login__title {
+    display: block;
     font-size: 1.5rem;
     text-align: center;
     width: 100%;
   }
-
-  // .login__paragraph {
-
-  // }
 
   .login__group {
     border: 1px solid $border-dark-grey;
@@ -24,6 +21,7 @@
     flex-wrap: wrap;
     margin-top: 1rem;
     padding: 0.5rem;
+    width: 100%;
 
     // stylelint-disable-next-line plugin/selector-bem-pattern
     > * {
@@ -36,6 +34,14 @@
     .login__subtitle {
       display: block;
       font-size: 1.2rem;
+      width: 100%;
+    }
+    .login__paragraph {
+      border-top: 1px solid $border-dark-grey;
+      display: block;
+      margin-top: 2rem;
+      padding: 0.5rem;
+      word-wrap: break-word;
       width: 100%;
     }
     .login__radio-box {
@@ -55,6 +61,9 @@
   }
 
   .login__form {
+    display: block;
+    width: 100%;
+
     .login__button {
       font-weight: bold;
       padding: 0.5rem;

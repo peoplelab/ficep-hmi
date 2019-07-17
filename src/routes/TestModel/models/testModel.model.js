@@ -1,24 +1,26 @@
 import {
-    fork, takeEvery,
+    // fork, takeEvery,
+    fork
 } from 'redux-saga/effects';
 //import { types } from './actions';
 import { fetchData_gen } from './sagas';
 
 
 //
-function* callSagaBase(params) {
+function* callSagaBase(payload) {
 
-    let url = 'https://reqres.in/api/users?page=2';
+    // let url = 'https://reqres.in/api/users?page=2';
+    const { url } = payload;
 
-    let request = new Request(url, {
+    const request = new Request(url, {
         method: "get",
         headers: new Headers({
             "Content-Type": "application/json"
         }),
-        //body: JSON.stringify(params.payload)
-    });    
+        //body: JSON.stringify(payload)
+    });
 
-    const task1 = yield fork(fetchData_gen, { payload: { url, request } });
+    yield fork(fetchData_gen, { payload: { url, request } });
 }
 
 //export function* getData() {

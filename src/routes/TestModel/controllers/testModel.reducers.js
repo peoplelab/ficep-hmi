@@ -26,6 +26,10 @@ const actionHandlers = {
     };
   },
   [types.RESTAPI_RESPONSE_KO]: (state, { error }) => ({ ...state, ...error }),
+  [types.ON_URL_CHANGE]: (state, { payload }) => ({
+    ...state,
+    url: payload.url
+  }),
 };
 
 

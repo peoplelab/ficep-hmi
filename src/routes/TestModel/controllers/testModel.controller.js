@@ -1,8 +1,11 @@
 import {
-    fork, takeEvery,
+    fork, takeEvery, select
 } from 'redux-saga/effects';
 import { types } from './testModel.actions';
 import { callSagaBase } from '../models/testModel.model';
+
+
+const getUrl = state => state.TestModel_pippo.url;
 
 
 //
@@ -15,13 +18,16 @@ function* getData_gen(params) {
     //    throw Error("Password empty!");
     //}
 
+    const url = yield select(getUrl);
+    console.log(url);
 
     let payload = {
         //username : params.username,
         //password : params.password
+        url,
     };
 
-    const task = yield fork(callSagaBase, { payload });
+    yield fork(callSagaBase, payload);
 }
 
 export default function* getData() {

@@ -29,8 +29,9 @@ class TestModelComponent extends PureComponent {
 
 
 	onChange(event) {
-		//const { value } = event.target;
-		//this.setState({ value1: value });
+		const { value } = event.target;
+    // this.setState({ value1: value });
+    this.props.onUrlChange(value);
 	}
 
 
@@ -43,8 +44,8 @@ class TestModelComponent extends PureComponent {
 
 	render() {
 
-		const { myInputValue } = this.props;
-		const { value1 } = '';
+		const { myInputValue, url } = this.props;
+		// const { value1 } = '';
 		const a = true;
 
 		if (!a) {
@@ -70,7 +71,7 @@ class TestModelComponent extends PureComponent {
 					<MyBox className="casella">
 						<MyTextInput style={({ margin: '30px 10px 0', border: '1px solid black' })}
 							name="txt01"
-							value={value1}
+							value={url}
 							onChange={this.onChange}
 						/>
 					</MyBox>
@@ -94,12 +95,15 @@ class TestModelComponent extends PureComponent {
 TestModelComponent.propTypes = {
 
 	MyFunc: PropTypes.func.isRequired,
-	myInputValue: PropTypes.string
+	onUrlChange: PropTypes.func.isRequired,
+	myInputValue: PropTypes.string,
+	url: PropTypes.string
 
 };
 
 TestModelComponent.defaultProps = {
-	myInputValue: ''
+	myInputValue: '',
+	url: ''
 };
 
 

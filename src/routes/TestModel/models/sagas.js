@@ -1,5 +1,6 @@
 import {
-  call, put, takeEvery,
+  // call, put, takeEvery,
+  call, put
 } from 'redux-saga/effects';
 import { types } from '../controllers/testModel.actions';
 

@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'; // only for route components
 import TestModel from './testModel.view';
-import { actionCreator, types } from '../controllers/testModel.actions';
+import { testmodelCall, onUrlChange } from '../controllers/testModel.actions';
 import { stringifyData } from '../controllers/testModel.selectors';
 
 
 const mapDispatchToProps = {
 
-	MyFunc: (data) => {													// Funzione invocata al click
-		return actionCreator( types.TESTMODEL_CALL, data )
-	}
+	MyFunc: testmodelCall,
+  onUrlChange,
 
 };
 
@@ -21,6 +20,7 @@ const mapStateToProps = state => ({
 	// myInputValue: state.TestModel_pippo.data,
 	myInputValue: stringifyData(state),
 	//myInputValue: state.TestModel_pippo.total_pages,
+	url: state.TestModel_pippo.url,
 
 });
 

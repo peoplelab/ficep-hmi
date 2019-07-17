@@ -12,11 +12,18 @@ const actionHandlers = {
 
     return { ...rest, form };
   },
-	[types.RESTAPI_RESPONSE_OK]: (state, { response }) => ({
+	// [types.RESTAPI_RESPONSE_OK]: (state, { response }) => ({
+  //   ...state,
+  //   logged: {
+  //     status: response.status,
+  //     data: response.data,
+  //   },
+  // }),
+	[types.DATA_FOR_VIEW]: (state, { payload }) => ({
     ...state,
     logged: {
-      status: response.status,
-      data: response.data,
+      status: payload.status,
+      data: payload.data,
     },
   }),
 	[types.RESTAPI_RESPONSE_KO]: (state, { error }) => ({ ...state, error }),

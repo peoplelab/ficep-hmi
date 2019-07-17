@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from './Login.view';
-import { onChange, callLogin } from '../controllers/Login.actions';
+import { onChange, restApiCallLogin } from '../controllers/Login.actions';
 import { grantType, disabled, data } from '../controllers/Login.selectors';
 
 
 const mapDispatchToProps = {
   onChange,
-  onLogin: callLogin,
+  onLogin: restApiCallLogin,
 };
 
 const mapStateToProps = state => ({

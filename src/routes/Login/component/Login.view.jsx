@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Box		from '../../../components/layout/myBox';
 import TextInput	from '../../../components/forms/TextInput';
+import PasswordInput	from '../../../components/forms/PasswordInput';
 import RadioButton	from '../../../components/forms/RadioButton';
 import Button		from '../../../components/forms/Button';
 
@@ -82,7 +83,7 @@ class LoginRoute extends PureComponent {
               <label className="login__label">
                 Password
               </label>
-              <TextInput
+              <PasswordInput
                 className="login__text-input"
                 name="password"
                 value={password}

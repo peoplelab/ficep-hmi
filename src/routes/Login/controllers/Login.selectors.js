@@ -16,5 +16,14 @@ export const disabled = createSelector(
 
 export const data = createSelector(
   state => state.Login.logged.data,
-  data => JSON.stringify(data),
+  state => state.Login.logged.status,
+  (data, status) => {
+    if (status === 200) {
+      return JSON.stringify(data);
+    } else if ('error' in (data || {})) {
+      return 'ERROR!';
+    }
+
+    return '';
+  },
 );

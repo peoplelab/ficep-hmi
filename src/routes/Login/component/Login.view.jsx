@@ -41,9 +41,6 @@ class LoginRoute extends PureComponent {
       refreshToken,
     } = this.props;
 
-    console.log(typeof data);
-    console.log(data);
-
     return (
       <Box className="login">
         <h1 className="login__title">

@@ -48,16 +48,5 @@ export function* setDataForView(actionAPI) {
   //   issuedAt,
   // } = response;
 
-  // console.log(typeof action.DATA_FOR_VIEW);
-  // console.log(action.DATA_FOR_VIEW.toString());
-  // console.log(JSON.stringify(action.DATA_FOR_VIEW));
-
-  console.log(typeof actionAPI);
-  console.log(actionAPI);
-  console.log(actionAPI.toString());
-  console.log(typeof response);
-  console.log(response);
-  console.log(response.toString());
-
   yield put(action.DATA_FOR_VIEW(response));
 }

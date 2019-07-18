@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Box		from '../../../components/layout/myBox';
-import TextInput	from '../../../components/forms/TextInput';
-import PasswordInput	from '../../../components/forms/PasswordInput';
-import RadioButton	from '../../../components/forms/RadioButton';
-import Button		from '../../../components/forms/Button';
+import Box from '../../../components/layout/Box/Box.index';
+import TextInput from '../../../components/forms/TextInput';
+import PasswordInput from '../../../components/forms/PasswordInput';
+import RadioButton from '../../../components/forms/RadioButton';
+import Button from '../../../components/forms/Button';
 
 import './Login.style.scss';
 

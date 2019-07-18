@@ -10,8 +10,9 @@ export const createPayloadTypes = (...types) => Enum.from(...types);
 const reduceApiTypes = (acc, type) => {
   const enumerator = Enum.from(
     `${type}_CALL`,
-    `${type}_OK`,
-    `${type}_KO`,
+    `${type}_SUCCESS`,
+    `${type}_ERROR`,
+    `${type}_FAIL`,
   );
 
   return { ...acc, ...enumerator };
@@ -36,8 +37,9 @@ export const createPayloadAction = (...types) => types.reduce(reducePayloadActio
 const reduceApiAction = (acc, type) => {
   acc[type] = {
     CALL: request => ({ type: `${type}_CALL`, request}),
-    OK: (status, data) => ({ type: `${type}_OK`, response: { status, data } }),
-    KO: error => ({ type: `${type}_KO`, error }),
+    SUCCESS: (status, data) => ({ type: `${type}_SUCCESS`, response: { status, data } }),
+    ERROR: (status, data) => ({ type: `${type}_ERROR`, response: { status, data } }),
+    FAIL: error => ({ type: `${type}_FAIL`, error }),
   };
   return acc;
 };

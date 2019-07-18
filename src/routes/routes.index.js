@@ -9,7 +9,8 @@ const createRoutes = store => ({
       path: '/',
       key: 'home',
       exact: true,
-      component: Home,
+      //component: Home,
+      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Home" */ './Home/Home.index')),
     },
     // {
     //   path: '/test-model',

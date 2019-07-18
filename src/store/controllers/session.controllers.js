@@ -37,10 +37,35 @@ export function* setRestApiLoginSuccess(actionAPI) {
 }
 
 export function* setRestApiLoginError(actionAPI) {
-  const { error } = actionAPI;
+  const { status, data } = actionAPI.response;
   console.log(actionAPI);
 
-  const newResponse = { status: null, data: { error } };
+  const {
+    username,
+    accessToken,
+    refreshToken,
+    culture,
+    groups,
+    permissions,
+    sessionId,
+    expiredAt,
+    error,
+  } = data;
+
+  const newResponse = {
+    status,
+    data: {
+      username,
+      accessToken,
+      refreshToken,
+      culture,
+      groups,
+      permissions,
+      sessionId,
+      expiredAt,
+      error,
+    }
+  };
 
   yield put(action.SESSION_DATA(newResponse));
 }

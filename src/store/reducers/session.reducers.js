@@ -8,11 +8,11 @@ const actionHandlers = {
     ...state,
     status: payload.status,
     data: payload.data,
-    }),
-    /* reset session object because logout was called */
-    [types.RESTAPI_LOGOUT_SUCCESS]: (state, { payload }) => ({
-        ...initialState
-    }),
+  }),
+  /* reset session object because logout was called */
+  [types.RESTAPI_LOGOUT_SUCCESS]: (state, { payload }) => ({
+      ...initialState
+  }),
 };
 
 

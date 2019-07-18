@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Box from '../../../components/layout/Box/Box.index';
+import Box from '../../../components/layouts/Box/Box.index';
 import TextInput from '../../../components/forms/TextInput';
 import PasswordInput from '../../../components/forms/PasswordInput';
 import Button from '../../../components/forms/Button';

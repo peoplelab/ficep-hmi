@@ -1,6 +1,6 @@
 import { createReducer } from '../../commons/reducers';
 import { types } from '../actions/session.actions';
-import initialState from '../store/session.store';
+import initialState from '../stores/session.store';
 
 
 const actionHandlers = {
@@ -10,7 +10,7 @@ const actionHandlers = {
     data: payload.data,
     }),
     /* reset session object because logout was called */
-    [types.RESTAPI_LOGOUT_OK]: (state, { payload }) => ({        
+    [types.RESTAPI_LOGOUT_OK]: (state, { payload }) => ({
         ...initialState
     }),
 };

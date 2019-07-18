@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../../../components/layout/Box/Box.index';
+import Box from '../../../components/layouts/Box/Box.index';
 
 
 class Field extends PureComponent {

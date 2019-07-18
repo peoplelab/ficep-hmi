@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import Anchor from '../../components/layout/Anchor/Anchor.index';
+import Anchor from '../../components/layouts/Anchor/Anchor.index';
 
 
 const HomeComponent = () => (

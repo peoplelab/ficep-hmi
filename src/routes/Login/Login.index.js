@@ -1,7 +1,7 @@
 import AsyncRoute from '../../commons/AsyncRoute';
-import Component from './component/Login.index';
+import Component from './components/Login.index';
 import reducers from './controllers/Login.reducers';
-import watcher from './controllers/Login.watcher';
+import watcher from './controllers/Login.watchers';
 
 
 const KEY = 'Login';

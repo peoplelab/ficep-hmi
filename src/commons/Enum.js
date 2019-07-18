@@ -5,12 +5,12 @@ import {
 
 
 /**
- * Enum handler
+ * Enumerator objects handler
  */
 class Enum {
   /**
-   * Static function to generate an "enum" object from a list
-   * @param  {...string} args
+   * Static function to generate an enumerator object from a list
+   * @param  {...string} args Array of strings
    */
   static from(...args) {
     const response = args.every(value => isKey(value));
@@ -19,8 +19,8 @@ class Enum {
   }
 
   /**
-   * Static function to generate a list from an "enum" object
-   * @param  {object} obj
+   * Static function to generate a list from an enumerator object
+   * @param  {object} obj Enumerator object
    */
   static to(obj) {
     if (!isObject(obj)) {

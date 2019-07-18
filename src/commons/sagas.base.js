@@ -3,9 +3,9 @@ import { call, put } from 'redux-saga/effects';
 
 /**
  * Handle rest api calls
- * @param {object} actionAPI
- * @param {object} request
- * @param {string} url
+ * @param {object} actionAPI Object with actions to call after rest api response
+ * @param {object} request Rest api request
+ * @param {string} url Rest api address
  */
 export function* fetchData_gen(actionAPI, request, url) {
   try {

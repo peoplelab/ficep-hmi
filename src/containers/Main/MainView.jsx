@@ -3,6 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import createRoutes from '../../routes/routes.index.js';
 
+
+/**
+ * Iterate an array of objects to return the application routes
+ * @param {*} routeProps Route properties
+ */
 const mapRoutes = (routeProps) => {
   const {
     component,
@@ -16,6 +21,10 @@ const mapRoutes = (routeProps) => {
   );
 };
 
+
+/**
+ *
+ */
 class MainComponent extends PureComponent {
   render() {
     const { store } = this.props;
@@ -35,11 +44,16 @@ class MainComponent extends PureComponent {
 }
 
 
+/**
+ * Define component properties types
+ */
 MainComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
+/**
+ * Define default value of component properties
+ */
 MainComponent.defaultProps = {
 };
 

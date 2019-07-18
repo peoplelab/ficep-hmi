@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 
 /**
  * Create new store reducers, starting from a functions map and an initial state object
- * @param {object} actionHandlers
- * @param {object} initialState
+ * @param {object} actionHandlers Reducers map by actions
+ * @param {object} initialState Inital value of section state
  */
 export const createReducer = (actionHandlers, initialState) => (state = initialState, action) => {
   const handler = actionHandlers[action.type];
@@ -15,8 +15,8 @@ export const createReducer = (actionHandlers, initialState) => (state = initialS
 
 /**
  * Create a new store reducers map
- * @param {object} globalReducers
- * @param {object} asyncReducers
+ * @param {object} globalReducers Syncronous global reducers
+ * @param {object} asyncReducers Async route specific reducer
  */
 export const reducerConstructor = (globalReducers, asyncReducers) => combineReducers({
   ...globalReducers,
@@ -26,8 +26,8 @@ export const reducerConstructor = (globalReducers, asyncReducers) => combineRedu
 
 /**
  * Inject a new asynchronous reducer into the store
- * @param {object} store
- * @param {object} globalReducers
+ * @param {object} store Redux store
+ * @param {object} globalReducers Syncronous global reducers
  */
 export const injectAsyncReducers = (store, globalReducers) => /** @param {string} key  @param {function} reducer  */ (key, reducer) => {
   if (key in store.asyncReducers) {

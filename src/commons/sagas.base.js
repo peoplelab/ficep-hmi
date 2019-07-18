@@ -1,6 +1,12 @@
 import { call, put } from 'redux-saga/effects';
 
 
+/**
+ * Handle rest api calls
+ * @param {object} actionAPI
+ * @param {object} request
+ * @param {string} url
+ */
 export function* fetchData_gen(actionAPI, request, url) {
   try {
     //eslint-disable-next-line

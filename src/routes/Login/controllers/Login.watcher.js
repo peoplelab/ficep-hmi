@@ -1,7 +1,7 @@
 import {
   all, fork, takeEvery
 } from 'redux-saga/effects';
-import { typesApi } from '../../../store/actions/session.actions';
+import { types as typesApi } from '../../../store/actions/session.actions';
 import { setCallLogin } from './Login.controller';
 
 

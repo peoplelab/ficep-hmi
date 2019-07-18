@@ -1,5 +1,5 @@
 import { fork, select } from 'redux-saga/effects';
-import { actionApi } from '../../../store/actions/session.actions';
+import { action as actionApi } from '../../../store/actions/session.actions';
 import { doCallLogin } from '../models/Login.model';
 
 

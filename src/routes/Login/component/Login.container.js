@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Login from './Login.view';
 import { action } from '../controllers/Login.actions';
-import { actionApi } from '../../../store/actions/session.actions';
+import { action as actionApi } from '../../../store/actions/session.actions';
 import { grantType, disabled, data } from '../controllers/Login.selectors';
 
 

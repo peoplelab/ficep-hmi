@@ -32,8 +32,8 @@ export function* setCallLogin() {
 }
 
 
-export function* setDataForView(action) {
-  const { response } = action;
+export function* setDataForView(actionAPI) {
+  const { response } = actionAPI;
   // const {
   //   username,
   //   accessToken,
@@ -51,6 +51,13 @@ export function* setDataForView(action) {
   // console.log(typeof action.DATA_FOR_VIEW);
   // console.log(action.DATA_FOR_VIEW.toString());
   // console.log(JSON.stringify(action.DATA_FOR_VIEW));
+
+  console.log(typeof actionAPI);
+  console.log(actionAPI);
+  console.log(actionAPI.toString());
+  console.log(typeof response);
+  console.log(response);
+  console.log(response.toString());
 
   yield put(action.DATA_FOR_VIEW(response));
 }

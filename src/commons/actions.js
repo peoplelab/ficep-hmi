@@ -24,7 +24,7 @@ export const createPayloadAction = (...types) => types.reduce(reducePayloadActio
 const reduceApiAction = (acc, type) => {
   acc[type] = {
     CALL: () => ({ type: `${type}_CALL` }),
-    OK: response => ({ type: `${type}_OK`, response }),
+    OK: (status, data) => ({ type: `${type}_OK`, response: { status, data } }),
     KO: error => ({ type: `${type}_KO`, error }),
   };
   return acc;

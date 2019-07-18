@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 /* Mio test */
-import MyBox		from '../../../components/layout/myBox';
+import MyBox		from '../../../components/layout/_myBox';
 import MyTextInput	from '../../../components/forms/TextInput';
 import MyButton		from '../../../components/forms/Button';
 

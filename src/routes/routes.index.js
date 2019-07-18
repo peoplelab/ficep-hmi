@@ -11,18 +11,18 @@ const createRoutes = store => ({
       exact: true,
       component: Home,
     },
-    {
-      path: '/test-model',
-      key: 'test-model',
-      exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncTestModel" */ './TestModel/TestModel.index.js')),
-    },
-    {
-      path: '/async',
-      key: 'async-key',
-      exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncChunk" */ './AsyncRoute')),
-    },
+    // {
+    //   path: '/test-model',
+    //   key: 'test-model',
+    //   exact: true,
+    //   component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncTestModel" */ './TestModel/TestModel.index.js')),
+    // },
+    // {
+    //   path: '/async',
+    //   key: 'async-key',
+    //   exact: true,
+    //   component: AsyncComponent(store)(() => import(/* webpackChunkName: "AsyncChunk" */ './AsyncRoute')),
+    // },
     {
       path: '/login',
       key: 'login',

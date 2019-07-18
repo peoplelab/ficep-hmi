@@ -83,6 +83,7 @@
     "@hot-loader/react-dom": "16.8.6",
     "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
+    "ramda": "0.26.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-hot-loader": "4.12.6",

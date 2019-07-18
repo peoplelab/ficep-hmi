@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
-import { BrowserRouter } from 'react-router-dom'; // Handle navigation into the app
+import { Router } from "react-router"; // Handle navigation into the app
+// import { BrowserRouter } from 'react-router-dom'; // Handle navigation into the app
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux'; // conncet Redux store with React virtual DOM
 // import { IntlProvider } from 'react-intl'; // Internationalization of React application
 import Main from '../Main'; // Handle routes tree
+import history from '../../commons/history'; // Browser history handler
 
 import '../../style/main.scss'; // apply common style to application
+
 
 
 /**
@@ -18,9 +21,9 @@ class AppComponent extends PureComponent {
     return (
       <Provider store={store}>
         {/* <IntlProvider locale={lang} messages={msg}> */}
-        <BrowserRouter>
+        <Router history={history}>
           <Main store={store} />
-        </BrowserRouter>
+        </Router>
         {/* </IntlProvider> */}
       </Provider>
     );

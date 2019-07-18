@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 import { action } from '../actions/session.actions';
 
 
-export function* setRestApiLoginOK(actionAPI) {
+export function* setRestApiLoginSuccess(actionAPI) {
   const { status, data } = actionAPI.response;
   console.log(actionAPI);
 
@@ -36,11 +36,36 @@ export function* setRestApiLoginOK(actionAPI) {
   yield put(action.SESSION_DATA(newResponse));
 }
 
-export function* setRestApiLoginKO(actionAPI) {
-  const { error } = actionAPI;
+export function* setRestApiLoginError(actionAPI) {
+  const { status, data } = actionAPI.response;
   console.log(actionAPI);
 
-  const newResponse = { status: null, data: { error } };
+  const {
+    username,
+    accessToken,
+    refreshToken,
+    culture,
+    groups,
+    permissions,
+    sessionId,
+    expiredAt,
+    error,
+  } = data;
+
+  const newResponse = {
+    status,
+    data: {
+      username,
+      accessToken,
+      refreshToken,
+      culture,
+      groups,
+      permissions,
+      sessionId,
+      expiredAt,
+      error,
+    }
+  };
 
   yield put(action.SESSION_DATA(newResponse));
 }

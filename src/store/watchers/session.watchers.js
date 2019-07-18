@@ -1,19 +1,19 @@
 import { fork, takeEvery } from 'redux-saga/effects';
 import { types } from '../actions/session.actions';
-import { setRestApiLoginOK, setRestApiLoginKO } from '../controllers/session.controllers';
+import { setRestApiLoginSuccess, setRestApiLoginError } from '../controllers/session.controllers';
 
 
-function* watchRestApiLoginOK() {
-  yield takeEvery(types.RESTAPI_LOGIN_OK, setRestApiLoginOK);
+function* watchRestApiLoginSuccess() {
+  yield takeEvery(types.RESTAPI_LOGIN_SUCCESS, setRestApiLoginSuccess);
 }
-function* watchRestApiLoginKO() {
-  yield takeEvery(types.RESTAPI_LOGIN_KO, setRestApiLoginKO);
+function* watchRestApiLoginError() {
+  yield takeEvery(types.RESTAPI_LOGIN_ERROR, setRestApiLoginError);
 }
 
 
 const list = [
-  fork(watchRestApiLoginOK),
-  fork(watchRestApiLoginKO),
+  fork(watchRestApiLoginSuccess),
+  fork(watchRestApiLoginError),
 ];
 
 export default list;

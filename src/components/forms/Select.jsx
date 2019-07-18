@@ -21,7 +21,7 @@ class Select extends PureComponent {
   mapOptions(data) {
     const { value, message } = data;
 
-    return (<Option value={value} message={message} />);
+    return (<Option value={value} message={message} key={`option-${value}`} />);
   }
 
   render() {

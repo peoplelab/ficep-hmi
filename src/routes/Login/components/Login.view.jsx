@@ -7,6 +7,7 @@ import PasswordInput from '../../../components/forms/PasswordInput';
 import Button from '../../../components/forms/Button';
 import Select from '../../../components/forms/Select';
 import Field from '../items/Field.item';
+import LoginError from '../items/LoginError.item';
 
 import './Login.style.scss';
 
@@ -35,6 +36,7 @@ class LoginRoute extends PureComponent {
 	render() {
     const {
       disabled,
+      errorOnLogin,
       culture,
       options,
       username,
@@ -88,6 +90,7 @@ class LoginRoute extends PureComponent {
             </Box>
           </form>
         </Box>
+        <LoginError show={errorOnLogin} />
       </section>
     );
 	}
@@ -104,6 +107,7 @@ const shapeOptions = {
 LoginRoute.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
   disabled: PropTypes.bool,
+  errorOnLogin: PropTypes.bool,
   username: PropTypes.string,
   password: PropTypes.string,
   refreshToken: PropTypes.string,
@@ -114,6 +118,7 @@ LoginRoute.propTypes = {
 
 LoginRoute.defaultProps = {
   disabled: true,
+  errorOnLogin: false,
   username: '',
   password: '',
   refreshToken: '',

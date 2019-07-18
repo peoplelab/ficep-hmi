@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './Anchor.scss';
+import './Anchor.style.scss';
 
 
 class Anchor extends PureComponent {

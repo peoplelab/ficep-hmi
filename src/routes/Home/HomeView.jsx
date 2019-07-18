@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import Anchor from '../../components/layout/Anchor';
+import Anchor from '../../components/layout/Anchor/Anchor.index';
 
 const myUrl = '/test-model';
 

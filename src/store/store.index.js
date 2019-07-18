@@ -42,9 +42,9 @@ const storeConstructor = (initialState = {}) => {
 
   // Hot loader
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
+    module.hot.accept('./reducers/reducers.index', () => {
       // eslint-disable-next-line global-require
-      const hotReducers = require('./reducers').default;
+      const hotReducers = require('./reducers/reducers.index').default;
       const { asyncReducers } = store;
       store.replaceReducer(reducerConstructor(hotReducers, asyncReducers));
     });

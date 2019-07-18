@@ -1,4 +1,4 @@
-import session from './session.reducer';
+import session from './session.reducers';
 
 
 export const mainReducer = {

@@ -1,6 +1,6 @@
 import { createReducer } from '../../commons/reducers';
 import { types } from '../actions/session.actions';
-import initialState from './Login.store';
+import initialState from '../store/session.store';
 
 
 const actionHandlers = {

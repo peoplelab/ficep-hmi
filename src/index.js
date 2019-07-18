@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { setConfig } from 'react-hot-loader';
 //import App from './containers/App';
 import App from './containers/App/App.index.js';
-import createStore from './store';
+import createStore from './store/store.index';
 
 
 if (process.env.NODE_ENV !== 'PRODUCTION') {

@@ -4,7 +4,7 @@ import { goToHome } from '../controllers/wizardnavigation.controllers';
 
 
 function* watchRestApiLoginOK() {
-  yield takeEvery(types.RESTAPI_LOGIN_OK, goToHome);
+  yield takeEvery(types.RESTAPI_LOGIN_SUCCESS, goToHome);
 }
 
 

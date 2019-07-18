@@ -1,7 +1,5 @@
-import {
-  fork, select, put
-} from 'redux-saga/effects';
-import { action } from './Login.actions';
+import { fork, select } from 'redux-saga/effects';
+import { actionApi } from '../../../store/actions/session.actions';
 import { doCallLogin } from '../models/Login.model';
 
 
@@ -28,25 +26,5 @@ export function* setCallLogin() {
 
   data.grantType = grantType;
 
-  yield fork(doCallLogin, action.RESTAPI_LOGIN, data);
-}
-
-
-export function* setDataForView(actionAPI) {
-  const { response } = actionAPI;
-  // const {
-  //   username,
-  //   accessToken,
-  //   refreshToken,
-  //   culture,
-  //   groups,
-  //   permissions,
-  //   sessionId,
-  //   expiredAt,
-  //   sessionLogId,
-  //   refreshExpiredAt,
-  //   issuedAt,
-  // } = response;
-
-  yield put(action.DATA_FOR_VIEW(response));
+  yield fork(doCallLogin, actionApi.RESTAPI_LOGIN, data);
 }

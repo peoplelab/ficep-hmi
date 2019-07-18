@@ -1,22 +1,16 @@
 import {
   all, fork, takeEvery
 } from 'redux-saga/effects';
-import { types } from './Login.actions';
-import { setCallLogin, setDataForView } from './Login.controller';
+import { typesApi } from '../../../store/actions/session.actions';
+import { setCallLogin } from './Login.controller';
 
 
 function* watchCallLogin() {
-  yield takeEvery(types.RESTAPI_LOGIN_CALL, setCallLogin);
+  yield takeEvery(typesApi.RESTAPI_LOGIN_CALL, setCallLogin);
 }
-
-function* watchRestApiResponseOK() {
-  yield takeEvery(types.RESTAPI_LOGIN_OK, setDataForView);
-}
-
 
 const list = [
   fork(watchCallLogin),
-  fork(watchRestApiResponseOK),
 ];
 
 function* root() {

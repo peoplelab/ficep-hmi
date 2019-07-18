@@ -1,24 +1,19 @@
 import {
-  createPayloadTypes, createApiTypes, createPayloadAction, createApiAction
+  createPayloadTypes, createPayloadAction
 } from '../../../commons/actions';
 
-const payloadList = ['ON_CHANGE', 'DATA_FOR_VIEW'];
-const apiList = ['RESTAPI_LOGIN'];
+const payloadList = ['ON_LOGIN_CHANGE'];
 
 
 const payloadTypes = createPayloadTypes(...payloadList);
-const apiTypes = createApiTypes(...apiList);
 
 const payloadActions = createPayloadAction(...payloadList);
-const apiActions = createApiAction(...apiList);
 
 
 export const types = {
   ...payloadTypes,
-  ...apiTypes
 };
 
 export const action = {
   ...payloadActions,
-  ...apiActions
 };

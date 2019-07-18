@@ -17,3 +17,7 @@ export const types = {
 export const action = {
   ...payloadActions,
 };
+
+/*
+  ON_LOGIN_CHANGE: definisce e salva ogni azione, all'interno di un campo della login form, da parte dell'utente
+*/

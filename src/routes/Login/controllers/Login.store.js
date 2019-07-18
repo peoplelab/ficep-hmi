@@ -1,7 +1,7 @@
 
 export default ({
   form: {
-    grantType: 'Password',
+    culture: 'it-IT',
     username: '',
     password: '',
   },

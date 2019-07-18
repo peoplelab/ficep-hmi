@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import Box from '../../../components/layout/Box/Box.index';
 import TextInput from '../../../components/forms/TextInput';
 import PasswordInput from '../../../components/forms/PasswordInput';
-import RadioButton from '../../../components/forms/RadioButton';
 import Button from '../../../components/forms/Button';
+import Select from '../../../components/forms/Select';
+import Field from '../items/Field.item';
 
 import './Login.style.scss';
 
@@ -27,133 +28,86 @@ class LoginRoute extends PureComponent {
     this.props.onChange(name, value);
   }
 
-  onLogin(event) {
+  onLogin() {
     this.props.onLogin();
   }
 
 	render() {
     const {
-      data,
-      checked,
       disabled,
+      culture,
+      options,
       username,
       password,
-      refreshToken,
     } = this.props;
 
     return (
-      <Box className="login">
-        <h1 className="login__title">
-          Login route
-        </h1>
-        <form className="login__form">
-          <Box className="login__group">
-            <h2 className="login__subtitle">
-              Use Password as GrantType
-            </h2>
-            <Box className="login__radio-box">
-              <RadioButton
-                className="login__radio-button"
-                id="grantType-Password"
-                name="grantType"
-                value="Password"
-                checked={checked.Password}
-                onChange={this.onChange}
-              />
-              <label className="login__label" htmlFor="grantType-Password">
-                Password GrantType
-              </label>
+      <section className="login">
+        <Box className="login__dialog">
+          <form className="login__form">
+            <h1 className="login__title">
+              Login
+            </h1>
+            <Box className="login__group">
+              <Field label="Username">
+                <TextInput
+                  className="login__text-input"
+                  name="username"
+                  value={username}
+                  onChange={this.onChange}
+                />
+              </Field>
+              <Field label="Password">
+                <PasswordInput
+                  className="login__text-input"
+                  name="password"
+                  value={password}
+                  onChange={this.onChange}
+                />
+              </Field>
+              <Field label="Culture">
+                <Select
+                  className="login__select-input"
+                  name="culture"
+                  value={culture}
+                  options={options}
+                  onChange={this.onChange}
+                />
+              </Field>
             </Box>
-            <Box className="login__text-box">
-              <label className="login__label">
-                Username
-              </label>
-              <TextInput
-                className="login__text-input"
-                name="username"
-                value={username}
-                onChange={this.onChange}
-                disabled={!(checked.Password)}
-              />
+            <Box className="login__group">
+              <Box className="login__box">
+                <Button
+                  className="login__button"
+                  onClick={this.onLogin}
+                  disabled={disabled}
+                >
+                  Login
+                </Button>
+              </Box>
             </Box>
-            <Box className="login__text-box">
-              <label className="login__label">
-                Password
-              </label>
-              <PasswordInput
-                className="login__text-input"
-                name="password"
-                value={password}
-                onChange={this.onChange}
-                disabled={!(checked.Password)}
-              />
-            </Box>
-          </Box>
-          <Box className="login__group">
-            <h2 className="login__subtitle">
-              Use RefreshToken as GrantType
-            </h2>
-            <Box className="login__radio-box">
-              <RadioButton
-                className="login__radio-button"
-                id="grantType-RefreshToken"
-                name="grantType"
-                value="RefreshToken"
-                checked={checked.RefreshToken}
-                onChange={this.onChange}
-              />
-              <label className="login__label" htmlFor="grantType-RefreshToken">
-                RefreshToken GrantType
-              </label>
-            </Box>
-            <Box className="login__text-box">
-              <label className="login__label">
-                RefreshToken
-              </label>
-              <p className="login__text-input">
-                {refreshToken}
-              </p>
-            </Box>
-          </Box>
-          <Box className="login__group">
-            <Box className="login__button-box">
-              <Button
-                className="login__button"
-                onClick={this.onLogin}
-                disabled={disabled}
-              >
-                Login
-              </Button>
-            </Box>
-          </Box>
-        </form>
-          <Box className="login__group">
-            <h2 className="login__subtitle">
-              Response
-            </h2>
-            <p className="login__paragraph">
-              {data}
-            </p>
-          </Box>
-      </Box>
+          </form>
+        </Box>
+      </section>
     );
 	}
 }
 
 
-const shapeChecked = {
-  Password: PropTypes.bool.isRequired,
-  RefreshToken: PropTypes.bool.isRequired,
+const shapeOptions = {
+  deafult: PropTypes.bool,
+  message: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 
 LoginRoute.propTypes = {
-  checked: PropTypes.shape(shapeChecked).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
   disabled: PropTypes.bool,
   username: PropTypes.string,
   password: PropTypes.string,
-  data : PropTypes.string,
   refreshToken: PropTypes.string,
+  culture: PropTypes.string,
   onChange : PropTypes.func.isRequired,
   onLogin : PropTypes.func.isRequired,
 };
@@ -163,7 +117,13 @@ LoginRoute.defaultProps = {
   username: '',
   password: '',
   refreshToken: '',
-  data: '',
+  culture: '',
+  options: [
+    {
+      message: 'it-IT',
+      value: 'it-IT',
+    }
+  ]
 };
 
 

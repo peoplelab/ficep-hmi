@@ -1,17 +1,10 @@
 import { createSelector } from 'reselect';
 
 
-export const grantType = createSelector(
-  state => state.Login.form.grantType,
-  grantType => ({
-    Password: grantType === 'Password',
-    RefreshToken: grantType === 'RefreshToken',
-  }),
-);
-
 export const disabled = createSelector(
-  state => state.Login.form.grantType,
-  grantType => grantType !== 'Password' && grantType !== 'RefreshToken',
+  state => state.Login.form.username,
+  state => state.Login.form.password,
+  (username, password) => !username || !password,
 );
 
 export const data = createSelector(

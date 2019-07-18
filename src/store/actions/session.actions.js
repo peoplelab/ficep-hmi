@@ -1,27 +1,24 @@
-import { createReducer } from '../../commons/reducers';
-import { types } from './Login.actions';
-import initialState from './Login.store';
+import {
+  createPayloadTypes, createApiTypes, createPayloadAction, createApiAction
+} from '../../../commons/actions';
+
+const payloadList = ['SET_SESSION'];
+const apiList = ['RESTAPI_LOGIN'];
 
 
-const actionHandlers = {
-	[types.ON_CHANGE]: (state, { payload }) => {
-    const { form, ...rest } = state;
-    const { name, value } = payload;
+const payloadTypes = createPayloadTypes(...payloadList);
+const apiTypes = createApiTypes(...apiList);
 
-    form[name] = value;
+const payloadActions = createPayloadAction(...payloadList);
+const apiActions = createApiAction(...apiList);
 
-    return { ...rest, form };
-  },
-	[types.DATA_FOR_VIEW]: (state, { payload }) => ({
-    ...state,
-    logged: {
-      status: payload.status,
-      data: payload.data,
-    },
-  }),
-	[types.RESTAPI_LOGIN_KO]: (state, { error }) => ({ ...state, error }),
+
+export const types = {
+  ...payloadTypes,
+  ...apiTypes
 };
 
-
-const reducer = createReducer(actionHandlers, initialState);
-export default reducer;
+export const action = {
+  ...payloadActions,
+  ...apiActions
+};

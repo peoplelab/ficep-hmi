@@ -4,10 +4,11 @@ import Login from './Login.view';
 import { action } from '../controllers/Login.actions';
 import { action as actionApi } from '../../../store/actions/session.actions';
 import { grantType, disabled, data } from '../controllers/Login.selectors';
+import { stateOr } from '../../../commons/selectors';
 
 
 const mapDispatchToProps = {
-  onChange: action.ON_LOGIN_CHANGE,
+  onChange: (name, value) => action.ON_LOGIN_CHANGE({ name, value }),
   onLogin: actionApi.RESTAPI_LOGIN.CALL,
 };
 
@@ -16,7 +17,7 @@ const mapStateToProps = state => ({
   disabled: disabled(state),
   username: state.Login.form.username,
   password: state.Login.form.password,
-  refreshToken: state.Login.form.refreshToken,
+  refreshToken: stateOr(state, 'state.session.data.refreshToken', ''),
   data: data(state),
 });
 

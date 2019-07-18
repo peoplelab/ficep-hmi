@@ -4,6 +4,5 @@ export default ({
     grantType: 'Password',
     username: '',
     password: '',
-    refreshToken: '',
   },
 });

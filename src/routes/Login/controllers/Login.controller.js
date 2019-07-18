@@ -10,7 +10,7 @@ const getPassword = state => ({
   password: state.Login.form.password,
 });
 
-const getRefreshToken = state => ({refreshtoken: state.Login.form.refreshtoken});
+const getRefreshToken = state => ({refreshtoken: state.session.data.refreshToken});
 
 
 export function* setCallLogin() {
@@ -25,6 +25,6 @@ export function* setCallLogin() {
   }
 
   data.grantType = grantType;
-
+console.log(data);
   yield fork(doCallLogin, actionApi.RESTAPI_LOGIN, data);
 }

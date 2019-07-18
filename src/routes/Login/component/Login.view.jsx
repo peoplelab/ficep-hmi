@@ -110,13 +110,9 @@ class LoginRoute extends PureComponent {
               <label className="login__label">
                 RefreshToken
               </label>
-              <TextInput
-                className="login__text-input"
-                name="refreshToken"
-                value={refreshToken}
-                onChange={this.onChange}
-                disabled={!(checked.RefreshToken)}
-              />
+              <p className="login__text-input">
+                {refreshToken}
+              </p>
             </Box>
           </Box>
           <Box className="login__group">

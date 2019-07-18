@@ -1,6 +1,11 @@
 import React, { Component as ReactComponent } from 'react';
 
-const AsyncComponent = store => importComponent => (
+/**
+ * Handle asynchronous loading of React components
+ * Note: if required, it sends Redux store to component
+ * @param {object} store
+ */
+const AsyncComponent = store => /** @param {React} importComponent */ importComponent => (
   class extends ReactComponent {
     constructor(props) {
       super(props);

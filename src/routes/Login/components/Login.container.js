@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Login from './Login.view';
 import { action } from '../controllers/Login.actions';
 import { action as actionApi } from '../../../store/actions/session.actions';
-import { grantType, disabled, data } from '../controllers/Login.selectors';
+import { disabled } from './Login.selectors';
 import { stateOr } from '../../../commons/selectors';
 
 
@@ -13,12 +13,12 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  checked: grantType(state),
+  options: state.culture,
+  culture: state.Login.form.culture,
   disabled: disabled(state),
   username: state.Login.form.username,
   password: state.Login.form.password,
   refreshToken: stateOr(state, 'state.session.data.refreshToken', ''),
-  data: data(state),
 });
 
 

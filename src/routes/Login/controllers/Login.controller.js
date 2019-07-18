@@ -3,28 +3,15 @@ import { action as actionApi } from '../../../store/actions/session.actions';
 import { doCallLogin } from '../models/Login.model';
 
 
-const getGrantType = state => state.Login.form.grantType;
-
 const getPassword = state => ({
   username: state.Login.form.username,
   password: state.Login.form.password,
+  grantType: 'Password',
 });
-
-const getRefreshToken = state => ({refreshtoken: state.session.data.refreshToken});
 
 
 export function* setCallLogin() {
-  let data = {};
+  const data = yield select(getPassword);
 
-  const grantType = yield select(getGrantType);
-
-  if (grantType === 'Password') {
-    data = yield select(getPassword);
-  } else if (grantType === 'RefreshToken') {
-    data = yield select(getRefreshToken);
-  }
-
-  data.grantType = grantType;
-console.log(data);
   yield fork(doCallLogin, actionApi.RESTAPI_LOGIN, data);
 }

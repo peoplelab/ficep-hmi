@@ -21,13 +21,24 @@ export function* fetchData_gen(actionAPI, request, url) {
     const status = response.status;
     const response_dataraw = yield call([response, response.json]);
 
-    yield put(actionAPI.OK(status, response_dataraw));
+    if (status === 200) {
+      //eslint-disable-next-line
+      console.log('> REST API success. Status: ' + status);
+
+      yield put(actionAPI.SUCCESS(status, response_dataraw));
+    } else {
+      //eslint-disable-next-line
+      console.log('> REST API error. Status: ' + status);
+
+      yield put(actionAPI.ERROR(status, response_dataraw));
+    }
+
 
   } catch (error) {
     //eslint-disable-next-line
     console.log('> REST API failed.');
     console.log(error);
 
-    yield put(actionAPI.KO(error));
+    yield put(actionAPI.FAIL(error));
   }
 }

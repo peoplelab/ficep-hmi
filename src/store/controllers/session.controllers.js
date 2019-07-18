@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 import { action } from '../actions/session.actions';
 
 
-export function* setRestApiLoginOK(actionAPI) {
+export function* setRestApiLoginSuccess(actionAPI) {
   const { status, data } = actionAPI.response;
   console.log(actionAPI);
 
@@ -36,7 +36,7 @@ export function* setRestApiLoginOK(actionAPI) {
   yield put(action.SESSION_DATA(newResponse));
 }
 
-export function* setRestApiLoginKO(actionAPI) {
+export function* setRestApiLoginError(actionAPI) {
   const { error } = actionAPI;
   console.log(actionAPI);
 

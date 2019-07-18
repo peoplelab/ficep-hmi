@@ -5,8 +5,8 @@ import initialState from './testModel.store';
 
 const actionHandlers = {
   // [types.RESTAPI_CALL]: (state, { payload }) => ({ ...state, ...payload }),
-	// [types.RESTAPI_RESPONSE_OK]: (state, { payload }) => ({ ...state, ...payload }),
-	[types.RESTAPI_RESPONSE_OK]: (state, { response_dataraw }) => {
+	// [types.RESTAPI_RESPONSE_SUCCESS]: (state, { payload }) => ({ ...state, ...payload }),
+	[types.RESTAPI_RESPONSE_SUCCESS]: (state, { response_dataraw }) => {
     const {
       data,
       page,
@@ -25,7 +25,7 @@ const actionHandlers = {
       data
     };
   },
-  [types.RESTAPI_RESPONSE_KO]: (state, { error }) => ({ ...state, ...error }),
+  [types.RESTAPI_RESPONSE_FAIL]: (state, { error }) => ({ ...state, ...error }),
   [types.ON_URL_CHANGE]: (state, { payload }) => ({
     ...state,
     url: payload.url

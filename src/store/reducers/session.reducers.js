@@ -10,7 +10,7 @@ const actionHandlers = {
     data: payload.data,
     }),
     /* reset session object because logout was called */
-    [types.RESTAPI_LOGOUT_OK]: (state, { payload }) => ({
+    [types.RESTAPI_LOGOUT_SUCCESS]: (state, { payload }) => ({
         ...initialState
     }),
 };

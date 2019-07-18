@@ -3,7 +3,7 @@ import {
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducers.index';
-import sagas from './controllers/controllers.index';
+import sagas from './watchers/watchers.index';
 import { injectAsyncReducers, reducerConstructor } from '../commons/reducers';
 // import SagaHandler from '../commons/sagas';
 

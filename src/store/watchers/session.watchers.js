@@ -1,6 +1,4 @@
-import {
-  all, fork, takeEvery
-} from 'redux-saga/effects';
+import { fork, takeEvery } from 'redux-saga/effects';
 import { types } from '../actions/session.actions';
 import { setRestApiLoginOK, setRestApiLoginKO } from '../controllers/session.controllers';
 
@@ -18,8 +16,4 @@ const list = [
   fork(watchRestApiLoginKO),
 ];
 
-function* root() {
-  yield all(list);
-}
-
-export default root;
+export default list;

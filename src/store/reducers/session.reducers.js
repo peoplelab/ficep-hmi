@@ -4,12 +4,10 @@ import initialState from '../store/session.store';
 
 
 const actionHandlers = {
-	[types.SET_SESSION]: (state, { payload }) => ({
+	[types.SESSION_DATA]: (state, { payload }) => ({
     ...state,
-    logged: {
-      status: payload.status,
-      data: payload.data,
-    },
+    status: payload.status,
+    data: payload.data,
   }),
 };
 

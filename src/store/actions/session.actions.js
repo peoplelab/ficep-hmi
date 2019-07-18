@@ -2,7 +2,7 @@ import {
   createPayloadTypes, createApiTypes, createPayloadAction, createApiAction
 } from '../../commons/actions';
 
-const payloadList = ['SET_SESSION'];
+const payloadList = ['SESSION_DATA'];
 const apiList = ['RESTAPI_LOGIN'];
 
 

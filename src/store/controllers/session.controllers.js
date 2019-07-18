@@ -3,7 +3,8 @@ import { action } from '../actions/session.actions';
 
 
 export function* setRestApiLoginOK(actionAPI) {
-  const { response } = actionAPI;
+  const { status, data } = actionAPI.response;
+  console.log(actionAPI);
 
   const {
     username,
@@ -14,26 +15,32 @@ export function* setRestApiLoginOK(actionAPI) {
     permissions,
     sessionId,
     expiredAt,
-  } = response;
+    error,
+  } = data;
 
   const newResponse = {
-    username,
-    accessToken,
-    refreshToken,
-    culture,
-    groups,
-    permissions,
-    sessionId,
-    expiredAt,
+    status,
+    data: {
+      username,
+      accessToken,
+      refreshToken,
+      culture,
+      groups,
+      permissions,
+      sessionId,
+      expiredAt,
+      error,
+    }
   };
 
-  yield put(action.DATA_FOR_VIEW(newResponse));
+  yield put(action.SESSION_DATA(newResponse));
 }
 
 export function* setRestApiLoginKO(actionAPI) {
   const { error } = actionAPI;
+  console.log(actionAPI);
 
-  const newResponse = { error };
+  const newResponse = { status: null, data: { error } };
 
-  yield put(action.DATA_FOR_VIEW(newResponse));
+  yield put(action.SESSION_DATA(newResponse));
 }

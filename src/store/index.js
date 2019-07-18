@@ -2,8 +2,8 @@ import {
   applyMiddleware, compose, createStore,
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import reducers from './reducers';
-import sagas from './sagas';
+import reducers from './reducers/reducers.index';
+import sagas from './controllers/controllers.index';
 import { injectAsyncReducers, reducerConstructor } from '../commons/reducers';
 // import SagaHandler from '../commons/sagas';
 

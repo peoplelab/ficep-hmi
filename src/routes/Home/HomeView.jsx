@@ -46,9 +46,9 @@ class HomeComponent extends PureComponent {
 				</Button>
 			</Box>
 
-			{
-				//<Anchor path="/login"> Vai a <b>Login</b></Anchor>
-			}
+			
+				<Anchor path="/login"> Vai a <b>Login</b></Anchor>
+			
 			</div>
 		);
 

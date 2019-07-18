@@ -14,8 +14,8 @@ export function* logout() {
     let data = {};
 
     const getHeaders = state => ({
-        AccessToken: state.session.data.AccessToken,
-        SessionId: state.session.data.SessionId,
+        AccessToken: state.session.data.accessToken,
+        SessionId: state.session.data.sessionId,
     });
     let headers = yield select(getHeaders);
 

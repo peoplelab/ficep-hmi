@@ -4,7 +4,7 @@
     "changeOrigin": true
   },
   "DEVELOPMENT": {
-    "target": "https://wwws.dev-url.com",
+    "target": "http://172.30.57.26:4000",
     "changeOrigin": true
   },
   "STAGING": {

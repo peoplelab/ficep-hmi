@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
-const fs = require('fs');
-const https = require('https');
+const http = require('http');
 const compression = require('compression');
 const proxy = require('http-proxy-middleware');
 const webpack = require('webpack');
@@ -14,17 +13,7 @@ const config = require('../webpack.config.js');
 
 const { NODE_ENV } = process.env;
 
-const PATH_FILES = {
-  HTML: path.join(__dirname, '../build/index.html'),
-  KEY: path.join(__dirname, './SSL/localhost/server.key'),
-  CERT: path.join(__dirname, './SSL/localhost/server.crt'),
-};
 const PORT = 3500;
-
-const ssl = {
-  key: fs.readFileSync(PATH_FILES.KEY),
-  cert: fs.readFileSync(PATH_FILES.CERT),
-};
 
 const contentBase = (NODE_ENV === 'STAGING' || NODE_ENV === 'SYSTEM') ? './dist' : './build';
 
@@ -56,7 +45,7 @@ app.use((req, res) => {
 });
 
 if (NODE_ENV === 'MOCKS') {
-  app.listen(PORT);
+    app.listen(PORT);
 } else {
-  https.createServer(ssl, app).listen(PORT);
+    http.createServer(app).listen(PORT);
 }

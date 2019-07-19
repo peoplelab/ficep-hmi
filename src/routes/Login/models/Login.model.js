@@ -4,7 +4,8 @@ import {
 import { fetchData_gen } from '../../../commons/sagas.base';
 
 export function* doCallLogin(action, data) {
-  const url = '/api/v1/Token';
+    //const url = 'http://172.30.57.26:4000/api/v1/Token';
+    const url = '/api/v1/Token';
 
   const body = {
     GrantType: data.grantType,

@@ -7,8 +7,14 @@ import { combineReducers } from 'redux';
  * @param {object} initialState Inital value of section state
  */
 export const createReducer = (actionHandlers, initialState) => (state = initialState, action) => {
+  /**
+   * Map actionHandler to retrive reducer relative to current action type
+   */
   const handler = actionHandlers[action.type];
 
+  /**
+   * Update the Redux store state only if reducer is defined
+   */
   return typeof handler === 'function' ? handler(state, action) : state;
 };
 
@@ -30,10 +36,16 @@ export const reducerConstructor = (globalReducers, asyncReducers) => combineRedu
  * @param {object} globalReducers Syncronous global reducers
  */
 export const injectAsyncReducers = (store, globalReducers) => /** @param {string} key  @param {function} reducer  */ (key, reducer) => {
+  /**
+   * Check if, into the stroe, already exist the async reducer
+   */
   if (key in store.asyncReducers) {
     return;
   }
 
+  /**
+   * Inject the async reducer into the store
+   */
   store.asyncReducers[key] = reducer; // eslint-disable-line no-param-reassign
   store.replaceReducer(reducerConstructor(globalReducers, store.asyncReducers));
 };

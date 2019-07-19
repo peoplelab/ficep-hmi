@@ -12,7 +12,7 @@
     "changeOrigin": true
   },
   "SYSTEM": {
-    "target": "https://wwws.system-url.com",
+    "target": "https://172.30.57.26",
     "changeOrigin": true
   }
 }

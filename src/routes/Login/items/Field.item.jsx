@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import Box from '../../../components/layouts/Box/Box.index';
 
 
+/**
+ * Login form field
+ *
+ * Note: item own of Login route
+ */
 class Field extends PureComponent {
   render() {
     const {

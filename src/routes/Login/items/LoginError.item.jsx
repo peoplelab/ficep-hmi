@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import Box from '../../../components/layouts/Box/Box.index';
 
 
-class Field extends PureComponent {
+/**
+ * Login Error banner
+ *
+ * Note: item own of Login route
+ */
+class LoginError extends PureComponent {
   render() {
     const {
       show,
@@ -22,13 +27,13 @@ class Field extends PureComponent {
 }
 
 
-Field.propTypes = {
+LoginError.propTypes = {
   show: PropTypes.bool,
 };
 
-Field.defaultProps = {
+LoginError.defaultProps = {
   show: false,
 };
 
 
-export default Field;
+export default LoginError;

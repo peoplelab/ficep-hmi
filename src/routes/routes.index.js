@@ -1,7 +1,21 @@
 import AsyncComponent from '../commons/AsyncComponent';
+<<<<<<< HEAD
 
+=======
+// import Home from './Home/Home.index.js';
+>>>>>>> udpate comments of route index
 
+/**
+ * Inject the store into the routes and retur a map of their.
+ *
+ * Note: the routes are mapped in macro category
+ */
 const createRoutes = store => ({
+  /**
+   * Map of routes of main flow
+   *
+   * Note: These route do not require login by user
+   */
   primary: [
     {
       path: '/',
@@ -35,9 +49,28 @@ const createRoutes = store => ({
       component: AsyncComponent(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
     },
   ],
-  // secondary
-  // logged
-  // external
+  /**
+   * Map of support routes of main flow
+   *
+   * Note: login by user not required
+   */
+  secondary: {},
+  /**
+   * Map of routes that required login by user.
+   */
+  logged: {},
+  /**
+   * Map of support routes of user logged flow
+   *
+   * Note: login by user required.
+   */
+  messages: {},
+  /**
+   * Landing page routes separated from other flows
+   *
+   * Note: login by user not required
+   */
+  external: {},
 });
 
 

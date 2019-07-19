@@ -6,8 +6,16 @@
  * @param {Generator} sagas Saga watchers handler
  */
 const AsyncRoute = (Component, key, reducers, sagas) => store => {
-  store.injectReducers(key, reducers);
+  /**
+   * Inject the async reducer into the store only if defined with an id key
+   */
+  if (typeof key === 'string' && typeof reducers !== 'undefined') {
+    store.injectReducers(key, reducers);
+  }
 
+  /**
+   * Run sagas watchers only if defined
+   */
   if (typeof sagas !== 'undefined') {
     store.sagaRun(sagas);
   }

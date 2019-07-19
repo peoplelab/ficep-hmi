@@ -3,6 +3,9 @@ import { types } from './Login.actions';
 import initialState from './Login.store';
 
 
+/**
+ * Handle all Login actions dispached to Redux store that can update the state
+ */
 const actionHandlers = {
 	[types.ON_LOGIN_CHANGE]: (state, { payload }) => {
     const { form, ...rest } = state;

@@ -21,6 +21,11 @@ export function* fetchData_gen(actionAPI, request, url) {
     const status = response.status;
     const response_dataraw = yield call([response, response.json]);
 
+    /**
+     * Check the status of the response
+     *
+     * Note: if equal to 200 is call success action, in other case error action
+     */
     if (status === 200) {
       //eslint-disable-next-line
       console.log('> REST API success. Status: ' + status);
@@ -39,6 +44,9 @@ export function* fetchData_gen(actionAPI, request, url) {
     console.log('> REST API failed.');
     console.log(error);
 
+    /**
+     * Call action failure only when is not possible conncet to rest api service
+     */
     yield put(actionAPI.FAIL(error));
   }
 }

@@ -3,6 +3,12 @@ import {
 } from 'redux-saga/effects';
 import { fetchData_gen } from '../../../commons/sagas.base';
 
+
+/**
+ * Login custom rest api request
+ * @param {*} action Action to call after response
+ * @param {*} data Body request data
+ */
 export function* doCallLogin(action, data) {
   const url = '/api/v1/Token';
 
@@ -21,5 +27,8 @@ export function* doCallLogin(action, data) {
     body: JSON.stringify(body),
   };
 
+  /**
+   * Run global rest api handler as new thread
+   */
   yield fork(fetchData_gen, action, request, url);
 }

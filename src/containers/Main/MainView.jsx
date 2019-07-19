@@ -23,14 +23,23 @@ const mapRoutes = (routeProps) => {
 
 
 /**
- *
+ * Define and handle navigation components routes
  */
 class MainComponent extends PureComponent {
   render() {
+    /**
+     * Retrive the store to inject it into the routes
+     */
     const { store } = this.props;
 
+    /**
+     * Inject the store into the routes and retrive their map
+     */
     const routes = createRoutes(store);
 
+    /**
+     * List of primary routes
+     */
     const Primary = routes.primary.map(mapRoutes);
 
     return (

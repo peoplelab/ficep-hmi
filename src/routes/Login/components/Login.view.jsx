@@ -9,7 +9,7 @@ import Select from '../../../components/forms/Select';
 import Field from '../items/Field.item';
 import LoginError from '../items/LoginError.item';
 
-import './Login.style.scss';
+import './Login.style.scss'; // apply Login style to this route
 
 
 class LoginRoute extends PureComponent {
@@ -96,7 +96,9 @@ class LoginRoute extends PureComponent {
 	}
 }
 
-
+/**
+ * Define object keys id and relative value types
+ */
 const shapeOptions = {
   deafult: PropTypes.bool,
   message: PropTypes.string.isRequired,
@@ -104,6 +106,9 @@ const shapeOptions = {
 };
 
 
+/**
+ * Define component properties types
+ */
 LoginRoute.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
   disabled: PropTypes.bool,
@@ -116,6 +121,9 @@ LoginRoute.propTypes = {
   onLogin : PropTypes.func.isRequired,
 };
 
+/**
+ * Define default value of component properties
+ */
 LoginRoute.defaultProps = {
   disabled: true,
   errorOnLogin: false,

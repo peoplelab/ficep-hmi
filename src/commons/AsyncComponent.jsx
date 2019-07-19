@@ -15,17 +15,29 @@ const AsyncComponent = store => /** @param {React} importComponent React async c
     }
 
     componentDidMount() {
+      /**
+       * Retrive asynchronous the async component to render
+       */
       importComponent().then((component) => {
         let Component = component.default;
 
+        /**
+         * If store param is defined, inject it into the component
+         */
         if (typeof store !== 'undefined') {
           Component = Component(store);
         }
 
+        /**
+         * Update the React component handler only when the async component is loaded
+         */
         this.setState({ Component });
       });
     }
 
+    /**
+     * Render the async component only when is stored into this.state
+     */
     render() {
       let { Component } = this.state;
 

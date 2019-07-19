@@ -1,6 +1,8 @@
 import { createBrowserHistory } from "history";
 
-// Define browser history handler
+/**
+ * Browser history handler
+ */
 const history = createBrowserHistory();
 
 

@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const http = require('http');
 const compression = require('compression');
 const proxy = require('http-proxy-middleware');
 const webpack = require('webpack');
@@ -56,8 +55,4 @@ app.use((req, res) => {
 });
 
 
-if (NODE_ENV === 'MOCKS') {
-    app.listen(PORT);
-} else {
-    http.createServer(app).listen(PORT);
-}
+app.listen(PORT);

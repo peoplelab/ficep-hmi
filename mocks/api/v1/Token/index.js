@@ -9,7 +9,7 @@ const RESPONSE = {
     username: global.login.username,
     accessToken: global.logged.accessToken,
     refreshToken: global.login.refreshToken,
-    culture: "it-IT",
+    culture: global.login.culture,
     groups: [],
     permissions: [],
     sessionId: global.logged.sessionId,
@@ -19,35 +19,20 @@ const RESPONSE = {
     issuedAt: global.login.issuedAt,
   }),
   400: {
-    Password: {
-      error: {
-        message: 'Invalid username and password'
-      }
-    },
-    Timeout: {
-      error: {
-        message: 'RefreshToken expired'
-      }
-    },
-    RefreshToken: {
-      error: {
-        message: 'Unexpected RefreshToken'
-      }
-    },
-    default: {
-      error: {
-        message: 'Unknown GrantType value'
-      }
-    }
+    Password: "InvalidUserName",
+    Request: "InvalidRequest",
+    Timeout: "sessionExpired",
+    RefreshToken: "invalidRefreshToken",
+    default: "invalidGrantType"
   }
 }
 
 module.exports = {
   POST: (req, res) => {
     const {
-      // Culture,
+      Culture,
       GrantType,
-      // IP,
+      IP,
       Password,
       RefreshToken,
       UserName,
@@ -58,7 +43,9 @@ module.exports = {
 
     switch(GrantType) {
       case 'Password': {
-        if (UserName === global.login.username && Password === global.login.password) {
+        if (UserName === global.login.username && Password === global.login.password && !!IP && !!Culture) {
+          global.login.culture = Culture;
+          global.login.ip = IP;
 
           const now = moment();
           global.login.issuedAt = now.format(FORMAT);
@@ -67,6 +54,9 @@ module.exports = {
 
           status = 200;
           response = RESPONSE[200]();
+        } else if (!IP || !Culture) {
+          status = 400;
+          response = RESPONSE[400].Request;
         } else {
           status = 400;
           response = RESPONSE[400].Password;

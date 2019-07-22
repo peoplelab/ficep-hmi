@@ -6,6 +6,8 @@ global.login = {
   issuedAt: null,
   expiredAt: null,
   refreshExpiredAt: null,
+  culture: '',
+  ip: '',
 };
 
 // logged

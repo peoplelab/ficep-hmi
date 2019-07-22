@@ -1,9 +1,4 @@
 import AsyncComponent from '../commons/AsyncComponent';
-<<<<<<< HEAD
-
-=======
-// import Home from './Home/Home.index.js';
->>>>>>> udpate comments of route index
 
 /**
  * Inject the store into the routes and retur a map of their.
@@ -54,23 +49,23 @@ const createRoutes = store => ({
    *
    * Note: login by user not required
    */
-  secondary: {},
+  secondary: [],
   /**
    * Map of routes that required login by user.
    */
-  logged: {},
+  logged: [],
   /**
    * Map of support routes of user logged flow
    *
    * Note: login by user required.
    */
-  messages: {},
+  messages: [],
   /**
    * Landing page routes separated from other flows
    *
    * Note: login by user not required
    */
-  external: {},
+  external: [],
 });
 
 

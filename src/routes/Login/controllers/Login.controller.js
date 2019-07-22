@@ -9,6 +9,7 @@ const getPassword = state => ({
   password: state.Login.form.password,
   culture: state.Login.form.culture,
   ip: state.session.ip,
+  refreshtoken: ''
 });
 
 

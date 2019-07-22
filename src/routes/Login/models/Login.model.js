@@ -19,7 +19,7 @@ export function* doCallLogin(action, data) {
     Password: data.password,
     Culture: data.culture,
     IP: data.ip,
-    // RefreshToken: data.refreshtoken,
+    RefreshToken: data.refreshtoken,
   };
 
   const request = {

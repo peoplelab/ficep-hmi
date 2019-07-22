@@ -4,9 +4,11 @@ import { doCallLogin } from '../models/Login.model';
 
 
 const getPassword = state => ({
+  grantType: 'Password',
   username: state.Login.form.username,
   password: state.Login.form.password,
-  grantType: 'Password',
+  culture: state.Login.form.culture,
+  ip: state.session.ip,
 });
 
 

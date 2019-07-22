@@ -17,7 +17,9 @@ export function* doCallLogin(action, data) {
     GrantType: data.grantType,
     UserName: data.username,
     Password: data.password,
-    RefreshToken: data.refreshtoken,
+    Culture: data.culture,
+    IP: data.ip,
+    // RefreshToken: data.refreshtoken,
   };
 
   const request = {

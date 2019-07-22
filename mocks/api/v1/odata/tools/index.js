@@ -1,42 +1,26 @@
+const responseJSON = {
+  GET: require('./response.GET'),
+};
+
 module.exports = {
   GET: (req, res) => {
-    res.status(200).json([
-      {
-      "id": 18,
-      "type": 68,
-      "code": "",
-      "diameter": 1,
-      "displayName": "TS_68"
-      },
-      {
-      "id": 19,
-      "type": 33,
-      "code": "DFR",
-      "diameter": 14,
-      "displayName": "TS_33"
-      },
-      {
-      "id": 20,
-      "type": 33,
-      "code": "",
-      "diameter": 14,
-      "displayName": "TS_33"
-      },
-      {
-      "id": 21,
-      "type": 33,
-      "code": "DFR",
-      "diameter": 16,
-      "displayName": "TS_33"
-      },
-      {
-      "id": 22,
-      "type": 41,
-      "code": "",
-      "diameter": 16,
-      "displayName": "TS_41"
-      }
-    ]);
+    const { authorization, session } = req.headers;
+
+    let status;
+    let response;
+
+    if (!authorization || !session) {
+      status = 401;
+      response = responseJSON[401];
+    } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
+      status = 200;
+      response = responseJSON[200];
+    } else {
+      status = 400;
+      response = responseJSON[400];
+    }
+
+    res.status(status).json(response);
   },
   POST: (req, res) => {
     res.status(200).json({

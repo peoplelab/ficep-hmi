@@ -1,13 +1,15 @@
 // Login
 global.login = {
-  username: 'admin1',
-  password: '123456789',
-  refreshToken: '5FS1D8G1F51D8G4RE1F15SV1S85R',
+  username: {
+    admin: 'admin',
+    super: 'super',
+    user: 'user',
+  },
+  password: 'mitrol2019',
+  refreshToken: 'c73ef9d6-ff27-4b02-8c1e-dde1a73ce15c',
   issuedAt: null,
   expiredAt: null,
   refreshExpiredAt: null,
-  culture: '',
-  ip: '',
 };
 
 // logged

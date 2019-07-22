@@ -1,31 +1,26 @@
 const moment = require('moment');
+const responseJSON = require('./response.json');
 
 
 const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSSZ';
 
 
 const RESPONSE = {
-  200: () => ({
-    username: global.login.username,
-    accessToken: global.logged.accessToken,
-    refreshToken: global.login.refreshToken,
+  200: UserName => ({
+    ...responseJSON[UserName],
     culture: global.login.culture,
-    groups: [],
-    permissions: [],
-    sessionId: global.logged.sessionId,
     expiredAt: global.login.expiredAt,
-    sessionLogId: 1455,
-    refreshExpiredAt: global.login.refreshExpiredAt,
     issuedAt: global.login.issuedAt,
+    refreshExpiredAt: global.login.refreshExpiredAt,
   }),
   400: {
+    default: "invalidGrantType",
     Password: "InvalidUserName",
+    RefreshToken: "invalidRefreshToken",
     Request: "InvalidRequest",
     Timeout: "sessionExpired",
-    RefreshToken: "invalidRefreshToken",
-    default: "invalidGrantType"
   }
-}
+};
 
 module.exports = {
   POST: (req, res) => {
@@ -43,7 +38,7 @@ module.exports = {
 
     switch(GrantType) {
       case 'Password': {
-        if (UserName === global.login.username && Password === global.login.password && !!IP && !!Culture) {
+        if (UserName in global.login.username && Password === global.login.password && !!IP && !!Culture) {
           global.login.culture = Culture;
           global.login.ip = IP;
 
@@ -53,7 +48,7 @@ module.exports = {
           global.login.refreshExpiredAt = now.clone().add('5', 'm').format(FORMAT);
 
           status = 200;
-          response = RESPONSE[200]();
+          response = RESPONSE[200](UserName);
         } else if (!IP || !Culture) {
           status = 400;
           response = RESPONSE[400].Request;

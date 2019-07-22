@@ -1,6 +1,4 @@
 import AsyncComponent from '../commons/AsyncComponent';
-//import Home from './Home';
-import Home from './Home/Home.index.js';
 
 
 const createRoutes = store => ({

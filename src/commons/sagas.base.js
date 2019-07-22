@@ -21,6 +21,11 @@ export function* fetchData_gen(actionAPI, request, url) {
 
     const status = response.status;
 
+    /**
+     * Check the status of the response
+     *
+     * Note: if equal to 200 is call success action, in other case error action
+     */
     if (status === 200) {
       //eslint-disable-next-line
       console.log('> REST API success. Status: ' + status);

@@ -9,7 +9,7 @@ import '../Login/components/Login.style.scss';
 
 
 class HomeComponent extends PureComponent {
-	
+
 	constructor(props) {
 		super(props);
 
@@ -35,7 +35,7 @@ class HomeComponent extends PureComponent {
 			<br/>
 			<br/>
 			<Box style={{textAlign: 'center', margin: '20px auto 100px'}} >
-		
+
 				<Button
 					className="login__button"
 					onClick={this.onLogout}
@@ -46,9 +46,10 @@ class HomeComponent extends PureComponent {
 				</Button>
 			</Box>
 
-			
+
 				<Anchor path="/login"> Vai a <b>Login</b></Anchor>
-			
+				<Anchor path="/tools"> Vai a <b>Tools</b></Anchor>
+
 			</div>
 		);
 

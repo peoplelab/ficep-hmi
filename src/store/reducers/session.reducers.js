@@ -4,6 +4,10 @@ import initialState from '../stores/session.store';
 
 
 const actionHandlers = {
+  [types.USER_IP]:  (state, { payload }) => ({
+    ...state,
+    ip: payload.ip,
+  }),
 	[types.SESSION_DATA]: (state, { payload }) => ({
     ...state,
     status: payload.status,

@@ -1,5 +1,6 @@
 
 export default ({
+  ip: '',
   status: null,
   data: {
     username: '',

@@ -37,12 +37,6 @@ const createRoutes = store => ({
       exact: true,
       component: AsyncComponent(store)(() => import(/* webpackChunkName: "Login" */ './Login/Login.index')),
     },
-    {
-      path: '/tools',
-      key: 'tools',
-      exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
-    },
   ],
   /**
    * Map of support routes of main flow
@@ -53,7 +47,14 @@ const createRoutes = store => ({
   /**
    * Map of routes that required login by user.
    */
-  logged: [],
+  logged: [
+    {
+      path: '/tools',
+      key: 'tools',
+      exact: true,
+      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
+    },
+  ],
   /**
    * Map of support routes of user logged flow
    *

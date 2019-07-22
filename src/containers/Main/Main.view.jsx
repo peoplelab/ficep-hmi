@@ -30,7 +30,7 @@ class MainComponent extends PureComponent {
     /**
      * Retrive the store to inject it into the routes
      */
-    const { store } = this.props;
+    const { store, isUserLogged } = this.props;
 
     /**
      * Inject the store into the routes and retrive their map
@@ -41,12 +41,20 @@ class MainComponent extends PureComponent {
      * List of primary routes
      */
     const Primary = routes.primary.map(mapRoutes);
+    const Secondary = routes.secondary.map(mapRoutes);
+    const Logged = isUserLogged ? routes.logged.map(mapRoutes) : [];
+    const Messages = isUserLogged ? routes.messages.map(mapRoutes) : [];
+    const External = routes.external.map(mapRoutes);
 
     return (
       <Switch>
         {/* <Template> */}
           {Primary}
         {/* </Template> */}
+        {Secondary}
+        {Logged}
+        {Messages}
+        {External}
       </Switch>
     );
   }
@@ -58,12 +66,14 @@ class MainComponent extends PureComponent {
  */
 MainComponent.propTypes = {
   store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  isUserLogged: PropTypes.bool,
 };
 
 /**
  * Define default value of component properties
  */
 MainComponent.defaultProps = {
+  isUserLogged: false,
 };
 
 

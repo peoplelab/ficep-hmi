@@ -17,18 +17,18 @@ export function* callLogout(action, headers, data) {
     const url = '/api/v1/Users/Logout';
 
     const header = {
-        "Authorization": headers.AccessToken,
+        "Authorization": `Bearer ${headers.AccessToken}`,
         "Session": headers.SessionId,
         "Content-Type": "application/json",
     };
 
-    const body = {
-        
-    };
+    // const body = {
+
+    // };
 
     const request = {
         method: "put",
-        headers: header,        
+        headers: header,
     };
 
     yield fork(fetchData_gen, action, request, url);

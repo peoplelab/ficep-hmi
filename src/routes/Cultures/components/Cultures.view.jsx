@@ -5,7 +5,7 @@ import Box from '../../../components/layouts/Box/Box.index';
 import Button from '../../../components/forms/Button';
 import ButtonData from '../../../components/forms/ButtonData';
 import TextInput from '../../../components/forms/TextInput';
-import Field from '../items/Field.item';
+import Field from '../../../components/forms/Field';
 
 import './Cultures.style.scss';
 

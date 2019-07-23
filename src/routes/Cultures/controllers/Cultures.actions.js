@@ -3,9 +3,17 @@ import {
 } from '../../../commons/actions';
 
 const payloadList = [
-  /* */
+  'CALL_CULTURES_GET',
+  'CALL_CULTURES_POST',
+  'CALL_CULTURES_DELETE',
+  'CALL_CULTURES_PUT',
 ];
-const apiList = [/* */];
+const apiList = [
+  'RESTAPI_CULTURES_GET',
+  'RESTAPI_CULTURES_POST',
+  'RESTAPI_CULTURES_DELETE',
+  'RESTAPI_CULTURES_PUT',
+];
 
 
 const payloadTypes = createPayloadTypes(...payloadList);

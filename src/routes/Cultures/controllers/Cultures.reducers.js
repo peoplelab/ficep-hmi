@@ -10,9 +10,9 @@ const actionHandlers = {
     data: response.data,
   }),
   [types.RESTAPI_CULTURES_POST_SUCCESS]: (state, { response, request }) => {
-    let { data } = state;
+    const { data } = state;
 
-    data = data.splice(request.id, 0, {
+    data.push({
       id: response.data,
       code: request.code,
       description: request.description,
@@ -30,7 +30,7 @@ const actionHandlers = {
     }
 
     let { data } = state;
-    data = data.splice(request.id, 1);
+    data = data.filter(({ id }) => id !== request.id);
 
     return {
       ...state,
@@ -45,7 +45,9 @@ const actionHandlers = {
 
     let { data } = state;
 
-    data.splice(request.id, 1, {
+    const index = data.findIndex(({ id }) => id === request.id);
+
+    data.splice(index, 1, {
       id: request.id,
       code: request.code,
       description: request.description,

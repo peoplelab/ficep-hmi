@@ -11,19 +11,19 @@ import {
 
 
 function* watchCallCultureGet() {
-  yield takeEvery(types.CALL_CULTURES_GET, setCallCultureGet);
+  yield takeEvery(types.RESTAPI_CULTURES_GET_CALL, setCallCultureGet);
 }
 
 function* watchCallCulturePost() {
-  yield takeEvery(types.CALL_CULTURES_POST, setCallCulturePost);
+  yield takeEvery(types.RESTAPI_CULTURES_POST_CALL, setCallCulturePost);
 }
 
 function* watchCallCultureDelete() {
-  yield takeEvery(types.CALL_CULTURES_DELETE, setCallCultureDelete);
+  yield takeEvery(types.RESTAPI_CULTURES_DELETE_CALL, setCallCultureDelete);
 }
 
 function* watchCallCulturePut() {
-  yield takeEvery(types.CALL_CULTURES_PUT, setCallCulturePut);
+  yield takeEvery(types.RESTAPI_CULTURES_PUT_CALL, setCallCulturePut);
 }
 
 

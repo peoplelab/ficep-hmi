@@ -10,3 +10,4 @@ export default ({
   currentID: NaN,
   details  : {},
 });
+ 

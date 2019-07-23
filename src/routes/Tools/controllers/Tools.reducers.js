@@ -9,7 +9,7 @@ import { createReducer } from '../../../commons/reducers';									// COMMON HAN
 import { types } from './Tools.actions';													// Importa le definizioni delle actions
 import initialState from './Tools.store';													// Inizializzatore dello store associato
 
-
+ 
 const actionHandlers = {
   [types.RESTAPI_TOOLS_LIST_SUCCESS]: (state, { response }) => {
     state.list = response;

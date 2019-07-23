@@ -11,7 +11,7 @@ import { setConfig } from 'react-hot-loader';												// Plugin per il "live 
 //import App from './containers/App';
 import App from './containers/App/App.index.js';											// Init point dell'applicazione
 import createStore from './store/store.index';												// Inizializzazione dello Store
-
+ 
 
 if (process.env.NODE_ENV !== 'PRODUCTION') {
   setConfig({ logLevel: 'debug' });

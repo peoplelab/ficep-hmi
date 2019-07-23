@@ -10,3 +10,4 @@ import Tools from './Tools.container';														// Definizione del container
 
 
 export default hot(Tools);
+ 

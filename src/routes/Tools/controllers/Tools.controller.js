@@ -13,7 +13,7 @@ import { doCallToolsList, doCallToolsDetails } from '../models/Tools.model';				
 const getHeaders = state => ({
   AccessToken: state.session.data.accessToken,
   SessionId: state.session.data.sessionId,
-});
+}); 
 
 const getID = state => state.Tools.currentID;
 

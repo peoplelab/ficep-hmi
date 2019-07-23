@@ -10,7 +10,7 @@ import { call, put } from 'redux-saga/effects';
 export function* fetchData_gen(actionAPI, request, url, request_dataraw) {
   try {
     //eslint-disable-next-line
-    console.log('> Calling REST API:' + url);
+    console.log('> Calling REST API:' + url); 
     console.log(request);
 
     const response = yield call(fetch, url, request);

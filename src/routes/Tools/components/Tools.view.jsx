@@ -21,7 +21,7 @@ import Button from '../../../components/forms/Button';
 import List from '../item/List.item';
 import Details from '../item/Details.item';
 
-import './Tools.style.scss';
+import './Tools.style.scss'; 
 
 
 class ToolsRoute extends PureComponent {

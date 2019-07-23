@@ -18,7 +18,7 @@ function* watchCallToolsDetails() {
   yield takeEvery(types.CALL_TOOL_DETAILS, setCallToolsDetails);
 }
 
-
+ 
 const list = [
   fork(watchCallToolsList),
   fork(watchCallToolsDetails),

@@ -15,3 +15,4 @@ const KEY = 'Tools';																		// Async reducer id key
 
 
 export default AsyncRoute(Component, KEY, reducers, watcher);
+

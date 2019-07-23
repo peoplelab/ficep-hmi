@@ -12,7 +12,7 @@ import Tools from './Tools.view';															// Import del Template .JSX asso
 import { action } from '../controllers/Tools.actions';										// Importa le definizioni delle actions
 import { JsonToString } from './Tools.presenter';											// Libreria per le funzionalità specifiche della View (render)
 import { stateOr } from '../../../commons/selectors';										// COMMON HANDLER di inizializzazione e gestione dei selectors
-
+ 
 
 const mapDispatchToProps = {
   callToolsList: () => action.CALL_TOOLS_LIST(),

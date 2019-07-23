@@ -29,12 +29,30 @@ const compiler = webpack(config);
 const app = express();
 
 
-// enable gzip compression
-app.use(compression());
+//// enable gzip compression
+//app.use(compression());
 
-// services proxy
-const proxyInst = proxy(['/api'], proxyConfig[NODE_ENV] || proxyConfig.MOCKS); // dev dsi
-app.use(proxyInst);
+
+/// proxy handler (logging requests)
+var proxyOpts = {
+
+    target: proxyConfig[NODE_ENV].target,
+
+    onProxyReq: function onProxyReq(proxyReq, req, res) {
+        console.log('--> PROXYING ', req.method, req.path, '->', proxyOpts.target + proxyReq.path);
+    },
+    //onError: function onError(err, req, res) {
+    //    console.error(err);
+    //    res.status(500);
+    //    res.json({ error: 'Error when connecting to remote server.' });
+    //},
+    logLevel: 'debug',
+    changeOrigin: true,
+    secure: true
+};
+const proxyInst = proxy(proxyOpts); // dev dsi
+app.use('/api', proxyInst);
+// end proxy handler
 
 // configure add webpack middleware to integrate webpack with express
 const devMiddleware = webpackDevMiddleware(compiler, {
@@ -49,10 +67,20 @@ app.use(devMiddleware);
 // add webpack hot reloading middleware
 app.use(webpackHotMiddleware(compiler));
 
+
 // retrive applicaiton entry point
 app.use((req, res) => {
   res.end(devMiddleware.fileSystem.readFileSync(path.join(config.output.path, 'index.html')));
 });
 
 
-app.listen(PORT);
+
+
+// start server ...
+var server = app.listen(PORT, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
+    console.log('SERVER NODE: -> Environment ' + NODE_ENV);
+});

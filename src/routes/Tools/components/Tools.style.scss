@@ -5,6 +5,25 @@
 .tools {
   padding: 3rem;
 
+  .tools__container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tools__group {
+      flex: 1;
+
+      &:first-of-type {
+        flex: none;
+        margin: 2rem 0 3rem;
+        width: 100%;
+      }
+      &:last-of-type {
+        border-left: 0.2rem solid $border-dark-grey;
+        padding-left: 2rem;
+      }
+    }
+  }
+
   .tools__button {
     background-color: $bg-dark-cyan;
     color: $text-white;
@@ -27,9 +46,15 @@
   }
 
   .tools__table {
+    margin-bottom: 3rem;
     /* stylelint-disable plugin/selector-bem-pattern */
+    th {
+      padding: 0.5rem 2rem;
+    }
+
     td {
       padding: 0.5rem 2rem;
+      text-align: center;
 
       &:first-of-type {
         padding: 0;

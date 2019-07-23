@@ -26,14 +26,15 @@ app.use(bodyParser.json(OPTIONS.JSON));
 // logging requests...
 app.use((req, res, next) => {
 
-    console.log('--> NEW REQUEST at ' + (new Date()).toString() + '\n' +
-        '--> Method: ' + req.method + '\n' +
-        '--> Headers: \n' + JSON.stringify(req.headers) +
-        '--> Body: ' + JSON.stringify(req.body)
+    console.log('\x1b[36m--> NEW REQUEST at ' + (new Date()).toString()
+        + ' \n--> Method: ' + req.method
+        + ' \n--> Headers: ' + JSON.stringify(req.headers) 
+        + ' \n--> Body: ' + JSON.stringify(req.body)
+        + '\x1b[0m'
     );
 
     res.on("finish", () => {
-        console.log("--> RESPONSE : " + res.statusCode + ' - ' + res.statusMessage);
+        console.log("\x1b[36m--> RESPONSE : " + res.statusCode + ' - ' + res.statusMessage + '\x1b[0m');
     });
 
     next();

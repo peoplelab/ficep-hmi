@@ -39,7 +39,8 @@ var proxyOpts = {
     target: proxyConfig[NODE_ENV].target,
 
     onProxyReq: function onProxyReq(proxyReq, req, res) {
-        console.log('--> PROXYING ', req.method, req.path, '->', proxyOpts.target + proxyReq.path);
+        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + proxyOpts.target + proxyReq.path + '\x1b[0m');
+
     },
     //onError: function onError(err, req, res) {
     //    console.error(err);

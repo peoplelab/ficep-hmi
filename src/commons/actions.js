@@ -36,7 +36,7 @@ export const createPayloadAction = (...types) => types.reduce(reducePayloadActio
 
 const reduceApiAction = (acc, type) => {
   acc[type] = {
-    CALL: request => ({ type: `${type}_CALL`, request}),
+    CALL: payload => ({ type: `${type}_CALL`, payload}),
     SUCCESS: (status, data) => ({ type: `${type}_SUCCESS`, response: { status, data } }),
     ERROR: (status, data) => ({ type: `${type}_ERROR`, response: { status, data } }),
     FAIL: error => ({ type: `${type}_FAIL`, error }),

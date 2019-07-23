@@ -20,6 +20,14 @@ export function* fetchData_gen(actionAPI, request, url) {
     console.log(response);
 
     const status = response.status;
+    var contentType = response.headers.get("content-type");
+
+    let response_dataraw;
+    if(contentType && contentType.includes("application/json")) {
+      response_dataraw = yield call([response, response.json]);
+    } else {
+      response_dataraw = yield call([response, response.text]);
+    }
 
     /**
      * Check the status of the response
@@ -29,13 +37,11 @@ export function* fetchData_gen(actionAPI, request, url) {
     if (status === 200) {
       //eslint-disable-next-line
       console.log('> REST API success. Status: ' + status);
-      const response_dataraw = yield call([response, response.json]);
 
       yield put(actionAPI.SUCCESS(status, response_dataraw));
     } else {
       //eslint-disable-next-line
       console.log('> REST API error. Status: ' + status);
-      const response_dataraw = yield call([response, response.text]);
 
       yield put(actionAPI.ERROR(status, { message: response_dataraw }));
     }

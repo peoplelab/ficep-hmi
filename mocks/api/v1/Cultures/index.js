@@ -17,6 +17,6 @@ module.exports = {
     res.status(200).json(12);
   },
   PUT: (req, res) => {
-    res.status(404).json(false);
+    res.status(200).json(true);
   }
 };

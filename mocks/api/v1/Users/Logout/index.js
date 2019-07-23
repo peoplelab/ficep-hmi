@@ -7,13 +7,13 @@ module.exports = {
 
     if (!authorization || !session) {
       status = 401;
-      response = false;
+      response = 'unauthorized';
     } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
       status = 200;
       response = true;
     } else {
       status = 400;
-      response = false;
+      response = 'invalidRequest';
     }
 
 

@@ -12,11 +12,13 @@ module.exports = {
       status = 401;
       response = responseJSON[401];
     } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
-      status = 200;
-      response = { ...responseJSON[200], id };
-    } else if (parseInt(id) > 6) {
-      status = 400;
-      response = responseJSON[400];
+      if (id > 6) {
+        status = 400;
+        response = responseJSON[400];
+      } else {
+        status = 200;
+        response = { ...responseJSON[200], id };
+      }
     } else {
       status = 400;
       response = responseJSON[400];

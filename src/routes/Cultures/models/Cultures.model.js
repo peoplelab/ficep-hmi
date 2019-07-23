@@ -56,7 +56,7 @@ export function* doCallCulturePost(action, header, body) {
   /**
    * Run global rest api handler as new thread
    */
-  yield fork(fetchData_gen, action, request, url);
+  yield fork(fetchData_gen, action, request, url, body);
 }
 
 
@@ -75,7 +75,7 @@ export function* doCallCultureDelete(action, header, id) {
   /**
    * Run global rest api handler as new thread
    */
-  yield fork(fetchData_gen, action, request, `${url}/${id}`);
+  yield fork(fetchData_gen, action, request, `${url}/${id}`, { id });
 }
 
 
@@ -95,5 +95,5 @@ export function* doCallCulturePut(action, header, body) {
   /**
    * Run global rest api handler as new thread
    */
-  yield fork(fetchData_gen, action, request, url);
+  yield fork(fetchData_gen, action, request, url, body);
 }

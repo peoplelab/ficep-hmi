@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   200: {
     "attributes": [
       {

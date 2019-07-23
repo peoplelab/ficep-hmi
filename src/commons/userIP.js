@@ -1,4 +1,4 @@
-import { pathOr } from "ramda";
+// import { pathOr } from "ramda";
 
 /**
  * Regex to get ip address
@@ -13,7 +13,8 @@ const onIceCandidate = (pc, params) => ice => {
   /**
    * Get ip
    */
-  const [ip] = pathOr([], ["candidate", "candidate"], ice).match(ipRegex);
+  const [ip] = '1.1.1.1';
+  // const [ip] = pathOr([], ["candidate", "candidate"], ice).match(ipRegex);
 
   /**
    * Remove listener after get ip

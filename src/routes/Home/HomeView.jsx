@@ -49,6 +49,7 @@ class HomeComponent extends PureComponent {
 
 				<Anchor path="/login"> Vai a <b>Login</b></Anchor>
 				<Anchor path="/tools"> Vai a <b>Tools</b></Anchor>
+				<Anchor path="/cultures"> Vai a <b>Cultures</b></Anchor>
 
 			</div>
 		);

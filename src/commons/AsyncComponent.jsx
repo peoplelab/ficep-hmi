@@ -11,14 +11,27 @@ const AsyncComponent = store => /** @param {React} importComponent React async c
     constructor(props) {
       super(props);
 
+      /**
+       * Prevent setState on unmounted compoent
+       */
+      this._isMounted = false;
+
+      /**
+       * Load component when ready
+       */
       this.state = { Component: null };
     }
 
     componentDidMount() {
+      this._isMounted = true;
       /**
        * Retrive asynchronous the async component to render
        */
       importComponent().then((component) => {
+        if (!(this._isMounted) ){
+          return;
+        }
+
         let Component = component.default;
 
         /**
@@ -33,6 +46,10 @@ const AsyncComponent = store => /** @param {React} importComponent React async c
          */
         this.setState({ Component });
       });
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
     }
 
     /**

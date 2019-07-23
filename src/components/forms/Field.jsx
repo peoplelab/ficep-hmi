@@ -1,23 +1,24 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../../../components/layouts/Box/Box.index';
+import Box from '../layouts/Box/Box.index';
 
 
 /**
- * Login form field
- *
- * Note: item own of Login route
+ * Form field
  */
 class Field extends PureComponent {
   render() {
     const {
       children,
+      className,
       label,
     } = this.props;
 
+    const mergedClass = `field ${className}`;
+
     return (
-      <Box className="login__field">
-        <label className="login__label">
+      <Box className={mergedClass}>
+        <label className="field__label">
           {label}
         </label>
         {children}
@@ -30,9 +31,11 @@ class Field extends PureComponent {
 Field.propTypes = {
   children: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 Field.defaultProps = {
+  className: '',
 };
 
 

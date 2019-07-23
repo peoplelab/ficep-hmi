@@ -5,15 +5,6 @@ import { createSelector } from 'reselect';
  */
 
 /**
- * Disable login button if username or password are empty
- */
-export const disabled = createSelector(
-  state => state.Login.form.username,
-  state => state.Login.form.password,
-  (username, password) => !username || !password,
-);
-
-/**
  * Show error banner only if, on login request, response return a status diffent to 200
  */
 export const errorOnLogin = createSelector(

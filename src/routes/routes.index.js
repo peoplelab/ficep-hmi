@@ -61,6 +61,12 @@ const createRoutes = store => ({
       exact: true,
       component: AsyncComponent(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
     },
+    {
+      path: '/cultures',
+      key: 'cultures',
+      exact: true,
+      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Cultures" */ './Cultures/Cultures.index')),
+    },
   ],
   /**
    * Map of support routes of user logged flow

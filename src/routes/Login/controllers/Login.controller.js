@@ -4,27 +4,32 @@ import { doCallLogin } from '../models/Login.model';
 
 
 /**
- * Retrive Login request data from Redux store
- * @param {*} state Reduc store state
+ * Retrive user IP address
+ * @param {*} state Redux store state
  */
-const getPassword = state => ({
-  grantType: 'Password',
-  username: state.Login.form.username,
-  password: state.Login.form.password,
-  culture: state.Login.form.culture,
-  ip: state.session.ip,
-  refreshtoken: ''
-});
+const getIP = state => state.session.ip;
 
 
 /**
  * Login request controller
  */
-export function* setCallLogin() {
+export function* setCallLogin(action) {
+  const {
+    username, password, culture
+  } = action.payload;
+
+  const ip = yield select(getIP);
+
   /**
    * Body request data
    */
-  const data = yield select(getPassword);
+  const data = {
+    grantType: 'Password',
+    username,
+    password,
+    culture,
+    ip,
+  };
 
   /**
    * Run custom rest api login as new thread

@@ -59,8 +59,8 @@ class CulturesRoute extends PureComponent {
 
   onAddCulture() {
     const data = {
-      code: this.state.id,
-      description: this.state.id,
+      code: this.state.code,
+      description: this.state.description,
     };
 
     this.props.addCulture(data);
@@ -72,16 +72,16 @@ class CulturesRoute extends PureComponent {
   }
 
   onRemoveCulture(event) {
-    const { value } = event.target;
+    const { data } = event;
 
-    this.props.removeCulture(value);
+    this.props.removeCulture(data);
   }
 
   onUpdateCulture() {
     const data = {
       id: this.state.id,
-      code: this.state.id,
-      description: this.state.id,
+      code: this.state.code,
+      description: this.state.description,
     };
 
     this.props.updateCulture(data);

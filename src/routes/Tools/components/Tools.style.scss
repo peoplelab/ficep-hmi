@@ -48,6 +48,11 @@
   .tools__table {
     margin-bottom: 3rem;
     /* stylelint-disable plugin/selector-bem-pattern */
+    caption {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
     th {
       padding: 0.5rem 2rem;
     }

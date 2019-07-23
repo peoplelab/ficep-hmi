@@ -107,6 +107,7 @@ class DetailsItem extends PureComponent {
           </tbody>
         </table>
         <table className="tools__table">
+          <caption>Attributes</caption>
           <thead>
             {AttributesHeader}
           </thead>

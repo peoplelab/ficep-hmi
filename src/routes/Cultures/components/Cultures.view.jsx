@@ -43,7 +43,8 @@ class CulturesRoute extends PureComponent {
     const { value } = event.target;
 
     if (/^\d*$/.test(value)) {
-      this.onChange(event);
+
+      this.setState({ id: parseInt(value) });
     }
   }
 

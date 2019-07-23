@@ -47,7 +47,9 @@ export function* setCallCulturePut(action) {
   const header = yield select(getHeaders);
 
   const body = {
-    id, code, description
+    id,
+    code,
+    description
   };
 
   yield fork(doCallCulturePut, actionApi.RESTAPI_CULTURES_PUT, header, body);

@@ -12,16 +12,16 @@ const actionHandlers = {
   [types.RESTAPI_CULTURES_POST_SUCCESS]: (state, { response, request }) => {
     const { data } = state;
 
-    data.push({
+    const newData = [...data, {
       id: response.data,
       code: request.code,
       description: request.description,
-    });
+    }];
 
     return {
       ...state,
       status: response.status,
-      data,
+      data: newData,
     };
   },
   [types.RESTAPI_CULTURES_DELETE_SUCCESS]: (state, { response, request }) => {
@@ -45,18 +45,20 @@ const actionHandlers = {
 
     let { data } = state;
 
-    const index = data.findIndex(({ id }) => id === request.id);
+    const index = data.findIndex(item => item.id === request.id);
+    const before = data.slice(0, index);
+    const after = data.slice(index + 1, data.length);
 
-    data.splice(index, 1, {
+    const newData = [...before, {
       id: request.id,
       code: request.code,
       description: request.description,
-    });
+    }, ...after];
 
     return {
       ...state,
       status: response.status,
-      data,
+      data: newData,
     };
   },
 };

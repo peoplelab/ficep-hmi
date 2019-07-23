@@ -1,6 +1,13 @@
-import { fork, select } from 'redux-saga/effects';
-import { action } from './Tools.actions';
-import { doCallToolsList, doCallToolsDetails } from '../models/Tools.model';
+//----------------------------------------------------------------------------------------
+// File: Tools.controller.js		[controllers]
+//
+// Desc: Inizializzatore del controller della pagina "Gestione Tools"
+// Path: /src/routes/Tools/controllers
+//----------------------------------------------------------------------------------------
+
+import { fork, select } from 'redux-saga/effects';											// Inizializzazione dei tools delle Sagas per la gestione dello store
+import { action } from './Tools.actions';													// Importa le definizioni delle actions
+import { doCallToolsList, doCallToolsDetails } from '../models/Tools.model';				// Model principale della pagina
 
 
 const getHeaders = state => ({

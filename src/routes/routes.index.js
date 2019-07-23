@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------------------------
+// File: routes.index.js		[main]
+//
+// Desc: Definizione delle routes mappate dell'applicazione
+// Path: /src/routes
+//----------------------------------------------------------------------------------------
+
 import AsyncComponent from '../commons/AsyncComponent';
 
 /**

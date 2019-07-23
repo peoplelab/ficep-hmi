@@ -1,6 +1,21 @@
+//----------------------------------------------------------------------------------------
+// File: Tools.view.jsx		[components]
+//
+// Desc: Model principale della pagina "Gestione Tools"
+// Path: /src/routes/Tools/components
+//----------------------------------------------------------------------------------------
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+// *** NOTA: "COMPONENTS" DOVRÀ DIVENTARE "SYSTEM/COMPONENTS" O "BASE.COMPONENTS", ECC.
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+
+// ** Carica i componenti predefiniti di sistema (snippets) **
 import Box from '../../../components/layouts/Box/Box.index';
 import Button from '../../../components/forms/Button';
 import ButtonData from '../../../components/forms/ButtonData';

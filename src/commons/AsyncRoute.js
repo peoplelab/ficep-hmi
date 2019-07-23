@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------------------------
+// File: AsyncRoute.js
+//
+// Desc: COMMON HANDLER di inizializzazione delle richieste async interne, aggiunta dei reducer allo store e attivazione dei watcher delle sagas
+// Path: /src/commons
+//----------------------------------------------------------------------------------------
+
 /**
  * Handle the app asynchronous routes, add the relative reducers into the store and start the sagas watchers
  * @param {React} Component React component

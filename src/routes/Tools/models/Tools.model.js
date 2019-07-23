@@ -1,7 +1,12 @@
-import {
-  fork
-} from 'redux-saga/effects';
-import { fetchData_gen } from '../../../commons/sagas.base';
+//----------------------------------------------------------------------------------------
+// File: Tools.model.js		[models]
+//
+// Desc: Model principale della pagina "Gestione Tools"
+// Path: /src/routes/Tools/models
+//----------------------------------------------------------------------------------------
+
+import { fork } from 'redux-saga/effects';													// Inizializzazione dei tools delle Sagas per la gestione dello store
+import { fetchData_gen } from '../../../commons/sagas.base';								// COMMON HANDLER di inizializzazione delle Sagas
 
 
 /**

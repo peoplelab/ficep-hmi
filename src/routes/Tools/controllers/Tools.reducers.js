@@ -1,6 +1,13 @@
-import { createReducer } from '../../../commons/reducers';
-import { types } from './Tools.actions';
-import initialState from './Tools.store';
+//----------------------------------------------------------------------------------------
+// File: Tools.reducers.js		[controllers]
+//
+// Desc: Inizializzatore dei reducers associati allo store della pagina "Gestione Tools"
+// Path: /src/routes/Tools/controllers
+//----------------------------------------------------------------------------------------
+
+import { createReducer } from '../../../commons/reducers';									// COMMON HANDLER di inizializzazione dei reducers
+import { types } from './Tools.actions';													// Importa le definizioni delle actions
+import initialState from './Tools.store';													// Inizializzatore dello store associato
 
 
 const actionHandlers = {

@@ -19,6 +19,11 @@ const actionHandlers = {
 
     return {...state};
   },
+  [types.RESTAPI_TOOL_DETAILS_ERROR]: (state) => {
+    state.details = {};
+
+    return {...state};
+  },
 };
 
 

@@ -14,6 +14,9 @@ module.exports = {
     } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
       status = 200;
       response = { ...responseJSON[200], id };
+    } else if (parseInt(id) > 6) {
+      status = 400;
+      response = responseJSON[400];
     } else {
       status = 400;
       response = responseJSON[400];

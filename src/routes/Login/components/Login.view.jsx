@@ -18,6 +18,12 @@ class LoginRoute extends PureComponent {
 
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
+
+    this.state = {
+      username: '',
+      password: '',
+      culture: 'it-IT',
+    };
   }
 
   onChange(event) {
@@ -26,22 +32,23 @@ class LoginRoute extends PureComponent {
       value,
     } = event.target;
 
-    this.props.onChange(name, value);
+    this.setState({ [name]: value });
   }
 
   onLogin() {
-    this.props.onLogin();
+    this.props.onLogin(this.state);
   }
 
 	render() {
     const {
-      disabled,
-      errorOnLogin,
-      culture,
-      options,
-      username,
-      password,
+      errorOnLogin, options,
     } = this.props;
+
+    const {
+      culture, username, password,
+    } = this.state;
+
+    const disabled = !username || !password;
 
     return (
       <section className="login">
@@ -111,13 +118,7 @@ const shapeOptions = {
  */
 LoginRoute.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
-  disabled: PropTypes.bool,
   errorOnLogin: PropTypes.bool,
-  username: PropTypes.string,
-  password: PropTypes.string,
-  refreshToken: PropTypes.string,
-  culture: PropTypes.string,
-  onChange : PropTypes.func.isRequired,
   onLogin : PropTypes.func.isRequired,
 };
 
@@ -125,12 +126,7 @@ LoginRoute.propTypes = {
  * Define default value of component properties
  */
 LoginRoute.defaultProps = {
-  disabled: true,
   errorOnLogin: false,
-  username: '',
-  password: '',
-  refreshToken: '',
-  culture: '',
   options: [
     {
       message: 'it-IT',

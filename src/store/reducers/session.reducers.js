@@ -15,7 +15,8 @@ const actionHandlers = {
   }),
   /* reset session object because logout was called */
   [types.RESTAPI_LOGOUT_SUCCESS]: (state, { payload }) => ({
-      ...initialState
+      ...initialState,
+      ip: state.ip,
   }),
 };
 

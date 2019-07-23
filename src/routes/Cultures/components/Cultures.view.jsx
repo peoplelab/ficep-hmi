@@ -130,6 +130,7 @@ class CulturesRoute extends PureComponent {
         <h1 className="cultures__title">
           Cultures
         </h1>
+        <Box className="cultures__container">
         <Box className="cultures__group">
           <Button className="cultures__button" onClick={this.onGetCultures}>
             Get cultures list
@@ -157,8 +158,8 @@ class CulturesRoute extends PureComponent {
         )}
         {list.length > 0 && (
           <Box className="cultures__group">
-            <form>
-              <Field label="Culture id (only to update)">
+            <form className="cultures__form">
+              <Field label="Culture id (only to update)" className="cultures__field">
                 <TextInput
                   className="cultures__text-input"
                   name="id"
@@ -166,7 +167,7 @@ class CulturesRoute extends PureComponent {
                   onChange={this.onIdChange}
                 />
               </Field>
-              <Field label="Code">
+              <Field label="Code" className="cultures__field">
                 <TextInput
                   className="cultures__text-input"
                   name="code"
@@ -174,7 +175,7 @@ class CulturesRoute extends PureComponent {
                   onChange={this.onChange}
                 />
               </Field>
-              <Field label="Description">
+              <Field label="Description" className="cultures__field">
                 <TextInput
                   className="cultures__text-input"
                   name="description"
@@ -182,7 +183,7 @@ class CulturesRoute extends PureComponent {
                   onChange={this.onChange}
                 />
               </Field>
-              <Box className="cultures__box">
+              <Box className="cultures__field">
                 <Button
                   className="cultures__button"
                   onClick={!id ? this.onAddCulture : this.onUpdateCulture}
@@ -194,6 +195,7 @@ class CulturesRoute extends PureComponent {
             </form>
           </Box>
         )}
+        </Box>
       </section>
     );
 	}

@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../../../components/layouts/Box/Box.index';
+import Box from '../layouts/Box/Box.index';
 
 
 /**
- * Login form field
- *
- * Note: item own of Login route
+ * Form field
  */
 class Field extends PureComponent {
   render() {
@@ -16,8 +14,8 @@ class Field extends PureComponent {
     } = this.props;
 
     return (
-      <Box className="login__field">
-        <label className="login__label">
+      <Box className="field">
+        <label className="field__label">
           {label}
         </label>
         {children}

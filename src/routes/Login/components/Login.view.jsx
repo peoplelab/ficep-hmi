@@ -6,7 +6,7 @@ import TextInput from '../../../components/forms/TextInput';
 import PasswordInput from '../../../components/forms/PasswordInput';
 import Button from '../../../components/forms/Button';
 import Select from '../../../components/forms/Select';
-import Field from '../items/Field.item';
+import Field from '../../../components/forms/Field';
 import LoginError from '../items/LoginError.item';
 
 import './Login.style.scss'; // apply Login style to this route

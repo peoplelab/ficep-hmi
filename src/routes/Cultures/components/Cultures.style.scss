@@ -5,5 +5,49 @@
 .cultures {
   padding: 3rem;
 
-  /* */
+  .cultures__button {
+    background-color: $bg-dark-cyan;
+    color: $text-white;
+    display: block;
+    font-size: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+
+    &:disabled {
+      background-color: $bg-grey-cyan;
+    }
+
+    &:enabled {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $bg-cyan;
+      }
+    }
+  }
+
+  .cultures__table {
+    /* stylelint-disable plugin/selector-bem-pattern */
+    td {
+      padding: 0.5rem 2rem;
+
+      &:first-of-type {
+        padding: 0;
+      }
+      .cultures__button {
+        width: 100%;
+      }
+    }
+    /* stylelint-enable plugin/selector-bem-pattern */
+  }
+
+  .cultures__text-input {
+    border: 0.2rem solid $border-dark-grey;
+    color: $text-dark-grey;
+    display: block;
+    font-size: 1rem;
+    margin: 0.2rem 0 1rem;
+    padding: 0.5rem;
+    width: 15rem;
+  }
 }

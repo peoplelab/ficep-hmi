@@ -7,7 +7,7 @@ import { call, put } from 'redux-saga/effects';
  * @param {object} request Rest api request
  * @param {string} url Rest api address
  */
-export function* fetchData_gen(actionAPI, request, url) {
+export function* fetchData_gen(actionAPI, request, url, request_dataraw) {
   try {
     //eslint-disable-next-line
     console.log('> Calling REST API:' + url);
@@ -38,12 +38,12 @@ export function* fetchData_gen(actionAPI, request, url) {
       //eslint-disable-next-line
       console.log('> REST API success. Status: ' + status);
 
-      yield put(actionAPI.SUCCESS(status, response_dataraw));
+      yield put(actionAPI.SUCCESS(status, response_dataraw, request_dataraw));
     } else {
       //eslint-disable-next-line
       console.log('> REST API error. Status: ' + status);
 
-      yield put(actionAPI.ERROR(status, { message: response_dataraw }));
+      yield put(actionAPI.ERROR(status, { message: response_dataraw }, request_dataraw));
     }
 
 

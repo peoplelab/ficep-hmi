@@ -1,27 +1,25 @@
 import {
-  createPayloadTypes, createPayloadAction, createApiTypes, createApiAction
+  createApiTypes, createApiAction
 } from '../../../commons/actions';
 
-const payloadList = [
-  /* */
+const apiList = [
+  'RESTAPI_CULTURES_GET',
+  'RESTAPI_CULTURES_POST',
+  'RESTAPI_CULTURES_DELETE',
+  'RESTAPI_CULTURES_PUT',
 ];
-const apiList = [/* */];
 
 
-const payloadTypes = createPayloadTypes(...payloadList);
 const apiTypes = createApiTypes(...apiList);
 
-const payloadActions = createPayloadAction(...payloadList);
 const apiActions = createApiAction(...apiList);
 
 
 export const types = {
-  ...payloadTypes,
   ...apiTypes,
 };
 
 export const action = {
-  ...payloadActions,
   ...apiActions,
 };
 

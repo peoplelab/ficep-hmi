@@ -25,7 +25,7 @@ const actionHandlers = {
     };
   },
   [types.RESTAPI_CULTURES_DELETE_SUCCESS]: (state, { response, request }) => {
-    if (!response) {
+    if (!response.data) {
       return state;
     }
 
@@ -39,7 +39,7 @@ const actionHandlers = {
     };
   },
   [types.RESTAPI_CULTURES_PUT_SUCCESS]: (state, { response, request }) => {
-    if (!response) {
+    if (!response.data) {
       return state;
     }
 

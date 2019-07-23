@@ -41,10 +41,10 @@ class ToolsRoute extends PureComponent {
               Get tools list
             </Button>
           </Box>
-          {list.length > 0 &&  (
+          {(list.length > 0) && (
             <List list={list} callToolDetails={callToolDetails} />
           )}
-          {(id && details) && (
+          {(!!id && details) && (
             <Details id={id} details={details} />
           )}
         </Box>

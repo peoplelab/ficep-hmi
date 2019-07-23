@@ -11,15 +11,12 @@
 
     .tools__group {
       flex: 1;
+      padding-left: 2rem;
 
       &:first-of-type {
         flex: none;
         margin: 2rem 0 3rem;
         width: 100%;
-      }
-      &:last-of-type {
-        border-left: 0.2rem solid $border-dark-grey;
-        padding-left: 2rem;
       }
     }
   }

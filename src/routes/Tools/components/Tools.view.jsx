@@ -72,7 +72,7 @@ class ToolsRoute extends PureComponent {
       details,
     } = this.props;
 
-    console.log('rendered');
+    console.log('Render Tools Route');
 
     const Table = list.map(this.mapList);
 

@@ -24,7 +24,7 @@ class ButtonData extends PureComponent {
       ...rest
     } = this.props;
 
-    console.log('HELLO');
+    console.log('Render ButtonData');
 
     return (
       <Button onClick={this.onClick} {...rest} />

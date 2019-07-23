@@ -29,6 +29,7 @@ class CulturesRoute extends PureComponent {
       description: '',
     };
 
+    this.onIdChange = this.onIdChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onGetCultures = this.onGetCultures.bind(this);
     this.onAddCulture = this.onAddCulture.bind(this);
@@ -38,8 +39,16 @@ class CulturesRoute extends PureComponent {
     this.mapList = this.mapList.bind(this);
   }
 
+  onIdChange(event) {
+    const { value } = event.target;
+
+    if (/^\d*$/.test(value)) {
+      this.onChange(event);
+    }
+  }
+
   onChange(event) {
-    const { name, value } = event.table;
+    const { name, value } = event.target;
 
     this.setState({ [name]: value });
   }
@@ -148,12 +157,12 @@ class CulturesRoute extends PureComponent {
         {list.length > 0 && (
           <Box className="cultures__group">
             <form>
-            <Field label="Culture id (only to update)">
+              <Field label="Culture id (only to update)">
                 <TextInput
                   className="cultures__text-input"
                   name="id"
                   value={id}
-                  onChange={this.onChange}
+                  onChange={this.onIdChange}
                 />
               </Field>
               <Field label="Code">
@@ -173,11 +182,12 @@ class CulturesRoute extends PureComponent {
                 />
               </Field>
               <Box className="cultures__box">
-              <Button
+                <Button
                   className="cultures__button"
-                  onClick={!id ? this.onUpdateCulture : this.onAddCulture}
+                  onClick={!id ? this.onAddCulture : this.onUpdateCulture}
+                  disabled={!code || !description}
                 >
-                  {!id ? 'Update' : 'Add'}
+                  {!id ? 'Add' : 'Update'}
                 </Button>
               </Box>
             </form>

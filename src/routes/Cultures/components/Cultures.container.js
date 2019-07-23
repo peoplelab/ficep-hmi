@@ -5,10 +5,10 @@ import { action } from '../controllers/Cultures.actions';
 
 
 const mapDispatchToProps = {
-  getCultures: action.RESTAPI_CULTURES_GET_CALL,
-  addCulture: action.RESTAPI_CULTURES_POST_CALL,
-  removeCulture: action.RESTAPI_CULTURES_DELETE_CALL,
-  updateCulture: action.RESTAPI_CULTURES_PUT_CALL,
+  getCultures: action.RESTAPI_CULTURES_GET.CALL,
+  addCulture: action.RESTAPI_CULTURES_POST.CALL,
+  removeCulture: action.RESTAPI_CULTURES_DELETE.CALL,
+  updateCulture: action.RESTAPI_CULTURES_PUT.CALL,
 };
 
 const mapStateToProps = state => ({

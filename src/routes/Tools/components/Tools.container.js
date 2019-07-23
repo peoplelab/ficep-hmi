@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Login from './Tools.view';
+import Tools from './Tools.view';
 import { action } from '../controllers/Tools.actions';
 import { JsonToString } from './Tools.presenter';
 import { stateOr } from '../../../commons/selectors';
@@ -18,6 +18,6 @@ const mapStateToProps = state => ({
 });
 
 
-const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
+const ToolsContainer = connect(mapStateToProps, mapDispatchToProps)(Tools);
 
-export default withRouter(LoginContainer);
+export default withRouter(ToolsContainer);

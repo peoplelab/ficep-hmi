@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root';
-import Login from './Tools.container';
+import Tools from './Tools.container';
 
 
-export default hot(Login);
+export default hot(Tools);

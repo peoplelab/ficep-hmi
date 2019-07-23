@@ -45,7 +45,9 @@ class ToolsRoute extends PureComponent {
     return (
       <tr key={`tool-${id}`}>
         <td>
-          {id}
+          <ButtonData className="tools__button" onClick={this.onCallDetails} data={id}>
+            {id}
+          </ButtonData>
         </td>
         <td>
           {type}
@@ -57,9 +59,7 @@ class ToolsRoute extends PureComponent {
           {diameter}
         </td>
         <td>
-          <ButtonData onClick={this.onCallDetails} data={id}>
-            {displayName}
-          </ButtonData>
+          {displayName}
         </td>
       </tr>
     );

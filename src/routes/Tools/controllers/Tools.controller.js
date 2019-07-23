@@ -8,6 +8,8 @@ const getHeaders = state => ({
   SessionId: state.session.data.sessionId,
 });
 
+const getID = state => state.Tools.currentID;
+
 
 export function* setCallToolsList() {
   const header = yield select(getHeaders);
@@ -17,6 +19,7 @@ export function* setCallToolsList() {
 
 export function* setCallToolsDetails() {
   const header = yield select(getHeaders);
+  const id = yield select(getID);
 
-  yield fork(doCallToolsDetails, action.RESTAPI_TOOL_DETAILS, header);
+  yield fork(doCallToolsDetails, action.RESTAPI_TOOL_DETAILS, header, id);
 }

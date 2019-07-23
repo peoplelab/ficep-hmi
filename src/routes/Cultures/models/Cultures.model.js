@@ -50,7 +50,7 @@ export function* doCallCulturePost(action, header, body) {
   const request = {
     method: "post",
     headers: setHeaders(header),
-    body,
+    body: JSON.stringify(body),
   };
 
   /**
@@ -89,7 +89,7 @@ export function* doCallCulturePut(action, header, body) {
   const request = {
     method: "put",
     headers: setHeaders(header),
-    body,
+    body: JSON.stringify(body),
   };
 
   /**

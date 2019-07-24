@@ -10,7 +10,7 @@ import { fetchData_gen } from '../../../commons/sagas.base';								// COMMON HA
 
 
 /**
- * Tools list custom rest api request 
+ * Tools list custom rest api request
  * @param {*} action Action to call after response
  * @param {*} data Body request data
  */
@@ -41,7 +41,7 @@ export function* doCallToolsList(action, header) {
  * @param {*} data Body request data
  */
 export function* doCallToolsDetails(action, header, id) {
-  const url = `/api/v1/odata/tools/${id}`;
+  const url = `/api/v1/tools/${id}`;
 
   const headers = {
     "Authorization": `Bearer ${header.AccessToken}`,

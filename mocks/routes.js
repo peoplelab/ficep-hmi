@@ -2,6 +2,7 @@ const url = {
   login: '/api/v1/Token',
   logout: '/api/v1/Users/Logout',
   tools: '/api/v1/odata/tools',
+  tool: '/api/v1/tools',
   cultures: '/api/v1/Cultures',
   fnc: '/api/v1/odata/tools/upload/fnc/paf',
 };
@@ -24,8 +25,8 @@ module.exports = [
     "path": `.${url.tools}/categories`,
   },
   {
-    "url": `${url.tools}/:id`,
-    "path": `.${url.tools}/id`,
+    "url": `${url.tool}/:id`,
+    "path": `.${url.tool}/id`,
   },
   {
     "url": url.tools,

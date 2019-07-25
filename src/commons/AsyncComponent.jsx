@@ -1,5 +1,6 @@
 import React, { Component as ReactComponent } from 'react';
 
+
 /**
  * Handle asynchronous loading of React components
  *

@@ -23,7 +23,7 @@
   },
   "betterScripts": {
     "build:dev": {
-      "command": "webpack --progress --colors",
+      "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
       "env": {
         "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "dev",
@@ -32,7 +32,7 @@
       }
     },
     "build:prod": {
-      "command": "webpack --progress --colors --optimize-minimize",
+      "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize",
       "env": {
         "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
@@ -59,7 +59,7 @@
       }
     },
     "start:staging": {
-      "command": "node ./server/production.js",
+      "command": "node ./server/development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "prod",
@@ -68,7 +68,7 @@
       }
     },
     "start:prod": {
-      "command": "node ./server/production.js",
+      "command": "node ./server/development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "prod",

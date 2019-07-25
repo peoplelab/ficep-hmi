@@ -41,7 +41,7 @@
       }
     },
     "start:mocks": {
-      "command": "node ./server/main.js",
+      "command": "node ./server/development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
@@ -50,7 +50,7 @@
       }
     },
     "start:dev": {
-      "command": "node ./server/main.js",
+      "command": "node ./server/development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",

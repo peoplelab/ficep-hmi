@@ -6,76 +6,74 @@
   "repository": "git@github.com:peoplelab/template-core.git",
   "author": "peoplelab",
   "scripts": {
-    "build:dev": "better-npm-run build:dev",
-    "build:system": "better-npm-run build:system",
-    "build:prod": "better-npm-run build:prod",
     "lint": "eslint **/*.js?(x)",
     "lint:fix": "eslint --fix **/*.js?(x)",
-    "mocks": "better-npm-run mocks",
-    "start:mocks": "better-npm-run start:mocks",
-    "start": "better-npm-run start:dev",
-    "start:staging": "better-npm-run start:staging",
-    "start:system": "better-npm-run start:system",
     "stylelint": "stylelint **/*.scss",
-    "stylelint:fix": "stylelint --fix **/*.scss"
+    "stylelint:fix": "stylelint --fix **/*.scss",
+
+    "mocks": "node ./server/mocks.js",
+
+    "build:dev": "better-npm-run build:dev",
+    "build:prod": "better-npm-run build:prod",
+
+    "start:mocks": "better-npm-run start:mocks",
+    "start:dev": "better-npm-run start:dev",
+    "start:staging": "better-npm-run start:staging",
+    "start:prod": "better-npm-run start:prod"
   },
   "betterScripts": {
     "build:dev": {
       "command": "webpack --progress --colors",
       "env": {
+        "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "dev",
         "NODE_ENV": "DEVELOPMENT",
-        "COMPILE": "COMPILE"
-      }
-    },
-    "build:system": {
-      "command": "webpack --progress --colors",
-      "env": {
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "SYSTEM"
+        "URL_ENV": "MITROL"
       }
     },
     "build:prod": {
       "command": "webpack --progress --colors --optimize-minimize",
       "env": {
+        "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
         "NODE_ENV": "PRODUCTION",
-        "COMPILE": "COMPILE"
-      }
-    },
-    "mocks": {
-      "command": "node ./server/mocks.js",
-      "env": {
-        "BABEL_ENV": "dev",
-        "NODE_ENV": "MOCKS"
+        "URL_ENV": "MITROL"
       }
     },
     "start:mocks": {
       "command": "node ./server/main.js",
       "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
-        "NODE_ENV": "MOCKS"
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MOCKS"
       }
     },
     "start:dev": {
       "command": "node ./server/main.js",
       "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
-        "NODE_ENV": "DEVELOPMENT"
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MITROL"
       }
     },
     "start:staging": {
-      "command": "node ./server/main.js",
+      "command": "node ./server/production.js",
       "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "prod",
-        "NODE_ENV": "STAGING"
+        "NODE_ENV": "PRODUCTION",
+        "URL_ENV": "MOCKS"
       }
     },
-    "start:system": {
-      "command": "node ./server/main.js",
+    "start:prod": {
+      "command": "node ./server/production.js",
       "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "prod",
-        "NODE_ENV": "SYSTEM"
+        "NODE_ENV": "PRODUCTION",
+        "URL_ENV": "MITROL"
       }
     }
   },

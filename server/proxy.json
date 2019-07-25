@@ -3,16 +3,8 @@
     "target": "http://localhost:4000",
     "changeOrigin": true
   },
-  "DEVELOPMENT": {
+  "MITROL": {
     "target": "http://172.30.57.26:4000",
-    "changeOrigin": true
-  },
-  "STAGING": {
-    "target": "http://localhost:4000",
-    "changeOrigin": true
-  },
-  "SYSTEM": {
-    "target": "https://172.30.57.26",
     "changeOrigin": true
   }
 }

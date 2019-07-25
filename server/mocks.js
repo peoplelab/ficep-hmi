@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mocks = require('../mocks');
@@ -28,7 +26,7 @@ app.use((req, res, next) => {
 
     console.log('\x1b[36m--> NEW REQUEST at ' + (new Date()).toString()
         + ' \n--> Method: ' + req.method
-        + ' \n--> Headers: ' + JSON.stringify(req.headers) 
+        + ' \n--> Headers: ' + JSON.stringify(req.headers)
         + ' \n--> Body: ' + JSON.stringify(req.body)
         + '\x1b[0m'
     );
@@ -48,4 +46,3 @@ var server = app.listen(PORT, function () {
 
     console.log('SERVER MOCK: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
 });
-

@@ -14,9 +14,11 @@
     "mocks": "node ./server/mocks.js",
 
     "build:mocks": "better-npm-run build:mocks",
+    "build:staging": "better-npm-run build:staging",
     "build": "better-npm-run build:prod",
 
     "start:mocks": "better-npm-run start:mocks",
+    "start:staging": "better-npm-run start:staging",
     "start": "better-npm-run start:dev"
   },
   "betterScripts": {
@@ -26,6 +28,14 @@
         "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
         "URL_ENV": "MOCKS"
+      }
+    },
+    "build:staging": {
+      "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
+      "env": {
+        "COMPILE_ENV": "PRODUCTION",
+        "BABEL_ENV": "prod",
+        "URL_ENV": "STAGING"
       }
     },
     "build:prod": {
@@ -42,6 +52,14 @@
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
         "URL_ENV": "MOCKS"
+      }
+    },
+    "start:staging": {
+      "command": "node ./server/development.js",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "URL_ENV": "STAGING"
       }
     },
     "start:dev": {

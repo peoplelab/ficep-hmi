@@ -9,7 +9,7 @@ const devtool = COMPILE_ENV === 'PRODUCTION' ? 'eval-source-map' : 'inline-sourc
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, '../../build/client_dist'),
+    path: path.resolve(__dirname, '../../temp/client_dist'),
     filename: 'bundle.js',
     chunkFilename: '[name].js',
     devtoolLineToLine: true,

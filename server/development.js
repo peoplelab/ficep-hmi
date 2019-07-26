@@ -9,7 +9,7 @@ const server = require('./main');
 const config = require('../webpack.config.js');
 
 // defined folder where save files on server start
-const contentBase = 'virtual.build';
+const contentBase = 'temp';
 
 // add configured webpack compiler
 const compiler = webpack(config);

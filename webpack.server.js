@@ -1,23 +1,23 @@
 const path = require('path');
 const globalVars = require('./config/globals/server');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
-const { COMPILE_ENV, URL_ENV } = process.env;
+const { URL_ENV } = process.env;
 
 let pathOutput;
-if (COMPILE_ENV === 'DEVELOPMENT') { // COMPILE_ENV === DEVELOPMENT && URL_ENV === 'MITROL' || URL_ENV === 'MOCKS')
-  pathOutput = path.resolve(__dirname, './temp/server_dist');
-} else if (URL_ENV === 'MITROL') { // COMPILE_ENV === PRODUCTION && URL_ENV === 'MITROL'
-  pathOutput = path.resolve(__dirname, './dist/server_dist');
-} else { // COMPILE_ENV === PRODUCTION && URL_ENV === 'MOCKS'
-  pathOutput = path.resolve(__dirname, './build/server_dist');
-}
+let devtool;
+let mode;
 
-const devtool = (
-  COMPILE_ENV === 'PRODUCTION'
-  ? 'source-map'
-  : 'inline-source-map'
-);
+if (URL_ENV === 'MITROL') {
+  pathOutput = path.resolve(__dirname, './dist/server_dist');
+  devtool = 'source-map';
+  mode = 'production';
+} else {
+  pathOutput = path.resolve(__dirname, './build/server_dist');
+  devtool = 'inline-source-map';
+  mode = 'development';
+}
 
 
 module.exports = {
@@ -46,13 +46,15 @@ module.exports = {
       },
     ],
   },
-  plugins: [globalVars],
+  plugins: [
+    new CleanWebpackPlugin(),
+    globalVars
+  ],
   resolve: {
     extensions: ['.js', 'json'],
   },
   cache: false,
-  mode: 'development',
-  // mode: 'production',
+  mode,
   devtool,
   target: 'node',
 };

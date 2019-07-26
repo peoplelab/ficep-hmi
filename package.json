@@ -17,18 +17,16 @@
     "build:prod": "better-npm-run build:prod",
 
     "start:mocks": "better-npm-run start:mocks",
-    "start:dev": "better-npm-run start:dev",
-    "start:staging": "better-npm-run start:staging",
-    "start:prod": "better-npm-run start:prod"
+    "start": "better-npm-run start:dev"
   },
   "betterScripts": {
     "build:dev": {
       "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
       "env": {
         "COMPILE_ENV": "PRODUCTION",
-        "BABEL_ENV": "dev",
-        "NODE_ENV": "DEVELOPMENT",
-        "URL_ENV": "MITROL"
+        "BABEL_ENV": "prod",
+        "NODE_ENV": "PRODUCTION",
+        "URL_ENV": "MOCKS"
       }
     },
     "build:prod": {
@@ -55,24 +53,6 @@
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
         "NODE_ENV": "DEVELOPMENT",
-        "URL_ENV": "MITROL"
-      }
-    },
-    "start:staging": {
-      "command": "node ./server/development.js",
-      "env": {
-        "COMPILE_ENV": "DEVELOPMENT",
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "PRODUCTION",
-        "URL_ENV": "MOCKS"
-      }
-    },
-    "start:prod": {
-      "command": "node ./server/development.js",
-      "env": {
-        "COMPILE_ENV": "DEVELOPMENT",
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "PRODUCTION",
         "URL_ENV": "MITROL"
       }
     }

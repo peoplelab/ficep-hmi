@@ -1,4 +1,5 @@
 const { HotModuleReplacementPlugin } = require('webpack');
+const globalVars = require('../globals/client');
 
 
 const { COMPILE_ENV } = process.env;
@@ -70,6 +71,7 @@ module.exports = {
   },
   plugins: [
     new HotModuleReplacementPlugin(),
+    globalVars,
   ],
   resolve: {
     extensions: ['.js', '.jsx', 'json', 'scss', 'css'],

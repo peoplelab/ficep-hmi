@@ -5,14 +5,11 @@ const proxy = require('http-proxy-middleware');
 // retrive proxy configuraiton
 const proxyConfig = require('./proxy.json');
 
-// retrive environment
-const { COMPILE_ENV, URL_ENV } = process.env;
-
 // localhost server port
 const PORT = 3500;
 
 /// proxy handler (logging requests)
-var proxyOpts = {
+var proxyOpts = URL_ENV => ({
 
     target: proxyConfig[URL_ENV].target,
 
@@ -28,22 +25,21 @@ var proxyOpts = {
     logLevel: 'debug',
     changeOrigin: true,
     secure: true
-};
-const proxyInst = proxy(proxyOpts); // dev dsi
+});
 // end proxy handler
 
 
-module.exports = (callback_env) => {
+module.exports = (callback_env, { COMPILE_ENV, URL_ENV }) => {
   // init node server
   const app = express();
 
   // start proxy handler
+  const opts = proxyOpts(URL_ENV);
+  const proxyInst = proxy(opts);
   app.use('/api', proxyInst);
-
 
   // add environment configuration
   callback_env(app);
-
 
   // start server ...
   var server = app.listen(PORT, function () {

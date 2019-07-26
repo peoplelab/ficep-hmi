@@ -16,7 +16,7 @@ const storeConstructor = (initialState = {}) => {
   const composeEnhancers = (
     typeof window === 'object'
     && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    && NODE_ENV !== 'production'
+    && !IS_PRODUCTION
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       : compose
   );

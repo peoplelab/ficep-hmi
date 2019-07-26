@@ -1,4 +1,5 @@
 const path = require('path');
+const globalVars = require('./config/globals/server');
 
 
 const { COMPILE_ENV, URL_ENV } = process.env;
@@ -29,6 +30,7 @@ module.exports = {
     pathinfo: true,
     publicPath: '/',
   },
+  plugins: [globalVars],
   resolve: {
     extensions: ['.js', '.jsx', 'json'],
   },

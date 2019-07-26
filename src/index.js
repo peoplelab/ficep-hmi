@@ -13,7 +13,7 @@ import App from './containers/App/App.index.js';											// Init point dell'ap
 import createStore from './store/store.index';												// Inizializzazione dello Store
 
 
-if (process.env.NODE_ENV !== 'production') {
+if (!IS_PRODUCTION) {
   setConfig({ logLevel: 'debug' });
 }
 

@@ -25,17 +25,34 @@ module.exports = {
   output: {
     path: pathOutput,
     filename: 'server.js',
-    devtoolLineToLine: true,
-    sourceMapFilename: 'server.js.map',
-    pathinfo: true,
+    chunkFilename: '[chunkhash].js',
     publicPath: '/',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/i,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+          cacheCompression: true,
+        },
+      },
+      {
+        test: /\.jsx?$/i,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
+    ],
   },
   plugins: [globalVars],
   resolve: {
-    extensions: ['.js', '.jsx', 'json'],
+    extensions: ['.js', 'json'],
   },
   cache: false,
   mode: 'development',
+  // mode: 'production',
   devtool,
   target: 'node',
 };

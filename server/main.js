@@ -1,12 +1,15 @@
+const fs = require('fs');
 const express = require('express');
 const proxy = require('http-proxy-middleware');
 
+// external file for server configuration
+const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
 
 // retrive proxy configuraiton
 const proxyConfig = require('./proxy.json');
 
 // localhost server port
-const PORT = 3500;
+const PORT = SERVER_CONFIG.PORT;
 
 /// proxy handler (logging requests)
 var proxyOpts = URL_ENV => ({
@@ -22,7 +25,7 @@ var proxyOpts = URL_ENV => ({
     //    res.status(500);
     //    res.json({ error: 'Error when connecting to remote server.' });
     //},
-    logLevel: 'debug',
+    logLevel: SERVER_CONFIG.LOG_LEVEL,
     changeOrigin: true,
     secure: true
 });

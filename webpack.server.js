@@ -1,5 +1,6 @@
 const path = require('path');
 const globalVars = require('./config/globals/server');
+const { ServerConfig } = require('./config/plugin/webpack.externals');
 
 
 const { URL_ENV } = process.env;
@@ -46,7 +47,8 @@ module.exports = {
     ],
   },
   plugins: [
-    globalVars
+    globalVars,
+    new ServerConfig(),
   ],
   resolve: {
     extensions: ['.js', 'json'],

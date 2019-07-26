@@ -1,6 +1,5 @@
 const path = require('path');
 const globalVars = require('./config/globals/server');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 module.exports = {
@@ -30,7 +29,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     globalVars
   ],
   resolve: {

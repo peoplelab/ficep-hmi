@@ -1,6 +1,5 @@
 const { HotModuleReplacementPlugin } = require('webpack');
 const globalVars = require('../globals/client');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 const { COMPILE_ENV } = process.env;
@@ -72,7 +71,6 @@ module.exports = {
   },
   plugins: [
     new HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
     globalVars,
   ],
   resolve: {

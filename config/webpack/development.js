@@ -40,7 +40,7 @@ module.exports = {
       favicon: './public/favicon.ico',
       filename: 'index.html',
       inject: true,
-      template: './src/index.html',
+      template: './public/index.html',
       title: 'Mitrol',
     }),
   ],

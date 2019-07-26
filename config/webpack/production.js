@@ -44,7 +44,7 @@ module.exports = {
       inject: true,
       hash: true,
       minify: false,
-      template: './src/index.html',
+      template: './public/index.html',
       title: 'Mitrol',
     }),
   ],

@@ -1,27 +1,44 @@
 const fs = require('fs');
-const mime = require('mime/lite');
+const express = require('express');
 const compression = require('compression');
+const mime = require('mime/lite');
 const server = require('./main');
+
+
+var router = express.Router();
+
+
+// handle request
+const handleRequest = (res, { url, filePath }) => {
+  const mimeType = mime.getType(filePath);
+
+  console.log('> URL request: ', url);
+  console.log('> File path: ', filePath);
+  console.log('> File mime-type: ', mimeType);
+
+  // res.setHeader('Content-Security-Policy', 'default-src \'self\'');
+  res.setHeader('Content-Type', mimeType);
+  res.end(fs.readFileSync('.' + filePath));
+};
 
 
 // handle routes
 const routesHandler = (req, res, next) => {
-  console.log('> URL route: ', req.url);
+  const { url } = req;
+  const filePath = '/index.html';
 
-  res.end(fs.readFileSync('../client_dist/index.html'));
+  handleRequest(res, { url, filePath });
 
   next();
 };
 
+
 // handle files
-const filesHandler = function(req, res, next) {
-  console.log('> URL request: ', req.url);
+const filesHandler = (req, res, next) => {
+  const { url } = req;
+  const filePath = url.replace(/\?.+$/, '');
 
-  const mimeType = mime.getType(req.url);
-
-  res.header('Content-Type', mimeType);
-  // res.header('Content-Security-Policy', 'default-src \'self\'');
-  res.end(fs.readFileSync('../client_dist' + req.url));
+  handleRequest(res, { url, filePath });
 
   next();
 };
@@ -32,10 +49,13 @@ const prodServer = (app) => {
   app.use(compression());
 
   // handle routes
-  app.get(/^(\/[A-Za-z-/]*)*$/, routesHandler);
+  router.get(/^(\/(\w+(?!\.))*)?$/, routesHandler);
 
   // handle files
-  app.get(/\..+$/, filesHandler);
+  router.get(/\..+$/, filesHandler);
+
+  // run router handler
+  app.use('/', router);
 };
 
 

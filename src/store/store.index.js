@@ -8,8 +8,6 @@ import { injectAsyncReducers, reducerConstructor } from '../commons/reducers';
 // import SagaHandler from '../commons/sagas';
 
 
-const { NODE_ENV } = process.env;
-
 const storeConstructor = (initialState = {}) => {
   // Redux Dev-Tools
   // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

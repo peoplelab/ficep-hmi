@@ -6,7 +6,7 @@ const proxy = require('http-proxy-middleware');
 const proxyConfig = require('./proxy.json');
 
 // retrive environment
-const { NODE_ENV, URL_ENV } = process.env;
+const { COMPILE_ENV, URL_ENV } = process.env;
 
 // localhost server port
 const PORT = 3500;
@@ -37,11 +37,13 @@ module.exports = (callback_env) => {
   // init node server
   const app = express();
 
+  // start proxy handler
+  app.use('/api', proxyInst);
+
+
   // add environment configuration
   callback_env(app);
 
-  // start proxy handler
-  app.use('/api', proxyInst);
 
   // start server ...
   var server = app.listen(PORT, function () {
@@ -49,6 +51,6 @@ module.exports = (callback_env) => {
       var port = server.address().port;
 
       console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
-      console.log('SERVER NODE: -> Environment ' + NODE_ENV);
+      console.log('SERVER NODE: -> Environment ' + COMPILE_ENV);
   });
 };

@@ -1,10 +1,10 @@
 const path = require('path');
 
 
-const { NODE_ENV, COMPILE_ENV } = process.env;
+const { COMPILE_ENV, URL_ENV } = process.env;
 
 const pathOutput = (
-  NODE_ENV === 'PRODUCTION'
+  URL_ENV === 'MITROL'
   ? path.resolve(__dirname, './dist/server_dist')
   : path.resolve(__dirname, './build/server_dist')
 );

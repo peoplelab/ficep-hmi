@@ -8,11 +8,8 @@ const server = require('./main');
 // retrive webpack configuration
 const config = require('../webpack.config.js');
 
-// retrive environment
-const { NODE_ENV } = process.env;
-
 // defined folder where save files on server start
-const contentBase = NODE_ENV === 'PRODUCTION' ? './dist' : './build';
+const contentBase = 'virtual.build';
 
 // add configured webpack compiler
 const compiler = webpack(config);

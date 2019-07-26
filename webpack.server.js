@@ -10,11 +10,11 @@ let devtool;
 let mode;
 
 if (URL_ENV === 'MITROL') {
-  pathOutput = path.resolve(__dirname, './dist/server_dist');
+  pathOutput = path.resolve(__dirname, './dist');
   devtool = 'source-map';
   mode = 'production';
 } else {
-  pathOutput = path.resolve(__dirname, './build/server_dist');
+  pathOutput = path.resolve(__dirname, './build/app');
   devtool = 'inline-source-map';
   mode = 'development';
 }

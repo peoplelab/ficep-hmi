@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: './server/mocks.js',
   output: {
-    path: path.resolve(__dirname, './build/server_mocks'),
+    path: path.resolve(__dirname, './build/mocks'),
     filename: 'mocks.js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',

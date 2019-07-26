@@ -6,8 +6,8 @@ const { COMPILE_ENV, URL_ENV } = process.env;
 
 const pathOutput = (
   URL_ENV === 'MITROL'
-  ? path.resolve(__dirname, '../../dist/client_dist')
-  : path.resolve(__dirname, '../../build/client_dist')
+  ? path.resolve(__dirname, '../../dist')
+  : path.resolve(__dirname, '../../build/app')
 );
 
 const devtool = COMPILE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map';

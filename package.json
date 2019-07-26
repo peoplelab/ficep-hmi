@@ -12,6 +12,7 @@
     "stylelint:fix": "stylelint --fix **/*.scss",
 
     "mocks": "node ./server/mocks.js",
+    "mocks:dist": "webpack --config \"./webpack.mocks.js\" --progress --colors",
 
     "build:mocks": "better-npm-run build:mocks",
     "build:staging": "better-npm-run build:staging",

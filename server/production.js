@@ -8,7 +8,7 @@ const server = require('./main');
 const routesHandler = (req, res, next) => {
   console.log('> URL route: ', req.url);
 
-  res.end(fs.readFileSync('./index.html'));
+  res.end(fs.readFileSync('../client_dist/index.html'));
 
   next();
 };
@@ -21,7 +21,7 @@ const filesHandler = function(req, res, next) {
 
   res.header('Content-Type', mimeType);
   // res.header('Content-Security-Policy', 'default-src \'self\'');
-  res.end(fs.readFileSync('.' + req.url));
+  res.end(fs.readFileSync('../client_dist' + req.url));
 
   next();
 };

@@ -2,15 +2,30 @@ const fs = require('fs');
 const path = require('path');
 
 
-const config = {
-  "PORT": 3500,
-  "LOG_LEVEL": "debug"
+const { COMPILE_ENV, NODE_ENV } = process.env;
+
+let outputPath;
+if (NODE_ENV === 'DEVELOPMENT') {
+  outputPath = './temp';
+} else if (COMPILE_ENV === 'PRODUCTION') {
+  outputPath = './dist';
+}else {
+  outputPath = './build';
+}
+
+const target = {
+  app: './app',
+  mocks: './mocks',
 };
 
 
 class ServerConfig {
-  constructor() {
-    this.path = path.resolve(__dirname, '../../build/app/server.config.json');
+  static get target () {
+    return target;
+  }
+
+  constructor(target, config) {
+    this.path = path.resolve(__dirname, '../..', outputPath, target, './server.config.json');
 
     this.data = JSON.stringify(config);
   }

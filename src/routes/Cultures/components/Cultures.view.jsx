@@ -123,6 +123,8 @@ class CulturesRoute extends PureComponent {
       id, code, description
     } = this.state;
 
+    const strID = isNaN(id) ? '' : id.toString();
+
     const Table = list.map(this.mapList);
 
     return (
@@ -163,7 +165,7 @@ class CulturesRoute extends PureComponent {
                 <TextInput
                   className="cultures__text-input"
                   name="id"
-                  value={id}
+                  value={strID}
                   onChange={this.onIdChange}
                 />
               </Field>
@@ -186,10 +188,10 @@ class CulturesRoute extends PureComponent {
               <Box className="cultures__field">
                 <Button
                   className="cultures__button"
-                  onClick={!id ? this.onAddCulture : this.onUpdateCulture}
+                  onClick={!strID ? this.onAddCulture : this.onUpdateCulture}
                   disabled={!code || !description}
                 >
-                  {!id ? 'Add' : 'Update'}
+                  {!strID ? 'Add' : 'Update'}
                 </Button>
               </Box>
             </form>

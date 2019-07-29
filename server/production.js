@@ -5,6 +5,9 @@ const mime = require('mime/lite');
 const server = require('./main');
 
 
+// external file for server configuration
+const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
+
 var router = express.Router();
 
 
@@ -60,4 +63,4 @@ const prodServer = (app) => {
 
 
 // run production server
-server(prodServer, { COMPILE_ENV: COMPILE });
+server(prodServer, { COMPILE_ENV: COMPILE_ENV, SERVER_CONFIG });

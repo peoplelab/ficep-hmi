@@ -5,10 +5,18 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const server = require('./main');
 
 
+const { URL_ENV, COMPILE_ENV } = process.env;
+
+// server configuration object
+const SERVER_CONFIG = {
+  PORT: 3500,
+  URL: URL_ENV === 'MITROL' ? 'http://192.168.11.40:4000' : 'http://localhost:4000',
+  LOG_LEVEL: 'debug',
+};
+
+
 // retrive webpack configuration
 const config = require('../webpack.config.js');
-// retrive environment
-const { COMPILE_ENV } = process.env;
 
 // defined folder where save files on server start
 const contentBase = 'temp';
@@ -42,4 +50,4 @@ const devServer = (app) => {
 
 
 // run development server
-server(devServer, { COMPILE_ENV });
+server(devServer, { COMPILE_ENV, SERVER_CONFIG });

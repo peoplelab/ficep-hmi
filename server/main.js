@@ -1,19 +1,13 @@
-const fs = require('fs');
 const express = require('express');
 const proxy = require('http-proxy-middleware');
 
-// external file for server configuration
-const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
-
-// localhost server port
-const PORT = SERVER_CONFIG.PORT;
 
 /// proxy handler (logging requests)
-var proxyOpts = {
-    target: SERVER_CONFIG.URL,
+var proxyOpts = ({ URL, LOG_LEVEL }) => ({
+    target: URL,
 
     onProxyReq: function onProxyReq(proxyReq, req, res) {
-        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + SERVER_CONFIG.URL + proxyReq.path + '\x1b[0m');
+        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + URL + proxyReq.path + '\x1b[0m');
 
     },
     //onError: function onError(err, req, res) {
@@ -21,26 +15,27 @@ var proxyOpts = {
     //    res.status(500);
     //    res.json({ error: 'Error when connecting to remote server.' });
     //},
-    logLevel: SERVER_CONFIG.LOG_LEVEL,
+    logLevel: LOG_LEVEL,
     changeOrigin: true,
     secure: true
-};
+});
 // end proxy handler
 
 
-module.exports = (callback_env, { COMPILE_ENV }) => {
+module.exports = (callback_env, { COMPILE_ENV, SERVER_CONFIG }) => {
   // init node server
   const app = express();
 
   // start proxy handler
-  const proxyInst = proxy(proxyOpts);
+  const opts = proxyOpts(SERVER_CONFIG);
+  const proxyInst = proxy(opts);
   app.use('/api', proxyInst);
 
   // add environment configuration
   callback_env(app);
 
   // start server ...
-  var server = app.listen(PORT, function () {
+  var server = app.listen(SERVER_CONFIG.PORT, function () {
       var host = server.address().address;
       var port = server.address().port;
 

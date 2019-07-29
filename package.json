@@ -10,64 +10,35 @@
     "lint:fix": "eslint --fix **/*.js?(x)",
     "stylelint": "stylelint **/*.scss",
     "stylelint:fix": "stylelint --fix **/*.scss",
-
-    "mocks": "node ./server/mocks.js",
-
-    "build:mocks": "better-npm-run build:mocks",
-    "build": "better-npm-run build:dev",
-    "dist:mocks": "better-npm-run dist:mocks",
-    "dist": "better-npm-run dist:prod",
-
-    "start:mocks": "better-npm-run start:mocks",
-    "start": "better-npm-run start:dev"
+    "mocks:start": "node ./server/mocks.js",
+    "mocks:build": "webpack --config \"./webpack.mocks.js\" --progress --colors",
+    "build": "better-npm-run build",
+    "dist": "better-npm-run dist",
+    "start": "better-npm-run start"
   },
   "betterScripts": {
-    "build:mocks": {
-      "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors && webpack --config \"./webpack.mocks.js\" --progress --colors",
-      "env": {
-        "COMPILE_ENV": "DEVELOPMENT",
-        "BABEL_ENV": "dev",
-        "URL_ENV": "MOCKS"
-      }
-    },
-    "build:dev": {
+    "build": {
       "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
-        "URL_ENV": "MITROL"
+        "NODE_ENV": "RELEASE"
       }
     },
-    "dist:mocks": {
-      "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize && webpack --config \"./webpack.mocks.js\" --progress --colors --optimize-minimize",
-      "env": {
-        "COMPILE_ENV": "PRODUCTION",
-        "BABEL_ENV": "prod",
-        "URL_ENV": "MOCKS"
-      }
-    },
-    "dist:prod": {
+    "dist": {
       "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize",
       "env": {
         "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
-        "URL_ENV": "MITROL"
+        "NODE_ENV": "RELEASE"
       }
     },
-    "start:mocks": {
+    "start": {
       "command": "node ./server/development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
-        "URL_ENV": "MOCKS"
-      }
-    },
-    "start:dev": {
-      "command": "node ./server/development.js",
-      "env": {
-        "COMPILE_ENV": "DEVELOPMENT",
-        "BABEL_ENV": "dev",
-        "URL_ENV": "MITROL"
+        "NODE_ENV": "DEVELOPMENT"
       }
     }
   },

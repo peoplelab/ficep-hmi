@@ -3,7 +3,8 @@
     "process": "readonly",
     "__dirname": "readonly",
     "__STORE": "writable",
-    "COMPILE": "readonly",
+    "COMPILE_ENV": "readonly",
+    "NODE_ENV": "readonly",
     "IS_PRODUCTION": "readonly",
   },
   "env": {

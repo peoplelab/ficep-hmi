@@ -14,7 +14,8 @@
     "mocks:build": "webpack --config \"./webpack.mocks.js\" --progress --colors",
     "build": "better-npm-run build",
     "dist": "better-npm-run dist",
-    "start": "better-npm-run start"
+    "start": "better-npm-run start",
+    "start:mocks": "better-npm-run start:mocks"
   },
   "betterScripts": {
     "build": {
@@ -38,7 +39,17 @@
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
-        "NODE_ENV": "DEVELOPMENT"
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MITROL"
+      }
+    },
+    "start:mocks": {
+      "command": "node ./server/development.js",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MOCKS"
       }
     }
   },

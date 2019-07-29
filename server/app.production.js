@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const compression = require('compression');
 const mime = require('mime/lite');
-const server = require('./main');
+const server = require('./app.main');
 
 
 // external file for server configuration

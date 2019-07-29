@@ -27,7 +27,7 @@ if (COMPILE_ENV === 'PRODUCTION') {
 
 
 module.exports = {
-  entry: ['./server/production.js'],
+  entry: ['./server/app.production.js'],
   output: {
     path: path.resolve(__dirname, outputPath),
     filename: 'server.js',

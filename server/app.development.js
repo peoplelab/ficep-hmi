@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const server = require('./main');
+const server = require('./app.main');
 
 
 const { URL_ENV, COMPILE_ENV } = process.env;

@@ -10,7 +10,7 @@ const config = {
 
 
 module.exports = {
-  entry: './server/mocks.js',
+  entry: './server/mocks.release.js',
   output: {
     path: path.resolve(__dirname, './release/mocks'),
     filename: 'mocks.js',

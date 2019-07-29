@@ -1,14 +1,8 @@
-const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mocks = require('../mocks');
 
 
-// external file for server configuration
-const SERVER_CONFIG = NODE_ENV === 'RELEASE' ? JSON.parse(fs.readFileSync('./server.config.json')) : { PORT: 4000 };
-
-
-const { PORT } = SERVER_CONFIG;
 const app = express();
 
 const OPTIONS = {
@@ -19,8 +13,6 @@ const OPTIONS = {
     type: 'application/json',
   }
 };
-
-
 
 
 app.use(bodyParser.urlencoded(OPTIONS.URL));
@@ -45,9 +37,12 @@ app.use((req, res, next) => {
 
 mocks(app);
 
-var server = app.listen(PORT, function () {
+
+module.exports = (SERVER_CONFIG) => {
+  var server = app.listen(SERVER_CONFIG.PORT, function () {
     var host = server.address().address;
     var port = server.address().port;
 
     console.log('SERVER MOCK: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
-});
+  });
+};

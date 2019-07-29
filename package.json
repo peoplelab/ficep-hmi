@@ -19,7 +19,7 @@
   },
   "betterScripts": {
     "mocks:start": {
-      "command": "node ./server/mocks.js",
+      "command": "node ./server/mocks.development.js",
       "env": {
         "NODE_ENV": "DEVELOPMENT"
       }

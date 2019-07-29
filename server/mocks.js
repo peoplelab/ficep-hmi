@@ -1,9 +1,13 @@
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mocks = require('../mocks');
 
+// external file for server configuration
+const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
 
-const PORT = 4000;
+
+const { PORT } = SERVER_CONFIG;
 const app = express();
 
 const OPTIONS = {

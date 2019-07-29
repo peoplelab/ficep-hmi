@@ -1,5 +1,12 @@
 const path = require('path');
 const globalVars = require('./config/globals/server');
+const { ServerConfig } = require('./config/plugin/webpack.externals');
+
+
+const config = {
+  "PORT": 4000,
+  "LOG_LEVEL": "debug"
+};
 
 
 module.exports = {
@@ -29,7 +36,8 @@ module.exports = {
     ],
   },
   plugins: [
-    globalVars
+    globalVars,
+    new ServerConfig(ServerConfig.target.mocks, config),
   ],
   resolve: {
     extensions: ['.js', 'json'],

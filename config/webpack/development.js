@@ -2,10 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+const { COMPILE_ENV, NODE_ENV } = process.env;
+
+const devtool = COMPILE_ENV === 'PRODUCTION' ? 'eval-source-map' : 'inline-source-map';
+
+const outputPath = NODE_ENV === 'DEVELOPMENT' ? '../../release/temp' : '../../release/build';
+
+
 module.exports = {
-  entry: ['./src/index.js', 'webpack-hot-middleware/client'],
   output: {
-    path: path.resolve(__dirname, '../../build'),
+    path: path.resolve(__dirname, outputPath),
     filename: 'bundle.js',
     chunkFilename: '[name].js',
     devtoolLineToLine: true,
@@ -15,7 +21,7 @@ module.exports = {
   },
   cache: false,
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool,
   module: {
     rules: [
       {
@@ -36,8 +42,8 @@ module.exports = {
       favicon: './public/favicon.ico',
       filename: 'index.html',
       inject: true,
-      template: './src/index.html',
-      title: 'React example',
+      template: './public/index.html',
+      title: 'Mitrol',
     }),
   ],
   resolve: {

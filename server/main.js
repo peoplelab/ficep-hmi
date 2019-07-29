@@ -1,45 +1,13 @@
-const path = require('path');
 const express = require('express');
-const compression = require('compression');
 const proxy = require('http-proxy-middleware');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-
-// retrive proxy configuraiton
-const proxyConfig = require('./proxy.json');
-
-// retrive webpack configuration
-const config = require('../webpack.config.js');
-
-
-// retrive environment
-const { NODE_ENV } = process.env;
-
-// localhost server port
-const PORT = 3500;
-
-// defined folder where save files on server start
-const contentBase = (NODE_ENV === 'STAGING' || NODE_ENV === 'SYSTEM') ? './dist' : './build';
-
-// add configured webpack compiler
-const compiler = webpack(config);
-
-// init node server
-const app = express();
-
-
-//// enable gzip compression
-//app.use(compression());
 
 
 /// proxy handler (logging requests)
-var proxyOpts = {
-
-    target: proxyConfig[NODE_ENV].target,
+var proxyOpts = ({ URL, LOG_LEVEL }) => ({
+    target: URL,
 
     onProxyReq: function onProxyReq(proxyReq, req, res) {
-        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + proxyOpts.target + proxyReq.path + '\x1b[0m');
+        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + URL + proxyReq.path + '\x1b[0m');
 
     },
     //onError: function onError(err, req, res) {
@@ -47,41 +15,31 @@ var proxyOpts = {
     //    res.status(500);
     //    res.json({ error: 'Error when connecting to remote server.' });
     //},
-    logLevel: 'debug',
+    logLevel: LOG_LEVEL,
     changeOrigin: true,
     secure: true
-};
-const proxyInst = proxy(proxyOpts); // dev dsi
-app.use('/api', proxyInst);
+});
 // end proxy handler
 
-// configure add webpack middleware to integrate webpack with express
-const devMiddleware = webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  contentBase,
-  hot: true,
-  noInfo: true,
-  lazy: false,
-});
-app.use(devMiddleware);
 
-// add webpack hot reloading middleware
-app.use(webpackHotMiddleware(compiler));
+module.exports = (callback_env, { COMPILE_ENV, SERVER_CONFIG }) => {
+  // init node server
+  const app = express();
 
+  // start proxy handler
+  const opts = proxyOpts(SERVER_CONFIG);
+  const proxyInst = proxy(opts);
+  app.use('/api', proxyInst);
 
-// retrive applicaiton entry point
-app.use((req, res) => {
-  res.end(devMiddleware.fileSystem.readFileSync(path.join(config.output.path, 'index.html')));
-});
+  // add environment configuration
+  callback_env(app);
 
+  // start server ...
+  var server = app.listen(SERVER_CONFIG.PORT, function () {
+      var host = server.address().address;
+      var port = server.address().port;
 
-
-
-// start server ...
-var server = app.listen(PORT, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
-    console.log('SERVER NODE: -> Environment ' + NODE_ENV);
-});
+      console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
+      console.log('SERVER NODE: -> Environment ' + COMPILE_ENV);
+  });
+};

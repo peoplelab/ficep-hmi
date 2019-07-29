@@ -1,5 +1,7 @@
 /build/
 /dist/
+/release/
+/temp/
 /node_modules/
 /batch/
 /.vs/

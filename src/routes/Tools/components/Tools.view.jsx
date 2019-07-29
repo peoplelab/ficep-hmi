@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 // -------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------
-// *** NOTA: "COMPONENTS" DOVRÀ DIVENTARE "SYSTEM/COMPONENTS" O "BASE.COMPONENTS", ECC.
+// *** NOTA: "COMPONENTS" DOVRï¿½ DIVENTARE "SYSTEM/COMPONENTS" O "BASE.COMPONENTS", ECC.
 // -------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ import Button from '../../../components/forms/Button';
 import List from '../item/List.item';
 import Details from '../item/Details.item';
 
-import './Tools.style.scss'; 
+import './Tools.style.scss';
 
 
 class ToolsRoute extends PureComponent {
@@ -74,7 +74,7 @@ ToolsRoute.propTypes = {
   callToolDetails: PropTypes.func.isRequired,
   list: PropTypes.arrayOf(PropTypes.object),
   id: PropTypes.number,
-  details: PropTypes.string,
+  details: PropTypes.object,
 };
 
 ToolsRoute.defaultProps = {

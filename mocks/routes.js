@@ -10,42 +10,42 @@ const url = {
 module.exports = [
   {
     "url": url.login,
-    "path": `.${url.login}`,
+    "api": require(`.${url.login}`),
   },
   {
     "url": url.logout,
-    "path": `.${url.logout}`,
+    "api": require(`.${url.logout}`),
   },
   {
     "url": `${url.tools}/attributes/:toolTypeId`,
-    "path": `.${url.tools}/attributes/toolTypeId`,
+    "api": require(`.${url.tools}/attributes/toolTypeId`),
   },
   {
     "url": `${url.tools}/categories`,
-    "path": `.${url.tools}/categories`,
+    "api": require(`.${url.tools}/categories`),
   },
   {
     "url": `${url.tool}/:id`,
-    "path": `.${url.tool}/id`,
+    "api": require(`.${url.tool}/id`),
   },
   {
     "url": url.tools,
-    "path": `.${url.tools}`,
+    "api": require(`.${url.tools}`),
   },
   {
     "url": `${url.tools}/Types/:categoryId`,
-    "path": `.${url.tools}/Types/categoryId`,
+    "api": require(`.${url.tools}/Types/categoryId`),
   },
   {
     "url": url.cultures,
-    "path": `.${url.cultures}`,
+    "api": require(`.${url.cultures}`),
   },
   {
     "url": `${url.cultures}/:id`,
-    "path": `.${url.cultures}/id`,
+    "api": require(`.${url.cultures}/id`),
   },
   {
     "url": url.fnc,
-    "path": `.${url.fnc}`,
+    "api": require(`.${url.fnc}`),
   },
 ];

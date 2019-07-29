@@ -2,15 +2,20 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+const { COMPILE_ENV } = process.env;
+
+const devtool = COMPILE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map';
+
+
 module.exports = {
-  entry: ['./src/index.js'],
   output: {
-    path: path.resolve(__dirname, '../../dist'),
+    path: path.resolve(__dirname, '../../release/dist'),
     filename: '[hash].js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',
   },
   mode: 'production',
+  devtool,
   module: {
     rules: [
       {
@@ -33,8 +38,8 @@ module.exports = {
       inject: true,
       hash: true,
       minify: false,
-      template: './src/index.html',
-      title: 'React example',
+      template: './public/index.html',
+      title: 'Mitrol',
     }),
   ],
 };

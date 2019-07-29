@@ -6,76 +6,62 @@
   "repository": "git@github.com:peoplelab/template-core.git",
   "author": "peoplelab",
   "scripts": {
-    "build:dev": "better-npm-run build:dev",
-    "build:system": "better-npm-run build:system",
-    "build:prod": "better-npm-run build:prod",
     "lint": "eslint **/*.js?(x)",
     "lint:fix": "eslint --fix **/*.js?(x)",
-    "mocks": "better-npm-run mocks",
-    "start:mocks": "better-npm-run start:mocks",
-    "start": "better-npm-run start:dev",
-    "start:staging": "better-npm-run start:staging",
-    "start:system": "better-npm-run start:system",
     "stylelint": "stylelint **/*.scss",
-    "stylelint:fix": "stylelint --fix **/*.scss"
+    "stylelint:fix": "stylelint --fix **/*.scss",
+    "mocks:start": "better-npm-run mocks:start",
+    "mocks:build": "better-npm-run mocks:build",
+    "build": "better-npm-run build",
+    "dist": "better-npm-run dist",
+    "start": "better-npm-run start",
+    "start:mocks": "better-npm-run start:mocks"
   },
   "betterScripts": {
-    "build:dev": {
-      "command": "webpack --progress --colors",
-      "env": {
-        "BABEL_ENV": "dev",
-        "NODE_ENV": "DEVELOPMENT",
-        "COMPILE": "COMPILE"
-      }
-    },
-    "build:system": {
-      "command": "webpack --progress --colors",
-      "env": {
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "SYSTEM"
-      }
-    },
-    "build:prod": {
-      "command": "webpack --progress --colors --optimize-minimize",
-      "env": {
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "PRODUCTION",
-        "COMPILE": "COMPILE"
-      }
-    },
-    "mocks": {
+    "mocks:start": {
       "command": "node ./server/mocks.js",
       "env": {
-        "BABEL_ENV": "dev",
-        "NODE_ENV": "MOCKS"
-      }
-    },
-    "start:mocks": {
-      "command": "node ./server/main.js",
-      "env": {
-        "BABEL_ENV": "dev",
-        "NODE_ENV": "MOCKS"
-      }
-    },
-    "start:dev": {
-      "command": "node ./server/main.js",
-      "env": {
-        "BABEL_ENV": "dev",
         "NODE_ENV": "DEVELOPMENT"
       }
     },
-    "start:staging": {
-      "command": "node ./server/main.js",
+    "mocks:build": {
+      "command": "webpack --config \"./webpack.mocks.js\" --progress --colors --optimize-minimize",
       "env": {
-        "BABEL_ENV": "prod",
-        "NODE_ENV": "STAGING"
+        "NODE_ENV": "RELEASE"
       }
     },
-    "start:system": {
-      "command": "node ./server/main.js",
+    "build": {
+      "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
       "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "RELEASE"
+      }
+    },
+    "dist": {
+      "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize",
+      "env": {
+        "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
-        "NODE_ENV": "SYSTEM"
+        "NODE_ENV": "RELEASE"
+      }
+    },
+    "start": {
+      "command": "node ./server/development.js",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MITROL"
+      }
+    },
+    "start:mocks": {
+      "command": "node ./server/development.js",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "NODE_ENV": "DEVELOPMENT",
+        "URL_ENV": "MOCKS"
       }
     }
   },
@@ -98,7 +84,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
-    "@babel/plugin-proposal-class-properties": "7.5.0",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/plugin-proposal-export-namespace-from": "7.5.2",
     "@babel/plugin-proposal-throw-expressions": "7.2.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",

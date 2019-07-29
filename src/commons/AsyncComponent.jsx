@@ -5,9 +5,9 @@ import React, { Component as ReactComponent } from 'react';
  * Handle asynchronous loading of React components
  *
  * Note: if required, it sends Redux store to component
- * @param {object} store Redux store
+ * @param {React} importComponent React async component
  */
-const AsyncComponent = store => /** @param {React} importComponent React async component */ importComponent => (
+const AsyncComponent = importComponent => (
   class extends ReactComponent {
     constructor(props) {
       super(props);
@@ -34,13 +34,6 @@ const AsyncComponent = store => /** @param {React} importComponent React async c
         }
 
         let Component = component.default;
-
-        /**
-         * If store param is defined, inject it into the component
-         */
-        if (typeof store !== 'undefined') {
-          Component = Component(store);
-        }
 
         /**
          * Update the React component handler only when the async component is loaded

@@ -1,7 +1,6 @@
-import AsyncRoute from '../../commons/AsyncRoute';
 import Component from './components/Cultures.index';
 import reducers from './controllers/Cultures.reducers';
-import watcher from './controllers/Cultures.watchers';
+import watchers from './controllers/Cultures.watchers';
 
 
 /**
@@ -10,4 +9,4 @@ import watcher from './controllers/Cultures.watchers';
 const KEY = 'Cultures';
 
 
-export default AsyncRoute(Component, KEY, reducers, watcher);
+export { Component, KEY, reducers, watchers };

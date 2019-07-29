@@ -1,5 +1,5 @@
 import {
-  all, fork, takeEvery
+  fork, takeEvery
 } from 'redux-saga/effects';
 import { types } from './Cultures.actions';
 import {
@@ -34,8 +34,4 @@ const list = [
   fork(watchCallCulturePut),
 ];
 
-function* root() {
-  yield all(list);
-}
-
-export default root;
+export default list;

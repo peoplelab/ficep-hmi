@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducers.index';
 import sagas from './watchers/watchers.index';
 import { injectAsyncReducers, reducerConstructor } from '../commons/reducers';
-// import SagaHandler from '../commons/sagas';
+import SagasHandler from '../commons/sagas.handler';
 
 
 const storeConstructor = (initialState = {}) => {
@@ -35,8 +35,8 @@ const storeConstructor = (initialState = {}) => {
   store.injectReducers = injectAsyncReducers(store, reducers);
 
   // Handle sagas
-  store.sagaRun = saga.run;
-  store.sagaRun(sagas);
+  store.saga = new SagasHandler(saga);
+  store.saga.run('global', sagas);
 
   // Hot loader
   if (module.hot) {

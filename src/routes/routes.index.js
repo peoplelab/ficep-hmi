@@ -5,7 +5,8 @@
 // Path: /src/routes
 //----------------------------------------------------------------------------------------
 
-import AsyncComponent from '../commons/AsyncComponent';
+// import AsyncComponent from '../commons/AsyncComponent';
+import AsyncRoute from '../commons/AsyncRoute';
 
 /**
  * Inject the store into the routes and retur a map of their.
@@ -24,7 +25,7 @@ const createRoutes = store => ({
       key: 'home',
       exact: true,
       //component: Home,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Home" */ './Home/Home.index')),
+      component: AsyncRoute(store)(() => import(/* webpackChunkName: "Home" */ './Home/Home.index')),
     },
     // {
     //   path: '/test-model',
@@ -42,7 +43,7 @@ const createRoutes = store => ({
       path: '/login',
       key: 'login',
       exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Login" */ './Login/Login.index')),
+      component: AsyncRoute(store)(() => import(/* webpackChunkName: "Login" */ './Login/Login.index')),
     },
   ],
   /**
@@ -59,13 +60,13 @@ const createRoutes = store => ({
       path: '/tools',
       key: 'tools',
       exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
+      component: AsyncRoute(store)(() => import(/* webpackChunkName: "Tools" */ './Tools/Tools.index')),
     },
     {
       path: '/cultures',
       key: 'cultures',
       exact: true,
-      component: AsyncComponent(store)(() => import(/* webpackChunkName: "Cultures" */ './Cultures/Cultures.index')),
+      component: AsyncRoute(store)(() => import(/* webpackChunkName: "Cultures" */ './Cultures/Cultures.index')),
     },
   ],
   /**
@@ -81,6 +82,6 @@ const createRoutes = store => ({
    */
   external: [],
 });
- 
+
 
 export default createRoutes;

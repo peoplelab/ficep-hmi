@@ -1,5 +1,5 @@
 import {
-  all, fork, takeEvery
+  fork, takeEvery
 } from 'redux-saga/effects';
 import { types as typesApi } from '../../../store/actions/session.actions';
 import { setCallLogin } from './Login.controller';
@@ -22,12 +22,4 @@ const list = [
   fork(watchCallLogin),
 ];
 
-
-/**
- * Run all watchers threads in parallel
- */
-function* root() {
-  yield all(list);
-}
-
-export default root;
+export default list;

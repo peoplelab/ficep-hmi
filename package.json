@@ -13,22 +13,40 @@
 
     "mocks": "node ./server/mocks.js",
 
-    "build": "better-npm-run build",
-    "dist": "better-npm-run dist",
+    "build:mocks": "better-npm-run build:mocks",
+    "build": "better-npm-run build:dev",
+    "dist:mocks": "better-npm-run dist:mocks",
+    "dist": "better-npm-run dist:prod",
 
     "start:mocks": "better-npm-run start:mocks",
     "start": "better-npm-run start:dev"
   },
   "betterScripts": {
-    "build": {
+    "build:mocks": {
       "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors && webpack --config \"./webpack.mocks.js\" --progress --colors",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "URL_ENV": "MOCKS"
+      }
+    },
+    "build:dev": {
+      "command": "webpack --progress --colors && webpack --config \"./webpack.server.js\" --progress --colors",
+      "env": {
+        "COMPILE_ENV": "DEVELOPMENT",
+        "BABEL_ENV": "dev",
+        "URL_ENV": "MITROL"
+      }
+    },
+    "dist:mocks": {
+      "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize && webpack --config \"./webpack.mocks.js\" --progress --colors --optimize-minimize",
       "env": {
         "COMPILE_ENV": "PRODUCTION",
         "BABEL_ENV": "prod",
         "URL_ENV": "MOCKS"
       }
     },
-    "dist": {
+    "dist:prod": {
       "command": "webpack --progress --colors --optimize-minimize && webpack --config \"./webpack.server.js\" --progress --colors --optimize-minimize",
       "env": {
         "COMPILE_ENV": "PRODUCTION",

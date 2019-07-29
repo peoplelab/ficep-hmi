@@ -5,19 +5,15 @@ const proxy = require('http-proxy-middleware');
 // external file for server configuration
 const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
 
-// retrive proxy configuraiton
-const proxyConfig = require('./proxy.json');
-
 // localhost server port
 const PORT = SERVER_CONFIG.PORT;
 
 /// proxy handler (logging requests)
-var proxyOpts = URL_ENV => ({
-
-    target: proxyConfig[URL_ENV].target,
+var proxyOpts = {
+    target: SERVER_CONFIG.URL,
 
     onProxyReq: function onProxyReq(proxyReq, req, res) {
-        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + proxyConfig[URL_ENV].target + proxyReq.path + '\x1b[0m');
+        console.log('\x1b[36m--> PROXYING REQUEST: ' + req.method + ' ' + req.path + ' to ' + SERVER_CONFIG.URL + proxyReq.path + '\x1b[0m');
 
     },
     //onError: function onError(err, req, res) {
@@ -28,17 +24,16 @@ var proxyOpts = URL_ENV => ({
     logLevel: SERVER_CONFIG.LOG_LEVEL,
     changeOrigin: true,
     secure: true
-});
+};
 // end proxy handler
 
 
-module.exports = (callback_env, { COMPILE_ENV, URL_ENV }) => {
+module.exports = (callback_env, { COMPILE_ENV }) => {
   // init node server
   const app = express();
 
   // start proxy handler
-  const opts = proxyOpts(URL_ENV);
-  const proxyInst = proxy(opts);
+  const proxyInst = proxy(proxyOpts);
   app.use('/api', proxyInst);
 
   // add environment configuration

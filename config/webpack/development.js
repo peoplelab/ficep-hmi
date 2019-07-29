@@ -2,14 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const { COMPILE_ENV } = process.env;
+const { COMPILE_ENV, NODE_ENV } = process.env;
 
 const devtool = COMPILE_ENV === 'PRODUCTION' ? 'eval-source-map' : 'inline-source-map';
+
+const outputPath = NODE_ENV === 'DEVELOPMENT' ? '../../temp/app' : '../../build/app/';
 
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, '../../temp/client_dist'),
+    path: path.resolve(__dirname, outputPath),
     filename: 'bundle.js',
     chunkFilename: '[name].js',
     devtoolLineToLine: true,

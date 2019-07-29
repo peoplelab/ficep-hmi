@@ -60,4 +60,4 @@ const prodServer = (app) => {
 
 
 // run production server
-server(prodServer, { COMPILE_ENV: COMPILE, URL_ENV: URL });
+server(prodServer, { COMPILE_ENV: COMPILE });

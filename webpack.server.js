@@ -3,18 +3,26 @@ const globalVars = require('./config/globals/server');
 const { ServerConfig } = require('./config/plugin/webpack.externals');
 
 
-const { URL_ENV } = process.env;
+const { COMPILE_ENV } = process.env;
 
-let pathOutput;
+const config = {
+  "PORT": 3500,
+  "URL": URL,
+  "MOCKS": 'localhost:4000',
+  "SERVER": 'http://192.168.11.40:4000',
+  "LOG_LEVEL": "debug"
+};
+
 let devtool;
 let mode;
+let outputPath;
 
-if (URL_ENV === 'MITROL') {
-  pathOutput = path.resolve(__dirname, './dist');
+if (COMPILE_ENV === 'PRODUCTION') {
+  outputPath = '../../dist/app';
   devtool = 'source-map';
   mode = 'production';
 } else {
-  pathOutput = path.resolve(__dirname, './build/app');
+  outputPath = '../../build/app';
   devtool = 'inline-source-map';
   mode = 'development';
 }
@@ -23,7 +31,7 @@ if (URL_ENV === 'MITROL') {
 module.exports = {
   entry: ['./server/production.js'],
   output: {
-    path: pathOutput,
+    path: path.resolve(__dirname, outputPath),
     filename: 'server.js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',
@@ -48,7 +56,7 @@ module.exports = {
   },
   plugins: [
     globalVars,
-    new ServerConfig(),
+    new ServerConfig(ServerConfig.target.app, config),
   ],
   resolve: {
     extensions: ['.js', 'json'],

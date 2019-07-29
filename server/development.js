@@ -8,7 +8,7 @@ const server = require('./main');
 // retrive webpack configuration
 const config = require('../webpack.config.js');
 // retrive environment
-const { COMPILE_ENV, URL_ENV } = process.env;
+const { COMPILE_ENV } = process.env;
 
 // defined folder where save files on server start
 const contentBase = 'temp';
@@ -42,4 +42,4 @@ const devServer = (app) => {
 
 
 // run development server
-server(devServer, { COMPILE_ENV, URL_ENV });
+server(devServer, { COMPILE_ENV });

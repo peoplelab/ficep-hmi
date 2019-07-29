@@ -2,20 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const { COMPILE_ENV, URL_ENV } = process.env;
-
-const pathOutput = (
-  URL_ENV === 'MITROL'
-  ? path.resolve(__dirname, '../../dist')
-  : path.resolve(__dirname, '../../build/app')
-);
+const { COMPILE_ENV } = process.env;
 
 const devtool = COMPILE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map';
 
 
 module.exports = {
   output: {
-    path: pathOutput,
+    path: path.resolve(__dirname, '../../dist/app'),
     filename: '[hash].js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',

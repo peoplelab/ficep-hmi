@@ -2,19 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 
-const { COMPILE_ENV, NODE_ENV } = process.env;
-
-let outputPath;
-if (NODE_ENV === 'DEVELOPMENT') {
-  outputPath = './temp';
-} else if (COMPILE_ENV === 'PRODUCTION') {
-  outputPath = './dist';
-}else {
-  outputPath = './build';
-}
+const { COMPILE_ENV } = process.env;
 
 const target = {
-  app: './app',
+  app: COMPILE_ENV === 'PRODUCTION' ? './dist' : './build',
   mocks: './mocks',
 };
 
@@ -25,7 +16,7 @@ class ServerConfig {
   }
 
   constructor(target, config) {
-    this.path = path.resolve(__dirname, '../..', outputPath, target, './server.config.json');
+    this.path = path.resolve(__dirname, '../../release', target, './server.config.json');
 
     this.data = JSON.stringify(config);
   }
@@ -51,4 +42,4 @@ class ServerConfig {
 
 module.exports = {
   ServerConfig,
-}
+};

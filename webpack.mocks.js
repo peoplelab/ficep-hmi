@@ -12,7 +12,7 @@ const config = {
 module.exports = {
   entry: './server/mocks.js',
   output: {
-    path: path.resolve(__dirname, './build/mocks'),
+    path: path.resolve(__dirname, './release/mocks'),
     filename: 'mocks.js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',

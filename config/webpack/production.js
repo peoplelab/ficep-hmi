@@ -9,7 +9,7 @@ const devtool = COMPILE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, '../../dist/app'),
+    path: path.resolve(__dirname, '../../release/dist'),
     filename: '[hash].js',
     chunkFilename: '[chunkhash].js',
     publicPath: '/',

@@ -6,7 +6,7 @@ const { COMPILE_ENV, NODE_ENV } = process.env;
 
 const devtool = COMPILE_ENV === 'PRODUCTION' ? 'eval-source-map' : 'inline-source-map';
 
-const outputPath = NODE_ENV === 'DEVELOPMENT' ? '../../temp/app' : '../../build/app/';
+const outputPath = NODE_ENV === 'DEVELOPMENT' ? '../../release/temp' : '../../release/build';
 
 
 module.exports = {

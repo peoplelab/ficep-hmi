@@ -7,9 +7,7 @@ const { COMPILE_ENV } = process.env;
 
 const config = {
   "PORT": 3500,
-  "URL": URL,
-  "MOCKS": 'localhost:4000',
-  "SERVER": 'http://192.168.11.40:4000',
+  "URL": COMPILE_ENV === 'PRODUCTION' ? 'http://192.168.11.40:4000' : 'http://localhost:4000',
   "LOG_LEVEL": "debug"
 };
 
@@ -18,11 +16,11 @@ let mode;
 let outputPath;
 
 if (COMPILE_ENV === 'PRODUCTION') {
-  outputPath = '../../dist/app';
+  outputPath = './release/dist';
   devtool = 'source-map';
   mode = 'production';
 } else {
-  outputPath = '../../build/app';
+  outputPath = './release/build';
   devtool = 'inline-source-map';
   mode = 'development';
 }

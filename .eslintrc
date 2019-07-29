@@ -5,7 +5,6 @@
     "__STORE": "writable",
     "COMPILE": "readonly",
     "IS_PRODUCTION": "readonly",
-    "URL": "readonly"
   },
   "env": {
     "browser": true,

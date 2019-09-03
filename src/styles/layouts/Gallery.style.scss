@@ -1,0 +1,65 @@
+/** @define gallery */
+
+@import '../colors.scss';
+
+.gallery {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .gallery__box-arrow {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 3rem;
+
+    // &--prev {
+
+    // }
+
+    // &--next {
+
+    // }
+
+    .gallery__button {
+      background-color: $bg-white;
+      cursor: pointer;
+      flex: none;
+      height: 3rem;
+      width: 3rem;
+
+      .gallery__button-icon {
+        width: 100%;
+      }
+    }
+  }
+
+  .gallery__box-slides {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: calc(100% - (3rem * 2));
+
+    .gallery__slides-tape {
+      align-items: flex-start;
+      display: flex;
+      position: absolute;
+      top: 0;
+      white-space: nowrap;
+
+      .gallery__slide {
+        align-items: flex-start;
+        display: inline-flex;
+        flex: none;
+        white-space: nowrap;
+
+        .gallery__slide-item {
+          display: inline-block;
+          flex: none;
+        }
+      }
+    }
+  }
+}

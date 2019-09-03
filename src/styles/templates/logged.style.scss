@@ -1,0 +1,37 @@
+// Style of private routes template
+
+@import '../colors.scss';
+
+/** @define logged */
+
+.logged {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+
+  .logged__nav {
+    background-color: $light-grey;
+    border-right: 0.125rem solid $dark-grey;
+    height: 100%;
+    width: 7.5rem;
+
+    .logged__list {
+      width: 100%;
+
+      .logged__item {
+        display: table;
+        width: 100%;
+
+        .logged__anchor {
+          display: table-cell;
+        }
+      }
+    }
+  }
+
+  .logged__route {
+    flex: 1;
+    overflow: auto;
+  }
+}

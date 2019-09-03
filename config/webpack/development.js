@@ -1,3 +1,11 @@
+//----------------------------------------------------------------------------------------
+// File: development.js
+//
+// Desc: File di configurazione di webpack per i rilasci in ambiente di sviluppo
+// Path: /src/config/webpack/development
+//----------------------------------------------------------------------------------------
+
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -12,10 +20,10 @@ const outputPath = NODE_ENV === 'DEVELOPMENT' ? '../../release/temp' : '../../re
 module.exports = {
   output: {
     path: path.resolve(__dirname, outputPath),
-    filename: 'bundle.js',
-    chunkFilename: '[name].js',
+    filename: 'scripts/bundle.js',
+    chunkFilename: 'scripts/[name].js',
     devtoolLineToLine: true,
-    sourceMapFilename: '[name].js.map',
+    sourceMapFilename: 'map/[name].js.map',
     pathinfo: true,
     publicPath: '/',
   },
@@ -25,12 +33,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
+              outputPath: 'images',
             },
           },
         ],

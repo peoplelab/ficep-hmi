@@ -1,22 +1,28 @@
-import React, { PureComponent } from 'react';
+//----------------------------------------------------------------------------------------
+// File: Option.jsx
+//
+// Desc: Componente form contenente i dati di una singola opzione di una lista select
+// Path: /src/components/forms/Option
+//----------------------------------------------------------------------------------------
+
+
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 
 
-class Option extends PureComponent {
-  render() {
-    const {
-      message,
-      value,
-    } = this.props;
+const Option = (props) => {
+  const {
+    message,
+    value,
+  } = props;
 
-    return (
-      <option value={value}>
-        {message}
-      </option>
-    );
-  }
-}
+  return (
+    <option value={value}>
+      {message}
+    </option>
+  );
+};
 
 
 Option.propTypes = {
@@ -28,4 +34,4 @@ Option.defaultProps = {
 };
 
 
-export default Option;
+export default memo(Option);

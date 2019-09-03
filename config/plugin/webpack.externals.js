@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------------------------------------
+// File: webpack.externals.js
+//
+// Desc: File di configurazione di webpack per la creazione di un file di configurazione esterna post rilascio
+// Path: /src/config/plugin/webpack.externals
+//------------------------------------------------------------------------------------------------------------
+
+
 const fs = require('fs');
 const path = require('path');
 

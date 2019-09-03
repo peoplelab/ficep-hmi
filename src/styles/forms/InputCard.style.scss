@@ -1,0 +1,65 @@
+/** @define input-card */
+
+@import '../colors.scss';
+
+.input-card {
+  align-items: center;
+  background-color: $bg-light-grey;
+  border-radius: 0.25rem;
+  display: flex;
+  height: 3.5rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100%;
+
+  .input-card__card {
+    flex: 1;
+    height: 100%;
+
+    /* stylelint-disable plugin/selector-bem-pattern */
+    .login-card__button {
+      align-items: flex-start;
+      cursor: initial;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
+    }
+    .login-card__box {
+      padding: 0;
+
+      &:nth-of-type(1) {
+        flex: none;
+        width: 2.5rem;
+
+        .login-card__picture {
+          height: 2.5rem;
+          width: 2.5rem;
+        }
+      }
+      &:nth-of-type(2) {
+        flex: 1;
+        padding: 0 0.5rem 0;
+      }
+      &:nth-of-type(3) {
+        flex: none;
+        padding: 0.5rem 0.5rem 0 3rem;
+        width: 100%;
+      }
+    }
+    /* stylelint-enable plugin/selector-bem-pattern */
+  }
+
+  .input-card__reset {
+    background-color: transparent;
+    cursor: pointer;
+    flex: none;
+    width: 1.5rem;
+
+    .input-card__reset-icon {
+      width: 100%;
+    }
+  }
+}

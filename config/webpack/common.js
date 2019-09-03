@@ -1,10 +1,18 @@
+//----------------------------------------------------------------------------------------
+// File: common.js
+//
+// Desc: File di configurazione di webpack comune a tutti gli ambienti di rilascio
+// Path: /src/config/webpack/common
+//----------------------------------------------------------------------------------------
+
+
 const { HotModuleReplacementPlugin } = require('webpack');
-const globalVars = require('../globals/client');
+const globalVars = require('../global/client');
 
 
-const { COMPILE_ENV } = process.env;
+const { NODE_ENV } = process.env;
 
-const entry = COMPILE_ENV === 'PRODUCTION' ? ['./src/index.js'] : ['./src/index.js', 'webpack-hot-middleware/client'];
+const entry = NODE_ENV === 'RELEASE' ? ['./src/index.js'] : ['./src/index.js', 'webpack-hot-middleware/client'];
 
 
 module.exports = {
@@ -58,6 +66,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'url-loader',

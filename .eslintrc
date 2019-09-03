@@ -26,7 +26,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "rules": {
     "semi": [
@@ -56,5 +57,13 @@
     "react/jsx-indent-props": "off",
     "react/jsx-space-before-closing": "off",
     "react/style-prop-object:": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.8.6"
+    },
   }
 }

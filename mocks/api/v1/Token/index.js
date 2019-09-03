@@ -1,26 +1,26 @@
 const moment = require('moment');
+const uuidv1 = require('uuid/v1');
 const responseJSON = require('./response.json');
 
 
 const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSSZ';
 
+const RESPONSE = UserName => ({
+  ...responseJSON[UserName],
+  culture: global.login.culture,
+  expiredAt: global.login.expiredAt,
+  issuedAt: global.login.issuedAt,
+  refreshExpiredAt: global.login.refreshExpiredAt,
+  refreshToken: global.login.refreshToken,
+});
 
-const RESPONSE = {
-  200: UserName => ({
-    ...responseJSON[UserName],
-    culture: global.login.culture,
-    expiredAt: global.login.expiredAt,
-    issuedAt: global.login.issuedAt,
-    refreshExpiredAt: global.login.refreshExpiredAt,
-  }),
-  400: {
-    default: "invalidGrantType",
-    Password: "InvalidUserName",
-    RefreshToken: "invalidRefreshToken",
-    Request: "InvalidRequest",
-    Timeout: "sessionExpired",
-  }
+const setGlobalTime = () => {
+  const now = moment();
+  global.login.issuedAt = now.format(FORMAT);
+  global.login.expiredAt = now.clone().add('1', 'm').format(FORMAT);
+  global.login.refreshExpiredAt = now.clone().add('2', 'm').format(FORMAT);
 };
+
 
 module.exports = {
   POST: (req, res) => {
@@ -38,45 +38,46 @@ module.exports = {
 
     switch(GrantType) {
       case 'Password': {
-        if (UserName in global.login.username && Password === global.login.password && !!IP && !!Culture) {
+        if (!Culture || !IP || !Password || !UserName) {
+          status = 400;
+          response = 'InvalidRequest';
+        } else if (!(global.login.username.includes(UserName)) || Password !== global.login.password) {
+          status = 400;
+          response = 'InvalidRequest';
+        } else {
+          global.login.refreshToken = uuidv1();
+
           global.login.culture = Culture;
           global.login.ip = IP;
 
-          const now = moment();
-          global.login.issuedAt = now.format(FORMAT);
-          global.login.expiredAt = now.clone().add('3', 'm').format(FORMAT);
-          global.login.refreshExpiredAt = now.clone().add('5', 'm').format(FORMAT);
+          setGlobalTime();
 
           status = 200;
-          response = RESPONSE[200](UserName);
-        } else if (!IP || !Culture) {
-          status = 400;
-          response = RESPONSE[400].Request;
-        } else {
-          status = 400;
-          response = RESPONSE[400].Password;
+          response = RESPONSE(UserName);
         }
+
         break;
       }
       case 'RefreshToken': {
-        const now = moment();
-        const refreshExpiredAt = global.login.refreshExpiredAt !== null && moment(global.login.refreshExpiredAt, FORMAT);
-
-        if (RefreshToken!== global.login.refreshToken || !refreshExpiredAt) {
+        if (!RefreshToken) {
           status = 400;
-          response = RESPONSE[400].RefreshToken;
-        } else if (!(now.isBefore(refreshExpiredAt))) {
+          response = 'InvalidRequest';
+        } else if (RefreshToken !== global.login.refreshToken) {
           status = 400;
-          response = RESPONSE[400].Timeout;
+          response = 'InvalidRequest';
         } else {
+          global.login.refreshToken = uuidv1();
+          setGlobalTime();
+
           status = 200;
-          response = RESPONSE[200]();
+          response = RESPONSE(UserName);
         }
+
         break;
       }
       default: {
         status = 400;
-        response = RESPONSE[400].default;
+        response = 'invalidGrantType';
       }
     }
 

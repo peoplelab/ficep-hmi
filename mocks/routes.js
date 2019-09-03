@@ -13,12 +13,16 @@ module.exports = [
     "api": require(`.${url.login}`),
   },
   {
+    "url": `${url.login}/latest/:ip/:numerOfLogins`,
+    "api": require(`.${url.login}/latest`),
+  },
+  {
     "url": url.logout,
     "api": require(`.${url.logout}`),
   },
   {
     "url": `${url.tools}/attributes/:toolTypeId`,
-    "api": require(`.${url.tools}/attributes/toolTypeId`),
+    "api": require(`.${url.tools}/attributes`),
   },
   {
     "url": `${url.tools}/categories`,
@@ -26,7 +30,7 @@ module.exports = [
   },
   {
     "url": `${url.tool}/:id`,
-    "api": require(`.${url.tool}/id`),
+    "api": require(`.${url.tool}`),
   },
   {
     "url": url.tools,
@@ -34,7 +38,7 @@ module.exports = [
   },
   {
     "url": `${url.tools}/Types/:categoryId`,
-    "api": require(`.${url.tools}/Types/categoryId`),
+    "api": require(`.${url.tools}/Types`),
   },
   {
     "url": url.cultures,
@@ -42,10 +46,6 @@ module.exports = [
   },
   {
     "url": `${url.cultures}/:id`,
-    "api": require(`.${url.cultures}/id`),
-  },
-  {
-    "url": url.fnc,
-    "api": require(`.${url.fnc}`),
+    "api": require(`.${url.cultures}`),
   },
 ];

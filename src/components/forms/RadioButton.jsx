@@ -1,70 +1,44 @@
-import React, { PureComponent } from 'react';
+//---------------------------------------------------------------------------------------------
+// File: RadioButton.jsx
+//
+// Desc: Campo di input per la selezione e la gestione di singoli dati data una scelta multipla
+// Path: /src/components/forms/RadioButton
+//---------------------------------------------------------------------------------------------
+
+
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 
-const typeValue = [
-  PropTypes.bool,
-  PropTypes.number,
-  PropTypes.string,
-];
-
-
-class RadioButton extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(event) {
-    const { onChange } = this.props;
-
-    onChange(event);
-  }
-
-  render() {
+const RadioButton = (props) => {
     const {
-      id,
-      name,
-      checked,
       className,
-      value,
-      onChange: _onChange, // eslint-disable-line no-unused-vars
+      name,
       ...rest
-    } = this.props;
+    } = props;
 
-    const mergedClass = `input input__radio ${value === '' ? '' : 'input--edited'} ${className}`;
+    const mergedClass = `input input__text ${className}`;
 
     return (
       <input
+        id={name}
+        {...rest}
         className={mergedClass}
         type="radio"
-        id={id || name}
         name={name}
-        value={value}
-        checked={checked}
-        onChange={this.onChange}
-        {...rest}
       />
     );
-  }
-}
+  };
 
 
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType(typeValue).isRequired,
-  checked: PropTypes.bool,
-  id: PropTypes.string,
   className: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
 };
 
 RadioButton.defaultProps = {
-  checked: false,
-  id: '',
   className: '',
 };
 
 
-export default RadioButton;
+export default memo(RadioButton);

@@ -19,7 +19,7 @@
   },
   "betterScripts": {
     "mocks:start": {
-      "command": "node ./server/mocks.development.js",
+      "command": "nodemon ./server/mocks.development.js",
       "env": {
         "NODE_ENV": "DEVELOPMENT"
       }
@@ -47,7 +47,7 @@
       }
     },
     "start": {
-      "command": "node ./server/app.development.js",
+      "command": "nodemon ./server/app.development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
@@ -56,7 +56,7 @@
       }
     },
     "start:mocks": {
-      "command": "node ./server/app.development.js",
+      "command": "nodemon ./server/app.development.js",
       "env": {
         "COMPILE_ENV": "DEVELOPMENT",
         "BABEL_ENV": "dev",
@@ -67,10 +67,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "16.8.6",
-    "history": "4.9.0",
-    "immutable": "4.0.0-rc.12",
     "prop-types": "15.7.2",
-    "ramda": "0.26.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-hot-loader": "4.12.6",
@@ -78,9 +75,7 @@
     "react-redux": "7.1.0",
     "react-router": "5.0.1",
     "react-router-dom": "5.0.1",
-    "redux": "4.0.4",
-    "redux-saga": "1.0.5",
-    "reselect": "4.0.0"
+    "redux": "4.0.4"
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
@@ -105,12 +100,14 @@
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.14.2",
+    "eslint-plugin-react-hooks": "1.6.1",
     "express": "4.17.1",
+    "express-http-proxy": "1.5.1",
     "file-loader": "4.0.0",
     "html-webpack-plugin": "3.2.0",
-    "http-proxy-middleware": "0.19.1",
     "moment": "2.24.0",
     "node-sass": "4.12.0",
+    "nodemon": "1.19.1",
     "postcss": "7.0.17",
     "postcss-loader": "3.0.0",
     "sass-loader": "7.1.0",
@@ -119,6 +116,7 @@
     "stylelint-scss": "3.9.1",
     "stylelint-selector-bem-pattern": "2.1.0",
     "url-loader": "2.0.1",
+    "uuid": "3.3.3",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.6",
     "webpack-dev-middleware": "3.7.0",

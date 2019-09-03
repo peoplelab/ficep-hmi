@@ -1,5 +1,13 @@
+//----------------------------------------------------------------------------------------
+// File: webpack.server.js
+//
+// Desc: Entry point del file di configurazione di webpack per l'applicativo lato server
+// Path: /src/webpack.server
+//----------------------------------------------------------------------------------------
+
+
 const path = require('path');
-const globalVars = require('./config/globals/server');
+const globalVars = require('./config/global/server');
 const { ServerConfig } = require('./config/plugin/webpack.externals');
 
 
@@ -7,8 +15,8 @@ const { COMPILE_ENV } = process.env;
 
 const config = {
   "PORT": 3500,
-  "URL": COMPILE_ENV === 'PRODUCTION' ? 'http://192.168.11.40:4000' : 'http://localhost:4000',
-  "LOG_LEVEL": "debug"
+  "URL": COMPILE_ENV === 'PRODUCTION' ? 'http://172.30.57.26:4000' : 'http://localhost:4000',
+  "LOG_LEVEL": COMPILE_ENV === 'PRODUCTION' ? 'none' : 'debug'
 };
 
 let devtool;

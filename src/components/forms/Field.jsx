@@ -1,42 +1,63 @@
-import React, { PureComponent } from 'react';
+//----------------------------------------------------------------------------------------
+// File: Field.jsx
+//
+// Desc: Container layout per i campi delle form
+// Path: /src/components/forms/Field
+//----------------------------------------------------------------------------------------
+
+
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box/Box.index';
+import Box from '../layouts/Box';
 
 
-/**
- * Form field
- */
-class Field extends PureComponent {
-  render() {
-    const {
-      children,
-      className,
-      label,
-    } = this.props;
+const Field = (props) => {
+  const {
+    children,
+    className,
+    label,
+  } = props;
 
-    const mergedClass = `field ${className}`;
+  const mergedClass = `field ${className}`;
 
-    return (
-      <Box className={mergedClass}>
-        <label className="field__label">
+  // recupera l'id del campo e aggiunge una nuova classe (children deve contenere un solo componente)
+  let id = undefined;
+  const newChildern = React.Children.map(children, child => {
+    if (!(React.isValidElement(child))) {
+      return;
+    }
+
+    ({ id } = child.props);
+
+    const { className } = child.props;
+
+    return React.cloneElement(child, { className: `field__input ${className}` });
+  });
+
+
+  return (
+    <Box className={mergedClass}>
+      {label && (
+        <label className="field__label" htmlFor={id}>
           {label}
         </label>
-        {children}
-      </Box>
-    );
-  }
-}
+      )}
+      {newChildern}
+    </Box>
+  );
+};
 
 
 Field.propTypes = {
-  children: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
+  label: PropTypes.string,
   className: PropTypes.string,
 };
 
 Field.defaultProps = {
   className: '',
+  label: '',
 };
 
 
-export default Field;
+export default memo(Field);

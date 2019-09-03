@@ -1,0 +1,126 @@
+// Style own of login route
+
+
+@import '../colors.scss';
+
+
+/** @define login */
+
+.login {
+  height: 100vh;
+  display: block;
+  width: 100vw;
+
+  .login__dialog {
+    left: 50%;
+    padding: 4rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .login__form {
+    width: 100%;
+
+    .login__title {
+      color: $text-dark-grey;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 0 1rem;
+      padding: 0 3rem;
+    }
+
+    .login__form-box {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 0 0 3rem;
+      padding: 0 3rem;
+
+      .login__field {
+        flex: 1;
+        margin: 0 2rem 0 0;
+
+        .login__text-input:not(.input-card),
+        .login__select-input {
+          border: $border-light-grey solid 0.125rem;
+          border-radius: 0.25rem;
+          color: $text-dark-grey;
+          font-size: 1rem;
+          height: 3.5rem;
+          padding: 0.5rem;
+          width: 100%;
+
+          &:focus {
+            border: $border-dark-grey solid 0.125rem;
+          }
+        }
+      }
+
+      .login__form-submit {
+        border-radius: 0.25rem;
+        color: $text-dark-grey;
+        flex: 0.5;
+        font-size: 1rem;
+        height: 3.75rem;
+
+        &:disabled {
+          background-color: $bg-light-grey;
+        }
+
+        &:enabled {
+          background-color: $bg-light-grey-red;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $grey-red;
+          }
+        }
+      }
+    }
+
+    .login__form-gallery {
+      height: 22rem;
+      width: 100%;
+
+      /* stylelint-disable plugin/selector-bem-pattern */
+      .gallery__box-slides {
+        .gallery__slides-tape {
+          width: 100%;
+
+          .gallery__slide {
+            width: 100%;
+
+            .gallery__slide-item {
+              height: 22rem;
+              margin: 0 calc((100% - (3 * 24rem)) / 2) 0 0;
+              width: 24rem;
+            }
+          }
+        }
+      }
+      /* stylelint-enable plugin/selector-bem-pattern */
+    }
+  }
+
+  .login__error {
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+
+    .login__error-alert {
+      background-color: $bg-red;
+      margin-top: 1rem;
+      padding: 1rem;
+
+      .login__error-message {
+        color: $text-white;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

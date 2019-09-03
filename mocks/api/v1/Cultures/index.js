@@ -1,52 +1,17 @@
 const responseJSON = require('./response.json');
+const { base } = require('../../../mock.base');
 
 module.exports = {
   GET: (req, res) => {
     res.status(200).json(responseJSON.GET);
   },
-  POST: (req, res) => {
-    const { authorization, session } = req.headers;
-
-    let status;
-    let response;
-
-    if (!authorization || !session) {
-      status = 401;
-      response = 'unauthorized';
-    } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
-      status = 200;
-      response = 25;
-    } else {
-      status = 400;
-      response = 'invalidRequest';
-    }
-
-
-    res.status(status).json(response);
-  },
-  PUT: (req, res) => {
-    const { authorization, session } = req.headers;
-    const { id } = req.body;
-
-    let status;
-    let response;
-
-    if (!authorization || !session) {
-      status = 401;
-      response = 'unauthorized';
-    } else if (authorization === global.logged.accessToken && session === global.logged.sessionId) {
-      if (parseInt(id) > 6) {
-        status = 200;
-        response = false;
-      } else {
-        status = 200;
-        response = true;
-      }
-    } else {
-      status = 400;
-      response = 'invalidRequest';
-    }
-
-    res.status(status).json(response);
-  }
+  POST: base(
+    () => 25
+  ),
+  DELETE: base(
+    req => req.params.id > 6
+  ),
+  PUT: base(
+    req => parseInt(req.body.id) <= 6
+  )
 };

@@ -1,8 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const server = require('./app.main');
+//--------------------------------------------------------------------------------------------------------------
+// File: app.development.js
+//
+// Desc: File di configurazione del server dell'applicativo per l'emulazione dell'ambiente di sviluppo in locale
+// Path: /src/server/app.development
+//--------------------------------------------------------------------------------------------------------------
+
+
+const express = require('express');
+const { proxyMiddleware } = require('./app/app.proxy');
+const { devMiddleware, hotMiddleware, entryPointMiddleware } = require('./app/app.webpack');
 
 
 const { URL_ENV, COMPILE_ENV } = process.env;
@@ -10,44 +16,33 @@ const { URL_ENV, COMPILE_ENV } = process.env;
 // server configuration object
 const SERVER_CONFIG = {
   PORT: 3500,
-  URL: URL_ENV === 'MITROL' ? 'http://192.168.11.40:4000' : 'http://localhost:4000',
+  URL: URL_ENV === 'MITROL' ? 'http://172.30.57.26:4000' : 'http://localhost:4000',
   LOG_LEVEL: 'debug',
 };
 
 
-// retrive webpack configuration
-const config = require('../webpack.config.js');
+// init node server
+const app = express();
 
-// defined folder where save files on server start
-const contentBase = 'temp';
+// // start proxy handler
+app.use('/api', proxyMiddleware({ route: '/api', ...SERVER_CONFIG }));
 
-// add configured webpack compiler
-const compiler = webpack(config);
 
-// configure add webpack middleware to integrate webpack with express
-const devMiddleware = webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  contentBase,
-  hot: true,
-  noInfo: true,
-  lazy: false,
+// add webpack integration into express server
+app.use(devMiddleware);
+
+// add webpack hot reloading middleware
+app.use(hotMiddleware);
+
+// retrive applicaiton entry point
+app.use(entryPointMiddleware);
+
+
+// start server ...
+var server = app.listen(SERVER_CONFIG.PORT, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
+  console.log('SERVER NODE: -> Environment ' + COMPILE_ENV);
 });
-
-
-// set dev server
-const devServer = (app) => {
-  app.use(devMiddleware);
-
-  // add webpack hot reloading middleware
-  app.use(webpackHotMiddleware(compiler));
-
-
-  // retrive applicaiton entry point
-  app.use((req, res) => {
-    res.end(devMiddleware.fileSystem.readFileSync(path.join(config.output.path, 'index.html')));
-  });
-};
-
-
-// run development server
-server(devServer, { COMPILE_ENV, SERVER_CONFIG });

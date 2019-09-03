@@ -67,19 +67,13 @@ class MainComponent extends Component {
     // Recupero delle pagine dell'applicativo
     const routes = createRoutes();
 
-    const Primary = routes.primary.map(mapRoutes);                   // Lista delle pagine pubbliche
-    const Logged = isUserLogged && routes.logged.map(mapRoutes);     // Lista delle pagine private
-    // const Secondary = routes.secondary.map(mapRoutes);               // Pagine pubbliche di supporto
-    // const Messages = isUserLogged && routes.messages.map(mapRoutes); // Pagine private di supporto
-    // const External = routes.external.map(mapRoutes);                 // Lista delle landing page esterne all'applicativo
+    const Login = !isUserLogged && mapRoutes(routes.login); // Pagina pubblica di login
+    const Logged = isUserLogged && routes.logged.map(mapRoutes); // Lista delle pagine private
 
     return (
       <Switch>
-        {Primary}
         {Logged}
-        {/* {Secondary} */}
-        {/* {Messages} */}
-        {/* {External} */}
+        {Login}
       </Switch>
     );
   }

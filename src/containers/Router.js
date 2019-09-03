@@ -11,22 +11,19 @@ import lazy from '../components/common/AsyncComponent';
 // Lista delle rotte dell'applicativo
 const createRoutes = () => ({
   // Lista delle pagine pubbliche
-  primary: [
+  // primary: [],
+
+  // Lista delle pagine pubbliche di supporto
+  // secondary: [],
+
+  // Lista delle pagine private
+  logged: [
     {
       path: '/',
       key: 'home',
       exact: true,
       Component: lazy(() => import(/* webpackChunkName: "Home" */ '../components/routes/home/home.container')),
     },
-    {
-      path: '/login',
-      key: 'login',
-      exact: true,
-      Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
-    },
-  ],
-  // Lista delle pagine private
-  logged: [
     {
       path: '/tools',
       key: 'tools',
@@ -43,11 +40,19 @@ const createRoutes = () => ({
     },
   ],
 
-  // Lista delle pagine pubbliche di supporto
-  // secondary: [],
-
   // Lista delle pagine private di supporto
   // messages: [],
+
+  // Contiene la pagina pubblica di login
+  login: {
+    path: '/',
+    key: 'login',
+    exact: false,
+    Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
+  },
+
+  // Contiene la landing page da visualizzare in caso venga tornato 404 durante la navigazione
+  // route404: {}
 
   // Lista delle landing page esterne all'applicativo
   // external: [],

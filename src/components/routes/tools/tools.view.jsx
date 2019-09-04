@@ -7,6 +7,7 @@
 
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 
 
 // -------------------------------------------------------------------------------------
@@ -85,4 +86,4 @@ ToolsRoute.defaultProps = {
 };
 
 
-export default ToolsRoute;
+export default hot(ToolsRoute);

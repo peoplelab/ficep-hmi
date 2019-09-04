@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 
 import Box from '../../layouts/Box';
 import LoginCard from '../../forms-custom/Card.view';
@@ -166,4 +167,4 @@ LoginRoute.defaultProps = {
 };
 
 
-export default LoginRoute;
+export default hot(LoginRoute);

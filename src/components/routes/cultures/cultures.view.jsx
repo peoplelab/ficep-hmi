@@ -8,6 +8,7 @@
 
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 
 import Box from '../../layouts/Box';
 import Button from '../../layouts/Button';
@@ -249,4 +250,4 @@ CulturesRoute.defaultProps = {
 };
 
 
-export default CulturesRoute;
+export default hot(CulturesRoute);

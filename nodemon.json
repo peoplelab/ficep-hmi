@@ -1,3 +1,8 @@
 {
-  "ignore": ["src", "node_modules", "release", "pubblic"],
+  "ignore": [
+    "src",
+    "node_modules",
+    "release",
+    "pubblic"
+  ]
 }

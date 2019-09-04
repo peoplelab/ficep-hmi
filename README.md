@@ -169,3 +169,72 @@ Es:
 | images  | file immagine |
 | map     | file .map     |
 | scripts | file .js      |
+
+
+## Librerie
+
+### Applicazione
+
+| package               |                                                              |
+|-----------------------|--------------------------------------------------------------|
+| @hot-loader/react-dom | DOM virtuale per l'hot-reloading \*                          |
+| prop-types            | Definizione dei tipi delle proprietà dei componenti React    |
+| react                 | Framework per la gestione della view dell'applicativo        |
+| react-dom             | DOM virtuale di React                                        |
+| react-hot-loader      | abilita l'hot-reload dell'applicativo durante lo sviluppo \* |
+| react-intl            | internazionalizzazione dell'applicazione                     |
+| react-redux           | connette react allo store                                    |
+| react-router          | router di navigazione                                        |
+| react-router-dom      | DOM virtuale del router                                      |
+| redux                 | store globale                                                |
+
+\* per funzionare correttamente, la libreria non può essere spostata tra quelle di sviluppo
+
+### Sviluppo
+
+| package                                      |                                                                        |
+|----------------------------------------------|------------------------------------------------------------------------|
+| @babel/core                                  | transpiler del codice (Babel)                                          |
+| @babel/plugin-proposal-class-properties      | transpiler del codice (Babel)                                          |
+| @babel/plugin-proposal-export-namespace-from | transpiler del codice (Babel)                                          |
+| @babel/plugin-proposal-throw-expressions     | transpiler del codice (Babel)                                          |
+| @babel/plugin-syntax-dynamic-impor           | transpiler del codice (Babel)                                          |
+| @babel/plugin-transform-spread               | transpiler del codice (Babel)                                          |
+| @babel/polyfill                              | transpiler del codice (Babel)                                          |
+| @babel/preset-env                            | transpiler del codice (Babel)                                          |
+| @babel/preset-react                          | transpiler del codice (Babel)                                          |
+| autoprefixer                                 | normalizzazione prefissi CSS                                           |
+| babel-eslint                                 | linter Babel                                                           |
+| babel-loader                                 | transpiler del codice, connetter Babel a Webpack                       |
+| better-npm-run                               | gestione semplificata delle variabili CLI (NPM)                        |
+| body-parser                                  | gestione del body della request (server)                               |
+| clean-webpack-plugin                         | ad ogni compilazione, rimuove i file del precedente rilascio (builder) |
+| compression                                  | compressione GZIP (server)                                             |
+| css-loader                                   | gestione codice CSS (builder)                                          |
+| eslint                                       | linter JS                                                              |
+| eslint-loader                                | linter JS                                                              |
+| eslint-plugin-import                         | linter JS                                                              |
+| eslint-plugin-jsx-a11y                       | linter React JSX                                                       |
+| eslint-plugin-react                          | linter React JSX                                                       |
+| eslint-plugin-react-hooks                    | linter React JSX                                                       |
+| express                                      | server                                                                 |
+| express-http-proxy                           | proxy (server)                                                         |
+| file-loader                                  | gestione risorse pubbliche (builder)                                   |
+| html-webpack-plugin                          | Crea un index.html da un template (builder)                            |
+| moment                                       | libreria per la gestione semplificata dell'oggetto Date                |
+| node-sass                                    | conversione SASS in CSS (NODE)                                         |
+| nodemon                                      | refresh automatico del server                                          |
+| postcss                                      | normalizzazione CSS                                                    |
+| postcss-loader                               | normalizzazione CSS (builder)                                          |
+| sass-loader                                  | conversione SASS in CSS (builder)                                      |
+| style-loader                                 | caricamento codice CSS da modulo JS (builder)                          |
+| stylelint                                    | linter CSS                                                             |
+| stylelint-scss                               | linter SCSS                                                            |
+| stylelint-selector-bem-pattern               | linter pattern CSS                                                     |
+| url-loader                                   | converte le risorse pubbliche indicate in BASE64 (builder)             |
+| uuid                                         | ID univoco                                                             |
+| webpack                                      | builder dell'applicazione                                              |
+| webpack-cli                                  | comandi CLI per Webpack (NPM)                                          |
+| webpack-dev-middleware                       | connette Webpack al server Express                                     |
+| webpack-hot-middleware                       | abilita l'hot-reload di Webpack con Express                            |
+| webpack-merge                                | unisce due configurazioni in un unico oggetto (builder)                |

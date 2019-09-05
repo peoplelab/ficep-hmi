@@ -17,7 +17,7 @@
     height: 100%;
 
     /* stylelint-disable plugin/selector-bem-pattern */
-    .login-card__button {
+    &.card {
       align-items: flex-start;
       cursor: initial;
       display: flex;
@@ -27,14 +27,14 @@
       justify-content: center;
       width: 100%;
     }
-    .login-card__box {
+    .card__box {
       padding: 0;
 
       &:nth-of-type(1) {
         flex: none;
         width: 2.5rem;
 
-        .login-card__picture {
+        .card__picture {
           height: 2.5rem;
           width: 2.5rem;
         }

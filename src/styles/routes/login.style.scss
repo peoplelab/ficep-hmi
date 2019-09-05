@@ -102,6 +102,13 @@
         }
       }
       /* stylelint-enable plugin/selector-bem-pattern */
+
+      .login__button-card {
+        background-color: transparent;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 

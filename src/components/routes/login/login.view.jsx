@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 
 import Box from '../../layouts/Box';
-import LoginCard from '../../forms-custom/Card.view';
+import Card from '../../layouts/Card.view';
 import InputCard from '../../forms-custom/InputCard.view';
 import Gallery from '../../layouts/Gallery.view';
 import Form from '../../forms/Form';
@@ -25,6 +25,7 @@ import LoginError from './Login.item.Error';
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
+import ButtonData from '../../layouts/ButtonData';
 
 
 // lista dei campi obbligari
@@ -56,6 +57,7 @@ class LoginRoute extends Component {
     this.setUsername = this.setUsername.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
+    this.SlideTemplate = this.SlideTemplate.bind(this);
   }
 
   // a componente carico, viene richiesta la lista delle culture e degli ultimi accessi, quindi aggiornato lo stato corrente
@@ -93,6 +95,36 @@ class LoginRoute extends Component {
       data,
       dispatch,
     });
+  }
+
+  SlideTemplate(props) {
+    const {
+      issuedAt,
+      groups,
+      username,
+      culture,
+    } = props;
+
+    const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: props[key] }), {
+      data: {
+        issuedAt,
+        groups,
+        username,
+        culture,
+      }
+    });
+
+    return (
+      <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
+        <Card
+          className="login__card"
+          issuedAt={issuedAt}
+          groups={groups}
+          username={username}
+          culture={culture}
+        />
+      </ButtonData>
+    );
   }
 
   // renderizzazione della pagina
@@ -138,13 +170,9 @@ class LoginRoute extends Component {
             <Gallery
               className="login__form-gallery"
               list={usersList}
-            >
-              <LoginCard
-                target={["username", "culture"]}
-                name="data"
-                onClick={this.setUsername}
-              />
-            </Gallery>
+              // eslint-disable-next-line react/no-children-prop
+              children={this.SlideTemplate}
+            />
           </Form>
         </Box>
         <LoginError show={errorOnLogin} />

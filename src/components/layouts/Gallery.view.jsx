@@ -74,13 +74,9 @@ class Gallery extends PureComponent {
       for(let k = 0; k < itemVisible; k++) {
         const objProps = list[j * itemVisible + k];
 
-        const newChildern = React.Children.map(children, child =>
-          React.cloneElement(child, objProps)
-        );
-
         items.push(
           <div className="gallery__slide-item" key={`slide-${k}`}>
-            {newChildern}
+            {children(objProps)}
           </div>
         );
       }
@@ -140,7 +136,7 @@ class Gallery extends PureComponent {
 
 
 Gallery.propTypes = {
-  children: PropTypes.element.isRequired, // template degli elementi della slide
+  children: PropTypes.func.isRequired, // template degli elementi della slide
   list: PropTypes.arrayOf(PropTypes.object).isRequired, // lista dei dati necessari a crostruire gli elementi della gallery
   className: PropTypes.string, // css class
   itemVisible: PropTypes.number, // numero di elementi contenuti all'interno di una singola slide

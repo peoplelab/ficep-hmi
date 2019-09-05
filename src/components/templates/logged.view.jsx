@@ -14,7 +14,7 @@ import Anchor from '../layouts/Anchor';
 import '../../styles/templates/logged.style.scss';
 
 
-const HomeRoute = (props) => {
+const LoggedTemplate = (props) => {
   const { children } = props;
 
   return (
@@ -49,15 +49,15 @@ const HomeRoute = (props) => {
 /**
  * Define component properties types
  */
-HomeRoute.propTypes = {
+LoggedTemplate.propTypes = {
   children: PropTypes.element.isRequired
 };
 
 /**
  * Define default value of component properties
  */
-HomeRoute.defaultProps = {
+LoggedTemplate.defaultProps = {
 };
 
 
-export default memo(HomeRoute);
+export default memo(LoggedTemplate);

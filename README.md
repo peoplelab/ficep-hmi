@@ -3,7 +3,7 @@
 
 # Versione
 Schema
-`[release].[feature].[bugfix].[hotfix]`
+`[release].[feature].[fix]`
 
 
 ## Debug

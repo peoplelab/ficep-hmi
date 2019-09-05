@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------------------------------
 
 
-import React, { Fragment, memo, useContext } from 'react';
+import React, { Fragment, memo, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from '../../store/form.store';
 
@@ -18,7 +18,7 @@ const GetStore = (props) => {
 
   const [state] = useContext(FormContext);
 
-  getter(state);
+  useEffect(() => { getter(state); });
 
   return <Fragment />;
 };

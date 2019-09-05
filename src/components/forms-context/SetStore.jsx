@@ -13,7 +13,7 @@ import { FormContext } from '../../store/form.store';
 
 
 const SetStore = (props) => {
-  const { children } = props;
+  const { children, event } = props;
 
   const [, dispatch] = useContext(FormContext);
 
@@ -22,7 +22,7 @@ const SetStore = (props) => {
       return;
     }
 
-    return React.cloneElement(child, { setter: dispatch });
+    return React.cloneElement(child, { [event]: dispatch });
   });
 
   return newChildren;
@@ -33,6 +33,7 @@ SetStore.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
+  event: PropTypes.string.isRequired
 };
 
 SetStore.defaultProps = {

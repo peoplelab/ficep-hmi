@@ -10,13 +10,12 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Box from '../layouts/Box';
-import ButtonData from '../layouts/ButtonData';
 
 import * as admin from '../../../public/icons/users/icon-admin.svg';
 import * as technical from '../../../public/icons/users/icon-technical-male.svg';
 import * as operator from '../../../public/icons/users/icon-operator-male.svg';
 
-import '../../styles/forms/Card.style.scss';
+import '../../styles/layouts/Card.style.scss';
 
 
 const toIcon = {
@@ -38,23 +37,10 @@ const Card = (props) => {
     username,
     groups,
     culture,
-    name,
     className,
-    target,
-    disabled,
-    onClick,
   } = props;
 
-  const mergedClass = `login-card ${className}`;
-
-  const data = target.reduce((acc, key) => ({ ...acc, [key]: props[key] }), {
-    [name]: {
-      issuedAt,
-      groups,
-      username,
-      culture,
-    }
-  });
+  const mergedClass = `card ${className}`;
 
   const [role] = groups;
   const lastAccess = moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
@@ -64,32 +50,29 @@ const Card = (props) => {
     && username
     && culture
     && role
-    && name
   ) && (
     <Box className={mergedClass}>
-      <ButtonData className="login-card__button" disabled={disabled} data={data} onClick={onClick}>
-        <Box className="login-card__box">
-          <Box className="login-card__picture">
-            <img className="login-card__picture-icon" src={toIcon[role]} alt={roleConverter[role]} />
-          </Box>
+      <Box className="card__box">
+        <Box className="card__picture">
+          <img className="card__picture-icon" src={toIcon[role]} alt={roleConverter[role]} />
         </Box>
-        <Box className="login-card__box">
-          <p className="login-card__paragraph login-card__paragraph--bold">
-            {username}
-          </p>
-          <p className="login-card__paragraph login-card__paragraph--semibold">
-            {roleConverter[role]}
-          </p>
-        </Box>
-        <Box className="login-card__box">
-          <p className="login-card__paragraph login-card__paragraph--light">
-            Last access:
-          </p>
-          <p className="login-card__paragraph login-card__paragraph--normal">
-            {lastAccess}
-          </p>
-        </Box>
-      </ButtonData>
+      </Box>
+      <Box className="card__box">
+        <p className="card__paragraph card__paragraph--bold">
+          {username}
+        </p>
+        <p className="card__paragraph card__paragraph--semibold">
+          {roleConverter[role]}
+        </p>
+      </Box>
+      <Box className="card__box">
+        <p className="card__paragraph card__paragraph--light">
+          Last access:
+        </p>
+        <p className="card__paragraph card__paragraph--normal">
+          {lastAccess}
+        </p>
+      </Box>
     </Box>
   );
 };
@@ -100,11 +83,7 @@ Card.propTypes = {
   username: PropTypes.string,
   groups: PropTypes.arrayOf(PropTypes.string),
   culture: PropTypes.string,
-  name: PropTypes.string,
-  target: PropTypes.arrayOf(PropTypes.string),
   className: PropTypes.string,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 Card.defaultProps = {
@@ -112,11 +91,7 @@ Card.defaultProps = {
   username: '',
   groups: [],
   culture: '',
-  name: '',
-  target: [],
   className: '',
-  disabled: false,
-  onClick: () => {},
 };
 
 

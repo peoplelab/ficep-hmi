@@ -1,0 +1,58 @@
+/** @define card */
+
+@import '../colors.scss';
+
+.card {
+  align-items: center;
+  background-color: $bg-light-grey;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  .card__box {
+    padding: 0.5rem;
+
+    .card__picture {
+      align-items: center;
+      background-color: $bg-white;
+      border-radius: 4rem;
+      display: flex;
+      height: 8rem;
+      justify-content: center;
+      margin: 0 auto;
+      overflow: hidden;
+      width: 8rem;
+
+      .card__picture-icon {
+        width: 100%;
+      }
+    }
+
+    .card__paragraph {
+      color: $dark-grey;
+      text-align: center;
+
+      &--bold {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      &--semibold {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      &--light {
+        font-size: 0.7rem;
+
+      }
+
+      &--normal {
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

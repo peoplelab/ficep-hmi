@@ -13,7 +13,11 @@ import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della
 import Box from '../../layouts/Box';
 import Button from '../../layouts/Button';
 import ButtonData from '../../layouts/ButtonData';
-import Field from '../../forms/Field';
+import Field from '../../forms-context/Field';
+import Form from '../../forms-context/Form';
+import GetStore from '../../forms-context/GetStore';
+import Submit from '../../forms-context/Submit';
+import TextInput from '../../forms-context/TextInput';
 import {
   callCulturesGet,
   callCulturesPost,
@@ -23,6 +27,14 @@ import {
 import LoggedTemplate from '../../templates/logged.view';
 
 import '../../../styles/routes/cultures.style.scss';
+
+
+const initial = {
+  id: '',
+  code: '',
+  description: '',
+};
+const required = ['code', 'description'];
 
 
 // intestazioni delle colonne della tabella delle culture
@@ -41,23 +53,21 @@ class CulturesRoute extends PureComponent {
 
     // inizializzazione dello stato della pagina
     this.state = {
-      id: '',
-      code: '',
-      description: '',
       data: [],
       error: null,
       failure: null,
+      hasID: false,
     };
 
     this.updateState = this.updateState.bind(this);
     this.onIdChange = this.onIdChange.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.onGetCultures = this.onGetCultures.bind(this);
     this.onAddCulture = this.onAddCulture.bind(this);
     this.onRemoveCulture = this.onRemoveCulture.bind(this);
     this.onUpdateCulture = this.onUpdateCulture.bind(this);
 
     this.mapList = this.mapList.bind(this);
+    this.getFormID = this.getFormID.bind(this);
   }
 
   // chimata per aggiornare lo stato corrente della pagina
@@ -69,17 +79,7 @@ class CulturesRoute extends PureComponent {
   onIdChange(event) {
     const { value } = event.target;
 
-    if (/^\d*$/.test(value)) {
-
-      this.setState({ id: parseInt(value) });
-    }
-  }
-
-  // metodo per la gestione dell'evento onchange di un generico campo di input
-  onChange(event) {
-    const { name, value } = event.target;
-
-    this.setState({ [name]: value });
+    return /^\d*$/.test(value);
   }
 
   // chimata per ottenere la lista corrente delle culture (GET)
@@ -90,8 +90,8 @@ class CulturesRoute extends PureComponent {
   }
 
   // chimata per aggiungere una nuova culture (POST)
-  onAddCulture() {
-    const { code, description } = this.state;
+  onAddCulture(formState) {
+    const { code, description } = formState;
 
     callCulturesPost({
       data: { code, description },
@@ -112,14 +112,23 @@ class CulturesRoute extends PureComponent {
   }
 
   // chimata per aggiornare una culture (PUT)
-  onUpdateCulture(event) {
-    const { id, code, description } = this.state;
+  onUpdateCulture(formState, event) {
+    const { id, code, description } = formState;
 
     callCulturesPut({
       data: { id, code, description },
       dispatch: this.updateState,
       state: this.state,
     });
+  }
+
+  getFormID(formState) {
+    const { id } = formState;
+    console.log('id', id);
+
+    if (this.state.hasID !== !!id) {
+      this.setState({ hasID: !!id });
+    }
   }
 
   // render della lista delle culture
@@ -148,12 +157,7 @@ class CulturesRoute extends PureComponent {
 
   // renderizzazione della pagina
 	render() {
-    const {
-      id, code, description, data: list
-    } = this.state;
-
-    // verifica che l'ID, se di tipo number, sia un valore valido
-    const strID = isNaN(id) ? '' : id.toString();
+    const { data: list, hasID } = this.state;
 
     // creazione della tabella delle culture
     const Table = list.map(this.mapList);
@@ -192,47 +196,28 @@ class CulturesRoute extends PureComponent {
           )}
           {list.length > 0 && (
             <Box className="cultures__group">
-              <form className="cultures__form">
+              <Form className="cultures__form" initial={initial}>
+                <GetStore getter={this.getFormID} />
                 <Field label="Culture id (only to update)" className="cultures__field">
-                  <input
-                    className="input input__text cultures__text-input"
-                    name="id"
-                    id="id"
-                    type="text"
-                    value={strID}
-                    onChange={this.onIdChange}
-                  />
+                  <TextInput className="cultures__text-input" name="id" onTest={this.onIdChange} />
                 </Field>
                 <Field label="Code" className="cultures__field">
-                  <input
-                    className="input input__text cultures__text-input"
-                    name="code"
-                    id="code"
-                    type="text"
-                    value={code}
-                    onChange={this.onChange}
-                  />
+                  <TextInput className="cultures__text-input" name="code" />
                 </Field>
                 <Field label="Description" className="cultures__field">
-                  <input
-                    className="input input__text cultures__text-input"
-                    name="description"
-                    id="description"
-                    type="text"
-                    value={description}
-                    onChange={this.onChange}
-                  />
+                  <TextInput className="cultures__text-input" name="description" />
                 </Field>
                 <Box className="cultures__field">
-                  <Button
+                  <Submit
                     className="cultures__button"
-                    onClick={!strID ? this.onAddCulture : this.onUpdateCulture}
-                    disabled={!code || !description}
+                    name="form-culture"
+                    onSubmit={!hasID ? this.onAddCulture : this.onUpdateCulture}
+                    required={required}
                   >
-                    {!strID ? 'Add' : 'Update'}
-                  </Button>
+                    {!hasID ? 'Add' : 'Update'}
+                  </Submit>
                 </Box>
-              </form>
+              </Form>
             </Box>
           )}
           </Box>

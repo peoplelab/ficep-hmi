@@ -47,7 +47,7 @@ const dataPut = (state, payload) => {
 
   let { data } = state;
 
-  const index = data.findIndex(item => item.id === payload.id);
+  const index = data.findIndex(item => `${item.id}` === payload.id);
   const before = data.slice(0, index);
   const after = data.slice(index + 1, data.length);
 
@@ -125,7 +125,7 @@ export const callCulturesPut = async ({ data, dispatch, state }) => {
     api: apiCulturePut,
     success: ({ jsondata }) => {
       if (jsondata) {
-        dispatch(dataPut(state, { ...arg.request }));
+        dispatch(dataPut(state, arg.request));
       }
     },
     failure: ({ jsondata, error }) => {

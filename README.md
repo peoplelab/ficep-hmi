@@ -1,6 +1,11 @@
 
 # Mitrol
 
+# Versione
+Schema
+`[release].[feature].[bugfix].[hotfix]`
+
+
 ## Debug
 Indicare, nel file JSON server.config, uno dei seguenti valore nella chiave `LOG_LEVEL`, per abilitare o meno i log del server
 
@@ -192,6 +197,27 @@ Es:
 
 ### Sviluppo
 
+#### Codifica
+
+| package                                      |                                                                        |
+|----------------------------------------------|------------------------------------------------------------------------|
+| better-npm-run                               | gestione semplificata delle variabili CLI (NPM)                        |
+| body-parser                                  | gestione del body della request (server)                               |
+| eslint                                       | linter JS                                                              |
+| eslint-loader                                | linter JS                                                              |
+| eslint-plugin-import                         | linter JS                                                              |
+| eslint-plugin-jsx-a11y                       | linter React JSX                                                       |
+| eslint-plugin-react                          | linter React JSX                                                       |
+| eslint-plugin-react-hooks                    | linter React JSX                                                       |
+| moment                                       | libreria per la gestione semplificata dell'oggetto Date                |
+| stylelint                                    | linter CSS                                                             |
+| stylelint-scss                               | linter SCSS                                                            |
+| stylelint-selector-bem-pattern               | linter pattern CSS                                                     |
+| uuid                                         | ID univoco                                                             |
+
+
+#### Compilazione
+
 | package                                      |                                                                        |
 |----------------------------------------------|------------------------------------------------------------------------|
 | @babel/core                                  | transpiler del codice (Babel)                                          |
@@ -206,35 +232,32 @@ Es:
 | autoprefixer                                 | normalizzazione prefissi CSS                                           |
 | babel-eslint                                 | linter Babel                                                           |
 | babel-loader                                 | transpiler del codice, connetter Babel a Webpack                       |
-| better-npm-run                               | gestione semplificata delle variabili CLI (NPM)                        |
-| body-parser                                  | gestione del body della request (server)                               |
 | clean-webpack-plugin                         | ad ogni compilazione, rimuove i file del precedente rilascio (builder) |
-| compression                                  | compressione GZIP (server)                                             |
 | css-loader                                   | gestione codice CSS (builder)                                          |
-| eslint                                       | linter JS                                                              |
-| eslint-loader                                | linter JS                                                              |
-| eslint-plugin-import                         | linter JS                                                              |
-| eslint-plugin-jsx-a11y                       | linter React JSX                                                       |
-| eslint-plugin-react                          | linter React JSX                                                       |
-| eslint-plugin-react-hooks                    | linter React JSX                                                       |
-| express                                      | server                                                                 |
-| express-http-proxy                           | proxy (server)                                                         |
 | file-loader                                  | gestione risorse pubbliche (builder)                                   |
 | html-webpack-plugin                          | Crea un index.html da un template (builder)                            |
-| moment                                       | libreria per la gestione semplificata dell'oggetto Date                |
 | node-sass                                    | conversione SASS in CSS (NODE)                                         |
-| nodemon                                      | refresh automatico del server                                          |
 | postcss                                      | normalizzazione CSS                                                    |
 | postcss-loader                               | normalizzazione CSS (builder)                                          |
 | sass-loader                                  | conversione SASS in CSS (builder)                                      |
 | style-loader                                 | caricamento codice CSS da modulo JS (builder)                          |
-| stylelint                                    | linter CSS                                                             |
-| stylelint-scss                               | linter SCSS                                                            |
-| stylelint-selector-bem-pattern               | linter pattern CSS                                                     |
 | url-loader                                   | converte le risorse pubbliche indicate in BASE64 (builder)             |
-| uuid                                         | ID univoco                                                             |
 | webpack                                      | builder dell'applicazione                                              |
 | webpack-cli                                  | comandi CLI per Webpack (NPM)                                          |
+| webpack-merge                                | unisce due configurazioni in un unico oggetto (builder)                |
+
+#### Debug
+
+| package                                      |                                                                        |
+|----------------------------------------------|------------------------------------------------------------------------|
+| nodemon                                      | refresh automatico del server                                          |
 | webpack-dev-middleware                       | connette Webpack al server Express                                     |
 | webpack-hot-middleware                       | abilita l'hot-reload di Webpack con Express                            |
-| webpack-merge                                | unisce due configurazioni in un unico oggetto (builder)                |
+
+#### Distribuzione
+
+| package                                      |                                                                        |
+|----------------------------------------------|------------------------------------------------------------------------|
+| compression                                  | compressione GZIP (server)                                             |
+| express                                      | server                                                                 |
+| express-http-proxy                           | proxy (server)                                                         |

@@ -4,6 +4,12 @@
 
 /** @define logged */
 
+@mixin icon {
+  margin: 1rem;
+  height: calc(100% - 2rem);
+  width: calc(100% - 2rem);
+}
+
 .logged {
   display: flex;
   flex-direction: column;
@@ -27,11 +33,13 @@
 
     .logged__navbar {
       background-color: $bg-light-grey;
-      border-right: 0.125rem solid $dark-grey;
-      height: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 41rem;
       width: 7.5rem;
 
       .logged__list {
+        flex: 1;
         width: 100%;
 
         .logged__item {
@@ -42,11 +50,26 @@
           .logged__anchor {
             // stylelint-disable-next-line plugin/selector-bem-pattern
             .anchor__icon {
-              margin: 1rem;
-              height: calc(100% - 2rem);
-              width: calc(100% - 2rem);
+              @include icon;
             }
           }
+        }
+      }
+
+      .logged__reverse {
+        background: transparent;
+        cursor: pointer;
+        padding-top: 100%;
+        position: relative;
+        width: 100%;
+
+        .logged__reverse-icon {
+          @include icon;
+          display: block;
+          background: $bg-dark-grey;
+          left: 0;
+          position: absolute;
+          top: 0;
         }
       }
     }
@@ -54,6 +77,10 @@
     .logged__route {
       flex: 1;
       overflow: auto;
+    }
+
+    &.logged__navbar--reverse {
+      flex-direction: row-reverse;
     }
   }
 }

@@ -25,3 +25,13 @@
   @include mask;
   mask-image: url('../../public/icons/ic-settings.svg');
 }
+
+.ic-left-hand {
+  @include mask;
+  mask-image: url('../../public/icons/ic-left-hand.svg');
+}
+
+.ic-right-hand {
+  @include mask;
+  mask-image: url('../../public/icons/ic-right-hand.svg');
+}

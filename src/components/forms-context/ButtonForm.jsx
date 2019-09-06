@@ -22,7 +22,7 @@ class ButtonForm extends PureComponent {
 
   onClick(event) {
     const {
-      name, value, onClick, onTest, custom
+      name, value, onClick, onTest
     } = this.props;
     const [, dispatch] = this.context;
 
@@ -40,7 +40,7 @@ class ButtonForm extends PureComponent {
     if (test) {
       dispatch({
         type: types.ON_CHANGE,
-        payload: custom ? value : { [name]: value }
+        payload: { [name]: value }
         }
       );
     }
@@ -56,7 +56,6 @@ class ButtonForm extends PureComponent {
       className,
       name,
       value: _value, // eslint-disable-line no-unused-vars
-      custom: _custom, // eslint-disable-line no-unused-vars
       onClick: _onClick, // eslint-disable-line no-unused-vars
       onTest: _onTest, // eslint-disable-line no-unused-vars
       ...rest
@@ -84,7 +83,6 @@ ButtonForm.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
   value: PropTypes.any,
-  custom: PropTypes.bool,
   onClick: PropTypes.func,
   onTest: PropTypes.func,
 };
@@ -93,7 +91,6 @@ ButtonForm.defaultProps = {
   children: null,
   className: '',
   value: undefined,
-  custom: false,
   onClick: null,
   onTest: null,
 };

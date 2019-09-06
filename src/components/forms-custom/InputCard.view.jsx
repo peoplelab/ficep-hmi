@@ -10,11 +10,11 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Box from '../layouts/Box';
 import ButtonData from '../layouts/ButtonData';
-import Card from './Card.view';
+import Card from '../layouts/Card.view';
 
 import * as resetIcon from '../../../public/icons/ic-close.svg';
 
-import '../../styles/forms/InputCard.style.scss';
+import '../../styles/forms-custom/InputCard.style.scss';
 
 
 const InputCard = (props) => {
@@ -22,7 +22,6 @@ const InputCard = (props) => {
     data,
     children,
     name,
-    target,
     className,
     reset,
     onClick,
@@ -39,9 +38,7 @@ const InputCard = (props) => {
     <Box className={mergedClass}>
       <Card
         {...data}
-        target={target}
         name={name}
-        disabled
         className="input-card__card"
       />
       <ButtonData className="input-card__reset" data={reset} onClick={onClick}>

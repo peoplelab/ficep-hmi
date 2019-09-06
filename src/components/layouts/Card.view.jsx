@@ -65,14 +65,16 @@ const Card = (props) => {
           {roleConverter[role]}
         </p>
       </Box>
-      <Box className="card__box">
-        <p className="card__paragraph card__paragraph--light">
-          Last access:
-        </p>
-        <p className="card__paragraph card__paragraph--normal">
-          {lastAccess}
-        </p>
-      </Box>
+      {lastAccess && (
+        <Box className="card__box">
+          <p className="card__paragraph card__paragraph--light">
+            Last access:
+          </p>
+          <p className="card__paragraph card__paragraph--normal">
+            {lastAccess}
+          </p>
+        </Box>
+      )}
     </Box>
   );
 };

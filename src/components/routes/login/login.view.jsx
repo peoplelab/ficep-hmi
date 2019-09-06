@@ -21,6 +21,7 @@ import Select from '../../forms-context/Select';
 import Option from '../../forms-context/Option';
 import Submit from '../../forms-context/Submit';
 import Field from '../../forms-context/Field';
+import { SetStore } from '../../forms-context/Handler';
 import ButtonForm from '../../forms-context/ButtonForm';
 import LoginError from './Login.item.Error';
 
@@ -54,7 +55,6 @@ class LoginRoute extends Component {
     };
 
     this.updateState = this.updateState.bind(this);
-    this.setUsername = this.setUsername.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.SlideTemplate = this.SlideTemplate.bind(this);
@@ -80,13 +80,6 @@ class LoginRoute extends Component {
     this.setState({ [name]: value });
   }
 
-  // metodo per impostare un valore username predefinito, proveniente dalla lista degli ultimi accessi, all'interno della form
-  setUsername(event) {
-    const { data } = event;
-
-    this.setState(data);
-  }
-
   // esegue la richiesta di login
   onLogin(data, event) {
     const dispatch = this.updateState;
@@ -97,33 +90,36 @@ class LoginRoute extends Component {
     });
   }
 
-  SlideTemplate(props) {
-    const {
-      issuedAt,
-      groups,
-      username,
-      culture,
-    } = props;
-
-    const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: props[key] }), {
-      data: {
-        issuedAt,
-        groups,
-        username,
-        culture,
+  externalDispatch(state, dispatch) {
+    return (event) => {
+      if (!state.data) {
+        return;
       }
-    });
+
+      dispatch({
+        username: state.data.username,
+        culture: state.data.culture,
+      });
+    };
+  }
+
+  SlideTemplate(props) {
+    // {
+    //   issuedAt,
+    //   groups,
+    //   username,
+    //   culture,
+    // } === props;
 
     return (
-      <ButtonForm className="login__button-card" name="data" value={data} onClick={this.setUsername} custom>
-        <Card
-          className="login__card"
-          issuedAt={issuedAt}
-          groups={groups}
-          username={username}
-          culture={culture}
-        />
-      </ButtonForm>
+      <SetStore event="onClick" setter={this.externalDispatch}>
+        <ButtonForm className="login__button-card" name="data" value={props}>
+          <Card
+            className="login__card"
+            {...props}
+          />
+        </ButtonForm>
+      </SetStore>
     );
   }
 

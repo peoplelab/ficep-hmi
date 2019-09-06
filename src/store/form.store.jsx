@@ -16,9 +16,12 @@ export const types = enumTypes('ON_CHANGE');
 
 
 // Gestore delle azioni passate nella funzione dispatch per poter modificare lo stato corrente dello store
-const handler = (state, payload) => ({
-  [types.ON_CHANGE]: { ...state, ...payload },
-});
+const handler = (state, payload) => {
+  const [name] = Object.keys(payload);
+  const test = payload[name] !== state[name];
+
+  return test ? { [types.ON_CHANGE]: { ...state, ...payload } } : state;
+};
 
 
 // Inizializzazione dei gestori dello store

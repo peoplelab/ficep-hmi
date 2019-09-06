@@ -6,11 +6,12 @@
 //------------------------------------------------------------------------------------------------------------------------------
 
 
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Box from '../layouts/Box';
-import ButtonData from '../layouts/ButtonData';
+import Reset from '../forms-context/Reset';
 import Card from '../layouts/Card.view';
+import { FormContext } from '../../store/form.store';
 
 import * as resetIcon from '../../../public/icons/icon-close.svg';
 
@@ -19,13 +20,14 @@ import '../../styles/forms-custom/InputCard.style.scss';
 
 const InputCard = (props) => {
   const {
-    data,
     children,
     name,
     className,
-    reset,
-    onClick,
+    initial,
   } = props;
+
+  console.log(initial);
+  const [{ data }] = useContext(FormContext);
 
   // se il dato predefito non è indicato, torna il componente per l'inserimento manuale dei dati
   if (data === null) {
@@ -36,14 +38,10 @@ const InputCard = (props) => {
 
   return (
     <Box className={mergedClass}>
-      <Card
-        {...data}
-        name={name}
-        className="input-card__card"
-      />
-      <ButtonData className="input-card__reset" data={reset} onClick={onClick}>
+      <Card {...data} className="input-card__card" />
+      <Reset className="input-card__reset" initial={initial} name={name}>
         <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
-      </ButtonData>
+      </Reset>
     </Box>
   );
 };
@@ -52,18 +50,14 @@ const InputCard = (props) => {
 InputCard.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
-  target: PropTypes.arrayOf(PropTypes.string).isRequired,
+  initial: PropTypes.object.isRequired,
   data: PropTypes.object,
   className: PropTypes.string,
-  reset: PropTypes.object,
-  onClick: PropTypes.func,
 };
 
 InputCard.defaultProps = {
   className: '',
   data: null,
-  reset: null,
-  onClick: () => {},
 };
 
 

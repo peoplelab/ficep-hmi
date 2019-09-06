@@ -20,7 +20,7 @@ const createRoutes = () => ({
   logged: [
     {
       path: '/',
-      key: 'home',
+      key: 'dashboard',
       exact: true,
       Component: lazy(() => import(/* webpackChunkName: "Home" */ '../components/routes/home/home.container')),
     },
@@ -32,8 +32,15 @@ const createRoutes = () => ({
       Component: lazy(() => import(/* webpackChunkName: "Tools" */ '../components/routes/tools/tools.view')),
     },
     {
-      path: '/cultures',
-      key: 'cultures',
+      path: '/programs',
+      key: 'Programs',
+      exact: true,
+      // Store: lazy(() => import(/* webpackChunkName: "Cultures" */  '../store/routes/cultures.store')),
+      Component: lazy(() => import(/* webpackChunkName: "Cultures" */ '../components/routes/cultures/cultures.view')),
+    },
+    {
+      path: '/settings',
+      key: 'Settings',
       exact: true,
       // Store: lazy(() => import(/* webpackChunkName: "Cultures" */  '../store/routes/cultures.store')),
       Component: lazy(() => import(/* webpackChunkName: "Cultures" */ '../components/routes/cultures/cultures.view')),

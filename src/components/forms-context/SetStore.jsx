@@ -9,31 +9,32 @@
 
 import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext } from '../../store/form.store';
+import { FormContext, types } from '../../store/form.store';
 
 
 const SetStore = (props) => {
-  const { children, event } = props;
+  const { children, event, setter } = props;
 
-  const [, dispatch] = useContext(FormContext);
+  const [state, dispatcher] = useContext(FormContext);
 
-  const newChildren = React.Children.map(children, child => {
-    if (!(React.isValidElement(child))) {
-      return;
-    }
+  const dispatch = (payload) => {
+    dispatcher({
+      type: types.ON_CHANGE,
+      payload,
+    });
+  };
 
-    return React.cloneElement(child, { [event]: dispatch });
-  });
+  const hanlder = setter(state, dispatch);
+
+  const newChildren = React.Children.map(children, child => React.cloneElement(child, { [event]: hanlder }));
 
   return newChildren;
 };
 
 SetStore.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
-  event: PropTypes.string.isRequired
+  children: PropTypes.element.isRequired,
+  event: PropTypes.string.isRequired,
+  setter: PropTypes.func.isRequired,
 };
 
 SetStore.defaultProps = {

@@ -1,0 +1,27 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+@mixin mask {
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.ic-dashboard {
+  @include mask;
+  mask-image: url('../../public/icons/ic-dashboard.svg');
+}
+
+.ic-programs {
+  @include mask;
+  mask-image: url('../../public/icons/ic-folder.svg');
+}
+
+.ic-tools {
+  @include mask;
+  mask-image: url('../../public/icons/ic-tools.svg');
+}
+
+.ic-settings {
+  @include mask;
+  mask-image: url('../../public/icons/ic-settings.svg');
+}

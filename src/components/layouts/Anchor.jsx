@@ -6,36 +6,36 @@
 //------------------------------------------------------------------------------------------------------
 
 
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import '../../styles/layouts/Anchor.scss';
 
 
-class Anchor extends PureComponent {
-  render() {
-    const {
-      children,
-      path,
-      replace,
-      className,
-      ...rest
-    } = this.props;
+const Anchor = (props) => {
+  const {
+    children,
+    path,
+    replace,
+    className,
+    ...rest
+  } = props;
 
-    const mergedClass = `anchor ${className}`;
-    return (
-      <Link
-        className={mergedClass}
-        replace={replace}
-        to={path}
-        {...rest}
-      >
-        {children}
-      </Link>
-    );
-  }
-}
+  const pathClass = path === location.pathname ? 'anchor--active' : '';
+
+  const mergedClass = `anchor ${pathClass} ${className}`;
+  return (
+    <Link
+      className={mergedClass}
+      replace={replace}
+      to={path}
+      {...rest}
+    >
+      {children}
+    </Link>
+  );
+};
 
 
 Anchor.propTypes = {
@@ -52,4 +52,4 @@ Anchor.defaultProps = {
 };
 
 
-export default Anchor;
+export default memo(Anchor);

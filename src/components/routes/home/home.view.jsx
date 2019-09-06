@@ -13,7 +13,6 @@ import Box    from '../../layouts/Box';
 import Anchor from '../../layouts/Anchor';
 import Button from '../../layouts/Button';
 import { callLogout } from '../../../controllers/routes/logout/logout.controller';
-import LoggedTemplate from '../../templates/logged.view';
 
 import '../../../styles/routes/home.style.scss';
 
@@ -37,24 +36,22 @@ class HomeRoute extends PureComponent {
 
     if (isUserLogged) {
       return (
-        <LoggedTemplate>
-          <section className="home__logged">
-            <h1 className="home__title">
-              Home page
-            </h1>
-            <Box className="home__container">
-              {isUserLogged && (
-                <Button
-                  className="home__button"
-                  onClick={this.onLogout}
-                  disabled={false}
-                >
-                  Logout
-                </Button>
-              )}
-            </Box>
-          </section>
-        </LoggedTemplate>
+        <section className="home__logged">
+          <h1 className="home__title">
+            Home page
+          </h1>
+          <Box className="home__container">
+            {isUserLogged && (
+              <Button
+                className="home__button"
+                onClick={this.onLogout}
+                disabled={false}
+              >
+                Logout
+              </Button>
+            )}
+          </Box>
+        </section>
       );
     }
 

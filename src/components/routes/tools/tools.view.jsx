@@ -22,7 +22,6 @@ import Button from '../../layouts/Button';
 import List from './tools.item.list';
 import Details from './tools.item.details';
 import { callToolsList } from '../../../controllers/routes/tools/tools.controller';
-import LoggedTemplate from '../../templates/logged.view';
 
 import '../../../styles/routes/tools.style.scss';
 
@@ -58,7 +57,6 @@ class ToolsRoute extends PureComponent {
   // renderizzazione della pagina
 	render() {
     return (
-      <LoggedTemplate>
         <section className="tools">
           <h1 className="tools__title">
             Tools
@@ -73,7 +71,6 @@ class ToolsRoute extends PureComponent {
             <Details toolsGetState={this.state} />
           </Box>
         </section>
-      </LoggedTemplate>
     );
 	}
 }

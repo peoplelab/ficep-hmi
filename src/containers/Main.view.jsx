@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import createRoutes from './Router';
+import LoggedTemplate from '../components/templates/logged.view';
 // import { SessionValidity } from '../controllers/session.controller';
 
 
@@ -67,15 +68,13 @@ class MainComponent extends Component {
     // Recupero delle pagine dell'applicativo
     const routes = createRoutes();
 
-    const Login = !isUserLogged && mapRoutes(routes.login); // Pagina pubblica di login
-    const Logged = isUserLogged && routes.logged.map(mapRoutes); // Lista delle pagine private
-
-    return (
-      <Switch>
-        {Logged}
-        {Login}
-      </Switch>
-    );
+    return isUserLogged ? (
+      <LoggedTemplate>
+        <Switch>
+          {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
+        </Switch>
+      </LoggedTemplate>
+    ) : mapRoutes(routes.login); // Pagina pubblica di login
   }
 }
 

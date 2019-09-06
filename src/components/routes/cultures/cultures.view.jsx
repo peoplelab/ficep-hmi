@@ -20,7 +20,6 @@ import {
   callCulturesDelete,
   callCulturesPut,
 } from '../../../controllers/routes/cultures/cultures.controller';
-import LoggedTemplate from '../../templates/logged.view';
 
 import '../../../styles/routes/cultures.style.scss';
 
@@ -159,7 +158,6 @@ class CulturesRoute extends PureComponent {
     const Table = list.map(this.mapList);
 
     return (
-      <LoggedTemplate>
         <section className="cultures">
           <h1 className="cultures__title">
             Cultures
@@ -237,7 +235,6 @@ class CulturesRoute extends PureComponent {
           )}
           </Box>
         </section>
-      </LoggedTemplate>
     );
 	}
 }

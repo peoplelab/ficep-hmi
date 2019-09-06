@@ -36,7 +36,7 @@ const Card = (props) => {
     issuedAt,
     username,
     groups,
-    culture,
+    // culture,
     className,
   } = props;
 
@@ -46,9 +46,8 @@ const Card = (props) => {
   const lastAccess = moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
 
   return (
-    lastAccess
-    && username
-    && culture
+    username
+    // && culture
     && role
   ) && (
     <Box className={mergedClass}>

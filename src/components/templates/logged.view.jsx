@@ -8,8 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Anchor from '../layouts/Anchor';
-import Button from '../layouts/Button';
+import NavBar from './Logged.item.Navbar';
 
 import '../../styles/templates/logged.style.scss';
 
@@ -33,7 +32,6 @@ class LoggedTemplate extends PureComponent {
     const { children } = this.props;
 
     const containerClass = `logged__container ${this.state.reverse ? 'logged__navbar--reverse' : ''}`;
-    const reverseClass = `logged__reverse-icon ${this.state.reverse ? 'ic-right-hand' : 'ic-left-hand'}`;
 
     return (
       <div className="logged">
@@ -44,33 +42,7 @@ class LoggedTemplate extends PureComponent {
           <div className="logged__route">
             {children}
           </div>
-          <nav className="logged__navbar">
-            <ul className="logged__list">
-              <li className="logged__item">
-                <Anchor className="logged__anchor anchor--tile" path="/">
-                  <i className="anchor__icon ic-dashboard" />
-                </Anchor>
-              </li>
-              <li className="logged__item">
-                <Anchor className="logged__anchor anchor--tile" path="/programs">
-                  <i className="anchor__icon ic-programs" />
-                </Anchor>
-              </li>
-              <li className="logged__item">
-                <Anchor className="logged__anchor anchor--tile" path="/tools">
-                  <i className="anchor__icon ic-tools" />
-                </Anchor>
-              </li>
-              <li className="logged__item">
-                <Anchor className="logged__anchor anchor--tile" path="/settings">
-                  <i className="anchor__icon ic-settings" />
-                </Anchor>
-              </li>
-            </ul>
-            <Button className="logged__reverse" onClick={this.onReverse}>
-              <i className={reverseClass} />
-            </Button>
-          </nav>
+          <NavBar reverse={this.state.reverse} onReverse={this.onReverse} />
         </section>
         <footer className="logged__footer">
           FOOTER

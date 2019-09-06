@@ -14,18 +14,19 @@ import Box from '../../layouts/Box';
 import Card from '../../layouts/Card.view';
 import InputCard from '../../forms-custom/InputCard.view';
 import Gallery from '../../layouts/Gallery.view';
-import Form from '../../forms/Form';
-import TextInput from '../../forms/TextInput';
-import PasswordInput from '../../forms/PasswordInput';
-import Select from '../../forms/Select';
-import Submit from '../../forms/Submit';
-import Field from '../../forms/Field';
+import Form from '../../forms-context/Form';
+import TextInput from '../../forms-context/TextInput';
+import PasswordInput from '../../forms-context/PasswordInput';
+import Select from '../../forms-context/Select';
+import Option from '../../forms-context/Option';
+import Submit from '../../forms-context/Submit';
+import Field from '../../forms-context/Field';
+import ButtonForm from '../../forms-context/ButtonForm';
 import LoginError from './Login.item.Error';
 
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
-import ButtonData from '../../layouts/ButtonData';
 
 
 // lista dei campi obbligari
@@ -47,7 +48,6 @@ class LoginRoute extends Component {
 
     // inizializzazione dello stato della pagina
     this.state = {
-      ...initial,
       usersList: [],
       cultureList: [],
       errorOnLogin: false,
@@ -115,7 +115,7 @@ class LoginRoute extends Component {
     });
 
     return (
-      <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
+      <ButtonForm className="login__button-card" name="data" value={data} onClick={this.setUsername} custom>
         <Card
           className="login__card"
           issuedAt={issuedAt}
@@ -123,47 +123,40 @@ class LoginRoute extends Component {
           username={username}
           culture={culture}
         />
-      </ButtonData>
+      </ButtonForm>
     );
   }
 
   // renderizzazione della pagina
 	render() {
-    const { username, password, culture, data, usersList, cultureList, errorOnLogin } = this.state;
+    const { usersList, cultureList, errorOnLogin } = this.state;
 
     const newCultureList = cultureList.map((value) => ({ value: value.code, message: value.description }));
 
     return (
       <section className="login">
         <Box className="login__dialog">
-          <Form className="login__form" name="login-form">
+          <Form className="login__form" initial={initial}>
             <p className="login__title">
               Inserisci i tuoi dati
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
-                <InputCard
-                  className="login__text-input"
-                  target={["username", "culture"]}
-                  name="data"
-                  data={data}
-                  reset={initial}
-                  onClick={this.setUsername}
-                >
-                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder="Username" />
+                <InputCard className="login__text-input" name="data" initial={initial}>
+                  <TextInput className="login__text-input" name="username" placeholder="Username" />
                 </InputCard>
               </Field>
               <Field className="login__field">
                 <PasswordInput
-                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder="Password"
+                  className="login__text-input" name="password" placeholder="Password"
                 />
               </Field>
               <Field className="login__field">
-                <Select
-                  className="login__select-input" name="culture" value={culture} onChange={this.onChange} options={newCultureList}
-                />
+                <Select className="login__select-input" name="culture">
+                  <Option options={newCultureList} />
+                </Select>
               </Field>
-              <Submit className="login__form-submit" required={required} value={this.state} onSubmit={this.onLogin} name="login-form">
+              <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
                 Login
               </Submit>
             </Box>

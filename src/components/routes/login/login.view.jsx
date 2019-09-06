@@ -21,7 +21,7 @@ import Select from '../../forms-context/Select';
 import Option from '../../forms-context/Option';
 import Submit from '../../forms-context/Submit';
 import Field from '../../forms-context/Field';
-import { SetStore } from '../../forms-context/Handler';
+import SetStore from '../../forms-context/SetStore';
 import ButtonForm from '../../forms-context/ButtonForm';
 import LoginError from './Login.item.Error';
 
@@ -90,15 +90,13 @@ class LoginRoute extends Component {
     });
   }
 
-  externalDispatch(state, dispatch) {
+  externalDispatch(prevState, dispatch) {
     return (event) => {
-      if (!state.data) {
-        return;
-      }
+      const { value } = event.target;
 
       dispatch({
-        username: state.data.username,
-        culture: state.data.culture,
+        username: value.username,
+        culture: value.culture,
       });
     };
   }

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------------------
 // File: GetStore.jsx
 //
-// Desc: Espone l'oggetto state, dello store context del componente padre, al componente React chiamante
+// Desc: Espone l'oggetto state dello store context al componente padre
 // Path: /src/components/forms/GetStore
 //------------------------------------------------------------------------------------------------------
 

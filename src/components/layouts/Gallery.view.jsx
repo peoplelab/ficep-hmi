@@ -10,8 +10,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import * as prevArrow from '../../../public/icons/arrow/icon-prev.svg';
-import * as nextArrow from '../../../public/icons/arrow/icon-next.svg';
+import * as prevArrow from '../../../public/icons/ic-arrow-left.svg';
+import * as nextArrow from '../../../public/icons/ic-arrow-right.svg';
 
 import '../../styles/layouts/Gallery.style.scss';
 

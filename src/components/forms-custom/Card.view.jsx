@@ -12,9 +12,9 @@ import moment from 'moment';
 import Box from '../layouts/Box';
 import ButtonData from '../layouts/ButtonData';
 
-import * as admin from '../../../public/icons/users/icon-admin.svg';
-import * as technical from '../../../public/icons/users/icon-technical-male.svg';
-import * as operator from '../../../public/icons/users/icon-operator-male.svg';
+import * as admin from '../../../public/icons/ic-user-admin.svg';
+import * as technical from '../../../public/icons/ic-user-technical.svg';
+import * as operator from '../../../public/icons/ic-user-operator.svg';
 
 import '../../styles/forms/Card.style.scss';
 

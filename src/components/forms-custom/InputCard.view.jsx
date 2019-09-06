@@ -12,7 +12,7 @@ import Box from '../layouts/Box';
 import ButtonData from '../layouts/ButtonData';
 import Card from './Card.view';
 
-import * as resetIcon from '../../../public/icons/icon-close.svg';
+import * as resetIcon from '../../../public/icons/ic-close.svg';
 
 import '../../styles/forms/InputCard.style.scss';
 

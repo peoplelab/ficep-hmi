@@ -8,8 +8,12 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box';
 import Anchor from '../layouts/Anchor';
+
+import dashboard from '../../../public/icons/ic-dashboard.svg';
+import programs from '../../../public/icons/ic-folder.svg';
+import settings from '../../../public/icons/ic-settings.svg';
+import tools from '../../../public/icons/ic-tools.svg';
 
 import '../../styles/templates/logged.style.scss';
 
@@ -18,30 +22,46 @@ const HomeRoute = (props) => {
   const { children } = props;
 
   return (
-    <Box className="logged">
-      <nav className="logged__nav">
-        <ul className="logged__list">
-          <li className="logged__item">
-            <Anchor className="logged__anchor" path="/">
-              Vai a <b>Home</b>
-            </Anchor>
-          </li>
-          <li className="logged__item">
-            <Anchor className="logged__anchor" path="/tools">
-              Vai a <b>Tools</b>
-            </Anchor>
-          </li>
-          <li className="logged__item">
-            <Anchor className="logged__anchor" path="/cultures">
-              Vai a <b>Cultures</b>
-            </Anchor>
-          </li>
-        </ul>
-      </nav>
-      <Box className="logged__route">
-        {children}
-      </Box>
-    </Box>
+    <div className="logged">
+      <header className="logged__header">
+        HEADER
+      </header>
+      <section className="logged__container">
+        <div className="logged__route">
+          {children}
+        </div>
+        <nav className="logged__navbar">
+          <ul className="logged__list">
+            <li className="logged__item">
+              <Anchor className="logged__anchor anchor--tile" path="/">
+                <i className="anchor__icon ic-dashboard" />
+              </Anchor>
+            </li>
+            <li className="logged__item">
+              <Anchor className="logged__anchor anchor--tile" path="/programs">
+                <i className="anchor__icon ic-programs" />
+              </Anchor>
+            </li>
+            <li className="logged__item">
+              <Anchor className="logged__anchor anchor--tile" path="/tools">
+                <i className="anchor__icon ic-tools" />
+              </Anchor>
+            </li>
+            <li className="logged__item">
+              <Anchor className="logged__anchor anchor--tile" path="/settings">
+                <i className="anchor__icon ic-settings" />
+              </Anchor>
+            </li>
+          </ul>
+          <div>
+            Item
+          </div>
+        </nav>
+      </section>
+      <footer className="logged__footer">
+        FOOTER
+      </footer>
+    </div>
   );
 };
 

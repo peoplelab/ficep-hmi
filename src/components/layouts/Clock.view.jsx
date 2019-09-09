@@ -9,24 +9,26 @@ class Clock extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { time: this.setTime() };
+    this.state = { now: new Date() };
 
     this.clock = null;
+
+    this.normalize = this.normalize.bind(this);
     this.setTime = this.setTime.bind(this);
   }
 
   componentDidMount() {
-    this.clock = setInterval(this.setTime, 60000);
+    this.clock = setInterval(this.setTime, 1000);
   }
 
   componentWillUnmount() {
     clearInterval(this.clock);
   }
 
-  setTime() {
+  normalize() {
     const { hasSeconds, symbol } = this.props;
 
-    const now = new Date();
+    const { now } = this.state;
     const hours = normalizeTime(now.getHours());
     const minutes = normalizeTime(now.getMinutes());
     let seconds = '';
@@ -36,14 +38,17 @@ class Clock extends Component {
       seconds = `${symbol}${seconds}`;
     }
 
-    const time = `${hours}${symbol}${minutes}${seconds}`;
+    return `${hours}${symbol}${minutes}${seconds}`;
+  }
 
-    this.setState(() => ({ time }));
+  setTime() {
+    this.setState(() => ({ now: new Date() }));
   }
 
   render() {
     const { className } = this.props;
-    const { time } = this.state;
+
+    const time = this.normalize();
 
     const mergedClass = `clock ${className}`;
 

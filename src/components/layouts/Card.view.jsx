@@ -33,6 +33,7 @@ const roleConverter = {
 
 const Card = (props) => {
   const {
+    children,
     issuedAt,
     username,
     groups,
@@ -43,7 +44,7 @@ const Card = (props) => {
   const mergedClass = `card ${className}`;
 
   const [role] = groups;
-  const lastAccess = moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
+  const lastAccess = issuedAt && moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
 
   return (
     username
@@ -64,12 +65,17 @@ const Card = (props) => {
           {roleConverter[role]}
         </p>
       </Box>
+      {children && (
+        <Box className="card__box">
+          {children}
+        </Box>
+      )}
       {lastAccess && (
         <Box className="card__box">
           <p className="card__paragraph card__paragraph--light">
             Last access:
           </p>
-          <p className="card__paragraph card__paragraph--normal">
+          <p className="card__paragraph">
             {lastAccess}
           </p>
         </Box>
@@ -80,6 +86,7 @@ const Card = (props) => {
 
 
 Card.propTypes = {
+  children: PropTypes.element,
   issuedAt: PropTypes.string,
   username: PropTypes.string,
   groups: PropTypes.arrayOf(PropTypes.string),
@@ -88,6 +95,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+  children: null,
   issuedAt: '',
   username: '',
   groups: [],

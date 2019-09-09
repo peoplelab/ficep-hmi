@@ -19,8 +19,8 @@ const Header = (props) => {
 
   return (
     <header className="logged__header">
-      <div className="logged__header-left">HEADER</div>
-      <div className="logged__header-right">
+      <div className="logged__header-box logged__header-box--left">HEADER</div>
+      <div className="logged__header-box logged__header-box--right">
         <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
         <Clock className="logged__header-clock" />
       </div>
@@ -34,7 +34,7 @@ const Header = (props) => {
  */
 Header.propTypes = {
   username: PropTypes.string.isRequired,
-  groups: PropTypes.string.isRequired,
+  groups: PropTypes.arrayOf(PropTypes.string).isRequired,
   culture: PropTypes.string.isRequired,
 };
 

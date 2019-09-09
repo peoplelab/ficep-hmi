@@ -1,0 +1,35 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+[class^='bg-'] {
+  height: 100% !important;
+  width: 100% !important;
+
+  * {
+    display: none;
+  }
+}
+
+.bg-dashboard {
+  background: url('../../../public/background/dashboard.png') no-repeat 0 -4rem;
+  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+}
+
+.bg-programs {
+  background: url('../../../public/background/programs.png') no-repeat 0 -4rem;
+  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+}
+
+.bg-tools-materiali {
+  background: url('../../../public/background/tools-materiali.png') no-repeat 0 -4rem;
+  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+}
+
+.bg-tools-macchina {
+  background: url('../../../public/background/tools-macchina.png') no-repeat 0 -4rem;
+  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+}
+
+.bg-settings {
+  background: url('../../../public/background/settings.png') no-repeat 0 -4rem;
+  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+}

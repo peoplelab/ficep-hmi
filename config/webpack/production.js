@@ -7,7 +7,10 @@
 
 
 const path = require('path');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 const { COMPILE_ENV } = process.env;
@@ -16,6 +19,12 @@ const devtool = COMPILE_ENV === 'PRODUCTION' ? 'source-map' : 'inline-source-map
 
 
 module.exports = {
+  optimization: {
+    minimizer: [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
   output: {
     path: path.resolve(__dirname, '../../release/dist'),
     filename: 'scripts/[hash].js',
@@ -51,6 +60,10 @@ module.exports = {
       minify: true,
       template: './public/index.html',
       title: 'Mitrol',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles/[contenthash].css',
+      chunkFilename: 'styles/[id].[contenthash].css',
     }),
   ],
 };

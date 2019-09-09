@@ -7,10 +7,11 @@
 
 
 const { HotModuleReplacementPlugin } = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const globalVars = require('../global/client');
 
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV, COMPILE_ENV } = process.env;
 
 const entry = NODE_ENV === 'RELEASE' ? ['./src/index.js'] : ['./src/index.js', 'webpack-hot-middleware/client'];
 
@@ -58,24 +59,30 @@ module.exports = {
         test: /\.s?css$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        exclude: /node_modules/,
-        use: [
           {
-            loader: 'url-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              limit: 8192,
+              hmr: COMPILE_ENV !== 'PRODUCTION',
             },
           },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          { loader: 'resolve-url-loader', options: { sourceMap: true } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 8192,
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [

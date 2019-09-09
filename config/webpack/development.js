@@ -8,6 +8,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 const { COMPILE_ENV, NODE_ENV } = process.env;
@@ -54,6 +55,10 @@ module.exports = {
       inject: true,
       template: './public/index.html',
       title: 'Mitrol',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].css',
+      chunkFilename: 'styles/[id].css',
     }),
   ],
   resolve: {

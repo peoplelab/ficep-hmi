@@ -9,6 +9,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import NavBar from './Logged.item.Navbar';
+import Header from './Logged.item.Header';
 
 import '../../styles/templates/logged.style.scss';
 
@@ -29,15 +30,13 @@ class LoggedTemplate extends PureComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, header } = this.props;
 
     const containerClass = `logged__container ${this.state.reverse ? 'logged__navbar--reverse' : ''}`;
 
     return (
       <div className="logged">
-        <header className="logged__header">
-          HEADER
-        </header>
+        <Header {...header} />
         <section className={containerClass}>
           <div className="logged__route">
             {children}
@@ -53,11 +52,19 @@ class LoggedTemplate extends PureComponent {
 }
 
 
+const shapeHeader = {
+  username: PropTypes.string.isRequired,
+  culture: PropTypes.string.isRequired,
+  groups: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+
 /**
  * Define component properties types
  */
 LoggedTemplate.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  header: PropTypes.shape(shapeHeader),
 };
 
 /**

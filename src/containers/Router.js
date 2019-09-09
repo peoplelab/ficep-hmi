@@ -20,13 +20,13 @@ const createRoutes = () => ({
   logged: [
     {
       path: '/',
-      key: 'dashboard',
+      key: 'Dashboard',
       exact: true,
-      Component: lazy(() => import(/* webpackChunkName: "Home" */ '../components/routes/home/home.container')),
+      Component: lazy(() => import(/* webpackChunkName: "Dashboard" */ '../components/routes/dashboard/dashboard.view')),
     },
     {
       path: '/tools',
-      key: 'tools',
+      key: 'Tools',
       exact: true,
       // Store: lazy(() => import(/* webpackChunkName: "Tools" */  '../store/routes/tools.store')),
       Component: lazy(() => import(/* webpackChunkName: "Tools" */ '../components/routes/tools/tools.view')),
@@ -35,15 +35,15 @@ const createRoutes = () => ({
       path: '/programs',
       key: 'Programs',
       exact: true,
-      // Store: lazy(() => import(/* webpackChunkName: "Cultures" */  '../store/routes/cultures.store')),
-      Component: lazy(() => import(/* webpackChunkName: "Cultures" */ '../components/routes/cultures/cultures.view')),
+      // Store: lazy(() => import(/* webpackChunkName: "Programs" */  '../store/routes/programs.store')),
+      Component: lazy(() => import(/* webpackChunkName: "Programs" */ '../components/routes/programs/programs.view')),
     },
     {
       path: '/settings',
       key: 'Settings',
       exact: true,
-      // Store: lazy(() => import(/* webpackChunkName: "Cultures" */  '../store/routes/cultures.store')),
-      Component: lazy(() => import(/* webpackChunkName: "Cultures" */ '../components/routes/cultures/cultures.view')),
+      // Store: lazy(() => import(/* webpackChunkName: "Settings" */  '../store/routes/settings.store')),
+      Component: lazy(() => import(/* webpackChunkName: "Settings" */ '../components/routes/settings/settings.view')),
     },
   ],
 
@@ -53,7 +53,7 @@ const createRoutes = () => ({
   // Contiene la pagina pubblica di login
   login: {
     path: '/',
-    key: 'login',
+    key: 'Login',
     exact: false,
     Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
   },

@@ -8,26 +8,18 @@
 
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 
-const Tools = (props) => (
-  <Switch>
-    <Route path="/tools" exact>
-      <div className="bg-tools-macchina" />
-    </Route>
-    <Route path={`/tools/materials`} exact>
-      <div className="bg-tools-meteriali" />
-    </Route>
-  </Switch>
+const Settings = (props) => (
+  <div className="bg-settings" />
 );
 
 
-Tools.propTypes = {
+Settings.propTypes = {
 };
 
-Tools.defaultProps = {
+Settings.defaultProps = {
 };
 
 
-export default hot(memo(Tools));
+export default hot(memo(Settings));

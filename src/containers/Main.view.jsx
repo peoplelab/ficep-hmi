@@ -25,15 +25,16 @@ const mapRoutes = (routeProps) => {
   } = routeProps;
 
   return (
-    <Route {...rest} path={path} key={`route-${key}`}>
-      {!Store ? (
-        <Component />
-      ) : (
-        <Store>
-          <Component />
-        </Store>
-      )}
-    </Route>
+    <Route {...rest} path={path} key={`route-${key}`} render={props => <Component {...props} />} />
+    // <Route {...rest} path={path} key={`route-${key}`}>
+    //   {!Store ? (
+    //     <Component />
+    //   ) : (
+    //     <Store>
+    //       <Component />
+    //     </Store>
+    //   )}
+    // </Route>
   );
 };
 

@@ -232,15 +232,16 @@ Es:
 | autoprefixer                                 | normalizzazione prefissi CSS                                           |
 | babel-eslint                                 | linter Babel                                                           |
 | babel-loader                                 | transpiler del codice, connetter Babel a Webpack                       |
-| clean-webpack-plugin                         | ad ogni compilazione, rimuove i file del precedente rilascio (builder) |
 | css-loader                                   | gestione codice CSS (builder)                                          |
 | file-loader                                  | gestione risorse pubbliche (builder)                                   |
 | html-webpack-plugin                          | Crea un index.html da un template (builder)                            |
+| mini-css-extract-plugin                      |                                                                        |
 | node-sass                                    | conversione SASS in CSS (NODE)                                         |
+| optimize-css-assets-webpack-plugin           |                                                                        |
 | postcss                                      | normalizzazione CSS                                                    |
 | postcss-loader                               | normalizzazione CSS (builder)                                          |
+| resolve-url-loader                           |                                                                        |
 | sass-loader                                  | conversione SASS in CSS (builder)                                      |
-| style-loader                                 | caricamento codice CSS da modulo JS (builder)                          |
 | url-loader                                   | converte le risorse pubbliche indicate in BASE64 (builder)             |
 | webpack                                      | builder dell'applicazione                                              |
 | webpack-cli                                  | comandi CLI per Webpack (NPM)                                          |

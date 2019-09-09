@@ -4,10 +4,11 @@
 
 .anchor {
   background-color: $bg-white;
-  color: $text-light-grey;
+  color: $text-dark-grey;
   display: block;
   height: 100%;
   position: relative;
+  text-decoration: none;
   width: 100%;
 
   // stylelint-disable plugin/selector-bem-pattern
@@ -30,6 +31,7 @@
   &:hover,
   &.anchor--active {
     background-color: $bg-dark-grey;
+    color: $text-light-grey;
 
     .anchor__icon {
       background: $bg-white;

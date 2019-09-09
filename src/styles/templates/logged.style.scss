@@ -12,21 +12,26 @@
   width: 100%;
 
   .logged__header {
-    align-items: center;
+    background: url('../../../public/background/header-1.png') no-repeat left top;
+    background-size: 100vw 5.3rem;
+
+    align-items: flex-start;
     display: flex;
-    height: 5rem;
+    height: 5.5rem;
     justify-content: space-between;
     width: 100%;
 
     .logged__header-box {
       background-color: $bg-white;
       border: $border-dark-grey 0.125rem solid;
-      height: 100%;
+      box-shadow: $shadow;
+      height: 5.1rem;
       padding: 0.75rem;
 
       &--left {
         border-top-right-radius: 5rem;
         border-bottom-right-radius: 5rem;
+        opacity: 0;
         width: 50%;
       }
 
@@ -36,13 +41,15 @@
         border-top-left-radius: 5rem;
         border-bottom-left-radius: 5rem;
         justify-content: space-between;
-        width: 25%;
+        padding-left: 1.3rem;
+        width: 24.3rem;
       }
     }
 
     .logged__header-card {
       border-radius: 3.5rem;
       padding: 0.5rem;
+      width: 16.5rem;
 
       /* stylelint-disable plugin/selector-bem-pattern */
       .card__picture {
@@ -59,21 +66,23 @@
     .logged__header-clock {
       align-items: center;
       display: flex;
-      height: 100%;
+      flex: 1;
       justify-content: center;
-      width: 25%;
+      font-size: 1.7rem;
+      margin-left: 1rem;
     }
   }
 
   .logged__container {
     display: flex;
     flex: 1;
+    padding: 2rem 0;
 
     .logged__navbar {
       background-color: $bg-light-grey;
       display: flex;
       flex-direction: column;
-      height: 41rem;
+      height: 37.5rem;
       width: 5rem;
 
       .logged__list {

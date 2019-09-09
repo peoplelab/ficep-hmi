@@ -9,7 +9,7 @@ class Clock extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { time: null };
+    this.state = { time: this.setTime() };
 
     this.clock = null;
     this.setTime = this.setTime.bind(this);

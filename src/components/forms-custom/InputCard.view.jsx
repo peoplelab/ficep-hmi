@@ -39,11 +39,12 @@ const InputCard = (props) => {
       <Card
         {...data}
         name={name}
-        className="input-card__card"
-      />
-      <ButtonData className="input-card__reset" data={reset} onClick={onClick}>
-        <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
-      </ButtonData>
+        className="input-card__card card--input"
+      >
+        <ButtonData className="input-card__reset" data={reset} onClick={onClick}>
+          <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
+        </ButtonData>
+      </Card>
     </Box>
   );
 };

@@ -9,7 +9,6 @@
   display: flex;
   height: 3.5rem;
   justify-content: space-between;
-  padding: 0.5rem;
   width: 100%;
 
   .input-card__card {
@@ -17,35 +16,15 @@
     height: 100%;
 
     /* stylelint-disable plugin/selector-bem-pattern */
-    &.card {
-      align-items: flex-start;
-      cursor: initial;
-      display: flex;
-      flex-flow: row;
-      flex-wrap: wrap;
-      height: 100%;
-      justify-content: center;
-      width: 100%;
-    }
     .card__box {
-      padding: 0;
-
-      &:nth-of-type(1) {
-        flex: none;
+      .card__picture {
+        border-radius: 2.5rem;
+        height: 2.5rem;
         width: 2.5rem;
+      }
 
-        .card__picture {
-          height: 2.5rem;
-          width: 2.5rem;
-        }
-      }
-      &:nth-of-type(2) {
-        flex: 1;
-        padding: 0 0.5rem 0;
-      }
-      &:nth-of-type(3) {
-        flex: none;
-        padding: 0.5rem 0.5rem 0 3rem;
+      &:nth-of-type(4) {
+        margin-top: 0.5rem;
         width: 100%;
       }
     }

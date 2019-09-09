@@ -18,7 +18,7 @@ import LoggedTemplate from '../components/templates/Logged.container';
 const mapRoutes = (routeProps) => {
   const {
     Component,
-    Store,
+    // Store,
     path,
     key,
     ...rest

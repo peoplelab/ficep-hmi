@@ -27,7 +27,7 @@ const createRoutes = () => ({
     {
       path: '/tools',
       key: 'Tools',
-      exact: true,
+      exact: false,
       // Store: lazy(() => import(/* webpackChunkName: "Tools" */  '../store/routes/tools.store')),
       Component: lazy(() => import(/* webpackChunkName: "Tools" */ '../components/routes/tools/tools.view')),
     },

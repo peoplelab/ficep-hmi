@@ -4,12 +4,6 @@
 
 /** @define logged */
 
-@mixin icon {
-  margin: 1rem;
-  height: calc(100% - 2rem);
-  width: calc(100% - 2rem);
-}
-
 .logged {
   display: flex;
   flex-direction: column;
@@ -18,13 +12,57 @@
   width: 100%;
 
   .logged__header {
-    height: 3rem;
+    align-items: center;
+    display: flex;
+    height: 5rem;
+    justify-content: space-between;
     width: 100%;
-  }
 
-  .logged__footer {
-    height: 1rem;
-    width: 100%;
+    .logged__header-box {
+      background-color: $bg-white;
+      border: $border-dark-grey 0.125rem solid;
+      height: 100%;
+      padding: 0.75rem;
+
+      &--left {
+        border-top-right-radius: 5rem;
+        border-bottom-right-radius: 5rem;
+        width: 50%;
+      }
+
+      &--right {
+        align-items: center;
+        display: flex;
+        border-top-left-radius: 5rem;
+        border-bottom-left-radius: 5rem;
+        justify-content: space-between;
+        width: 25%;
+      }
+    }
+
+    .logged__header-card {
+      border-radius: 3.5rem;
+      padding: 0.5rem;
+
+      /* stylelint-disable plugin/selector-bem-pattern */
+      .card__picture {
+        border-radius: 2.5rem;
+        height: 2.5rem;
+        width: 2.5rem;
+      }
+      .card__box:nth-of-type(2) {
+        flex: 1;
+      }
+      /* stylelint-enable plugin/selector-bem-pattern */
+    }
+
+    .logged__header-clock {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      width: 25%;
+    }
   }
 
   .logged__container {
@@ -36,7 +74,7 @@
       display: flex;
       flex-direction: column;
       height: 41rem;
-      width: 7.5rem;
+      width: 5rem;
 
       .logged__list {
         flex: 1;
@@ -44,13 +82,15 @@
 
         .logged__item {
           display: table;
-          padding: 1rem;
+          padding: 0.75rem;
           width: 100%;
 
           .logged__anchor {
             // stylelint-disable-next-line plugin/selector-bem-pattern
             .anchor__icon {
-              @include icon;
+              margin: 0.5rem;
+              height: calc(100% - 1rem);
+              width: calc(100% - 1rem);
             }
           }
         }
@@ -64,12 +104,14 @@
         width: 100%;
 
         .logged__reverse-icon {
-          @include icon;
           display: block;
           background: $bg-dark-grey;
+          height: calc(100% - 2rem);
           left: 0;
+          margin: 1rem;
           position: absolute;
           top: 0;
+          width: calc(100% - 2rem);
         }
       }
     }
@@ -82,5 +124,10 @@
     &.logged__navbar--reverse {
       flex-direction: row-reverse;
     }
+  }
+
+  .logged__footer {
+    height: 1rem;
+    width: 100%;
   }
 }

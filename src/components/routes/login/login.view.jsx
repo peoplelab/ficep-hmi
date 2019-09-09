@@ -117,7 +117,7 @@ class LoginRoute extends Component {
     return (
       <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
         <Card
-          className="login__card"
+          className="login__card card--button"
           issuedAt={issuedAt}
           groups={groups}
           username={username}

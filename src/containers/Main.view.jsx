@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import createRoutes from './Router';
-import LoggedTemplate from '../components/templates/logged.view';
+import LoggedTemplate from '../components/templates/Logged.container';
 // import { SessionValidity } from '../controllers/session.controller';
 
 

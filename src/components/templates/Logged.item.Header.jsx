@@ -8,6 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import OuterClick from '../common/OuterClick';
 import Button from '../layouts/Button';
 import Card from '../layouts/Card.view';
 import Clock from '../layouts/Clock.view';
@@ -23,10 +24,15 @@ class Header extends PureComponent {
     this.state = { openModal: false };
 
     this.onClick = this.onClick.bind(this);
+    this.onOuterClick = this.onOuterClick.bind(this);
   }
 
   onClick() {
     this.setState((prevState) => ({ openModal: !(prevState.openModal) }));
+  }
+
+  onOuterClick() {
+    this.setState(() => ({ openModal: false }));
   }
 
   render()  {
@@ -41,7 +47,9 @@ class Header extends PureComponent {
             <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
           </Button>
           <Clock className="logged__header-clock" />
-          <UserModal visible={openModal} />
+          <OuterClick onOuterClick={this.onOuterClick}>
+            <UserModal visible={openModal} />
+          </OuterClick>
         </div>
       </header>
     );

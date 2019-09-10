@@ -8,23 +8,23 @@
   background-color: $bg-light-grey;
   box-shadow: $shadow;
   border-radius: 1rem;
-  height: 32rem;
+  height: 31rem;
   left: 40%;
   position: absolute;
   transform: translate(-50%, 0);
-  top: 6rem;
+  top: 7.4rem;
   width: 16.5rem;
 
   &::before {
     background-color: $bg-light-grey;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     content: '';
-    height: 1rem;
+    height: 1.5rem;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 0;
-    width: 1rem;
+    width: 1.5rem;
     z-index: 1;
   }
 

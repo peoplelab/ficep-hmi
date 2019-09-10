@@ -11,23 +11,18 @@
   text-decoration: none;
   width: 100%;
 
-  // stylelint-disable plugin/selector-bem-pattern
-  &.anchor--tile {
-    padding-top: 100%;
-    position: relative;
+  .anchor__icon {
+    display: block;
+    background: $bg-dark-grey;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-
-    .anchor__icon {
-      display: block;
-      background: $bg-dark-grey;
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
   }
 
+  // stylelint-disable plugin/selector-bem-pattern
   &:hover,
   &.anchor--active {
     background-color: $bg-dark-grey;
@@ -36,6 +31,17 @@
     .anchor__icon {
       background: $bg-white;
     }
+  }
+
+  &.anchor--tile {
+    padding-top: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  &.anchor--circle {
+    @extend .anchor--tile;
+    border-radius: 100%;
   }
   // stylelint-enable plugin/selector-bem-pattern
 }

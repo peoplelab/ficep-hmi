@@ -21,11 +21,15 @@ const Anchor = (props) => {
     history,
     replace,
     className,
+    exact,
     staticContext: _staticContext, // eslint-disable-line no-unused-vars
     ...rest
   } = props;
 
-  const pathClass = path === history.location.pathname ? 'anchor--active' : '';
+  const pattern = exact ? `^${path}$` : `^${path}`;
+  const regex = new RegExp(pattern);
+
+  const pathClass = regex.test(history.location.pathname) ? 'anchor--active' : '';
 
   const mergedClass = `anchor ${pathClass} ${className}`;
   return (
@@ -47,12 +51,14 @@ Anchor.propTypes = {
   history : PropTypes.object.isRequired,
   staticContext : PropTypes.any,
   replace: PropTypes.bool,
+  exact: PropTypes.bool,
   className: PropTypes.string,
 };
 
 Anchor.defaultProps = {
   children: null,
   replace: false,
+  exact: false,
   className: '',
   staticContext: null,
 };

@@ -44,7 +44,7 @@
   }
 
   .cultures__table {
-    /* stylelint-disable plugin/selector-bem-pattern */
+    // stylelint-disable plugin/selector-bem-pattern
     td {
       padding: 0.5rem 2rem;
 
@@ -55,7 +55,7 @@
         width: 100%;
       }
     }
-    /* stylelint-enable plugin/selector-bem-pattern */
+    // stylelint-enable plugin/selector-bem-pattern
   }
 
   .cultures__form {

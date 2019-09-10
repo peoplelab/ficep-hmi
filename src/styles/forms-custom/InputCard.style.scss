@@ -15,7 +15,7 @@
     flex: 1;
     height: 100%;
 
-    /* stylelint-disable plugin/selector-bem-pattern */
+    // stylelint-disable plugin/selector-bem-pattern
     .card__box {
       .card__picture {
         border-radius: 2.5rem;
@@ -28,7 +28,7 @@
         width: 100%;
       }
     }
-    /* stylelint-enable plugin/selector-bem-pattern */
+    // stylelint-enable plugin/selector-bem-pattern
   }
 
   .input-card__reset {

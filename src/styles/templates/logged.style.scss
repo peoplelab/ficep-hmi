@@ -64,7 +64,7 @@
       padding: 0.5rem;
       width: 16.5rem;
 
-      /* stylelint-disable plugin/selector-bem-pattern */
+      // stylelint-disable plugin/selector-bem-pattern
       .card__picture {
         border-radius: 2.5rem;
         height: 2.5rem;
@@ -73,7 +73,7 @@
       .card__box:nth-of-type(2) {
         flex: 1;
       }
-      /* stylelint-enable plugin/selector-bem-pattern */
+      // stylelint-enable plugin/selector-bem-pattern
     }
 
     .logged__header-clock {

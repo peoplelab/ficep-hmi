@@ -35,13 +35,27 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        exclude: /node_modules/,
+        exclude: /node_modules|fonts?/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
               outputPath: 'images',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(eot|woff2?|ttf|svg)$/i,
+        include: /fonts?/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: 'font',
             },
           },
         ],

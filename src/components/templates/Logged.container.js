@@ -19,7 +19,6 @@ const header = state => ({
 // Traforma gli stati Redux in proprietà del componente React
 const mapStateToProps = state => ({
   header: header(state),
-  state,
 });
 
 

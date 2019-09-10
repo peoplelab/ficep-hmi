@@ -1,0 +1,39 @@
+// Style own of jog route
+
+@import '../colors.scss';
+
+/** @define jog */
+
+.jog {
+  padding: 1.6rem 4.3rem;
+
+  .jog__container {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 66.5%;
+
+    .jog__anchor {
+      align-items: center;
+      border: $border-dark-grey solid 0.225rem;
+      display: flex;
+      font-size: 0.8rem;
+      font-weight: 600;
+      height: 2.8rem;
+      justify-content: center;
+      text-transform: uppercase;
+      width: 29.2rem;
+
+      &:first-of-type{
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      &:last-of-type{
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+  }
+}

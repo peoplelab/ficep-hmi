@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: home.view.jsx
+// File: UserModal.view.jsx
 //
-// Desc: Pagina pubblica principale
-// Path: /src/components/routes/home/home.view
+// Desc: Widget modale, contiene le funzionalità specifiche per l'utente
+// Path: /src/components/modal/UserModal.view
 //----------------------------------------------------------------------------------------
 
 

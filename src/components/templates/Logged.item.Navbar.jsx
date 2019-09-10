@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: home.view.jsx
+// File: Logged.item.Navbar.jsx
 //
-// Desc: Template delle pagine del flusso privato
-// Path: /src/components/routes/home/home.view
+// Desc: Menù di navigazione ell'applicazione
+// Path: /src/components/templates/Logged/Logged.item.Navbar
 //----------------------------------------------------------------------------------------
 
 

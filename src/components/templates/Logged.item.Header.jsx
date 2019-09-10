@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: home.view.jsx
+// File: Logged.item.Header.jsx
 //
-// Desc: Template delle pagine del flusso privato
-// Path: /src/components/routes/home/home.view
+// Desc: Intestazione dell'applicazione
+// Path: /src/components/templates/Logged/Logged.item.Header
 //----------------------------------------------------------------------------------------
 
 

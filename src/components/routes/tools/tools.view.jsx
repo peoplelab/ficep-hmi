@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: settings.view.jsx
+// File: tools.view.jsx
 //
 // Desc: ...
-// Path: /src/components/routes/settings/settings.view
+// Path: /src/components/routes/settings/tools.view
 //----------------------------------------------------------------------------------------
 
 

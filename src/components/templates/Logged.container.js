@@ -1,9 +1,9 @@
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 // File: Main.container.js
 //
-// Desc: Gestore della comunicazione tra lo store globale e il componente per la gestione delle pagine
+// Desc: Gestore della comunicazione tra lo store globale e il template delle pagine con utente loggato
 // Path: /src/container/Main.container
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
 
 import { connect } from 'react-redux';

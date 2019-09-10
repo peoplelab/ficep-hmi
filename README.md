@@ -218,34 +218,34 @@ Es:
 
 #### Compilazione
 
-| package                                      |                                                                        |
-|----------------------------------------------|------------------------------------------------------------------------|
-| @babel/core                                  | transpiler del codice (Babel)                                          |
-| @babel/plugin-proposal-class-properties      | transpiler del codice (Babel)                                          |
-| @babel/plugin-proposal-export-namespace-from | transpiler del codice (Babel)                                          |
-| @babel/plugin-proposal-throw-expressions     | transpiler del codice (Babel)                                          |
-| @babel/plugin-syntax-dynamic-impor           | transpiler del codice (Babel)                                          |
-| @babel/plugin-transform-spread               | transpiler del codice (Babel)                                          |
-| @babel/polyfill                              | transpiler del codice (Babel)                                          |
-| @babel/preset-env                            | transpiler del codice (Babel)                                          |
-| @babel/preset-react                          | transpiler del codice (Babel)                                          |
-| autoprefixer                                 | normalizzazione prefissi CSS                                           |
-| babel-eslint                                 | linter Babel                                                           |
-| babel-loader                                 | transpiler del codice, connetter Babel a Webpack                       |
-| css-loader                                   | gestione codice CSS (builder)                                          |
-| file-loader                                  | gestione risorse pubbliche (builder)                                   |
-| html-webpack-plugin                          | Crea un index.html da un template (builder)                            |
-| mini-css-extract-plugin                      |                                                                        |
-| node-sass                                    | conversione SASS in CSS (NODE)                                         |
-| optimize-css-assets-webpack-plugin           |                                                                        |
-| postcss                                      | normalizzazione CSS                                                    |
-| postcss-loader                               | normalizzazione CSS (builder)                                          |
-| resolve-url-loader                           |                                                                        |
-| sass-loader                                  | conversione SASS in CSS (builder)                                      |
-| url-loader                                   | converte le risorse pubbliche indicate in BASE64 (builder)             |
-| webpack                                      | builder dell'applicazione                                              |
-| webpack-cli                                  | comandi CLI per Webpack (NPM)                                          |
-| webpack-merge                                | unisce due configurazioni in un unico oggetto (builder)                |
+| package                                      |                                                                                 |
+|----------------------------------------------|---------------------------------------------------------------------------------|
+| @babel/core                                  | transpiler del codice (Babel)                                                   |
+| @babel/plugin-proposal-class-properties      | transpiler del codice (Babel)                                                   |
+| @babel/plugin-proposal-export-namespace-from | transpiler del codice (Babel)                                                   |
+| @babel/plugin-proposal-throw-expressions     | transpiler del codice (Babel)                                                   |
+| @babel/plugin-syntax-dynamic-impor           | transpiler del codice (Babel)                                                   |
+| @babel/plugin-transform-spread               | transpiler del codice (Babel)                                                   |
+| @babel/polyfill                              | transpiler del codice (Babel)                                                   |
+| @babel/preset-env                            | transpiler del codice (Babel)                                                   |
+| @babel/preset-react                          | transpiler del codice (Babel)                                                   |
+| autoprefixer                                 | normalizzazione prefissi CSS                                                    |
+| babel-eslint                                 | linter Babel                                                                    |
+| babel-loader                                 | transpiler del codice, connetter Babel a Webpack                                |
+| css-loader                                   | gestione codice CSS (builder)                                                   |
+| file-loader                                  | gestione risorse pubbliche (builder)                                            |
+| html-webpack-plugin                          | Crea un index.html da un template (builder)                                     |
+| mini-css-extract-plugin                      | gestione del css e dell'hot-reload dello stile (builder)                        |
+| node-sass                                    | conversione SASS in CSS (NODE)                                                  |
+| optimize-css-assets-webpack-plugin           | ottimizza l'output del css output dei rilasci in produzione (builder)           |
+| postcss                                      | normalizzazione CSS                                                             |
+| postcss-loader                               | normalizzazione CSS (builder)                                                   |
+| resolve-url-loader                           | modifica i percorsi dei css url in base ai percorsi reali dell' outpu (builder) |
+| sass-loader                                  | conversione SASS in CSS (builder)                                               |
+| url-loader                                   | converte le risorse pubbliche indicate in BASE64 (builder)                      |
+| webpack                                      | builder dell'applicazione                                                       |
+| webpack-cli                                  | comandi CLI per Webpack (NPM)                                                   |
+| webpack-merge                                | unisce due configurazioni in un unico oggetto (builder)                         |
 
 #### Debug
 

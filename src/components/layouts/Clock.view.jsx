@@ -1,3 +1,11 @@
+//------------------------------------------------------------------------------------------------
+// File: Clock.view.jsx
+//
+// Desc: Orologio React
+// Path: /src/components/forms-custom/Clock.view
+//------------------------------------------------------------------------------------------------
+
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 

@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: Box.jsx
+// File: Logged.item.Footer.jsx
 //
-// Desc: Componente React con il ruolo di contenitore generico
-// Path: /src/components/layouts/Box
+// Desc: Footer dell'applicazione
+// Path: /src/components/templates/Logged/Logged.item.Footer
 //----------------------------------------------------------------------------------------
 
 

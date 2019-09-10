@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: Box.jsx
+// File: Logged.item.Jog.jsx
 //
-// Desc: Componente React con il ruolo di contenitore generico
-// Path: /src/components/layouts/Box
+// Desc: Link alle pagine dei comandi
+// Path: /src/components/templates/Logged/Logged.item.Jog
 //----------------------------------------------------------------------------------------
 
 

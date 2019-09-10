@@ -35,3 +35,8 @@
   @include mask;
   mask-image: url('../../public/icons/ic-right-hand.svg');
 }
+
+.ic-arrow-drag {
+  @include mask;
+  mask-image: url('../../public/icons/ic-arrow-drag.svg');
+}

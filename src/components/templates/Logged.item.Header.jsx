@@ -6,27 +6,47 @@
 //----------------------------------------------------------------------------------------
 
 
-import React, { memo } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../layouts/Button';
 import Card from '../layouts/Card.view';
 import Clock from '../layouts/Clock.view';
+import UserModal from '../modal/UserModal.view';
 
 import '../../styles/templates/logged.style.scss';
 
 
-const Header = (props) => {
-  const { username, groups, culture } = props;
+class Header extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <header className="logged__header">
-      <div className="logged__header-box logged__header-box--left">HEADER</div>
-      <div className="logged__header-box logged__header-box--right">
-        <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
-        <Clock className="logged__header-clock" />
-      </div>
-    </header>
-  );
-};
+    this.state = { openModal: false };
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.setState((prevState) => ({ openModal: !(prevState.openModal) }));
+  }
+
+  render()  {
+    const { username, groups, culture } = this.props;
+    const { openModal } = this.state;
+
+    return (
+      <header className="logged__header">
+        <div className="logged__header-box logged__header-box--left">HEADER</div>
+        <div className="logged__header-box logged__header-box--right">
+          <Button className="logged__header-button" onClick={this.onClick}>
+            <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
+          </Button>
+          <Clock className="logged__header-clock" />
+          <UserModal visible={openModal} />
+        </div>
+      </header>
+    );
+  }
+}
 
 
 /**
@@ -45,4 +65,4 @@ Header.defaultProps = {
 };
 
 
-export default memo(Header);
+export default Header;

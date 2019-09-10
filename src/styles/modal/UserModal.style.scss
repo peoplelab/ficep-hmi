@@ -52,4 +52,19 @@
     width: 13.9rem;
     z-index: 3;
   }
+
+  .user-modal__button-2 {
+    @extend .user-modal__button;
+    bottom: 5.2rem;
+  }
+
+  // stylelint-disable plugin/selector-bem-pattern
+  &.user-modal--admin {
+    height: 35rem;
+
+    .bg-user-modal {
+      background-size: 100% 31rem;
+    }
+  }
+  // stylelint-enable plugin/selector-bem-pattern
 }

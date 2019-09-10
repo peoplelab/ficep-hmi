@@ -1,0 +1,55 @@
+// Style of private routes template
+
+@import '../colors.scss';
+
+/** @define user-modal */
+
+.user-modal {
+  background-color: $bg-light-grey;
+  box-shadow: $shadow;
+  border-radius: 1rem;
+  height: 32rem;
+  left: 40%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  top: 6rem;
+  width: 16.5rem;
+
+  &::before {
+    background-color: $bg-light-grey;
+    border-radius: 1rem;
+    content: '';
+    height: 1rem;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 0;
+    width: 1rem;
+    z-index: 1;
+  }
+
+  .user-modal__bg {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .user-modal__button {
+    align-items: center;
+    border: $border-dark-grey solid 0.225rem;
+    border-radius: 0.5rem;
+    bottom: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 3rem;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translate(-50%, 0);
+    width: 13.9rem;
+    z-index: 3;
+  }
+}

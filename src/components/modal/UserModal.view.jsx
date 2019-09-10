@@ -8,7 +8,6 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
 import Button from '../layouts/Button';
 import { callLogout } from '../../controllers/routes/logout/logout.controller';
 
@@ -62,4 +61,4 @@ HomeRoute.defaultProps = {
 };
 
 
-export default hot(HomeRoute);
+export default HomeRoute;

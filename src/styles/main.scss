@@ -1,5 +1,6 @@
 // Application Common style
 
+@import './font/Saira';
 @import './media.scss';
 @import './icon.scss';
 @import './background.scss';
@@ -16,6 +17,8 @@
 
 
 :root {
+  font-family: 'Saira', sans-serif;
+  line-height: 15px;
   font-size: 15px;
 
   @media screen and (max-width: $break-medium) {

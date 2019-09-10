@@ -34,7 +34,7 @@ class LoggedTemplate extends PureComponent {
   render() {
     const { children, header } = this.props;
 
-    const containerClass = `logged__container ${this.state.reverse ? 'logged__navbar--reverse' : ''}`;
+    const containerClass = `logged__container ${this.state.reverse ? 'logged__container--reverse' : ''}`;
 
     return (
       <div className="logged">

@@ -43,7 +43,7 @@ class Header extends PureComponent {
       <header className="logged__header">
         <div className="logged__header-box logged__header-box--left">HEADER</div>
         <div className="logged__header-box logged__header-box--right">
-          <OuterClick className="logged__header-button" onOuterClick={this.onOuterClick}>
+          <OuterClick className="logged__header-outerhandler" onOuterClick={this.onOuterClick}>
             <Button className="logged__header-button" onClick={this.onClick}>
               <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
             </Button>

@@ -20,6 +20,7 @@
     height: 5.5rem;
     justify-content: space-between;
     width: 100%;
+    z-index: 2;
 
     .logged__header-box {
       background-color: $bg-white;
@@ -46,6 +47,10 @@
         width: 24.3rem;
       }
     }
+
+    // .logged__header-outerhandler {
+    //
+    // }
 
     .logged__header-button {
       background-color: transparent;
@@ -85,6 +90,7 @@
     display: flex;
     flex: 1;
     padding: 2rem 0;
+    z-index: 1;
 
     .logged__navbar {
       background-color: $bg-light-grey;
@@ -92,6 +98,7 @@
       flex-direction: column;
       height: 37.5rem;
       width: 5rem;
+      z-index: 2;
 
       .logged__list {
         flex: 1;
@@ -135,9 +142,10 @@
     .logged__route {
       flex: 1;
       overflow: auto;
+      z-index: 1;
     }
 
-    &.logged__navbar--reverse {
+    &.logged__container--reverse {
       flex-direction: row-reverse;
     }
   }
@@ -148,6 +156,7 @@
 
     height: 2rem;
     width: 100%;
+    z-index: 2;
   }
 
   .logged__jog {
@@ -156,6 +165,7 @@
     right: 2rem;
     position: fixed;
     width: 6.5rem;
+    z-index: 3;
 
     .logged__anchor {
       background-color: $bg-light-grey;

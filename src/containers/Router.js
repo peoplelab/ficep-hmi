@@ -35,15 +35,19 @@ const createRoutes = () => ({
       path: '/programs',
       key: 'Programs',
       exact: true,
-      // Store: lazy(() => import(/* webpackChunkName: "Programs" */  '../store/routes/programs.store')),
       Component: lazy(() => import(/* webpackChunkName: "Programs" */ '../components/routes/programs/programs.view')),
     },
     {
       path: '/settings',
       key: 'Settings',
       exact: true,
-      // Store: lazy(() => import(/* webpackChunkName: "Settings" */  '../store/routes/settings.store')),
       Component: lazy(() => import(/* webpackChunkName: "Settings" */ '../components/routes/settings/settings.view')),
+    },
+    {
+      path: '/jog',
+      key: 'Jog',
+      exact: false,
+      Component: lazy(() => import(/* webpackChunkName: "Jog" */ '../components/routes/jog/jog.view')),
     },
   ],
 

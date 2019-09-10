@@ -31,6 +31,15 @@
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
   }
+
+  p.tools__anchor {
+    border-radius: 0 !important;
+
+    &:hover {
+      background-color: $bg-white;
+      color: $text-dark-grey;
+    }
+  }
 }
 
 /*

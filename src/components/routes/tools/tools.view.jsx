@@ -15,27 +15,20 @@ import Anchor from '../../layouts/Anchor';
 import '../../../styles/routes/tools.style.scss';
 
 
-const Tools = ({match}) => (
+const Tools = ({ match }) => (
   <Switch>
     <Route path={match.path} exact>
       <div className="bg-tools-macchina tools">
-        <Anchor className="tools__anchor" path="/tools">Utensili macchina</Anchor>
-        <Anchor className="tools__anchor" path="/tools/database">Database utensili</Anchor>
-        <Anchor className="tools__anchor" path="/tools/materials">Materiali</Anchor>
+        <Anchor className="tools__anchor" exact path={match.path}>Utensili macchina</Anchor>
+        <p className="anchor tools__anchor" >Database utensili</p>
+        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>Materiali</Anchor>
       </div>
     </Route>
-    <Route path={`/${match.path}/materials`} exact>
-      <div className="bg-tools-meteriali tools">
-        <Anchor className="tools__anchor" path="/tools">Utensili macchina</Anchor>
-        <Anchor className="tools__anchor" path="/tools/database">Database utensili</Anchor>
-        <Anchor className="tools__anchor" path="/tools/materials">Materiali</Anchor>
-      </div>
-    </Route>
-    <Route path={`/${match.path}/database`} exact>
-      <div className="tools">
-        <Anchor className="tools__anchor" path="/tools">Utensili macchina</Anchor>
-        <Anchor className="tools__anchor" path="/tools/database">Database utensili</Anchor>
-        <Anchor className="tools__anchor" path="/tools/materials">Materiali</Anchor>
+    <Route path={`${match.path}/materials`} exact>
+      <div className="bg-tools-materiali tools">
+        <Anchor className="tools__anchor" exact path={match.path}>Utensili macchina</Anchor>
+        <p className="anchor tools__anchor" >Database utensili</p>
+        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>Materiali</Anchor>
       </div>
     </Route>
   </Switch>

@@ -10,6 +10,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import NavBar from './Logged.item.Navbar';
 import Header from './Logged.item.Header';
+import Footer from './Logged.item.Footer';
+import Jog from './Logged.item.Jog';
 
 import '../../styles/templates/logged.style.scss';
 
@@ -43,9 +45,8 @@ class LoggedTemplate extends PureComponent {
           </div>
           <NavBar reverse={this.state.reverse} onReverse={this.onReverse} />
         </section>
-        <footer className="logged__footer">
-          FOOTER
-        </footer>
+        <Footer />
+        <Jog />
       </div>
     );
   }

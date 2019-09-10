@@ -12,7 +12,7 @@
   width: 100%;
 
   .logged__header {
-    background: url('../../../public/background/header-1.png') no-repeat left top;
+    background: url('../../../public/background/header.png') no-repeat left top;
     background-size: 100vw 5.3rem;
 
     align-items: flex-start;
@@ -97,7 +97,6 @@
           .logged__anchor {
             // stylelint-disable-next-line plugin/selector-bem-pattern
             .anchor__icon {
-              margin: 0.5rem;
               height: calc(100% - 1rem);
               width: calc(100% - 1rem);
             }
@@ -136,7 +135,35 @@
   }
 
   .logged__footer {
-    height: 1rem;
+    background: url('../../../public/background/footer.png') no-repeat left top;
+    background-size: 100% 100%;
+
+    height: 2rem;
     width: 100%;
+  }
+
+  .logged__jog {
+    bottom: 2rem;
+    height: 6.5rem;
+    right: 2rem;
+    position: fixed;
+    width: 6.5rem;
+
+    .logged__anchor {
+      background-color: $bg-light-grey;
+      box-shadow: $shadow-2;
+
+      // stylelint-disable-next-line plugin/selector-bem-pattern
+      .anchor__icon {
+        height: calc(100% - 3.5rem);
+        width: calc(100% - 3.5rem);
+      }
+
+      // stylelint-disable-next-line plugin/selector-bem-pattern
+      &:hover,
+      &.anchor--active {
+        background-color: $bg-dark-grey;
+      }
+    }
   }
 }

@@ -23,6 +23,7 @@ import Field from '../../forms/Field';
 import LoginError from './Login.item.Error';
 
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
+import { callGetTranslations } from '../../../controllers/translations.controller';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
 import ButtonData from '../../layouts/ButtonData';
@@ -90,6 +91,8 @@ class LoginRoute extends Component {
   // esegue la richiesta di login
   onLogin(data, event) {
     const dispatch = this.updateState;
+
+    callGetTranslations({ culture: data.culture });
 
     callLogin({
       data,

@@ -2,23 +2,29 @@ import { getTranslations } from '../models/translations.module';
 import { base } from './common/controller.base';
 
 
-const sectionsList = ['messages', 'labels'];
-
 // richiesta per il recupero dei testi della traduzione da visualizzare
-export const callGetTranslations = async ({ culture }) => {
-  window.translations = {};
+export const baseTranslations = sectionsList => async ({ culture }) => {
 
   sectionsList.forEach((section) => {
     base({
       params: { culture, section },
       api: getTranslations,
       success: ({ jsondata }) => {
-        window.translations[section] = jsondata;
+        window.intl = {
+          ...window.intl,
+          ...jsondata,
+        };
       },
       failure: () => {
-        window.translations[section] = null;
+        window.intl[section] = {};
       },
       refresh: false
     });
   });
 };
+
+// richiesta per il recupero dei testi della traduzione da visualizzare
+export const callDefaultTranslations = baseTranslations(['default']);
+
+// richiesta per il recupero dei testi della traduzione da visualizzare
+export const callGetTranslations = baseTranslations(['messages', 'labels']);

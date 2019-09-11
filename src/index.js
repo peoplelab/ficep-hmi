@@ -11,6 +11,9 @@ import { setConfig } from 'react-hot-loader';												// Plugin per il "live 
 import App from './containers/App';											// Init point dell'applicazione
 
 
+window.intl = {};
+
+
 if (!IS_PRODUCTION) {
   setConfig({ logLevel: 'debug' });
 }

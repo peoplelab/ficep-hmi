@@ -1,0 +1,10 @@
+{
+  "login_info_title": "Enter your data",
+  "login_form_username": "Username",
+  "login_form_password": "Password",
+  "login_form_submit": "Login",
+  "login_user_administrator": "Administrator",
+  "login_user_technician": "Technician",
+  "login_user_operator": "Operator",
+  "login_user_lastaccess": "Last access:",
+}

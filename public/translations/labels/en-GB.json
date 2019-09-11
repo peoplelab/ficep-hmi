@@ -3,6 +3,7 @@
   "header_user_technician": "Technician",
   "header_user_operator": "Operator",
   "header_info_lastaccess": "Last access:",
+  "user_action_logout": "Logout",
   "tools_tab_machine": "Machine tools",
   "tools_tab_database": "Tool database",
   "tools_tab_materials": "Materials",

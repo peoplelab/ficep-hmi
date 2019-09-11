@@ -6,5 +6,5 @@
   "login_user_administrator": "Administrator",
   "login_user_technician": "Technician",
   "login_user_operator": "Operator",
-  "login_user_lastaccess": "Last access:",
+  "login_user_lastaccess": "Last access:"
 }

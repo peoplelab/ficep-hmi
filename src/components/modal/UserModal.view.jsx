@@ -38,7 +38,7 @@ class HomeRoute extends PureComponent {
           className="user-modal__button anchor"
           onClick={this.onLogout}
         >
-          Logout
+          {window.intl.user_action_logout}
         </Button>
       </section>
     );

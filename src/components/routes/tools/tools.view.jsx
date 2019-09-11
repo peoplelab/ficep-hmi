@@ -19,16 +19,28 @@ const Tools = ({ match }) => (
   <Switch>
     <Route path={match.path} exact>
       <div className="bg-tools-macchina tools">
-        <Anchor className="tools__anchor" exact path={match.path}>Utensili macchina</Anchor>
-        <p className="anchor tools__anchor" >Database utensili</p>
-        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>Materiali</Anchor>
+        <Anchor className="tools__anchor" exact path={match.path}>
+          {window.intl.tools_tab_machine}
+        </Anchor>
+        <p className="anchor tools__anchor" >
+          {window.intl.tools_tab_database}
+        </p>
+        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>
+          {window.intl.tools_tab_materials}
+        </Anchor>
       </div>
     </Route>
     <Route path={`${match.path}/materials`} exact>
       <div className="bg-tools-materiali tools">
-        <Anchor className="tools__anchor" exact path={match.path}>Utensili macchina</Anchor>
-        <p className="anchor tools__anchor" >Database utensili</p>
-        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>Materiali</Anchor>
+        <Anchor className="tools__anchor" exact path={match.path}>
+          {window.intl.tools_tab_machine}
+        </Anchor>
+        <p className="anchor tools__anchor" >
+          {window.intl.tools_tab_database}
+        </p>
+        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>
+          {window.intl.tools_tab_materials}
+        </Anchor>
       </div>
     </Route>
   </Switch>

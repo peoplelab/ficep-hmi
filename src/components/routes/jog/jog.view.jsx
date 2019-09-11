@@ -20,16 +20,24 @@ const Jog = ({ match }) => (
     <Route path={match.path} exact>
       <div className="bg-commands-jog jog">
         <div className="jog__container">
-          <Anchor className="jog__anchor" exact path={match.path}>Jog</Anchor>
-          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>Comandi</Anchor>
+          <Anchor className="jog__anchor" exact path={match.path}>
+            {window.intl.jog_tab_jog}
+          </Anchor>
+          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>
+            {window.intl.jog_tab_commands}
+          </Anchor>
         </div>
       </div>
     </Route>
     <Route path={`${match.path}/commands`} exact>
       <div className="bg-commands-comandi jog">
         <div className="jog__container">
-          <Anchor className="jog__anchor" exact path={match.path}>Jog</Anchor>
-          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>Comandi</Anchor>
+          <Anchor className="jog__anchor" exact path={match.path}>
+            {window.intl.jog_tab_jog}
+          </Anchor>
+          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>
+            {window.intl.jog_tab_commands}
+          </Anchor>
         </div>
       </div>
     </Route>

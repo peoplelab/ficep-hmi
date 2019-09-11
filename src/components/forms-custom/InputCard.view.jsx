@@ -25,6 +25,7 @@ const InputCard = (props) => {
     className,
     reset,
     onClick,
+    ids,
   } = props;
 
   // se il dato predefito non è indicato, torna il componente per l'inserimento manuale dei dati
@@ -40,6 +41,7 @@ const InputCard = (props) => {
         {...data}
         name={name}
         className="input-card__card card--input"
+        ids={ids}
       >
         <ButtonData className="input-card__reset" data={reset} onClick={onClick}>
           <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
@@ -58,6 +60,7 @@ InputCard.propTypes = {
   className: PropTypes.string,
   reset: PropTypes.object,
   onClick: PropTypes.func,
+  ids: PropTypes.objectOf(PropTypes.string),
 };
 
 InputCard.defaultProps = {
@@ -65,6 +68,7 @@ InputCard.defaultProps = {
   data: null,
   reset: null,
   onClick: () => {},
+  ids: {},
 };
 
 

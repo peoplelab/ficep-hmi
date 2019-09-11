@@ -23,7 +23,7 @@ import Field from '../../forms/Field';
 import LoginError from './Login.item.Error';
 
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
-import { callGetTranslations } from '../../../controllers/translations.controller';
+import { callGetTranslations, callDefaultTranslations } from '../../../controllers/translations.controller';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
 import ButtonData from '../../layouts/ButtonData';
@@ -41,6 +41,14 @@ const initial = {
 };
 
 
+const idsCard = {
+  ADMIN: "login_user_administrator",
+  SUPER: "login_user_technician",
+  USER: "login_user_operator",
+  lastaccess: "login_user_lastaccess",
+};
+
+
 class LoginRoute extends Component {
 
 	constructor(props) {
@@ -53,6 +61,8 @@ class LoginRoute extends Component {
       cultureList: [],
       errorOnLogin: false,
     };
+
+    callDefaultTranslations({ culture: 'en-GB'});
 
     this.updateState = this.updateState.bind(this);
     this.setUsername = this.setUsername.bind(this);
@@ -117,14 +127,17 @@ class LoginRoute extends Component {
       }
     });
 
+    const [role] = groups;
+
     return (
       <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
         <Card
           className="login__card card--button"
           issuedAt={issuedAt}
-          groups={groups}
+          role={role}
           username={username}
           culture={culture}
+          ids={idsCard}
         />
       </ButtonData>
     );
@@ -141,7 +154,7 @@ class LoginRoute extends Component {
         <Box className="login__dialog">
           <Form className="login__form" name="login-form">
             <p className="login__title">
-              Inserisci i tuoi dati
+              {window.intl.login_info_title}
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
@@ -152,13 +165,14 @@ class LoginRoute extends Component {
                   data={data}
                   reset={initial}
                   onClick={this.setUsername}
+                  ids={idsCard}
                 >
-                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder="Username" />
+                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder={window.intl.login_form_username} />
                 </InputCard>
               </Field>
               <Field className="login__field">
                 <PasswordInput
-                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder="Password"
+                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder={window.intl.login_form_password}
                 />
               </Field>
               <Field className="login__field">
@@ -167,7 +181,7 @@ class LoginRoute extends Component {
                 />
               </Field>
               <Submit className="login__form-submit" required={required} value={this.state} onSubmit={this.onLogin} name="login-form">
-                Login
+                {window.intl.login_form_submit}
               </Submit>
             </Box>
             <Gallery

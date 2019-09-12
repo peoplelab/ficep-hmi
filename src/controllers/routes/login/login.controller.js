@@ -25,7 +25,6 @@ export const callLogin = async ({ data, dispatch }) => {
     request,
     api: apiLogin,
     success: ({ dataprocessed }) => {
-      dispatch({ errorOnLogin: false });
 
       callGetTranslations({
         culture: data.culture,
@@ -38,9 +37,6 @@ export const callLogin = async ({ data, dispatch }) => {
           history.push('/');
         },
       });
-    },
-    failure: () => {
-      dispatch({ errorOnLogin: true });
     },
     refresh: false
   });

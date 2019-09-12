@@ -4,7 +4,7 @@ import { flagHanlder } from './common/controller.base';
 
 // richiesta per il recupero dei testi della traduzione da visualizzare
 export const callGetTranslations = async ({ culture, callback }, ...args) => {
-  const calls = ['messages', 'labels'].map(section => ({
+  const calls = ['messages', 'labels', 'errors'].map(section => ({
     params: { culture, section },
     api: getTranslations,
     refresh: false

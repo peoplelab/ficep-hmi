@@ -25,16 +25,19 @@ export const callLogin = async ({ data, dispatch }) => {
     request,
     api: apiLogin,
     success: ({ dataprocessed }) => {
-      store.dispatch({
-        type: types.SET_SESSION,
-        payload: dataprocessed,
-      });
       dispatch({ errorOnLogin: false });
 
       callGetTranslations({
         culture: data.culture,
-        callback: history.push,
-      }, '/');
+        callback: () => {
+          store.dispatch({
+            type: types.SET_SESSION,
+            payload: dataprocessed,
+          });
+
+          history.push('/');
+        },
+      });
     },
     failure: () => {
       dispatch({ errorOnLogin: true });

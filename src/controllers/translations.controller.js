@@ -3,9 +3,8 @@ import { flagHanlder } from './common/controller.base';
 
 
 // richiesta per il recupero dei testi della traduzione da visualizzare
-export const baseTranslations = sectionsList => async ({ culture, callback }, ...args) => {
-
-  const calls = sectionsList.map(section => ({
+export const callGetTranslations = async ({ culture, callback }, ...args) => {
+  const calls = ['messages', 'labels'].map(section => ({
     params: { culture, section },
     api: getTranslations,
     refresh: false
@@ -26,9 +25,3 @@ export const baseTranslations = sectionsList => async ({ culture, callback }, ..
     },
   }, ...calls);
 };
-
-// richiesta per il recupero dei testi della traduzione da visualizzare
-export const callDefaultTranslations = baseTranslations(['default']);
-
-// richiesta per il recupero dei testi della traduzione da visualizzare
-export const callGetTranslations = baseTranslations(['messages', 'labels']);

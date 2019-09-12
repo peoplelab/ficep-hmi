@@ -65,7 +65,7 @@ class Submit extends PureComponent {
 }
 
 Submit.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   name: PropTypes.string.isRequired,
   value: PropTypes.object.isRequired,
   disabled: PropTypes.bool,
@@ -75,6 +75,7 @@ Submit.propTypes = {
 };
 
 Submit.defaultProps = {
+  children: null,
   disabled: false,
   className: '',
   required: [],

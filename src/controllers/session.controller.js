@@ -45,10 +45,10 @@ export const callRefresh = async (prevRequestArgs) => {
   base({
     request,
     api: apiRefresh,
-    success: ({ jsondata }) => {
+    success: ({ dataprocessed }) => {
       store.dispatch({
         type: types.SET_SESSION,
-        payload: jsondata,
+        payload: dataprocessed,
       });
 
       base(prevRequestArgs);

@@ -10,6 +10,7 @@ import history from '../../../models/common/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 import { base } from '../../common/controller.base';
+import { callGetTranslations } from '../../translations.controller';
 
 
 // chimata di login e inizializzazione della sessione utente
@@ -29,7 +30,11 @@ export const callLogin = async ({ data, dispatch }) => {
         payload: dataprocessed,
       });
       dispatch({ errorOnLogin: false });
-      history.push('/');
+
+      callGetTranslations({
+        culture: data.culture,
+        callback: history.push,
+      }, '/');
     },
     failure: () => {
       dispatch({ errorOnLogin: true });

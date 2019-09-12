@@ -1,26 +1,30 @@
 import { getTranslations } from '../models/translations.module';
-import { base } from './common/controller.base';
+import { flagHanlder } from './common/controller.base';
 
 
 // richiesta per il recupero dei testi della traduzione da visualizzare
-export const baseTranslations = sectionsList => async ({ culture }) => {
+export const baseTranslations = sectionsList => async ({ culture, callback }, ...args) => {
 
-  sectionsList.forEach((section) => {
-    base({
-      params: { culture, section },
-      api: getTranslations,
-      success: ({ jsondata }) => {
+  const calls = sectionsList.map(section => ({
+    params: { culture, section },
+    api: getTranslations,
+    refresh: false
+  }));
+
+  flagHanlder({
+    success: (responses) => {
+      responses.forEach(({ dataprocessed }) => {
         window.intl = {
           ...window.intl,
-          ...jsondata,
+          ...dataprocessed,
         };
-      },
-      failure: () => {
-        window.intl[section] = {};
-      },
-      refresh: false
-    });
-  });
+      });
+
+      if (typeof callback === 'function') {
+        callback(...args);
+      }
+    },
+  }, ...calls);
 };
 
 // richiesta per il recupero dei testi della traduzione da visualizzare

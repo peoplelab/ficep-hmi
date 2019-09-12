@@ -23,7 +23,6 @@ import Field from '../../forms/Field';
 import LoginError from './Login.item.Error';
 
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
-import { callGetTranslations, callDefaultTranslations } from '../../../controllers/translations.controller';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
 import ButtonData from '../../layouts/ButtonData';
@@ -61,8 +60,6 @@ class LoginRoute extends Component {
       cultureList: [],
       errorOnLogin: false,
     };
-
-    callDefaultTranslations({ culture: 'en-GB'});
 
     this.updateState = this.updateState.bind(this);
     this.setUsername = this.setUsername.bind(this);
@@ -102,12 +99,7 @@ class LoginRoute extends Component {
   onLogin(data, event) {
     const dispatch = this.updateState;
 
-    callGetTranslations({ culture: data.culture });
-
-    callLogin({
-      data,
-      dispatch,
-    });
+    callLogin({ data, dispatch });
   }
 
   SlideTemplate(props) {

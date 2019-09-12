@@ -1,0 +1,66 @@
+// Style of private routes template
+
+@import '../colors.scss';
+
+/** @define error-modal */
+
+
+.error-modal {
+  background-color: rgba($color: $bg-dark-grey, $alpha: 0.65);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
+
+  .error-modal__container {
+    align-items: flex-start;
+    background-color: $bg-light-grey;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: flex-start;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+
+    .error-modal__content {
+      overflow: hidden;
+      padding: 2rem;
+
+      .error-modal__title {
+        color: $text-dark-grey;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        text-align: left;
+      }
+
+      .error-modal__list {
+        overflow: auto;
+
+        .error-modal__item {
+          color: $text-dark-grey;
+          display: block;
+          font-size: 1.1rem;
+          list-style: none;
+          text-align: left;
+        }
+      }
+    }
+
+    .error-modal__button {
+      background-color: transparent;
+      color: $text-dark-grey;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 900;
+      right: 1rem;
+      position: absolute;
+      top: 1rem;
+    }
+  }
+}

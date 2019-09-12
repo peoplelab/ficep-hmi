@@ -7,7 +7,7 @@
 .user-modal {
   background-color: $bg-light-grey;
   box-shadow: $shadow;
-  border-radius: 1rem;
+  border-radius: 1.7rem;
   height: 31rem;
   left: 40%;
   position: absolute;
@@ -38,7 +38,7 @@
     align-items: center;
     border: $border-dark-grey solid 0.225rem;
     border-radius: 0.5rem;
-    bottom: 1.2rem;
+    bottom: 1rem;
     cursor: pointer;
     display: flex;
     font-size: 1rem;

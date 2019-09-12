@@ -40,11 +40,11 @@ const initial = {
 };
 
 
-const idsCard = {
-  ADMIN: "login_user_administrator",
-  SUPER: "login_user_technician",
-  USER: "login_user_operator",
-  lastaccess: "login_user_lastaccess",
+const intlCard = {
+  ADMIN: "Administrator",
+  SUPER: "Technician",
+  USER: "Operator",
+  lastaccess: "Last access:",
 };
 
 
@@ -129,7 +129,7 @@ class LoginRoute extends Component {
           role={role}
           username={username}
           culture={culture}
-          ids={idsCard}
+          intl={intlCard}
         />
       </ButtonData>
     );
@@ -146,7 +146,7 @@ class LoginRoute extends Component {
         <Box className="login__dialog">
           <Form className="login__form" name="login-form">
             <p className="login__title">
-              {window.intl.login_info_title}
+              Enter your data
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
@@ -157,14 +157,14 @@ class LoginRoute extends Component {
                   data={data}
                   reset={initial}
                   onClick={this.setUsername}
-                  ids={idsCard}
+                  intl={intlCard}
                 >
-                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder={window.intl.login_form_username} />
+                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder="Username" />
                 </InputCard>
               </Field>
               <Field className="login__field">
                 <PasswordInput
-                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder={window.intl.login_form_password}
+                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder="Password"
                 />
               </Field>
               <Field className="login__field">
@@ -173,7 +173,7 @@ class LoginRoute extends Component {
                 />
               </Field>
               <Submit className="login__form-submit" required={required} value={this.state} onSubmit={this.onLogin} name="login-form">
-                {window.intl.login_form_submit}
+                Login
               </Submit>
             </Box>
             <Gallery

@@ -33,15 +33,15 @@ const Card = (props) => {
     role,
     // culture,
     className,
-    ids,
+    intl,
   } = props;
 
   const mergedClass = `card ${className}`;
 
   const lastAccess = issuedAt && moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
 
-  const roleText = window.intl[ids[role]];
-  const lastAccessText = window.intl[ids.lastaccess];
+  const roleText = intl[role];
+  const lastAccessText = intl.lastaccess;
 
   return (
     username
@@ -89,7 +89,7 @@ Card.propTypes = {
   role: PropTypes.string,
   culture: PropTypes.string,
   className: PropTypes.string,
-  ids: PropTypes.objectOf(PropTypes.string),
+  intl: PropTypes.objectOf(PropTypes.string),
 };
 
 Card.defaultProps = {

@@ -138,12 +138,12 @@
         .logged__reverse-icon {
           display: block;
           background: $bg-dark-grey;
-          height: calc(100% - 2rem);
-          left: 0;
-          margin: 1rem;
+          height: calc(100% - 4rem);
+          left: 50%;
           position: absolute;
-          top: 0;
-          width: calc(100% - 2rem);
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 4rem);
         }
       }
     }

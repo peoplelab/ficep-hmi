@@ -17,7 +17,7 @@ import '../../styles/templates/logged.style.scss';
 const Navbar = (props) => {
   const { reverse, onReverse } = props;
 
-  const reverseClass = `logged__reverse-icon ${reverse ? 'ic-right-hand' : 'ic-left-hand'}`;
+  const reverseClass = `logged__reverse-icon ${reverse ? 'ic-to-right' : 'ic-to-left'}`;
 
   return (
     <nav className="logged__navbar">

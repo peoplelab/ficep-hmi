@@ -22,7 +22,7 @@ import Field from '../../forms/Field';
 import ButtonData from '../../layouts/ButtonData';
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
-import intl from '../../../../public/translations/login/it-IT.json';
+import intl from '../../../../public/translations/login/default.json';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
 

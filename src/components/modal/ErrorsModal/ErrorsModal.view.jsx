@@ -12,7 +12,7 @@ import Button from '../../layouts/Button';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 
-import intl from '../../../../public/translations/login/it-IT.json';
+import intl from '../../../../public/translations/login/default.json';
 
 import '../../../styles/modal/ErrorModal.style.scss';
 

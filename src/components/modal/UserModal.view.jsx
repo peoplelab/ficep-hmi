@@ -9,6 +9,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../layouts/Button';
+import AdminArea from '../common/admin';
 import { callLogout } from '../../controllers/routes/logout/logout.controller';
 
 import '../../styles/modal/UserModal.style.scss';
@@ -32,15 +33,36 @@ class HomeRoute extends PureComponent {
     const { visible } = this.props;
 
     return visible && (
-      <section className="user-modal">
-        <div className="user-modal__bg bg-user-modal" />
-        <Button
-          className="user-modal__button anchor"
-          onClick={this.onLogout}
-        >
-          Logout
-        </Button>
-      </section>
+      <>
+        <AdminArea>
+          <section className="user-modal user-modal--admin">
+            <div className="user-modal__bg bg-user-modal" />
+            <Button
+              className="user-modal__button-2 anchor"
+              disabled
+            >
+              Gestione utenti
+            </Button>
+            <Button
+              className="user-modal__button anchor"
+              onClick={this.onLogout}
+            >
+              Logout
+            </Button>
+          </section>
+        </AdminArea>
+        <AdminArea reverse>
+          <section className="user-modal">
+            <div className="user-modal__bg bg-user-modal" />
+            <Button
+              className="user-modal__button anchor"
+              onClick={this.onLogout}
+            >
+              Logout
+            </Button>
+          </section>
+        </AdminArea>
+      </>
     );
 	}
 }

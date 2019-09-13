@@ -64,7 +64,10 @@ const shapeHeader = {
  * Define component properties types
  */
 LoggedTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
   header: PropTypes.shape(shapeHeader),
 };
 

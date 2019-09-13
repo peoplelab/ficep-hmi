@@ -3,15 +3,27 @@ const { base } = require('../../../mock.base');
 
 module.exports = {
   GET: (req, res) => {
-    res.status(200).json(responseJSON.GET);
+    res.status(200).json(responseJSON);
   },
   POST: base(
-    () => 25
+    () => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": 25,
+    })
   ),
   DELETE: base(
-    req => req.params.id > 6
+    req => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": req.params.id > 6,
+    })
   ),
   PUT: base(
-    req => parseInt(req.body.id) <= 6
+    req => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": parseInt(req.body.id) <= 6,
+    })
   )
 };

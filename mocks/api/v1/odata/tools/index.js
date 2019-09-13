@@ -6,7 +6,7 @@ module.exports = {
   GET: base(
     (req, res) => responseJSON.GET,
   ),
-  POST: base(
-    () => responseJSON.POST
-  )
+  // POST: base(
+  //   () => responseJSON.POST
+  // )
 };

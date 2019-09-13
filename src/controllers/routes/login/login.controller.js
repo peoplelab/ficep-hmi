@@ -25,18 +25,21 @@ export const callLogin = async ({ data, dispatch }) => {
     request,
     api: apiLogin,
     success: ({ dataprocessed }) => {
+      const { responseType } = dataprocessed;
 
-      callGetTranslations({
-        culture: data.culture,
-        callback: () => {
-          store.dispatch({
-            type: types.SET_SESSION,
-            payload: dataprocessed,
-          });
+      if (responseType === 200) {
+        callGetTranslations({
+          culture: data.culture,
+          callback: () => {
+            store.dispatch({
+              type: types.SET_SESSION,
+              payload: dataprocessed,
+            });
 
-          history.push('/');
-        },
-      });
+            history.push('/');
+          },
+        });
+      }
     },
     refresh: false
   });

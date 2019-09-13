@@ -1,0 +1,20 @@
+.sandbox-link {
+  background: #323232;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.125rem 0 rgba(0,0,0,0.5);
+  color: #e7e7e7;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  left: 1rem;
+  padding: 0.5rem;
+  position: fixed;
+  text-decoration: none;
+  top: 1rem;
+  z-index: 999;
+
+  &:hover {
+    background: #e7e7e7;
+    color: #323232;
+  }
+}

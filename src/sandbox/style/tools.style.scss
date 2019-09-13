@@ -1,0 +1,72 @@
+// Style own of tools route
+
+@import '../../styles/colors.scss';
+
+/** @define tools */
+
+.tools {
+  padding: 3rem;
+
+  .tools__container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tools__group {
+      flex: 1;
+      padding-left: 2rem;
+
+      &:first-of-type {
+        flex: none;
+        margin: 2rem 0 3rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .tools__button {
+    background-color: $bg-dark-cyan;
+    color: $text-white;
+    display: block;
+    font-size: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+
+    &:disabled {
+      background-color: $bg-grey-cyan;
+    }
+
+    &:enabled {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $bg-cyan;
+      }
+    }
+  }
+
+  .tools__table {
+    margin-bottom: 3rem;
+    /* stylelint-disable plugin/selector-bem-pattern */
+    caption {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    th {
+      padding: 0.5rem 2rem;
+    }
+
+    td {
+      padding: 0.5rem 2rem;
+      text-align: center;
+
+      &:first-of-type {
+        padding: 0;
+      }
+      .tools__button {
+        width: 100%;
+      }
+    }
+    /* stylelint-enable plugin/selector-bem-pattern */
+  }
+}

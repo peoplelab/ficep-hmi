@@ -11,9 +11,9 @@ import Logged from './Logged.view';
 import { pathOr } from '../../presenters/utils';
 
 const header = state => ({
-  username: pathOr('', ['result', 'username'], state),
-  culture: pathOr('', ['result', 'culture'], state),
-  role: pathOr('', ['result', 'groups', 0], state),
+  username: pathOr('', ['session', 'username'], state),
+  culture: pathOr('', ['session', 'culture'], state),
+  role: pathOr('', ['session', 'groups', 0], state),
 });
 
 

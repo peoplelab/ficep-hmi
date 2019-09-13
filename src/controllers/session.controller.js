@@ -16,7 +16,7 @@ import { pathOr } from '../presenters/utils';
 
 // dato un determinato lasso di tempo, allo scadere di quest'ultimo, verifica se la sessione utente è ancora valida
 export const SessionValidity = () => {
-  const refreshExpiredAt = pathOr(null, ['result', 'refreshExpiredAt'], store.getState());
+  const refreshExpiredAt = pathOr(null, ['session', 'refreshExpiredAt'], store.getState());
 
   // const token = moment(expiredAt);
   const refresh = moment(refreshExpiredAt);
@@ -37,7 +37,7 @@ export const SessionValidity = () => {
 // chimata per il refresh automatico della sessione utentete
 // al successo della chiamata, esegue un nuovo tentativo di connessione all'api rifiutata in precedenza
 export const callRefresh = async (prevRequestArgs) => {
-  const refreshToken = pathOr('', ['result', 'refreshToken'], store.getState());
+  const refreshToken = pathOr('', ['session', 'refreshToken'], store.getState());
 
   const request = {
     RefreshToken: refreshToken,

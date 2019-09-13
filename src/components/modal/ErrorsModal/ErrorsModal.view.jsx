@@ -23,13 +23,13 @@ const mapResult = (code, index) => (
 
 const onClick = (event) => {
   store.dispatch({
-    type: types.RESET_SESSION,
+    type: types.RESET_ERROR,
   });
 };
 
 
 const ErrorsModal = (props) => {
-  const { disabled, responseType, errorCode, result } = props;
+  const { disabled, responseType, errorCode, errorsList } = props;
 
   if (disabled) {
     return null;
@@ -40,7 +40,7 @@ const ErrorsModal = (props) => {
     title = window.intl[errorCode];
   }
 
-  const List = Array.isArray(result) ? result.map(mapResult) : [];
+  const List = errorsList.map(mapResult);
 
   return (
     <div className="error-modal">
@@ -62,19 +62,13 @@ const ErrorsModal = (props) => {
 };
 
 
-const resultType = [
-  PropTypes.object,
-  PropTypes.arrayOf(PropTypes.string),
-];
-
-
 /**
  * Define component properties types
  */
 ErrorsModal.propTypes = {
   responseType: PropTypes.number.isRequired,
   errorCode: PropTypes.string.isRequired,
-  result: PropTypes.oneOfType(resultType).isRequired,
+  errorsList: PropTypes.arrayOf(PropTypes.string).isRequired,
   disabled: PropTypes.bool.isRequired,
 };
 

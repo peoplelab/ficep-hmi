@@ -24,6 +24,7 @@
 .sandbox {
   display: flex;
   height: 100vh;
+  overflow: hidden;
   width: 100vw;
 
   .sandbox__link-box {
@@ -31,7 +32,8 @@
     border-right: solid 0.0625rem #323232;
     box-shadow: 0.125rem 0.125rem 0.125rem 0 rgba(0,0,0,0.5);
     flex: none;
-    padding: 4rem 1rem 1rem;
+    overflow: auto;
+    padding: 1rem;
 
     .sandbox__link {
       @extend .sandbox-link;
@@ -46,6 +48,7 @@
   }
   .sandbox__route-box {
     flex: 1;
+    overflow: auto;
 
     .sandbox__route {
       align-items: center;

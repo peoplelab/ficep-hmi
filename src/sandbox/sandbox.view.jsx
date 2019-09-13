@@ -12,16 +12,16 @@ import './style/sandbox.style.scss';
 const Sandbox = ({ match }) => (
   <div className="sandbox">
     <div className="sandbox__link-box">
-      <Anchor className="sandbox__link" to="/" exact>
+      <Anchor className="sandbox__link" path="/" exact>
         Home
       </Anchor>
-      <Anchor className="sandbox__link" to={`${match.path}`} exact>
+      <Anchor className="sandbox__link" path={`${match.path}`} exact>
         Sandbox
       </Anchor>
-      <Anchor className="sandbox__link" to={`${match.path}/tools`} exact>
+      <Anchor className="sandbox__link" path={`${match.path}/tools`} exact>
         Sandbox/Tools
       </Anchor>
-      <Anchor className="sandbox__link" to={`${match.path}/cultures`} exact>
+      <Anchor className="sandbox__link" path={`${match.path}/cultures`} exact>
         Sandbox/Cultures
       </Anchor>
     </div>

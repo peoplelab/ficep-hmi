@@ -1,18 +1,18 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+import Anchor from '../components/layouts/Anchor';
 // import PropTypes from 'prop-types';
 
 import './style/sandbox.style.scss';
 
 
 const SandBoxLink = (props) => (
-  <Link
+  <Anchor
     className="sandbox-link"
     replace
-    to="/sandbox"
+    path="/sandbox"
   >
     Go to Sandbox
-  </Link>
+  </Anchor>
 );
 
 

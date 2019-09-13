@@ -40,7 +40,7 @@ const ErrorsModal = (props) => {
     title = window.intl[errorCode];
   }
 
-  const List = result.map(mapResult);
+  const List = Array.isArray(result) ? result.map(mapResult) : [];
 
   return (
     <div className="error-modal">
@@ -62,13 +62,19 @@ const ErrorsModal = (props) => {
 };
 
 
+const resultType = [
+  PropTypes.object,
+  PropTypes.arrayOf(PropTypes.string),
+];
+
+
 /**
  * Define component properties types
  */
 ErrorsModal.propTypes = {
   responseType: PropTypes.number.isRequired,
   errorCode: PropTypes.string.isRequired,
-  result: PropTypes.arrayOf(PropTypes.string).isRequired,
+  result: PropTypes.oneOfType(resultType).isRequired,
   disabled: PropTypes.bool.isRequired,
 };
 

@@ -15,18 +15,24 @@ export const types = Enum.from('SET_USER_IP', 'SET_SESSION', 'RESET_SESSION');
 
 // Stato iniziale dello store (le chiavi sono copiate dalla response del servizio di login)
 const initialState = {
-  ip: '',
-  username: '',
-  accessToken: '',
-  refreshToken: '',
-  culture: '',
-  groups: [],
-  permissions: [],
-  sessionId: '',
-  expiredAt: '',
-  sessionLogId: '',
-  refreshExpiredAt: '',
-  issuedAt: '',
+  {
+    responseType: NaN,
+    errorCode: '',
+    result: {
+      ip: '',
+      username: '',
+      accessToken: '',
+      refreshToken: '',
+      culture: '',
+      groups: [],
+      permissions: [],
+      sessionId: '',
+      expiredAt: '',
+      sessionLogId: '',
+      refreshExpiredAt: '',
+      issuedAt: '',
+    }
+  }
 };
 
 

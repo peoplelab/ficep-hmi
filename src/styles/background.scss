@@ -10,41 +10,46 @@
 }
 
 .bg-dashboard {
-  background: url('../../public/background/dashboard.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/dashboard.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-programs {
-  background: url('../../public/background/programs.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/programs.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-tools-materiali {
-  background: url('../../public/background/tools-materiali.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/tools-materiali.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-tools-macchina {
-  background: url('../../public/background/tools-macchina.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/tools-macchina.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-settings {
-  background: url('../../public/background/settings.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/settings.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-commands-jog {
-  background: url('../../public/background/commands-jog.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/commands-jog.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-commands-comandi {
-  background: url('../../public/background/commands-comandi.png') no-repeat 0 -4rem;
-  background-size: calc(100vw - 5rem) calc(100vh - 3rem);
+  background: url('../../public/background/commands-comandi.png') no-repeat 50% 50%;
+  background-size: 100% 100%;
 }
 
 .bg-user-modal {
   background: url('../../public/background/user-modal.png') no-repeat 0 0;
+  background-size: 100% 100%;
+}
+
+.bg-user-modal-admin {
+  background: url('../../public/background/user-modal-admin.png') no-repeat 0 0;
   background-size: 100% 100%;
 }

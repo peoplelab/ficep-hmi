@@ -12,13 +12,13 @@
   width: 100%;
 
   .logged__header {
+    align-items: flex-start;
     background: url('../../../public/background/header.png') no-repeat left top;
     background-size: 100vw 5.3rem;
-
-    align-items: flex-start;
     display: flex;
     height: 5.5rem;
     justify-content: space-between;
+    margin: 0 0 1.5rem;
     width: 100%;
     z-index: 2;
 
@@ -73,6 +73,14 @@
       .card__box:nth-of-type(2) {
         flex: 1;
       }
+      .card__paragraph--bold {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .card__paragraph--semibold {
+        font-size: 0.8rem;
+        font-weight: 400;
+      }
       // stylelint-enable plugin/selector-bem-pattern
     }
 
@@ -81,7 +89,8 @@
       display: flex;
       flex: 1;
       justify-content: center;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
+      font-weight: 300;
       margin-left: 1rem;
     }
   }
@@ -89,15 +98,15 @@
   .logged__container {
     display: flex;
     flex: 1;
-    padding: 2rem 0;
     z-index: 1;
 
     .logged__navbar {
       background-color: $bg-light-grey;
       display: flex;
       flex-direction: column;
-      height: 37.5rem;
-      width: 5rem;
+      height: 39.5rem;
+      padding-top: 0.7rem;
+      width: 6rem;
       z-index: 2;
 
       .logged__list {
@@ -106,7 +115,7 @@
 
         .logged__item {
           display: table;
-          padding: 0.75rem;
+          padding: 0.9rem;
           width: 100%;
 
           .logged__anchor {
@@ -129,18 +138,19 @@
         .logged__reverse-icon {
           display: block;
           background: $bg-dark-grey;
-          height: calc(100% - 2rem);
-          left: 0;
-          margin: 1rem;
+          height: calc(100% - 4rem);
+          left: 50%;
           position: absolute;
-          top: 0;
-          width: calc(100% - 2rem);
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 4rem);
         }
       }
     }
 
     .logged__route {
       flex: 1;
+      margin: 0 1.2rem;
       overflow: auto;
       z-index: 1;
     }
@@ -151,10 +161,10 @@
   }
 
   .logged__footer {
-    background: url('../../../public/background/footer.png') no-repeat left top;
+    background: url(/images/public/background/footer.png) no-repeat left top;
     background-size: 100% 100%;
-
-    height: 2rem;
+    height: 0.4rem;
+    margin: 1rem 0 0.7rem;
     width: 100%;
     z-index: 2;
   }

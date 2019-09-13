@@ -26,14 +26,14 @@
   mask-image: url('../../public/icons/ic-settings.svg');
 }
 
-.ic-left-hand {
+.ic-to-left {
   @include mask;
-  mask-image: url('../../public/icons/ic-left-hand.svg');
+  mask-image: url('../../public/icons/ic-to-left.svg');
 }
 
-.ic-right-hand {
+.ic-to-right {
   @include mask;
-  mask-image: url('../../public/icons/ic-right-hand.svg');
+  mask-image: url('../../public/icons/ic-to-right.svg');
 }
 
 .ic-arrow-drag {

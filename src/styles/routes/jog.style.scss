@@ -5,14 +5,12 @@
 /** @define jog */
 
 .jog {
-  padding: 1.6rem 4.3rem;
 
   .jog__container {
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 66.5%;
 
     .jog__anchor {
       align-items: center;
@@ -20,19 +18,23 @@
       display: flex;
       font-size: 0.8rem;
       font-weight: 600;
-      height: 2.8rem;
+      height: 2.9rem;
       justify-content: center;
+      position: relative;
       text-transform: uppercase;
-      width: 29.2rem;
+      top: 1.35rem;
+      width: 31.2rem;
 
       &:first-of-type{
         border-top-left-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
+        left: 15.5rem;
       }
 
       &:last-of-type{
         border-top-right-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
+        right: 15.8rem;
       }
     }
   }

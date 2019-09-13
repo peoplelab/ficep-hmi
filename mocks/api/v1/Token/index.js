@@ -118,11 +118,23 @@ module.exports = {
       }
       case 'RefreshToken': {
         if (!RefreshToken) {
-          status = 400;
-          response = 'InvalidRequest';
+          status = 200;
+          response = {
+            "responseType": 400,
+            "errorCode": "GENERIC_VALIDATION_ERROR",
+            "result": [
+              "USER_LOGIN_REFRESHTOKEN_EMPTY"
+            ]
+          };
         } else if (RefreshToken !== global.login.refreshToken) {
-          status = 400;
-          response = 'InvalidRequest';
+          status = 200;
+          response = {
+            "responseType": 400,
+            "errorCode": "GENERIC_VALIDATION_ERROR",
+            "result": [
+              "USER_LOGIN_REFRESHTOKEN_INVALID"
+            ]
+          };
         } else {
           global.login.refreshToken = uuidv1();
           setGlobalTime();
@@ -134,8 +146,12 @@ module.exports = {
         break;
       }
       default: {
-        status = 400;
-        response = 'invalidGrantType';
+        status = 200;
+        response = {
+          "responseType": 400,
+          "errorCode": "GENERIC_VALIDATION_ERROR",
+          "result": []
+        };
       }
     }
 

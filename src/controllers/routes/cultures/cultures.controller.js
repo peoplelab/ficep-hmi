@@ -66,7 +66,7 @@ export const callCulturesGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
     success: ({ dataprocessed }) => {
-      dispatch({ data: dataprocessed });
+      dispatch({ data: dataprocessed.result });
     },
     failure: () => {
       dispatch({ data: [] });
@@ -84,7 +84,7 @@ export const callCulturesPost = async ({ data, dispatch, state }) => {
     },
     api: apiCulturePost,
     success: ({ dataprocessed }) => {
-      dispatch(dataPost(state, { ...arg.request, id: dataprocessed }));
+      dispatch(dataPost(state, { ...arg.request, id: dataprocessed.result }));
     },
     failure: ({ dataprocessed, error }) => {
       dispatch({ error: dataprocessed || error });
@@ -102,7 +102,7 @@ export const callCulturesDelete = async ({ data, dispatch, state }) => {
     },
     api: apiCultureDelete,
     success: ({ dataprocessed }) => {
-      if (dataprocessed) {
+      if (dataprocessed.result) {
         dispatch(dataDelete(state, { id: arg.params.id }));
       }
     },
@@ -124,7 +124,7 @@ export const callCulturesPut = async ({ data, dispatch, state }) => {
     },
     api: apiCulturePut,
     success: ({ dataprocessed }) => {
-      if (dataprocessed) {
+      if (dataprocessed.result) {
         dispatch(dataPut(state, { ...arg.request }));
       }
     },

@@ -14,7 +14,7 @@ export const callToolsList = async ({ dispatch }) => {
   base({
     api: apiList,
     success: ({ dataprocessed }) => {
-      dispatch({ list: dataprocessed });
+      dispatch({ list: dataprocessed.result });
     },
     failure: () => {
       dispatch({ list: [] });
@@ -33,7 +33,7 @@ export const callToolDetails = async ({ data, dispatch }) => {
     params,
     api: apiDetails,
     success: ({ dataprocessed }) => {
-      dispatch({ details: dataprocessed });
+      dispatch({ details: dataprocessed.result });
     },
     failure: () => {
       dispatch({ details: {} });

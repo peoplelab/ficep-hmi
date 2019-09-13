@@ -13,7 +13,7 @@ module.exports = [
     "api": require(`.${url.login}`),
   },
   {
-    "url": `${url.login}/latest/:ip/:numerOfLogins`,
+    "url": `${url.login}/latest`,
     "api": require(`.${url.login}/latest`),
   },
   {

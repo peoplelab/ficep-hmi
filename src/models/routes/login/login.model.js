@@ -48,12 +48,18 @@ export const apiCultureGet = async () => {
 
 // interfaccia api per ottenere la lista corrente degli ultimi accessi all'applicazione
 export const apiLastLogin = async () => {
+  const body = {
+    ip: IP,
+    numberOfLogin: 9,
+  };
+
   const request = {
-    method: "get",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(body),
   };
 
-  return base(`api/v1/Token/latest/${IP}/9`, request);
+  return base(`api/v1/Token/latest`, request);
 };

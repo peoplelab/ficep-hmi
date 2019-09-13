@@ -8,7 +8,7 @@
 
 import { connect } from 'react-redux';
 import Area from './Area';
-import { pathOr } from '../../presenters';
+import { pathOr } from '../../presenters/utils';
 
 
 const enable = state => pathOr([], ['session', 'groups'], state).includes('ADMIN');

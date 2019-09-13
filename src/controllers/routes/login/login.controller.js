@@ -50,7 +50,7 @@ export const callCultureGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
     success: ({ dataprocessed }) => {
-      dispatch({ cultureList: dataprocessed });
+      dispatch({ cultureList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ cultureList: dataraw || error });
@@ -64,7 +64,7 @@ export const callLastLogin = async ({ dispatch }) => {
   base({
     api: apiLastLogin,
     success: ({ dataprocessed }) => {
-      dispatch({ usersList: dataprocessed });
+      dispatch({ usersList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ usersList: dataraw || error });

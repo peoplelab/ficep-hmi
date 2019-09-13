@@ -8,9 +8,10 @@
 
 import { connect } from 'react-redux';
 import Area from './Area';
+import { pathOr } from '../../presenters';
 
 
-const enable = state => state.groups.includes('SUPER');
+const enable = state => pathOr([], ['session', 'groups'], state).includes('SUPER');
 
 const mapStateToProps = state => ({
   enable: enable(state),

@@ -21,6 +21,7 @@
 //----------------------------------------------------------------------------------------
 
 // import { failureHandler } from './failure.handler';
+import { datarawHandler } from './dataraw.handler';
 import store from '../../store/redux.store';
 
 
@@ -41,20 +42,22 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
   const response = api({ request, headers, params });
   const { httpcode, contentType, dataraw, error } = await response;
 
-  let jsondata = {};
-  if(contentType && contentType.includes("application/json")) {
-    jsondata = JSON.parse(dataraw);
-  }
-
-  // success
-  if (httpcode === 200) {
-    if (typeof success === 'function') {
-      success({ contentType, dataraw, jsondata });
+  try {
+    if (httpcode !== 200) {
+      throw new Error();
     }
-    console.log('----- Success call');
-  }
-  // failure
-  else {
+
+    // success
+    const dataprocessed = datarawHandler({ contentType, dataraw });
+
+    if (typeof success === 'function') {
+      success({ contentType, dataraw, dataprocessed });
+    }
+
+    console.log('----- Success api call');
+    return { contentType, dataraw, dataprocessed };
+  } catch(err) {
+    // failure
     if (typeof failure === 'function') {
       failure({ httpcode, dataraw, error });
     }
@@ -64,8 +67,35 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
     //   output: { httpcode, dataraw, error },
     // });
 
-    console.log('----- Failure call');
+    console.log('----- Failure api call');
+    return { httpcode, dataraw, error };
   }
+};
 
-  console.log('----- End api call');
+
+export const flagHanlder = async (options, ...calls) => {
+  const { success, failure } = options;
+
+  console.log('----- Start multiple api calls');
+
+  const promises = calls.map(call => base(call));
+
+  try {
+    const responses = await Promise.all(promises);
+
+    if (typeof success === 'function') {
+      success(responses);
+    }
+
+    console.log('----- Success all api calls');
+    console.log(responses);
+  } catch(err) {
+    // failure
+    if (typeof failure === 'function') {
+      failure(err);
+    }
+
+    console.log('----- Failure one of api calls');
+    console.log(err);
+  }
 };

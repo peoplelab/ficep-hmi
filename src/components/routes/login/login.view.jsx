@@ -40,6 +40,14 @@ const initial = {
 };
 
 
+const intlCard = {
+  ADMIN: "Administrator",
+  SUPER: "Technician",
+  USER: "Operator",
+  lastaccess: "Last access:",
+};
+
+
 class LoginRoute extends Component {
 
 	constructor(props) {
@@ -91,10 +99,7 @@ class LoginRoute extends Component {
   onLogin(data, event) {
     const dispatch = this.updateState;
 
-    callLogin({
-      data,
-      dispatch,
-    });
+    callLogin({ data, dispatch });
   }
 
   SlideTemplate(props) {
@@ -114,14 +119,17 @@ class LoginRoute extends Component {
       }
     });
 
+    const [role] = groups;
+
     return (
       <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
         <Card
           className="login__card card--button"
           issuedAt={issuedAt}
-          groups={groups}
+          role={role}
           username={username}
           culture={culture}
+          intl={intlCard}
         />
       </ButtonData>
     );
@@ -138,7 +146,7 @@ class LoginRoute extends Component {
         <Box className="login__dialog">
           <Form className="login__form" name="login-form">
             <p className="login__title">
-              Inserisci i tuoi dati
+              Enter your data
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
@@ -149,6 +157,7 @@ class LoginRoute extends Component {
                   data={data}
                   reset={initial}
                   onClick={this.setUsername}
+                  intl={intlCard}
                 >
                   <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder="Username" />
                 </InputCard>

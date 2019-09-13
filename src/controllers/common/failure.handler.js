@@ -14,11 +14,11 @@
 
 
 // export const failureHandler = ({ input, output }) => {
-//   const jsondata = JSON.parse(output.dataraw);
+//   const dataprocessed = JSON.parse(output.dataraw);
 
 //   // Se richiesto esegue in refresh della sessione
 //   // Vengono passati i dati necessari per eseguire nuovamente la chiamata che ha tornato errore
-//   if (jsondata === 'sessionExpired' && (input.refresh === undefined || input.refresh)) {
+//   if (dataprocessed === 'sessionExpired' && (input.refresh === undefined || input.refresh)) {
 //     callRefresh(input);
 //   }
 // };

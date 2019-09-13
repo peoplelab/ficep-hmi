@@ -18,6 +18,7 @@ export const callLogout = async ({ headers }) => {
     api: apiLogout,
     success: () => {
       store.dispatch({ type: types.RESET_SESSION });
+      window.intl = {};
       history.push('/login');
     },
   });

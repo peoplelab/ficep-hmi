@@ -6,9 +6,11 @@
 //--------------------------------------------------------------------------------------------------------------
 
 
+const path = require('path');
 const express = require('express');
 const { proxyMiddleware } = require('./app/app.proxy');
 const { devMiddleware, hotMiddleware, entryPointMiddleware } = require('./app/app.webpack');
+const { translations } = require('./app/app.translations');
 
 
 const { URL_ENV, COMPILE_ENV } = process.env;
@@ -24,7 +26,14 @@ const SERVER_CONFIG = {
 // init node server
 const app = express();
 
-// // start proxy handler
+// Return as response the translations JSON file required
+app.use('/translations', translations({
+  publicPath: path.resolve(__dirname, '../public'),
+  LOG_LEVEL: SERVER_CONFIG.LOG_LEVEL
+}));
+
+
+// start proxy handler
 app.use('/api', proxyMiddleware({ route: '/api', ...SERVER_CONFIG }));
 
 

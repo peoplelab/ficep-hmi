@@ -1,0 +1,13 @@
+{
+  "header_user_administrator": "Amministratore",
+  "header_user_technician": "Tecnico",
+  "header_user_operator": "Operatore",
+  "header_info_lastaccess": "Ultimo accesso:",
+  "user_info_management": "Gestione utenti",
+  "user_action_logout": "Logout",
+  "tools_tab_machine": "Utensili macchina",
+  "tools_tab_database": "Database utensili",
+  "tools_tab_materials": "Materiali",
+  "jog_tab_jog": "Jog",
+  "jog_tab_commands": "Comandi"
+}

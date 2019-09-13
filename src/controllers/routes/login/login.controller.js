@@ -10,6 +10,7 @@ import history from '../../../models/common/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 import { base } from '../../common/controller.base';
+import { callGetTranslations } from '../../translations.controller';
 
 
 // chimata di login e inizializzazione della sessione utente
@@ -23,13 +24,20 @@ export const callLogin = async ({ data, dispatch }) => {
   base({
     request,
     api: apiLogin,
-    success: ({ jsondata }) => {
-      store.dispatch({
-        type: types.SET_SESSION,
-        payload: jsondata,
-      });
+    success: ({ dataprocessed }) => {
       dispatch({ errorOnLogin: false });
-      history.push('/');
+
+      callGetTranslations({
+        culture: data.culture,
+        callback: () => {
+          store.dispatch({
+            type: types.SET_SESSION,
+            payload: dataprocessed,
+          });
+
+          history.push('/');
+        },
+      });
     },
     failure: () => {
       dispatch({ errorOnLogin: true });
@@ -42,8 +50,8 @@ export const callLogin = async ({ data, dispatch }) => {
 export const callCultureGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
-    success: ({ jsondata }) => {
-      dispatch({ cultureList: jsondata });
+    success: ({ dataprocessed }) => {
+      dispatch({ cultureList: dataprocessed });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ cultureList: dataraw || error });
@@ -56,8 +64,8 @@ export const callCultureGet = async ({ dispatch }) => {
 export const callLastLogin = async ({ dispatch }) => {
   base({
     api: apiLastLogin,
-    success: ({ jsondata }) => {
-      dispatch({ usersList: jsondata });
+    success: ({ dataprocessed }) => {
+      dispatch({ usersList: dataprocessed });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ usersList: dataraw || error });

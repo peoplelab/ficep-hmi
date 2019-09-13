@@ -56,7 +56,7 @@ class LoggedTemplate extends PureComponent {
 const shapeHeader = {
   username: PropTypes.string.isRequired,
   culture: PropTypes.string.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.string).isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 

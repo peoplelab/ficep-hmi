@@ -25,6 +25,13 @@ class Header extends PureComponent {
 
     this.onClick = this.onClick.bind(this);
     this.onOuterClick = this.onOuterClick.bind(this);
+
+    this.intlCard = {
+      ADMIN: window.intl.header_user_administrator,
+      SUPER: window.intl.header_user_technician,
+      USER: window.intl.header_user_operator,
+      lastaccess: window.intl.header_info_lastaccess,
+    };
   }
 
   onClick() {
@@ -36,7 +43,7 @@ class Header extends PureComponent {
   }
 
   render()  {
-    const { username, groups, culture } = this.props;
+    const { username, role, culture } = this.props;
     const { openModal } = this.state;
 
     return (
@@ -45,7 +52,7 @@ class Header extends PureComponent {
         <div className="logged__header-box logged__header-box--right">
           <OuterClick className="logged__header-outerhandler" onOuterClick={this.onOuterClick}>
             <Button className="logged__header-button" onClick={this.onClick}>
-              <Card className="logged__header-card" username={username} groups={groups} culture={culture} />
+              <Card className="logged__header-card" username={username} role={role} culture={culture} intl={this.intlCard} />
             </Button>
             <UserModal visible={openModal} />
           </OuterClick>
@@ -62,7 +69,7 @@ class Header extends PureComponent {
  */
 Header.propTypes = {
   username: PropTypes.string.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.string).isRequired,
+  role: PropTypes.string.isRequired,
   culture: PropTypes.string.isRequired,
 };
 

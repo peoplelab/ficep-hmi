@@ -187,7 +187,6 @@ Es:
 | react                 | Framework per la gestione della view dell'applicativo        |
 | react-dom             | DOM virtuale di React                                        |
 | react-hot-loader      | abilita l'hot-reload dell'applicativo durante lo sviluppo \* |
-| react-intl            | internazionalizzazione dell'applicazione                     |
 | react-redux           | connette react allo store                                    |
 | react-router          | router di navigazione                                        |
 | react-router-dom      | DOM virtuale del router                                      |

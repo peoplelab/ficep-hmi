@@ -9,11 +9,14 @@
 const { HotModuleReplacementPlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const globalVars = require('../global/client');
+const { ClientTranslations } = require('../plugin/webpack.translations');
 
 
 const { NODE_ENV, COMPILE_ENV } = process.env;
 
 const entry = NODE_ENV === 'RELEASE' ? ['./src/index.js'] : ['./src/index.js', 'webpack-hot-middleware/client'];
+
+const addTranslations = NODE_ENV === 'RELEASE' ? [new ClientTranslations()]: [];
 
 
 module.exports = {
@@ -88,6 +91,7 @@ module.exports = {
   plugins: [
     new HotModuleReplacementPlugin(),
     globalVars,
+    ...addTranslations,
   ],
   resolve: {
     extensions: ['.js', '.jsx', 'json', 'scss', 'css'],

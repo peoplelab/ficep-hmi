@@ -41,13 +41,13 @@ class HomeRoute extends PureComponent {
               className="user-modal__button-2 anchor"
               disabled
             >
-              Gestione utenti
+              {window.intl.user_info_management}
             </Button>
             <Button
               className="user-modal__button anchor"
               onClick={this.onLogout}
             >
-              Logout
+            { window.intl.user_action_logout}
             </Button>
           </section>
         </AdminArea>
@@ -58,7 +58,7 @@ class HomeRoute extends PureComponent {
               className="user-modal__button anchor"
               onClick={this.onLogout}
             >
-              Logout
+              {window.intl.user_action_logout}
             </Button>
           </section>
         </AdminArea>

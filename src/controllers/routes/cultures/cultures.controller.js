@@ -65,8 +65,8 @@ const dataPut = (state, payload) => {
 export const callCulturesGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
-    success: ({ jsondata }) => {
-      dispatch({ data: jsondata });
+    success: ({ dataprocessed }) => {
+      dispatch({ data: dataprocessed });
     },
     failure: () => {
       dispatch({ data: [] });
@@ -83,11 +83,11 @@ export const callCulturesPost = async ({ data, dispatch, state }) => {
       description: data.description,
     },
     api: apiCulturePost,
-    success: ({ jsondata }) => {
-      dispatch(dataPost(state, { ...arg.request, id: jsondata }));
+    success: ({ dataprocessed }) => {
+      dispatch(dataPost(state, { ...arg.request, id: dataprocessed }));
     },
-    failure: ({ jsondata, error }) => {
-      dispatch({ error: jsondata || error });
+    failure: ({ dataprocessed, error }) => {
+      dispatch({ error: dataprocessed || error });
     }
   };
 
@@ -101,13 +101,13 @@ export const callCulturesDelete = async ({ data, dispatch, state }) => {
       id: data,
     },
     api: apiCultureDelete,
-    success: ({ jsondata }) => {
-      if (jsondata) {
+    success: ({ dataprocessed }) => {
+      if (dataprocessed) {
         dispatch(dataDelete(state, { id: arg.params.id }));
       }
     },
-    failure: ({ jsondata, error }) => {
-      dispatch({ error: jsondata || error, id: '' });
+    failure: ({ dataprocessed, error }) => {
+      dispatch({ error: dataprocessed || error, id: '' });
     }
   };
 
@@ -123,14 +123,14 @@ export const callCulturesPut = async ({ data, dispatch, state }) => {
       description: data.description,
     },
     api: apiCulturePut,
-    success: ({ jsondata }) => {
-      if (jsondata) {
+    success: ({ dataprocessed }) => {
+      if (dataprocessed) {
         dispatch(dataPut(state, { ...arg.request }));
       }
     },
-    failure: ({ jsondata, error }) => {
+    failure: ({ dataprocessed, error }) => {
       dispatch({
-        error: jsondata,
+        error: dataprocessed,
         id: '',
         code: '',
         description: '',

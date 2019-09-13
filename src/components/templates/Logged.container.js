@@ -12,7 +12,7 @@ import Logged from './Logged.view';
 const header = state => ({
   username: state.username || '',
   culture: state.culture || '',
-  groups: state.groups || '',
+  role: state.groups && state.groups[0] || '',
 });
 
 

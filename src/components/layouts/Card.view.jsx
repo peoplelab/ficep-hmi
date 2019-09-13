@@ -24,27 +24,24 @@ const toIcon = {
   USER: operator,
 };
 
-const roleConverter = {
-  ADMIN: 'Administrator',
-  SUPER: 'Technician',
-  USER: 'Operator',
-};
-
 
 const Card = (props) => {
   const {
     children,
     issuedAt,
     username,
-    groups,
+    role,
     // culture,
     className,
+    intl,
   } = props;
 
   const mergedClass = `card ${className}`;
 
-  const [role] = groups;
   const lastAccess = issuedAt && moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
+
+  const roleText = intl[role];
+  const lastAccessText = intl.lastaccess;
 
   return (
     username
@@ -54,7 +51,7 @@ const Card = (props) => {
     <Box className={mergedClass}>
       <Box className="card__box">
         <Box className="card__picture">
-          <img className="card__picture-icon" src={toIcon[role]} alt={roleConverter[role]} />
+          <img className="card__picture-icon" src={toIcon[role]} alt={role} />
         </Box>
       </Box>
       <Box className="card__box">
@@ -62,7 +59,7 @@ const Card = (props) => {
           {username}
         </p>
         <p className="card__paragraph card__paragraph--semibold">
-          {roleConverter[role]}
+          {roleText}
         </p>
       </Box>
       {children && (
@@ -73,7 +70,7 @@ const Card = (props) => {
       {lastAccess && (
         <Box className="card__box">
           <p className="card__paragraph card__paragraph--light">
-            Last access:
+            {lastAccessText}
           </p>
           <p className="card__paragraph">
             {lastAccess}
@@ -89,18 +86,20 @@ Card.propTypes = {
   children: PropTypes.element,
   issuedAt: PropTypes.string,
   username: PropTypes.string,
-  groups: PropTypes.arrayOf(PropTypes.string),
+  role: PropTypes.string,
   culture: PropTypes.string,
   className: PropTypes.string,
+  intl: PropTypes.objectOf(PropTypes.string),
 };
 
 Card.defaultProps = {
   children: null,
   issuedAt: '',
   username: '',
-  groups: [],
+  role: '',
   culture: '',
   className: '',
+  ids: {}
 };
 
 

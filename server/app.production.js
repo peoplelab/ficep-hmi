@@ -11,9 +11,10 @@ const express = require('express');
 const compression = require('compression');
 const { proxyMiddleware } = require('./app/app.proxy');
 const { router } = require('./app/app.router');
+const { translations } = require('./app/app.translations');
 
 
-const { COMPILE_ENV } = process.env;
+const { COMPILE_ENV, LOG_LEVEL } = process.env;
 
 // external file for server configuration
 const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));
@@ -27,7 +28,11 @@ const app = express();
 app.use(compression());
 
 
-// // start proxy handler
+// Return as response the translations JSON file required
+app.use('/translations', translations({ publicPath: './', LOG_LEVEL }));
+
+
+// start proxy handler
 app.use('/api', proxyMiddleware({ route: '/api', ...SERVER_CONFIG }));
 
 

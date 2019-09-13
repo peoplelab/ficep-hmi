@@ -1,5 +1,7 @@
 {
-  "GET": [
+  "responseType": 200,
+  "errorCode": null,
+  "result": [
     {
        "id":2,
        "code":"it-IT",

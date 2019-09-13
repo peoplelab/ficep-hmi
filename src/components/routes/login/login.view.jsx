@@ -20,7 +20,6 @@ import PasswordInput from '../../forms/PasswordInput';
 import Select from '../../forms/Select';
 import Submit from '../../forms/Submit';
 import Field from '../../forms/Field';
-import LoginError from './Login.item.Error';
 
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
@@ -58,7 +57,6 @@ class LoginRoute extends Component {
       ...initial,
       usersList: [],
       cultureList: [],
-      errorOnLogin: false,
     };
 
     this.updateState = this.updateState.bind(this);
@@ -110,16 +108,16 @@ class LoginRoute extends Component {
       culture,
     } = props;
 
+    const [role] = groups;
+
     const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: props[key] }), {
       data: {
         issuedAt,
-        groups,
+        role,
         username,
         culture,
       }
     });
-
-    const [role] = groups;
 
     return (
       <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
@@ -137,7 +135,7 @@ class LoginRoute extends Component {
 
   // renderizzazione della pagina
 	render() {
-    const { username, password, culture, data, usersList, cultureList, errorOnLogin } = this.state;
+    const { username, password, culture, data, usersList, cultureList } = this.state;
 
     const newCultureList = cultureList.map((value) => ({ value: value.code, message: value.description }));
 
@@ -184,7 +182,6 @@ class LoginRoute extends Component {
             />
           </Form>
         </Box>
-        <LoginError show={errorOnLogin} />
       </section>
     );
 	}

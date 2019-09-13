@@ -10,23 +10,37 @@ import Enum from '../models/common/Enum';
 
 
 // Lista delle tipologie di azioni applicabili allo store
-export const types = Enum.from('SET_USER_IP', 'SET_SESSION', 'RESET_SESSION');
+export const types = Enum.from(
+  'SET_USER_IP',
+  'SET_SESSION',
+  'RESET_SESSION',
+  'SET_ERROR',
+  'RESET_ERROR'
+);
 
 
 // Stato iniziale dello store (le chiavi sono copiate dalla response del servizio di login)
 const initialState = {
-  ip: '',
-  username: '',
-  accessToken: '',
-  refreshToken: '',
-  culture: '',
-  groups: [],
-  permissions: [],
-  sessionId: '',
-  expiredAt: '',
-  sessionLogId: '',
-  refreshExpiredAt: '',
-  issuedAt: '',
+  mainError: {
+    responseType: NaN,
+    errorCode: '',
+    errorsList: [],
+  },
+  session: {
+    responseType: NaN,
+    ip: '',
+    username: '',
+    accessToken: '',
+    refreshToken: '',
+    culture: '',
+    groups: [],
+    permissions: [],
+    sessionId: '',
+    expiredAt: '',
+    sessionLogId: '',
+    refreshExpiredAt: '',
+    issuedAt: '',
+  }
 };
 
 
@@ -38,11 +52,35 @@ const actionHandlers = {
   }),
 	[types.SET_SESSION]: (state, { payload }) => ({
     ...state,
-    ...payload,
+    mainError: {
+      responseType: NaN,
+      errorCode: '',
+      errorsList: [],
+    },
+    session: {
+      responseType: payload.responseType,
+      ...payload.result,
+    },
   }),
   [types.RESET_SESSION]: (state, { payload }) => ({
       ...initialState,
       ip: state.ip,
+  }),
+  [types.SET_ERROR]: (state, { payload }) => ({
+      ...state,
+      mainError: {
+        responseType: payload.responseType,
+        errorCode: payload.errorCode,
+        errorsList: payload.result,
+      }
+  }),
+  [types.RESET_ERROR]: (state, { payload }) => ({
+      ...state,
+      mainError: {
+        responseType: NaN,
+        errorCode: '',
+        errorsList: [],
+      }
   }),
 };
 

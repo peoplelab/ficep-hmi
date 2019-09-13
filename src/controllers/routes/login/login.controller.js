@@ -25,22 +25,21 @@ export const callLogin = async ({ data, dispatch }) => {
     request,
     api: apiLogin,
     success: ({ dataprocessed }) => {
-      dispatch({ errorOnLogin: false });
+      const { responseType } = dataprocessed;
 
-      callGetTranslations({
-        culture: data.culture,
-        callback: () => {
-          store.dispatch({
-            type: types.SET_SESSION,
-            payload: dataprocessed,
-          });
+      if (responseType === 200) {
+        callGetTranslations({
+          culture: data.culture,
+          callback: () => {
+            store.dispatch({
+              type: types.SET_SESSION,
+              payload: dataprocessed,
+            });
 
-          history.push('/');
-        },
-      });
-    },
-    failure: () => {
-      dispatch({ errorOnLogin: true });
+            history.push('/');
+          },
+        });
+      }
     },
     refresh: false
   });
@@ -51,7 +50,7 @@ export const callCultureGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
     success: ({ dataprocessed }) => {
-      dispatch({ cultureList: dataprocessed });
+      dispatch({ cultureList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ cultureList: dataraw || error });
@@ -65,7 +64,7 @@ export const callLastLogin = async ({ dispatch }) => {
   base({
     api: apiLastLogin,
     success: ({ dataprocessed }) => {
-      dispatch({ usersList: dataprocessed });
+      dispatch({ usersList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ usersList: dataraw || error });

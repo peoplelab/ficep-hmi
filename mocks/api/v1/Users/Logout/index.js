@@ -3,6 +3,10 @@ const { base } = require('../../../../mock.base');
 
 module.exports = {
   PUT: base(
-    () => true
+    () => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": true
+    })
   )
 };

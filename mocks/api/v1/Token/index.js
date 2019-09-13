@@ -6,12 +6,16 @@ const responseJSON = require('./response.json');
 const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSSZ';
 
 const RESPONSE = UserName => ({
-  ...responseJSON[UserName],
-  culture: global.login.culture,
-  expiredAt: global.login.expiredAt,
-  issuedAt: global.login.issuedAt,
-  refreshExpiredAt: global.login.refreshExpiredAt,
-  refreshToken: global.login.refreshToken,
+  "responseType": 200,
+  "errorCode": null,
+  "result": {
+    ...responseJSON[UserName],
+    culture: global.login.culture,
+    expiredAt: global.login.expiredAt,
+    issuedAt: global.login.issuedAt,
+    refreshExpiredAt: global.login.refreshExpiredAt,
+    refreshToken: global.login.refreshToken,
+  }
 });
 
 const setGlobalTime = () => {
@@ -42,8 +46,22 @@ module.exports = {
           status = 400;
           response = 'InvalidRequest';
         } else if (!(global.login.username.includes(UserName)) || Password !== global.login.password) {
-          status = 400;
-          response = 'InvalidRequest';
+          status = 200;
+          response = {
+            "responseType": 400,
+            "errorCode": "GENERIC_VALIDATION_ERROR",
+            "result": [
+              "USER_LOGIN_PASSWORD_INVALIDLENGTH"
+            ]
+          };
+          // response = {
+          //   "responseType": 400,
+          //   "errorCode": "GENERIC_VALIDATION_ERROR",
+          //   "result": [
+          //     "SESSION_GETLATEST_IP_INVALID",
+          //     "SESSION_GETLATEST_NUMEROFSESSION_EMPTY"
+          //   ]
+          // };
         } else {
           global.login.refreshToken = uuidv1();
 

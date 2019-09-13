@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';              // Gestore della connession
 import { Router } from "react-router";               // Gestore della navigazione
 import { hot } from 'react-hot-loader/root';         // Gestore dell'hot-reloading dell'applicativo
 import Main from './Main.container';                 // Gestore delle route
+import Modals from './Modals';                 // Gestore dei componenti modali
 import history from '../models/common/history';      // Gestore della store del browser
 import { getUserIP } from '../models/common/userIP'; // Gestore dell'indirizzo IP dell'utente
 import store from '../store/redux.store';            // Store globale
@@ -32,6 +33,7 @@ class AppComponent extends Component {
         <Router history={history}>
           <Main />
         </Router>
+        <Modals />
       </Provider>
     );
   }

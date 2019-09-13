@@ -20,21 +20,14 @@
 // Path: /src/controllers/common/controller.base
 //----------------------------------------------------------------------------------------
 
-// import { failureHandler } from './failure.handler';
+import { headersHanlder } from './header.handler';
+import { errorHandler } from './error.handler';
 import { datarawHandler } from './dataraw.handler';
-import store from '../../store/redux.store';
-
-
-// definizione degli header
-const headersFn = state => ({
-  Authorization: state.accessToken ? `Bearer ${state.accessToken}` : undefined,
-  Session: state.sessionId,
-});
 
 
 export const base = async ({ request, api, success, failure, params, refresh }) => {
   // imposta gli header che verranno utilizzati per abilitare le chimate api
-  const headers = headersFn(store.getState());
+  const headers = headersHanlder();
 
   console.log('----- Start api call');
 
@@ -48,8 +41,14 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
     }
 
     // success
+
+    // elaborazione dei dati grezzi
     const dataprocessed = datarawHandler({ contentType, dataraw });
 
+    // gestione dei casi di errore
+    errorHandler({ request, contentType, dataprocessed });
+
+    // gestione di tutti i casi httpcode 200
     if (typeof success === 'function') {
       success({ contentType, dataraw, dataprocessed });
     }
@@ -61,11 +60,6 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
     if (typeof failure === 'function') {
       failure({ httpcode, dataraw, error });
     }
-
-    // failureHandler({
-    //   input: { request, api, success, failure, params, refresh },
-    //   output: { httpcode, dataraw, error },
-    // });
 
     console.log('----- Failure api call');
     return { httpcode, dataraw, error };

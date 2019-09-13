@@ -11,17 +11,33 @@ const base = callback => (req, res) => {
   let response;
 
   if (!authorization || !session) {
-    status = 400;
-    response = 'invalidRequest';
+    status = 200;
+    response = {
+      "responseType": 400,
+      "errorCode": "GENERIC_VALIDATION_ERROR",
+      "result": [],
+    };
   } if (!global.login.expiredAt) {
-    status = 400;
-    response = 'invalidRequest';
+    status = 200;
+    response = {
+      "responseType": 400,
+      "errorCode": "GENERIC_VALIDATION_ERROR",
+      "result": [],
+    };
   } else if(authorization !== global.logged.accessToken || session !== global.logged.sessionId) {
-    status = 400;
-    response = 'invalidRequest';
+    status = 200;
+    response = {
+      "responseType": 400,
+      "errorCode": "GENERIC_VALIDATION_ERROR",
+      "result": [],
+    };
   } else if(moment(global.login.expiredAt, FORMAT).isBefore(moment())) {
     status = 400;
-    response = 'sessionExpired';
+    response = {
+      "responseType": 400,
+      "errorCode": "GENERIC_VALIDATION_ERROR",
+      "result": [],
+    };
   }else {
     status = 200;
     response = callback(req, res);

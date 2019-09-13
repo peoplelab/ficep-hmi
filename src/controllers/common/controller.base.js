@@ -23,12 +23,13 @@
 // import { failureHandler } from './failure.handler';
 import { datarawHandler } from './dataraw.handler';
 import store from '../../store/redux.store';
+import { pathOr } from '../../presenters/utils';
 
 
 // definizione degli header
 const headersFn = state => ({
-  Authorization: state.accessToken ? `Bearer ${state.accessToken}` : undefined,
-  Session: state.sessionId,
+  Authorization: `Bearer ${pathOr('', ['result', 'accessToken'], state)}`,
+  Session: pathOr('', ['result', 'sessionId'], state),
 });
 
 

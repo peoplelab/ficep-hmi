@@ -12,12 +12,17 @@ import Button from '../../layouts/Button';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 
+import intl from '../../../../public/translations/login/default.json';
+
 import '../../../styles/modal/ErrorModal.style.scss';
+
+
+const intlHandler = id => window.intl[id] || intl[id] || '';
 
 
 const mapResult = (code, index) => (
   <li className="error-modal__item" key={`error-item-${index}`}>
-    {window.intl[code]}
+    {intlHandler(code)}
   </li>
 );
 
@@ -37,7 +42,7 @@ const ErrorsModal = (props) => {
 
   let title;
   if (responseType === 400) {
-    title = window.intl[errorCode];
+    title = intlHandler(errorCode);
   }
 
   const List = errorsList.map(mapResult);

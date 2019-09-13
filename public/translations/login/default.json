@@ -1,0 +1,31 @@
+{
+  "login_info_title": "Inserisci i tuoi dati",
+  "login_info_lastaccess": "Ultimo accesso:",
+  "login_user_administrator": "Amministratore",
+  "login_user_technician": "Tecnico",
+  "login_user_operator": "Operatore",
+  "login_form_username": "Username",
+  "login_form_password": "Password",
+  "login_form_login": "Login",
+
+  "GENERIC_VALIDATION_ERROR": "Errore di validazione",
+  "GENERIC_GETITEM_NOTFOUND": "Entità non trovata",
+  "GENERIC_JSON_INVALIDFORMAT": "Formato JSON non valido",
+
+  "SESSION_GETLATEST_INPUTNOTVALID": "Richiesta ultime sessioni input non valido",
+  "SESSION_GETLATEST_IP_EMPTY": "Ip non specificato",
+  "SESSION_GETLATEST_IP_INVALID": "Ip non valido",
+  "SESSION_GETLATEST_NUMEROFSESSION_EMPTY": "Numero di sessioni da recuperare non specificato",
+
+  "USER_LOGIN_USERNAME_EMPTY": "Username non specificata",
+  "USER_LOGIN_INVALIDINPUT": "Input non specificato",
+  "USER_LOGIN_USERNAME_INVALIDLENGTH": "Lunghezza Username non valida (compresa fra 3 e 25)",
+  "USER_LOGIN_PASSWORD_EMPTY": "Password non specificata",
+  "USER_LOGIN_PASSWORD_INVALIDLENGTH": "Lunghezza Password non valida (compresa fra 8 e 16)",
+  "USER_LOGIN_USERNAME_INVALID": "Username non trovata",
+  "USER_LOGIN_PASSWORD_INVALID": "Password non valida",
+  "USER_LOGIN_CULTURE_EMPTY": "Culture non specificata",
+  "USER_LOGIN_INACTIVE": "User non attivo",
+  "USER_LOGIN_IP_EMPTY": "IP non specificato",
+  "USER_LOGIN_IP_INVALID": "IP non valido"
+}

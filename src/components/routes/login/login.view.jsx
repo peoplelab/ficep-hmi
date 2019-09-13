@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-
 import Box from '../../layouts/Box';
 import Card from '../../layouts/Card.view';
 import InputCard from '../../forms-custom/InputCard.view';
@@ -20,11 +19,12 @@ import PasswordInput from '../../forms/PasswordInput';
 import Select from '../../forms/Select';
 import Submit from '../../forms/Submit';
 import Field from '../../forms/Field';
-
+import ButtonData from '../../layouts/ButtonData';
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
+import intl from '../../../../public/translations/login/default.json';
+
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
-import ButtonData from '../../layouts/ButtonData';
 
 
 // lista dei campi obbligari
@@ -40,10 +40,10 @@ const initial = {
 
 
 const intlCard = {
-  ADMIN: "Administrator",
-  SUPER: "Technician",
-  USER: "Operator",
-  lastaccess: "Last access:",
+  ADMIN: intl.login_user_administrator,
+  SUPER: intl.login_user_technician,
+  USER: intl.login_user_operator,
+  lastaccess: intl.login_info_lastaccess,
 };
 
 
@@ -144,7 +144,7 @@ class LoginRoute extends Component {
         <Box className="login__dialog">
           <Form className="login__form" name="login-form">
             <p className="login__title">
-              Enter your data
+              {intl.login_info_title}
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
@@ -157,12 +157,12 @@ class LoginRoute extends Component {
                   onClick={this.setUsername}
                   intl={intlCard}
                 >
-                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder="Username" />
+                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder={intl.login_form_username} />
                 </InputCard>
               </Field>
               <Field className="login__field">
                 <PasswordInput
-                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder="Password"
+                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder={intl.login_form_password}
                 />
               </Field>
               <Field className="login__field">
@@ -171,7 +171,7 @@ class LoginRoute extends Component {
                 />
               </Field>
               <Submit className="login__form-submit" required={required} value={this.state} onSubmit={this.onLogin} name="login-form">
-                Login
+                {intl.login_form_login}
               </Submit>
             </Box>
             <Gallery

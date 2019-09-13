@@ -36,7 +36,7 @@ class HomeRoute extends PureComponent {
       <>
         <AdminArea>
           <section className="user-modal user-modal--admin">
-            <div className="user-modal__bg bg-user-modal" />
+            <div className="user-modal__bg bg-user-modal-admin" />
             <Button
               className="user-modal__button-2 anchor"
               disabled

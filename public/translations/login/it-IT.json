@@ -4,8 +4,8 @@
   "login_user_administrator": "Amministratore",
   "login_user_technician": "Tecnico",
   "login_user_operator": "Operatore",
-  "login_form_username": "Login",
-  "login_form_password": "Login",
+  "login_form_username": "Username",
+  "login_form_password": "Password",
   "login_form_login": "Login",
 
   "GENERIC_VALIDATION_ERROR": "Errore di validazione",

@@ -34,7 +34,7 @@ class AppComponent extends Component {
         <Router history={history}>
           <Main />
           <Modals />
-          <SandboxLink />
+          {!IS_PRODUCTION && <SandboxLink />}
         </Router>
       </Provider>
     );

@@ -1,4 +1,4 @@
-// import { pathOr } from "ramda";
+// import { pathOr } from "../../utils/path";
 import store from '../../store/redux.store';
 import { types } from '../../store/session.store';
 

@@ -11,7 +11,7 @@ import { apiRefresh } from '../models/session.model';
 import store from '../store/redux.store';
 import { types } from '../store/session.store';
 import history from '../models/common/history';
-import { pathOr } from '../presenters/utils';
+import { pathOr } from '../utils/path';
 
 
 // dato un determinato lasso di tempo, allo scadere di quest'ultimo, verifica se la sessione utente è ancora valida

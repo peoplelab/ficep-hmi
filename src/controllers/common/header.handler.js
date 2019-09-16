@@ -1,5 +1,5 @@
 import store from '../../store/redux.store';
-import { pathOr } from '../../presenters/utils';
+import { pathOr } from '../../utils/path';
 
 
 // definizione degli header

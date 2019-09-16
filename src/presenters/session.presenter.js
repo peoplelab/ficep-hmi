@@ -1,4 +1,4 @@
-import { pathOr } from './utils';
+import { pathOr } from '../utils/path';
 
 // Verifica che l'utente sia in possesso di credenziali valide
 export const logged = (state) => {

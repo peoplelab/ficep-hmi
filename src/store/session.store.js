@@ -6,7 +6,7 @@
 //--------------------------------------------------------------------------
 
 
-import Enum from '../models/common/Enum';
+import Enum from '../utils/Enum';
 
 
 // Lista delle tipologie di azioni applicabili allo store

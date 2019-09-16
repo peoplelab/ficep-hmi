@@ -23,8 +23,12 @@
         width: 2.5rem;
       }
 
-      &:nth-of-type(4) {
-        margin-top: 0.5rem;
+      &:nth-of-type(2) {
+        flex: 1;
+      }
+
+      &:nth-of-type(3) {
+        margin: 0.5rem 1.25rem 0;
         width: 100%;
       }
     }
@@ -35,7 +39,8 @@
     background-color: transparent;
     cursor: pointer;
     flex: none;
-    width: 1.5rem;
+    padding: 0 0.5rem;
+    width: 2.5rem;
 
     .input-card__reset-icon {
       width: 100%;

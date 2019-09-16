@@ -1,6 +1,7 @@
 const url = {
   login: '/api/v1/Token',
   logout: '/api/v1/Users/Logout',
+  token: '/api/v1/odata/Token',
   tools: '/api/v1/odata/tools',
   tool: '/api/v1/tools',
   cultures: '/api/v1/Cultures',
@@ -13,8 +14,8 @@ module.exports = [
     "api": require(`.${url.login}`),
   },
   {
-    "url": `${url.login}/latest`,
-    "api": require(`.${url.login}/latest`),
+    "url": `${url.token}/latest`,
+    "api": require(`.${url.token}/latest`),
   },
   {
     "url": url.logout,

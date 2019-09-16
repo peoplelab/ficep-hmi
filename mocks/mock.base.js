@@ -32,9 +32,9 @@ const base = callback => (req, res) => {
       "result": [],
     };
   } else if(moment(global.login.expiredAt, FORMAT).isBefore(moment())) {
-    status = 400;
+    status = 401;
     response = {
-      "responseType": 400,
+      "responseType": 401,
       "errorCode": "GENERIC_VALIDATION_ERROR",
       "result": [],
     };

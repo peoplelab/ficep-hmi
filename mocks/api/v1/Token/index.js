@@ -110,6 +110,8 @@ module.exports = {
 
           setGlobalTime();
 
+          global.login.currentUser = UserName;
+
           status = 200;
           response = RESPONSE(UserName);
         }
@@ -140,7 +142,7 @@ module.exports = {
           setGlobalTime();
 
           status = 200;
-          response = RESPONSE(UserName);
+          response = RESPONSE(global.login.currentUser);
         }
 
         break;

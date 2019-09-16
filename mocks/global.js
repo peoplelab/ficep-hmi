@@ -1,5 +1,6 @@
 // Login
 global.login = {
+  currentUser: '',
   username: [
     'admin',
     'super',

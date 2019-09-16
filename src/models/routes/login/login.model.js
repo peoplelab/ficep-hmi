@@ -9,7 +9,7 @@ import { base } from '../../common/model.base';
 
 
 // dati predefiniti della request
-const IP = '1';
+const IP = '1.1.1.1';
 const defaultData = {
   GrantType: 'Password',
   IP,
@@ -54,12 +54,12 @@ export const apiLastLogin = async () => {
   };
 
   const request = {
-    method: "post",
+    method: "get",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   };
 
-  return base(`api/v1/Token/latest`, request);
+  return base(`/api/v1/odata/Token/latest`, request);
 };

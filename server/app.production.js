@@ -14,7 +14,7 @@ const { router } = require('./app/app.router');
 const { translations } = require('./app/app.translations');
 
 
-const { COMPILE_ENV, LOG_LEVEL } = process.env;
+const { LOG_LEVEL } = process.env;
 
 // external file for server configuration
 const SERVER_CONFIG = JSON.parse(fs.readFileSync('./server.config.json'));

@@ -8,7 +8,6 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import Box from '../layouts/Box';
 
 import * as admin from '../../../public/icons/ic-user-admin.svg';
@@ -25,6 +24,13 @@ const toIcon = {
 };
 
 
+const getTime = (time) => {
+  const [year, month, day, hours, minutes] = time.split(/-|:|T/g);
+
+  return `${hours}:${minutes} ${day}/${month}/${year}`;
+};
+
+
 const Card = (props) => {
   const {
     children,
@@ -38,7 +44,7 @@ const Card = (props) => {
 
   const mergedClass = `card ${className}`;
 
-  const lastAccess = issuedAt && moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
+  const lastAccess = issuedAt && getTime(issuedAt);
 
   const roleText = intl[role];
   const lastAccessText = intl.lastaccess;

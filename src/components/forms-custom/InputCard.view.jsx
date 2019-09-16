@@ -37,6 +37,8 @@ const InputCard = (props) => {
 
   const mergedClass = `input-card ${className}`;
 
+  [data.role] = data.groups;
+
   return (
     <Box className={mergedClass}>
       <Card {...data} intl={intl} className="input-card__card" />
@@ -52,14 +54,12 @@ InputCard.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   initial: PropTypes.object.isRequired,
-  data: PropTypes.object,
   className: PropTypes.string,
   intl: PropTypes.objectOf(PropTypes.string),
 };
 
 InputCard.defaultProps = {
   className: '',
-  data: null,
   intl: {},
 };
 

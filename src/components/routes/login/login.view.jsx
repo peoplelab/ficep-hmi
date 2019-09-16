@@ -113,6 +113,8 @@ class LoginRoute extends Component {
     //   culture,
     // } === props;
 
+    [props.role] = props.groups;
+
     return (
       <SetStore event="onClick" setter={this.externalDispatch}>
         <ButtonForm className="login__button-card" name="data" value={props}>

@@ -1,8 +1,8 @@
 {
   "ignore": [
-    "src",
-    "node_modules",
-    "release",
-    "pubblic"
+    "src/**/*.*",
+    "node_modules/**/*.*",
+    "release/**/*.*",
+    "pubblic/**/*.*"
   ]
 }

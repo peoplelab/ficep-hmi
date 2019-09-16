@@ -8,7 +8,7 @@
 
 import { connect } from 'react-redux';
 import Area from './Area';
-import { pathOr } from '../../presenters/utils';
+import { pathOr } from '../../utils/path';
 
 
 const enable = state => pathOr([], ['session', 'groups'], state).includes('SUPER');

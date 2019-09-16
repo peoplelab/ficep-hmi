@@ -8,7 +8,7 @@
 
 import { connect } from 'react-redux';
 import Logged from './Logged.view';
-import { pathOr } from '../../presenters/utils';
+import { pathOr } from '../../utils/path';
 
 const header = state => ({
   username: pathOr('', ['session', 'username'], state),

@@ -8,7 +8,7 @@
 
 import { connect } from 'react-redux';
 import ErrorsModal from './ErrorsModal.view';
-import { pathOr } from '../../../presenters/utils';
+import { pathOr } from '../../../utils/path';
 
 const responseType = state => pathOr(NaN, ['mainError', 'responseType'], state);
 const errorCode = state => pathOr('', ['mainError', 'errorCode'], state);

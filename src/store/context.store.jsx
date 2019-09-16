@@ -8,7 +8,7 @@
 
 import React, { createContext, useReducer, memo } from 'react';
 import PropTypes from 'prop-types';
-import Enum from '../models/common/Enum';
+import Enum from '../utils/Enum';
 
 
 // Inizializzazione del reducer della sessione per poter filtrare le azioni applicate allo store

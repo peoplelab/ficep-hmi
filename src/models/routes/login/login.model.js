@@ -54,7 +54,7 @@ export const apiLastLogin = async () => {
   };
 
   const request = {
-    method: "get",
+    method: "put",
     headers: {
       "Content-Type": "application/json",
     },

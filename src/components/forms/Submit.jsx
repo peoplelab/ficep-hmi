@@ -18,6 +18,7 @@ class Submit extends PureComponent {
   }
 
   onSubmit(event) {
+    event.preventDefault();
     const { onSubmit, name, value } = this.props;
 
     const newEvent = {
@@ -53,7 +54,7 @@ class Submit extends PureComponent {
       <button
         {...rest}
         className={mergedClass}
-        type="button"
+        type="submit"
         name={name}
         disabled={disabled}
         onClick={this.onSubmit}

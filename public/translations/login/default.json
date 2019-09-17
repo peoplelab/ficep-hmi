@@ -9,7 +9,8 @@
   "login_form_login": "Login",
 
   "modal_error_title": "Operation failed",
-  "modal_error_message": "An error occurred:",
+  "modal_error_message": "An error occurred!",
+  "modal_error_code": "Error code:",
   "modal_error_details": "Details:",
   "modal_error_close": "Close",
   "modal_error_server": "Server side error",

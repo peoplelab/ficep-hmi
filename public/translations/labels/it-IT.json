@@ -12,7 +12,8 @@
   "jog_tab_commands": "Comandi",
 
   "modal_error_title": "Operazione fallita",
-  "modal_error_message": "Si è verificato un errore:",
+  "modal_error_message": "Si è verificato un errore!",
+  "modal_error_code": "Codice dell'errore:",
   "modal_error_details": "Dettagli:",
   "modal_error_close": "Chiudi",
   "modal_error_server": "Errore lato server"

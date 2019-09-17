@@ -61,10 +61,10 @@ const Card = (props) => {
         </Box>
       </Box>
       <Box className="card__box">
-        <p className="card__paragraph card__paragraph--bold">
+        <p className="card__paragraph card__paragraph--user">
           {username}
         </p>
-        <p className="card__paragraph card__paragraph--semibold">
+        <p className="card__paragraph card__paragraph--role">
           {roleText}
         </p>
       </Box>
@@ -75,10 +75,10 @@ const Card = (props) => {
       )}
       {lastAccess && (
         <Box className="card__box">
-          <p className="card__paragraph card__paragraph--light">
+          <p className="card__paragraph card__paragraph--text">
             {lastAccessText}
           </p>
-          <p className="card__paragraph">
+          <p className="card__paragraph card__paragraph--last-access">
             {lastAccess}
           </p>
         </Box>

@@ -16,11 +16,6 @@
 
   .error-modal__container {
     background-color: $bg-light-grey;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-radius: 1rem;
     box-shadow: $shadow-2;
     display: flex;
     flex-direction: column;
@@ -32,39 +27,49 @@
     width: 50%;
 
     .error-modal__content {
+      border-bottom: 0.0625rem solid $border-dark-grey;
       overflow: hidden;
       padding: 1rem;
       width: 100%;
 
       &:nth-of-type(1) {
-        background-color: $text-red;
-        border-bottom: 0.0625rem solid $border-dark-grey;
-      }
-      &:nth-of-type(2) {
-        border-bottom: 0.0625rem solid $border-dark-grey;
+        background-color: $bg-dark-grey;
       }
       &:nth-of-type(3) {
+        border-bottom: none;
+      }
+      &:nth-of-type(4) {
         display: flex;
         flex: 1;
         flex-direction: column;
       }
+      &:last-of-type {
+        border-bottom: none;
+      }
 
       .error-modal__title {
-        color: $text-light-grey;
-        font-size: 1.25rem;
         font-weight: 600;
+
+        &.modal__title--main-title {
+          color: $text-dark-grey;
+          font-size: 1.75rem;
+        }
+        &.modal__title--sub-title {
+          color: $text-light-grey;
+          font-size: 1.25rem;
+        }
       }
 
       .error-modal__text {
         color: $text-dark-grey;
 
         &.error-modal__text--message {
-          font-size: 1rem;
+          font-size: 0.9rem;
           font-weight: 500;
           margin: 0 0 1rem;
         }
         &.error-modal__text--main {
-          font-size: 0.85rem;
+          font-size: 1.125rem;
           font-weight: 400;
 
         }
@@ -72,13 +77,12 @@
           @extend .error-modal__text--message;
         }
         &.error-modal__text--description {
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           font-weight: 300;
         }
       }
 
       .error-modal__list {
-        border: 0.0625rem solid $border-dark-grey;
         flex: 1;
         overflow: auto;
         padding: 0.5rem;

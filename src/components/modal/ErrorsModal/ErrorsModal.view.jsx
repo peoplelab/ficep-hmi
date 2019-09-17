@@ -42,12 +42,12 @@ const ErrorsModal = (props) => {
 
   const title = intlHandler("modal_error_title");
   const message = intlHandler("modal_error_message");
+  const code = intlHandler("modal_error_code");
   const details = intlHandler("modal_error_details");
   const close = intlHandler("modal_error_close");
 
   let main = null;
   let description = null;
-  let hasDetails = true;
 
   if (responseType === 400) {
     main = intlHandler(errorCode);
@@ -56,7 +56,6 @@ const ErrorsModal = (props) => {
         {errorsDescription.map(mapResult)}
       </ul>
     );
-    hasDetails = errorsDescription.length > 0;
   } else if (responseType === 500) {
     main = intlHandler("modal_error_server");
     description = (
@@ -64,7 +63,6 @@ const ErrorsModal = (props) => {
         {errorsDescription}
       </p>
     );
-    hasDetails = !!errorsDescription;
   }
 
   return (
@@ -72,26 +70,29 @@ const ErrorsModal = (props) => {
       <div className="error-modal">
         <div className="error-modal__container">
           <div className="error-modal__content">
-            <h1 className="error-modal__title">
+            <h2 className="error-modal__title modal__title--sub-title">
               {title}
+            </h2>
+          </div>
+          <div className="error-modal__content">
+            <h1 className="error-modal__title modal__title--main-title">
+              {message}
             </h1>
           </div>
           <div className="error-modal__content">
             <p className="error-modal__text error-modal__text--message">
-              {message}
+              {code}
             </p>
             <p className="error-modal__text error-modal__text--main">
               {main}
             </p>
           </div>
-          {hasDetails && (
-            <div className="error-modal__content">
-              <p className="error-modal__text error-modal__text--details">
-                {details}
-              </p>
-              {description}
-            </div>
-          )}
+          <div className="error-modal__content">
+            <p className="error-modal__text error-modal__text--details">
+              {details}
+            </p>
+            {description}
+          </div>
           <div className="error-modal__content">
             <Button className="error-modal__button" onClick={onClick}>
               {close}

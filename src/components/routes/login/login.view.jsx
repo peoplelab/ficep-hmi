@@ -101,7 +101,6 @@ class LoginRoute extends Component {
   }
 
   SlideTemplate(slideProps) {
-    console.log(slideProps);
     const {
       issuedAt,
       groups,

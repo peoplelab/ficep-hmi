@@ -17,22 +17,36 @@
 //-------------------------------------------------------------------
 
 export const base = async (url, request) => {
+  const table = {};
   try {
-    console.log('> Calling REST API:' + url);
-    console.log(request);
+    table.request = {
+      time: new Date(),
+      method: request.method,
+      headers: request.headers,
+      body: request.body,
+    };
 
     const response = await fetch(url, request);
-
-    console.log('> REST API executed.');
-    console.log(response);
+    table.response = {
+      time: new Date(),
+      response,
+    };
 
     const httpcode = response.status;
     const contentType = response.headers.get("content-type");
     const dataraw = await response.text();
+    table.success = {
+      time: new Date(),
+      httpcode,
+      contentType,
+      dataraw,
+    };
 
-    console.log('> REST API dataraw.');
-    console.log(contentType);
-    console.log(dataraw);
+    console.group(url);
+    console.table({ request: table.request });
+    console.table({ response: table.response });
+    console.table({ success: table.success });
+    console.groupEnd();
 
     return {
       httpcode,
@@ -40,8 +54,16 @@ export const base = async (url, request) => {
       dataraw,
     };
   } catch (error) {
-    console.log('> REST API failed.');
-    console.log(error);
+    table.error = {
+      time: new Date(),
+      error,
+    };
+
+    console.group(url);
+    console.table({ request: table.request });
+    console.table({ response: table.response });
+    console.table({ error: table.error });
+    console.groupEnd();
 
     return {
       error,

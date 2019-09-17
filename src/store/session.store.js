@@ -24,7 +24,7 @@ const initialState = {
   mainError: {
     responseType: NaN,
     errorCode: '',
-    errorsList: null,
+    errorsDescription: null,
   },
   session: {
     responseType: NaN,
@@ -55,7 +55,7 @@ const actionHandlers = {
     mainError: {
       responseType: NaN,
       errorCode: '',
-      errorsList: null,
+      errorsDescription: null,
     },
     session: {
       responseType: payload.responseType,
@@ -71,7 +71,7 @@ const actionHandlers = {
       mainError: {
         responseType: payload.responseType,
         errorCode: payload.errorCode,
-        errorsList: payload.result,
+        errorsDescription: payload.result,
       }
   }),
   [types.RESET_ERROR]: (state, { payload }) => ({
@@ -79,7 +79,7 @@ const actionHandlers = {
       mainError: {
         responseType: NaN,
         errorCode: '',
-        errorsList: null,
+        errorsDescription: null,
       }
   }),
 };

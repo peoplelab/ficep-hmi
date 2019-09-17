@@ -17,7 +17,7 @@ import intl from '../../../../public/translations/login/default.json';
 import '../../../styles/modal/ErrorModal.style.scss';
 
 
-const intlHandler = id => window.intl[id] || intl[id] || '';
+const intlHandler = id => window.intl[id] || intl[id] || id;
 
 
 const mapResult = (code, index) => (
@@ -34,33 +34,70 @@ const onClick = (event) => {
 
 
 const ErrorsModal = (props) => {
-  const { disabled, responseType, errorCode, errorsList } = props;
+  const { disabled, responseType, errorCode, errorsDescription } = props;
 
   if (disabled) {
     return null;
   }
 
-  let title;
+  const title = intlHandler("modal_error_title");
+  const message = intlHandler("modal_error_message");
+  const details = intlHandler("modal_error_details");
+  const close = intlHandler("modal_error_close");
+
+  let main = null;
+  let description = null;
+  let hasDetails = true;
+
   if (responseType === 400) {
-    title = intlHandler(errorCode);
+    main = intlHandler(errorCode);
+    description = errorsDescription.length > 0 && (
+      <ul className="error-modal__list">
+        {errorsDescription.map(mapResult)}
+      </ul>
+    );
+    hasDetails = errorsDescription.length > 0;
+  } else if (responseType === 500) {
+    main = intlHandler("modal_error_server");
+    description = (
+      <p className="error-modal__text error-modal__text--description">
+        {errorsDescription}
+      </p>
+    );
+    hasDetails = !!errorsDescription;
   }
 
-  const List = errorsList.map(mapResult);
-
   return (
-    <div className="error-modal">
-      <div className="error-modal__container">
-        <div className="error-modal__content">
-          <h1 className="error-modal__title">
-            {title}
-          </h1>
+    <div>
+      <div className="error-modal">
+        <div className="error-modal__container">
+          <div className="error-modal__content">
+            <h1 className="error-modal__title">
+              {title}
+            </h1>
+          </div>
+          <div className="error-modal__content">
+            <p className="error-modal__text error-modal__text--message">
+              {message}
+            </p>
+            <p className="error-modal__text error-modal__text--main">
+              {main}
+            </p>
+          </div>
+          {hasDetails && (
+            <div className="error-modal__content">
+              <p className="error-modal__text error-modal__text--details">
+                {details}
+              </p>
+              {description}
+            </div>
+          )}
+          <div className="error-modal__content">
+            <Button className="error-modal__button" onClick={onClick}>
+              {close}
+            </Button>
+          </div>
         </div>
-        <div className="error-modal__content">
-          <ul className="error-modal__list">
-            {List}
-          </ul>
-        </div>
-        <Button className="error-modal__button" onClick={onClick}>X</Button>
       </div>
     </div>
   );
@@ -73,7 +110,10 @@ const ErrorsModal = (props) => {
 ErrorsModal.propTypes = {
   responseType: PropTypes.number.isRequired,
   errorCode: PropTypes.string.isRequired,
-  errorsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  errorsDescription: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]).isRequired,
   disabled: PropTypes.bool.isRequired,
 };
 

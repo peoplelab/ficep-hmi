@@ -100,17 +100,18 @@ class LoginRoute extends Component {
     callLogin({ data, dispatch });
   }
 
-  SlideTemplate(props) {
+  SlideTemplate(slideProps) {
+    console.log(slideProps);
     const {
       issuedAt,
       groups,
       username,
       culture,
-    } = props;
+    } = slideProps;
 
     const [role] = groups;
 
-    const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: props[key] }), {
+    const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: slideProps[key] }), {
       data: {
         issuedAt,
         role,

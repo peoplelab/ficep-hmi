@@ -30,6 +30,11 @@
     .error-modal__content {
       overflow: hidden;
       padding: 2rem;
+      width: 100%;
+
+      &:nth-of-type(2) {
+        flex: 1;
+      }
 
       .error-modal__title {
         color: $text-dark-grey;
@@ -40,13 +45,16 @@
       }
 
       .error-modal__list {
+        height: 100%;
         overflow: auto;
+        width: 100%;
 
         .error-modal__item {
           color: $text-dark-grey;
           display: block;
           font-size: 1.1rem;
           list-style: none;
+          margin: 0.5rem 0;
           text-align: left;
         }
       }

@@ -24,7 +24,7 @@ const initialState = {
   mainError: {
     responseType: NaN,
     errorCode: '',
-    errorsList: [],
+    errorsList: null,
   },
   session: {
     responseType: NaN,
@@ -55,7 +55,7 @@ const actionHandlers = {
     mainError: {
       responseType: NaN,
       errorCode: '',
-      errorsList: [],
+      errorsList: null,
     },
     session: {
       responseType: payload.responseType,
@@ -79,7 +79,7 @@ const actionHandlers = {
       mainError: {
         responseType: NaN,
         errorCode: '',
-        errorsList: [],
+        errorsList: null,
       }
   }),
 };

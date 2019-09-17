@@ -28,19 +28,26 @@ app.use(bodyParser.json(OPTIONS.JSON));
 
 // logging requests...
 app.use((req, res, next) => {
+  const time = new Date();
 
-    console.log('\x1b[36m--> NEW REQUEST at ' + (new Date()).toString()
-        + ' \n--> Method: ' + req.method
-        + ' \n--> Headers: ' + JSON.stringify(req.headers)
-        + ' \n--> Body: ' + JSON.stringify(req.body)
-        + '\x1b[0m'
-    );
-
-    res.on("finish", () => {
-        console.log("\x1b[36m--> RESPONSE : " + res.statusCode + ' - ' + res.statusMessage + '\x1b[0m');
+  res.on("finish", () => {
+    console.table({
+      REQUEST: {
+        time,
+        URL: req.url,
+        Method: req.method,
+      },
+      RESPONSE: {
+        time: new Date(),
+        statusCode: res.statusCode,
+        statusMessage: res.statusMessage,
+      }
     });
+    console.log('\x1b[36m', '\t', 'Request Headers', '\n', JSON.stringify(req.headers), '\x1b[0m', '\n');
+    console.log('\x1b[36m', '\t', 'Request Body', '\n', JSON.stringify(req.body), '\x1b[0m', '\n');
+  });
 
-    next();
+  next();
 });
 
 mocks(app);

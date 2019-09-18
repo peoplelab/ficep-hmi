@@ -62,6 +62,7 @@ const createRoutes = () => ({
     Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
   },
 
+  /* #start:dev */
   // Contiene la pagina sandbox
   sandbox: {
     path: '/sandbox',
@@ -69,6 +70,7 @@ const createRoutes = () => ({
     exact: false,
     Component: lazy(() => import(/* webpackChunkName: "Sandbox" */ '../sandbox/sandbox.view')),
   },
+  /* #end:dev */
 
   // Contiene la landing page da visualizzare in caso venga tornato 404 durante la navigazione
   // route404: {}

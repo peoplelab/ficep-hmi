@@ -14,16 +14,16 @@ $texts:(
   'paragraph-3': (0.9rem, 'normal', 300),
 
   'info-1': (0.8rem, 'normal', 300),
-  'info-1': (0.7rem, 'normal', 300),
-  'info-1': (0.6rem, 'normal', 300),
+  'info-2': (0.7rem, 'normal', 300),
+  'info-3': (0.6rem, 'normal', 300),
 );
 
 @each $name, $data in $texts {
-  $size: nth($data, 0);
-  $style: nth($data, 1);
-  $weight: nth($data, 2);
+  $size: nth($data, 1);
+  $style: nth($data, 2);
+  $weight: nth($data, 3);
 
-  .#{name} {
+  .#{$name} {
     font-size: $size;
     font-style: $style;
     font-weight: $weight;

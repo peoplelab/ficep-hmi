@@ -54,12 +54,12 @@ const Card = (props) => {
     && role
   ) && (
     <div className={mergedClass}>
-      <div className="card__div">
+      <div className="card__box">
         <div className="card__picture">
           <img className="card__picture-icon" src={toIcon[role]} alt={role} />
         </div>
       </div>
-      <div className="card__div">
+      <div className="card__box">
         <p className="card__paragraph card__paragraph--user">
           {username}
         </p>
@@ -68,12 +68,12 @@ const Card = (props) => {
         </p>
       </div>
       {children && (
-        <div className="card__div">
+        <div className="card__box">
           {children}
         </div>
       )}
       {lastAccess && (
-        <div className="card__div">
+        <div className="card__box">
           <p className="card__paragraph card__paragraph--text">
             {lastAccessText}
           </p>

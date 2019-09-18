@@ -8,7 +8,6 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box';
 
 import * as admin from '../../../public/icons/ic-user-admin.svg';
 import * as technical from '../../../public/icons/ic-user-technical.svg';
@@ -54,36 +53,36 @@ const Card = (props) => {
     // && culture
     && role
   ) && (
-    <Box className={mergedClass}>
-      <Box className="card__box">
-        <Box className="card__picture">
+    <div className={mergedClass}>
+      <div className="card__div">
+        <div className="card__picture">
           <img className="card__picture-icon" src={toIcon[role]} alt={role} />
-        </Box>
-      </Box>
-      <Box className="card__box">
+        </div>
+      </div>
+      <div className="card__div">
         <p className="card__paragraph card__paragraph--user">
           {username}
         </p>
         <p className="card__paragraph card__paragraph--role">
           {roleText}
         </p>
-      </Box>
+      </div>
       {children && (
-        <Box className="card__box">
+        <div className="card__div">
           {children}
-        </Box>
+        </div>
       )}
       {lastAccess && (
-        <Box className="card__box">
+        <div className="card__div">
           <p className="card__paragraph card__paragraph--text">
             {lastAccessText}
           </p>
           <p className="card__paragraph card__paragraph--last-access">
             {lastAccess}
           </p>
-        </Box>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 

@@ -8,7 +8,6 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box';
 import ButtonData from '../layouts/ButtonData';
 import Card from '../layouts/Card.view';
 
@@ -36,7 +35,7 @@ const InputCard = (props) => {
   const mergedClass = `input-card ${className}`;
 
   return (
-    <Box className={mergedClass}>
+    <div className={mergedClass}>
       <Card
         {...data}
         name={name}
@@ -47,7 +46,7 @@ const InputCard = (props) => {
           <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
         </ButtonData>
       </Card>
-    </Box>
+    </div>
   );
 };
 

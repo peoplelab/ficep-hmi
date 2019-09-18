@@ -8,8 +8,7 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import ButtonData from '../layouts/ButtonData';
-import Card from '../layouts/Card.view';
+import { ButtonData, Card } from '../layouts/index.layouts';
 
 import * as resetIcon from '../../../public/icons/ic-close.svg';
 

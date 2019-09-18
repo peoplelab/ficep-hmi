@@ -1,15 +1,23 @@
 import lazy from '../common/AsyncComponent';
 
-const components = {
-  ButtonForm: lazy(() => import(/* webpackChunkName: "forms" */ './ButtonForm')),
-  Field: lazy(() => import(/* webpackChunkName: "forms" */ './Field')),
-  Form: lazy(() => import(/* webpackChunkName: "forms" */ './Form')),
-  Option: lazy(() => import(/* webpackChunkName: "forms" */ './Option')),
-  PasswordInput: lazy(() => import(/* webpackChunkName: "forms" */ './PasswordInput')),
-  RadioButton: lazy(() => import(/* webpackChunkName: "forms" */ './RadioButton')),
-  Select: lazy(() => import(/* webpackChunkName: "forms" */ './Select')),
-  Submit: lazy(() => import(/* webpackChunkName: "forms" */ './Submit')),
-  TextInput: lazy(() => import(/* webpackChunkName: "forms" */ './TextInput')),
-};
+const ButtonForm = lazy(() => import(/* webpackChunkName: "forms" */ './ButtonForm'));
+const Field = lazy(() => import(/* webpackChunkName: "forms" */ './Field'));
+const Form = lazy(() => import(/* webpackChunkName: "forms" */ './Form'));
+const Option = lazy(() => import(/* webpackChunkName: "forms" */ './Option'));
+const PasswordInput = lazy(() => import(/* webpackChunkName: "forms" */ './PasswordInput'));
+const RadioButton = lazy(() => import(/* webpackChunkName: "forms" */ './RadioButton'));
+const Select = lazy(() => import(/* webpackChunkName: "forms" */ './Select'));
+const Submit = lazy(() => import(/* webpackChunkName: "forms" */ './Submit'));
+const TextInput = lazy(() => import(/* webpackChunkName: "forms" */ './TextInput'));
 
-export default components;
+export {
+  ButtonForm,
+  Field,
+  Form,
+  Option,
+  PasswordInput,
+  RadioButton,
+  Select,
+  Submit,
+  TextInput,
+};

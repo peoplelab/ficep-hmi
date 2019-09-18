@@ -1,13 +1,13 @@
 /** @define card */
 
 @import '../common/colors.scss';
+@import '../common/flex.scss';
 
 .card {
-  align-items: center;
+  @extend %flex-full-row;
+
   background-color: $bg-light-grey;
-  display: flex;
   height : 100%;
-  justify-content: space-between;
   width: 100%;
 
   .card__box {
@@ -15,10 +15,9 @@
   }
 
   .card__picture {
-    align-items: center;
+    @extend %flex-center;
+
     background-color: $bg-white;
-    display: flex;
-    justify-content: center;
     margin: 0 auto;
     overflow: hidden;
 

@@ -1,12 +1,14 @@
 // Style own of home route
 
 @import '../common/colors.scss';
+@import '../common/flex.scss';
 
 /** @define home */
 
 // Style of pubblic section
 .home {
-  display: flex;
+  @extend %flex-row;
+
   height: 100vh;
   width: 100%;
 

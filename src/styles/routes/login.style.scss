@@ -2,6 +2,7 @@
 
 
 @import '../common/colors.scss';
+@import '../common/flex.scss';
 
 
 /** @define login */
@@ -32,8 +33,8 @@
     }
 
     .login__form-box {
-      align-items: center;
-      display: flex;
+      @extend %flex-full-row;
+
       justify-content: space-around;
       width: 100%;
       margin: 0 0 3rem;

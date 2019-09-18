@@ -1,6 +1,6 @@
 {
   "name": "template-core",
-  "version": "0.01.00",
+  "version": "0.02.00",
   "description": "A template core for React project",
   "main": "./src/index.js",
   "repository": "git@github.com:peoplelab/template-core.git",

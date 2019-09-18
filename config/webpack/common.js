@@ -58,7 +58,7 @@ module.exports = {
           },
           {
             loader: 'stripblock-loader',
-            options: { env: COMPILE_ENV === 'PRODUCTION' ? 'dev' : 'dev' },
+            options: { env: COMPILE_ENV === 'PRODUCTION' ? 'dev' : 'prod' },
           }
         ]
       },

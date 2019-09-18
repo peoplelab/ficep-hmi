@@ -10,15 +10,11 @@
 // //----------------------------------------------------------------------------------------
 
 
-// import { callRefresh } from '../session.controller';
+import { callRefresh } from '../session.controller';
 
 
-// export const failureHandler = ({ input, output }) => {
-//   const dataprocessed = JSON.parse(output.dataraw);
-
-//   // Se richiesto esegue in refresh della sessione
-//   // Vengono passati i dati necessari per eseguire nuovamente la chiamata che ha tornato errore
-//   if (dataprocessed === 'sessionExpired' && (input.refresh === undefined || input.refresh)) {
-//     callRefresh(input);
-//   }
-// };
+export const failureHandler = ({ request, api, success, failure, params, refresh }) => ({ httpcode, dataraw, error }) => {
+  if (httpcode === 401) {
+    callRefresh({ request, api, success, failure, params, refresh });
+  }
+};

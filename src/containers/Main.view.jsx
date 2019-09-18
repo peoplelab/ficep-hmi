@@ -69,18 +69,24 @@ class MainComponent extends Component {
     // Recupero delle pagine dell'applicativo
     const routes = createRoutes();
 
-    const sandbox = !IS_PRODUCTION && mapRoutes(routes.sandbox); /* Pagina sandbox */
+    /* #start:dev */
+    const sandbox = mapRoutes(routes.sandbox); /* Pagina sandbox */
+    /* #end:dev */
 
     return isUserLogged ? (
       <Switch>
+        {/* #start:dev */}
         {sandbox}
+        {/* #end:dev */}
         <LoggedTemplate>
           {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
         </LoggedTemplate>
       </Switch>
     ) : (
       <Switch>
+        {/* #start:dev */}
         {sandbox}
+        {/* #end:dev */}
         {mapRoutes(routes.login) /* Pagina pubblica di login */}
       </Switch>
     );

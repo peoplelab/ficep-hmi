@@ -16,7 +16,7 @@ const { COMPILE_ENV } = process.env;
 const config = {
   "PORT": 3500,
   "URL": COMPILE_ENV === 'PRODUCTION' ? 'http://172.30.57.26:4000' : 'http://localhost:4000',
-  "LOG_LEVEL": COMPILE_ENV === 'PRODUCTION' ? 'none' : 'debug'
+  "LOG_LEVEL": 'debug', // COMPILE_ENV === 'PRODUCTION' ? 'none' : 'debug'
 };
 
 let devtool;

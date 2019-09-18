@@ -22,6 +22,7 @@
 
 import { headersHanlder } from './header.handler';
 import { errorHandler } from './error.handler';
+import { failureHandler } from './failure.handler';
 import { datarawHandler } from './dataraw.handler';
 
 
@@ -61,6 +62,9 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
       failure({ httpcode, dataraw, error });
     }
 
+    // gestione dei casi di errore (httpcode diverso da 200)
+    failureHandler({ request, api, success, failure, params, refresh })({ httpcode, dataraw, error });
+
     console.log('----- Failure api call');
     return { httpcode, dataraw, error };
   }
@@ -82,7 +86,7 @@ export const flagHanlder = async (options, ...calls) => {
     }
 
     console.log('----- Success all api calls');
-    console.log(responses);
+    console.table(responses);
   } catch(err) {
     // failure
     if (typeof failure === 'function') {

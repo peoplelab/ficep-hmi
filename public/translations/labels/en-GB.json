@@ -9,5 +9,12 @@
   "tools_tab_database": "Tool database",
   "tools_tab_materials": "Materials",
   "jog_tab_jog": "Jog",
-  "jog_tab_commands": "Commands"
+  "jog_tab_commands": "Commands",
+
+  "modal_error_title": "Operation failed",
+  "modal_error_message": "An error occurred!",
+  "modal_error_code": "Error code:",
+  "modal_error_details": "Details:",
+  "modal_error_close": "Close",
+  "modal_error_server": "Server side error"
 }

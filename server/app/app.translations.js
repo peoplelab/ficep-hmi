@@ -3,7 +3,7 @@ const mime = require('mime/lite');
 
 // router logger
 const logger = ({ url, filePath, mimeType }) => {
-  console.log('\x1b[33m', '> URL request: ' + url, '\n\t - File path: ', filePath, '\n\t - File mime-type: ', mimeType, '\x1b[0m');
+  console.table({ transaltion: { url, filePath, mimeType } });
 };
 
 

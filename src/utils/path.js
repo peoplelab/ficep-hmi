@@ -5,7 +5,7 @@ export const pathOr = (value, path, obj) => {
       result = result[item];
     }
 
-    return typeof result === 'undefined' ? value : result;
+    return typeof result === 'undefined' || result === null ? value : result;
   } catch (err) {
     return value;
   }

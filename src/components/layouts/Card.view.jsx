@@ -8,7 +8,6 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import Box from '../layouts/Box';
 
 import * as admin from '../../../public/icons/ic-user-admin.svg';
@@ -20,8 +19,15 @@ import '../../styles/layouts/Card.style.scss';
 
 const toIcon = {
   ADMIN: admin,
-  SUPER: technical,
+  SUPERUSER: technical,
   USER: operator,
+};
+
+
+const getTime = (time) => {
+  const [year, month, day, hours, minutes] = time.split(/-|:|T/g);
+
+  return `${hours}:${minutes} ${day}/${month}/${year}`;
 };
 
 
@@ -38,7 +44,7 @@ const Card = (props) => {
 
   const mergedClass = `card ${className}`;
 
-  const lastAccess = issuedAt && moment(issuedAt, 'YYYY-MM-DDThh:mm:ss.SSSSSSS+z').format('hh:mm DD/MM/YYYY');
+  const lastAccess = issuedAt && getTime(issuedAt);
 
   const roleText = intl[role];
   const lastAccessText = intl.lastaccess;
@@ -55,10 +61,10 @@ const Card = (props) => {
         </Box>
       </Box>
       <Box className="card__box">
-        <p className="card__paragraph card__paragraph--bold">
+        <p className="card__paragraph card__paragraph--user">
           {username}
         </p>
-        <p className="card__paragraph card__paragraph--semibold">
+        <p className="card__paragraph card__paragraph--role">
           {roleText}
         </p>
       </Box>
@@ -69,10 +75,10 @@ const Card = (props) => {
       )}
       {lastAccess && (
         <Box className="card__box">
-          <p className="card__paragraph card__paragraph--light">
+          <p className="card__paragraph card__paragraph--text">
             {lastAccessText}
           </p>
-          <p className="card__paragraph">
+          <p className="card__paragraph card__paragraph--last-access">
             {lastAccess}
           </p>
         </Box>

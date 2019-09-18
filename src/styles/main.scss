@@ -10,6 +10,9 @@
 * {
   border: 0;
   box-sizing: border-box;
+  font-family: 'arial', sans-serif;
+  line-height: 1rem;
+  font-size: 1rem;
   margin: 0;
   outline: none;
   padding: 0;
@@ -17,9 +20,7 @@
 
 
 :root {
-  font-family: 'Saira', sans-serif;
-  line-height: 15px;
-  font-size: 15px;
+  font-size: 19px;
 
   @media screen and (max-width: $break-medium) {
     font-size: 13px;

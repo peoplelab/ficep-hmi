@@ -53,7 +53,7 @@ export const callCultureGet = async ({ dispatch }) => {
       dispatch({ cultureList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
-      dispatch({ cultureList: dataraw || error });
+      dispatch({ cultureList: [], error: dataraw || error });
     },
     refresh: false
   });
@@ -67,7 +67,7 @@ export const callLastLogin = async ({ dispatch }) => {
       dispatch({ usersList: dataprocessed.result });
     },
     failure: ({ dataraw, error }) => {
-      dispatch({ usersList: dataraw || error });
+      dispatch({ usersList: [], error: dataraw || error });
     },
     refresh: false
   });

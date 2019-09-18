@@ -28,7 +28,7 @@ class Header extends PureComponent {
 
     this.intlCard = {
       ADMIN: window.intl.header_user_administrator,
-      SUPER: window.intl.header_user_technician,
+      SUPERUSER: window.intl.header_user_technician,
       USER: window.intl.header_user_operator,
       lastaccess: window.intl.header_info_lastaccess,
     };

@@ -15,7 +15,9 @@ import Modals from './Modals';                       // Gestore dei componenti m
 import history from '../models/common/history';      // Gestore della store del browser
 import { getUserIP } from '../models/common/userIP'; // Gestore dell'indirizzo IP dell'utente
 import store from '../store/redux.store';            // Store globale
+/* #start:dev */
 import SandboxLink from '../sandbox/sandbox.link';   // Reindirizza alla pagina della sandbox
+/* #end:dev */
 
 import '../styles/main.scss'; // Applica il css comune all'applicativo
 
@@ -34,7 +36,9 @@ class AppComponent extends Component {
         <Router history={history}>
           <Main />
           <Modals />
-          {!IS_PRODUCTION && <SandboxLink />}
+          {/* #start:dev */}
+          {<SandboxLink />}
+          {/* #end:dev */}
         </Router>
       </Provider>
     );

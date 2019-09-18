@@ -44,7 +44,7 @@ const initial = {
 
 const intlCard = {
   ADMIN: intl.login_user_administrator,
-  SUPER: intl.login_user_technician,
+  SUPERUSER: intl.login_user_technician,
   USER: intl.login_user_operator,
   lastaccess: intl.login_info_lastaccess,
 };

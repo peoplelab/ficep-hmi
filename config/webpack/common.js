@@ -6,6 +6,7 @@
 //----------------------------------------------------------------------------------------
 
 
+const path = require('path');
 const { HotModuleReplacementPlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const globalVars = require('../global/client');
@@ -47,11 +48,19 @@ module.exports = {
       {
         test: /\.jsx?$/i,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-          cacheCompression: true,
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              cacheCompression: true,
+            },
+          },
+          {
+            loader: 'stripblock-loader',
+            options: { env: COMPILE_ENV === 'PRODUCTION' ? 'dev' : 'dev' },
+          }
+        ]
       },
       {
         test: /\.jsx?$/i,
@@ -96,4 +105,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', 'json', 'scss', 'css'],
   },
+  resolveLoader: {
+    alias: {
+      'stripblock-loader': path.resolve(__dirname, '../loader/stripblock-loader')
+    }
+  }
 };

@@ -76,7 +76,7 @@ class Gallery extends PureComponent {
 
         items.push(
           <div className="gallery__slide-item" key={`slide-${k}`}>
-            {children(objProps)}
+            {objProps && children(objProps)}
           </div>
         );
       }

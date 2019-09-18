@@ -12,28 +12,21 @@ const { LOG_LEVEL } = JSON.parse(fs.readFileSync('./server.config.json'));
 
 // router logger
 const logger = ({ url, filePath, mimeType }) => {
-  console.log('\x1b[33m', '> URL request: ' + url, '\n\t - File path: ', filePath, '\n\t - File mime-type: ', mimeType, '\x1b[0m');
+  console.table({ resource: { url, filePath, mimeType } });
 };
 
 
 // common router handler
-const commonHandler = (
-  LOG_LEVEL === 'debug'
-    ? ({ req, res, filePath }) => {
-      const mimeType = mime.getType(filePath);
+const commonHandler = ({ req, res, filePath }) => {
+  const mimeType = mime.getType(filePath);
 
-      logger({ url: req.url, filePath, mimeType });
+  if (LOG_LEVEL.toLowerCase() === 'debug') {
+    logger({ url: req.url, filePath, mimeType });
+  }
 
-      res.setHeader('Content-Type', mimeType);
-      return res.sendFile('.' + filePath, { root: './' });
-    }
-    : ({ req, res, filePath }) => {
-      const mimeType = mime.getType(filePath);
-
-      res.setHeader('Content-Type', mimeType);
-      return res.sendFile('.' + filePath, { root: './' });
-    }
-);
+  res.setHeader('Content-Type', mimeType);
+  return res.sendFile('.' + filePath, { root: './' });
+};
 
 
 // handle files

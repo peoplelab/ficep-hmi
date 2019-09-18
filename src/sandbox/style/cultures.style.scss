@@ -1,86 +1,86 @@
+// stylelint-disable plugin/selector-bem-pattern
+
 // Style own of culture route
 
 @import './colors.scss';
 
-/** @define cultures */
+.sandbox {
+  .cultures {
+    padding: 3rem;
 
-.cultures {
-  padding: 3rem;
+    .cultures__container {
+      display: flex;
+      flex-wrap: wrap;
 
-  .cultures__container {
-    display: flex;
-    flex-wrap: wrap;
+      .cultures__group {
+        flex: 1;
 
-    .cultures__group {
-      flex: 1;
-
-      &:first-of-type {
-        flex: none;
-        margin: 2rem 0 3rem;
-        width: 100%;
+        &:first-of-type {
+          flex: none;
+          margin: 2rem 0 3rem;
+          width: 100%;
+        }
       }
     }
-  }
 
-  .cultures__button {
-    background-color: $bg-dark-cyan;
-    color: $text-white;
-    display: block;
-    font-size: 1rem;
-    margin: 0 auto;
-    padding: 0.5rem 2rem;
-
-    &:disabled {
-      background-color: $bg-grey-cyan;
-    }
-
-    &:enabled {
-      cursor: pointer;
-
-      &:hover {
-        background-color: $bg-cyan;
-      }
-    }
-  }
-
-  .cultures__table {
-    // stylelint-disable plugin/selector-bem-pattern
-    td {
+    .cultures__button {
+      background-color: $bg-dark-cyan;
+      color: $text-white;
+      display: block;
+      font-size: 1rem;
+      margin: 0 auto;
       padding: 0.5rem 2rem;
 
-      &:first-of-type {
-        padding: 0;
-      }
-      .cultures__button {
-        width: 100%;
-      }
-    }
-    // stylelint-enable plugin/selector-bem-pattern
-  }
-
-  .cultures__form {
-    .cultures__field {
-      width: 15rem;
-
-      &:last-of-type {
-        margin-top: 2rem;
+      &:disabled {
+        background-color: $bg-grey-cyan;
       }
 
-      .cultures__text-input {
-        border: 0.2rem solid $border-dark-grey;
-        color: $text-dark-grey;
-        display: block;
-        font-size: 1rem;
-        margin: 0.2rem 0 1rem;
-        padding: 0.5rem;
-        width: 100%;
-      }
+      &:enabled {
+        cursor: pointer;
 
-      .cultures__button {
-        width: 100%;
+        &:hover {
+          background-color: $bg-cyan;
+        }
       }
     }
+
+    .cultures__table {
+      td {
+        padding: 0.5rem 2rem;
+
+        &:first-of-type {
+          padding: 0;
+        }
+        .cultures__button {
+          width: 100%;
+        }
+      }
+    }
+
+    .cultures__form {
+      .cultures__field {
+        width: 15rem;
+
+        &:last-of-type {
+          margin-top: 2rem;
+        }
+
+        .cultures__text-input {
+          border: 0.2rem solid $border-dark-grey;
+          color: $text-dark-grey;
+          display: block;
+          font-size: 1rem;
+          margin: 0.2rem 0 1rem;
+          padding: 0.5rem;
+          width: 100%;
+        }
+
+        .cultures__button {
+          width: 100%;
+        }
+      }
+    }
+
+
   }
-
-
 }

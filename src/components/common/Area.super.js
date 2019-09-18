@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------------
 // File: super.jsx
 //
-// Desc: Abilita/Disabilita un determinato insieme di elementi React specifici per il gruppo SUPER
+// Desc: Abilita/Disabilita un determinato insieme di elementi React specifici per il gruppo SUPERUSER
 // Path: /src/components/common/super
 //------------------------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ import Area from './Area';
 import { pathOr } from '../../utils/path';
 
 
-const enable = state => pathOr([], ['session', 'groups'], state).includes('SUPER');
+const enable = state => pathOr([], ['session', 'groups'], state).includes('SUPERUSER');
 
 const mapStateToProps = state => ({
   enable: enable(state),

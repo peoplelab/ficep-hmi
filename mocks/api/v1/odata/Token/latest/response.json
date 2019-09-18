@@ -17,7 +17,7 @@
     {
       "issuedAt": "2019-06-04T8:21:00.1234567+02:00",
       "username": "Maurizia Gambelli",
-      "groups": ["SUPER"],
+      "groups": ["SUPERUSER"],
       "culture": "it-IT"
     },
     {
@@ -29,7 +29,7 @@
     {
       "issuedAt": "2019-06-04T10:40:00.1234567+02:00",
       "username": "Alfred Marakakhov",
-      "groups": ["SUPER"],
+      "groups": ["SUPERUSER"],
       "culture": "ru-RU"
     },
     {
@@ -41,7 +41,7 @@
     {
       "issuedAt": "2019-06-04T10:40:00.1234567+02:00",
       "username": "Alfred Marakakhov",
-      "groups": ["SUPER"],
+      "groups": ["SUPERUSER"],
       "culture": "ru-RU"
     },
     {

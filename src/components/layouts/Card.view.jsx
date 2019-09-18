@@ -19,7 +19,7 @@ import '../../styles/layouts/Card.style.scss';
 
 const toIcon = {
   ADMIN: admin,
-  SUPER: technical,
+  SUPERUSER: technical,
   USER: operator,
 };
 

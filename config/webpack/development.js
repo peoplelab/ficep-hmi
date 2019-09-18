@@ -60,16 +60,16 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.jsx?$/i,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'stripblock-loader',
-            options: { env: 'dev'},
-          }
-        ]
-      },
+      // {
+      //   test: /\.jsx?$/i,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: 'stripblock-loader',
+      //       options: { env: 'prod'},
+      //     }
+      //   ]
+      // },
     ],
   },
   plugins: [

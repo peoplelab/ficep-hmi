@@ -31,10 +31,15 @@ module.exports = function stripblockLoader(source, map, meta) {
   const callback = this.async();
 
   const pStart = new RegExp(`/\\* *#start:${env} *\\*/`, 'i');
+  const pStartX = new RegExp(`{/\\* *#start:${env} *\\*/}`, 'i');
   const pEnd = new RegExp(`[^]*/\\* *#end:${env} *\\*/`, 'i');
+  const pEndX = new RegExp(`[^]*{/\\* *#end:${env} *\\*/}`, 'i');
 
-  const list = source.split(pStart);
-  const newSource = list.reduce((acc, item) => acc + item.replace(pEnd, ''), '');
+  let list = source.split(pStart);
+  let newSource = list.reduce((acc, item = '') => acc + item.replace(pEnd, ''), '');
+
+  list = newSource.split(pStartX);
+  newSource = list.reduce((acc, item = '') => acc + item.replace(pEndX, ''), '');
 
   callback(null, newSource, map, meta);
 }

@@ -48,11 +48,19 @@ module.exports = {
       {
         test: /\.jsx?$/i,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-          cacheCompression: true,
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              cacheCompression: true,
+            },
+          },
+          {
+            loader: 'stripblock-loader',
+            options: { env: COMPILE_ENV === 'PRODUCTION' ? 'dev' : 'dev' },
+          }
+        ]
       },
       {
         test: /\.jsx?$/i,

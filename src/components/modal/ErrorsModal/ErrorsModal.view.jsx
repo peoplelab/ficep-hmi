@@ -8,7 +8,7 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../layouts/Button';
+import { Button } from '../../layouts/index.layouts';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 

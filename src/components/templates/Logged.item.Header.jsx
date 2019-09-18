@@ -8,11 +8,9 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import OuterClick from '../events/OuterClick';
-import Button from '../layouts/Button';
-import Card from '../layouts/Card.view';
-import Clock from '../layouts/Clock.view';
-import UserModal from '../modal/UserModal.view';
+import { OuterClick } from '../events/index.events';
+import { Button, Card, Clock } from '../layouts/index.layouts';
+import { UserModal } from '../modal/index.modal';
 
 import '../../styles/templates/logged.style.scss';
 

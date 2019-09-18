@@ -8,7 +8,7 @@
 
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
-import Anchor from '../layouts/Anchor';
+import { Anchor } from '../layouts/index.layouts';
 
 
 const Footer = (props) => (

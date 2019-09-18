@@ -1,0 +1,24 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+$flex-list:(
+  'center': ('center', 'row', 'center', 'no-wrap'),
+  'list': ('flex-start', 'column', 'center', 'no-wrap'),
+  'full-row': ('flex-start', 'row', 'space-between', 'no-wrap'),
+  'full-column': ('flex-start', 'column', 'space-between', 'no-wrap'),
+  'wrap': ('center', 'row', 'space-evenly', 'wrap'),
+);
+
+@each $name, $data in $flex-list {
+  $align: nth($data, 0);
+  $direction: nth($data, 1);
+  $justify: nth($data, 2);
+  $wrap: nth($data, 2);
+
+  .flex-#{name} {
+    align-items: $align;
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+  }
+}

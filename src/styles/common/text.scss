@@ -1,0 +1,31 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+$texts:(
+  'title-1': (1.2rem, 'normal', 700),
+  'title-2': (1.2rem, 'normal', 600),
+  'title-3': (1.2rem, 'normal', 500),
+
+  'subtitle-1': (1rem, 'normal', 700),
+  'subtitle-2': (1rem, 'normal', 600),
+  'subtitle-3': (1rem, 'normal', 500),
+
+  'paragraph-1': (0.9rem, 'normal', 500),
+  'paragraph-2': (0.9rem, 'normal', 400),
+  'paragraph-3': (0.9rem, 'normal', 300),
+
+  'info-1': (0.8rem, 'normal', 300),
+  'info-1': (0.7rem, 'normal', 300),
+  'info-1': (0.6rem, 'normal', 300),
+);
+
+@each $name, $data in $texts {
+  $size: nth($data, 0);
+  $style: nth($data, 1);
+  $weight: nth($data, 2);
+
+  .#{name} {
+    font-size: $size;
+    font-style: $style;
+    font-weight: $weight;
+  }
+}

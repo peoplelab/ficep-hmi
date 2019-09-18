@@ -1,6 +1,6 @@
 // Style of private routes template
 
-@import '../colors.scss';
+@import '../common/colors.scss';
 
 /** @define error-modal */
 
@@ -50,10 +50,13 @@
       .error-modal__title {
         font-weight: 600;
 
+        // stylelint-disable-next-line plugin/selector-bem-pattern
         &.modal__title--main-title {
           color: $text-dark-grey;
           font-size: 1.75rem;
         }
+
+        // stylelint-disable-next-line plugin/selector-bem-pattern
         &.modal__title--sub-title {
           color: $text-light-grey;
           font-size: 1.25rem;

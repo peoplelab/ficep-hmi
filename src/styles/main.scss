@@ -1,9 +1,9 @@
 // Application Common style
 
-@import './font/Saira';
-@import './media.scss';
-@import './icon.scss';
-@import './background.scss';
+@import '../common/font/Saira';
+@import '../common/media.scss';
+@import '../common/icon.scss';
+@import '../common/background.scss';
 
 
 // stylelint-disable-next-line plugin/selector-bem-pattern

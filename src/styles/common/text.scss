@@ -23,7 +23,7 @@ $texts:(
   $style: nth($data, 2);
   $weight: nth($data, 3);
 
-  .#{$name} {
+  %#{$name} {
     font-size: $size;
     font-style: $style;
     font-weight: $weight;

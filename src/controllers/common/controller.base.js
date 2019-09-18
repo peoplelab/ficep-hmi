@@ -86,7 +86,7 @@ export const flagHanlder = async (options, ...calls) => {
     }
 
     console.log('----- Success all api calls');
-    console.log(responses);
+    console.table(responses);
   } catch(err) {
     // failure
     if (typeof failure === 'function') {

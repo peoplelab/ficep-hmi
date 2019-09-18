@@ -9,7 +9,7 @@ export const logger = store => next => action => {
   const nextTime = new Date();
   const nextState = store.getState();
 
-  console.group('STORE', action.type);
+  console.group('Store','\t', action.type);
   console.table({
     prev: { time: prevTime, action, state: prevState },
     next: { time: nextTime, action: result, state: nextState },

@@ -45,6 +45,13 @@ var server = app.listen(SERVER_CONFIG.PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('SERVER NODE: -> Starting at ' + ((host === '::') ? '"localhost"' : host) + ' on port ' + port);
-  console.log('SERVER NODE: -> Environment ' + COMPILE_ENV);
+  console.group('SERVER NODE');
+  console.table({
+    server: {
+      Host: (host === '::') ? 'localhost' : host,
+      Port: port,
+      Environment: COMPILE_ENV
+    }
+  });
+  console.groupEnd();
 });

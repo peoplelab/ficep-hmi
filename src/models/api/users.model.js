@@ -120,5 +120,5 @@ export const usersLogout = async ({ headers }) => {
     },
   };
 
-  return base({ url: '/api/v1/Users/Logout', request });
+  return base({ url: '/api/v1/users/Logout', request });
 };

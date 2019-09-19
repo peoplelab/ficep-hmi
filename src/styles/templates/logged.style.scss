@@ -38,11 +38,10 @@
       }
 
       &--right {
-        align-items: center;
-        display: flex;
+        @extend %flex-row-full;
+
         border-top-left-radius: 5rem;
         border-bottom-left-radius: 5rem;
-        justify-content: space-between;
         padding-left: 1.3rem;
         position: relative;
         width: 24.3rem;
@@ -84,25 +83,24 @@
     }
 
     .logged__header-clock {
+      @extend %flex-row-center;
       @extend %higlighted-light;
 
-      align-items: center;
-      display: flex;
       flex: 1;
-      justify-content: center;
       margin-left: 1rem;
     }
   }
 
   .logged__container {
-    display: flex;
+    @extend %flex-row;
+
     flex: 1;
     z-index: 1;
 
     .logged__navbar {
+      @extend %flex-column;
+
       background-color: $bg-light-grey;
-      display: flex;
-      flex-direction: column;
       height: 39.5rem;
       padding-top: 0.7rem;
       width: 6rem;

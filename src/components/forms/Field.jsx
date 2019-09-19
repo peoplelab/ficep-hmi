@@ -8,7 +8,6 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box';
 
 
 const Field = (props) => {
@@ -36,14 +35,14 @@ const Field = (props) => {
 
 
   return (
-    <Box className={mergedClass}>
+    <div className={mergedClass}>
       {label && (
         <label className="field__label" htmlFor={id}>
           {label}
         </label>
       )}
       {newChildern}
-    </Box>
+    </div>
   );
 };
 

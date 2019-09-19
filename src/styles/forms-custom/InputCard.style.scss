@@ -1,14 +1,14 @@
 /** @define input-card */
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
 
 .input-card {
-  align-items: center;
+  @extend %flex-row-full;
+
   background-color: $bg-light-grey;
   border-radius: 0.25rem;
-  display: flex;
   height: 3.5rem;
-  justify-content: space-between;
   width: 100%;
 
   .input-card__card {

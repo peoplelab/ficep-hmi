@@ -2,7 +2,7 @@
 // File: tools.view.jsx
 //
 // Desc: Pagina per la gestione dei tools
-// Path: /src/components/routes/login/tools.view
+// Path: /src/sandbox/_tools/tools.view
 //----------------------------------------------------------------------------------------
 
 import React, { PureComponent } from 'react';

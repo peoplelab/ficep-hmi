@@ -1,13 +1,14 @@
 /** @define card */
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
 
 .card {
-  align-items: center;
+  @extend %flex-row-full;
+
   background-color: $bg-light-grey;
-  display: flex;
   height : 100%;
-  justify-content: space-between;
   width: 100%;
 
   .card__box {
@@ -15,10 +16,9 @@
   }
 
   .card__picture {
-    align-items: center;
+    @extend %flex-row-center;
+
     background-color: $bg-white;
-    display: flex;
-    justify-content: center;
     margin: 0 auto;
     overflow: hidden;
 
@@ -33,23 +33,19 @@
     text-align: center;
 
     &--user {
-      font-size: 1.2rem;
-      font-weight: 600;
+      @extend %subtitle-semibold;
     }
 
     &--role {
-      font-size: 1rem;
-      font-weight: 500;
+      @extend %paragraph-1-medium;
     }
 
     &--text {
-      font-size: 0.7rem;
-      font-weight: 300;
+      @extend %info-2-light;
     }
 
     &--last-access {
-      font-size: 0.8rem;
-      font-weight: 600;
+      @extend %info-1-semibold;
     }
   }
 

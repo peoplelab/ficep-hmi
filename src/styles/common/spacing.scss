@@ -1,0 +1,34 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+$types: ('margin', 'padding');
+
+$positions: (
+  '-': '',
+  '-t-': '-top',
+  '-r-': '-right',
+  '-b-': '-bottom',
+  '-l-': '-left',
+);
+
+$spacing: (
+  '0': 0,
+  '0_125': 0.125,
+  '0_25': 0.25,
+  '0_5': 0.5,
+  '0_75': 0.75,
+  '1': 1,
+  '1_25': 1.25,
+  '1_5': 1.5,
+  '1_75': 1.75,
+  '2': 2
+);
+
+@each $type in $types {
+  @each $id, $pos in $positions {
+    @each $key, $space in $spacing {
+      .#{$type + $id + $key} {
+        #{$type + pos}: #{$space}rem !important;
+      }
+    }
+  }
+}

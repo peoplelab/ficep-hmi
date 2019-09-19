@@ -2,7 +2,7 @@
 // File: tools.item.list.jsx
 //
 // Desc: Elemento proprio della pagina tools per la visualizzazione della lista degli strumenti
-// Path: /src/components/routes/tools/tools.item.list
+// Path: /src/sandbox/_tools/tools.item.list
 //-----------------------------------------------------------------------------------------------
 
 

@@ -1,6 +1,8 @@
 // Style of private routes template
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define user-modal */
 
@@ -35,16 +37,14 @@
   }
 
   .user-modal__button {
-    align-items: center;
+    @extend %flex-row-center;
+    @extend %paragraph-1-semibold;
+
     border: $border-dark-grey solid 0.225rem;
     border-radius: 0.5rem;
     bottom: 1rem;
     cursor: pointer;
-    display: flex;
-    font-size: 1rem;
-    font-weight: 600;
     height: 3rem;
-    justify-content: center;
     left: 50%;
     position: absolute;
     text-transform: uppercase;

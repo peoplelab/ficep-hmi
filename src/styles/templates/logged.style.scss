@@ -1,23 +1,24 @@
 // Style of private routes template
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define logged */
 
 .logged {
-  display: flex;
-  flex-direction: column;
+  @extend %flex-column;
+
   height: 100vh;
   overflow: hidden;
   width: 100%;
 
   .logged__header {
-    align-items: flex-start;
+    @extend %flex-row-top;
+
     background: url('../../../public/background/header.png') no-repeat left top;
     background-size: 100vw 5.3rem;
-    display: flex;
     height: 5.5rem;
-    justify-content: space-between;
     margin: 0 0 1.5rem;
     width: 100%;
     z-index: 2;
@@ -74,23 +75,21 @@
         flex: 1;
       }
       .card__paragraph--user {
-        font-size: 0.9rem;
-        font-weight: 600;
+        @extend %paragraph-2-semibold;
       }
       .card__paragraph--role {
-        font-size: 0.8rem;
-        font-weight: 400;
+        @extend %info-1-regular;
       }
       // stylelint-enable plugin/selector-bem-pattern
     }
 
     .logged__header-clock {
+      @extend %higlighted-light;
+
       align-items: center;
       display: flex;
       flex: 1;
       justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 300;
       margin-left: 1rem;
     }
   }

@@ -2,7 +2,7 @@
 // File: tools.item.details.jsx
 //
 // Desc: Elemento proprio della pagina tools per la visualizzazione dei dettagli di uno strumento
-// Path: /src/components/routes/tools/tools.item.details
+// Path: /src/sandbox/_tools/tools.item.details
 //-----------------------------------------------------------------------------------------------
 
 

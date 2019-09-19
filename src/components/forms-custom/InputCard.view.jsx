@@ -8,9 +8,8 @@
 
 import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../layouts/Box';
 import Reset from '../forms-context/Reset';
-import Card from '../layouts/Card.view';
+import { Card } from '../layouts/index.layouts';
 import { FormContext } from '../../store/form.store';
 
 import * as resetIcon from '../../../public/icons/ic-close.svg';
@@ -40,12 +39,12 @@ const InputCard = (props) => {
   [data.role] = data.groups;
 
   return (
-    <Box className={mergedClass}>
+    <div className={mergedClass}>
       <Card {...data} intl={intl} className="input-card__card card--input" />
       <Reset className="input-card__reset" initial={initial} name={name}>
         <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
       </Reset>
-    </Box>
+    </div>
   );
 };
 

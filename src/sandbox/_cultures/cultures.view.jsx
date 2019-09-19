@@ -2,7 +2,7 @@
 // File: cultures.view.jsx
 //
 // Desc: Pagina per la gestione delle culture
-// Path: /src/components/routes/cultures/cultures.view
+// Path: /src/sandbox/_cultures/cultures.view
 //----------------------------------------------------------------------------------------
 
 

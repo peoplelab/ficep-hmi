@@ -8,8 +8,7 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Anchor from '../layouts/Anchor';
-import Button from '../layouts/Button';
+import { Anchor, Button } from '../layouts/index.layouts';
 
 import '../../styles/templates/logged.style.scss';
 

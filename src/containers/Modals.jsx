@@ -8,7 +8,7 @@
 
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
-import ErrorsModal from '../components/modal/ErrorsModal/ErrorsModal.controller';
+import { ErrorsModal } from '../components/modal/index.modal';
 
 
 const Modals = (props) => (

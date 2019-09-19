@@ -9,17 +9,11 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-import Box from '../../layouts/Box';
-import Card from '../../layouts/Card.view';
-import InputCard from '../../forms-custom/InputCard.view';
-import Gallery from '../../layouts/Gallery.view';
-import Form from '../../forms/Form';
-import TextInput from '../../forms/TextInput';
-import PasswordInput from '../../forms/PasswordInput';
-import Select from '../../forms/Select';
-import Submit from '../../forms/Submit';
-import Field from '../../forms/Field';
-import ButtonData from '../../layouts/ButtonData';
+import { Box, Card, ButtonData, Gallery } from '../../layouts/index.layouts';
+import { InputCard } from '../../forms-custom/index.form-custom';
+import {
+  Form, TextInput, PasswordInput, Select, Submit, Field
+} from '../../forms/index.form';
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
 import intl from '../../../../public/translations/login/default.json';

@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-import Anchor from '../../layouts/Anchor';
+import { Anchor } from '../../layouts/index.layouts';
 
 import '../../../styles/routes/tools.style.scss';
 

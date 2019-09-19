@@ -18,7 +18,7 @@ export const usersList = async ({ headers }) => {
     },
   };
 
-  return base(`/api/v1/odata/users`, request);
+  return base({ url: `/api/v1/odata/users`, request });
 };
 
 // interfaccia dell'api per ottenere i dettagli dell'utente indicato
@@ -31,7 +31,7 @@ export const usersDetails = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/users/${params.id}`, request);
+  return base({ url: `/api/v1/users/:id`, request, params });
 };
 
 export const usersDelete = async ({ headers, params }) => {
@@ -43,7 +43,7 @@ export const usersDelete = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/users/${params.id}`, request);
+  return base({ url: `/api/v1/users/:id`, request, params });
 };
 
 export const usersAdd = async ({ headers, request: data }) => {
@@ -56,7 +56,7 @@ export const usersAdd = async ({ headers, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base(`/api/v1/users/user`, request);
+  return base({ url: `/api/v1/users/user`, request });
 };
 
 // export const usersSeed = async ({ headers, request: data }) => {
@@ -82,7 +82,7 @@ export const usersAddToGroup = async ({ headers, params, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base(`/api/v1/users/user/${params.userId}/${params.groupId}`, request);
+  return base({ url: `/api/v1/users/user/:userId/:groupId`, request, params });
 };
 
 export const usersDeleteFromGroup = async ({ headers, params, request: data }) => {
@@ -95,7 +95,7 @@ export const usersDeleteFromGroup = async ({ headers, params, request: data }) =
     body: JSON.stringify(data),
   };
 
-  return base(`/api/v1/users/user/${params.userId}/${params.groupId}`, request);
+  return base({ url: `/api/v1/users/user/:userId/:groupId`, request, params });
 };
 
 export const usersExport = async ({ headers }) => {
@@ -107,7 +107,7 @@ export const usersExport = async ({ headers }) => {
     },
   };
 
-  return base(`/api/v1/odata/users/export`, request);
+  return base({ url: `/api/v1/odata/users/export`, request });
 };
 
 // interfaccia dell'api di logout per terminare la sessione utente
@@ -120,5 +120,5 @@ export const usersLogout = async ({ headers }) => {
     },
   };
 
-  return base('/api/v1/Users/Logout', request);
+  return base({ url: '/api/v1/Users/Logout', request });
 };

@@ -20,7 +20,7 @@ export const apiCultureGet = async ({ headers }) => {
     },
   };
 
-  return base(url, request);
+  return base({ url, request });
 };
 
 // interfaccia api per aggiungere un nuovo elemento alla lista delle culture
@@ -34,7 +34,7 @@ export const apiCulturePost = async ({ headers, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base(url, request);
+  return base({ url, request });
 };
 
 // interfaccia api per rimuovere un elemento dalla lista delle culture
@@ -47,7 +47,7 @@ export const apiCultureDelete = async ({ headers, params }) => {
     },
   };
 
-  return base(`${url}/${params.id}`, request);
+  return base({ url: `${url}/:id`, request, params });
 };
 
 // interfaccia api per aggiornare un elemento specifico della lista delle culture
@@ -61,5 +61,5 @@ export const apiCulturePut = async ({ headers, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base(url, request);
+  return base({ url, request });
 };

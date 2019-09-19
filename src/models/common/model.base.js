@@ -16,7 +16,16 @@
 // Path: /src/model/common/model.base
 //-------------------------------------------------------------------
 
-export const base = async (url, request) => {
+
+const setUrl = (url, params) => Object.keys(params).reduce((acc, id) => {
+  const pattern = new RegExp(`:${id}`);
+  const newUrl = acc.replace(pattern, params[id]);
+
+  return newUrl;
+}, url);
+
+
+export const base = async ({ url, request, params }) => {
   const table = {};
   try {
     table.request = {
@@ -24,7 +33,10 @@ export const base = async (url, request) => {
       method: request.method,
       headers: request.headers,
       body: request.body,
+      params: params,
     };
+
+    url = setUrl(url, params);
 
     const response = await fetch(url, request);
     table.response = {

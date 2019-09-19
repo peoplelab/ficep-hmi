@@ -25,5 +25,5 @@ export const getTranslations = async ({ params }) => {
     },
   };
 
-  return base(`/translations/${params.section}/${params.culture}.json`, request);
+  return base({ url: `/translations/:section/:culture.json`, request, params });
 };

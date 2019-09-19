@@ -63,7 +63,7 @@ export const tokenLastLogin = async () => {
     body: JSON.stringify(body),
   };
 
-  return base(`/api/v1/odata/Token/latest`, request);
+  return base({ url: `/api/v1/odata/Token/latest`, request });
 };
 
 export const tokenSessionCheck = async ({ headers, params }) => {
@@ -75,7 +75,7 @@ export const tokenSessionCheck = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/Token/${params.sessionId}`, request);
+  return base({ url: `/api/v1/Token/:sessionId`, request, params });
 };
 
 export const tokenSessionInfo = async ({ headers, params, request: data }) => {
@@ -88,5 +88,5 @@ export const tokenSessionInfo = async ({ headers, params, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base(`/api/v1/Token/${params.sessionId}`, request);
+  return base({ url: `/api/v1/Token/:sessionId`, request, params });
 };

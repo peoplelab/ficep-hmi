@@ -18,7 +18,7 @@ export const apiList = async ({ headers }) => {
     },
   };
 
-  return base('/api/v1/odata/tools', request);
+  return base({ url: '/api/v1/odata/tools', request });
 };
 
 
@@ -32,5 +32,5 @@ export const apiDetails = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/tools/${params.id}`, request);
+  return base({ url: `/api/v1/tools/:id`, request, params });
 };

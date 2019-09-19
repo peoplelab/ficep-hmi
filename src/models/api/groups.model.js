@@ -18,7 +18,7 @@ export const groupList = async ({ headers }) => {
     },
   };
 
-  return base(`/api/v1/odata/users`, request);
+  return base({ url: `/api/v1/odata/users`, request });
 };
 
 export const groupPermissions = async ({ headers, params }) => {
@@ -30,7 +30,7 @@ export const groupPermissions = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/odata/groups/${params.id}/permissions`, request);
+  return base({ url: `/api/v1/odata/groups/:id/permissions`, request, params });
 };
 
 export const groupExport = async ({ headers, params }) => {
@@ -42,5 +42,5 @@ export const groupExport = async ({ headers, params }) => {
     },
   };
 
-  return base(`/api/v1/odata/groups/export`, request);
+  return base({ url: `/api/v1/odata/groups/export`, request });
 };

@@ -26,7 +26,6 @@ const InputCard = (props) => {
     initial,
   } = props;
 
-  console.log(initial);
   const [{ data }] = useContext(FormContext);
 
   // se il dato predefito non è indicato, torna il componente per l'inserimento manuale dei dati

@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../layouts/index.layouts';
 import AdminArea from '../common/Area/Area.admin';
-import { callLogout } from '../../controllers/routes/logout/logout.controller';
+import { callLogout } from '../../controllers/api/logout.controller';
 
 import '../../styles/modal/UserModal.style.scss';
 

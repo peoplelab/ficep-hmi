@@ -1,15 +1,15 @@
 //----------------------------------------------------------------------------------------
 // File: session.controller.js
 //
-// Path: /src/controllers/session.controller
+// Path: /src/controllers/api/session.controller
 //----------------------------------------------------------------------------------------
 
 
-import { base } from './common/controller.base';
-import { tokenRefresh } from '../models/api/token.model';
-import store from '../store/redux.store';
-import { types } from '../store/session.store';
-import { pathOr } from '../utils/path';
+import { base } from '../common/controller.base';
+import { tokenRefresh } from '../../models/api/token.model';
+import store from '../../store/redux.store';
+import { types } from '../../store/session.store';
+import { pathOr } from '../../utils/path';
 
 
 // chimata per il refresh automatico della sessione utentete

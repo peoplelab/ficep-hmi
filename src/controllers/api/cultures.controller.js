@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------------------
 // File: cultures.controller.js
 //
-// Path: /src/controllers/cultures/cultures.controller
+// Path: /src/controllers/api/cultures.controller
 //----------------------------------------------------------------------------------------
 
 
@@ -10,8 +10,8 @@ import {
   apiCulturePost,
   apiCultureDelete,
   apiCulturePut
-} from '../../../models/api/cultures.model';
-import { base } from '../../common/controller.base';
+} from '../../models/api/cultures.model';
+import { base } from '../common/controller.base';
 
 
 // Gestione e conversione dei dati grezzi della response da inviare alla view

@@ -19,7 +19,7 @@ import {
   callCulturesPost,
   callCulturesDelete,
   callCulturesPut,
-} from '../../controllers/routes/cultures/cultures.controller';
+} from '../../controllers/api/cultures.controller';
 
 import '../style/cultures.style.scss';
 

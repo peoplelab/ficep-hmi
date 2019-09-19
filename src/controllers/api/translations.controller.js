@@ -1,5 +1,5 @@
-import { getTranslations } from '../models/api/translations.module';
-import { flagHanlder } from './common/controller.base';
+import { getTranslations } from '../../models/api/translations.module';
+import { flagHanlder } from '../common/controller.base';
 
 
 // richiesta per il recupero dei testi della traduzione da visualizzare

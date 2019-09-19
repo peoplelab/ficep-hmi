@@ -11,7 +11,7 @@ import history from '../../../models/history/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 import { base } from '../../common/controller.base';
-import { callGetTranslations } from '../../translations.controller';
+import { callGetTranslations } from '../../api/translations.controller';
 
 
 // chimata di login e inizializzazione della sessione utente

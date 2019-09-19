@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import { base } from '../../common/model.base';
+import { base } from '../common/model.base';
 
 
 // interfaccia dell'api per ottenere la lista corrente degli utenti
@@ -111,7 +111,7 @@ export const usersExport = async ({ headers }) => {
 };
 
 // interfaccia dell'api di logout per terminare la sessione utente
-export const apiLogout = async ({ headers }) => {
+export const usersLogout = async ({ headers }) => {
   const request = {
     method: "put",
     headers: {

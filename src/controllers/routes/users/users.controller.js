@@ -5,14 +5,14 @@
 //----------------------------------------------------------------------------------------
 
 
-import { apiList } from '../../../models/routes/users/users.model';
+import { usersList } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 
 
 // chimata per recuperare la lista degli utenti da inviare alla view
 export const callUsersList = async ({ dispatch }) => {
   base({
-    api: apiList,
+    api: usersList,
     success: ({ dataprocessed }) => {
       dispatch({ list: dataprocessed.result });
     },

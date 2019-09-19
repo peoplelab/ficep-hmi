@@ -5,7 +5,8 @@
 //----------------------------------------------------------------------------------------
 
 
-import { apiLogin, apiCultureGet, apiLastLogin } from '../../../models/routes/login/login.model';
+import { tokenLogin, tokenLastLogin } from '../../../models/api/token.model';
+import { apiCultureGet } from '../../../models/routes/cultures/cultures.model';
 import history from '../../../models/common/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
@@ -23,7 +24,7 @@ export const callLogin = async ({ data, dispatch }) => {
 
   base({
     request,
-    api: apiLogin,
+    api: tokenLogin,
     success: ({ dataprocessed }) => {
       const { responseType } = dataprocessed;
 
@@ -62,7 +63,7 @@ export const callCultureGet = async ({ dispatch }) => {
 // richiesta per il recupero della lista degli ultimi accessi da passare alla view
 export const callLastLogin = async ({ dispatch }) => {
   base({
-    api: apiLastLogin,
+    api: tokenLastLogin,
     success: ({ dataprocessed }) => {
       dispatch({ usersList: dataprocessed.result });
     },

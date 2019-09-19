@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import { base } from '../../common/model.base';
+import { base } from '../common/model.base';
 
 
 // dati predefiniti della request

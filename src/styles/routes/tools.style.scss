@@ -1,22 +1,20 @@
 // Style own of tools route
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define tools */
 
 .tools {
-  align-items: flex-start;
-  display: flex;
-  justify-content: space-between;
+  @extend %flex-row-top;
 
   .tools__anchor {
-    align-items: center;
+    @extend %flex-row-center;
+    @extend %info-1-semibold;
+
     border: $border-dark-grey solid 0.225rem;
-    display: flex;
-    font-size: 0.8rem;
-    font-weight: 600;
     height: 2.9rem;
-    justify-content: center;
     text-transform: uppercase;
     width: 33.2%;
   }

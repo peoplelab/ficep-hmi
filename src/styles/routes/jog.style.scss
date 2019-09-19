@@ -1,25 +1,24 @@
 // Style own of jog route
 
-@import '../colors.scss';
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define jog */
 
 .jog {
 
   .jog__container {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
+    @extend %flex-row-top;
+
     margin: 0 auto;
 
     .jog__anchor {
-      align-items: center;
+      @extend %flex-row-center;
+      @extend %info-1-semibold;
+
       border: $border-dark-grey solid 0.225rem;
-      display: flex;
-      font-size: 0.8rem;
-      font-weight: 600;
       height: 2.9rem;
-      justify-content: center;
       position: relative;
       text-transform: uppercase;
       top: 1.35rem;

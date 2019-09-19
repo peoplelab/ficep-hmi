@@ -1,6 +1,6 @@
 import lazy from '../common/AsyncComponent';
 
-const InputCard = lazy(() => import(/* webpackChunkName: "InputCard" */ './InputCard.view'));
+const InputCard = lazy(() => import(/* webpackChunkName: "forms" */ './InputCard.view'));
 
 export {
   InputCard,

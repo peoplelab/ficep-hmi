@@ -2,12 +2,14 @@
 
 $flex-list:(
   'row': (initial, row, initial, no-wrap),
+  'row-center': (center, row, center, no-wrap),
+  'row-full': (center, row, space-between, no-wrap),
+  'row-top': (flex-start, row, space-between, no-wrap),
   'column': (initial, column, initial, no-wrap),
-  'center': (center, row, center, no-wrap),
+  'column-center': (center, column, center, no-wrap),
+  'column-full': (center, column, space-between, no-wrap),
+  'column-top': (flex-start, column, space-between, no-wrap),
   'list': (center, column, flex-start, no-wrap),
-  'full-row': (center, row, space-between, no-wrap),
-  'full-column': (center, column, space-between, no-wrap),
-  'top-row': (flex-start, row, space-between, no-wrap),
   'wrap': (center, row, space-evenly, wrap),
 );
 

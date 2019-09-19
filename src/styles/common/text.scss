@@ -1,21 +1,44 @@
 // stylelint-disable plugin/selector-bem-pattern
 
 $texts:(
-  'title-1': (1.2rem, 'normal', 700),
-  'title-2': (1.2rem, 'normal', 600),
-  'title-3': (1.2rem, 'normal', 500),
+  'title-bold': (1.5rem, normal, 700),
+  'title-semibold': (1.5rem, normal, 600),
+  // 'title-medium': (1.5rem, normal, 500),
 
-  'subtitle-1': (1rem, 'normal', 700),
-  'subtitle-2': (1rem, 'normal', 600),
-  'subtitle-3': (1rem, 'normal', 500),
+  // 'subtitle-bold': (1.2rem, normal, 700),
+  'subtitle-semibold': (1.2rem, normal, 600),
+  // 'subtitle-medium': (1.2rem, normal, 500),
 
-  'paragraph-1': (0.9rem, 'normal', 500),
-  'paragraph-2': (0.9rem, 'normal', 400),
-  'paragraph-3': (0.9rem, 'normal', 300),
+  'paragraph-semibold': (0.9rem, normal, 600),
+  'paragraph-medium': (1rem, normal, 500),
+  'paragraph-regular': (0.8rem, normal, 400),
+  // 'paragraph-light': (0.9rem, normal, 300),
 
-  'info-1': (0.8rem, 'normal', 300),
-  'info-2': (0.7rem, 'normal', 300),
-  'info-3': (0.6rem, 'normal', 300),
+  // 'message-semibold': (1.125rem, normal, 600),
+  // 'message-medium': (1.125rem, normal, 500),
+  'message-regular': (1.125rem, normal, 400),
+  // 'message-light': (1.125rem, normal, 300),
+
+  'info-big': (0.8rem, normal, 600),
+  // 'info-normal': (0.75rem, normal, 300),
+  'info-thin': (0.75rem, normal, 300),
+
+  'higlighted-light': (1.4rem, normal, 300),
+
+  'link-semibold': (0.8rem, normal, 600),
+  // 'link-medium': (0.8rem, normal, 500),
+  // 'link-regular': (0.8rem, normal, 400),
+  // 'link-light': (0.8rem, normal, 300),
+
+  'button-semibold': (1rem, normal, 600),
+  'button-medium': (1rem, normal, 500),
+  // 'button-regular': (1rem, normal, 400),
+  // 'button-light': (1rem, normal, 300),
+
+  // 'input-semibold': (1rem, normal, 600),
+  'input-medium': (1rem, normal, 500),
+  // 'input-regular': (1rem, normal, 400),
+  // 'input-light': (1rem, normal, 300),
 );
 
 @each $name, $data in $texts {

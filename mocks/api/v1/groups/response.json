@@ -1,0 +1,21 @@
+{
+  "responseType": 200,
+  "errorCode": null,
+  "result": [
+      {
+          "id": 1,
+          "code": "ADMIN",
+          "description": "ADMINISTRATORS"
+      },
+      {
+          "id": 2,
+          "code": "SUPERUSER",
+          "description": "SUPER USERS"
+      },
+      {
+          "id": 3,
+          "code": "USER",
+          "description": "USERS"
+      }
+  ]
+}

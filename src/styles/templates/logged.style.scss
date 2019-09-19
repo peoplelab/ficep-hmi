@@ -75,10 +75,10 @@
         flex: 1;
       }
       .card__paragraph--user {
-        @extend %paragraph-semibold;
+        @extend %paragraph-2-semibold;
       }
       .card__paragraph--role {
-        @extend %paragraph-regular;
+        @extend %info-1-regular;
       }
       // stylelint-enable plugin/selector-bem-pattern
     }

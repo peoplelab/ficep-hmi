@@ -11,7 +11,7 @@
 
   .tools__anchor {
     @extend %flex-row-center;
-    @extend %link-semibold;
+    @extend %info-1-semibold;
 
     border: $border-dark-grey solid 0.225rem;
     height: 2.9rem;

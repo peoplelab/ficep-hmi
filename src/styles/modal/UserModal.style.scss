@@ -38,7 +38,7 @@
 
   .user-modal__button {
     @extend %flex-row-center;
-    @extend %button-semibold;
+    @extend %paragraph-1-semibold;
 
     border: $border-dark-grey solid 0.225rem;
     border-radius: 0.5rem;

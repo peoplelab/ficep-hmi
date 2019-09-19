@@ -63,7 +63,7 @@
       }
 
       .login__form-submit {
-        @extend %button-medium;
+        @extend %paragraph-1-medium;
 
         border-radius: 0.25rem;
         color: $text-dark-grey;

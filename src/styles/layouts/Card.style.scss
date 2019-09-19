@@ -37,7 +37,7 @@
     }
 
     &--role {
-      @extend %paragraph-medium;
+      @extend %paragraph-1-medium;
     }
 
     &--text {
@@ -45,7 +45,7 @@
     }
 
     &--last-access {
-      @extend %info-big;
+      @extend %info-1-semibold;
     }
   }
 

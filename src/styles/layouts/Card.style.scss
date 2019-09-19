@@ -2,9 +2,10 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 .card {
-  @extend %flex-full-row;
+  @extend %flex-row-full;
 
   background-color: $bg-light-grey;
   height : 100%;
@@ -15,7 +16,7 @@
   }
 
   .card__picture {
-    @extend %flex-center;
+    @extend %flex-row-center;
 
     background-color: $bg-white;
     margin: 0 auto;
@@ -32,23 +33,19 @@
     text-align: center;
 
     &--user {
-      font-size: 1.2rem;
-      font-weight: 600;
+      @extend %subtitle-semibold;
     }
 
     &--role {
-      font-size: 1rem;
-      font-weight: 500;
+      @extend %paragraph-medium;
     }
 
     &--text {
-      font-size: 0.7rem;
-      font-weight: 300;
+      @extend %info-thin;
     }
 
     &--last-access {
-      font-size: 0.8rem;
-      font-weight: 600;
+      @extend %info-big;
     }
   }
 

@@ -2,22 +2,22 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define jog */
 
 .jog {
 
   .jog__container {
-    @extend %flex-top-row;
+    @extend %flex-row-top;
 
     margin: 0 auto;
 
     .jog__anchor {
-      @extend %flex-center;
+      @extend %flex-row-center;
+      @extend %link-semibold;
 
       border: $border-dark-grey solid 0.225rem;
-      font-size: 0.8rem;
-      font-weight: 600;
       height: 2.9rem;
       position: relative;
       text-transform: uppercase;

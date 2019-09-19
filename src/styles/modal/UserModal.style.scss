@@ -2,6 +2,7 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define user-modal */
 
@@ -36,14 +37,13 @@
   }
 
   .user-modal__button {
-    @extend %flex-center;
+    @extend %flex-row-center;
+    @extend %button-semibold;
 
     border: $border-dark-grey solid 0.225rem;
     border-radius: 0.5rem;
     bottom: 1rem;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
     height: 3rem;
     left: 50%;
     position: absolute;

@@ -2,18 +2,18 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define tools */
 
 .tools {
-  @extend %flex-top-row;
+  @extend %flex-row-top;
 
   .tools__anchor {
-    @extend %flex-center;
+    @extend %flex-row-center;
+    @extend %link-semibold;
 
     border: $border-dark-grey solid 0.225rem;
-    font-size: 0.8rem;
-    font-weight: 600;
     height: 2.9rem;
     text-transform: uppercase;
     width: 33.2%;

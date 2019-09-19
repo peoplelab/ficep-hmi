@@ -3,6 +3,7 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 
 /** @define login */
@@ -25,15 +26,15 @@
     width: 100%;
 
     .login__title {
+      @extend %title-bold;
+
       color: $text-dark-grey;
-      font-size: 1.5rem;
-      font-weight: bold;
       margin: 0 0 1rem;
       padding: 0 3rem;
     }
 
     .login__form-box {
-      @extend %flex-full-row;
+      @extend %flex-row-full;
 
       justify-content: space-around;
       width: 100%;
@@ -46,10 +47,11 @@
 
         .login__text-input:not(.input-card),
         .login__select-input {
+          @extend %input-medium;
+
           border: $border-light-grey solid 0.125rem;
           border-radius: 0.25rem;
           color: $text-dark-grey;
-          font-size: 1rem;
           height: 3.5rem;
           padding: 0.5rem;
           width: 100%;
@@ -61,10 +63,11 @@
       }
 
       .login__form-submit {
+        @extend %button-medium;
+
         border-radius: 0.25rem;
         color: $text-dark-grey;
         flex: 0.5;
-        font-size: 1rem;
         height: 3.75rem;
 
         &:disabled {
@@ -119,25 +122,6 @@
         cursor: pointer;
         height: 100%;
         width: 100%;
-      }
-    }
-  }
-
-  .login__error {
-    left: 50%;
-    position: absolute;
-    top: 0;
-    transform: translateX(-50%);
-
-    .login__error-alert {
-      background-color: $bg-red;
-      margin-top: 1rem;
-      padding: 1rem;
-
-      .login__error-message {
-        color: $text-white;
-        font-size: 0.8rem;
-        font-weight: bold;
       }
     }
   }

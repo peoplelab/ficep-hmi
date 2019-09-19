@@ -4,7 +4,7 @@
 @import '../common/flex.scss';
 
 .input-card {
-  @extend %flex-full-row;
+  @extend %flex-row-full;
 
   background-color: $bg-light-grey;
   border-radius: 0.25rem;

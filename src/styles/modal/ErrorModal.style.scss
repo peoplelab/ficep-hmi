@@ -2,6 +2,7 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define error-modal */
 
@@ -53,14 +54,16 @@
 
         // stylelint-disable-next-line plugin/selector-bem-pattern
         &.modal__title--main-title {
+          @extend %title-semibold;
+
           color: $text-dark-grey;
-          font-size: 1.75rem;
         }
 
         // stylelint-disable-next-line plugin/selector-bem-pattern
         &.modal__title--sub-title {
+          @extend %subtitle-semibold;
+
           color: $text-light-grey;
-          font-size: 1.25rem;
         }
       }
 
@@ -68,21 +71,18 @@
         color: $text-dark-grey;
 
         &.error-modal__text--message {
-          font-size: 0.9rem;
-          font-weight: 500;
+          @extend %paragraph-medium;
           margin: 0 0 1rem;
         }
         &.error-modal__text--main {
-          font-size: 1.125rem;
-          font-weight: 400;
+          @extend %message-regular;
 
         }
         &.error-modal__text--details {
           @extend .error-modal__text--message;
         }
         &.error-modal__text--description {
-          font-size: 0.75rem;
-          font-weight: 300;
+          @extend %info-thin;
         }
       }
 

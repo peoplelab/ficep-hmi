@@ -4,12 +4,12 @@
 @import '../common/flex.scss';
 
 .gallery {
-  @extend %flex-center;
+  @extend %flex-row-center;
 
   width: 100%;
 
   .gallery__box-arrow {
-    @extend %flex-center;
+    @extend %flex-row-center;
 
     height: 100%;
     width: 3rem;

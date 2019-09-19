@@ -6,7 +6,7 @@
 
 
 import { usersLogout } from '../../../models/api/users.model';
-import history from '../../../models/common/history';
+import history from '../../../models/history/history';
 import { types } from '../../../store/session.store';
 import store from '../../../store/redux.store';
 import { base } from '../../common/controller.base';

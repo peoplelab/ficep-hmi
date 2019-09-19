@@ -6,8 +6,8 @@
 
 
 import { tokenLogin, tokenLastLogin } from '../../../models/api/token.model';
-import { apiCultureGet } from '../../../models/routes/cultures/cultures.model';
-import history from '../../../models/common/history';
+import { apiCultureGet } from '../../../models/api/cultures.model';
+import history from '../../../models/history/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 import { base } from '../../common/controller.base';
@@ -80,7 +80,7 @@ export const callLastLogin = async ({ dispatch }) => {
 // // Login controller: controller for login
 // //-------------------------------------------------------------------
 // import { apiLogin } from '../../../models/routes/login/login.model';
-// // import history from '../../../models/common/history';
+// // import history from '../../../models/history/history';
 // // import { types } from '../../../store/session.store.jsx';
 
 

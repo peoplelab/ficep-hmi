@@ -6,7 +6,7 @@
 
 
 import { base } from './common/controller.base';
-import { apiRefresh } from '../models/session.model';
+import { tokenRefresh } from '../models/api/token.model';
 import store from '../store/redux.store';
 import { types } from '../store/session.store';
 import { pathOr } from '../utils/path';
@@ -23,7 +23,7 @@ export const callRefresh = async (prevRequestArgs) => {
 
   base({
     request,
-    api: apiRefresh,
+    api: tokenRefresh,
     success: ({ dataprocessed }) => {
       store.dispatch({
         type: types.SET_SESSION,

@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import { apiList, apiDetails } from '../../../models/routes/tools/tools.model';
+import { apiList, apiDetails } from '../../../models/api/tools.model';
 import { base } from '../../common/controller.base';
 
 

@@ -1,4 +1,4 @@
-import { getTranslations } from '../models/translations.module';
+import { getTranslations } from '../models/api/translations.module';
 import { flagHanlder } from './common/controller.base';
 
 

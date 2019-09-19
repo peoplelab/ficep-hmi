@@ -10,7 +10,7 @@ import {
   apiCulturePost,
   apiCultureDelete,
   apiCulturePut
-} from '../../../models/routes/cultures/cultures.model';
+} from '../../../models/api/cultures.model';
 import { base } from '../../common/controller.base';
 
 

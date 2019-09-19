@@ -25,7 +25,7 @@ const setUrl = (url, params) => Object.keys(params).reduce((acc, id) => {
 }, url);
 
 
-export const base = async ({ url, request, params }) => {
+export const base = async ({ url, request, params = {} }) => {
   const table = {};
   try {
     table.request = {

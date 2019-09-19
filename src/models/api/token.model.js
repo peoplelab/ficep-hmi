@@ -28,7 +28,7 @@ export const tokenLogin = async ({ request: data }) => {
     body: JSON.stringify(body),
   };
 
-  return base('/api/v1/Token', request);
+  return base({ url: '/api/v1/Token', request });
 };
 
 export const tokenRefresh = async ({ request: data }) => {
@@ -45,7 +45,7 @@ export const tokenRefresh = async ({ request: data }) => {
     body: JSON.stringify(body),
   };
 
-  return base('/api/v1/Token', request);
+  return base({ url: '/api/v1/Token', request });
 };
 
 // interfaccia api per ottenere la lista corrente degli ultimi accessi all'applicazione

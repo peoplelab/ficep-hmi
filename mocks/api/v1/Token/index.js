@@ -1,6 +1,7 @@
 const moment = require('moment');
 const uuidv1 = require('uuid/v1');
 const responseJSON = require('./response.json');
+const sessionIdJSON = require('./sessionId.response.json');
 
 
 const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSSZ';
@@ -28,6 +29,12 @@ const setGlobalTime = () => {
 
 module.exports = {
   POST: (req, res) => {
+    const { sessionId } = req.params.sessionId;
+
+    if (sessionId) {
+      res.status(200).json(sessionIdJSON);
+    }
+
     const {
       Culture,
       GrantType,

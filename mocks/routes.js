@@ -1,57 +1,59 @@
-const url = {
-  cultures: '/api/v1/Cultures',
-  fnc: '/api/v1/odata/tools/upload/fnc/paf',
-  login: '/api/v1/Token',
-  logout: '/api/v1/Users/Logout',
-  token: '/api/v1/odata/Token',
-  tools: '/api/v1/odata/tools',
-  tool: '/api/v1/tools',
-  users: '/api/v1/odata/users',
-};
+// const url = {
+//   fnc: '/api/v1/odata/tools/upload/fnc/paf',
+// };
+
 
 module.exports = [
   {
-    "url": url.login,
-    "api": require(`.${url.login}`),
+    "url": `/api/v1/odata/Token/latest`,
+    "api": require(`./api/v1/odata/Token/latest`),
   },
   {
-    "url": `${url.token}/latest`,
-    "api": require(`.${url.token}/latest`),
+    "url": '/api/v1/odata/tools',
+    "api": require(`./api/v1/odata/tools`),
   },
   {
-    "url": url.logout,
-    "api": require(`.${url.logout}`),
-  },
-  // {
-  //   "url": `${url.tools}/attributes/:toolTypeId`,
-  //   "api": require(`.${url.tools}/attributes`),
-  // },
-  // {
-  //   "url": `${url.tools}/categories`,
-  //   "api": require(`.${url.tools}/categories`),
-  // },
-  {
-    "url": `${url.tool}/:id`,
-    "api": require(`.${url.tool}`),
-  },
-  {
-    "url": url.tools,
-    "api": require(`.${url.tools}`),
-  },
-  {
-    "url": url.users,
-    "api": require(`.${url.users}`),
+    "url": `/api/v1/tools/:id`,
+    "api": require(`./api/v1/tools`),
   },
   // {
-  //   "url": `${url.tools}/Types/:categoryId`,
-  //   "api": require(`.${url.tools}/Types`),
+  //   "url": `/api/v1/odata/tools/attributes/:toolTypeId`,
+  //   "api": require(`./api/v1/odata/tools/attributes`),
+  // },
+  // {
+  //   "url": `/api/v1/odata/tools/categories`,
+  //   "api": require(`./api/v1/odata/tools/categories`),
+  // },
+  // {
+  //   "url": `/api/v1/odata/tools/Types/:categoryId`,
+  //   "api": require(`./api/v1/odata/tools/Types`),
   // },
   {
-    "url": url.cultures,
-    "api": require(`.${url.cultures}`),
+    "url": '/api/v1/odata/users',
+    "api": require(`./api/v1/odata/users`),
   },
   {
-    "url": `${url.cultures}/:id`,
-    "api": require(`.${url.cultures}`),
+    "url": '/api/v1/Cultures',
+    "api": require(`./api/v1/Cultures`),
+  },
+  {
+    "url": `/api/v1/Cultures/:id`,
+    "api": require(`./api/v1/Cultures`),
+  },
+  {
+    "url": '/api/v1/Token',
+    "api": require(`./api/v1/Token`),
+  },
+  {
+    "url":`/api/v1/Token/:sessionId`,
+    "api": require(`./api/v1/Token`),
+  },
+  {
+    "url": '/api/v1/users/:id',
+    "api": require(`./api/v1/users`),
+  },
+  {
+    "url": '/api/v1/users/logout',
+    "api": require(`./api/v1/users/logout`),
   },
 ];

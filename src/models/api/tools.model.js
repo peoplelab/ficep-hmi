@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import { base } from '../../common/model.base';
+import { base } from '../common/model.base';
 
 
 // interfaccia dell'api per ottenere la lista corrente dei tools

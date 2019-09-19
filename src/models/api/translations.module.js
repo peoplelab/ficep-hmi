@@ -12,7 +12,7 @@
 // Path: /src/model/translations.module
 //-----------------------------------------------------------------------
 
-import { base } from './common/model.base';
+import { base } from '../common/model.base';
 
 
 // interfaccia del servizio locale per il recupero delle traduzioni

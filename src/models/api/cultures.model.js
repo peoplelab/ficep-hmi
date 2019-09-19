@@ -4,7 +4,7 @@
 // Path: /src/model/cultures/cultures.model
 //----------------------------------------------------------------------------------------
 
-import { base } from '../../common/model.base';
+import { base } from '../common/model.base';
 
 
 // percorso dell'api

@@ -1,11 +1,12 @@
 const url = {
+  cultures: '/api/v1/Cultures',
+  fnc: '/api/v1/odata/tools/upload/fnc/paf',
   login: '/api/v1/Token',
   logout: '/api/v1/Users/Logout',
   token: '/api/v1/odata/Token',
   tools: '/api/v1/odata/tools',
   tool: '/api/v1/tools',
-  cultures: '/api/v1/Cultures',
-  fnc: '/api/v1/odata/tools/upload/fnc/paf',
+  users: '/api/v1/odata/users',
 };
 
 module.exports = [
@@ -36,6 +37,10 @@ module.exports = [
   {
     "url": url.tools,
     "api": require(`.${url.tools}`),
+  },
+  {
+    "url": url.users,
+    "api": require(`.${url.users}`),
   },
   // {
   //   "url": `${url.tools}/Types/:categoryId`,

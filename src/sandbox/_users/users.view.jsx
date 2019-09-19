@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Box from '../../components/layouts/Box';
 import Button from '../../components/layouts/Button';
-// import List from './users.item.list';
+import List from './users.item.list';
 import { callUsersList } from '../../controllers/routes/users/users.controller';
 
 import '../style/users.style.scss';
@@ -56,10 +56,7 @@ class UsersRoute extends PureComponent {
                 Get users list
               </Button>
             </Box>
-            <Box className="users__group">
-              {JSON.stringify(this.state.list)}
-            </Box>
-            {/* <List usersSetState={this.updateState} usersGetState={this.state} /> */}
+            <List usersSetState={this.updateState} usersGetState={this.state} />
           </Box>
         </section>
     );

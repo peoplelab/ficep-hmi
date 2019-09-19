@@ -15,10 +15,13 @@ import Box from '../../components/layouts/Box';
 // intestazioni delle colonne della tabella degli utenti
 const header = (
   <tr key="users-header">
-    <th>issuedAt</th>
-    <th>username</th>
-    <th>role</th>
-    <th>culture</th>
+    <th>id</th>
+    <th>firstName</th>
+    <th>lastName</th>
+    <th>userName</th>
+    <th>isActive</th>
+    <th>groups</th>
+    <th>creationDate</th>
   </tr>
 );
 
@@ -32,24 +35,33 @@ class ListItem extends PureComponent {
 
   // render della lista degli utenti
   mapList(data) {
-    const { issuedAt, username, groups, culture } = data;
+    const {
+      id,
+      firstName,
+      lastName,
+      userName,
+      isActive,
+      groups,
+      creationDate,
+     } = data;
 
-    const [role] = groups;
+    const [{ id: idGroup, code, description }] = groups;
 
     return (
-      <tr key={`user-${username}`}>
+      <tr key={`user-${userName}`}>
+        <td>{id}</td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{userName}</td>
+        <td>{isActive ? 'Yes' : 'No'}</td>
         <td>
-          {issuedAt}
+          <ul>
+            <li>id: {idGroup}</li>
+            <li>code: {code}</li>
+            <li>description: {description}</li>
+          </ul>
         </td>
-        <td>
-          {username}
-        </td>
-        <td>
-          {role}
-        </td>
-        <td>
-          {culture}
-        </td>
+        <td>{creationDate}</td>
       </tr>
     );
   }

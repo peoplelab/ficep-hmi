@@ -48,26 +48,23 @@
     }
 
     .users__table {
-      margin-bottom: 3rem;
+      border-collapse: collapse;
+      margin: 3rem 0;
+
       caption {
         font-size: 1.2rem;
         font-weight: bold;
       }
 
       th {
+        border: solid 0.125rem #323232;
         padding: 0.5rem 2rem;
       }
 
       td {
+        border: solid 0.0625rem #323232;
         padding: 0.5rem 2rem;
-        text-align: center;
-
-        &:first-of-type {
-          padding: 0;
-        }
-        .users__button {
-          width: 100%;
-        }
+        text-align: left;
       }
     }
   }

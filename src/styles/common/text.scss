@@ -3,42 +3,32 @@
 $texts:(
   'title-bold': (1.5rem, normal, 700),
   'title-semibold': (1.5rem, normal, 600),
-  // 'title-medium': (1.5rem, normal, 500),
+  'title-medium': (1.5rem, normal, 500),
 
-  // 'subtitle-bold': (1.2rem, normal, 700),
+  'subtitle-bold': (1.2rem, normal, 700),
   'subtitle-semibold': (1.2rem, normal, 600),
-  // 'subtitle-medium': (1.2rem, normal, 500),
+  'subtitle-medium': (1.2rem, normal, 500),
+  'subtitle-regular': (1.2rem, normal, 400),
 
-  'paragraph-semibold': (0.9rem, normal, 600),
-  'paragraph-medium': (1rem, normal, 500),
-  'paragraph-regular': (0.8rem, normal, 400),
-  // 'paragraph-light': (0.9rem, normal, 300),
+  'paragraph-1-semibold': (1rem, normal, 600),
+  'paragraph-1-medium': (1rem, normal, 500),
+  'paragraph-1-regular': (1rem, normal, 400),
 
-  // 'message-semibold': (1.125rem, normal, 600),
-  // 'message-medium': (1.125rem, normal, 500),
-  'message-regular': (1.125rem, normal, 400),
-  // 'message-light': (1.125rem, normal, 300),
+  'paragraph-2-semibold': (0.9rem, normal, 600),
+  'paragraph-2-medium': (0.9rem, normal, 500),
+  'paragraph-2-regular': (0.9rem, normal, 400),
 
-  'info-big': (0.8rem, normal, 600),
-  // 'info-normal': (0.75rem, normal, 300),
-  'info-thin': (0.75rem, normal, 300),
+  'info-1-semibold': (0.8rem, normal, 600),
+  'info-1-medium': (0.8rem, normal, 500),
+  'info-1-regular': (0.8rem, normal, 400),
+
+  'info-2-regular': (0.75rem, normal, 400),
+  'info-2-light': (0.75rem, normal, 300),
+  'info-2-thin': (0.75rem, normal, 100),
 
   'higlighted-light': (1.4rem, normal, 300),
 
-  'link-semibold': (0.8rem, normal, 600),
-  // 'link-medium': (0.8rem, normal, 500),
-  // 'link-regular': (0.8rem, normal, 400),
-  // 'link-light': (0.8rem, normal, 300),
-
-  'button-semibold': (1rem, normal, 600),
-  'button-medium': (1rem, normal, 500),
-  // 'button-regular': (1rem, normal, 400),
-  // 'button-light': (1rem, normal, 300),
-
-  // 'input-semibold': (1rem, normal, 600),
   'input-medium': (1rem, normal, 500),
-  // 'input-regular': (1rem, normal, 400),
-  // 'input-light': (1rem, normal, 300),
 );
 
 @each $name, $data in $texts {

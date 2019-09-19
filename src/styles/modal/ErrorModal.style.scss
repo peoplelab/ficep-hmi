@@ -82,7 +82,7 @@
           @extend .error-modal__text--message;
         }
         &.error-modal__text--description {
-          @extend %info-thin;
+          @extend %info-2-light;
         }
       }
 

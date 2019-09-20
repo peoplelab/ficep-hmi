@@ -50,7 +50,7 @@ const ErrorsModal = (props) => {
   let description = null;
 
   if (responseType === 400) {
-    main = intlHandler(errorCode);
+    main = intlHandler(errorCode || 'modal_error_technical');
     description = errorsDescription.length > 0 && (
       <ul className="error-modal__list">
         {errorsDescription.map(mapResult)}

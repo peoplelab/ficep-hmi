@@ -12,7 +12,11 @@ import { pathOr } from '../../../utils/path';
 
 const responseType = state => pathOr(NaN, ['mainError', 'responseType'], state);
 const errorCode = state => pathOr('', ['mainError', 'errorCode'], state);
-const errorsDescription = state => pathOr([], ['mainError', 'errorsDescription'], state);
+const errorsDescription = state => {
+  const description = pathOr([], ['mainError', 'errorsDescription'], state);
+
+  return Array.isArray(description) ? description : [description];
+};
 
 const disabled = state => responseType(state) === 200 || isNaN(responseType(state));
 

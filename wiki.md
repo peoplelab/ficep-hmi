@@ -3,7 +3,14 @@
 ## API
 
 ### note
-> attualmente, ogni utente possiede una lista relativa ai gruppi a cui appartiene; in futuro sarà presente solo il gruppo di appartenenza di categoria superiore
+* attualmente, ogni utente possiede una lista relativa ai gruppi a cui appartiene; in futuro sarà presente solo il gruppo di appartenenza di categoria superiore
+
+* implementare i seguenti servizi appena saranno disponibili
+  > /api/v1/users/:id<br/>
+  > /api/v1/Token/:sessionId<br/>
+  > /api/v1/users/user<br/>
+  > /api/v1/users/upload<br/>
+  > /api/v1/odata/groups/export<br/>
 
 ### info
 

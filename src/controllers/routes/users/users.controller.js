@@ -5,7 +5,9 @@
 //----------------------------------------------------------------------------------------
 
 
-import { usersList, usersDetails, usersExport } from '../../../models/api/users.model';
+import {
+  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup
+} from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 
 
@@ -49,6 +51,44 @@ export const callUsersExport = async ({ dispatch }) => {
     },
     failure: () => {
       dispatch({ export: {} });
+    }
+  });
+};
+
+// chimata per aggiungere un utente ad un gruppo
+export const callUsersAddToGroup = async ({ data, dispatch }) => {
+  const params = {
+    id: data.idUser,
+    groupId: data.idGroup,
+  };
+
+  base({
+    params,
+    api: usersAddToGroup,
+    success: ({ dataprocessed }) => {
+      dispatch({ response: dataprocessed });
+    },
+    failure: () => {
+      dispatch({ response: null });
+    }
+  });
+};
+
+// chimata per rimuovere un utente da un gruppo
+export const callUsersDeleteFromGroup = async ({ data, dispatch }) => {
+  const params = {
+    id: data.idUser,
+    groupId: data.idGroup,
+  };
+
+  base({
+    params,
+    api: usersDeleteFromGroup,
+    success: ({ dataprocessed }) => {
+      dispatch({ response: dataprocessed });
+    },
+    failure: () => {
+      dispatch({ response: null });
     }
   });
 };

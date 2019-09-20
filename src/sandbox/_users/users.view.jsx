@@ -11,7 +11,7 @@ import { hot } from 'react-hot-loader/root';
 import Button from '../../components/layouts/Button';
 import ButtonData from '../../components/layouts/ButtonData';
 import {
-  callUsersList, callUsersDetails, callUsersExport
+  callUsersList, callUsersDetails, callUsersExport, callUsersAddToGroup, callUsersDeleteFromGroup
 } from '../../controllers/routes/users/users.controller';
 import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
@@ -31,8 +31,8 @@ class UsersRoute extends PureComponent {
     this.exportUser = this.exportUser.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
     this.getPermissionsList = this.getPermissionsList.bind(this);
-    // this.addUserToGroup = this.addUserToGroup.bind(this);
-    // this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
+    this.addUserToGroup = this.addUserToGroup.bind(this);
+    this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
     this.checkSession = this.checkSession.bind(this);
   }
 
@@ -72,13 +72,25 @@ class UsersRoute extends PureComponent {
     callGroupPermissions({ dispatch, data });
   }
 
-  // addUserToGroup(event) {
+  addUserToGroup(event) {
+    const dispatch = this.updateState;
+    const data = {
+      idUser: 3,
+      idGroup: 1,
+    };
 
-  // }
+    callUsersAddToGroup({ dispatch, data });
+  }
 
-  // removeUserFromGroup(event) {
+  removeUserFromGroup(event) {
+    const dispatch = this.updateState;
+    const data = {
+      idUser: 3,
+      idGroup: 1,
+    };
 
-  // }
+    callUsersDeleteFromGroup({ dispatch, data });
+  }
 
   checkSession(event) {
     const dispatch = this.updateState;
@@ -139,17 +151,17 @@ class UsersRoute extends PureComponent {
                   </ButtonData>
                 </div>
               </div>
-              {/* <div className="users__section users__actions">
+              <div className="users__section users__actions">
                 <h3 className="users__section-title">Users and groups</h3>
                 <div>
                   <Button className="users__action-button" onClick={this.addUserToGroup}>
-                    Add
+                    Add user to admin group
                   </Button>
                   <Button className="users__action-button" onClick={this.removeUserFromGroup}>
-                    Delete
+                    Remove user from admin group
                   </Button>
                 </div>
-              </div> */}
+              </div>
               <div className="users__section users__actions">
                 <h3 className="users__section-title">Session</h3>
                 <div>

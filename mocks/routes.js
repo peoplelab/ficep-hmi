@@ -27,6 +27,10 @@ module.exports = [
   },
 
   {
+    "url": '/api/v1/odata/groups',
+    "api": require(`./api/v1/odata/groups`),
+  },
+  {
     "url": '/api/v1/odata/groups/:id/permissions',
     "api": require(`./api/v1/odata/groups/permissions`),
   },

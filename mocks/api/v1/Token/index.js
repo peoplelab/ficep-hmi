@@ -1,5 +1,6 @@
 const moment = require('moment');
 const uuidv1 = require('uuid/v1');
+const { base } = require('../../../mock.base');
 const responseJSON = require('./response.json');
 const sessionIdJSON = require('./sessionId.response.json');
 
@@ -34,7 +35,9 @@ const responseID = {
 
 
 module.exports = {
-  GET: (req, res) => res.status(200).json(responseID),
+  GET: base(
+    (req, res) => res.status(200).json(responseID)
+  ),
   POST: (req, res) => {
     const {
       Culture,

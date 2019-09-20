@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import { usersList } from '../../../models/api/users.model';
+import { usersList, usersDetails, usersExport } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 
 
@@ -14,10 +14,41 @@ export const callUsersList = async ({ dispatch }) => {
   base({
     api: usersList,
     success: ({ dataprocessed }) => {
-      dispatch({ list: dataprocessed.result });
+      dispatch({ users: dataprocessed });
     },
     failure: () => {
-      dispatch({ list: [] });
+      dispatch({ users: [] });
+    }
+  });
+};
+
+// chimata per recuperare i dettagli dell'utente da inviare alla view
+export const callUsersDetails = async ({ data, dispatch }) => {
+  const params = {
+    id: data,
+  };
+
+  base({
+    params,
+    api: usersDetails,
+    success: ({ dataprocessed }) => {
+      dispatch({ details: dataprocessed });
+    },
+    failure: () => {
+      dispatch({ details: null });
+    }
+  });
+};
+
+// chimata per esportare i dettagli dell'utente corrente
+export const callUsersExport = async ({ dispatch }) => {
+  base({
+    api: usersExport,
+    success: ({ dataprocessed }) => {
+      dispatch({ export: dataprocessed });
+    },
+    failure: () => {
+      dispatch({ export: {} });
     }
   });
 };

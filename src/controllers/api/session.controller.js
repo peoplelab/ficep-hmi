@@ -52,10 +52,10 @@ export const callTokenSessionCheck = async ({ dispatch }) => {
     params,
     api: tokenSessionCheck,
     success: ({ dataprocessed }) => {
-      dispatch(dataprocessed);
+      dispatch({ sessionInfo: dataprocessed });
     },
     failure: ({ httpcode }) => {
-      dispatch(httpcode);
+      dispatch({ sessionInfo: null });
     }
   });
 };

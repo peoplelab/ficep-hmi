@@ -36,7 +36,6 @@
       .users__section {
         border: $border-dark-grey solid 0.0625rem;
         flex: 1;
-        overflow: hidden;
         padding: 1rem;
 
         &.users__container {
@@ -44,6 +43,10 @@
 
           &:first-of-type {
             flex: none;
+          }
+
+          &:last-of-type {
+            overflow: hidden;
           }
         }
       }
@@ -84,6 +87,7 @@
       display: flex;
       flex: none;
       flex-direction: column;
+      overflow: hidden;
       width: 100%;
 
       .users__code {
@@ -92,7 +96,7 @@
         overflow: hidden;
         padding: 1rem;
 
-        p {
+        pre {
           height: 100%;
           overflow: auto;
           width: 100%;

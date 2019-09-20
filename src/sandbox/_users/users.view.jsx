@@ -10,8 +10,10 @@ import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Button from '../../components/layouts/Button';
 import ButtonData from '../../components/layouts/ButtonData';
-// import { } from '../../controllers/routes/users/users.controller';
-// import { } from '../../controllers/routes/users/groups.controller';
+import {
+  callUsersList, callUsersDetails, callUsersExport
+} from '../../controllers/routes/users/users.controller';
+import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
 import '../style/users.style.scss';
@@ -21,7 +23,7 @@ class UsersRoute extends PureComponent {
 	constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { response: { } };
 
     this.updateState = this.updateState.bind(this);
     this.getusersList = this.getusersList.bind(this);
@@ -29,42 +31,54 @@ class UsersRoute extends PureComponent {
     this.exportUser = this.exportUser.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
     this.getPermissionsList = this.getPermissionsList.bind(this);
-    this.addUserToGroup = this.addUserToGroup.bind(this);
-    this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
+    // this.addUserToGroup = this.addUserToGroup.bind(this);
+    // this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
     this.checkSession = this.checkSession.bind(this);
   }
 
   updateState(newState) {
-    this.setState(newState);
+    this.setState({ response: newState });
   }
 
   getusersList(event) {
+    const dispatch = this.updateState;
 
+    callUsersList({ dispatch });
   }
 
   getuserDetail(event) {
+    const dispatch = this.updateState;
     const { data } = event;
+
+    callUsersDetails({ dispatch, data });
   }
 
   exportUser(event) {
+    const dispatch = this.updateState;
 
+    callUsersExport({ dispatch });
   }
 
   getGroupsList(event) {
+    const dispatch = this.updateState;
 
+    callGroupList({ dispatch });
   }
 
   getPermissionsList(event) {
+    const dispatch = this.updateState;
+    const { data } = event;
 
+    callGroupPermissions({ dispatch, data });
   }
 
-  addUserToGroup(event) {
+  // addUserToGroup(event) {
 
-  }
+  // }
 
-  removeUserFromGroup(event) {
+  // removeUserFromGroup(event) {
 
-  }
+  // }
 
   checkSession(event) {
     const dispatch = this.updateState;
@@ -74,10 +88,9 @@ class UsersRoute extends PureComponent {
 
   // renderizzazione della pagina
 	render() {
-    // const url = 0;
-    // const request = 0;
-    const response = JSON.stringify(this.state, undefined, 4);
-console.log(this.state);
+    const [data] = Object.values(this.state.response);
+    const response = JSON.stringify(data, undefined, 4);
+
     return (
         <section className="users">
           <h1 className="users__title">
@@ -112,9 +125,18 @@ console.log(this.state);
                   <Button className="users__action-button" onClick={this.getGroupsList}>
                     List
                   </Button>
-                  <Button className="users__action-button" onClick={this.getPermissionsList}>
-                    Permissions
-                  </Button>
+                  <ButtonData className="users__action-button" onClick={this.getPermissionsList} data={1}>
+                    Permissions admin
+                  </ButtonData>
+                  <ButtonData className="users__action-button" onClick={this.getPermissionsList} data={2}>
+                    Permissions super
+                  </ButtonData>
+                  <ButtonData className="users__action-button" onClick={this.getPermissionsList} data={3}>
+                    Permissions user
+                  </ButtonData>
+                  <ButtonData className="users__action-button" onClick={this.getPermissionsList} data={4}>
+                    Permissions unknown
+                  </ButtonData>
                 </div>
               </div>
               {/* <div className="users__section users__actions">
@@ -138,34 +160,12 @@ console.log(this.state);
               </div>
             </div>
             <div className="users__section users__container">
-              {/* <div className="users__section users__data">
-                <h2 className="users__sub-title">URL</h2>
-                <div className="users__code">
-                  <p>
-                    <pre>
-                      {url}
-                    </pre>
-                  </p>
-                </div>
-              </div>
-              <div className="users__section users__data">
-                <h2 className="users__sub-title">Request</h2>
-                <div className="users__code">
-                  <p>
-                    <pre>
-                      {request}
-                    </pre>
-                  </p>
-                </div>
-              </div> */}
               <div className="users__section users__data">
                 <h2 className="users__sub-title">Response</h2>
                 <div className="users__code">
-                  <p>
-                    <pre>
-                      {response}
-                    </pre>
-                  </p>
+                  <pre>
+                    {response}
+                  </pre>
                 </div>
               </div>
             </div>

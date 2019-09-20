@@ -78,15 +78,15 @@ export const tokenSessionCheck = async ({ headers, params }) => {
   return base({ url: `/api/v1/Token/:sessionId`, request, params });
 };
 
-export const tokenSessionInfo = async ({ headers, params, request: data }) => {
-  const request = {
-    method: "get",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
+// export const tokenSessionInfo = async ({ headers, params, request: data }) => {
+//   const request = {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json",
+//       ...headers,
+//     },
+//     body: JSON.stringify(data),
+//   };
 
-  return base({ url: `/api/v1/Token/:sessionId`, request, params });
-};
+//   return base({ url: `/api/v1/Token/:sessionId`, request, params });
+// };

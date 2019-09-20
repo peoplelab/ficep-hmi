@@ -69,7 +69,7 @@ export const usersAdd = async ({ headers, request: data }) => {
 //     body: JSON.stringify(data),
 //   };
 
-//   return base(`/api/v1/users/user`, request);
+//   return base(`/api/v1/users/upload`, request);
 // };
 
 export const usersAddToGroup = async ({ headers, params, request: data }) => {
@@ -82,7 +82,7 @@ export const usersAddToGroup = async ({ headers, params, request: data }) => {
     body: JSON.stringify(data),
   };
 
-  return base({ url: `/api/v1/users/user/:userId/:groupId`, request, params });
+  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
 };
 
 export const usersDeleteFromGroup = async ({ headers, params, request: data }) => {
@@ -95,7 +95,7 @@ export const usersDeleteFromGroup = async ({ headers, params, request: data }) =
     body: JSON.stringify(data),
   };
 
-  return base({ url: `/api/v1/users/user/:userId/:groupId`, request, params });
+  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
 };
 
 export const usersExport = async ({ headers }) => {
@@ -120,5 +120,5 @@ export const usersLogout = async ({ headers }) => {
     },
   };
 
-  return base({ url: '/api/v1/users/Logout', request });
+  return base({ url: '/api/v1/users/logout', request });
 };

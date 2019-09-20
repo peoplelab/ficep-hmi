@@ -53,6 +53,10 @@ module.exports = [
     "api": require(`./api/v1/users`),
   },
   {
+    "url": '/api/v1/odata/groups/:id/permissions',
+    "api": require(`/api/v1/odata/groups/permissions`),
+  },
+  {
     "url": '/api/v1/users/logout',
     "api": require(`./api/v1/users/logout`),
   },

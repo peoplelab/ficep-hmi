@@ -1,0 +1,190 @@
+[
+  {
+    "responseType": 200,
+    "errorCode": null,
+    "result": [
+      {
+        "id": 6,
+        "code": "GROUP_MANAGEMENT",
+        "description": "Permesso per creare, modificare i permessi e cancellare un gruppo"
+      },
+      {
+        "id": 7,
+        "code": "TOOL_MANAGEMENT",
+        "description": "Permesso per gestire gli utensili"
+      },
+      {
+        "id": 3,
+        "code": "USER_MANAGEMENT",
+        "description": "Permesso per creare, modificare e cancellare gli utenti"
+      },
+      {
+        "id": 5,
+        "code": "VIEW_GROUP",
+        "description": "Permesso per la consultazione del dettaglio di un gruppo"
+      },
+      {
+        "id": 4,
+        "code": "VIEW_GROUPS",
+        "description": "Permesso per la consultazione dei gruppi"
+      },
+      {
+        "id": 9,
+        "code": "VIEW_TOOL",
+        "description": "Permesso per consultare il dettaglio di un utensile"
+      },
+      {
+        "id": 8,
+        "code": "VIEW_TOOLS",
+        "description": "Permesso per consultare l'anagrafica degli utensili"
+      },
+      {
+        "id": 2,
+        "code": "VIEW_USER",
+        "description": "Permesso per consultare il dettaglio di un utente"
+      },
+      {
+        "id": 1,
+        "code": "VIEW_USERS",
+        "description": "Permesso per consultare la lista di tutti gli utenti"
+      },
+      {
+        "id": 12,
+        "code": "VERSION_MANAGEMENT",
+        "description": "Permesso per gestire/consultare le versioni del DB"
+      },
+      {
+        "id": 14,
+        "code": "SEED_TOOLS",
+        "description": "Permesso per effettuare l'import degli utensili da file json"
+      },
+      {
+        "id": 13,
+        "code": "SEED_USERS",
+        "description": "Permesso per effettuare l'import degli utenti da file json"
+      },
+      {
+        "id": 15,
+        "code": "EDIT_SETTINGS",
+        "description": "Permesso per gestire i settings dell'applicativo"
+      },
+      {
+        "id": 16,
+        "code": "VIEW_TOOLHOLDERS",
+        "description": "Permesso per consultare la lista dei tool holders"
+      },
+      {
+        "id": 17,
+        "code": "TOOLHODER_MANAGEMENT",
+        "description": "Permesso per gestire i toolholders"
+      },
+      {
+        "id": 19,
+        "code": "PROFILE_MANAGEMENT",
+        "description": "Permesso per gestire i profili"
+      },
+      {
+        "id": 18,
+        "code": "SESSION_MANAGEMENT",
+        "description": "Permesso per consultare la lista delle sessioni"
+      },
+      {
+        "id": 20,
+        "code": "CULTURE_MANAGEMENT",
+        "description": "Permesso per gestire le cultures"
+      }
+    ]
+  },
+  {
+    "responseType": 200,
+    "errorCode": null,
+    "result": [
+      {
+        "id": 6,
+        "code": "GROUP_MANAGEMENT",
+        "description": "Permesso per creare, modificare i permessi e cancellare un gruppo"
+      },
+      {
+        "id": 3,
+        "code": "USER_MANAGEMENT",
+        "description": "Permesso per creare, modificare e cancellare gli utenti"
+      },
+      {
+        "id": 5,
+        "code": "VIEW_GROUP",
+        "description": "Permesso per la consultazione del dettaglio di un gruppo"
+      },
+      {
+        "id": 4,
+        "code": "VIEW_GROUPS",
+        "description": "Permesso per la consultazione dei gruppi"
+      },
+      {
+        "id": 9,
+        "code": "VIEW_TOOL",
+        "description": "Permesso per consultare il dettaglio di un utensile"
+      },
+      {
+        "id": 8,
+        "code": "VIEW_TOOLS",
+        "description": "Permesso per consultare l'anagrafica degli utensili"
+      },
+      {
+        "id": 2,
+        "code": "VIEW_USER",
+        "description": "Permesso per consultare il dettaglio di un utente"
+      },
+      {
+        "id": 1,
+        "code": "VIEW_USERS",
+        "description": "Permesso per consultare la lista di tutti gli utenti"
+      },
+      {
+        "id": 16,
+        "code": "VIEW_TOOLHOLDERS",
+        "description": "Permesso per consultare la lista dei tool holders"
+      },
+      {
+        "id": 17,
+        "code": "TOOLHODER_MANAGEMENT",
+        "description": "Permesso per gestire i toolholders"
+      },
+      {
+        "id": 19,
+        "code": "PROFILE_MANAGEMENT",
+        "description": "Permesso per gestire i profili"
+      }
+    ]
+  },
+  {
+    "responseType": 200,
+    "errorCode": null,
+    "result": [
+      {
+        "id": 8,
+        "code": "VIEW_TOOLS",
+        "description": "Permesso per consultare l'anagrafica degli utensili"
+      },
+      {
+        "id": 9,
+        "code": "VIEW_TOOL",
+        "description": "Permesso per consultare il dettaglio di un utensile"
+      },
+      {
+        "id": 16,
+        "code": "VIEW_TOOLHOLDERS",
+        "description": "Permesso per consultare la lista dei tool holders"
+      },
+      {
+        "id": 19,
+        "code": "PROFILE_MANAGEMENT",
+        "description": "Permesso per gestire i profili"
+      }
+    ]
+  },
+  {
+    "responseType": 200,
+    "errorCode": null,
+    "result": []
+  }
+]

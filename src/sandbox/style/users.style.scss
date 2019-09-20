@@ -26,7 +26,7 @@
     .users__section-title {
       display: block;
       font-weight: 300;
-      margin: 1rem 0;
+      margin: 0.25rem 0;
     }
 
     .users__container {
@@ -36,7 +36,7 @@
       .users__section {
         border: $border-dark-grey solid 0.0625rem;
         flex: 1;
-        padding: 1rem;
+        padding: 0.5rem;
 
         &.users__container {
           flex-direction: column;
@@ -56,7 +56,7 @@
       div {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.5rem;
       }
 
       .users__action-button {
@@ -65,7 +65,7 @@
         display: block;
         flex: 1;
         font-size: 1rem;
-        margin: 1rem 0;
+        margin: 0.25rem 0;
         padding: 0.5rem 2rem;
         width: 100%;
 

@@ -1,0 +1,5 @@
+{
+  "responseType": 200,
+  "errorCode": null,
+  "result": "[{\"UserName\":\"admin\",\"IsActive\":true,\"FirstName\":\"Ficep\",\"LastName\":\"Admin\",\"Password\":\"FVBwqSOmUxYmP6uVbrT0iw==\",\"Groups\":[1]},{\"UserName\":\"user\",\"IsActive\":true,\"FirstName\":\"User\",\"LastName\":\"User\",\"Password\":\"FVBwqSOmUxYmP6uVbrT0iw==\",\"Groups\":[2]},{\"UserName\":\"super\",\"IsActive\":true,\"FirstName\":\"Admin\",\"LastName\":\"User\",\"Password\":\"FVBwqSOmUxYmP6uVbrT0iw==\",\"Groups\":[3,1]}]"
+}

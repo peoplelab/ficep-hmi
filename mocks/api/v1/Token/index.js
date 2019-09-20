@@ -27,14 +27,15 @@ const setGlobalTime = () => {
 };
 
 
+const responseID = {
+  ...sessionIdJSON,
+
+}
+
+
 module.exports = {
+  GET: (req, res) => res.status(200).json(responseID),
   POST: (req, res) => {
-    const { sessionId } = req.params.sessionId;
-
-    if (sessionId) {
-      res.status(200).json(sessionIdJSON);
-    }
-
     const {
       Culture,
       GrantType,

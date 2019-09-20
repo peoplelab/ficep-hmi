@@ -16,5 +16,6 @@
   "modal_error_code": "Codice dell'errore:",
   "modal_error_details": "Dettagli:",
   "modal_error_close": "Chiudi",
-  "modal_error_server": "Errore lato server"
+  "modal_error_server": "Errore lato server",
+  "modal_error_technical": "Errore tecnico"
 }

@@ -8,63 +8,86 @@
 
 .sandbox {
   .users {
+    height: 100%;
     padding: 3rem;
+    width: 100%;
+
+    .users__title {
+      display: block;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      width: 100%;
+    }
+    .users__sub-title{
+      display: block;
+      font-weight: 500;
+      margin: 1rem 0;
+    }
+    .users__section-title {
+      display: block;
+      font-weight: 300;
+      margin: 1rem 0;
+    }
 
     .users__container {
       display: flex;
       flex-wrap: wrap;
 
-      .users__group {
+      .users__section {
+        border: $border-dark-grey solid 0.0625rem;
         flex: 1;
-        padding-left: 2rem;
+        padding: 1rem;
 
-        &:first-of-type {
-          flex: none;
-          margin: 2rem 0 3rem;
-          width: 100%;
+        &.users__container {
+          flex-direction: column;
+
+          &:first-of-type {
+            flex: none;
+          }
         }
       }
     }
 
-    .users__button {
-      background-color: $bg-dark-cyan;
-      color: $text-white;
-      display: block;
-      font-size: 1rem;
-      margin: 0 auto;
-      padding: 0.5rem 2rem;
-
-      &:disabled {
-        background-color: $bg-grey-cyan;
+    .users__actions {
+      div {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
       }
 
-      &:enabled {
-        cursor: pointer;
+      .users__action-button {
+        background-color: $bg-dark-cyan;
+        color: $text-white;
+        display: block;
+        flex: 1;
+        font-size: 1rem;
+        margin: 1rem 0;
+        padding: 0.5rem 2rem;
+        width: 100%;
 
-        &:hover {
-          background-color: $bg-cyan;
+        &:disabled {
+          background-color: $bg-grey-cyan;
+        }
+
+        &:enabled {
+          cursor: pointer;
+
+          &:hover {
+            background-color: $bg-cyan;
+          }
         }
       }
     }
 
-    .users__table {
-      border-collapse: collapse;
-      margin: 3rem 0;
+    .users__data {
+      display: flex;
+      flex-direction: column;
 
-      caption {
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-
-      th {
-        border: solid 0.125rem #323232;
-        padding: 0.5rem 2rem;
-      }
-
-      td {
-        border: solid 0.0625rem #323232;
-        padding: 0.5rem 2rem;
-        text-align: left;
+      .users__code {
+        background-color: $bg-light-grey;
+        flex: 1;
+        overflow: auto;
+        padding: 1rem;
       }
     }
   }

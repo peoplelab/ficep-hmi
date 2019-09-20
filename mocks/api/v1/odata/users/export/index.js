@@ -1,4 +1,4 @@
-const { base } = require('../../../../mock.base');
+const { base } = require('../../../../../mock.base');
 const responseJSON = require('./response.json');
 
 module.exports = {

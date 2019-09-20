@@ -28,7 +28,7 @@ module.exports = [
 
   {
     "url": '/api/v1/odata/groups/:id/permissions',
-    "api": require(`/api/v1/odata/groups/permissions`),
+    "api": require(`./api/v1/odata/groups/permissions`),
   },
   {
     "url": `/api/v1/odata/Token/latest`,

@@ -36,6 +36,7 @@
       .users__section {
         border: $border-dark-grey solid 0.0625rem;
         flex: 1;
+        overflow: hidden;
         padding: 1rem;
 
         &.users__container {
@@ -81,13 +82,21 @@
 
     .users__data {
       display: flex;
+      flex: none;
       flex-direction: column;
+      width: 100%;
 
       .users__code {
         background-color: $bg-light-grey;
         flex: 1;
-        overflow: auto;
+        overflow: hidden;
         padding: 1rem;
+
+        p {
+          height: 100%;
+          overflow: auto;
+          width: 100%;
+        }
       }
     }
   }

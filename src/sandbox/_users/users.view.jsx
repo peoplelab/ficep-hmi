@@ -131,22 +131,34 @@ class UsersRoute extends PureComponent {
               </div>
             </div>
             <div className="users__section users__container">
-              <div className="users__section users__data">
+              {/* <div className="users__section users__data">
                 <h2 className="users__sub-title">URL</h2>
                 <div className="users__code">
-                  {url}
+                  <p>
+                    <pre>
+                      {url}
+                    </pre>
+                  </p>
                 </div>
               </div>
               <div className="users__section users__data">
                 <h2 className="users__sub-title">Request</h2>
                 <div className="users__code">
-                  {request}
+                  <p>
+                    <pre>
+                      {request}
+                    </pre>
+                  </p>
                 </div>
-              </div>
+              </div> */}
               <div className="users__section users__data">
                 <h2 className="users__sub-title">Response</h2>
                 <div className="users__code">
-                  {response}
+                  <p>
+                    <pre>
+                      {response}
+                    </pre>
+                  </p>
                 </div>
               </div>
             </div>

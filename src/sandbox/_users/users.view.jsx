@@ -12,7 +12,7 @@ import Button from '../../components/layouts/Button';
 import ButtonData from '../../components/layouts/ButtonData';
 // import { } from '../../controllers/routes/users/users.controller';
 // import { } from '../../controllers/routes/users/groups.controller';
-// import { } from '../../controllers/api/session.controller';
+import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
 import '../style/users.style.scss';
 
@@ -21,6 +21,9 @@ class UsersRoute extends PureComponent {
 	constructor(props) {
     super(props);
 
+    this.state = {};
+
+    this.updateState = this.updateState.bind(this);
     this.getusersList = this.getusersList.bind(this);
     this.getuserDetail = this.getuserDetail.bind(this);
     this.exportUser = this.exportUser.bind(this);
@@ -29,6 +32,10 @@ class UsersRoute extends PureComponent {
     this.addUserToGroup = this.addUserToGroup.bind(this);
     this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
     this.checkSession = this.checkSession.bind(this);
+  }
+
+  updateState(newState) {
+    this.setState(newState);
   }
 
   getusersList(event) {
@@ -60,17 +67,17 @@ class UsersRoute extends PureComponent {
   }
 
   checkSession(event) {
+    const dispatch = this.updateState;
 
+    callTokenSessionCheck({ dispatch });
   }
 
   // renderizzazione della pagina
 	render() {
-    const url = 0;
-    const request = 0;
-    const response = 0;
-
-    // JSON.stringify({ a:1, b:2, c:3 }, null, 2)
-
+    // const url = 0;
+    // const request = 0;
+    const response = JSON.stringify(this.state, undefined, 4);
+console.log(this.state);
     return (
         <section className="users">
           <h1 className="users__title">

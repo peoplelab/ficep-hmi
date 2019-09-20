@@ -6,7 +6,7 @@
 
 
 import { base } from '../common/controller.base';
-import { tokenRefresh } from '../../models/api/token.model';
+import { tokenRefresh, tokenSessionCheck } from '../../models/api/token.model';
 import store from '../../store/redux.store';
 import { types } from '../../store/session.store';
 import { pathOr } from '../../utils/path';
@@ -36,6 +36,26 @@ export const callRefresh = async (prevRequestArgs) => {
       store.dispatch({
         type: types.RESET_SESSION,
       });
+    }
+  });
+};
+
+
+// chimata per il refresh automatico della sessione utentete
+// al successo della chiamata, esegue un nuovo tentativo di connessione all'api rifiutata in precedenza
+export const callTokenSessionCheck = async ({ dispatch }) => {
+  const sessionId = pathOr('', ['session', 'sessionId'], store.getState());
+
+  const params = { sessionId };
+
+  base({
+    params,
+    api: tokenSessionCheck,
+    success: ({ dataprocessed }) => {
+      dispatch(dataprocessed);
+    },
+    failure: ({ httpcode }) => {
+      dispatch(httpcode);
     }
   });
 };

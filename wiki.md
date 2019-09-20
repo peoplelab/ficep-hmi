@@ -41,3 +41,12 @@ ___
   "result":"USER_ADDTOGROUP_ALREADYPRESENT"
 }
 ```
+
+
+## Traduzioni
+
+### Info
+
+| api | info | note |
+|-|-|-|
+|`USER_ADDTOGROUP_ALREADYPRESENT`| Mancano le traduzioni del messaggio di errore | |

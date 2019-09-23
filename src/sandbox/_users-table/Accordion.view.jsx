@@ -59,10 +59,7 @@ class Accordion extends PureComponent {
 
 
 Accordion.propTypes = {
-  children: PropTypes.oneOfType(
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ).isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
   open: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func,

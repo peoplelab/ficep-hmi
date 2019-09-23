@@ -93,13 +93,13 @@ Table.propTypes = {
   caption: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
   headers: PropTypes.arrayOf(PropTypes.string),
-  footer: PropTypes.func,
+  footer: PropTypes.element,
 };
 
 Table.defaultProps = {
   children: null,
   className: '',
-  caption: '',
+  caption: null, // fix for incompatibility between tables and empty strings
   data: [],
   headers: [],
   footer: null,

@@ -14,49 +14,22 @@ import {
 import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
-import { Button, ButtonData, Accordion, Table } from '../../components/layouts/index.layouts';
+import { Button, Accordion, Table } from '../../components/layouts/index.layouts';
 import FooterUsers from './footer.users.view';
 import FooterDetails from './footer.details.view';
 import { Form } from '../../components/forms-context/index.form';
+import { templateUsers, templateDetail, templateDetailGroups, templateGroups } from './users.item.templates';
 
 import '../style/users-tab.style.scss';
 
 
 const headers = {
-  users: [
-    'id',
-    'firstName',
-    'lastName',
-    'userName',
-    'isActive',
-    'creationDate',
-    'action',
-  ],
-  groups: [
-    'id',
-    'code',
-    'description',
-  ],
-  permissions: [
-    'id',
-    'code',
-    'description',
-  ],
-  details: [
-    'id',
-    'firstName',
-    'lastName',
-    'userName',
-    'isActive',
-    'creationDate',
-  ],
-  detailsGroups: [
-    'id',
-    'code',
-    'description',
-  ]
+  users: ['id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate', 'action'],
+  groups: ['id', 'code', 'description'],
+  permissions: ['id', 'code', 'description'],
+  details: ['id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate'],
+  detailsGroups: ['id', 'code', 'description']
 };
-
 
 const initial = {
   username: '',
@@ -100,11 +73,6 @@ class UsersRoute extends PureComponent {
     this.addUserToGroup = this.addUserToGroup.bind(this);
     this.removeUser = this.removeUser.bind(this);
     this.removeUserFromGroup = this.removeUserFromGroup.bind(this);
-
-    this.templateUsers = this.templateUsers.bind(this);
-    this.templateDetailGroups = this.templateDetailGroups.bind(this);
-    this.templateGroups = this.templateGroups.bind(this);
-    this.templateDetail = this.templateDetail.bind(this);
   }
 
   componentDidMount() {
@@ -209,100 +177,6 @@ class UsersRoute extends PureComponent {
     callTokenSessionCheck({ dispatch });
   }
 
-  templateUsers({ value, index }) {
-    const {
-      id,
-      firstName,
-      lastName,
-      userName,
-      isActive,
-      creationDate,
-    } = value;
-
-    return (
-      <tr className="table__row" key={`table-row-${index}`} >
-        <td className="table__cell">
-          <ButtonData className="users__button" data={id} onClick={this.getUserDetail}>
-            {id}
-          </ButtonData>
-        </td>
-        <td className="table__cell">{firstName}</td>
-        <td className="table__cell">{lastName}</td>
-        <td className="table__cell">{userName}</td>
-        <td className="table__cell">{isActive}</td>
-        <td className="table__cell">{creationDate}</td>
-        <td className="table__cell">
-          <ButtonData className="users__button" onClick={this.removeUser} data={id}>
-            Remove
-          </ButtonData>
-        </td>
-      </tr>
-    );
-  }
-
-  templateDetailGroups({ value, index }) {
-    const {
-      id,
-      code,
-      description,
-    } = value;
-
-    return (
-      <tr className="table__row" key={`table-row-${index}`} >
-        <td className="table__cell">{id}</td>
-        <td className="table__cell">{code}</td>
-        <td className="table__cell">{description}</td>
-        <td className="table__cell">
-          <ButtonData className="users__button" onClick={this.removeUserFromGroup} data={id}>
-            Remove
-          </ButtonData>
-        </td>
-      </tr>
-    );
-  }
-
-  templateGroups({ value, index }) {
-    const {
-      id,
-      code,
-      description,
-    } = value;
-
-    return (
-      <tr className="table__row" key={`table-row-${index}`} >
-        <td className="table__cell">
-          <ButtonData className="users__button" data={id} onClick={this.getPermissionsList}>
-            {id}
-          </ButtonData>
-        </td>
-        <td className="table__cell">{code}</td>
-        <td className="table__cell">{description}</td>
-      </tr>
-    );
-  }
-
-  templateDetail({ value, index }) {
-    const {
-      id,
-      firstName,
-      lastName,
-      userName,
-      isActive,
-      creationDate,
-    } = value;
-
-    return (
-      <tr className="table__row" key={`table-row-${index}`} >
-        <td className="table__cell">{id}</td>
-        <td className="table__cell">{firstName}</td>
-        <td className="table__cell">{lastName}</td>
-        <td className="table__cell">{userName}</td>
-        <td className="table__cell">{isActive}</td>
-        <td className="table__cell">{creationDate}</td>
-      </tr>
-    );
-  }
-
   // renderizzazione della pagina
 	render() {
     const { users, groups, permissions, details, code } = this.state;
@@ -319,18 +193,18 @@ class UsersRoute extends PureComponent {
                 <h3>Users</h3>
                 <Form initial={initial}>
                   <Table headers={headers.users} data={users} footer={<FooterUsers onSubmit={this.addUser} groups={groups} />} >
-                    {this.templateUsers}
+                    {templateUsers(this.getUserDetail, this.removeUser)}
                   </Table>
                 </Form>
               </Accordion>
               <Accordion open>
                 <h3>Detail</h3>
                 <Table headers={headers.details} data={[details]} >
-                  {this.templateDetail}
+                  {templateDetail}
                 </Table>
                 <Form initial={initialGroups}>
                   <Table headers={headers.detailsGroups} data={details.groups} footer={<FooterDetails onSubmit={this.addUserToGroup} groups={groups} />} >
-                    {this.templateDetailGroups}
+                    {templateDetailGroups(this.removeUserFromGroup)}
                   </Table>
                 </Form>
               </Accordion>
@@ -340,7 +214,7 @@ class UsersRoute extends PureComponent {
               <Accordion open>
                 <h3>Groups</h3>
                   <Table headers={headers.groups} data={groups} >
-                    {this.templateGroups}
+                    {templateGroups(this.getPermissionsList)}
                   </Table>
               </Accordion>
               <Accordion open>

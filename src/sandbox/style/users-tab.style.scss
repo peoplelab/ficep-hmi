@@ -1,0 +1,126 @@
+// stylelint-disable plugin/selector-bem-pattern
+
+// Style own of users route
+
+@import './colors.scss';
+
+/** @define users */
+
+.sandbox {
+  .users--tab {
+    height: 100%;
+    padding: 3rem;
+    width: 100%;
+
+    h1 {
+      display: block;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      width: 100%;
+    }
+    h2 {
+      display: block;
+      font-weight: 500;
+      margin: 1rem 0;
+    }
+    h3 {
+      display: block;
+      font-weight: 300;
+      margin: 0.25rem 0;
+    }
+
+
+    .users__container {
+      display: flex;
+      flex-direction: column;
+
+      .users__content {
+        flex: 1;
+        margin: 1rem 0;
+
+        .accordion {
+          margin-bottom: 0.5rem;
+
+          .accordion__header {
+            .accordion__button {
+              background-color: $bg-dark-grey;
+              color: $text-light-grey;
+              cursor: pointer;
+              display: block;
+              height: 100%;
+              padding: 1rem;
+              width: 100%;
+            }
+          }
+          .accordion__section {
+            border: solid 0.0625rem $border-dark-grey;
+
+            .table {
+              height: 100%;
+              width: 100%;
+
+              .table__row {
+                .table__cell {
+                  border-collapse: collapse;
+                  padding: 0.4rem;
+                }
+
+                &.table__row--footer {
+                  background-color: $bg-light-grey;
+                  margin-top: 0.5rem;
+                }
+              }
+            }
+          }
+        }
+
+        .users__button-group {
+          margin: 0 auto;
+          max-width: 22rem;
+          width: 100%;
+        }
+
+        .users__code {
+          background-color: $bg-light-grey;
+          border: solid $border-light-grey 0.5rem;
+          margin-top: 1rem;
+          overflow: auto;
+          padding: 0.5rem;
+        }
+      }
+    }
+
+    .users__button {
+      background-color: $bg-dark-cyan;
+      color: $text-white;
+      display: block;
+      flex: 1;
+      font-size: 1rem;
+      margin: 0.25rem 0;
+      padding: 0.5rem 2rem;
+      width: 100%;
+
+      &:disabled {
+        background-color: $bg-grey-cyan;
+      }
+
+      &:enabled {
+        cursor: pointer;
+
+        &:hover {
+          background-color: $bg-cyan;
+        }
+      }
+    }
+
+    button[type='submit'] {
+      @extend .users__button;
+
+      width: auto;
+    }
+
+    input, select {
+      padding: 0.5rem;
+    }
+  }
+}

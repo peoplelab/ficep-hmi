@@ -14,7 +14,7 @@ export const callGroupList = async ({ dispatch }) => {
   base({
     api: groupList,
     success: ({ dataprocessed }) => {
-      dispatch({ groups: dataprocessed });
+      dispatch({ groups: dataprocessed.result });
     },
     failure: () => {
       dispatch({ groups: [] });
@@ -32,7 +32,7 @@ export const callGroupPermissions = async ({ data, dispatch }) => {
     params,
     api: groupPermissions,
     success: ({ dataprocessed }) => {
-      dispatch({ permissions: dataprocessed });
+      dispatch({ permissions: dataprocessed.result });
     },
     failure: () => {
       dispatch({ permissions: [] });
@@ -45,7 +45,7 @@ export const callGroupPermissions = async ({ data, dispatch }) => {
 //   base({
 //     api: groupExport,
 //     success: ({ dataprocessed }) => {
-//       dispatch({ export: dataprocessed });
+//       dispatch({ export: dataprocessed.result });
 //     },
 //     failure: () => {
 //       dispatch({ export: null });

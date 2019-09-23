@@ -16,7 +16,7 @@ export const callUsersList = async ({ dispatch }) => {
   base({
     api: usersList,
     success: ({ dataprocessed }) => {
-      dispatch({ users: dataprocessed });
+      dispatch({ users: dataprocessed.result });
     },
     failure: () => {
       dispatch({ users: [] });
@@ -34,7 +34,7 @@ export const callUsersDetails = async ({ data, dispatch }) => {
     params,
     api: usersDetails,
     success: ({ dataprocessed }) => {
-      dispatch({ details: dataprocessed });
+      dispatch({ details: dataprocessed.result });
     },
     failure: () => {
       dispatch({ details: null });
@@ -47,7 +47,7 @@ export const callUsersExport = async ({ dispatch }) => {
   base({
     api: usersExport,
     success: ({ dataprocessed }) => {
-      dispatch({ export: dataprocessed });
+      dispatch({ export: dataprocessed.result });
     },
     failure: () => {
       dispatch({ export: {} });
@@ -56,7 +56,7 @@ export const callUsersExport = async ({ dispatch }) => {
 };
 
 // chimata per aggiungere un utente ad un gruppo
-export const callUsersAddToGroup = async ({ data, dispatch }) => {
+export const callUsersAddToGroup = async ({ data, dispatch, fn }) => {
   const params = {
     id: data.idUser,
     groupId: data.idGroup,
@@ -66,7 +66,10 @@ export const callUsersAddToGroup = async ({ data, dispatch }) => {
     params,
     api: usersAddToGroup,
     success: ({ dataprocessed }) => {
-      dispatch({ response: dataprocessed });
+      dispatch({ response: dataprocessed.result });
+      if (dataprocessed.result) {
+        fn();
+      }
     },
     failure: () => {
       dispatch({ response: null });
@@ -75,7 +78,7 @@ export const callUsersAddToGroup = async ({ data, dispatch }) => {
 };
 
 // chimata per rimuovere un utente da un gruppo
-export const callUsersDeleteFromGroup = async ({ data, dispatch }) => {
+export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
   const params = {
     id: data.idUser,
     groupId: data.idGroup,
@@ -85,7 +88,10 @@ export const callUsersDeleteFromGroup = async ({ data, dispatch }) => {
     params,
     api: usersDeleteFromGroup,
     success: ({ dataprocessed }) => {
-      dispatch({ response: dataprocessed });
+      dispatch({ response: dataprocessed.result });
+      if (dataprocessed.result) {
+        fn();
+      }
     },
     failure: () => {
       dispatch({ response: null });

@@ -5,7 +5,8 @@ import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della
 import Anchor from '../components/layouts/Anchor';
 import Tools from './_tools/tools.view';
 import Cultures from './_cultures/cultures.view';
-import Users from './_users/users.view';
+import UsersRes from './_users-response/users.view';
+import UsersTab from './_users-table/users.view';
 
 import './style/sandbox.style.scss';
 
@@ -25,8 +26,11 @@ const Sandbox = ({ match }) => (
       <Anchor className="sandbox__link" path={`${match.path}/cultures`} exact>
         Sandbox/Cultures
       </Anchor>
-      <Anchor className="sandbox__link" path={`${match.path}/users`} exact>
-        Sandbox/users
+      <Anchor className="sandbox__link" path={`${match.path}/users-res`} exact>
+        Sandbox/users-response
+      </Anchor>
+      <Anchor className="sandbox__link" path={`${match.path}/users-tab`} exact>
+        Sandbox/users-table
       </Anchor>
     </div>
     <div className="sandbox__route-box">
@@ -44,8 +48,11 @@ const Sandbox = ({ match }) => (
         <Route path={`${match.path}/cultures`} exact>
           <Cultures />
         </Route>
-        <Route path={`${match.path}/users`} exact>
-          <Users />
+        <Route path={`${match.path}/users-res`} exact>
+          <UsersRes />
+        </Route>
+        <Route path={`${match.path}/users-tab`} exact>
+          <UsersTab />
         </Route>
       </Switch>
     </div>

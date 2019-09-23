@@ -35,13 +35,13 @@ class Footer extends PureComponent {
     const options = this.setGroups();
 
     return (
-      <tr>
-        <td colSpan="2">
+      <tr className="table__row table__row--footer">
+        <td className="table__cell table__cell--footer" colSpan="1">
           <Select name="group">
             <Option options={options} />
           </Select>
         </td>
-        <td>
+        <td className="table__cell table__cell--footer" colSpan="5">
           <Submit name="form-details" required={required} onSubmit={onSubmit}>
             Add
           </Submit>

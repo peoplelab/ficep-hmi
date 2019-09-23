@@ -16,7 +16,7 @@ import {
 import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
-import '../style/users.style.scss';
+import '../style/users-res.style.scss';
 
 
 class UsersRoute extends PureComponent {
@@ -104,7 +104,7 @@ class UsersRoute extends PureComponent {
     const response = JSON.stringify(data, undefined, 4);
 
     return (
-        <section className="users">
+        <section className="users users--res">
           <h1 className="users__title">
             Users
           </h1>

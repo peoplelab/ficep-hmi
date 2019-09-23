@@ -21,7 +21,7 @@ import FooterUsers from './footer.users.view';
 import FooterDetails from './footer.details.view';
 import { Form } from '../../components/forms-context/index.form';
 
-import '../style/users.style.scss';
+import '../style/users-tab.style.scss';
 
 
 const headers = {
@@ -81,9 +81,11 @@ class UsersRoute extends PureComponent {
       permissions: [],
       details: {},
       currentUser: null,
+      code: null,
      };
 
     this.updateState = this.updateState.bind(this);
+    this.updateStateCode = this.updateStateCode.bind(this);
 
     this.userDetail = this.userDetail.bind(this);
 
@@ -116,11 +118,17 @@ class UsersRoute extends PureComponent {
     this.setState(newState);
   }
 
+  updateStateCode(newState) {
+    this.setState({ code: Object.values(newState) });
+  }
+
   addUser(state, event) {
+    alert('Not enable!');
     console.log('addUser', state, event);
     // this.getUsersList();
   }
   removeUser(event) {
+    alert('Not enable!');
     console.log('removeUser', event.data, event);
     // this.getUsersList();
   }
@@ -146,11 +154,12 @@ class UsersRoute extends PureComponent {
   }
 
   exportGroups(event) {
+    alert('Not enable!');
     console.log('exportGroups', event);
   }
 
   exportUser(event) {
-    const dispatch = this.updateState;
+    const dispatch = this.updateStateCode;
 
     callUsersExport({ dispatch });
   }
@@ -197,7 +206,7 @@ class UsersRoute extends PureComponent {
   }
 
   checkSession(event) {
-    const dispatch = this.updateState;
+    const dispatch = this.updateStateCode;
 
     callTokenSessionCheck({ dispatch });
   }
@@ -215,7 +224,7 @@ class UsersRoute extends PureComponent {
     return (
       <tr className="table__row" key={`table-row-${index}`} >
         <td className="table__cell">
-          <ButtonData data={id} onClick={this.getuserDetail}>
+          <ButtonData className="users__button" data={id} onClick={this.getUserDetail}>
             {id}
           </ButtonData>
         </td>
@@ -225,7 +234,7 @@ class UsersRoute extends PureComponent {
         <td className="table__cell">{isActive}</td>
         <td className="table__cell">{creationDate}</td>
         <td className="table__cell">
-          <ButtonData onClick={this.removeUser} data={id}>
+          <ButtonData className="users__button" onClick={this.removeUser} data={id}>
             Remove
           </ButtonData>
         </td>
@@ -246,7 +255,7 @@ class UsersRoute extends PureComponent {
         <td className="table__cell">{code}</td>
         <td className="table__cell">{description}</td>
         <td className="table__cell">
-          <ButtonData onClick={this.removeUserFromGroup} data={id}>
+          <ButtonData className="users__button" onClick={this.removeUserFromGroup} data={id}>
             Remove
           </ButtonData>
         </td>
@@ -264,7 +273,7 @@ class UsersRoute extends PureComponent {
     return (
       <tr className="table__row" key={`table-row-${index}`} >
         <td className="table__cell">
-          <ButtonData data={id} onClick={this.getPermissionsList}>
+          <ButtonData className="users__button" data={id} onClick={this.getPermissionsList}>
             {id}
           </ButtonData>
         </td>
@@ -298,15 +307,15 @@ class UsersRoute extends PureComponent {
 
   // renderizzazione della pagina
 	render() {
-    const { users, groups, permissions, details } = this.state;
+    const { users, groups, permissions, details, code } = this.state;
 
     return (
-        <section className="users">
+        <section className="users users--tab">
           <h1 className="users__title">
             Users
           </h1>
           <div className="users__container">
-            <div>
+            <div className="users__content">
               <h2>Users details</h2>
               <Accordion open>
                 <h3>Users</h3>
@@ -328,7 +337,7 @@ class UsersRoute extends PureComponent {
                 </Form>
               </Accordion>
             </div>
-            <div>
+            <div className="users__content">
               <h2>Groups details</h2>
               <Accordion open>
                 <h3>Groups</h3>
@@ -341,20 +350,25 @@ class UsersRoute extends PureComponent {
                 <Table open headers={headers.permissions} data={permissions}/>
               </Accordion>
             </div>
-            <div>
+            <div className="users__content">
               <h2>Tools group</h2>
               <Accordion open>
                 <h3>Tools</h3>
-                <div>
-                  <Button onClick={this.checkSession}>
+                <div className="users__button-group">
+                  <Button className="users__button" onClick={this.checkSession}>
                     Check Session
                   </Button>
-                  <Button onClick={this.exportGroups}>
+                  <Button className="users__button" onClick={this.exportGroups}>
                     Export groups
                   </Button>
-                  <Button onClick={this.exportUser}>
+                  <Button className="users__button" onClick={this.exportUser}>
                     Export users
                   </Button>
+                </div>
+                <div className="users__code">
+                  <pre>
+                    {JSON.stringify(code, null, 4)}
+                  </pre>
                 </div>
               </Accordion>
             </div>

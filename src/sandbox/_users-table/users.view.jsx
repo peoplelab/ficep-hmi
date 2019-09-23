@@ -14,9 +14,7 @@ import {
 import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
-import { Button, ButtonData } from '../../components/layouts/index.layouts';
-import Accordion from './Accordion.view';
-import Table from './Table.view';
+import { Button, ButtonData, Accordion, Table } from '../../components/layouts/index.layouts';
 import FooterUsers from './footer.users.view';
 import FooterDetails from './footer.details.view';
 import { Form } from '../../components/forms-context/index.form';

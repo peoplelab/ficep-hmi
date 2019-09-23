@@ -104,7 +104,7 @@ Card.defaultProps = {
   role: '',
   culture: '',
   className: '',
-  ids: {}
+  intl: {}
 };
 
 

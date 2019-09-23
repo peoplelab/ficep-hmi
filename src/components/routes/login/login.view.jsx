@@ -9,11 +9,17 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-import { Box, Card, ButtonData, Gallery } from '../../layouts/index.layouts';
+import Form from '../../forms-context/Form';
+import TextInput from '../../forms-context/TextInput';
+import PasswordInput from '../../forms-context/PasswordInput';
+import Select from '../../forms-context/Select';
+import Option from '../../forms-context/Option';
+import Submit from '../../forms-context/Submit';
+import Field from '../../forms-context/Field';
+import SetStore from '../../forms-context/SetStore';
+import ButtonForm from '../../forms-context/ButtonForm';
+import { Box, Card, Gallery } from '../../layouts/index.layouts';
 import { InputCard } from '../../forms-custom/index.form-custom';
-import {
-  Form, TextInput, PasswordInput, Select, Submit, Field
-} from '../../forms/index.form';
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
 import intl from '../../../../public/translations/login/default.json';
@@ -48,13 +54,11 @@ class LoginRoute extends Component {
 
     // inizializzazione dello stato della pagina
     this.state = {
-      ...initial,
       usersList: [],
       cultureList: [],
     };
 
     this.updateState = this.updateState.bind(this);
-    this.setUsername = this.setUsername.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.SlideTemplate = this.SlideTemplate.bind(this);
@@ -80,13 +84,6 @@ class LoginRoute extends Component {
     this.setState({ [name]: value });
   }
 
-  // metodo per impostare un valore username predefinito, proveniente dalla lista degli ultimi accessi, all'interno della form
-  setUsername(event) {
-    const { data } = event;
-
-    this.setState(data);
-  }
-
   // esegue la richiesta di login
   onLogin(data, event) {
     const dispatch = this.updateState;
@@ -94,78 +91,71 @@ class LoginRoute extends Component {
     callLogin({ data, dispatch });
   }
 
-  SlideTemplate(slideProps) {
-    const {
-      issuedAt,
-      groups,
-      username,
-      culture,
-    } = slideProps;
+  externalDispatch(prevState, dispatch) {
+    return (event) => {
+      const { value } = event.target;
 
-    const [role] = groups;
+      dispatch({
+        username: value.username,
+        culture: value.culture,
+      });
+    };
+  }
 
-    const data = ["username", "culture"].reduce((acc, key) => ({ ...acc, [key]: slideProps[key] }), {
-      data: {
-        issuedAt,
-        role,
-        username,
-        culture,
-      }
-    });
+  SlideTemplate(props) {
+    // {
+    //   issuedAt,
+    //   groups,
+    //   username,
+    //   culture,
+    // } === props;
+
+    [props.role] = props.groups;
 
     return (
-      <ButtonData className="login__button-card" data={data} onClick={this.setUsername}>
-        <Card
-          className="login__card card--button"
-          issuedAt={issuedAt}
-          role={role}
-          username={username}
-          culture={culture}
-          intl={intlCard}
-        />
-      </ButtonData>
+      <SetStore event="onClick" setter={this.externalDispatch}>
+        <ButtonForm className="login__button-card" name="data" value={props}>
+          <Card
+            className="login__card card--button"
+            intl={intlCard}
+            {...props}
+          />
+        </ButtonForm>
+      </SetStore>
     );
   }
 
   // renderizzazione della pagina
 	render() {
-    const { username, password, culture, data, usersList, cultureList } = this.state;
+    const { usersList, cultureList } = this.state;
 
     const newCultureList = cultureList.map((value) => ({ value: value.code, message: value.description }));
 
     return (
       <section className="login">
         <Box className="login__dialog">
-          <Form className="login__form" name="login-form">
+          <Form className="login__form" initial={initial}>
             <p className="login__title">
               {intl.login_info_title}
             </p>
             <Box className="login__form-box">
               <Field className="login__field">
-                <InputCard
-                  className="login__text-input"
-                  target={["username", "culture"]}
-                  name="data"
-                  data={data}
-                  reset={initial}
-                  onClick={this.setUsername}
-                  intl={intlCard}
-                >
-                  <TextInput className="login__text-input" name="username" value={username} onChange={this.onChange} placeholder={intl.login_form_username} />
+                <InputCard className="login__text-input" name="data" initial={initial} intl={intlCard}>
+                  <TextInput className="login__text-input" name="username" placeholder={intl.login_form_username} />
                 </InputCard>
               </Field>
               <Field className="login__field">
                 <PasswordInput
-                  className="login__text-input" name="password" value={password} onChange={this.onChange} placeholder={intl.login_form_password}
+                  className="login__text-input" name="password" placeholder={intl.login_form_password}
                 />
               </Field>
               <Field className="login__field">
-                <Select
-                  className="login__select-input" name="culture" value={culture} onChange={this.onChange} options={newCultureList}
-                />
+                <Select className="login__select-input" name="culture">
+                  <Option options={newCultureList} />
+                </Select>
               </Field>
-              <Submit className="login__form-submit" required={required} value={this.state} onSubmit={this.onLogin} name="login-form">
-                {intl.login_form_login}
+              <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
+                Login
               </Submit>
             </Box>
             <Gallery

@@ -14,7 +14,34 @@ import {
 import { callGroupList, callGroupPermissions } from '../../controllers/routes/users/groups.controller';
 import { callTokenSessionCheck } from '../../controllers/api/session.controller';
 
+import { Button, ButtonData } from '../../components/layouts/index.layouts';
+import Accordion from './Accordion.view';
+import Table from './Table.view';
+import Footer from './footer.view';
+
 import '../style/users.style.scss';
+
+
+const headers = {
+  users: [
+    'id',
+    'firstName',
+    'lastName',
+    'userName',
+    'isActive',
+    'creationDate',
+  ],
+  groups: [
+    'id',
+    'code',
+    'description',
+  ],
+  permissions: [
+    'id',
+    'code',
+    'description',
+  ],
+};
 
 
 class UsersRoute extends PureComponent {
@@ -96,10 +123,38 @@ class UsersRoute extends PureComponent {
     callTokenSessionCheck({ dispatch });
   }
 
+  templateRow({ value, index }) {
+    const {
+      id,
+      firstName,
+      lastName,
+      userName,
+      isActive,
+      creationDate,
+    } = value;
+
+    return (
+      <tr className="table__row" key={`table-row-${index}`} >
+        <td className="table__cell">
+          <ButtonData data={id}>
+            {id}
+          </ButtonData>
+        </td>
+        <td className="table__cell">{firstName}</td>
+        <td className="table__cell">{lastName}</td>
+        <td className="table__cell">{userName}</td>
+        <td className="table__cell">{isActive}</td>
+        <td className="table__cell">{creationDate}</td>
+      </tr>
+    );
+  }
+
   // renderizzazione della pagina
 	render() {
   //   const [data] = Object.values(this.state.response);
   //   const response = JSON.stringify(data, undefined, 4);
+
+    const { users, groups, permissions } = this.state;
 
     return (
         <section className="users">
@@ -107,7 +162,34 @@ class UsersRoute extends PureComponent {
             Users
           </h1>
           <div className="users__container">
-
+            <Accordion>
+              <h3>Users</h3>
+              <Table headers={headers.users} data={users} footer={Footer}>
+                {this.templateRow}
+              </Table>
+            </Accordion>
+            <Accordion>
+              <h3>Groups</h3>
+              <Table headers={headers.groups} data={groups}/>
+            </Accordion>
+            <Accordion>
+              <h3>Permissions</h3>
+              <Table headers={headers.permissions} data={permissions}/>
+            </Accordion>
+            <Accordion>
+              <h3>Tools</h3>
+              <div>
+                <Button>
+                  Check Session
+                </Button>
+                <Button>
+                  Export groups
+                </Button>
+                <Button>
+                  Export users
+                </Button>
+              </div>
+            </Accordion>
           </div>
         </section>
     );

@@ -11,12 +11,23 @@ import { Button } from '../../components/layouts/index.layouts';
 
 
 class Accordion extends PureComponent {
+  static getDerivedStateFromProps(props, state) {
+    if (props.open !== state.prevOpen) {
+      return {
+        open: props.open,
+        prevOpen: props.open,
+      };
+    }
+
+    return null;
+  }
+
 	constructor(props) {
     super(props);
 
     const { open } = props;
 
-    this.state = { open };
+    this.state = { open, prevOpen: open };
 
     this.onClick = this.onClick.bind(this);
   }

@@ -32,7 +32,7 @@ export const templateUsers = (onClick, onRemove) => ({ value, index }) => {
         <td className="table__cell">{firstName}</td>
         <td className="table__cell">{lastName}</td>
         <td className="table__cell">{userName}</td>
-        <td className="table__cell">{isActive}</td>
+        <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
         <td className="table__cell">{creationDate}</td>
         <td className="table__cell">
           <ButtonData className="users__button" onClick={onRemove} data={id}>
@@ -100,7 +100,7 @@ export const templateDetail = ({ value, index }) => {
       <td className="table__cell">{firstName}</td>
       <td className="table__cell">{lastName}</td>
       <td className="table__cell">{userName}</td>
-      <td className="table__cell">{isActive}</td>
+      <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
       <td className="table__cell">{creationDate}</td>
     </tr>
   );

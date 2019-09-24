@@ -17,8 +17,8 @@ import '../../../styles/routes/tools.style.scss';
 
 const Tools = ({ match }) => (
   <Switch>
-    <Route path={match.path} exact>
-      <div className="bg-tools-macchina tools">
+    <Route path={`${match.path}/materials`}>
+      <div className="bg-tools-materiali tools">
         <Anchor className="tools__anchor" exact path={match.path}>
           {window.intl.tools_tab_machine}
         </Anchor>
@@ -30,8 +30,8 @@ const Tools = ({ match }) => (
         </Anchor>
       </div>
     </Route>
-    <Route path={`${match.path}/materials`} exact>
-      <div className="bg-tools-materiali tools">
+    <Route path={match.path}>
+      <div className="bg-tools-macchina tools">
         <Anchor className="tools__anchor" exact path={match.path}>
           {window.intl.tools_tab_machine}
         </Anchor>

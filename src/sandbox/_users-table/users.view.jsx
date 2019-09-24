@@ -19,16 +19,17 @@ import FooterUsers from './footer.users.view';
 import FooterDetails from './footer.details.view';
 import { Form } from '../../components/forms-context/index.form';
 import { templateUsers, templateDetail, templateDetailGroups, templateGroups } from './users.item.templates';
+import Enum from '../../utils/Enum';
 
 import '../style/users-tab.style.scss';
 
 
 const headers = {
-  users: ['id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate', 'action'],
-  groups: ['id', 'code', 'description'],
-  permissions: ['id', 'code', 'description'],
-  details: ['id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate'],
-  detailsGroups: ['id', 'code', 'description']
+  users: Enum.from('id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate', 'action'),
+  groups: Enum.from('id', 'code', 'description'),
+  permissions: Enum.from('id', 'code', 'description'),
+  details: Enum.from('id', 'firstName', 'lastName', 'userName', 'isActive', 'creationDate'),
+  detailsGroups: Enum.from('id', 'code', 'description'),
 };
 
 const initial = {

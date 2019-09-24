@@ -8,9 +8,9 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../../layouts/index.layouts';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
+import Modal from '../../layouts/Modal.view';
 
 import intl from '../../../../public/translations/login/default.json';
 
@@ -44,7 +44,6 @@ const ErrorsModal = (props) => {
   const message = intlHandler("modal_error_message");
   const code = intlHandler("modal_error_code");
   const details = intlHandler("modal_error_details");
-  const close = intlHandler("modal_error_close");
 
   let main = null;
   let description = null;
@@ -66,41 +65,29 @@ const ErrorsModal = (props) => {
   }
 
   return (
-    <div>
-      <div className="error-modal">
-        <div className="error-modal__container">
-          <div className="error-modal__content">
-            <h2 className="error-modal__title modal__title--sub-title">
-              {title}
-            </h2>
-          </div>
-          <div className="error-modal__content">
-            <h1 className="error-modal__title modal__title--main-title">
-              {message}
-            </h1>
-          </div>
-          <div className="error-modal__content">
-            <p className="error-modal__text error-modal__text--message">
-              {code}
-            </p>
-            <p className="error-modal__text error-modal__text--main">
-              {main}
-            </p>
-          </div>
-          <div className="error-modal__content">
-            <p className="error-modal__text error-modal__text--details">
-              {details}
-            </p>
-            {description}
-          </div>
-          <div className="error-modal__content">
-            <Button className="error-modal__button" onClick={onClick}>
-              {close}
-            </Button>
-          </div>
+    <Modal open className="modal--error error-modal" title={title} onClick={onClick} >
+      <div className="error-modal__container">
+        <div className="error-modal__content">
+          <h1 className="error-modal__title modal__title--main-title">
+            {message}
+          </h1>
+        </div>
+        <div className="error-modal__content">
+          <p className="error-modal__text error-modal__text--message">
+            {code}
+          </p>
+          <p className="error-modal__text error-modal__text--main">
+            {main}
+          </p>
+        </div>
+        <div className="error-modal__content">
+          <p className="error-modal__text error-modal__text--details">
+            {details}
+          </p>
+          {description}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

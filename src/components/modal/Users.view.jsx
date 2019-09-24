@@ -7,8 +7,8 @@
 
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Modal from '../layouts/Modal.view';
+// import PropTypes from 'prop-types';
+import { Modal, Table } from '../layouts/index.layouts';
 import {
   callUsersList,
 } from '../../controllers/routes/users/users.controller';
@@ -30,6 +30,25 @@ class Users extends Component {
 
     this.getUsersList = this.getUsersList.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
+
+    this.templateUsers = this.templateUsers.bind(this);
+
+    this.headers = {
+      id: '',
+      firstName: window.intl.users_headers_firstname,
+      lastName: window.intl.users_headers_lastname,
+      userName: window.intl.users_headers_username,
+      isActive: window.intl.users_headers_isactive,
+      creationDate: window.intl.users_headers_creationdate,
+      groups: window.intl.users_headers_role,
+      action: '',
+    };
+
+    this.toText = {
+      ADMIN: window.intl.users_role_administrator,
+      SUPERUSER: window.intl.users_role_technician,
+      USER: window.intl.users_role_operator,
+    };
   }
 
   componentDidMount() {
@@ -53,20 +72,53 @@ class Users extends Component {
     callGroupList({ dispatch });
   }
 
-  render() {
-    // const { disabled } = this.props;
+  templateUsers({ value, index }) {
+    const {
+      id,
+      firstName,
+      lastName,
+      userName,
+      isActive,
+      creationDate,
+      groups,
+    } = value;
 
-    // if (disabled) {
-    //   return null;
-    // }
-
-    // const title = window.intl.modal_users_title;
+    const [{ code }] = groups;
 
     return (
-      <Modal open className="users-modal" title="789" >
-        <div>
-          <div>123</div>
-          <div>456</div>
+      <tr className="table__row" key={`table-row-${index}`} >
+        <td className="table__cell table__cell--id">
+          {id}
+        </td>
+        <td className="table__cell">{firstName}</td>
+        <td className="table__cell">{lastName}</td>
+        <td className="table__cell">{userName}</td>
+        <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
+        <td className="table__cell">{creationDate}</td>
+        <td className="table__cell">{creationDate}</td>
+        <td className="table__cell">{this.toText[code]}</td>
+        <td className="table__cell">
+          UP
+        </td>
+        <td className="table__cell">
+          DEL
+        </td>
+      </tr>
+    );
+  }
+
+  render() {
+    const { users } = this.state;
+
+    return (
+      <Modal open className="users-modal" title={window.intl.users_main_title} >
+        <div className="users-modal__container">
+          <div className="users-modal__content">123</div>
+          <div className="users-modal__content">
+            <Table className="users-modal__table" headers={this.headers} data={users} >
+              {this.templateUsers}
+            </Table>
+          </div>
         </div>
       </Modal>
     );
@@ -78,13 +130,6 @@ class Users extends Component {
  * Define component properties types
  */
 Users.propTypes = {
-  // responseType: PropTypes.number.isRequired,
-  // errorCode: PropTypes.string.isRequired,
-  // errorsDescription: PropTypes.oneOfType([
-  //   PropTypes.arrayOf(PropTypes.string),
-  //   PropTypes.string,
-  // ]).isRequired,
-  // disabled: PropTypes.bool.isRequired,
 };
 
 /**

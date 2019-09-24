@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
-import Modal from '../../layouts/Modal.view';
+import { Modal } from '../../layouts/index.layouts';
 
 import intl from '../../../../public/translations/login/default.json';
 

@@ -24,9 +24,9 @@ class Table extends PureComponent {
       return null;
     }
 
-    const TH = headers.map((value, index) => (
-      <th key={`table-header-${index}`} className="table__cell table__cell--header">
-        {value}
+    const TH = Object.keys(headers).map((key) => (
+      <th key={`table-header-${key}`} className="table__cell table__cell--header">
+        {headers[key]}
       </th>
     ));
 
@@ -46,7 +46,7 @@ class Table extends PureComponent {
     if (typeof children !== 'function') {
       body = data.map((row, index) => (
         <tr key={`table-row-${index}`} className="table__row">
-          {headers.map((cell, index) => (
+          {Object.keys(headers).map((cell, index) => (
             <td key={`table-cell-${index}`} className="table__cell">
               {row[cell]}
             </td>

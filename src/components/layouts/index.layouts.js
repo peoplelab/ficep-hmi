@@ -8,6 +8,7 @@ const ButtonData = lazy(() => import(/* webpackChunkName: "layouts" */ './Button
 const Card = lazy(() => import(/* webpackChunkName: "layouts" */ './Card.view'));
 const Clock = lazy(() => import(/* webpackChunkName: "layouts" */ './Clock.view'));
 const Gallery= lazy(() => import(/* webpackChunkName: "layouts" */ './Gallery.view'));
+const Modal= lazy(() => import(/* webpackChunkName: "layouts" */ './Modal.view'));
 const Table= lazy(() => import(/* webpackChunkName: "layouts" */ './Table.view'));
 
 export {
@@ -19,5 +20,6 @@ export {
   Card,
   Clock,
   Gallery,
+  Modal,
   Table,
 };

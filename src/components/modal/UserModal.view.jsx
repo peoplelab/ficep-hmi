@@ -8,7 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../layouts/index.layouts';
+import { Button, Anchor } from '../layouts/index.layouts';
 import AdminArea from '../common/Area/Area.admin';
 import { callLogout } from '../../controllers/api/logout.controller';
 
@@ -37,12 +37,13 @@ class HomeRoute extends PureComponent {
         <AdminArea>
           <section className="user-modal user-modal--admin">
             <div className="user-modal__bg bg-user-modal-admin" />
-            <Button
+            <Anchor
               className="user-modal__button-2 anchor"
-              disabled
+              current
+              path="/users"
             >
               {window.intl.user_info_management}
-            </Button>
+            </Anchor>
             <Button
               className="user-modal__button anchor"
               onClick={this.onLogout}

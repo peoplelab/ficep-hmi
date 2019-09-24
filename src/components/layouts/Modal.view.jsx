@@ -8,6 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Button from './Button';
 
 import '../../styles/layouts/Modal.style.scss';
@@ -36,13 +37,17 @@ class Modal extends PureComponent {
   }
 
   onClick(event) {
-    const { onClick } = this.props;
+    const { onClick, redirect } = this.props;
 
     if (typeof onClick === 'function') {
       onClick(event);
     }
 
     this.setState(prevState => ({ open: !(prevState.open) }));
+
+    if (redirect) {
+      history.back();
+    }
   }
 
   render() {
@@ -81,8 +86,11 @@ Modal.propTypes = {
   children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   open: PropTypes.bool,
+  redirect: PropTypes.bool,
   className: PropTypes.string,
   title: PropTypes.string,
+  history : PropTypes.object.isRequired,
+  staticContext : PropTypes.any,
   onClick: PropTypes.func,
 };
 
@@ -92,10 +100,12 @@ Modal.propTypes = {
 Modal.defaultProps = {
   disabled: false,
   open: false,
+  redirect: true,
   className: '',
   title: '',
   onClick: null,
+  staticContext: null,
 };
 
 
-export default Modal;
+export default withRouter(Modal);

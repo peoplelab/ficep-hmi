@@ -22,12 +22,21 @@ const Anchor = (props) => {
     replace,
     className,
     exact,
+    current,
     staticContext: _staticContext, // eslint-disable-line no-unused-vars
     ...rest
   } = props;
 
   const pattern = exact ? `^${path}$` : `^${path}`;
   const regex = new RegExp(pattern);
+
+  let to;
+  if (current) {
+    const currentPath = history.location.pathname === '/' ? '' : history.location.pathname;
+    to = currentPath + path;
+  } else {
+    to = path;
+  }
 
   const pathClass = regex.test(history.location.pathname) ? 'anchor--active' : '';
 
@@ -36,7 +45,7 @@ const Anchor = (props) => {
     <Link
       className={mergedClass}
       replace={replace}
-      to={path}
+      to={to}
       {...rest}
     >
       {children}
@@ -52,6 +61,7 @@ Anchor.propTypes = {
   staticContext : PropTypes.any,
   replace: PropTypes.bool,
   exact: PropTypes.bool,
+  current: PropTypes.bool,
   className: PropTypes.string,
 };
 
@@ -59,6 +69,7 @@ Anchor.defaultProps = {
   children: null,
   replace: false,
   exact: false,
+  current: false,
   className: '',
   staticContext: null,
 };

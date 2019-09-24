@@ -11,9 +11,9 @@ import { Provider } from 'react-redux';              // Gestore della connession
 import { Router } from "react-router";               // Gestore della navigazione
 import { hot } from 'react-hot-loader/root';         // Gestore dell'hot-reloading dell'applicativo
 import Main from './Main.container';                 // Gestore delle route
-import Modals from './Modals';                       // Gestore dei componenti modali
-import history from '../models/history/history';      // Gestore della store del browser
-import { getUserIP } from '../models/IP/userIP'; // Gestore dell'indirizzo IP dell'utente
+import Modals from './Modals.container';             // Gestore dei componenti modali
+import history from '../models/history/history';     // Gestore della store del browser
+import { getUserIP } from '../models/IP/userIP';     // Gestore dell'indirizzo IP dell'utente
 import store from '../store/redux.store';            // Store globale
 /* #start:dev */
 import SandboxLink from '../sandbox/sandbox.link';   // Reindirizza alla pagina della sandbox

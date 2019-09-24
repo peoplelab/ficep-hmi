@@ -19,12 +19,6 @@ const createRoutes = () => ({
   // Lista delle pagine private
   logged: [
     {
-      path: '/',
-      key: 'Dashboard',
-      exact: true,
-      Component: lazy(() => import(/* webpackChunkName: "Dashboard" */ '../components/routes/dashboard/dashboard.view')),
-    },
-    {
       path: '/tools',
       key: 'Tools',
       exact: false,
@@ -34,13 +28,13 @@ const createRoutes = () => ({
     {
       path: '/programs',
       key: 'Programs',
-      exact: true,
+      exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Programs" */ '../components/routes/programs/programs.view')),
     },
     {
       path: '/settings',
       key: 'Settings',
-      exact: true,
+      exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Settings" */ '../components/routes/settings/settings.view')),
     },
     {
@@ -49,10 +43,23 @@ const createRoutes = () => ({
       exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Jog" */ '../components/routes/jog/jog.view')),
     },
+    {
+      path: '/',
+      key: 'Dashboard',
+      exact: false,
+      Component: lazy(() => import(/* webpackChunkName: "Dashboard" */ '../components/routes/dashboard/dashboard.view')),
+    },
   ],
 
   // Lista delle pagine private di supporto
-  // messages: [],
+  modal: [
+    {
+      path: '**/users',  // path valido per qualsiasi percorso che precede /users
+      key: 'users',
+      exact: false,
+      Component: lazy(() => import(/* webpackChunkName: "Users" */ '../components/modal/Users.view')),
+    },
+  ],
 
   // Contiene la pagina pubblica di login
   login: {
@@ -60,6 +67,15 @@ const createRoutes = () => ({
     key: 'Login',
     exact: false,
     Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
+  },
+
+  // Contiene la modale pubblica degli errori
+  error:
+  {
+    path: "**", // path valido per qualsiasi percorso
+    key: 'error',
+    exact: false,
+    Component: lazy(() => import(/* webpackChunkName: "Errors" */ '../components/modal/ErrorsModal/ErrorsModal.controller')),
   },
 
   /* #start:dev */

@@ -6,19 +6,17 @@
 //-----------------------------------------------------------------------------------
 
 
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import createRoutes from './Router';
 import LoggedTemplate from '../components/templates/Logged.container';
-// import { SessionValidity } from '../controllers/session.controller';
 
 
 // Partendo da una lista di oggetti, ritorna una lista di componeti React di tipo Route, corrispondenti alle pagine dell'applicativo
 const mapRoutes = (routeProps) => {
   const {
     Component,
-    // Store,
     path,
     key,
     ...rest
@@ -26,72 +24,39 @@ const mapRoutes = (routeProps) => {
 
   return (
     <Route {...rest} path={path} key={`route-${key}`} render={props => <Component {...props} />} />
-    // <Route {...rest} path={path} key={`route-${key}`}>
-    //   {!Store ? (
-    //     <Component />
-    //   ) : (
-    //     <Store>
-    //       <Component />
-    //     </Store>
-    //   )}
-    // </Route>
   );
 };
 
 
 // Definizione del gestore delle pagine dell'applicativo
-class MainComponent extends Component {
-  // constructor(props) {
-  //   super(props);
+const MainComponent = (props) => {
+  const { isUserLogged } = props;
 
-  //   this.timer = null;
-  // }
+  // Recupero delle pagine dell'applicativo
+  const routes = createRoutes();
 
-  // // Viene verificato se il refreshToken è stato aggiornato
-  // // In caso affermativo, viene inizizializzato un nuovo timer in componentDidUpdate
-  // // In caso contrario, vengono bloccati eventuali aggiornamenti
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return nextProps.refreshToken !== this.props.refreshToken;
-  // }
+  /* #start:dev */
+  const sandbox = mapRoutes(routes.sandbox); /* Pagina sandbox */
+  /* #end:dev */
 
-  // A componente montato, viene avviato un timer una volta che l'utente ha fatto login
-  // Una volta scaduto il timer, verrà invalidato, lato client, il refreshToken e la sessione corrente
-  // La durata di vita del refreshToken e della sessione è indicata, nella response del servizio di login, da refreshExpiredAt
-  // componentDidUpdate() {
-  //   clearTimeout(this.timer);
-
-  //   this.timer = SessionValidity();
-  // }
-
-  render() {
-    const { isUserLogged } = this.props;
-
-    // Recupero delle pagine dell'applicativo
-    const routes = createRoutes();
-
-    /* #start:dev */
-    const sandbox = mapRoutes(routes.sandbox); /* Pagina sandbox */
-    /* #end:dev */
-
-    return isUserLogged ? (
-      <Switch>
-        {/* #start:dev */}
-        {sandbox}
-        {/* #end:dev */}
-        <LoggedTemplate>
-          {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
-        </LoggedTemplate>
-      </Switch>
-    ) : (
-      <Switch>
-        {/* #start:dev */}
-        {sandbox}
-        {/* #end:dev */}
-        {mapRoutes(routes.login) /* Pagina pubblica di login */}
-      </Switch>
-    );
-  }
-}
+  return isUserLogged ? (
+    <Switch>
+      {/* #start:dev */}
+      {sandbox}
+      {/* #end:dev */}
+      <LoggedTemplate>
+        {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
+      </LoggedTemplate>
+    </Switch>
+  ) : (
+    <Switch>
+      {/* #start:dev */}
+      {sandbox}
+      {/* #end:dev */}
+      {mapRoutes(routes.login) /* Pagina pubblica di login */}
+    </Switch>
+  );
+};
 
 
 /**
@@ -99,7 +64,6 @@ class MainComponent extends Component {
  */
 MainComponent.propTypes = {
   isUserLogged: PropTypes.bool.isRequired,
-  // refreshToken: PropTypes.string.isRequired,
 };
 
 /**
@@ -109,4 +73,4 @@ MainComponent.defaultProps = {
 };
 
 
-export default MainComponent;
+export default memo(MainComponent);

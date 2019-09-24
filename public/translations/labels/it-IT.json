@@ -16,5 +16,16 @@
   "modal_error_code": "Codice dell'errore:",
   "modal_error_details": "Dettagli:",
   "modal_error_server": "Errore lato server",
-  "modal_error_technical": "Errore tecnico"
+  "modal_error_technical": "Errore tecnico",
+
+  "users_main_title": "Dettagli degli utenti",
+  "users_headers_firstname": "Cognome",
+  "users_headers_lastname": "Nome",
+  "users_headers_username": "Username",
+  "users_headers_isactive": "Attivo",
+  "users_headers_creationdate": "Data di creazione",
+  "users_headers_role": "Ruolo",
+  "users_role_administrator": "Amministratore",
+  "users_role_technician": "Tecnico",
+  "users_role_operator": "Operatore"
 }

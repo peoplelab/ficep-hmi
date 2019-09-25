@@ -8,8 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 // import PropTypes from 'prop-types';
-import { Modal, Table } from '../../layouts/index.layouts';
-import { Field, TextInput } from '../../forms-context/index.form';
+import { Modal, Table, ButtonData } from '../../layouts/index.layouts';
 import FormItem from './UsersList.item.form';
 import {
   callUsersList,
@@ -19,14 +18,6 @@ import { callGroupList } from '../../../controllers/routes/users/groups.controll
 import '../../../styles/modal/UsersList.style.scss';
 
 
-const initial = {
-  firstName: '',
-  lastName: '',
-  userName: '',
-  password: '',
-  group: '',
-};
-
 class UsersList extends Component {
 	constructor(props) {
     super(props);
@@ -34,17 +25,17 @@ class UsersList extends Component {
     this.state = {
       users: [],
       groups: [],
-      initialUpdate: {
-        id: '',
-        ...initial
-      },
+      id: NaN,
      };
 
     this.updateState = this.updateState.bind(this);
-
+    this.requestUpdate = this.requestUpdate.bind(this);
+    this.onAdd = this.onAdd.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onReset = this.onReset.bind(this);
     this.getUsersList = this.getUsersList.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
-
     this.templateUsers = this.templateUsers.bind(this);
 
     this.headers = {
@@ -73,6 +64,26 @@ class UsersList extends Component {
 
   updateState(newState) {
     this.setState(newState);
+  }
+
+  requestUpdate(event) {
+    this.updateState({ id: event.data });
+  }
+
+  onAdd(event) {
+    alert('onAdd disabled');
+  }
+
+  onUpdate(event) {
+    alert('onUpdate disabled');
+  }
+
+  onDelete(event) {
+    alert('onDelete disabled');
+  }
+
+  onReset(event) {
+    this.updateState({ id: NaN });
   }
 
   getUsersList() {
@@ -113,31 +124,34 @@ class UsersList extends Component {
         <td className="table__cell">{creationDate.split(/T|\..*/).join(' ')}</td>
         <td className="table__cell">{this.toText[code]}</td>
         <td className="table__cell">
-          UP
+          <ButtonData className="users-modal__button users-modal__button--update" data={id} onClick={this.requestUpdate} >
+            UP
+          </ButtonData>
         </td>
         <td className="table__cell">
-          DEL
+          <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.onDelete} >
+            DEL
+          </ButtonData>
         </td>
       </Fragment>
     );
   }
 
   render() {
-    const { users, initialUpdate, groups } = this.state;
+    const { users, groups, id } = this.state;
 
     return (
       <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
         <div className="users-modal__container">
           <div className="users-modal__content">
-            {initialUpdate.id === '' ? (
-              <FormItem initial={initial} groups={groups} onSubmit={() => {}} label="ADD"/>
-            ) : (
-              <FormItem initial={initial} groups={groups} onSubmit={() => {}} label="UPDATE">
-                <Field>
-                  <TextInput name="id" />
-                </Field>
-              </FormItem>
-            )}
+          <FormItem
+            users={users}
+            groups={groups}
+            onReset={this.onReset}
+            onSubmit={(isNaN(id) ? this.onAdd : this.onUpdate)}
+            label={(id ? "Add" : "Update")}
+            id={id}
+          />
           </div>
           <div className="users-modal__content">
             <Table className="users-modal__table" headers={this.headers} data={users} >
@@ -149,8 +163,6 @@ class UsersList extends Component {
     );
   }
 }
-
-// import { Form, Field, TextInput, , , Submit } from '../forms-context/index.form';
 
 
 /**

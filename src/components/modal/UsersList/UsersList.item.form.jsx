@@ -8,13 +8,19 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field, TextInput, PasswordInput, Select, Option, Submit } from '../../forms-context/index.form';
-// import {
-//   callUsersList,
-// } from '../../controllers/routes/users/users.controller';
-// import { callGroupList } from '../../controllers/routes/users/groups.controller';
+import { Form, Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
 
-// import '../../styles/modal/FormItem.style.scss';
+import '../../../styles/modal/UsersList.style.scss';
+
+
+const initialState = {
+  id: '',
+  firstName: '',
+  lastName: '',
+  userName: '',
+  password: '',
+  group: '',
+};
 
 
 class FormItem extends Component {
@@ -46,33 +52,41 @@ class FormItem extends Component {
   }
 
   render() {
-    const { initial, children, onSubmit, label } = this.props;
+    const { onSubmit, label, onReset, id } = this.props;
     const codeOptions = this.getCodeOptions();
 
     return (
-      <Form initial={initial}>
-        {children}
-        <Field>
+      <Form className="users-modal__form" initial={initialState}>
+        {!isNaN(id) && (
+        <Field className="users-modal__field">
+          <Reset className="users-modal__button users-modal__button--reset" name="form-users" initial={initialState} onClick={onReset}>
+            <i className="users-modal__icon ic-close" />
+          </Reset>
+        </Field>
+        )}
+        <Field className="users-modal__field">
           <TextInput name="firstName" placeholder={this.intl.firstName}/>
         </Field>
-        <Field>
+        <Field className="users-modal__field">
           <TextInput name="lastName" placeholder={this.intl.lastName}/>
         </Field>
-        <Field>
+        <Field className="users-modal__field">
           <TextInput name="userName" placeholder={this.intl.userName}/>
         </Field>
-        <Field>
+        <Field className="users-modal__field">
           <PasswordInput name="password" placeholder={this.intl.password}/>
         </Field>
-        <Field>
+        <Field className="users-modal__field">
           <Select name="group">
             <option value="" disabled>{this.intl.groups}</option>
             <Option options={codeOptions} />
           </Select>
         </Field>
-        <Submit name="form-users" required={['firstName', 'lastName', 'userName', 'password', 'group']} onSubmit={onSubmit}>
-          {label}
-        </Submit>
+        <Field className="users-modal__field">
+          <Submit name="form-users" required={['firstName', 'lastName', 'userName', 'password', 'group']} onSubmit={onSubmit}>
+            {label}
+          </Submit>
+        </Field>
       </Form>
     );
   }
@@ -83,11 +97,12 @@ class FormItem extends Component {
  * Define component properties types
  */
 FormItem.propTypes = {
-  children: PropTypes.element,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
-  initial: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 /**

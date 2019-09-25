@@ -32,7 +32,7 @@ const Field = (props) => {
 
     ({ id } = child.props);
 
-    const { className } = child.props;
+    const { className = '' } = child.props;
 
     return React.cloneElement(child, { className: `field__input ${className}` });
   });

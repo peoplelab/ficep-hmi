@@ -10,6 +10,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from '../../store/form.store';
 
+import '../../styles/forms-context/input.scss';
+
 
 class Submit extends PureComponent {
   static contextType = FormContext;

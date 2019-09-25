@@ -43,7 +43,7 @@ class Table extends PureComponent {
       ));
     }
 
-    return(<tr className="table__row" >{cells}</tr>);
+    return(<tr key={`row-body-${id}`} className="table__row" >{cells}</tr>);
   }
 
 	render() {

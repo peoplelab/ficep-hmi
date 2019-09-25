@@ -24,12 +24,11 @@ class FormItem extends Component {
     this.getCodeOptions = this.getCodeOptions.bind(this);
 
     this.intl = {
-      firstName: window.intl.users_headers_firstname,
-      lastName: window.intl.users_headers_lastname,
-      userName: window.intl.users_headers_username,
-      isActive: window.intl.users_headers_isactive,
-      creationDate: window.intl.users_headers_creationdate,
-      groups: window.intl.users_headers_role,
+      firstName: window.intl.users_field_firstname,
+      lastName: window.intl.users_field_lastname,
+      userName: window.intl.users_field_username,
+      password: window.intl.users_field_password,
+      groups: window.intl.users_field_role,
     };
 
     this.toText = {
@@ -41,11 +40,7 @@ class FormItem extends Component {
 
   getCodeOptions() {
     const { groups } = this.props;
-    const options = groups.map(item => {
-console.log(item);
-console.log(item.code);
-      return ({ value: item.code, massage: this.toText[item.code] });
-    });
+    const options = groups.map(item => ({ value: item.code, message: this.toText[item.code] }));
 
     return options;
   }
@@ -54,25 +49,24 @@ console.log(item.code);
     const { initial, children, onSubmit, label } = this.props;
     const codeOptions = this.getCodeOptions();
 
-    console.log(codeOptions);
     return (
       <Form initial={initial}>
         {children}
         <Field>
-          <TextInput name="firstName" placeholder={window.intl.users_placeholder_firstname}/>
+          <TextInput name="firstName" placeholder={this.intl.firstName}/>
         </Field>
         <Field>
-          <TextInput name="lastName" placeholder={window.intl.users_placeholder_lastname}/>
+          <TextInput name="lastName" placeholder={this.intl.lastName}/>
         </Field>
         <Field>
-          <TextInput name="userName" placeholder={window.intl.users_placeholder_username}/>
+          <TextInput name="userName" placeholder={this.intl.userName}/>
         </Field>
         <Field>
-          <PasswordInput name="password" placeholder={window.intl.users_placeholder_password}/>
+          <PasswordInput name="password" placeholder={this.intl.password}/>
         </Field>
         <Field>
           <Select name="group">
-            <option value="" disabled>{window.intl.users_placeholder_role}</option>
+            <option value="" disabled>{this.intl.groups}</option>
             <Option options={codeOptions} />
           </Select>
         </Field>

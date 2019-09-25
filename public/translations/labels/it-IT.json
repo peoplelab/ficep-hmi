@@ -27,5 +27,10 @@
   "users_headers_role": "Ruolo",
   "users_role_administrator": "Amministratore",
   "users_role_technician": "Tecnico",
-  "users_role_operator": "Operatore"
+  "users_role_operator": "Operatore",
+  "users_field_firstname": "Cognome",
+  "users_field_lastname": "Nome",
+  "users_field_username": "Username",
+  "users_field_password": "Password",
+  "users_field_role": "Ruolo"
 }

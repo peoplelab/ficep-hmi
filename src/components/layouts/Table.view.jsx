@@ -8,80 +8,75 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import '../../styles/layouts/Table.style.scss';
+
 
 class Table extends PureComponent {
-	constructor(props) {
+  constructor(props) {
     super(props);
 
-    this.setHead = this.setHead.bind(this);
-    this.setBody = this.setBody.bind(this);
+    this.mapHead = this.mapHead.bind(this);
+    this.mapBody = this.mapBody.bind(this);
   }
 
-  setHead() {
+  mapHead() {
     const { headers } = this.props;
 
-    if (headers.length <= 0) {
-      return null;
-    }
-
-    const TH = Object.keys(headers).map((key) => (
-      <th key={`table-header-${key}`} className="table__cell table__cell--header">
-        {headers[key]}
-      </th>
+    const cells = Object.keys(headers).map((value, index) => (
+      <th className="table__cell table__cell--header" key={`cell-head-${index}`}>{value}</th>
     ));
 
     return (
-      <thead className="table__head">
-        <tr className="table__row table__row--headers">
-          {TH}
-        </tr>
-      </thead>
+      <tr className="table__row" >{cells}</tr>
     );
   }
 
-  setBody() {
-    const { children, data, headers } = this.props;
+  mapBody(row, id) {
+    const { children, headers } = this.props;
 
-    let body;
-    if (typeof children !== 'function') {
-      body = data.map((row, index) => (
-        <tr key={`table-row-${index}`} className="table__row">
-          {Object.keys(headers).map((cell, index) => (
-            <td key={`table-cell-${index}`} className="table__cell">
-              {row[cell]}
-            </td>
-          ))}
-        </tr>
-      ));
+    let cells;
+    if (typeof children === 'function') {
+      cells = children({ value: row, index: id });
     } else {
-      body = data.map((value, index) => children({ value, index }));
+      cells = Object.keys(headers).map((value, index) => (
+        <td className="table__cell" key={`cell-body-${index}`}>{value}</td>
+      ));
     }
 
-    return (
-      <tbody className="table__body">
-        {body}
-      </tbody>
-    );
+    return(<tr className="table__row" >{cells}</tr>);
   }
 
 	render() {
-    const { className, caption, footer } = this.props;
+    const { className, data, headers } = this.props;
 
     const mergedClass = `table ${className}`;
 
-    const Caption = caption && (<caption className="table__caption">{caption}</caption>);
-
-    const Head = this.setHead();
-    const Body = this.setBody();
-    const Footer = footer && (<tfoot className="table__foot">{footer}</tfoot>);
-
     return (
-      <table className={mergedClass}>
-        {Caption}
-        {Head}
-        {Body}
-        {Footer}
-      </table>
+      <div className={mergedClass}>
+        {headers && (
+          <div className="table__head">
+            <table className="table__main">
+              <thead>
+                {this.mapHead()}
+              </thead>
+            </table>
+          </div>
+        )}
+        <div className="table__body">
+          <table className="table__main">
+            <tbody>
+              {data.map(this.mapBody)}
+            </tbody>
+          </table>
+        </div>
+        {/* <div className="table__foot">
+          <table className="table__main">
+            <tfoot>
+
+            </tfoot>
+          </table>
+        </div> */}
+      </div>
     );
 	}
 }
@@ -90,19 +85,19 @@ class Table extends PureComponent {
 Table.propTypes = {
   children: PropTypes.func,
   className: PropTypes.string,
-  caption: PropTypes.string,
+  // caption: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
-  headers: PropTypes.arrayOf(PropTypes.string),
-  footer: PropTypes.element,
+  headers: PropTypes.objectOf(PropTypes.string),
+  // footer: PropTypes.element,
 };
 
 Table.defaultProps = {
   children: null,
   className: '',
-  caption: null, // fix for incompatibility between tables and empty strings
+  // caption: null, // fix for incompatibility between tables and empty strings
   data: [],
-  headers: [],
-  footer: null,
+  headers: null,
+  // footer: null,
 };
 
 

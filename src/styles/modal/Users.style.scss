@@ -17,37 +17,10 @@
     width: 100%;
 
     .users-modal__content {
-      .users-modal__table {
-        width: 100%;
-
-        // stylelint-disable plugin/selector-bem-pattern
-        &.table {
-          .table__row {
-            .table__cell {
-              @extend %info-1-light;
-
-              color: $text-dark-grey;
-              padding: 0.5rem;
-              text-align: center;
-              word-wrap: normal;
-
-              &.table__cell--header {
-                @extend %paragraph-1-semibold;
-              }
-
-              &.table__cell--id {
-                @extend %subtitle-semibold;
-              }
-            }
-          }
-        }
-        // stylelint-enable plugin/selector-bem-pattern
-      }
 
       &:last-of-type() {
         flex: 1;
-        overflow: auto;
-        padding: 0 1rem;
+        overflow: hidden;
       }
     }
   }

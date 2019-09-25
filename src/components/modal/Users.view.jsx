@@ -6,7 +6,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import PropTypes from 'prop-types';
 import { Modal, Table } from '../layouts/index.layouts';
 import {
@@ -72,7 +72,9 @@ class Users extends Component {
     callGroupList({ dispatch });
   }
 
-  templateUsers({ value, index }) {
+  templateUsers(data) {
+    console.log(data);
+    const { value, index } = data;
     const {
       id,
       firstName,
@@ -80,13 +82,13 @@ class Users extends Component {
       userName,
       isActive,
       creationDate,
-      groups,
+      // groups,
     } = value;
 
-    const [{ code }] = groups;
+    // const [{ code }] = groups;
 
     return (
-      <tr className="table__row" key={`table-row-${index}`} >
+      <Fragment key={`table-row-${index}`} >
         <td className="table__cell table__cell--id">
           {id}
         </td>
@@ -95,14 +97,14 @@ class Users extends Component {
         <td className="table__cell">{userName}</td>
         <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
         <td className="table__cell">{creationDate}</td>
-        <td className="table__cell">{this.toText[code]}</td>
+        {/* <td className="table__cell">{this.toText[code]}</td> */}
         <td className="table__cell">
           UP
         </td>
         <td className="table__cell">
           DEL
         </td>
-      </tr>
+      </Fragment>
     );
   }
 

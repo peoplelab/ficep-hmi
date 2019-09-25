@@ -1,0 +1,52 @@
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
+
+/** @define table */
+
+.table {
+  @extend %flex-column;
+
+  height: 100%;
+  width: 100%;
+
+  .table__head {
+    flex: none;
+    width: 100%;
+    padding-right: 1rem;
+  }
+
+  .table__body {
+    flex: 1;
+    overflow: scroll;
+  }
+
+  // .table__foot {
+
+  // }
+
+  .table__main {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+
+    .table__row {
+      .table__cell {
+        @extend %info-1-light;
+
+        color: $text-dark-grey;
+        padding: 0.5rem;
+        text-align: center;
+        word-wrap: normal;
+
+        &.table__cell--header {
+          @extend %paragraph-1-semibold;
+        }
+
+        &.table__cell--id {
+          @extend %subtitle-semibold;
+        }
+      }
+    }
+  }
+}

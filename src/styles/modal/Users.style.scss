@@ -8,11 +8,11 @@
 
 
 .users-modal {
-  background-color: $bg-light-grey;
 
   .users-modal__container {
     @extend %flex-column;
 
+    background-color: $bg-light-grey;
     height: 100%;
     width: 100%;
 
@@ -26,6 +26,7 @@
             .table__cell {
               @extend %info-1-light;
 
+              color: $text-dark-grey;
               padding: 0.5rem;
               text-align: center;
               word-wrap: normal;

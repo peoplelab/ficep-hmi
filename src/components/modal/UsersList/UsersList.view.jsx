@@ -8,14 +8,24 @@
 
 import React, { Component, Fragment } from 'react';
 // import PropTypes from 'prop-types';
-import { Modal, Table } from '../layouts/index.layouts';
+import { Modal, Table } from '../../layouts/index.layouts';
+import { Field, TextInput } from '../../forms-context/index.form';
+import FormItem from './UsersList.item.form';
 import {
   callUsersList,
-} from '../../controllers/routes/users/users.controller';
-import { callGroupList } from '../../controllers/routes/users/groups.controller';
+} from '../../../controllers/routes/users/users.controller';
+import { callGroupList } from '../../../controllers/routes/users/groups.controller';
 
-import '../../styles/modal/UsersList.style.scss';
+import '../../../styles/modal/UsersList.style.scss';
 
+
+const initial = {
+  firstName: '',
+  lastName: '',
+  userName: '',
+  password: '',
+  group: '',
+};
 
 class UsersList extends Component {
 	constructor(props) {
@@ -24,6 +34,10 @@ class UsersList extends Component {
     this.state = {
       users: [],
       groups: [],
+      initialUpdate: {
+        id: '',
+        ...initial
+      },
      };
 
     this.updateState = this.updateState.bind(this);
@@ -74,7 +88,6 @@ class UsersList extends Component {
   }
 
   templateUsers(data) {
-    console.log(data);
     const { value, index } = data;
     const {
       id,
@@ -110,12 +123,22 @@ class UsersList extends Component {
   }
 
   render() {
-    const { users } = this.state;
+    const { users, initialUpdate, groups } = this.state;
 
     return (
       <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
         <div className="users-modal__container">
-          <div className="users-modal__content">123</div>
+          <div className="users-modal__content">
+            {initialUpdate.id === '' ? (
+              <FormItem initial={initial} groups={groups} onSubmit={() => {}} label="ADD"/>
+            ) : (
+              <FormItem initial={initial} groups={groups} onSubmit={() => {}} label="UPDATE">
+                <Field>
+                  <TextInput name="id" />
+                </Field>
+              </FormItem>
+            )}
+          </div>
           <div className="users-modal__content">
             <Table className="users-modal__table" headers={this.headers} data={users} >
               {this.templateUsers}
@@ -126,6 +149,8 @@ class UsersList extends Component {
     );
   }
 }
+
+// import { Form, Field, TextInput, , , Submit } from '../forms-context/index.form';
 
 
 /**

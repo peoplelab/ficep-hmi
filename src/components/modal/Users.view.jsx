@@ -95,7 +95,6 @@ class Users extends Component {
         <td className="table__cell">{userName}</td>
         <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
         <td className="table__cell">{creationDate}</td>
-        <td className="table__cell">{creationDate}</td>
         <td className="table__cell">{this.toText[code]}</td>
         <td className="table__cell">
           UP

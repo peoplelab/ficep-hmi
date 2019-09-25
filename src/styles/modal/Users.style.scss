@@ -46,6 +46,8 @@
 
       &:last-of-type() {
         flex: 1;
+        overflow: auto;
+        padding: 0 1rem;
       }
     }
   }

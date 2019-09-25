@@ -6,8 +6,9 @@
 @import './common/icon.scss';
 @import './common/background.scss';
 
+@import './common/colors.scss';
 @import './common/flex.scss';
-@import './common/spacing.scss';
+// @import './common/spacing.scss';
 @import './common/text.scss';
 
 
@@ -34,4 +35,15 @@
   @media screen and (max-width: $break-small) {
     font-size: 11px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+// ::-webkit-scrollbar-track {
+// }
+
+::-webkit-scrollbar-thumb {
+  background-color: $bg-dark-grey;
 }

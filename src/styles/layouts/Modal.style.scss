@@ -57,8 +57,7 @@
 
     .modal__section {
       flex: 1;
-      overflow: auto;
-      padding: 1rem;
+      overflow: hidden;
     }
   }
 
@@ -74,8 +73,8 @@
   &.modal--data {
     // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
-      height: 75%;
-      width: 75%;
+      height: 85%;
+      width: 85%;
     }
   }
 }

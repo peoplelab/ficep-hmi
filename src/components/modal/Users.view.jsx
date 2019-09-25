@@ -14,7 +14,7 @@ import {
 } from '../../controllers/routes/users/users.controller';
 import { callGroupList } from '../../controllers/routes/users/groups.controller';
 
-// import '../../../styles/modal/ErrorModal.style.scss';
+import '../../styles/modal/Users.style.scss';
 
 
 class Users extends Component {
@@ -111,7 +111,7 @@ class Users extends Component {
     const { users } = this.state;
 
     return (
-      <Modal open className="users-modal" title={window.intl.users_main_title} >
+      <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
         <div className="users-modal__container">
           <div className="users-modal__content">123</div>
           <div className="users-modal__content">

@@ -23,7 +23,7 @@ class Table extends PureComponent {
     const { headers } = this.props;
 
     const cells = Object.keys(headers).map((value, index) => (
-      <th className="table__cell table__cell--header" key={`cell-head-${index}`}>{value}</th>
+      <th className="table__cell table__cell--header" key={`cell-head-${index}`}>{headers[value]}</th>
     ));
 
     return (

@@ -44,44 +44,11 @@
       .login__field {
         flex: 1;
         margin: 0 2rem 0 0;
-
-        .login__text-input:not(.input-card),
-        .login__select-input {
-          @extend %input-medium;
-
-          border: $border-light-grey solid 0.125rem;
-          border-radius: 0.25rem;
-          color: $text-dark-grey;
-          height: 3.5rem;
-          padding: 0.5rem;
-          width: 100%;
-
-          &:focus {
-            border: $border-dark-grey solid 0.125rem;
-          }
-        }
       }
 
       .login__form-submit {
-        @extend %paragraph-1-medium;
-
-        border-radius: 0.25rem;
-        color: $text-dark-grey;
         flex: 0.5;
         height: 3.75rem;
-
-        &:disabled {
-          background-color: $bg-light-grey;
-        }
-
-        &:enabled {
-          background-color: $bg-light-grey-red;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $grey-red;
-          }
-        }
       }
     }
 
@@ -119,8 +86,10 @@
 
       .login__button-card {
         background-color: transparent;
+        border: 0;
         cursor: pointer;
         height: 100%;
+        padding: 0;
         width: 100%;
       }
     }

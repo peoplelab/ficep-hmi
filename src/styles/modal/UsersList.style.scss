@@ -18,6 +18,41 @@
 
     .users-modal__content {
 
+      .users-modal__form {
+        @extend %flex-row;
+
+        .users-modal__field {
+          flex: 1;
+        }
+      }
+
+      .users-modal__button {
+        border: $border-light-grey solid 0.125rem;
+        border-radius: 0.25rem;
+        color: $text-dark-grey;
+
+        padding: 0.5rem;
+        &:disabled {
+          background-color: $bg-light-grey;
+        }
+
+        &:enabled {
+          background-color: $bg-light-grey-red;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $grey-red;
+          }
+          &:focus {
+            border: $border-dark-grey solid 0.125rem;
+          }
+        }
+      }
+
+      &:first-of-type() {
+        padding: 2rem;
+      }
+
       &:last-of-type() {
         flex: 1;
         overflow: hidden;

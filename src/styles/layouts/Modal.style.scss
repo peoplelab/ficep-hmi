@@ -2,6 +2,7 @@
 
 @import '../common/colors.scss';
 @import '../common/flex.scss';
+@import '../common/text.scss';
 
 /** @define modal */
 
@@ -19,21 +20,21 @@
     @extend %flex-column;
 
     background-color: $bg-light-grey;
-    border: 1rem solid transparent;
     box-shadow: $shadow-2;
-    height: 50%;
     left: 50%;
     padding: 1rem;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
 
     .modal__head {
       @extend %flex-row-center;
 
+      margin: 0 0 0.5rem;
+
       .modal__title {
         @extend %flex-row-full;
+        @extend %title-bold;
 
         flex: 1;
       }
@@ -45,7 +46,7 @@
         width: 1.25rem;
 
         .modal__icon {
-          background: $bg-white;
+          background-color: $bg-dark-grey;
           display: block;
           height: 100%;
           width: 100%;
@@ -54,8 +55,8 @@
     }
 
     .modal__section {
-      border: 1rem solid transparent;
       flex: 1;
+      overflow: auto;
       padding: 1rem;
     }
   }
@@ -64,7 +65,16 @@
 
     // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
+      height: 50%;
+      width: 50%;
+    }
+  }
 
+  &.modal--data {
+    // stylelint-disable-next-line plugin/selector-bem-pattern
+    .modal__container {
+      height: 75%;
+      width: 75%;
     }
   }
 }

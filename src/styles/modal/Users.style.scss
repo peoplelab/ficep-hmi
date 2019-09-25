@@ -1,0 +1,51 @@
+// Style of private routes template
+
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
+
+/** @define users-modal */
+
+
+.users-modal {
+  background-color: $bg-light-grey;
+
+  .users-modal__container {
+    @extend %flex-column;
+
+    height: 100%;
+    width: 100%;
+
+    .users-modal__content {
+      .users-modal__table {
+        width: 100%;
+
+        // stylelint-disable plugin/selector-bem-pattern
+        &.table {
+          .table__row {
+            .table__cell {
+              @extend %info-1-light;
+
+              padding: 0.5rem;
+              text-align: center;
+              word-wrap: normal;
+
+              &.table__cell--header {
+                @extend %paragraph-1-semibold;
+              }
+
+              &.table__cell--id {
+                @extend %subtitle-semibold;
+              }
+            }
+          }
+        }
+        // stylelint-enable plugin/selector-bem-pattern
+      }
+
+      &:last-of-type() {
+        flex: 1;
+      }
+    }
+  }
+}

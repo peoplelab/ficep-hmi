@@ -10,23 +10,27 @@
 .error-modal {
 
   // stylelint-disable plugin/selector-bem-pattern
-  .modal__head {
-    background-color: $bg-dark-grey;
-    border-bottom: 0.0625rem solid $border-dark-grey;
-    overflow: hidden;
-    padding: 1rem;
-    width: 100%;
+  &.modal {
+    .modal__container {
+      .modal__head {
+        background-color: $bg-dark-grey;
+        border-bottom: 0.0625rem solid $border-dark-grey;
+        overflow: hidden;
+        padding: 1rem;
+        width: 100%;
 
-    .modal__title {
-      @extend %title-semibold;
+        .modal__title {
+          @extend %title-semibold;
 
-      color: $text-light-grey;
-    }
+          color: $text-light-grey;
+        }
 
-    .modal__button {
-      @extend %title-semibold;
-
-      color: $text-light-grey;
+        .modal__button {
+          .modal__icon {
+            background-color: $bg-light-grey;
+          }
+        }
+      }
     }
   }
   // stylelint-enable plugin/selector-bem-pattern

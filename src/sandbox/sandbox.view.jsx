@@ -14,7 +14,7 @@ import './style/sandbox.style.scss';
 const Sandbox = ({ match }) => (
   <div className="sandbox">
     <div className="sandbox__link-box">
-      <Anchor className="sandbox__link" path="/" exact>
+      <Anchor className="sandbox__link" path="/dashboard" exact>
         Home
       </Anchor>
       <Anchor className="sandbox__link" path={`${match.path}`} exact>

@@ -38,11 +38,14 @@
 }
 
 ::-webkit-scrollbar {
+  background-color: transparent;
   width: 1rem;
 }
 
-// ::-webkit-scrollbar-track {
-// }
+::-webkit-scrollbar-track {
+  background-color: $bg-white;
+  box-shadow: 0 0 0 0.25rem $bg-light-grey inset;
+}
 
 ::-webkit-scrollbar-thumb {
   background-color: $bg-dark-grey;

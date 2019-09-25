@@ -22,7 +22,7 @@ const Navbar = (props) => {
     <nav className="logged__navbar">
       <ul className="logged__list">
         <li className="logged__item">
-          <Anchor className="logged__anchor anchor--tile" exact path="/">
+          <Anchor className="logged__anchor anchor--tile" exact path="/dashboard">
             <i className="anchor__icon ic-dashboard" />
           </Anchor>
         </li>

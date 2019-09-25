@@ -37,7 +37,7 @@ export const callLogin = async ({ data, dispatch }) => {
               payload: dataprocessed,
             });
 
-            history.push('/');
+            history.push('/dashboard');
           },
         });
       }

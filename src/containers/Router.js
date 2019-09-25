@@ -44,7 +44,7 @@ const createRoutes = () => ({
       Component: lazy(() => import(/* webpackChunkName: "Jog" */ '../components/routes/jog/jog.view')),
     },
     {
-      path: '/',
+      path: '/dashboard',
       key: 'Dashboard',
       exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Dashboard" */ '../components/routes/dashboard/dashboard.view')),
@@ -57,7 +57,7 @@ const createRoutes = () => ({
       path: '**/users',  // path valido per qualsiasi percorso che precede /users
       key: 'users',
       exact: false,
-      Component: lazy(() => import(/* webpackChunkName: "Users" */ '../components/modal/Users.view')),
+      Component: lazy(() => import(/* webpackChunkName: "Users" */ '../components/modal/UsersList.view')),
     },
   ],
 

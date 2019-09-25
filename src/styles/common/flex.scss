@@ -1,15 +1,15 @@
 // stylelint-disable plugin/selector-bem-pattern
 
 $flex-list:(
-  'row': (initial, row, initial, no-wrap),
-  'row-center': (center, row, center, no-wrap),
-  'row-full': (center, row, space-between, no-wrap),
-  'row-top': (flex-start, row, space-between, no-wrap),
-  'column': (initial, column, initial, no-wrap),
-  'column-center': (center, column, center, no-wrap),
-  'column-full': (center, column, space-between, no-wrap),
-  'column-top': (flex-start, column, space-between, no-wrap),
-  'list': (center, column, flex-start, no-wrap),
+  'row': (initial, row, initial, nowrap),
+  'row-center': (center, row, center, nowrap),
+  'row-full': (center, row, space-between, nowrap),
+  'row-top': (flex-start, row, space-between, nowrap),
+  'column': (initial, column, initial, nowrap),
+  'column-center': (center, column, center, nowrap),
+  'column-full': (center, column, space-between, nowrap),
+  'column-top': (flex-start, column, space-between, nowrap),
+  'list': (center, column, flex-start, nowrap),
   'wrap': (center, row, space-evenly, wrap),
 );
 

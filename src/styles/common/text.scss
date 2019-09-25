@@ -1,5 +1,7 @@
 // stylelint-disable plugin/selector-bem-pattern
 
+@import './colors.scss';
+
 $texts:(
   'title-bold': (1.5rem, normal, 700),
   'title-semibold': (1.5rem, normal, 600),
@@ -21,6 +23,7 @@ $texts:(
   'info-1-semibold': (0.8rem, normal, 600),
   'info-1-medium': (0.8rem, normal, 500),
   'info-1-regular': (0.8rem, normal, 400),
+  'info-1-light': (0.8rem, normal, 300),
 
   'info-2-regular': (0.75rem, normal, 400),
   'info-2-light': (0.75rem, normal, 300),
@@ -37,6 +40,7 @@ $texts:(
   $weight: nth($data, 3);
 
   %#{$name} {
+    color: $text-dark-grey;
     font-size: $size;
     font-style: $style;
     font-weight: $weight;

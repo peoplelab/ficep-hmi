@@ -14,10 +14,10 @@ import {
 } from '../../controllers/routes/users/users.controller';
 import { callGroupList } from '../../controllers/routes/users/groups.controller';
 
-import '../../styles/modal/Users.style.scss';
+import '../../styles/modal/UsersList.style.scss';
 
 
-class Users extends Component {
+class UsersList extends Component {
 	constructor(props) {
     super(props);
 
@@ -41,7 +41,8 @@ class Users extends Component {
       isActive: window.intl.users_headers_isactive,
       creationDate: window.intl.users_headers_creationdate,
       groups: window.intl.users_headers_role,
-      action: '',
+      update: '',
+      delete: '',
     };
 
     this.toText = {
@@ -82,10 +83,10 @@ class Users extends Component {
       userName,
       isActive,
       creationDate,
-      // groups,
+      groups,
     } = value;
 
-    // const [{ code }] = groups;
+    const [{ code }] = groups;
 
     return (
       <Fragment key={`table-row-${index}`} >
@@ -96,8 +97,8 @@ class Users extends Component {
         <td className="table__cell">{lastName}</td>
         <td className="table__cell">{userName}</td>
         <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
-        <td className="table__cell">{creationDate}</td>
-        {/* <td className="table__cell">{this.toText[code]}</td> */}
+        <td className="table__cell">{creationDate.split(/T|\..*/).join(' ')}</td>
+        <td className="table__cell">{this.toText[code]}</td>
         <td className="table__cell">
           UP
         </td>
@@ -130,14 +131,14 @@ class Users extends Component {
 /**
  * Define component properties types
  */
-Users.propTypes = {
+UsersList.propTypes = {
 };
 
 /**
  * Define default value of component properties
  */
-Users.defaultProps = {
+UsersList.defaultProps = {
 };
 
 
-export default Users;
+export default UsersList;

@@ -32,5 +32,10 @@
   "users_field_lastname": "Nome",
   "users_field_username": "Username",
   "users_field_password": "Password",
-  "users_field_role": "Ruolo"
+  "users_field_role": "Ruolo",
+  "users_field_enable": "Sì",
+  "users_field_disable": "No",
+  "users_field_update": "Aggiorna",
+  "users_field_delete": "Elimina",
+  "users_field_save": "Salva"
 }

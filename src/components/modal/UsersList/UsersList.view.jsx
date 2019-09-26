@@ -9,7 +9,7 @@
 import React, { Component, Fragment } from 'react';
 // import PropTypes from 'prop-types';
 import { Modal, Table, ButtonData } from '../../layouts/index.layouts';
-import FormItem from './UsersList.item.form';
+import { Form, Field, TextInput, PasswordInput, Select, Option, Submit } from '../../forms-context/index.form';
 import {
   callUsersList,
 } from '../../../controllers/routes/users/users.controller';
@@ -18,6 +18,13 @@ import { callGroupList } from '../../../controllers/routes/users/groups.controll
 import '../../../styles/modal/UsersList.style.scss';
 
 
+const initial = {
+  firstName: '',
+  lastName: '',
+  password: '',
+  group: '',
+};
+
 class UsersList extends Component {
 	constructor(props) {
     super(props);
@@ -25,11 +32,11 @@ class UsersList extends Component {
     this.state = {
       users: [],
       groups: [],
-      id: NaN,
+      currentUser: '',
      };
 
     this.updateState = this.updateState.bind(this);
-    this.requestUpdate = this.requestUpdate.bind(this);
+    this.onDetails = this.onDetails.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -37,9 +44,10 @@ class UsersList extends Component {
     this.getUsersList = this.getUsersList.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
     this.templateUsers = this.templateUsers.bind(this);
+    this.getCodeOptions = this.getCodeOptions.bind(this);
+    this.templateAddUser = this.templateAddUser.bind(this);
 
     this.headers = {
-      id: '',
       firstName: window.intl.users_headers_firstname,
       lastName: window.intl.users_headers_lastname,
       userName: window.intl.users_headers_username,
@@ -48,6 +56,19 @@ class UsersList extends Component {
       groups: window.intl.users_headers_role,
       update: '',
       delete: '',
+    };
+
+    this.intl = {
+      yes: window.intl.users_field_enable,
+      no: window.intl.users_field_disable,
+      update: window.intl.users_field_update,
+      delete: window.intl.users_field_delete,
+      firstName: window.intl.users_field_firstname,
+      lastName: window.intl.users_field_lastname,
+      userName: window.intl.users_field_username,
+      password: window.intl.users_field_password,
+      groups: window.intl.users_field_role,
+      save: window.intl.users_field_save,
     };
 
     this.toText = {
@@ -66,12 +87,12 @@ class UsersList extends Component {
     this.setState(newState);
   }
 
-  requestUpdate(event) {
-    this.updateState({ id: event.data });
+  onDetails(event) {
+    alert('onDetails disabled');
   }
 
-  onAdd(event) {
-    alert('onAdd disabled');
+  onAdd(state, event) {
+    console.log('onAdd disabled', state);
   }
 
   onUpdate(event) {
@@ -98,10 +119,45 @@ class UsersList extends Component {
     callGroupList({ dispatch });
   }
 
+  getCodeOptions() {
+    const { groups } = this.state;
+    const options = groups.map(item => ({ value: item.code, message: this.toText[item.code] }));
+
+    return options;
+  }
+
+  templateAddUser() {
+    const codeOptions = this.getCodeOptions();
+
+    return (
+      <>
+        <Field className="users-modal__field">
+          <TextInput name="firstName" placeholder={this.intl.firstName}/>
+        </Field>
+        <Field className="users-modal__field">
+          <TextInput name="lastName" placeholder={this.intl.lastName}/>
+        </Field>
+        <Field className="users-modal__field">
+          <PasswordInput name="password" placeholder={this.intl.password}/>
+        </Field>
+        <Field className="users-modal__field">
+          <Select name="group">
+            <option value="" disabled>{this.intl.groups}</option>
+            <Option options={codeOptions} />
+          </Select>
+        </Field>
+        <Field className="users-modal__field">
+          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd}>
+            {this.intl.save}
+          </Submit>
+        </Field>
+      </>
+    );
+  }
+
   templateUsers(data) {
     const { value, index } = data;
     const {
-      id,
       firstName,
       lastName,
       userName,
@@ -114,23 +170,20 @@ class UsersList extends Component {
 
     return (
       <Fragment key={`table-row-${index}`} >
-        <td className="table__cell table__cell--id">
-          {id}
-        </td>
         <td className="table__cell">{firstName}</td>
         <td className="table__cell">{lastName}</td>
         <td className="table__cell">{userName}</td>
-        <td className="table__cell">{isActive ? 'yes' : 'no'}</td>
+        <td className="table__cell">{isActive ? this.intl.yes : this.intl.no}</td>
         <td className="table__cell">{creationDate.split(/T|\..*/).join(' ')}</td>
         <td className="table__cell">{this.toText[code]}</td>
         <td className="table__cell">
-          <ButtonData className="users-modal__button users-modal__button--update" data={id} onClick={this.requestUpdate} >
-            UP
+          <ButtonData className="users-modal__button users-modal__button--delete" data={userName} onClick={this.onDetails} >
+            {this.intl.update}
           </ButtonData>
         </td>
         <td className="table__cell">
-          <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.onDelete} >
-            DEL
+          <ButtonData className="users-modal__button users-modal__button--delete" data={userName} onClick={this.onDelete} >
+            {this.intl.delete}
           </ButtonData>
         </td>
       </Fragment>
@@ -138,27 +191,22 @@ class UsersList extends Component {
   }
 
   render() {
-    const { users, groups, id } = this.state;
+    const { users } = this.state;
 
     return (
       <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
-        <div className="users-modal__container">
-          <div className="users-modal__content">
-          <FormItem
-            users={users}
-            groups={groups}
-            onReset={this.onReset}
-            onSubmit={(isNaN(id) ? this.onAdd : this.onUpdate)}
-            label={(id ? "Add" : "Update")}
-            id={id}
-          />
+        <Form className="users-modal__form" initial={initial}>
+          <div className="users-modal__container">
+              <div className="users-modal__content">
+                {this.templateAddUser()}
+              </div>
+              <div className="users-modal__content">
+                <Table className="users-modal__table" headers={this.headers} data={users} >
+                  {this.templateUsers}
+                </Table>
+              </div>
           </div>
-          <div className="users-modal__content">
-            <Table className="users-modal__table" headers={this.headers} data={users} >
-              {this.templateUsers}
-            </Table>
-          </div>
-        </div>
+        </Form>
       </Modal>
     );
   }

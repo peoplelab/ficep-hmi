@@ -18,7 +18,7 @@
 
     .users-modal__content {
 
-      .users-modal__form {
+      &:first-of-type {
         @extend %flex-row;
 
         .users-modal__field {

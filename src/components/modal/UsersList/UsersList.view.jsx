@@ -15,6 +15,7 @@ import { callGroupList } from '../../../controllers/routes/users/groups.controll
 
 import RowItem from './UsersList.item.row';
 import AddUserItem from './UsersList.item.addUser';
+import UpdateUserItem from './UsersList.item.updateUser';
 
 import '../../../styles/modal/UsersList.style.scss';
 
@@ -33,12 +34,10 @@ class UsersList extends Component {
     this.state = {
       users: [],
       groups: [],
-      // currentUser: '',
+      currentUser: '',
      };
 
     this.updateState = this.updateState.bind(this);
-    // this.onUpdate = this.onUpdate.bind(this);
-    // this.onReset = this.onReset.bind(this);
     this.getUsersList = this.getUsersList.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
 
@@ -63,14 +62,6 @@ class UsersList extends Component {
     this.setState(newState);
   }
 
-  // onUpdate(event) {
-  //   alert('onUpdate disabled');
-  // }
-
-  // onReset(event) {
-  //   this.updateState({ id: NaN });
-  // }
-
   getUsersList() {
     const dispatch = this.updateState;
 
@@ -84,18 +75,22 @@ class UsersList extends Component {
   }
 
   render() {
-    const { users, groups } = this.state;
+    const { users, groups, currentUser } = this.state;
 
     return (
       <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
         <Form className="users-modal__form" initial={initial}>
           <div className="users-modal__container">
               <div className="users-modal__content">
-                <AddUserItem groups={groups} />
+                {currentUser === '' ? (
+                  <AddUserItem groups={groups} updateState={this.updateState} />
+                ) : (
+                  <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} />
+                )}
               </div>
               <div className="users-modal__content">
                 <Table className="users-modal__table" headers={this.headers} data={users} >
-                  {props => <RowItem {...props} />}
+                  {props => <RowItem {...props} updateState={this.updateState} />}
                 </Table>
               </div>
           </div>

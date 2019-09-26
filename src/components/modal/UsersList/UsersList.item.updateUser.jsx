@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, TextInput, PasswordInput, Select, Option, Submit } from '../../forms-context/index.form';
-import { callUsersAdd } from '../../../controllers/routes/users/users.controller';
+import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
+// import { callUsersAdd } from '../../../controllers/routes/users/users.controller';
 
 import '../../../styles/modal/UsersList.style.scss';
 
@@ -18,7 +18,14 @@ class UsersList extends Component {
 	constructor(props) {
     super(props);
 
-    this.onAdd = this.onAdd.bind(this);
+    this.state = {
+      users: [],
+      groups: [],
+      currentUser: '',
+     };
+
+    this.onUpdate = this.onUpdate.bind(this);
+    this.onReset = this.onReset.bind(this);
 
     this.intl = {
       firstName: window.intl.users_field_firstname,
@@ -26,7 +33,7 @@ class UsersList extends Component {
       userName: window.intl.users_field_username,
       password: window.intl.users_field_password,
       groups: window.intl.users_field_role,
-      save: window.intl.users_field_save,
+      save: window.intl.users_field_update,
     };
 
     this.toText = {
@@ -36,10 +43,14 @@ class UsersList extends Component {
     };
   }
 
-  onAdd(data, event) {
-    const dispatch = this.props.updateState;
+  onUpdate(event) {
+    alert('onUpdate disabled');
+  }
 
-    callUsersAdd({ data, dispatch });
+  onReset(event) {
+    const { updateState } = this.props;
+
+    updateState({ currentUser: '' });
   }
 
   getCodeOptions() {
@@ -50,10 +61,16 @@ class UsersList extends Component {
   }
 
   render() {
+    const { initial } = this.props;
     const codeOptions = this.getCodeOptions();
 
     return (
       <>
+        <Field className="users-modal__field">
+          <Reset className="users-modal__button users-modal__button--reset" name="form-users" initial={initial} onClick={this.onReset}>
+            <i className="users-modal__icon ic-close" />
+          </Reset>
+        </Field>
         <Field className="users-modal__field">
           <TextInput name="firstName" placeholder={this.intl.firstName}/>
         </Field>
@@ -70,7 +87,7 @@ class UsersList extends Component {
           </Select>
         </Field>
         <Field className="users-modal__field">
-          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd}>
+          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onUpdate}>
             {this.intl.save}
           </Submit>
         </Field>
@@ -85,7 +102,8 @@ class UsersList extends Component {
  */
 UsersList.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateState: PropTypes.func.isRequired,
+  initial: PropTypes.object.isRequired,
+  updateState: PropTypes.func.isRequired
 };
 
 /**

@@ -9,7 +9,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonData } from '../../layouts/index.layouts';
-// import { callUsersList } from '../../../controllers/routes/users/users.controller';
+import { SetStore } from '../../forms-context/index.form';
+import { callUsersDetails } from '../../../controllers/routes/users/users.controller';
 
 import '../../../styles/modal/UsersList.style.scss';
 
@@ -18,7 +19,6 @@ class RowItem extends Component {
 	constructor(props) {
     super(props);
 
-    this.updateState = this.updateState.bind(this);
     this.onDetails = this.onDetails.bind(this);
     this.onDelete = this.onDelete.bind(this);
 
@@ -36,21 +36,33 @@ class RowItem extends Component {
     };
   }
 
-  updateState(newState) {
-    this.setState(newState);
-  }
-
-  onDetails(event) {
-    alert('onDetails disabled');
-  }
-
   onDelete(event) {
     alert('onDelete disabled');
+  }
+
+  onDetails(prevState, dispatcher) {
+    const { updateState } = this.props;
+
+    return (event) => {
+      const { data } = event;
+
+      updateState({ currentUser: data.toString() });
+
+      const dispatch = (response) => {
+        const { firstName, lastName, userName, groups, } = response.details;
+        const group = groups[0].code;
+
+        dispatcher({ firstName, lastName, userName, group, password: '', });
+      };
+
+      callUsersDetails({ data, dispatch });
+    };
   }
 
   render() {
     const { value, index } = this.props;
     const {
+      id,
       firstName,
       lastName,
       userName,
@@ -70,9 +82,14 @@ class RowItem extends Component {
         <td className="table__cell">{creationDate.split(/T|\..*/).join(' ')}</td>
         <td className="table__cell">{this.toText[code]}</td>
         <td className="table__cell">
-          <ButtonData className="users-modal__button users-modal__button--delete" data={userName} onClick={this.onDetails} >
+          <SetStore event="onClick" setter={this.onDetails} >
+            <ButtonData className="users-modal__button users-modal__button--delete" data={id}>
+              {this.intl.update}
+            </ButtonData>
+          </SetStore>
+          {/* <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.onDetails} >
             {this.intl.update}
-          </ButtonData>
+          </ButtonData> */}
         </td>
         <td className="table__cell">
           <ButtonData className="users-modal__button users-modal__button--delete" data={userName} onClick={this.onDelete} >
@@ -100,7 +117,8 @@ const shapeValue = {
  */
 RowItem.propTypes = {
   value: PropTypes.shape(shapeValue).isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  updateState: PropTypes.func.isRequired
 };
 
 /**

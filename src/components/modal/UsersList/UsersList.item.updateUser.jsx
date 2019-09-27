@@ -81,7 +81,7 @@ class UsersList extends Component {
           </Select>
         </Field>
         <Field className="users-modal__field">
-          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onUpdate}>
+          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onUpdate} resettable initial={initial}>
             {this.intl.save}
           </Submit>
         </Field>

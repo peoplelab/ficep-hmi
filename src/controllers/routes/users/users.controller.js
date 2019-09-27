@@ -43,7 +43,7 @@ export const callUsersDetails = async ({ data, dispatch }) => {
 };
 
 // chimata per inviare i dati di una nuova utenza
-export const callUsersAdd = async ({ data, dispatch }) => {
+export const callUsersAdd = async ({ data, fn }) => {
   const request = {
     firstName: data.firstName,
     lastName: data.lastName,
@@ -54,30 +54,22 @@ export const callUsersAdd = async ({ data, dispatch }) => {
   base({
     request,
     api: usersAdd,
-    // success: ({ dataprocessed }) => {
-    //   dispatch({ userName: dataprocessed.result });
-    // },
-    // failure: () => {
-    //   dispatch({ userName: null });
-    // }
+    success: () => {
+      fn();
+    },
   });
 };
 
-// chimata per inviare i dati di una nuova utenza
-export const callUsersDelete = async ({ data, dispatch }) => {
-  const params = {
-    firstName: data.id,
-  };
+// chimata per eliminare un'utenza
+export const callUsersDelete = async ({ data, fn }) => {
+  const params = { id: data };
 
   base({
     params,
     api: usersDelete,
-    // success: ({ dataprocessed }) => {
-    //   dispatch({ result: dataprocessed.result });
-    // },
-    // failure: () => {
-    //   dispatch({ result: null });
-    // }
+    success: () => {
+      fn();
+    },
   });
 };
 

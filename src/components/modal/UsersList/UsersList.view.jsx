@@ -83,7 +83,7 @@ class UsersList extends Component {
           <div className="users-modal__container">
               <div className="users-modal__content">
                 {currentUser === '' ? (
-                  <AddUserItem groups={groups} updateState={this.updateState} onAdd={this.getUsersList} />
+                  <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />
                 ) : (
                   <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} />
                 )}

@@ -37,11 +37,12 @@ class UsersList extends Component {
   }
 
   onAdd(data, event) {
-    const { onAdd, updateState: dispatch } = this.props;
+    const { groups, onAdd } = this.props;
 
-    callUsersAdd({ data, dispatch });
+    const { id } = groups.find(item => item.code === data.group);
+    data.group = id;
 
-    onAdd(event);
+    callUsersAdd({ data, fn: onAdd });
   }
 
   getCodeOptions() {
@@ -52,6 +53,7 @@ class UsersList extends Component {
   }
 
   render() {
+    const { initial } = this.props;
     const codeOptions = this.getCodeOptions();
 
     return (
@@ -72,7 +74,7 @@ class UsersList extends Component {
           </Select>
         </Field>
         <Field className="users-modal__field">
-          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd}>
+          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd} resettable initial={initial}>
             {this.intl.save}
           </Submit>
         </Field>
@@ -87,8 +89,8 @@ class UsersList extends Component {
  */
 UsersList.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateState: PropTypes.func.isRequired,
   onAdd: PropTypes.func.isRequired,
+  initial: PropTypes.object.isRequired,
 };
 
 /**

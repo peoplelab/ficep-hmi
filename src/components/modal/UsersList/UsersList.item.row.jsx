@@ -37,12 +37,10 @@ class RowItem extends Component {
   }
 
   onDelete(event) {
-    const { onDelete, updateState: dispatch } = this.props;
+    const { onDelete } = this.props;
     const { data } = event;
 
-    callUsersDelete({ data, dispatch });
-
-    onDelete(event);
+    callUsersDelete({ data, fn: onDelete });
   }
 
   onDetails(prevState, dispatcher) {
@@ -92,12 +90,9 @@ class RowItem extends Component {
               {this.intl.update}
             </ButtonData>
           </SetStore>
-          {/* <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.onDetails} >
-            {this.intl.update}
-          </ButtonData> */}
         </td>
         <td className="table__cell">
-          <ButtonData className="users-modal__button users-modal__button--delete" data={userName} onClick={this.onDelete} >
+          <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.onDelete} >
             {this.intl.delete}
           </ButtonData>
         </td>

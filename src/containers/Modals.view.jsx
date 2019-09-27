@@ -35,10 +35,14 @@ const Modals = (props) => {
   const routes = createRoutes();
 
   return (
+    <>
     <Switch>
       {isUserLogged && routes.modal.map(mapRoutes) /* Lista delle pagine private modali */}
+    </Switch>
+    <Switch>
       {mapRoutes(routes.error) /* Modale pubblica degli errori */}
     </Switch>
+    </>
   );
 };
 

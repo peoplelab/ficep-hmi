@@ -74,6 +74,10 @@ module.exports = [
     "api": require(`./api/v1/users/logout`),
   },
   {
+    "url": '/api/v1/users/user',
+    "api": require(`./api/v1/users/user`),
+  },
+  {
     "url": '/api/v1/users/user/:id/:groupId',
     "api": require(`./api/v1/users/user`),
   },

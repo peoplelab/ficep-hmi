@@ -22,7 +22,16 @@
         @extend %flex-row;
 
         .users-modal__field {
+          @extend %flex-row-center;
+
           flex: 1;
+
+          &:nth-of-type(5){
+            flex: 0.5;
+          }
+          &:nth-of-type(6) {
+            flex: 0.25;
+          }
         }
       }
 
@@ -30,8 +39,24 @@
         border: $border-light-grey solid 0.125rem;
         border-radius: 0.25rem;
         color: $text-dark-grey;
-
+        cursor: pointer;
         padding: 0.5rem;
+
+        &.users-modal__button--reset {
+          display: block;
+          height: 2rem;
+          margin: 0 auto;
+          width: 2rem;
+        }
+
+        .users-modal__icon {
+          background-color: $bg-dark-grey;
+          display: block;
+          height: 100%;
+          margin: 0 auto;
+          width: 100%;
+        }
+
         &:disabled {
           background-color: $bg-light-grey;
         }

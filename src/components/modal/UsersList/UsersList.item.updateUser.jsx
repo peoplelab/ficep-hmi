@@ -67,11 +67,6 @@ class UsersList extends Component {
     return (
       <>
         <Field className="users-modal__field">
-          <Reset className="users-modal__button users-modal__button--reset" name="form-users" initial={initial} onClick={this.onReset}>
-            <i className="users-modal__icon ic-close" />
-          </Reset>
-        </Field>
-        <Field className="users-modal__field">
           <TextInput name="firstName" placeholder={this.intl.firstName}/>
         </Field>
         <Field className="users-modal__field">
@@ -90,6 +85,11 @@ class UsersList extends Component {
           <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onUpdate}>
             {this.intl.save}
           </Submit>
+        </Field>
+        <Field className="users-modal__field">
+          <Reset className="users-modal__button users-modal__button--reset" name="form-users" initial={initial} onClick={this.onReset}>
+            <i className="users-modal__icon ic-close" />
+          </Reset>
         </Field>
       </>
     );

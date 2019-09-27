@@ -6,7 +6,7 @@
 
 
 import {
-  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd
+  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete
 } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 
@@ -54,12 +54,30 @@ export const callUsersAdd = async ({ data, dispatch }) => {
   base({
     request,
     api: usersAdd,
-    success: ({ dataprocessed }) => {
-      dispatch({ userName: dataprocessed.result });
-    },
-    failure: () => {
-      dispatch({ userName: null });
-    }
+    // success: ({ dataprocessed }) => {
+    //   dispatch({ userName: dataprocessed.result });
+    // },
+    // failure: () => {
+    //   dispatch({ userName: null });
+    // }
+  });
+};
+
+// chimata per inviare i dati di una nuova utenza
+export const callUsersDelete = async ({ data, dispatch }) => {
+  const params = {
+    firstName: data.id,
+  };
+
+  base({
+    params,
+    api: usersDelete,
+    // success: ({ dataprocessed }) => {
+    //   dispatch({ result: dataprocessed.result });
+    // },
+    // failure: () => {
+    //   dispatch({ result: null });
+    // }
   });
 };
 

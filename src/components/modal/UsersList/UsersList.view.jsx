@@ -83,14 +83,14 @@ class UsersList extends Component {
           <div className="users-modal__container">
               <div className="users-modal__content">
                 {currentUser === '' ? (
-                  <AddUserItem groups={groups} updateState={this.updateState} />
+                  <AddUserItem groups={groups} updateState={this.updateState} onAdd={this.getUsersList} />
                 ) : (
                   <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} />
                 )}
               </div>
               <div className="users-modal__content">
                 <Table className="users-modal__table" headers={this.headers} data={users} >
-                  {props => <RowItem {...props} updateState={this.updateState} />}
+                  {props => <RowItem {...props} updateState={this.updateState} onDelete={this.getUsersList} />}
                 </Table>
               </div>
           </div>

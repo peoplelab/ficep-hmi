@@ -37,9 +37,11 @@ class UsersList extends Component {
   }
 
   onAdd(data, event) {
-    const dispatch = this.props.updateState;
+    const { onAdd, updateState: dispatch } = this.props;
 
     callUsersAdd({ data, dispatch });
+
+    onAdd(event);
   }
 
   getCodeOptions() {
@@ -86,6 +88,7 @@ class UsersList extends Component {
 UsersList.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateState: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 /**

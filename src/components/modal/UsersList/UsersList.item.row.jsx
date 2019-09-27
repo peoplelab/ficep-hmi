@@ -49,10 +49,10 @@ class RowItem extends Component {
       updateState({ currentUser: data.toString() });
 
       const dispatch = (response) => {
-        const { firstName, lastName, userName, groups, } = response.details;
+        const { firstName, lastName, groups, } = response.details;
         const group = groups[0].code;
 
-        dispatcher({ firstName, lastName, userName, group, password: '', });
+        dispatcher({ firstName, lastName, group, password: '', });
       };
 
       callUsersDetails({ data, dispatch });

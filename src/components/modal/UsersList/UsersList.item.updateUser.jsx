@@ -30,7 +30,6 @@ class UsersList extends Component {
     this.intl = {
       firstName: window.intl.users_field_firstname,
       lastName: window.intl.users_field_lastname,
-      userName: window.intl.users_field_username,
       password: window.intl.users_field_password,
       groups: window.intl.users_field_role,
       save: window.intl.users_field_update,

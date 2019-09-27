@@ -3,7 +3,11 @@ const { base } = require('../../../mock.base');
 
 module.exports = {
   GET: base(
-    (req, res) => global.users.result[req.params.id - 1]
+    (req, res) => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": global.users.result[req.params.id - 1],
+    })
   ),
   DELETE: base(
     (req, res) => {

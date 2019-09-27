@@ -1,19 +1,30 @@
 const { base } = require('../../../mock.base');
-const responseJSON = require('./response.json');
-
-
-const randBool = () => Math.random() >= 0.5;
 
 
 module.exports = {
   GET: base(
-    (req, res) => responseJSON[req.params.id - 1]
+    (req, res) => global.users.result[req.params.id - 1]
   ),
   DELETE: base(
-    (req, res) => ({
-      "responseType": 200,
-      "errorCode": null,
-      "result": randBool()
-    })
-  )
+    (req, res) => {
+      const id = parseInt(req.params.id);
+      const test = global.users.result.some(item => item.id === id);
+
+      if (typeof test === 'undefined') {
+        return {
+          "responseType": 400,
+          "errorCode": null,
+          "result": "USER_DELETION_NOTFOUND",
+        };
+      }
+
+      global.users.result = global.users.result.filter(item => item.id !== id);
+
+      return {
+        "responseType": 200,
+        "errorCode": null,
+        "result": true,
+      };
+    }
+  ),
 };

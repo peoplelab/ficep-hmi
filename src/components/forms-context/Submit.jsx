@@ -8,7 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext } from '../../store/form.store';
+import { FormContext, types } from '../../store/form.store';
 
 import '../../styles/forms-context/input.scss';
 
@@ -25,8 +25,8 @@ class Submit extends PureComponent {
   onSubmit(event) {
     event.preventDefault();
 
-    const { onSubmit, name } = this.props;
-    const [state] = this.context;
+    const { onSubmit, name, resettable, initial } = this.props;
+    const [state, dispatch] = this.context;
 
     const newEvent = {
       ...event,
@@ -38,15 +38,25 @@ class Submit extends PureComponent {
     };
 
     onSubmit(state, newEvent);
+
+    if (resettable) {
+      dispatch({
+        type: types.ON_CHANGE,
+        payload: initial
+      });
+    }
   }
 
   render() {
     const {
       children,
-      className,
-      disabled: disabledProp,
-      required,
       name,
+      disabled: disabledProp,
+      resettable: _resettable, // eslint-disable-line no-unused-vars
+      className,
+      initial: _initial, // eslint-disable-line no-unused-vars
+      required,
+      onSubmit: _onSubmit, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
     const [state] = this.context;
@@ -78,14 +88,18 @@ Submit.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
+  resettable: PropTypes.bool,
   className: PropTypes.string,
+  initial: PropTypes.object,
   required: PropTypes.arrayOf(PropTypes.string),
   onSubmit: PropTypes.func.isRequired,
 };
 
 Submit.defaultProps = {
   disabled: false,
+  resettable: false,
   className: '',
+  initial: null,
   required: [],
 };
 

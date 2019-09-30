@@ -8,35 +8,91 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Anchor } from '../layouts/index.layouts';
+import { Button, Anchor, Link } from '../layouts/index.layouts';
 import AdminArea from '../common/Area/Area.admin';
 import { callLogout } from '../../controllers/api/logout.controller';
 
 import '../../styles/modal/UserModal.style.scss';
+import Enum from '../../utils/Enum';
+
+
+const TEMPLATE = Enum.from('MAIN', 'DETAILS');
 
 
 class HomeRoute extends PureComponent {
+  static getDerivedStateFromProps(props, state) {
+    if (!(props.visible)){
+      return {
+        template: TEMPLATE.MAIN,
+        visible: props.visible,
+      };
+    }
+
+    return null;
+  }
+
 	constructor(props) {
-		super(props);
+    super(props);
+
+    this.state = { template: TEMPLATE.MAIN };
 
 		this.onLogout = this.onLogout.bind(this);
+		this.onChangePassword = this.onChangePassword.bind(this);
+		this.onDetails = this.onDetails.bind(this);
+		this.onGoBack = this.onGoBack.bind(this);
+		this.templateDetails = this.templateDetails.bind(this);
+		this.templateMain = this.templateMain.bind(this);
+  }
+
+  onChangePassword(event) {
+    alert('Ciao');
+    this.props.onClick(event);
+  }
+
+  onGoBack(event) {
+    this.setState(() => ({ template: TEMPLATE.MAIN }));
+  }
+
+  onDetails(event) {
+    this.setState(() => ({ template: TEMPLATE.DETAILS }));
   }
 
   // chimata a logout
-	onLogout() {
+	onLogout(event) {
     // in assenza di parametri nella funzione del controller, è necessario passare sempre un oggetto vuoto
 		callLogout({});
+    this.props.onClick(event);
 	}
 
-  // renderizzazione della pagina
-	render() {
-    const { visible } = this.props;
+  templateDetails() {
+    return (
+      <section className="user-modal">
+        <div className="user-modal__bg" />
+        <Button
+          className="user-modal__go-back"
+          onClick={this.onGoBack}
+        >
+        <i className="user-modal__back-icon ic-arrow-link" />
+        </Button>
+        <Button
+          className="user-modal__button anchor"
+          onClick={this.onChangePassword}
+        >
+          {window.intl.user_action_password}
+        </Button>
+      </section>
+    );
+  }
 
-    return visible && (
+  templateMain() {
+    return (
       <>
         <AdminArea>
           <section className="user-modal user-modal--admin">
             <div className="user-modal__bg bg-user-modal-admin" />
+            <Link className="user-modal__link" onClick={this.onDetails}>
+              {window.intl.user_info_details}
+            </Link>
             <Anchor
               className="user-modal__button-2 anchor"
               current
@@ -55,6 +111,9 @@ class HomeRoute extends PureComponent {
         <AdminArea reverse>
           <section className="user-modal">
             <div className="user-modal__bg bg-user-modal" />
+            <Link className="user-modal__link" onClick={this.onDetails} symbol=">">
+              {window.intl.user_info_details}
+            </Link>
             <Button
               className="user-modal__button anchor"
               onClick={this.onLogout}
@@ -65,6 +124,28 @@ class HomeRoute extends PureComponent {
         </AdminArea>
       </>
     );
+  }
+
+  // renderizzazione della pagina
+	render() {
+    const { visible } = this.props;
+    const { template } = this.state;
+
+    if (!visible) {
+      return null;
+    }
+
+    switch (template) {
+      case TEMPLATE.DETAILS: {
+        return this.templateDetails();
+      }
+      case TEMPLATE.MAIN: {
+        return this.templateMain();
+      }
+      default: {
+        return null;
+      }
+    }
 	}
 }
 
@@ -73,7 +154,8 @@ class HomeRoute extends PureComponent {
  * Define component properties types
  */
 HomeRoute.propTypes = {
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };
 
 /**

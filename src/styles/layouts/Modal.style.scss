@@ -60,6 +60,11 @@
 
       flex: 1;
       overflow: hidden;
+
+      // stylelint-disable-next-line plugin/selector-bem-pattern
+      > * {
+        width: 100%;
+      }
     }
   }
 

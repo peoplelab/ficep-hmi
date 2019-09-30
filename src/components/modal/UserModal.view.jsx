@@ -37,15 +37,14 @@ class HomeRoute extends PureComponent {
     this.state = { template: TEMPLATE.MAIN };
 
 		this.onLogout = this.onLogout.bind(this);
-		this.onChangePassword = this.onChangePassword.bind(this);
+		this.onClick = this.onClick.bind(this);
 		this.onDetails = this.onDetails.bind(this);
 		this.onGoBack = this.onGoBack.bind(this);
 		this.templateDetails = this.templateDetails.bind(this);
 		this.templateMain = this.templateMain.bind(this);
   }
 
-  onChangePassword(event) {
-    alert('Ciao');
+  onClick(event) {
     this.props.onClick(event);
   }
 
@@ -78,6 +77,7 @@ class HomeRoute extends PureComponent {
           className="user-modal__button anchor"
           current
           path="/password"
+          onClick={this.onClick}
         >
           {window.intl.user_action_password}
         </Anchor>
@@ -98,6 +98,7 @@ class HomeRoute extends PureComponent {
               className="user-modal__button-2 anchor"
               current
               path="/users"
+              onClick={this.onClick}
             >
               {window.intl.user_info_management}
             </Anchor>

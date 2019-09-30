@@ -4,6 +4,8 @@
   "header_user_operator": "Operator",
   "header_info_lastaccess": "Last access:",
   "user_info_management": "User management",
+  "user_info_details": "Account details",
+  "user_action_password": "Change password",
   "user_action_logout": "Logout",
   "tools_tab_machine": "Machine tools",
   "tools_tab_database": "Tool database",

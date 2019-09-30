@@ -4,6 +4,8 @@
   "header_user_operator": "Operatore",
   "header_info_lastaccess": "Ultimo accesso:",
   "user_info_management": "Gestione utenti",
+  "user_info_details": "Dettagli account",
+  "user_action_password": "Modifica password",
   "user_action_logout": "Logout",
   "tools_tab_machine": "Utensili macchina",
   "tools_tab_database": "Database utensili",

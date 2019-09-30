@@ -36,6 +36,32 @@
     z-index: 2;
   }
 
+  .user-modal__link {
+    left: 50%;
+    position: absolute;
+    top: 70%;
+    transform: translate(-50%, 0);
+    width: 13.9rem;
+    z-index: 3;
+  }
+
+  .user-modal__go-back {
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    left: 5%;
+    position: absolute;
+    top: 5%;
+    transform: rotate(180deg);
+
+    .user-modal__back-icon {
+      background-color: $bg-dark-grey;
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+    }
+  }
+
   .user-modal__button {
     @extend %flex-row-center;
     @extend %paragraph-1-semibold;

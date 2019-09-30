@@ -1,0 +1,37 @@
+/** @define anchor */
+
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
+
+/** @define link */
+
+.link {
+  @extend %flex-row-full;
+
+  background: transparent;
+  cursor: pointer;
+  padding-right: 0.6rem;
+
+  .link__section{
+    flex: 1;
+
+    .link__icon {
+      background-color: $bg-dark-grey;
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+    }
+
+    &:first-of-type {
+      @extend %link-sembold;
+
+      color: $text-dark-grey;
+      text-align: left;
+    }
+
+    &:last-of-type {
+      flex: none;
+    }
+  }
+}

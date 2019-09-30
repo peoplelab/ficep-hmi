@@ -8,79 +8,83 @@
 
 
 .users-modal {
-
-  .users-modal__container {
-    @extend %flex-column;
-
-    background-color: $bg-light-grey;
+  .users-modal__form {
     height: 100%;
     width: 100%;
 
-    .users-modal__content {
+    .users-modal__container {
+      @extend %flex-column;
 
-      &:first-of-type {
-        @extend %flex-row;
+      background-color: $bg-light-grey;
+      height: 100%;
+      width: 100%;
 
-        .users-modal__field {
-          @extend %flex-row-center;
+      .users-modal__content {
 
-          flex: 1;
+        &:first-of-type {
+          @extend %flex-row;
 
-          &:nth-of-type(5){
-            flex: 0.5;
+          .users-modal__field {
+            @extend %flex-row-center;
+
+            flex: 1;
+
+            &:nth-of-type(5){
+              flex: 0.5;
+            }
+            &:nth-of-type(6) {
+              flex: 0.25;
+            }
           }
-          &:nth-of-type(6) {
-            flex: 0.25;
-          }
-        }
-      }
-
-      .users-modal__button {
-        border: $border-light-grey solid 0.125rem;
-        border-radius: 0.25rem;
-        color: $text-dark-grey;
-        cursor: pointer;
-        padding: 0.5rem;
-
-        &.users-modal__button--reset {
-          display: block;
-          height: 2rem;
-          margin: 0 auto;
-          width: 2rem;
         }
 
-        .users-modal__icon {
-          background-color: $bg-dark-grey;
-          display: block;
-          height: 100%;
-          margin: 0 auto;
-          width: 100%;
-        }
-
-        &:disabled {
-          background-color: $bg-light-grey;
-        }
-
-        &:enabled {
-          background-color: $bg-light-grey-red;
+        .users-modal__button {
+          border: $border-light-grey solid 0.125rem;
+          border-radius: 0.25rem;
+          color: $text-dark-grey;
           cursor: pointer;
+          padding: 0.5rem;
 
-          &:hover {
-            background-color: $grey-red;
+          &.users-modal__button--reset {
+            display: block;
+            height: 2rem;
+            margin: 0 auto;
+            width: 2rem;
           }
-          &:focus {
-            border: $border-dark-grey solid 0.125rem;
+
+          .users-modal__icon {
+            background-color: $bg-dark-grey;
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+            width: 100%;
+          }
+
+          &:disabled {
+            background-color: $bg-light-grey;
+          }
+
+          &:enabled {
+            background-color: $bg-light-grey-red;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $grey-red;
+            }
+            &:focus {
+              border: $border-dark-grey solid 0.125rem;
+            }
           }
         }
-      }
 
-      &:first-of-type() {
-        padding: 2rem;
-      }
+        &:first-of-type() {
+          padding: 2rem;
+        }
 
-      &:last-of-type() {
-        flex: 1;
-        overflow: hidden;
+        &:last-of-type() {
+          flex: 1;
+          overflow: hidden;
+        }
       }
     }
   }

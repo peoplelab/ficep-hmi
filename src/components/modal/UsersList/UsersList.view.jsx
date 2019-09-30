@@ -78,7 +78,7 @@ class UsersList extends Component {
     const { users, groups, currentUser } = this.state;
 
     return (
-      <Modal open className="users-modal modal--data" title={window.intl.users_main_title} >
+      <Modal open className="users-modal modal--data modal--big" title={window.intl.users_main_title} >
         <Form className="users-modal__form" initial={initial}>
           <div className="users-modal__container">
               <div className="users-modal__content">

@@ -74,12 +74,13 @@ class HomeRoute extends PureComponent {
         >
         <i className="user-modal__back-icon ic-arrow-link" />
         </Button>
-        <Button
+        <Anchor
           className="user-modal__button anchor"
-          onClick={this.onChangePassword}
+          current
+          path="/password"
         >
           {window.intl.user_action_password}
-        </Button>
+        </Anchor>
       </section>
     );
   }
@@ -90,7 +91,7 @@ class HomeRoute extends PureComponent {
         <AdminArea>
           <section className="user-modal user-modal--admin">
             <div className="user-modal__bg bg-user-modal-admin" />
-            <Link className="user-modal__link" onClick={this.onDetails}>
+            <Link className="user-modal__link user-modal__link--admin" onClick={this.onDetails}>
               {window.intl.user_info_details}
             </Link>
             <Anchor

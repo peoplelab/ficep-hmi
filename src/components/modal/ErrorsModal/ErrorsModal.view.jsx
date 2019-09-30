@@ -65,7 +65,7 @@ const ErrorsModal = (props) => {
   }
 
   return (
-    <Modal open className="modal--error error-modal" title={title} onClick={onClick} redirect={false}>
+    <Modal open className="modal--error modal--medium error-modal" title={title} onClick={onClick} redirect={false}>
       <div className="error-modal__container">
         <div className="error-modal__content">
           <h1 className="error-modal__title modal__title--main-title">

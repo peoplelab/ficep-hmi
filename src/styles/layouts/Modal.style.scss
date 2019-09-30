@@ -56,12 +56,23 @@
     }
 
     .modal__section {
+      @extend %flex-row-center;
+
       flex: 1;
       overflow: hidden;
     }
   }
 
-  &.modal--error {
+  &.modal--small {
+
+    // stylelint-disable-next-line plugin/selector-bem-pattern
+    .modal__container {
+      height: 40%;
+      width: 30%;
+    }
+  }
+
+  &.modal--medium {
 
     // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
@@ -70,7 +81,7 @@
     }
   }
 
-  &.modal--data {
+  &.modal--big {
     // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
       height: 85%;

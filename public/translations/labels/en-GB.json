@@ -39,5 +39,11 @@
   "users_field_disable": "No",
   "users_field_update": "Update",
   "users_field_delete": "Delete",
-  "users_field_save": "Save"
+  "users_field_save": "Save",
+
+  "password_main_title": "Change password",
+  "password_field_old": "Old password",
+  "password_field_new": "New password",
+  "password_field_confirm": "Confirm password",
+  "password_action_submit": "Update"
 }

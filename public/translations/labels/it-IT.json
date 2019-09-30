@@ -39,5 +39,11 @@
   "users_field_disable": "No",
   "users_field_update": "Aggiorna",
   "users_field_delete": "Elimina",
-  "users_field_save": "Salva"
+  "users_field_save": "Salva",
+
+  "password_main_title": "Modifica la password",
+  "password_field_old": "Password precedente",
+  "password_field_new": "Nuova password",
+  "password_field_confirm": "Conferma assword",
+  "password_action_submit": "Aggiorna"
 }

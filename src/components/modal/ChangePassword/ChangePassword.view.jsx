@@ -1,17 +1,15 @@
 //----------------------------------------------------------------------------------------
-// File: UserModal.view.jsx
+// File: ChangePassword.view.jsx
 //
-// Desc: Widget modale, contiene le funzionalità specifiche per l'utente
-// Path: /src/components/modal/UserModal.view
+// Desc: Widget modale, contiene le funzionalità specifiche per la modifica della password
+// Path: /src/components/modal/ChangePassword.view
 //----------------------------------------------------------------------------------------
 
 
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-// import store from '../../../store/redux.store';
-// import { types } from '../../../store/session.store';
+// import PropTypes from 'prop-types';
 import { Modal } from '../../layouts/index.layouts';
-import { Form, Field, PasswordInput, Submit } from '../../forms-context/index.form';
+import { Form, Field, PasswordInput, Submit, Validation } from '../../forms-context/index.form';
 
 import '../../../styles/modal/ErrorModal.style.scss';
 
@@ -38,6 +36,7 @@ class ChangePassword extends PureComponent {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onValidation = this.onValidation.bind(this);
   }
 
   onSubmit(state, event) {
@@ -46,10 +45,22 @@ class ChangePassword extends PureComponent {
     console.log(state);
   }
 
+  onValidation(state) {
+    const { oldPassword, newPassword, confirmPassword } = state;
+    return (
+      typeof oldPassword !== 'undefined'
+      && typeof newPassword !== 'undefined'
+      && typeof confirmPassword !== 'undefined'
+      && oldPassword !== newPassword
+      && confirmPassword === newPassword
+    );
+  }
+
   render() {
     return (
       <Modal open className="modal--data modal--small password-modal" title={this.intl.title}>
         <Form className="password-modal__form" initial={initial}>
+          <Validation onValidation={this.onValidation} />
           <div className="password-modal__container">
             <div className="password-modal__content">
               <Field className="password-modal__field">

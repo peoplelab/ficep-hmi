@@ -12,6 +12,7 @@ const Select = lazy(() => import(/* webpackChunkName: "forms-context" */ './Sele
 const SetStore = lazy(() => import(/* webpackChunkName: "forms-context" */ './SetStore'));
 const Submit = lazy(() => import(/* webpackChunkName: "forms-context" */ './Submit'));
 const TextInput = lazy(() => import(/* webpackChunkName: "forms-context" */ './TextInput'));
+const Validation = lazy(() => import(/* webpackChunkName: "forms-context" */ './Validation'));
 
 export {
   ButtonForm,
@@ -26,4 +27,5 @@ export {
   SetStore,
   Submit,
   TextInput,
+  Validation,
 };

@@ -60,12 +60,13 @@ class Submit extends PureComponent {
       ...rest
     } = this.props;
     const [state] = this.context;
+    const { validity, ...fields } = state;
 
     const mergedClass = `input input__submit ${className}`;
 
     const disabled = required.reduce((acc, key) => (
-      acc || state[key] === undefined || state[key] === null || state[key] === ''
-    ), disabledProp);
+      acc || fields[key] === undefined || fields[key] === null || fields[key] === ''
+    ), disabledProp || validity === false);
 
     const onClick = disabled ? undefined : this.onSubmit;
 

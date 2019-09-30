@@ -49,9 +49,9 @@ class RowItem extends Component {
     return (event) => {
       const { data } = event;
 
-      updateState({ currentUser: data.toString() });
-
       const dispatch = (response) => {
+        updateState({ currentUser: response.details });
+
         const { firstName, lastName, groups, } = response.details;
         const group = groups[0].code;
 

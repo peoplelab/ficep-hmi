@@ -49,7 +49,8 @@ export const callUsersAdd = async ({ data, fn }) => {
     firstName: data.firstName,
     lastName: data.lastName,
     password: data.password,
-    groups: [data.group]
+    groups: [data.group],
+    CanDeleted: true,
   };
 
   base({
@@ -57,6 +58,27 @@ export const callUsersAdd = async ({ data, fn }) => {
     api: usersAdd,
     success: () => {
       fn();
+    },
+  });
+};
+
+// chimata per aggiornare i dati di una utenza
+export const callUsersUpdate = async ({ data, fn }) => {
+  const request = {
+    id: data.id,
+    firstName: data.firstName,
+    lastName: data.lastName,
+    isActive: true,
+    canBeDeleted: true
+  };
+
+  base({
+    request,
+    api: usersUpdate,
+    success: () => {
+      if (typeof fn === 'function') {
+        fn();
+      }
     },
   });
 };
@@ -121,7 +143,7 @@ export const callUsersAddToGroup = async ({ data, dispatch, fn }) => {
     api: usersAddToGroup,
     success: ({ dataprocessed }) => {
       dispatch({ response: dataprocessed.result });
-      if (dataprocessed.result) {
+      if (dataprocessed.result && typeof fn === 'function') {
         fn();
       }
     },
@@ -143,7 +165,7 @@ export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
     api: usersDeleteFromGroup,
     success: ({ dataprocessed }) => {
       dispatch({ response: dataprocessed.result });
-      if (dataprocessed.result) {
+      if (dataprocessed.result && typeof fn === 'function') {
         fn();
       }
     },
@@ -151,4 +173,32 @@ export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
       dispatch({ response: null });
     }
   });
+};
+
+
+// chimata per aggiornare una utenza (dati, password, groups)
+export const callUpdateUser = async ({ data, dispatch }) => {
+  const dataUser = {
+    id: data.idUser,
+    firstName: data.firstName,
+    lastName: data.lastName,
+  };
+  const dataAddGroup = {
+    id: data.idUser,
+    groupId: data.idGroupAdd,
+  };
+  const dataDeleteGroup = {
+    id: data.idUser,
+    groupId: data.idGroupDelete,
+  };
+
+  const promises = [
+    callUsersUpdate({ data: dataUser }),
+    callUsersAddToGroup({ data: dataAddGroup }),
+    callUsersDeleteFromGroup({ data: dataDeleteGroup }),
+  ];
+
+  await Promise.all(promises);
+
+  callUsersList({ dispatch });
 };

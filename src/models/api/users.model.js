@@ -59,6 +59,19 @@ export const usersAdd = async ({ headers, request: data }) => {
   return base({ url: `/api/v1/users/user`, request });
 };
 
+export const usersPassword = async ({ headers, request: data }) => {
+  const request = {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(data),
+  };
+
+  return base({ url: `/api/v1/users/changepassword`, request });
+};
+
 // export const usersSeed = async ({ headers, request: data }) => {
 //   const request = {
 //     method: "post",

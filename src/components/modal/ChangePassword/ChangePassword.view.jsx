@@ -10,6 +10,8 @@ import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { Modal } from '../../layouts/index.layouts';
 import { Form, Field, PasswordInput, Submit, Validation } from '../../forms-context/index.form';
+import { callUsersPassword } from '../../../controllers/routes/users/users.controller';
+import { callLogout } from '../../../controllers/api/logout.controller';
 
 import '../../../styles/modal/ErrorModal.style.scss';
 
@@ -40,9 +42,7 @@ class ChangePassword extends PureComponent {
   }
 
   onSubmit(state, event) {
-    alert('disabled');
-
-    console.log(state);
+    callUsersPassword({ data: state, fn: callLogout });
   }
 
   onValidation(state) {

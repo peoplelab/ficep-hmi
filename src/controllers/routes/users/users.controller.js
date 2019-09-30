@@ -6,9 +6,10 @@
 
 
 import {
-  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete
+  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete, usersUpdate, usersPassword,
 } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
+import store from '../../../store/redux.store';
 
 
 // chimata per recuperare la lista degli utenti da inviare alla view
@@ -56,6 +57,28 @@ export const callUsersAdd = async ({ data, fn }) => {
     api: usersAdd,
     success: () => {
       fn();
+    },
+  });
+};
+
+// chimata per aggiornare la password di una utenza
+export const callUsersPassword = async ({ data, fn }) => {
+  const { userId } = store.getState().session;
+
+  const request = {
+    userId,
+    oldPassword: data.oldPassword,
+    newPassword: data.newPassword,
+    confirmedPassword: data.confirmPassword
+  };
+
+  base({
+    request,
+    api: usersPassword,
+    success: ({ dataprocessed }) => {
+      if (dataprocessed.result) {
+        fn();
+      }
     },
   });
 };

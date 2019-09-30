@@ -57,7 +57,13 @@ const createRoutes = () => ({
       path: '**/users',  // path valido per qualsiasi percorso che precede /users
       key: 'users',
       exact: false,
-      Component: lazy(() => import(/* webpackChunkName: "Users" */ '../components/modal/UsersList/UsersList.view')),
+      Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/UsersList/UsersList.view')),
+    },
+    {
+      path: '**/password',
+      key: 'password',
+      exact: false,
+      Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/ChangePassword/ChangePassword.view')),
     },
   ],
 

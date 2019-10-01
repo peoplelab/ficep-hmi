@@ -84,7 +84,7 @@ export const callUsersUpdate = async ({ data, fn }) => {
 };
 
 // chimata per aggiornare la password di una utenza
-export const callUsersPassword = async ({ data, fn }) => {
+export const callUsersPassword = async ({ data, dispatch }) => {
   const { userId } = store.getState().session;
 
   const request = {
@@ -98,9 +98,7 @@ export const callUsersPassword = async ({ data, fn }) => {
     request,
     api: usersPassword,
     success: ({ dataprocessed }) => {
-      if (dataprocessed.result) {
-        fn();
-      }
+      dispatch({ passwordChanged: dataprocessed.result });
     },
   });
 };

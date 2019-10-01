@@ -13,7 +13,7 @@ import { base } from '../common/controller.base';
 
 
 // chimata di logout per terminare la sessione utente
-export const callLogout = async ({ headers }) => {
+export const callLogout = async () => {
   base({
     api: usersLogout,
     success: () => {

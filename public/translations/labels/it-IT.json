@@ -45,5 +45,10 @@
   "password_field_old": "Password precedente",
   "password_field_new": "Nuova password",
   "password_field_confirm": "Conferma assword",
-  "password_action_submit": "Aggiorna"
+  "password_action_submit": "Aggiorna",
+
+  "session_expired_title": "Attenzione!",
+  "session_expired_message": "La sessione corrente è scaduta, esegui un nuovo accesso per poter proseguire",
+  "session_expired_info": "*: la sessione corrente andrà persa",
+  "session_expired_logout": "Prosegui"
 }

@@ -45,5 +45,10 @@
   "password_field_old": "Old password",
   "password_field_new": "New password",
   "password_field_confirm": "Confirm password",
-  "password_action_submit": "Update"
+  "password_action_submit": "Update",
+
+  "session_expired_title": "Alert!",
+  "session_expired_message": "The current session has expired, please log in again to continue",
+  "session_expired_info": "*: the current session will be lost",
+  "session_expired_logout": "Logout"
 }

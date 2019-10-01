@@ -11,9 +11,8 @@ import React, { PureComponent } from 'react';
 import { Modal } from '../../layouts/index.layouts';
 import { Form, Field, PasswordInput, Submit, Validation } from '../../forms-context/index.form';
 import { callUsersPassword } from '../../../controllers/routes/users/users.controller';
-import { callLogout } from '../../../controllers/api/logout.controller';
 
-import '../../../styles/modal/ErrorModal.style.scss';
+// import '../../../styles/modal/ErrorModal.style.scss';
 
 
 const initial = {
@@ -42,7 +41,7 @@ class ChangePassword extends PureComponent {
   }
 
   onSubmit(state, event) {
-    callUsersPassword({ data: state, fn: callLogout });
+    callUsersPassword({ data: state });
   }
 
   onValidation(state) {

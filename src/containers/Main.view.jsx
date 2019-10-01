@@ -44,9 +44,12 @@ const MainComponent = (props) => {
       {/* #start:dev */}
       {sandbox}
       {/* #end:dev */}
-      <LoggedTemplate>
-        {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
-      </LoggedTemplate>
+      <Route path="/session-expired" />
+      <Route path="**">
+        <LoggedTemplate>
+          {routes.logged.map(mapRoutes) /* Lista delle pagine private*/}
+        </LoggedTemplate>
+      </Route>
     </Switch>
   ) : (
     <Switch>

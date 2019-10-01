@@ -59,16 +59,18 @@ class Modal extends PureComponent {
     return open && (
       <div className={mergedClass}>
         <div className="modal__container">
-          {!disabled && (
             <header className="modal__head">
+            {title && (
               <h1 className="modal__title">
                 {title}
               </h1>
+            )}
+            {!disabled && (
               <Button className="modal__button" onClick={this.onClick}>
                 <i className="modal__icon ic-close" />
               </Button>
+            )}
             </header>
-          )}
           <section className="modal__section">
             {children}
           </section>

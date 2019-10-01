@@ -10,6 +10,7 @@ import {
 } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 import store from '../../../store/redux.store';
+import history from '../../../models/history/history';
 
 
 // chimata per recuperare la lista degli utenti da inviare alla view
@@ -84,7 +85,7 @@ export const callUsersUpdate = async ({ data, fn }) => {
 };
 
 // chimata per aggiornare la password di una utenza
-export const callUsersPassword = async ({ data, dispatch }) => {
+export const callUsersPassword = async ({ data, fn }) => {
   const { userId } = store.getState().session;
 
   const request = {
@@ -98,7 +99,9 @@ export const callUsersPassword = async ({ data, dispatch }) => {
     request,
     api: usersPassword,
     success: ({ dataprocessed }) => {
-      dispatch({ passwordChanged: dataprocessed.result });
+      if (dataprocessed.result) {
+        history.push('/session-expired');
+      }
     },
   });
 };

@@ -19,6 +19,7 @@
   "modal_error_details": "Details:",
   "modal_error_server": "Server side error",
   "modal_error_technical": "Technical error",
+  "modal_error_close": "Close",
 
   "users_main_title": "Users details",
   "users_headers_firstname": "First name",
@@ -52,5 +53,7 @@
   "session_expired_info": "*: the current session will be lost",
   "session_expired_logout": "Logout",
 
-  "info_main_message": "Operation succesfully complete"
+  "info_main_title": "Confirm operation",
+  "info_main_message": "Operation succesfully complete",
+  "info_main_close": "Close"
 }

@@ -19,6 +19,7 @@
   "modal_error_details": "Dettagli:",
   "modal_error_server": "Errore lato server",
   "modal_error_technical": "Errore tecnico",
+  "modal_error_close": "Chiudi",
 
   "users_main_title": "Dettagli degli utenti",
   "users_headers_firstname": "Cognome",
@@ -52,5 +53,7 @@
   "session_expired_info": "*: la sessione corrente andrà persa",
   "session_expired_logout": "Prosegui",
 
-  "info_main_message": "Operazione avvenuta con successo"
+  "info_main_title": "Conferma operazione",
+  "info_main_message": "Operazione avvenuta con successo",
+  "info_main_close": "Chiudi"
 }

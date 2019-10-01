@@ -19,8 +19,26 @@ export const datarawHandler = ({ contentType, dataraw }) => {
   }
 
   if (contentType.includes("application/json")) {
-    return JSON.parse(dataraw);
-  }
+    const response = JSON.parse(dataraw);
 
-  // if ()
+    let dataprocessed;
+    if (
+      ('ResponseType'
+      && 'ErrorCode' in response
+      && 'Result' in response)
+      || ('responseType' in response
+      && 'errorCode' in response
+      && 'result' in response)
+    ) {
+      dataprocessed = {
+        responseType: response.ResponseType || response.responseType,
+        errorCode: response.ErrorCode || response.errorCode,
+        result: response.Result || response.result,
+      };
+    } else {
+      dataprocessed = response;
+    }
+
+    return dataprocessed;
+  }
 };

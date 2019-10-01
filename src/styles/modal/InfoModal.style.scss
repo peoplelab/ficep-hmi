@@ -10,7 +10,7 @@
   .info-modal__container {
     .info-modal__content {
       .info-modal__message {
-        @extend %paragraph-1-regular;
+        @extend %subtitle-regular;
 
         text-align: center;
       }

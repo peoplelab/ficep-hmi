@@ -8,7 +8,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormContext, types } from '../../store/form.store';
+import { FormContext } from '../../store/form.store';
 
 import '../../styles/forms-context/input.scss';
 

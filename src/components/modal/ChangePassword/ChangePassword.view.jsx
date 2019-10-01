@@ -9,7 +9,7 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { Modal } from '../../layouts/index.layouts';
-import { Form, Field, PasswordInput, Submit, Validation } from '../../forms-context/index.form';
+import { Form, Field, PasswordInput, Submit, Validation, ResetStore } from '../../forms-context/index.form';
 import { callUsersPassword } from '../../../controllers/routes/users/users.controller';
 
 // import '../../../styles/modal/ErrorModal.style.scss';
@@ -28,6 +28,10 @@ class ChangePassword extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      doReset: false
+    };
+
     this.intl = {
       title: window.intl.password_main_title,
       oldPassword: window.intl.password_field_old,
@@ -42,6 +46,8 @@ class ChangePassword extends PureComponent {
 
   onSubmit(state, event) {
     callUsersPassword({ data: state });
+
+    this.setState(prevState => ({ doReset: !(prevState.doReset )}));
   }
 
   onValidation(state) {
@@ -56,9 +62,12 @@ class ChangePassword extends PureComponent {
   }
 
   render() {
+    const { doReset } = this.state;
+
     return (
       <Modal open className="modal--data modal--small password-modal" title={this.intl.title}>
         <Form className="password-modal__form" initial={initial}>
+          <ResetStore doReset={doReset} initial={initial} />
           <Validation onValidation={this.onValidation} />
           <div className="password-modal__container">
             <div className="password-modal__content">
@@ -74,7 +83,7 @@ class ChangePassword extends PureComponent {
             </div>
             <div className="password-modal__content">
               <Field className="users-modal__field">
-                <Submit name="form-password" required={required} onSubmit={this.onSubmit} resettable initial={initial}>
+                <Submit name="form-password" required={required} onSubmit={this.onSubmit}>
                   {this.intl.update}
                 </Submit>
               </Field>

@@ -25,8 +25,8 @@ class Submit extends PureComponent {
   onSubmit(event) {
     event.preventDefault();
 
-    const { onSubmit, name, resettable, initial } = this.props;
-    const [state, dispatch] = this.context;
+    const { onSubmit, name } = this.props;
+    const [state] = this.context;
 
     const newEvent = {
       ...event,
@@ -38,13 +38,6 @@ class Submit extends PureComponent {
     };
 
     onSubmit(state, newEvent);
-
-    if (resettable) {
-      dispatch({
-        type: types.ON_CHANGE,
-        payload: initial
-      });
-    }
   }
 
   render() {
@@ -52,9 +45,7 @@ class Submit extends PureComponent {
       children,
       name,
       disabled: disabledProp,
-      resettable: _resettable, // eslint-disable-line no-unused-vars
       className,
-      initial: _initial, // eslint-disable-line no-unused-vars
       required,
       onSubmit: _onSubmit, // eslint-disable-line no-unused-vars
       ...rest
@@ -89,18 +80,14 @@ Submit.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  resettable: PropTypes.bool,
   className: PropTypes.string,
-  initial: PropTypes.object,
   required: PropTypes.arrayOf(PropTypes.string),
   onSubmit: PropTypes.func.isRequired,
 };
 
 Submit.defaultProps = {
   disabled: false,
-  resettable: false,
   className: '',
-  initial: null,
   required: [],
 };
 

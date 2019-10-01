@@ -12,10 +12,8 @@ import { Field, TextInput, Select, Option, Submit, Reset } from '../../forms-con
 // import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
 import { callUpdateUser } from '../../../controllers/routes/users/users.controller';
 
-import '../../../styles/modal/UsersList.style.scss';
 
-
-class UsersList extends Component {
+class UpdateItem extends Component {
 	constructor(props) {
     super(props);
 
@@ -86,7 +84,7 @@ class UsersList extends Component {
           </Select>
         </Field>
         <Field className="users-modal__field">
-          <Submit name="form-users" required={['firstName', 'lastName', 'group']} onSubmit={this.onUpdate} resettable initial={initial}>
+          <Submit name="form-users" required={['firstName', 'lastName', 'group']} onSubmit={this.onUpdate}>
             {this.intl.save}
           </Submit>
         </Field>
@@ -104,7 +102,7 @@ class UsersList extends Component {
 /**
  * Define component properties types
  */
-UsersList.propTypes = {
+UpdateItem.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
   initial: PropTypes.object.isRequired,
   currentUser: PropTypes.object.isRequired,
@@ -114,8 +112,8 @@ UsersList.propTypes = {
 /**
  * Define default value of component properties
  */
-UsersList.defaultProps = {
+UpdateItem.defaultProps = {
 };
 
 
-export default UsersList;
+export default UpdateItem;

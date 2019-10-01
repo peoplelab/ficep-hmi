@@ -8,17 +8,23 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, TextInput, PasswordInput, Select, Option, Submit } from '../../forms-context/index.form';
+import { Field, TextInput, PasswordInput, Select, Option, Submit, ResetStore } from '../../forms-context/index.form';
 import { callUsersAdd } from '../../../controllers/routes/users/users.controller';
 
 import '../../../styles/modal/UsersList.style.scss';
 
 
-class UsersList extends Component {
+class AddItem extends Component {
 	constructor(props) {
     super(props);
 
+    this.state = {
+      doReset: false,
+    };
+
+    this.getCodeOptions = this.getCodeOptions.bind(this);
     this.onAdd = this.onAdd.bind(this);
+    this.onSuccess = this.onSuccess.bind(this);
 
     this.intl = {
       firstName: window.intl.users_field_firstname,
@@ -36,17 +42,25 @@ class UsersList extends Component {
     };
   }
 
+  onSuccess() {
+    const { onAdd } = this.props;
+
+    this.setState(prevState => ({ doReset: !(prevState.doReset) }));
+
+    onAdd();
+  }
+
   onAdd(data, event) {
-    const { groups, onAdd } = this.props;
+    const { groups } = this.props;
 
     const { id } = groups.find(item => item.code === data.group);
     data.group = id;
 
-    callUsersAdd({ data, fn: onAdd });
+    callUsersAdd({ data, fn: this.onSuccess });
   }
 
   getCodeOptions() {
-    const { groups } = this.props;
+    const { groups = [] } = this.props;
     const options = groups.map(item => ({ value: item.code, message: this.toText[item.code] }));
 
     return options;
@@ -54,10 +68,12 @@ class UsersList extends Component {
 
   render() {
     const { initial } = this.props;
+    const { doReset } = this.state;
     const codeOptions = this.getCodeOptions();
 
     return (
       <>
+        <ResetStore doReset={doReset} initial={initial} />
         <Field className="users-modal__field">
           <TextInput name="firstName" placeholder={this.intl.firstName}/>
         </Field>
@@ -74,7 +90,7 @@ class UsersList extends Component {
           </Select>
         </Field>
         <Field className="users-modal__field">
-          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd} resettable initial={initial}>
+          <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd}>
             {this.intl.save}
           </Submit>
         </Field>
@@ -87,7 +103,7 @@ class UsersList extends Component {
 /**
  * Define component properties types
  */
-UsersList.propTypes = {
+AddItem.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
   onAdd: PropTypes.func.isRequired,
   initial: PropTypes.object.isRequired,
@@ -96,8 +112,8 @@ UsersList.propTypes = {
 /**
  * Define default value of component properties
  */
-UsersList.defaultProps = {
+AddItem.defaultProps = {
 };
 
 
-export default UsersList;
+export default AddItem;

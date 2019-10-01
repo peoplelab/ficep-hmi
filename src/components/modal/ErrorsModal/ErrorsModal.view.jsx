@@ -44,6 +44,7 @@ const ErrorsModal = (props) => {
   const message = intlHandler("modal_error_message");
   const code = intlHandler("modal_error_code");
   const details = intlHandler("modal_error_details");
+  const close = intlHandler("modal_error_close");
 
   let main = null;
   let description = null;
@@ -65,7 +66,7 @@ const ErrorsModal = (props) => {
   }
 
   return (
-    <Modal open className="modal--error modal--medium error-modal" title={title} onClick={onClick} redirect={false}>
+    <Modal open className="modal--alert modal--medium error-modal" messages={({ title, close })} onClick={onClick} redirect={false} header="full" footer="alert">
       <div className="error-modal__container">
         <div className="error-modal__content">
           <h1 className="error-modal__title modal__title--main-title">

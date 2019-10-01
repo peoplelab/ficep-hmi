@@ -41,6 +41,10 @@ class UsersList extends Component {
     this.getUsersList = this.getUsersList.bind(this);
     this.getGroupsList = this.getGroupsList.bind(this);
 
+    this.intl = {
+      title: window.intl.users_main_title,
+    };
+
     this.headers = {
       firstName: window.intl.users_headers_firstname,
       lastName: window.intl.users_headers_lastname,
@@ -78,7 +82,7 @@ class UsersList extends Component {
     const { users, groups, currentUser } = this.state;
 
     return (
-      <Modal open className="users-modal modal--data modal--big" title={window.intl.users_main_title} >
+      <Modal open className="users-modal modal--data modal--big" messages={({ title: this.intl.title })} header="full" footer="none">
         <Form className="users-modal__form" initial={initial}>
           <div className="users-modal__container">
               <div className="users-modal__content">

@@ -31,6 +31,9 @@
       @extend %flex-row-center;
 
       margin: 0 0 0.5rem;
+      overflow: hidden;
+      padding: 1rem;
+      width: 100%;
 
       .modal__title {
         @extend %flex-row-full;
@@ -66,31 +69,67 @@
         width: 100%;
       }
     }
+
+    .modal__footer {
+      .modal__button {
+        @extend %paragraph-1-medium;
+
+        border: $border-dark-grey solid 0.225rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: block;
+        float: right;
+        height: auto;
+        padding: 0.5rem;
+        width: auto;
+      }
+    }
   }
 
+  // stylelint-disable plugin/selector-bem-pattern
   &.modal--small {
-
-    // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
-      height: 40%;
+      height: auto;
       width: 30%;
     }
   }
 
   &.modal--medium {
-
-    // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
-      height: 50%;
+      height: auto;
       width: 50%;
     }
   }
 
   &.modal--big {
-    // stylelint-disable-next-line plugin/selector-bem-pattern
     .modal__container {
       height: 85%;
       width: 85%;
     }
   }
+
+  &.modal--data {
+
+  }
+
+  &.modal--alert {.modal__container {
+    .modal__head {
+      background-color: $bg-dark-grey;
+      border-bottom: 0.0625rem solid $border-dark-grey;
+
+      .modal__title {
+        @extend %title-semibold;
+
+        color: $text-light-grey;
+      }
+
+      .modal__button {
+        .modal__icon {
+          background-color: $bg-light-grey;
+        }
+      }
+    }
+  }
+  }
+  // stylelint-enable plugin/selector-bem-pattern
 }

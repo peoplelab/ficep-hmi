@@ -65,7 +65,7 @@ class ChangePassword extends PureComponent {
     const { doReset } = this.state;
 
     return (
-      <Modal open className="modal--data modal--small password-modal" title={this.intl.title}>
+      <Modal open className="modal--data modal--small password-modal" messages={({ title: this.intl.title })} header="full" footer="none">
         <Form className="password-modal__form" initial={initial}>
           <ResetStore doReset={doReset} initial={initial} />
           <Validation onValidation={this.onValidation} />

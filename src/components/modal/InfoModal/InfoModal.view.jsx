@@ -18,13 +18,15 @@ class InfoModal extends PureComponent {
     super(props);
 
     this.intl = {
+      title: window.intl.info_main_title,
       message: window.intl.info_main_message,
+      close: window.intl.info_main_close,
     };
   }
 
   render() {
     return (
-      <Modal open className="modal--info modal--small info-modal">
+      <Modal open className="modal--alert modal--medium info-modal" messages={({ title: this.intl.title, close: this.intl.close })} header="full" footer="alert">
         <div className="info-modal__container">
           <div className="info-modal__content">
             <p className="info-modal__message">

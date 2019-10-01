@@ -8,11 +8,26 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import Button from './Button';
+import history from '../../models/history/history';
+import Enum from '../../utils/Enum';
 
 import '../../styles/layouts/Modal.style.scss';
 
+
+const headerTypes = [
+  'none',
+  'title',
+  'close',
+  'full',
+];
+const footerTypes = [
+  'none',
+  'alert',
+];
+
+const footerEnum = Enum.from(...footerTypes);
+const headerEnum = Enum.from(...headerTypes);
 
 class Modal extends PureComponent {
   static getDerivedStateFromProps(props, state) {
@@ -34,6 +49,8 @@ class Modal extends PureComponent {
     this.state = { open, prevOpen: open };
 
     this.onClick = this.onClick.bind(this);
+    this.setFooter = this.setFooter.bind(this);
+    this.setHeader = this.setHeader.bind(this);
   }
 
   onClick(event) {
@@ -46,34 +63,86 @@ class Modal extends PureComponent {
     this.setState(prevState => ({ open: !(prevState.open) }));
 
     if (redirect) {
-      history.back();
+      history.goBack();
+    }
+  }
+
+  setFooter() {
+    const { footer, messages } = this.props;
+
+    switch(footer) {
+      case footerEnum.alert: {
+        return (
+          <footer className="modal__footer modal__footer--alert">
+            <Button className="modal__button anchor" onClick={this.onClick}>
+              {messages.close}
+            </Button>
+          </footer>
+        );
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  setHeader() {
+    const { header, messages } = this.props;
+
+    switch(header) {
+      case headerEnum.title: {
+        return (
+          <header className="modal__head modal__head--title">
+            <h1 className="modal__title">
+              {messages.title}
+            </h1>
+          </header>
+        );
+      }
+      case headerEnum.close: {
+        return (
+          <header className="modal__head modal__head--close">
+            <Button className="modal__button" onClick={this.onClick}>
+              <i className="modal__icon ic-close" />
+            </Button>
+          </header>
+        );
+      }
+      case headerEnum.full: {
+        return (
+          <header className="modal__head modal__head--full">
+            <h1 className="modal__title">
+              {messages.title}
+            </h1>
+            <Button className="modal__button" onClick={this.onClick}>
+              <i className="modal__icon ic-close" />
+            </Button>
+          </header>
+        );
+      }
+      default: {
+        return null;
+      }
     }
   }
 
   render() {
-    const { children, className, disabled, title } = this.props;
+    const { children, className } = this.props;
     const { open } = this.state;
 
     const mergedClass = `modal ${className}`;
 
+    const Header = this.setHeader();
+    const Footer = this.setFooter();
+
     return open && (
       <div className={mergedClass}>
         <div className="modal__container">
-            <header className="modal__head">
-            {title && (
-              <h1 className="modal__title">
-                {title}
-              </h1>
-            )}
-            {!disabled && (
-              <Button className="modal__button" onClick={this.onClick}>
-                <i className="modal__icon ic-close" />
-              </Button>
-            )}
-            </header>
+          {Header}
           <section className="modal__section">
             {children}
           </section>
+          {Footer}
         </div>
       </div>
     );
@@ -85,29 +154,27 @@ class Modal extends PureComponent {
  * Define component properties types
  */
 Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool,
+  children: PropTypes.node,
   open: PropTypes.bool,
   redirect: PropTypes.bool,
   className: PropTypes.string,
-  title: PropTypes.string,
-  history : PropTypes.object.isRequired,
-  staticContext : PropTypes.any,
+  messages : PropTypes.object,
   onClick: PropTypes.func,
+  footer: PropTypes.oneOf(footerTypes).isRequired,
+  header: PropTypes.oneOf(headerTypes).isRequired,
 };
 
 /**
  * Define default value of component properties
  */
 Modal.defaultProps = {
-  disabled: false,
+  children: null,
   open: false,
   redirect: true,
   className: '',
-  title: '',
   onClick: null,
-  staticContext: null,
+  messages: null,
 };
 
 
-export default withRouter(Modal);
+export default Modal;

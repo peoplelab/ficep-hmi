@@ -34,7 +34,7 @@ class SessionExpired extends PureComponent {
 
   render() {
     return (
-      <Modal open className="modal--action modal--small session-modal" title={this.intl.title} disabled>
+      <Modal open className="modal--alert modal--small session-modal" messages={({ title: this.intl.title })} header="title" footer="none">
         <div className="session-modal__container">
           <div className="session-modal__content">
             <p className="session-modal__message">

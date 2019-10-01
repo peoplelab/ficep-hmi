@@ -9,6 +9,17 @@ module.exports = {
       "result": global.users.result[req.params.id - 1],
     })
   ),
+  PUT: base(
+    (req, res) => ({
+      "responseType": 200,
+      "errorCode": null,
+      "result": {
+        "responseType": 200,
+        "errorCode": null,
+        "result": true
+        },
+    })
+  ),
   DELETE: base(
     (req, res) => {
       const id = parseInt(req.params.id);

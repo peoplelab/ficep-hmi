@@ -13,11 +13,7 @@ module.exports = {
     (req, res) => ({
       "responseType": 200,
       "errorCode": null,
-      "result": {
-        "responseType": 200,
-        "errorCode": null,
-        "result": true
-        },
+      "result": true,
     })
   ),
   DELETE: base(

@@ -70,10 +70,6 @@ module.exports = [
     "api": require(`./api/v1/users`),
   },
   {
-    "url": '/api/v1/users/:id',
-    "api": require(`./api/v1/users`),
-  },
-  {
     "url": '/api/v1/users/logout',
     "api": require(`./api/v1/users/logout`),
   },
@@ -86,8 +82,8 @@ module.exports = [
     "api": require(`./api/v1/users/user`),
   },
   {
-    "url": '/api/v1/users/user/:id/:groupId',
-    "api": require(`./api/v1/users/user`),
+    "url": '/api/v1/users/:id',
+    "api": require(`./api/v1/users`),
   },
   {
     "url": '/api/v1/users/user/:id/:groupId',

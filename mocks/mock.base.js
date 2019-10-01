@@ -43,6 +43,8 @@ const base = callback => (req, res) => {
     response = callback(req, res);
   }
 
+  console.log('\tresponse');
+  console.log(JSON.stringify(response));
   res.status(status).json(response);
 };
 

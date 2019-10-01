@@ -1,1 +1,120 @@
-{}
+{
+  "GENERIC_VALIDATION_ERROR": "(en-GB) Errore di validazione",
+  "GENERIC_GETITEM_NOTFOUND": "(en-GB) Entità non trovata",
+  "GENERIC_JSON_INVALIDFORMAT": "(en-GB) Formato JSON non valido",
+
+  "SESSION_GETLATEST_INPUTNOTVALID": "(en-GB) Richiesta ultime sessioni input non valido",
+  "SESSION_GETLATEST_IP_EMPTY": "(en-GB) Ip non specificato",
+  "SESSION_GETLATEST_IP_INVALID": "(en-GB) Ip non valido",
+  "SESSION_GETLATEST_NUMEROFSESSION_EMPTY": "(en-GB) Numero di sessioni da recuperare non specificato",
+
+  "USER_LOGIN_USERNAME_EMPTY": "(en-GB) Username non specificata",
+  "USER_LOGIN_INVALIDINPUT": "(en-GB) Input non specificato",
+  "USER_LOGIN_USERNAME_INVALIDLENGTH": "(en-GB) Lunghezza Username non valida (compresa fra 3 e 25)",
+  "USER_LOGIN_PASSWORD_EMPTY": "(en-GB) Password non specificata",
+  "USER_LOGIN_PASSWORD_INVALIDLENGTH": "(en-GB) Lunghezza Password non valida (compresa fra 8 e 16)",
+  "USER_LOGIN_USERNAME_INVALID": "(en-GB) Username non trovata",
+  "USER_LOGIN_PASSWORD_INVALID": "(en-GB) Password non valida",
+  "USER_LOGIN_CULTURE_EMPTY": "(en-GB) Culture non specificata",
+  "USER_LOGIN_INACTIVE": "(en-GB) User non attivo",
+  "USER_LOGIN_IP_EMPTY": "(en-GB) IP non specificato",
+  "USER_LOGIN_IP_INVALID": "(en-GB) IP non valido",
+
+  "USER_LOGIN_REFRESHTOKEN_EMPTY": "(en-GB) RefreshToken non specificato",
+  "USER_LOGIN_REFRESHTOKEN_INVALID": "(en-GB) RefreshToken non valido",
+  "USER_LOGIN_REFRESHTOKEN_EXPIRED": "(en-GB) RefreshToken scaduto",
+
+  "GROUP_GETDETAIL_NOTFOUND": "(en-GB) Gruppo non trovato",
+
+  "USER_GETDETAIL_NOTFOUND": "(en-GB) Utente non trovato",
+
+  "USER_CREATION_INVALIDPASSWORD": "(en-GB)  Password non valida (deve avere lunghezza >= 8, avere almeno un carattere alfanumerico Maiuscolo ed uno minuscolo ed avere un numero)",
+  "USER_CREATION_FIRSTNAME_EMPTY": "(en-GB) Nome non specificato",
+  "USER_CREATION_LASTNAME_EMPTY": "(en-GB) Cognome non specificato",
+  "USER_CREATION_PASSWORD_EMPTY": "(en-GB) Password non specificata",
+  "USER_CREATION_FIRSTNAME_INVALIDLENGTH": "(en-GB) Lunghezza nome utente non valida (compresa fra 3 e 50 caratteri)",
+  "USER_CREATION_LASTNAME_INVALIDLENGTH": "(en-GB) Lunghezza cognome utente non valida (compresa fra 3 e 100 caratteri)",
+  "USER_CREATION_PASSWORD_INVALIDLENGTH": "(en-GB) Lunghezza password non valida (compresa fra 8 e 16 caratteri)",
+  "USER_CREATION_GROUPS_NOTSPECIFIED": "(en-GB) Gruppo di appartenenza non specificato",
+
+  "USER_DELETION_NOTFOUND": "(en-GB) Utente non trovato",
+
+  "USER_ADDTOGROUP_ALREADYPRESENT": "(en-GB) Associazione già presente",
+
+  "USER_LOGOUT_SESSIONNOTFOUND": "(en-GB) SessionId non presente o scaduto",
+
+  "USER_SEEDING_EMPTYFILE": "(en-GB) File per Seed non specificato",
+  "USER_SEEDING_USERNAME_EMPTY": "(en-GB) UserName non specificata",
+  "USER_SEEDING_USERNAME_INVALIDLEN": "(en-GB) Lunghezza UserName non valida (8,25)",
+
+  "USER_MANAGEMENT_FIRSTNAME_EMPTY": "(en-GB)  Nome non specificato",
+  "USER_MANAGEMENT_LASTNAME_EMPTY": "(en-GB)  Cognome non specificato",
+  "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH": "(en-GB)  Lunghezza nome utente non valida (compresa fra 3 e 50 caratteri)",
+  "USER_MANAGEMENT_LASTNAME_INVALIDLENGTH": "(en-GB)  Lunghezza cognome utente non valida (compresa fra 3 e 100 caratteri)",
+  "USER_MANAGEMENT_PASSWORD_INVALIDLENGTH": "(en-GB)  Lunghezza password non valida (compresa fra 8 e 16 caratteri)",
+  "USER_MANAGEMENT_GROUPS_NOTSPECIFIED": "(en-GB)  Gruppo di appartenenza non specificato",
+  "USER_MANAGEMENT_NOTFOUND": "(en-GB)  Utente non trovato",
+  "USER_MANAGEMENT_INVALIDINPUT": "(en-GB)  Input non valido",
+
+  "USER_CHANGEPASSWORD_INVALIDUSERID": "(en-GB)  Cambio password - Identificativo utente non specificato",
+  "USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED": "(en-GB)  Vecchia password non specificata",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED": "(en-GB)  Nuova password non specificata",
+  "USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED": "(en-GB)  Conferma password non specificata",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED": "(en-GB)  Nuova password non uguale a conferma password",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_EQUALTO_OLD": "(en-GB)  Nuova password uguale alla vecchia",
+  "USER_CHANGEPASSWORD_INVALIDOLDPASSWORD": "(en-GB)  Vecchia password specificata non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_INVALIDNEWPASSWORD": "(en-GB)  Nuova password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_INVALIDCONFIRMEDPASSWORD": "(en-GB)  Confirmed password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_WRONGOLDPASSWORD": "(en-GB)  Vecchia password non corretta",
+
+  "SESSION_GETSESSION_NOTFOUND": "(en-GB) Sessione non trovata",
+
+  "TOOL_GETDETAILS_NOTFOUND": "(en-GB) Tool non trovato",
+  "TOOL_UPLOADFNC_EMPTYFILE": "(en-GB) File FNC vuoto",
+  "TOOL_UPLOADJSON_EMPTYFILE": "(en-GB) File JSON vuoto",
+  "TOOL_MANAGEMENT_NULLITEM": "(en-GB) Item per la creazione/aggiornamento non specificato",
+  "TOOL_MANAGEMENT_INVALID": "(en-GB) Input non valido",
+  "TOOL_UPDATE_NOTFOUND": "(en-GB) Item per aggiornamento non trovato",
+  "TOOL_MANAGEMENT_CODEMANDATORY": "(en-GB) Codice Tool obbligatorio (Valido per Creazione ed aggiornamento)",
+  "TOOL_MANAGEMENT_ATTRIBUTELISTMANDATORY": "(en-GB) Lista Attributi Tool obbligatorio (Valido per Creazione ed aggiornamento)",
+  "TOOL_MANAGEMENT_ATTRIBUTECODEMANDATORY": "(en-GB) Codice Attributo obbligatorio  (Valido per Creazione ed aggiornamento)",
+  "TOOL_MANAGEMENT_ATTRIBUTEDEFINITIONMANDATORY": "(en-GB) Definizione Attributo obbligatoria",
+  "TOOL_DELETION_NOTFOUND": "(en-GB) Tool da cancellare non trovato",
+  "TOOLHOLDER_UPLOAD_INVALIDFILE": "(en-GB) File da uploadare non corretto",
+  "TOOLHOLDER_DELETION_NOTFOUND": "(en-GB) Cancellazione non possibile. ToolHolder non trovato",
+
+  "CULTURE_HANDLING_NOTFOUND": "(en-GB) Culture non trovata (Remove/Update)",
+  "CULTURE_HANDLING_INPUTNOTVALID": "(en-GB) Culture input non valido (Add/Update)",
+  "CULTURE_VALIDATION_CODE_EMPTY": "(en-GB) Codice culture non specificata",
+  "CULTURE_VALIDATION_CODE_INVALIDLENGTH": "(en-GB) Lunghezza Codice culture non valido",
+  "CULTURE_VALIDATION_DESC_EMPTY": "(en-GB) Descrizione culture non specificata",
+  "CULTURE_VALIDATION_ID_EMPTY": "(en-GB) Identificativo non specificato (solo per Update)",
+
+  "MESSAGE_DISMISS_INPUTNOTVALID": "(en-GB) Lista messaggi non specificata",
+  "MESSAGE_VALIDATION_INPUTNOTVALID": "(en-GB) Messaggio da inviare non specificato",
+  "MESSAGE_VALIDATION_FROMUSER_EMPTY": "(en-GB) Mittente non specificato",
+  "MESSAGE_VALIDATION_TOUSER_EMPTY": "(en-GB) Destinatario non specificato",
+  "MESSAGE_VALIDATION_CONTENT_INVALID": "(en-GB) Contenuto del messaggio non specificato",
+
+  "APPLICATIONINFO_GET_NOTFOUND": "(en-GB) Application info non trovata",
+  "APPLICATIONINFO_UPDATE_INVALIDINPUT": "(en-GB) Input per update non valido",
+  "APPLICATIONINFO_UPDATE_NOTFOUND": "(en-GB) Application Info non trovata",
+
+  "PROFILE_SEEDING_EMPTYCONTENT": "(en-GB) Contenuto file vuoto",
+  "PROFILE_SEEDING_INVALIDINPUT": "(en-GB) File non specificato",
+  "PROFILE_VALIDATION_CODE_EMPTY": "(en-GB) Creazione profile (codice non specificato)",
+  "PROFILE_VALIDATION_CODE_INVALID_LENGTH": "(en-GB) Creazione profile (lunghezza codice invalida)",
+  "PROFILE_VALIDATION_DESCRIPTION_EMPTY": "(en-GB) Descrizione non specificata",
+  "PROFILE_HANDLING_INVALID": "(en-GB) Input non valido",
+  "PROFILE_HANDLING_NOTFOUND": "(en-GB) Profilo non presente",
+  "PROFILE_FNC_INVALID": "(en-GB) File FNC non valido",
+  "PROFILE_FNC_EMPTYCONTENT": "(en-GB) File FNC con contenuto vuoto",
+
+  "VERSION_GETDETAIL_NOTFOUND": "(en-GB) Versione non trovata",
+  "VERSION_HANDLING_INVALIDINPUT": "(en-GB) Versione in input non valida (utilizzato per il passaggio di input = null)",
+  "VERSION_HANDLING_CODE_EMPTY": "(en-GB) Codice non specificato (Creazione versione)",
+  "VERSION_HANDLING_CODE_INVALIDLENGTH": "(en-GB) Lunghezza non valida Codice versione (3,20)",
+  "VERSION_HANDLING_DESCRIPTION_EMPTY": "(en-GB) Descrizione versione non specificata",
+  "VERSION_HANDLING_DESCRIPTION_INVALIDLEN": "(en-GB) Lunghezza descrizione non valida (5,50)",
+  "VERSION_HANDLING_SCRIPTS_NOTSPECIFIED": "(en-GB) Lista script non specificata"
+}

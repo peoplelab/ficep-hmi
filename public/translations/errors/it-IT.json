@@ -27,6 +27,8 @@
   "GROUP_GETDETAIL_NOTFOUND": "Gruppo non trovato",
 
   "USER_GETDETAIL_NOTFOUND": "Utente non trovato",
+
+  "USER_CREATION_INVALIDPASSWORD": " Password non valida (deve avere lunghezza >= 8, avere almeno un carattere alfanumerico Maiuscolo ed uno minuscolo ed avere un numero)",
   "USER_CREATION_FIRSTNAME_EMPTY": "Nome non specificato",
   "USER_CREATION_LASTNAME_EMPTY": "Cognome non specificato",
   "USER_CREATION_PASSWORD_EMPTY": "Password non specificata",
@@ -34,12 +36,36 @@
   "USER_CREATION_LASTNAME_INVALIDLENGTH": "Lunghezza cognome utente non valida (compresa fra 3 e 100 caratteri)",
   "USER_CREATION_PASSWORD_INVALIDLENGTH": "Lunghezza password non valida (compresa fra 8 e 16 caratteri)",
   "USER_CREATION_GROUPS_NOTSPECIFIED": "Gruppo di appartenenza non specificato",
+
   "USER_DELETION_NOTFOUND": "Utente non trovato",
+
   "USER_ADDTOGROUP_ALREADYPRESENT": "Associazione già presente",
+
   "USER_LOGOUT_SESSIONNOTFOUND": "SessionId non presente o scaduto",
+
   "USER_SEEDING_EMPTYFILE": "File per Seed non specificato",
   "USER_SEEDING_USERNAME_EMPTY": "UserName non specificata",
   "USER_SEEDING_USERNAME_INVALIDLEN": "Lunghezza UserName non valida (8,25)",
+
+  "USER_MANAGEMENT_FIRSTNAME_EMPTY": " Nome non specificato",
+  "USER_MANAGEMENT_LASTNAME_EMPTY": " Cognome non specificato",
+  "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH": " Lunghezza nome utente non valida (compresa fra 3 e 50 caratteri)",
+  "USER_MANAGEMENT_LASTNAME_INVALIDLENGTH": " Lunghezza cognome utente non valida (compresa fra 3 e 100 caratteri)",
+  "USER_MANAGEMENT_PASSWORD_INVALIDLENGTH": " Lunghezza password non valida (compresa fra 8 e 16 caratteri)",
+  "USER_MANAGEMENT_GROUPS_NOTSPECIFIED": " Gruppo di appartenenza non specificato",
+  "USER_MANAGEMENT_NOTFOUND": " Utente non trovato",
+  "USER_MANAGEMENT_INVALIDINPUT": " Input non valido",
+
+  "USER_CHANGEPASSWORD_INVALIDUSERID": " Cambio password - Identificativo utente non specificato",
+  "USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED": " Vecchia password non specificata",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED": " Nuova password non specificata",
+  "USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED": " Conferma password non specificata",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED": " Nuova password non uguale a conferma password",
+  "USER_CHANGEPASSWORD_NEWPASSWORD_EQUALTO_OLD": " Nuova password uguale alla vecchia",
+  "USER_CHANGEPASSWORD_INVALIDOLDPASSWORD": " Vecchia password specificata non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_INVALIDNEWPASSWORD": " Nuova password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_INVALIDCONFIRMEDPASSWORD": " Confirmed password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
+  "USER_CHANGEPASSWORD_WRONGOLDPASSWORD": " Vecchia password non corretta",
 
   "SESSION_GETSESSION_NOTFOUND": "Sessione non trovata",
 

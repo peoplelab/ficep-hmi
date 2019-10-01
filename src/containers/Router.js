@@ -54,13 +54,13 @@ const createRoutes = () => ({
   // Lista delle pagine private di supporto
   modal: [
     {
-      path: '**/users',  // path valido per qualsiasi percorso che precede /users
+      path: '**/users**',  // path valido per qualsiasi percorso contenente /users
       key: 'users',
       exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/UsersList/UsersList.view')),
     },
     {
-      path: '**/password',
+      path: '**/password**',
       key: 'password',
       exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/ChangePassword/ChangePassword.view')),
@@ -87,7 +87,14 @@ const createRoutes = () => ({
     path: "**", // path valido per qualsiasi percorso
     key: 'error',
     exact: false,
-    Component: lazy(() => import(/* webpackChunkName: "Errors" */ '../components/modal/ErrorsModal/ErrorsModal.controller')),
+    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/ErrorsModal/ErrorsModal.controller')),
+  },
+  info:
+  {
+    path: '**/info', // path valido per qualsiasi percorso che precede /info
+    key: 'info',
+    exact: false,
+    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/InfoModal/InfoModal.view')),
   },
 
   /* #start:dev */

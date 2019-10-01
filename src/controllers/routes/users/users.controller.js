@@ -57,8 +57,11 @@ export const callUsersAdd = async ({ data, fn }) => {
   base({
     request,
     api: usersAdd,
-    success: () => {
-      fn();
+    success: ({ dataprocessed }) => {
+      if (dataprocessed.responseType === 200) {
+        history.push(`${history.location.pathname}/info`);
+        fn();
+      }
     },
   });
 };
@@ -101,6 +104,7 @@ export const callUsersPassword = async ({ data, fn }) => {
     success: ({ dataprocessed }) => {
       if (dataprocessed.result) {
         history.push('/session-expired');
+        history.push(`${history.location.pathname}/info`);
       }
     },
   });

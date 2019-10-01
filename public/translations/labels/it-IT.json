@@ -50,5 +50,7 @@
   "session_expired_title": "Attenzione!",
   "session_expired_message": "La sessione corrente è scaduta, esegui un nuovo accesso per poter proseguire",
   "session_expired_info": "*: la sessione corrente andrà persa",
-  "session_expired_logout": "Prosegui"
+  "session_expired_logout": "Prosegui",
+
+  "info_main_message": "Operazione avvenuta con successo"
 }

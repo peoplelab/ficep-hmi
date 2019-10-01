@@ -1,0 +1,19 @@
+
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
+
+/** @define info-modal */
+
+
+.info-modal {
+  .info-modal__container {
+    .info-modal__content {
+      .info-modal__message {
+        @extend %paragraph-1-regular;
+
+        text-align: center;
+      }
+    }
+  }
+}

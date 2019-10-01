@@ -42,6 +42,9 @@ const Modals = (props) => {
     <Switch>
       {mapRoutes(routes.error) /* Modale pubblica degli errori */}
     </Switch>
+    <Switch>
+      {isUserLogged && mapRoutes(routes.info) /* Modale privata informativa */}
+    </Switch>
     </>
   );
 };

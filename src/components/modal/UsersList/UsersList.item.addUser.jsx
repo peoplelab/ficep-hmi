@@ -50,17 +50,20 @@ class AddItem extends Component {
     onAdd();
   }
 
-  onAdd(data, event) {
+  onAdd(state, event) {
     const { groups } = this.props;
 
-    const { id } = groups.find(item => item.code === data.group);
-    data.group = id;
+    const { id } = groups.find(item => item.code === state.group);
+    const data = {
+      ...state,
+      group: id,
+    };
 
     callUsersAdd({ data, fn: this.onSuccess });
   }
 
   getCodeOptions() {
-    const { groups = [] } = this.props;
+    const { groups } = this.props;
     const options = groups.map(item => ({ value: item.code, message: this.toText[item.code] }));
 
     return options;

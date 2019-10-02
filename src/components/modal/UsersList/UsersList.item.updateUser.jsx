@@ -18,6 +18,7 @@ class UpdateItem extends Component {
 
     this.onUpdate = this.onUpdate.bind(this);
     this.onReset = this.onReset.bind(this);
+    this.onSuccess = this.onSuccess.bind(this);
 
     this.intl = {
       firstName: window.intl.users_field_firstname,
@@ -35,8 +36,14 @@ class UpdateItem extends Component {
     };
   }
 
+  onSuccess() {
+    const { onUpdate } = this.props;
+    onUpdate();
+    this.onReset();
+  }
+
   onUpdate(state, event) {
-    const { currentUser, onUpdate } = this.props;
+    const { currentUser } = this.props;
 
     const data = {
       idUser: parseInt(currentUser),
@@ -44,7 +51,7 @@ class UpdateItem extends Component {
       lastName: state.lastName,
     };
 
-    callEditUser({ data, fn: onUpdate });
+    callEditUser({ data, fn: this.onSuccess });
   }
 
   onReset(event) {

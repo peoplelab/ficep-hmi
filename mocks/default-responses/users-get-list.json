@@ -1,51 +1,51 @@
 {
-  "responseType": 200,
-  "errorCode": null,
-  "result": [
+  "ResponseType": 200,
+  "ErrorCode": null,
+  "Result": [
       {
-          "id": 1,
-          "firstName": "Ficep",
-          "lastName": "Admin",
-          "userName": "admin",
-          "isActive": true,
-          "groups": [
+          "Id": 1,
+          "FirstName": "Ficep",
+          "LastName": "Admin",
+          "UserName": "admin",
+          "IsActive": true,
+          "Groups": [
               {
-                  "id": 1,
-                  "code": "ADMIN",
-                  "description": "ADMINISTRATORS"
+                  "Id": 1,
+                  "Code": "ADMIN",
+                  "Description": "ADMINISTRATORS"
               }
           ],
-          "creationDate": "2019-07-16T16:32:44.052872"
+          "CreationDate": "2019-07-16T16:32:44.052872"
       },
       {
-          "id": 2,
-          "firstName": "User",
-          "lastName": "User",
-          "userName": "user",
-          "isActive": true,
-          "groups": [
+          "Id": 2,
+          "FirstName": "User",
+          "LastName": "User",
+          "UserName": "user",
+          "IsActive": true,
+          "Groups": [
               {
-                  "id": 2,
-                  "code": "SUPERUSER",
-                  "description": "SUPER USERS"
+                  "Id": 2,
+                  "Code": "SUPERUSER",
+                  "Description": "SUPER USERS"
               }
           ],
-          "creationDate": "2019-07-16T16:32:44.0551906"
+          "CreationDate": "2019-07-16T16:32:44.0551906"
       },
       {
-          "id": 3,
-          "firstName": "Admin",
-          "lastName": "User",
-          "userName": "super",
-          "isActive": true,
-          "groups": [
+          "Id": 3,
+          "FirstName": "Admin",
+          "LastName": "User",
+          "UserName": "super",
+          "IsActive": true,
+          "Groups": [
               {
-                  "id": 3,
-                  "code": "USER",
-                  "description": "USERS"
+                  "Id": 3,
+                  "Code": "USER",
+                  "Description": "USERS"
               }
           ],
-          "creationDate": "2019-07-16T16:32:44.0552062"
+          "CreationDate": "2019-07-16T16:32:44.0552062"
       }
   ]
 }

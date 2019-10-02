@@ -1,21 +1,21 @@
 {
-  "responseType": 200,
-  "errorCode": null,
-  "result": [
+  "ResponseType": 200,
+  "ErrorCode": null,
+  "Result": [
       {
-          "id": 1,
-          "code": "ADMIN",
-          "description": "ADMINISTRATORS"
+          "Id": 1,
+          "Code": "ADMIN",
+          "Description": "ADMINISTRATORS"
       },
       {
-          "id": 2,
-          "code": "SUPERUSER",
-          "description": "SUPER USERS"
+          "Id": 2,
+          "Code": "SUPERUSER",
+          "Description": "SUPER USERS"
       },
       {
-          "id": 3,
-          "code": "USER",
-          "description": "USERS"
+          "Id": 3,
+          "Code": "USER",
+          "Description": "USERS"
       }
   ]
 }

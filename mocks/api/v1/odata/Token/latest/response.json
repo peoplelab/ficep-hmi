@@ -1,60 +1,60 @@
 {
-  "responseType": 200,
-  "errorCode": null,
-  "result": [
+  "ResponseType": 200,
+  "ErrorCode": null,
+  "Result": [
     {
-      "issuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "username": "Stephan Kuttingen",
-      "groups": ["USER"],
-      "culture": "en-GB"
+      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
+      "Username": "Stephan Kuttingen",
+      "Groups": ["USER"],
+      "Culture": "en-GB"
     },
     {
-      "issuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "username": "Alfred Marakakhov",
-      "groups": ["ADMIN"],
-      "culture": "en-GB"
+      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
+      "Username": "Alfred Marakakhov",
+      "Groups": ["ADMIN"],
+      "Culture": "en-GB"
     },
     {
-      "issuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "username": "Maurizia Gambelli",
-      "groups": ["SUPERUSER"],
-      "culture": "it-IT"
+      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
+      "Username": "Maurizia Gambelli",
+      "Groups": ["SUPERUSER"],
+      "Culture": "it-IT"
     },
     {
-      "issuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "username": "Stephan Kuttingen",
-      "groups": ["USER"],
-      "culture": "de-DE"
+      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
+      "Username": "Stephan Kuttingen",
+      "Groups": ["USER"],
+      "Culture": "de-DE"
     },
     {
-      "issuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "username": "Alfred Marakakhov",
-      "groups": ["SUPERUSER"],
-      "culture": "ru-RU"
+      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
+      "Username": "Alfred Marakakhov",
+      "Groups": ["SUPERUSER"],
+      "Culture": "ru-RU"
     },
     {
-      "issuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "username": "Maurizia Gambelli",
-      "groups": ["ADMIN"],
-      "culture": "it-IT"
+      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
+      "Username": "Maurizia Gambelli",
+      "Groups": ["ADMIN"],
+      "Culture": "it-IT"
     },
     {
-      "issuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "username": "Alfred Marakakhov",
-      "groups": ["SUPERUSER"],
-      "culture": "ru-RU"
+      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
+      "Username": "Alfred Marakakhov",
+      "Groups": ["SUPERUSER"],
+      "Culture": "ru-RU"
     },
     {
-      "issuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "username": "Maurizia Gambelli",
-      "groups": ["ADMIN"],
-      "culture": "it-IT"
+      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
+      "Username": "Maurizia Gambelli",
+      "Groups": ["ADMIN"],
+      "Culture": "it-IT"
     },
     {
-      "issuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "username": "Stephan Kuttingen",
-      "groups": ["USER"],
-      "culture": "de-DE"
+      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
+      "Username": "Stephan Kuttingen",
+      "Groups": ["USER"],
+      "Culture": "de-DE"
     }
   ]
 }

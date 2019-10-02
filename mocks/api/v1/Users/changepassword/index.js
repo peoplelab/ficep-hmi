@@ -1,12 +1,9 @@
 const { base } = require('../../../../mock.base');
+const changePasswordPUT = require('./changePassword.PUT');
 
 
 module.exports = {
   PUT: base(
-    (req, res) => ({
-      "ResponseType": 200,
-      "ErrorCode": null,
-      "Result": Math.round(Math.random() * 100) % 2 === 0,
-    })
+    (req, res) => changePasswordPUT[req.body.userId.toString()],
   )
 };

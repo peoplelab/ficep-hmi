@@ -34,13 +34,13 @@ module.exports = {
   DELETE: base(
     (req, res) => {
       const id = parseInt(req.params.id);
-      const test = global.users.Result.some(item => item.Id === id);
+      const test = id <= 4 && global.users.Result.some(item => item.Id === id);
 
-      if (typeof test === 'undefined') {
+      if (!test) {
         return {
           "ResponseType": 400,
-          "ErrorCode": null,
-          "Result": "USER_DELETION_NOTFOUND",
+          "ErrorCode": "USER_MANAGEMENT_NOTFOUND",
+          "Result": null
         };
       }
 

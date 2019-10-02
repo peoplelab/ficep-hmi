@@ -11,12 +11,13 @@ const RESPONSE = UserName => ({
   "responseType": 200,
   "errorCode": null,
   "result": {
-    ...responseJSON[UserName],
-    culture: global.login.culture,
-    expiredAt: global.login.expiredAt,
-    issuedAt: global.login.issuedAt,
-    refreshExpiredAt: global.login.refreshExpiredAt,
-    refreshToken: global.login.refreshToken,
+    ...(responseJSON[UserName] || responseJSON.admin),
+    Culture: global.login.culture,
+    ExpiredAt: global.login.expiredAt,
+    IssuedAt: global.login.issuedAt,
+    RefreshExpiredAt: global.login.refreshExpiredAt,
+    RefreshToken: global.login.refreshToken,
+    UserId: global.login.username.indexOf(UserName) + 1,
   }
 });
 

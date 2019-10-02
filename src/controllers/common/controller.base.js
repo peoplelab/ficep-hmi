@@ -50,7 +50,7 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
     errorHandler({ request, contentType, dataprocessed });
 
     // gestione di tutti i casi httpcode 200
-    if (typeof success === 'function') {
+    if (typeof success === 'function' && dataprocessed.responseType === 200) {
       success({ contentType, dataraw, dataprocessed });
     }
 

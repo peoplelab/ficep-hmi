@@ -52,7 +52,19 @@
   }
 
   &.input__reset {
+    @extend %input;
+    @extend %button;
 
+    &.input__reset--simple {
+      background-color: transparent;
+      border: none;
+
+      &:disabled,
+      &:enabled,
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
 
   &.input__select {

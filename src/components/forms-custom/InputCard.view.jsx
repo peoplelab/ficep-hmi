@@ -40,7 +40,7 @@ const InputCard = (props) => {
   return (
     <div className={mergedClass}>
       <Card {...data} intl={intl} className="input-card__card card--input" />
-      <Reset className="input-card__reset" initial={initial} name={name}>
+      <Reset className="input-card__reset input__reset--simple" initial={initial} name={name}>
         <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
       </Reset>
     </div>

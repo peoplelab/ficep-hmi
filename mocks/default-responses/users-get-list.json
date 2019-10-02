@@ -46,6 +46,66 @@
               }
           ],
           "CreationDate": "2019-07-16T16:32:44.0552062"
+      },
+      {
+          "Id": 4,
+          "FirstName": "Marakakhov",
+          "LastName": "Alfred",
+          "UserName": "Alfred Marakakhov",
+          "IsActive": true,
+          "Groups": [
+              {
+                  "Id": 1,
+                  "Code": "ADMIN",
+                  "Description": "ADMINISTRATORS"
+              }
+          ],
+          "CreationDate": "2019-07-16T16:32:44.052872"
+      },
+      {
+          "Id": 5,
+          "FirstName": "Gambelli",
+          "LastName": "Maurizia",
+          "UserName": "Maurizia Gambelli",
+          "IsActive": true,
+          "Groups": [
+              {
+                  "Id": 2,
+                  "Code": "SUPERUSER",
+                  "Description": "SUPER USERS"
+              }
+          ],
+          "CreationDate": "2019-07-16T16:32:44.0551906"
+      },
+      {
+          "Id": 6,
+          "FirstName": "Kuttingen",
+          "LastName": "Stephan",
+          "UserName": "Stephan Kuttingen",
+          "IsActive": true,
+          "Groups": [
+              {
+                  "Id": 3,
+                  "Code": "USER",
+                  "Description": "USERS"
+              }
+          ],
+          "CreationDate": "2019-07-16T16:32:44.0552062"
+      },
+      {
+          "Id": 7,
+          "FirstName": "Example",
+          "LastName": "Test",
+          "UserName": "Example.Test",
+          "IsActive": true,
+          "Groups": [
+              {
+                  "Id": 3,
+                  "Code": "USER",
+                  "Description": "USERS"
+              }
+          ],
+          "CreationDate": "2019-07-16T16:32:44.0552062"
       }
   ]
 }

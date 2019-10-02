@@ -1,0 +1,62 @@
+{
+  "999":
+  {
+    "ResponseType": 500,
+    "ErrorCode": "999",
+    "Result": "Request non conforme a quella attesa"
+  },
+  "1":
+  {
+      "ResponseType": 200,
+      "ErrorCode": null,
+      "Result": true
+  },
+  "2":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
+        "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH"
+    ]
+  },
+  "3":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
+        "USER_MANAGEMENT_LASTNAME_INVALIDLENGTH"
+    ]
+  },
+  "4":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
+        "USER_MANAGEMENT_FIRSTNAME_EMPTY",
+        "NotEmptyValidator",
+        "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH"
+    ]
+  },
+  "5":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
+        "USER_MANAGEMENT_LASTNAME_EMPTY",
+        "NotEmptyValidator",
+        "USER_MANAGEMENT_LASTNAME_INVALIDLENGTH"
+    ]
+  },
+  "6":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "USER_MANAGEMENT_INVALIDINPUT",
+    "Result": null
+  },
+  "7":
+  {
+    "ResponseType": 400,
+    "ErrorCode": "USER_MANAGEMENT_NOTFOUND",
+    "Result": null
+  }
+}

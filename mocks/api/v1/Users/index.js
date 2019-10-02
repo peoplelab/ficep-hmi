@@ -4,37 +4,37 @@ const { base } = require('../../../mock.base');
 module.exports = {
   GET: base(
     (req, res) => ({
-      "responseType": 200,
-      "errorCode": null,
-      "result": global.users.result[req.params.id - 1],
+      "ResponseType": 200,
+      "ErrorCode": null,
+      "Result": global.users.Result[req.params.id - 1],
     })
   ),
   PUT: base(
     (req, res) => ({
-      "responseType": 200,
-      "errorCode": null,
-      "result": true,
+      "ResponseType": 200,
+      "ErrorCode": null,
+      "Result": true,
     })
   ),
   DELETE: base(
     (req, res) => {
       const id = parseInt(req.params.id);
-      const test = global.users.result.some(item => item.id === id);
+      const test = global.users.Result.some(item => item.Id === id);
 
       if (typeof test === 'undefined') {
         return {
-          "responseType": 400,
-          "errorCode": null,
-          "result": "USER_DELETION_NOTFOUND",
+          "ResponseType": 400,
+          "ErrorCode": null,
+          "Result": "USER_DELETION_NOTFOUND",
         };
       }
 
-      global.users.result = global.users.result.filter(item => item.id !== id);
+      global.users.Result = global.users.Result.filter(item => item.Id !== id);
 
       return {
-        "responseType": 200,
-        "errorCode": null,
-        "result": true,
+        "ResponseType": 200,
+        "ErrorCode": null,
+        "Result": true,
       };
     }
   ),

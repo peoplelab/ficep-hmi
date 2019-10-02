@@ -1,21 +1,21 @@
 {
   "999":
     {
-      "responseType": 500,
-      "errorCode": "999",
-      "result": "Request non conforme a quella attesa"
+      "ResponseType": 500,
+      "ErrorCode": "999",
+      "Result": "Request non conforme a quella attesa"
     },
   "1":
   {
-    "responseType": 200,
-    "errorCode": null,
-    "result": "example1.test1"
+    "ResponseType": 200,
+    "ErrorCode": null,
+    "Result": "example1.test1"
   },
 "2":
   {
-    "responseType": 400,
-    "errorCode": "GENERIC_VALIDATION_ERROR",
-    "result": [
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
         "USER_CREATION_PASSWORD_EMPTY",
         "NotEmptyValidator",
         "USER_CREATION_PASSWORD_INVALIDLENGTH",
@@ -24,9 +24,9 @@
   },
 "3":
   {
-    "responseType": 400,
-    "errorCode": "GENERIC_VALIDATION_ERROR",
-    "result": [
+    "ResponseType": 400,
+    "ErrorCode": "GENERIC_VALIDATION_ERROR",
+    "Result": [
         "USER_MANAGEMENT_FIRSTNAME_EMPTY",
         "NotEmptyValidator",
         "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH"
@@ -34,8 +34,8 @@
   },
 "4":
   {
-    "responseType": 500,
-    "errorCode": null,
-    "result": "Object reference not set to an instance of an object."
+    "ResponseType": 500,
+    "ErrorCode": null,
+    "Result": "Object reference not set to an instance of an object."
   }
 }

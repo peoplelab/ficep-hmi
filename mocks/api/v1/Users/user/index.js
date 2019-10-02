@@ -1,7 +1,9 @@
+const moment = require('moment');
 const { base } = require('../../../../mock.base');
-
 const createUserResponse = require('./createUserResponse.json');
 
+
+const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSS';
 
 module.exports = {
   POST: base(
@@ -20,6 +22,20 @@ module.exports = {
 
       switch (req.body.lastName) {
         case 'test1': {
+          const userName = `${firstName}.${lastName}`;
+          const id = global.users.Result.length + 1;
+          const [group] = groups;
+
+          global.users.Result.push({
+            Id: id,
+            FirstName: firstName,
+            LastName: lastName,
+            UserName: userName,
+            IsActive: true,
+            Groups: [global.groups.Result[group]],
+            CreationDate: moment().format(FORMAT)
+          });
+
           return createUserResponse["1"];
         }
         case 'test2': {

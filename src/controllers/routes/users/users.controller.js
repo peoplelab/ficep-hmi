@@ -6,7 +6,7 @@
 
 
 import {
-  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete, usersUpdate, usersPassword,
+  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete, usersEdit, usersPassword,
 } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 import store from '../../../store/redux.store';
@@ -96,9 +96,9 @@ export const callUsersAdd = async ({ data, fn }) => {
 };
 
 // chimata per aggiornare i dati di una utenza
-export const callUsersUpdate = async ({ data, fn }) => {
+export const callEditUser = async ({ data, fn }) => {
   const request = {
-    id: data.id,
+    id: data.idUser,
     firstName: data.firstName,
     lastName: data.lastName,
     isActive: true,
@@ -107,9 +107,10 @@ export const callUsersUpdate = async ({ data, fn }) => {
 
   base({
     request,
-    api: usersUpdate,
-    success: () => {
-      if (typeof fn === 'function') {
+    api: usersEdit,
+    success: ({ dataprocessed }) => {
+      if (dataprocessed.responseType === 200) {
+        history.push(`${history.location.pathname}/info`);
         fn();
       }
     },
@@ -207,32 +208,4 @@ export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
       dispatch({ response: null });
     }
   });
-};
-
-
-// chimata per aggiornare una utenza (dati, password, groups)
-export const callUpdateUser = async ({ data, dispatch }) => {
-  const dataUser = {
-    id: data.idUser,
-    firstName: data.firstName,
-    lastName: data.lastName,
-  };
-  const dataAddGroup = {
-    id: data.idUser,
-    groupId: data.idGroupAdd,
-  };
-  const dataDeleteGroup = {
-    id: data.idUser,
-    groupId: data.idGroupDelete,
-  };
-
-  const promises = [
-    callUsersUpdate({ data: dataUser }),
-    callUsersAddToGroup({ data: dataAddGroup }),
-    callUsersDeleteFromGroup({ data: dataDeleteGroup }),
-  ];
-
-  await Promise.all(promises);
-
-  callUsersList({ dispatch });
 };

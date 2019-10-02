@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, TextInput, PasswordInput, Select, Option, Submit, ResetStore } from '../../forms-context/index.form';
+import { Field, TextInput, PasswordInput, Select, Option, Submit, ResetStore, Reset } from '../../forms-context/index.form';
 import { callUsersAdd } from '../../../controllers/routes/users/users.controller';
 
 import '../../../styles/modal/UsersList.style.scss';
@@ -33,6 +33,7 @@ class AddItem extends Component {
       password: window.intl.users_field_password,
       groups: window.intl.users_field_role,
       save: window.intl.users_field_save,
+      reset: window.intl.users_field_reset,
     };
 
     this.toText = {
@@ -96,6 +97,11 @@ class AddItem extends Component {
           <Submit name="form-users" required={['firstName', 'lastName', 'password', 'group']} onSubmit={this.onAdd}>
             {this.intl.save}
           </Submit>
+        </Field>
+        <Field className="users-modal__field">
+          <Reset name="form-users" initial={initial}>
+            {this.intl.reset}
+          </Reset>
         </Field>
       </>
     );

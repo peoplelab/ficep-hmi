@@ -59,7 +59,7 @@ export const usersAdd = async ({ headers, request: data }) => {
   return base({ url: `/api/v1/users/user`, request });
 };
 
-export const usersUpdate = async ({ headers, request: data }) => {
+export const usersEdit = async ({ headers, request: data }) => {
   const request = {
     method: "put",
     headers: {

@@ -34,7 +34,7 @@ class UsersList extends Component {
     this.state = {
       users: [],
       groups: [],
-      currentUser: '',
+      currentUser: NaN,
      };
 
     this.updateState = this.updateState.bind(this);
@@ -89,7 +89,7 @@ class UsersList extends Component {
                 {!currentUser ? (
                   <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />
                 ) : (
-                  <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} />
+                  <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} onUpdate={this.getUsersList} currentUser={currentUser} />
                 )}
               </div>
               <div className="users-modal__content">

@@ -8,9 +8,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, TextInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
-// import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
-import { callUpdateUser } from '../../../controllers/routes/users/users.controller';
+import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
+import { callEditUser } from '../../../controllers/routes/users/users.controller';
 
 
 class UpdateItem extends Component {
@@ -26,6 +25,7 @@ class UpdateItem extends Component {
       password: window.intl.users_field_password,
       groups: window.intl.users_field_role,
       save: window.intl.users_field_update,
+      reset: window.intl.users_field_reset,
     };
 
     this.toText = {
@@ -36,23 +36,21 @@ class UpdateItem extends Component {
   }
 
   onUpdate(state, event) {
-    const { currentUser, updateState: dispatch } = this.props;
+    const { currentUser, onUpdate } = this.props;
 
     const data = {
-      idUser: currentUser.id,
+      idUser: parseInt(currentUser),
       firstName: state.firstName,
       lastName: state.lastName,
-      idGroupAdd: state.group,
-      idGroupDelete: currentUser.group[0],
     };
 
-    callUpdateUser({ data, dispatch });
+    callEditUser({ data, fn: onUpdate });
   }
 
   onReset(event) {
     const { updateState } = this.props;
 
-    updateState({ currentUser: null });
+    updateState({ currentUser: NaN });
   }
 
   getCodeOptions() {
@@ -74,11 +72,11 @@ class UpdateItem extends Component {
         <Field className="users-modal__field">
           <TextInput name="lastName" placeholder={this.intl.lastName}/>
         </Field>
-        {/* <Field className="users-modal__field">
-          <PasswordInput name="password" placeholder={this.intl.password}/>
-        </Field> */}
         <Field className="users-modal__field">
-          <Select name="group">
+          <PasswordInput name="password" placeholder={this.intl.password} disabled/>
+        </Field>
+        <Field className="users-modal__field">
+          <Select name="group" disabled>
             <option value="" disabled>{this.intl.groups}</option>
             <Option options={codeOptions} />
           </Select>
@@ -89,8 +87,8 @@ class UpdateItem extends Component {
           </Submit>
         </Field>
         <Field className="users-modal__field">
-          <Reset className="users-modal__button users-modal__button--reset" name="form-users" initial={initial} onClick={this.onReset}>
-            <i className="users-modal__icon ic-close" />
+          <Reset name="form-users" initial={initial} onClick={this.onReset}>
+            {this.intl.reset}
           </Reset>
         </Field>
       </>
@@ -105,8 +103,9 @@ class UpdateItem extends Component {
 UpdateItem.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object).isRequired,
   initial: PropTypes.object.isRequired,
-  currentUser: PropTypes.object.isRequired,
+  currentUser: PropTypes.number.isRequired,
   updateState: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 /**

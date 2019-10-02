@@ -14,7 +14,12 @@ export const callGroupList = async ({ dispatch }) => {
   base({
     api: groupList,
     success: ({ dataprocessed }) => {
-      dispatch({ groups: dataprocessed.result });
+      const groups = dataprocessed.result.map(item => ({
+        id: item.Id,
+        code: item.Code,
+        description: item.Description,
+      }));
+      dispatch({ groups });
     },
     failure: () => {
       dispatch({ groups: [] });

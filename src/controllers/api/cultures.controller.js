@@ -66,7 +66,13 @@ export const callCulturesGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
     success: ({ dataprocessed }) => {
-      dispatch({ data: dataprocessed.result });
+      const data = {
+        id: dataprocessed.result.id,
+        code: dataprocessed.result.code,
+        description: dataprocessed.result.description,
+      };
+
+      dispatch({ data });
     },
     failure: () => {
       dispatch({ data: [] });

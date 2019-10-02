@@ -28,13 +28,32 @@ export const callLogin = async ({ data, dispatch }) => {
     success: ({ dataprocessed }) => {
       const { responseType } = dataprocessed;
 
+      const item = dataprocessed.result;
+      const payload = {
+        ...dataprocessed,
+        result: {
+          username: item.Username,
+          accessToken: item.AccessToken,
+          refreshToken: item.RefreshToken,
+          culture: item.Culture,
+          groups: item.Groups,
+          permissions: item.Permissions,
+          sessionId: item.SessionId,
+          expiredAt: item.ExpiredAt,
+          sessionLogId: item.SessionLogId,
+          refreshExpiredAt: item.RefreshExpiredAt,
+          issuedAt: item.IssuedAt,
+          userId: item.UserId,
+        },
+      };
+
       if (responseType === 200) {
         callGetTranslations({
           culture: data.culture,
           callback: () => {
             store.dispatch({
               type: types.SET_SESSION,
-              payload: dataprocessed,
+              payload,
             });
 
             history.push('/dashboard');
@@ -51,7 +70,13 @@ export const callCultureGet = async ({ dispatch }) => {
   base({
     api: apiCultureGet,
     success: ({ dataprocessed }) => {
-      dispatch({ cultureList: dataprocessed.result });
+      const cultureList = dataprocessed.result.map(item => ({
+        id: item.id,
+        code: item.code,
+        description: item.description,
+      }));
+
+      dispatch({ cultureList });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ cultureList: [], error: dataraw || error });
@@ -65,7 +90,22 @@ export const callLastLogin = async ({ dispatch }) => {
   base({
     api: tokenLastLogin,
     success: ({ dataprocessed }) => {
-      dispatch({ usersList: dataprocessed.result });
+      const usersList = dataprocessed.result.map(item => ({
+        username: item.Username,
+        accessToken: item.AccessToken,
+        refreshToken: item.RefreshToken,
+        culture: item.Culture,
+        groups: item.Groups,
+        permissions: item.Permissions,
+        sessionId: item.SessionId,
+        expiredAt: item.ExpiredAt,
+        sessionLogId: item.SessionLogId,
+        refreshExpiredAt: item.RefreshExpiredAt,
+        issuedAt: item.IssuedAt,
+        userId: item.UserId,
+      }));
+
+      dispatch({ usersList });
     },
     failure: ({ dataraw, error }) => {
       dispatch({ usersList: [], error: dataraw || error });

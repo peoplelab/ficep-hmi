@@ -18,7 +18,21 @@ export const callUsersList = async ({ dispatch }) => {
   base({
     api: usersList,
     success: ({ dataprocessed }) => {
-      dispatch({ users: dataprocessed.result });
+      const users = dataprocessed.result.map(user =>({
+        id: user.Id,
+        firstName: user.FirstName,
+        lastName: user.LastName,
+        userName: user.UserName,
+        password: user.Password,
+        isActive: user.IsActive,
+        groups: user.Groups.map(group => ({
+          id: group.Id,
+          code: group.Code,
+          description: group.Description,
+        })),
+        creationDate: user.CreationDate,
+      }));
+      dispatch({ users });
     },
     failure: () => {
       dispatch({ users: [] });
@@ -36,7 +50,22 @@ export const callUsersDetails = async ({ data, dispatch }) => {
     params,
     api: usersDetails,
     success: ({ dataprocessed }) => {
-      dispatch({ details: dataprocessed.result });
+      const user = dataprocessed.result;
+      const details = {
+        id: user.Id,
+        firstName: user.FirstName,
+        lastName: user.LastName,
+        userName: user.UserName,
+        password: user.Password,
+        isActive: user.IsActive,
+        groups: user.Groups.map(group => ({
+          id: group.Id,
+          code: group.Code,
+          description: group.Description,
+        })),
+        creationDate: user.CreationDate,
+      };
+      dispatch({ details });
     },
     failure: () => {
       dispatch({ details: null });

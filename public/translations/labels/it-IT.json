@@ -21,7 +21,7 @@
   "modal_error_technical": "Errore tecnico",
   "modal_error_close": "Chiudi",
 
-  "users_main_title": "Dettagli degli utenti",
+  "users_main_title": "Gestione utenti",
   "users_headers_firstname": "Cognome",
   "users_headers_lastname": "Nome",
   "users_headers_username": "Username",
@@ -38,9 +38,10 @@
   "users_field_role": "Ruolo",
   "users_field_enable": "Sì",
   "users_field_disable": "No",
-  "users_field_update": "Aggiorna",
+  "users_field_update": "Modifica",
   "users_field_delete": "Elimina",
   "users_field_save": "Salva",
+  "users_field_reset": "Annulla",
 
   "password_main_title": "Modifica la password",
   "password_field_old": "Password precedente",

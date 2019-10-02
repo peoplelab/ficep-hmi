@@ -32,6 +32,7 @@ export const callUsersList = async ({ dispatch }) => {
         })),
         creationDate: user.CreationDate,
       }));
+
       dispatch({ users });
     },
     failure: () => {
@@ -65,6 +66,7 @@ export const callUsersDetails = async ({ data, dispatch }) => {
         })),
         creationDate: user.CreationDate,
       };
+
       dispatch({ details });
     },
     failure: () => {

@@ -24,7 +24,7 @@ class UpdateItem extends Component {
       lastName: window.intl.users_field_lastname,
       password: window.intl.users_field_password,
       groups: window.intl.users_field_role,
-      save: window.intl.users_field_update,
+      save: window.intl.users_field_save,
       reset: window.intl.users_field_reset,
     };
 

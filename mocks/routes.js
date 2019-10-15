@@ -4,6 +4,10 @@
 
 
 module.exports = [
+  {
+    "url": '/api/v1/odata/users',
+    "api": require(`./api/v1/odata/users`),
+  },
   // {
   //   "url": `/api/v1/odata/tools/attributes/:toolTypeId`,
   //   "api": require(`./api/v1/odata/tools/attributes`),
@@ -42,14 +46,10 @@ module.exports = [
     "url": '/api/v1/odata/tools',
     "api": require(`./api/v1/odata/tools`),
   },
-  {
-    "url": '/api/v1/odata/users',
-    "api": require(`./api/v1/odata/users`),
-  },
-  {
-    "url": '/api/v1/odata/users/export',
-    "api": require(`./api/v1/odata/users/export`),
-  },
+  //{
+  //  "url": '/api/v1/odata/users/export',
+  //  "api": require(`./api/v1/odata/users/export`),
+  //},
 
   {
     "url": '/api/v1/Token',

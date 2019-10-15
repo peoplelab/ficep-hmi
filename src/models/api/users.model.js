@@ -1,15 +1,35 @@
 //----------------------------------------------------------------------------------------
 // File: users.model.js
-//
 // Path: /src/model/users/users.model
+// 
+// Interfacciamento con servizi Utente (Users)
 //----------------------------------------------------------------------------------------
-
 
 import { base } from '../common/model.base';
 
 
-// interfaccia dell'api per ottenere la lista corrente degli utenti
-export const usersList = async ({ headers }) => {
+
+// Api urls ...
+const URL_USERS_LIST  = "/api/v1/odata/users";
+const URL_DELETE_USER = "/api/v1/users/:id";
+const URL_DETAIL_USER = "/api/v1/users/:id";
+
+
+// Interface
+export const Users = {
+    List  : (headers)         => { return usersList(headers); },                           // lista degli utenti
+    Detail: (headers, params) => { return usersDetails(headers, params); },                // dettaglio utente
+    Delete: (headers, params) => { return usersDelete(headers, params); }                  // cancellazione utente
+};
+
+
+
+
+
+// Private Methods 
+
+const usersList = async ({ headers }) => {
+    // interfaccia dell'api per ottenere la lista corrente degli utenti
   const request = {
     method: "get",
     headers: {
@@ -18,33 +38,42 @@ export const usersList = async ({ headers }) => {
     },
   };
 
-  return base({ url: `/api/v1/odata/users`, request });
+    return base({ url: URL_USERS_LIST, request });
 };
 
-// interfaccia dell'api per ottenere i dettagli dell'utente indicato
-export const usersDetails = async ({ headers, params }) => {
-  const request = {
-    method: "get",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
+const usersDelete = async ({ headers, params }) => {
+    // cancellazione utente
+    const request = {
+        method: "delete",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+    };
 
-  return base({ url: `/api/v1/users/:id`, request, params });
+    return base({ url: URL_DELETE_USER, request, params });
 };
 
-export const usersDelete = async ({ headers, params }) => {
-  const request = {
-    method: "delete",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
+const usersDetails = async ({ headers, params }) => {
+    // ottiene i dettagli dell'utente
+    const request = {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+    };
 
-  return base({ url: `/api/v1/users/:id`, request, params });
+    return base({ url: URL_DETAIL_USER, request, params });
 };
+
+
+
+
+
+
+
+
 
 export const usersAdd = async ({ headers, request: data }) => {
   const request = {

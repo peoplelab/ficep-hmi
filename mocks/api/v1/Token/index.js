@@ -24,8 +24,8 @@ const RESPONSE = UserName => ({
 const setGlobalTime = () => {
   const now = moment();
   global.login.issuedAt = now.format(FORMAT);
-  global.login.expiredAt = now.clone().add('1', 'm').format(FORMAT);
-  global.login.refreshExpiredAt = now.clone().add('2', 'm').format(FORMAT);
+  global.login.expiredAt = now.clone().add('100', 'm').format(FORMAT);
+  global.login.refreshExpiredAt = now.clone().add('200', 'm').format(FORMAT);
 };
 
 

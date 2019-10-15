@@ -13,21 +13,21 @@ const base = callback => (req, res) => {
   if (!authorization || !session) {
     status = 200;
     response = {
-      "responseType": 400,
+      "responseType": 410,
       "errorCode": "GENERIC_VALIDATION_ERROR",
       "result": [],
     };
   } if (!global.login.expiredAt) {
     status = 200;
     response = {
-      "responseType": 400,
+      "responseType": 411,
       "errorCode": "GENERIC_VALIDATION_ERROR",
       "result": [],
     };
   } else if(authorization !== global.logged.accessToken || session !== global.logged.sessionId) {
     status = 200;
     response = {
-      "responseType": 400,
+      "responseType": 412,
       "errorCode": "GENERIC_VALIDATION_ERROR",
       "result": [],
     };

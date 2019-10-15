@@ -76,7 +76,8 @@ class AddItem extends Component {
     const codeOptions = this.getCodeOptions();
 
     return (
-      <>
+        <>
+            uuuuuu
         <ResetStore doReset={doReset} initial={initial} />
         <Field className="users-modal__field">
           <TextInput name="firstName" placeholder={this.intl.firstName}/>

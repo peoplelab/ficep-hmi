@@ -10,13 +10,15 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Modal, Table } from '../../layouts/index.layouts';
 import { Form } from '../../forms-context/index.form';
-import { callUsersList } from '../../../controllers/routes/users/users.controller';
+import {
+    User as cUser,
+} from '../../../controllers/routes/users/users.controller';
 import { callGroupList } from '../../../controllers/routes/users/groups.controller';
 
 import RowItem from './UsersList.item.row';
 import AddUserItem from './UsersList.item.addUser';
 import UpdateUserItem from './UsersList.item.updateUser';
-
+import EditItem from './UsersList.item.edit';
 import '../../../styles/modal/UsersList.style.scss';
 
 
@@ -27,81 +29,144 @@ const initial = {
   group: '',
 };
 
+
+
 class UsersList extends Component {
-	constructor(props) {
-    super(props);
 
-    this.state = {
-      users: [],
-      groups: [],
-      currentUser: NaN,
-     };
+    _groupsList = null;
+    _usersList = null;
 
-    this.updateState = this.updateState.bind(this);
-    this.getUsersList = this.getUsersList.bind(this);
-    this.getGroupsList = this.getGroupsList.bind(this);
 
-    this.intl = {
-      title: window.intl.users_main_title,
-    };
+    constructor(props) {
+        super(props);
 
-    this.headers = {
-      firstName: window.intl.users_headers_firstname,
-      lastName: window.intl.users_headers_lastname,
-      userName: window.intl.users_headers_username,
-      isActive: window.intl.users_headers_isactive,
-      creationDate: window.intl.users_headers_creationdate,
-      groups: window.intl.users_headers_role,
-      update: '',
-      delete: '',
-    };
-  }
+
+        this.state = {
+            users: [],
+            groups: [],
+            currentUser: {},
+        };
+
+        this.updateState = this.updateState.bind(this);
+        this.getUsersList = this.getUsersList.bind(this);
+        this.getGroupsList = this.getGroupsList.bind(this);
+        this.onEditUser = this.onEditUser.bind(this);
+
+        this.intl = {
+            title: window.intl.users_main_title,
+        };
+
+        this.headers = {
+            firstName: window.intl.users_headers_firstname,
+            lastName: window.intl.users_headers_lastname,
+            userName: window.intl.users_headers_username,
+            isActive: window.intl.users_headers_isactive,
+            creationDate: window.intl.users_headers_creationdate,
+            groups: window.intl.users_headers_role,
+            update: '',
+            delete: '',
+        };
+    }
+
 
   componentDidMount() {
-    this.getUsersList();
-    this.getGroupsList();
+      this.getGroupsList();
+      this.getUsersList();
   }
 
   updateState(newState) {
     this.setState(newState);
   }
 
-  getUsersList() {
-    const dispatch = this.updateState;
+    setStateSync = () => {
+        if ((this._usersList != null)
+            && (this._groupsList != null)) {
 
-    callUsersList({ dispatch });
-  }
+            console.log("render!");
 
-  getGroupsList() {
-    const dispatch = this.updateState;
+            this.setState({
+                ...this.state,
+                users: this._usersList.users,
+                groups: this._groupsList.groups
+            });
 
-    callGroupList({ dispatch });
-  }
+        }
+    }
+    setUsersList = (data) => {
+        this._usersList = data;
+        this.setStateSync();
+    }
+    // legge l'elenco utenti
+    getUsersList() {
+        //const dispatch = this.updateState;
+        const dispatch = this.setUsersList;
+        cUser.GetList({ dispatch });
+    }
 
-  render() {
-    const { users, groups, currentUser } = this.state;
+    // cancellazione di un utente
+    onDeleteUser(event) {
+        const data = event.data;
+        cUser.Delete({ data, onSuccess: () => { UsersList.getUsersList(); } });
+    }
+    // dettaglio di un utente...riempie la riga col dettaglio
+    onEditUser(event) {        
+        const data = event.data;
 
-    return (
-      <Modal open className="users-modal modal--data modal--big" messages={({ title: this.intl.title })} header="full" footer="none">
-        <Form className="users-modal__form" initial={initial}>
-          <div className="users-modal__container">
-              <div className="users-modal__content">
-                {!currentUser ? (
-                  <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />
-                ) : (
-                  <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} onUpdate={this.getUsersList} currentUser={currentUser} />
-                )}
-              </div>
-              <div className="users-modal__content">
-                <Table className="users-modal__table" headers={this.headers} data={users} >
-                  {props => <RowItem {...props} updateState={this.updateState} onDelete={this.getUsersList} />}
-                </Table>
-              </div>
-          </div>
-        </Form>
-      </Modal>
-    );
-  }
+        cUser.Detail({
+            data,
+            dispatch: (currentUser) => {
+                this.updateState({ currentUser: currentUser.details });
+            }
+        });
+    }
+
+    onSaveUser(data) {
+        
+
+        console.log(data);
+    }
+
+    setGroupList = (data) => {
+        this._groupsList = data;
+        this.setStateSync();
+    }
+    getGroupsList() {
+        //const dispatch = this.updateState;
+        const dispatch = this.setGroupList;
+
+        callGroupList({ dispatch });
+        return true;
+    }
+
+
+    render() {
+        const { users, groups, currentUser } = this.state;
+
+        return (
+            <Modal open className="users-modal modal--data modal--big" messages={({ title: this.intl.title })} header="full" footer="none">
+                <Form className="users-modal__form" initial={initial}>
+                    <div className="users-modal__container">
+                        <div className="users-modal__content">
+                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} />
+                            {/*
+                            {!currentUser ? (
+                                <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />
+                            ) : (
+                                    <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} onUpdate={this.getUsersList} currentUser={currentUser} />
+                                )}
+                                */}
+                        </div>
+                        <div className="users-modal__content">
+                            <Table className="users-modal__table" headers={this.headers} data={users} >
+                                {/*{props => <RowItem {...props} updateState={this.updateState} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}*/}
+                                {props => <RowItem {...props} updateState={() => { }} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
+                            </Table>
+                        </div>
+                    </div>
+                </Form>
+            </Modal>
+        );
+    }
 }
 
 

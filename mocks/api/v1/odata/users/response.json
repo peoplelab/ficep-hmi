@@ -51,7 +51,7 @@
         "CreationDate": "2019-07-16T16:32:44.0552062"
       },
         {
-            "Id": 6,
+            "Id": 4,
             "FirstName": "Luigi",
             "LastName": "Reder",
             "UserName": "luigi.reder",
@@ -72,7 +72,7 @@
             "CreationDate": "2019-10-01T11:31:02.3976228"
         },
         {
-            "Id": 9,
+            "Id": 5,
             "FirstName": "Michele",
             "LastName": "Pedron",
             "UserName": "michele.pedron",
@@ -87,24 +87,24 @@
             ],
             "CreationDate": "2019-10-02T09:24:22.3593685"
         },
-      {
-        "Id": 14,
-        "FirstName": "Luciano",
-        "LastName": "Calboni",
-        "UserName": "luciano.calboni",
-        "IsActive": true,
-        "IsLocked": false,
-        "Groups": [
-          {
-            "Id": 2,
-            "Code": "SUPERUSER",
-            "Description": "SUPER USERS"
-          }
-        ],
-        "CreationDate": "2019-10-02T17:10:48.5646391"
-      },
         {
-            "Id": 16,
+            "Id": 6,
+            "FirstName": "Luciano",
+            "LastName": "Calboni",
+            "UserName": "luciano.calboni",
+            "IsActive": true,
+            "IsLocked": false,
+            "Groups": [
+                {
+                    "Id": 2,
+                    "Code": "SUPERUSER",
+                    "Description": "SUPER USERS"
+                }
+            ],
+            "CreationDate": "2019-10-02T17:10:48.5646391"
+        },
+        {
+            "Id": 7,
             "FirstName": "Giuseppe",
             "LastName": "Conte",
             "UserName": "giuseppe.conte",
@@ -120,7 +120,7 @@
             "CreationDate": "2019-10-02T17:21:53.5194437"
         },
         {
-            "Id": 17,
+            "Id": 8,
             "FirstName": "Ugo",
             "LastName": "Fantozzi",
             "UserName": "ugo.fantozzi",

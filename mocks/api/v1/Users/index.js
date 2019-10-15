@@ -1,15 +1,13 @@
 const { base } = require('../../../mock.base');
 const updateUserPUT = require('./updateUser.PUT.json');
+const jsonLIST = require('../odata/users/response.json');
 
 
 module.exports = {
   GET: base(
-    (req, res) => ({
-      "ResponseType": 200,
-      "ErrorCode": null,
-      "Result": global.users.Result[req.params.id - 1],
-    })
-  ),
+      (req, res) => get_response(req, res)
+    ),
+
   PUT: base(
     (req, res) => {
       const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
@@ -54,3 +52,18 @@ module.exports = {
     }
   ),
 };
+
+
+const get_response = (req, res) => {
+
+    const json_element = jsonLIST.Result[req.params.id - 1];
+    const responseType = (json_element == null) ? 400 : 200;
+    const errorcode = (json_element == null) ? "USER_GETDETAIL_NOTFOUND" : null;
+    const result = (json_element == null) ? null : json_element;
+
+    return {
+        "ResponseType": responseType,
+        "ErrorCode": errorcode,
+        "Result": result
+    };
+}

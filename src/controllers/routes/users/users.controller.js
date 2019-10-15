@@ -6,74 +6,111 @@
 
 
 import {
-  usersList, usersDetails, usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersDelete, usersEdit, usersPassword,
+    Users as mUsers,
+    usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd,  usersEdit, usersPassword,
 } from '../../../models/api/users.model';
+
 import { base } from '../../common/controller.base';
 import store from '../../../store/redux.store';
 import history from '../../../models/history/history';
 
 
-// chimata per recuperare la lista degli utenti da inviare alla view
-export const callUsersList = async ({ dispatch }) => {
-  base({
-    api: usersList,
-    success: ({ dataprocessed }) => {
-      const users = dataprocessed.result.map(user =>({
-        id: user.Id,
-        firstName: user.FirstName,
-        lastName: user.LastName,
-        userName: user.UserName,
-        password: user.Password,
-        isActive: user.IsActive,
-        groups: user.Groups.map(group => ({
-          id: group.Id,
-          code: group.Code,
-          description: group.Description,
-        })),
-        creationDate: user.CreationDate,
-      }));
 
-      dispatch({ users });
-    },
-    failure: () => {
-      dispatch({ users: [] });
-    }
-  });
+// Interface
+export const User = {
+    GetList: (dispatch) => { return callUsersList(dispatch); },                    // Lista Utenti
+    Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },    // Dettaglio Utente
+    Delete:  (data, onSuccess) => { return callUsersDelete(data, onSuccess); }     // Cancellazione Utente
 };
 
-// chimata per recuperare i dettagli dell'utente da inviare alla view
-export const callUsersDetails = async ({ data, dispatch }) => {
-  const params = {
-    id: data,
-  };
 
-  base({
-    params,
-    api: usersDetails,
-    success: ({ dataprocessed }) => {
-      const user = dataprocessed.result;
-      const details = {
-        id: user.Id,
-        firstName: user.FirstName,
-        lastName: user.LastName,
-        userName: user.UserName,
-        password: user.Password,
-        isActive: user.IsActive,
-        groups: user.Groups.map(group => ({
-          id: group.Id,
-          code: group.Code,
-          description: group.Description,
-        })),
-        creationDate: user.CreationDate,
-      };
 
-      dispatch({ details });
-    },
-    failure: () => {
-      dispatch({ details: null });
-    }
-  });
+
+// Private Methods 
+
+const callUsersList = async ({ dispatch }) => {
+    // recupera la lista degli utenti da inviare alla view
+    base({
+
+        api: mUsers.List,
+
+        success: ({ dataprocessed }) => {
+            const users = dataprocessed.result.map(
+                user => ({
+                    id: user.Id,
+                    firstName: user.FirstName,
+                    lastName: user.LastName,
+                    userName: user.UserName,
+                    isActive: user.IsActive,
+                    isLocked: user.IsLocked,
+                    groups: user.Groups.map(group => ({
+                        id: group.Id,
+                        code: group.Code,
+                        description: group.Description,
+                    })),
+                    creationDate: user.CreationDate,
+                }));
+
+            dispatch({ users });
+        },
+
+        failure: () => {
+            dispatch({ users: [] });
+        }
+    });
 };
+
+const callUsersDelete = async ({ data, onSuccess }) => {
+    const params = { id: data };
+
+    base({
+        params,
+        api: mUsers.Delete,
+        success: () => {
+            onSuccess();
+        },
+    });
+};
+
+const callUsersDetails = async ({ data, dispatch }) => {
+    // dettagli dell'utente da inviare alla view
+    const params = {
+        id: data,
+    };
+
+    base({
+        params,
+        api: mUsers.Detail,
+        success: ({ dataprocessed }) => {
+            const user = dataprocessed.result;
+            const details = {
+                id: user.Id,
+                firstName: user.FirstName,
+                lastName: user.LastName,
+                userName: user.UserName,
+                isActive: user.IsActive,
+                isLocked: user.IsLocked,
+                groups: user.Groups.map(group => ({
+                    id: group.Id,
+                    code: group.Code,
+                    description: group.Description,
+                })),
+                creationDate: user.CreationDate,
+            };
+
+            dispatch({ details });
+        },
+        failure: () => {
+            dispatch({ details: null });
+        }
+    });
+};
+
+
+
+
+
+
 
 // chimata per inviare i dati di una nuova utenza
 export const callUsersAdd = async ({ data, fn }) => {
@@ -142,18 +179,6 @@ export const callUsersPassword = async ({ data, fn }) => {
   });
 };
 
-// chimata per eliminare un'utenza
-export const callUsersDelete = async ({ data, fn }) => {
-  const params = { id: data };
-
-  base({
-    params,
-    api: usersDelete,
-    success: () => {
-      fn();
-    },
-  });
-};
 
 // chimata per esportare i dettagli dell'utente corrente
 export const callUsersExport = async ({ dispatch }) => {

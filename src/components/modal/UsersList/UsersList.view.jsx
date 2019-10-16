@@ -82,7 +82,6 @@ class UsersList extends Component {
         if ((this._usersList != null)
             && (this._groupsList != null)) {
 
-            console.log("render!");
 
             this.setState({
                 ...this.state,

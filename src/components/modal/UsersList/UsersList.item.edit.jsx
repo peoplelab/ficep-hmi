@@ -48,7 +48,7 @@ class EditItem extends Component {
 
     constructor(props) {
         super(props);
-               
+
         this.state = {
             // valori originali
             originalValues: this._emptyValues,
@@ -61,12 +61,14 @@ class EditItem extends Component {
         this.btnSave_click.bind(this);
 
         this._groups = this.getCodeOptions(props.groups);
-        //this._groups = <option key="-1" value="-1"></option>;
     }
 
     componentWillReceiveProps(nextProps) {
+        // se currentUser di nextprops è null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
+        const user = (nextProps.currentUser.firstName === null || (typeof nextProps.currentUser.firstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
+
         this._groups = this.getCodeOptions(nextProps.groups);
-        this.setState({ originalValues: nextProps.currentUser, currentValues: nextProps.currentUser });
+        this.setState({ originalValues: user, currentValues: user });
     }
 
     // elementi drop down gruppi/ruoli
@@ -114,8 +116,8 @@ class EditItem extends Component {
     render() {
         const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
-        const firstName = this.state.currentValues.firstName;
-        const lastName = this.state.currentValues.lastName;
+        const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
+        const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].code;
         
         return (

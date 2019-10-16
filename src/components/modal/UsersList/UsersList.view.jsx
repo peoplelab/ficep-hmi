@@ -13,7 +13,10 @@ import { Form } from '../../forms-context/index.form';
 import {
     User as cUser,
 } from '../../../controllers/routes/users/users.controller';
-import { callGroupList } from '../../../controllers/routes/users/groups.controller';
+import {
+    Group as cGroup,
+} from '../../../controllers/routes/users/groups.controller';
+//import { callGroupList } from '../../../controllers/routes/users/groups.controller';
 
 import RowItem from './UsersList.item.row';
 import AddUserItem from './UsersList.item.addUser';
@@ -78,10 +81,11 @@ class UsersList extends Component {
     this.setState(newState);
   }
 
+    // semaforo per gestire il render della view
+    // (solo quando la lista utenti e la lista gruppi sono state costruite...)
     setStateSync = () => {
         if ((this._usersList != null)
             && (this._groupsList != null)) {
-
 
             this.setState({
                 ...this.state,
@@ -91,13 +95,13 @@ class UsersList extends Component {
 
         }
     }
+    // imposta il semaforo per la lista utenti
     setUsersList = (data) => {
         this._usersList = data;
         this.setStateSync();
     }
     // legge l'elenco utenti
     getUsersList() {
-        //const dispatch = this.updateState;
         const dispatch = this.setUsersList;
         cUser.GetList({ dispatch });
     }
@@ -125,16 +129,15 @@ class UsersList extends Component {
         console.log(data);
     }
 
+     // imposta il semaforo per la lista gruppi
     setGroupList = (data) => {
         this._groupsList = data;
         this.setStateSync();
     }
+    // legge l'elenco gruppi
     getGroupsList() {
-        //const dispatch = this.updateState;
         const dispatch = this.setGroupList;
-
-        callGroupList({ dispatch });
-        return true;
+        cGroup.GetList({ dispatch });
     }
 
 

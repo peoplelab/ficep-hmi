@@ -19,6 +19,11 @@ module.exports = [
         "url": '/api/v1/users',
         "api": require(`./api/v1/users`),
     },
+    {
+        // delete user
+        "url": '/api/v1/users/user/:id',
+        "api": require(`./api/v1/users/user`),
+    },
 
   // {
   //   "url": `/api/v1/odata/tools/attributes/:toolTypeId`,

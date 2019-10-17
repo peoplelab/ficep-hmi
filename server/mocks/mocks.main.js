@@ -28,8 +28,8 @@ app.use(bodyParser.json(OPTIONS.JSON));
 
 // logging requests...
 app.use((req, res, next) => {
-    console.log("///////////////////////");
-  const time = new Date();
+
+    const time = new Date();
 
   res.on("finish", () => {
     console.table({

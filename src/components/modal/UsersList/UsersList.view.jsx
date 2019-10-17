@@ -38,6 +38,14 @@ class UsersList extends Component {
 
     _groupsList = null;
     _usersList = null;
+    _data2save = {
+        "id": 0,
+        "firstName": "",
+        "lastName": "",
+        "password": "",
+        "groups": [ ],
+    }
+
 
 
     constructor(props) {
@@ -123,10 +131,15 @@ class UsersList extends Component {
         });
     }
 
-    onSaveUser(data) {
-        
+    onSaveUser = (data) => {
 
-        console.log(data);
+        this._data2save.id = data.id;
+        this._data2save.firstName = data.firstName;
+        this._data2save.lastName = data.lastName;
+        this._data2save.password = data.password || "";
+        this._data2save.groups = data.groups;        
+
+        cUser.Save({ data : this._data2save, onSuccess: () => { UsersList.getUsersList(); } });
     }
 
      // imposta il semaforo per la lista gruppi

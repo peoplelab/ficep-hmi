@@ -13,13 +13,17 @@ import { base } from '../common/model.base';
 const URL_USERS_LIST  = "/api/v1/odata/users";
 const URL_DELETE_USER = "/api/v1/users/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
+const URL_CREATE_USER = "/api/v1/users/user";
+const URL_UPDATE_USER = "/api/v1/users";
 
 
 // Interface
 export const Users = {
-    List  : (headers)         => { return usersList(headers); },                           // lista degli utenti
-    Detail: (headers, params) => { return usersDetails(headers, params); },                // dettaglio utente
-    Delete: (headers, params) => { return usersDelete(headers, params); }                  // cancellazione utente
+    List  : (headers)         => { return usersList(headers); },                // lista degli utenti
+    Detail: (headers, params) => { return usersDetails(headers, params); },     // dettaglio utente
+    Delete: (headers, params) => { return usersDelete(headers, params); },      // cancellazione utente
+    Create: (headers, params) => { return usersCreate(headers, params); },      // Inserimento nuovo utente
+    Update: (headers, params) => { return usersUpdate(headers, params); }       // Modifica utente esistente
 };
 
 
@@ -67,40 +71,78 @@ const usersDetails = async ({ headers, params }) => {
     return base({ url: URL_DETAIL_USER, request, params });
 };
 
+const usersCreate = async ({ headers, request: data }) => {
+    // creazione utente
+    const request = {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+        body: JSON.stringify({
+            "firstName": data.firstName,
+            "lastName": data.lastName,
+            "password": data.password,
+            "groups": [
+                data.groups[0].id
+            ]
+        }),
+    };
 
-
-
-
-
-
-
-
-export const usersAdd = async ({ headers, request: data }) => {
-  const request = {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
-
-  return base({ url: `/api/v1/users/user`, request });
+    return base({ url: URL_CREATE_USER, request });
 };
 
-export const usersEdit = async ({ headers, request: data }) => {
-  const request = {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
+const usersUpdate = async ({ headers, request: data }) => {
+    // modifica utente
+    const request = {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+        body: JSON.stringify({
+            "id": data.id,
+            "firstName": data.firstName,
+            "lastName": data.lastName,
+            "isLocked": data.isLocked
+        }),
+    };
 
-  return base({ url: `/api/v1/users`, request });
-  // return base({ url: `/api/v1/users/user`, request });
+    return base({ url: URL_UPDATE_USER, request });
 };
+
+
+
+
+
+
+
+//export const usersAdd = async ({ headers, request: data }) => {
+//  const request = {
+//    method: "post",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//    body: JSON.stringify(data),
+//  };
+
+//  return base({ url: `/api/v1/users/user`, request });
+//};
+
+//export const usersEdit = async ({ headers, request: data }) => {
+//  const request = {
+//    method: "put",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//    body: JSON.stringify(data),
+//  };
+
+//  return base({ url: `/api/v1/users`, request });
+//  // return base({ url: `/api/v1/users/user`, request });
+//};
 
 export const usersPassword = async ({ headers, request: data }) => {
   const request = {

@@ -76,10 +76,10 @@ class EditItem extends Component {
 
         let listitems = [];
 
-        listitems.push(<option key="-1" value="-1">{this._labels.group}</option>);
+        listitems.push(<option key="0" value="0">{this._labels.group}</option>);
 
         listitems.push(groups_list.map((item) =>
-            <option key={item.code} value={item.code}>{this._labels.groups[item.code]}</option>
+            <option key={item.code} value={item.id}>{this._labels.groups[item.code]}</option>
         ));
 
         return listitems;
@@ -95,8 +95,12 @@ class EditItem extends Component {
             currentValues = { ...this.state.currentValues, "lastName": value };
         } else if (event.target.name.indexOf("firstName") >= 0) {
             currentValues = { ...this.state.currentValues, "firstName": value };
+        } else if (event.target.name.indexOf("password") >= 0) {
+            currentValues = { ...this.state.currentValues, "password": value };
         } else if (event.target.name.indexOf("group") >= 0) {
-            currentValues = { ...this.state.currentValues, "groups": value };
+            currentValues = { ...this.state.currentValues, "groups": [{ "id": value }] };
+        } else {
+            currentValues = this.state.currentValues;
         }
 
         this.setState({ currentValues });        
@@ -118,7 +122,7 @@ class EditItem extends Component {
 
         const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
-        const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].code;
+        const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].id;
         
         return (
             <>   

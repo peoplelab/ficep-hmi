@@ -20,7 +20,8 @@ import history from '../../../models/history/history';
 export const User = {
     GetList: (dispatch) => { return callUsersList(dispatch); },                    // Lista Utenti
     Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },    // Dettaglio Utente
-    Delete:  (data, onSuccess) => { return callUsersDelete(data, onSuccess); }     // Cancellazione Utente
+    Delete: (data, onSuccess) => { return callUsersDelete(data, onSuccess); },     // Cancellazione Utente
+    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); } // Salvataggio Utente
 };
 
 
@@ -91,9 +92,7 @@ const callUsersDetails = async ({ data, dispatch }) => {
                 isActive: user.IsActive,
                 isLocked: user.IsLocked,
                 groups: user.Groups.map(group => ({
-                    id: group.Id,
-                    code: group.Code,
-                    description: group.Description,
+                     id: group.Id,
                 })),
                 creationDate: user.CreationDate,
             };
@@ -106,11 +105,48 @@ const callUsersDetails = async ({ data, dispatch }) => {
     });
 };
 
+const callUserSave = async ({ data, onSuccess, onFailed }) => {
+    console.log(data);
+
+    const isValid = (data) => {
+        return (data.firstName.length > 0)
+            && (data.lastname.length > 0)
+            && ((data.id > 0) || ((data.id === 0) && (data.password.length > 0)))
+            && ((data.id > 0) || ((data.id === 0) && (data.groups[0].id > 0)));
+    };
+
+    if (!isValid) onFailed();
+
+    // data are valid
+
+    let api = {};
+    if (data.id === 0) {
+        // create
+        api = { api: mUsers.Create };        
+    } else {
+        // update
+        api = { api: mUsers.Update };        
+    }
+
+    base({
+        ...api,
+        data,
+        success: () => {
+            onSuccess();
+        },
+        failed: () => {
+            onFailed();
+        }
+    });
+
+
+
+};
 
 
 
 
-
+// ---------------------------------------
 
 // chimata per inviare i dati di una nuova utenza
 export const callUsersAdd = async ({ data, fn }) => {

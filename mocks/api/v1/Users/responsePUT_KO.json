@@ -1,0 +1,9 @@
+{
+  "ResponseType": 400,
+  "ErrorCode": "GENERIC_VALIDATION_ERROR",
+  "Result": [
+    "USER_MANAGEMENT_FIRSTNAME_EMPTY",
+    "NotEmptyValidator",
+    "USER_MANAGEMENT_FIRSTNAME_INVALIDLENGTH"
+  ]
+}

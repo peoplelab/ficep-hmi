@@ -4,10 +4,22 @@
 
 
 module.exports = [
-  {
-    "url": '/api/v1/odata/users',
-    "api": require(`./api/v1/odata/users`),
-  },
+    {
+        // Get all users
+        "url": '/api/v1/odata/users',
+        "api": require(`./api/v1/odata/users`),
+    },
+    {
+        // create user
+        "url": '/api/v1/users/user',
+        "api": require(`./api/v1/users/user`),
+    },
+    {
+        // update user
+        "url": '/api/v1/users',
+        "api": require(`./api/v1/users`),
+    },
+
   // {
   //   "url": `/api/v1/odata/tools/attributes/:toolTypeId`,
   //   "api": require(`./api/v1/odata/tools/attributes`),

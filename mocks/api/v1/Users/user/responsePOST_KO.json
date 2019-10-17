@@ -1,0 +1,8 @@
+{
+  "ResponseType": 400,
+  "ErrorCode": "GENERIC_VALIDATION_ERROR",
+  "Result": [
+    "USER_CREATION_PASSWORD_INVALIDLENGTH",
+    "USER_CREATION_INVALIDPASSWORD"
+  ]
+}

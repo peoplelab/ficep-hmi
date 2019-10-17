@@ -1,6 +1,11 @@
+// Mock handler for Update User.
+
+
 const { base } = require('../../../mock.base');
-const updateUserPUT = require('./updateUser.PUT.json');
+//const updateUserPUT = require('./updateUser.PUT.json');
 const jsonLIST = require('../odata/users/response.json');
+const responseJSONPUT_KO = require('./responsePUT_KO.json');
+const responseJSONPUT_OK = require('./responsePUT_OK.json');
 
 
 module.exports = {
@@ -8,27 +13,36 @@ module.exports = {
       (req, res) => get_response(req, res)
     ),
 
-  PUT: base(
-    (req, res) => {
-      const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
+  //PUT: base(
+  //  (req, res) => {
+  //    const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
 
-      if (
-        typeof id === 'undefined'
-        || typeof firstName === 'undefined'
-        || typeof lastName === 'undefined'
-        || typeof isActive === 'undefined'
-        || typeof canBeDeleted === 'undefined'
-      ) {
-        return updateUserPUT["999"];
-      }
+  //    if (
+  //      typeof id === 'undefined'
+  //      || typeof firstName === 'undefined'
+  //      || typeof lastName === 'undefined'
+  //      || typeof isActive === 'undefined'
+  //      || typeof canBeDeleted === 'undefined'
+  //    ) {
+  //      return updateUserPUT["999"];
+  //    }
 
-      if (id === 0 || id > 7) {
-        return updateUserPUT["7"];
-      } else {
-        return updateUserPUT[id.toString()];
-      }
-    }
-  ),
+  //    if (id === 0 || id > 7) {
+  //      return updateUserPUT["7"];
+  //    } else {
+  //      return updateUserPUT[id.toString()];
+  //    }
+  //  }
+  //),
+    PUT: base(
+        (req, res) => {
+            if (req.body.id === 0) {
+                return responseJSONPUT_KO;
+            }
+            return responseJSONPUT_OK;
+        }
+    ),
+
   DELETE: base(
     (req, res) => {
       const id = parseInt(req.params.id);

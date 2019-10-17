@@ -130,7 +130,7 @@ class UsersList extends Component {
             }
         });
     }
-
+    // salvataggio (creazione/modifica) di un utente
     onSaveUser = (data) => {
 
         this._data2save.id = data.id;
@@ -139,7 +139,14 @@ class UsersList extends Component {
         this._data2save.password = data.password || "";
         this._data2save.groups = data.groups;        
 
-        cUser.Save({ data : this._data2save, onSuccess: () => { UsersList.getUsersList(); } });
+        cUser.Save({
+            data:
+                this._data2save,
+                onSuccess: (response) => {
+                   this.getUsersList();
+                },
+                onFailed: () => { }
+        });
     }
 
      // imposta il semaforo per la lista gruppi

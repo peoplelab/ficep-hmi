@@ -1,0 +1,23 @@
+15/10/2019
+==============
+Hassan:
+Il seguente Warning:
+"Warning: TextField is changing a controlled input of type text to be uncontrolled. 
+Input elements should not switch from controlled to uncontrolled (or vice versa). 
+Decide between using a controlled or uncontrolled input element for the lifetime of the component."
+significa che i componenti React hanno un "value" vuoto o undefined.
+Quindi bisogna aggiungere un valore di default (string empty ad es.) nel costruttore del componente.
+
+
+17/10/2019
+==============
+Hassan: il controller.base potrebbe avere problemi quando hanno piu chiamate a model contemporaneamente.
+E' possibile che si confondano le response? Non è meglio gestire i controller come avviene nel nostro framework (yeap)?
+Per ora lo lasciamo come "studio"....
+
+
+17/10/2019
+===============
+Hassan: nel controller.base a che serve il parametro "request"?...mi sembra un doppione di "params"...
+Gli errori a livello utente (ad es. campi vuoti o password di lunghezza insufficiente) come vanno gestiti?
+Oggi la modale "error" viene gestita a livello di base.controller, quindi se non si chiama il model e si riceve una response non è possibile visualizzare la modale.

@@ -36,7 +36,7 @@ module.exports = {
   //),
     PUT: base(
         (req, res) => {
-            if (req.body.id === 0) {
+            if (req.body.id === 2) {
                 return responseJSONPUT_KO;
             }
             return responseJSONPUT_OK;

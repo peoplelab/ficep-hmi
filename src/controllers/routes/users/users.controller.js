@@ -106,16 +106,10 @@ const callUsersDetails = async ({ data, dispatch }) => {
 };
 
 const callUserSave = async ({ data, onSuccess, onFailed }) => {
-    console.log(data);
 
-    const isValid = (data) => {
-        return (data.firstName.length > 0)
-            && (data.lastname.length > 0)
-            && ((data.id > 0) || ((data.id === 0) && (data.password.length > 0)))
-            && ((data.id > 0) || ((data.id === 0) && (data.groups[0].id > 0)));
-    };
+    const isValid = validate(data);
 
-    if (!isValid) onFailed();
+    if (!isValid) return onFailed();
 
     // data are valid
 
@@ -130,17 +124,23 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
 
     base({
         ...api,
-        data,
-        success: () => {
-            onSuccess();
+        params: data,
+        success: (response) => {
+            onSuccess(response);
         },
-        failed: () => {
-            onFailed();
-        }
+        // onFailed non arriverà mai perché è gestito nel base.
+        //failure: () => {
+        //    onFailed();
+        //}
     });
 
 
-
+    function validate(data) {
+        return (data.firstName.length > 0)
+            && (data.lastName.length > 0)
+            && ((data.id > 0) || ((data.id === 0) && (data.password.length > 0)))
+            && ((data.id > 0) || ((data.id === 0) && (data.groups[0].id > 0)));
+    }
 };
 
 

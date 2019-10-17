@@ -71,7 +71,7 @@ const usersDetails = async ({ headers, params }) => {
     return base({ url: URL_DETAIL_USER, request, params });
 };
 
-const usersCreate = async ({ headers, request: data }) => {
+const usersCreate = async ({ headers, params }) => {
     // creazione utente
     const request = {
         method: "post",
@@ -80,11 +80,11 @@ const usersCreate = async ({ headers, request: data }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "firstName": data.firstName,
-            "lastName": data.lastName,
-            "password": data.password,
+            "firstName": params.firstName,
+            "lastName": params.lastName,
+            "password": params.password,
             "groups": [
-                data.groups[0].id
+                params.groups[0].id
             ]
         }),
     };
@@ -92,7 +92,7 @@ const usersCreate = async ({ headers, request: data }) => {
     return base({ url: URL_CREATE_USER, request });
 };
 
-const usersUpdate = async ({ headers, request: data }) => {
+const usersUpdate = async ({ headers, params }) => {
     // modifica utente
     const request = {
         method: "put",
@@ -101,10 +101,10 @@ const usersUpdate = async ({ headers, request: data }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "id": data.id,
-            "firstName": data.firstName,
-            "lastName": data.lastName,
-            "isLocked": data.isLocked
+            "id": params.id,
+            "firstName": params.firstName,
+            "lastName": params.lastName,
+            "isLocked": params.isLocked
         }),
     };
 

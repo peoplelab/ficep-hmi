@@ -1,9 +1,10 @@
-//----------------------------------------------------------------------------------------
-// File: UserModal.view.jsx
-//
-// Desc: Widget modale, contiene le funzionalità specifiche per l'utente
-// Path: /src/components/modal/UserModal.view
-//----------------------------------------------------------------------------------------
+
+
+/*
+ * Componente USERSLIST. Elenco utenti del sistema.
+ * Props:
+ * - nessuna
+*/
 
 
 import React, { Component } from 'react';
@@ -36,14 +37,27 @@ const initial = {
 
 class UsersList extends Component {
 
-    _groupsList = null;
-    _usersList = null;
-    _data2save = {
+    _groupsList = null;         // lista dei gruppi/ruoli
+    _usersList = null;          // lista degli utenti
+    _data2save = {              // struct dei dati da salvare
         "id": 0,
         "firstName": "",
         "lastName": "",
         "password": "",
         "groups": [ ],
+    }                        
+    _labels = {                 // etichette in lingua
+        title: window.intl.users_main_title,
+        headers : {
+            firstName: window.intl.users_headers_firstname,
+            lastName: window.intl.users_headers_lastname,
+            userName: window.intl.users_headers_username,
+            isActive: window.intl.users_headers_isactive,
+            creationDate: window.intl.users_headers_creationdate,
+            groups: window.intl.users_headers_role,
+            update: '',
+            delete: '',
+        }
     }
 
 
@@ -63,31 +77,17 @@ class UsersList extends Component {
         this.getGroupsList = this.getGroupsList.bind(this);
         this.onEditUser = this.onEditUser.bind(this);
 
-        this.intl = {
-            title: window.intl.users_main_title,
-        };
-
-        this.headers = {
-            firstName: window.intl.users_headers_firstname,
-            lastName: window.intl.users_headers_lastname,
-            userName: window.intl.users_headers_username,
-            isActive: window.intl.users_headers_isactive,
-            creationDate: window.intl.users_headers_creationdate,
-            groups: window.intl.users_headers_role,
-            update: '',
-            delete: '',
-        };
     }
 
 
-  componentDidMount() {
-      this.getGroupsList();
-      this.getUsersList();
-  }
+    componentDidMount() {
+        this.getGroupsList();
+        this.getUsersList();
+    }
 
-  updateState(newState) {
-    this.setState(newState);
-  }
+    updateState(newState) {
+        this.setState(newState);
+    }
 
     // semaforo per gestire il render della view
     // (solo quando la lista utenti e la lista gruppi sono state costruite...)
@@ -115,9 +115,15 @@ class UsersList extends Component {
     }
 
     // cancellazione di un utente
-    onDeleteUser(event) {
+    onDeleteUser = (event) => {
         const data = event.data;
-        cUser.Delete({ data, onSuccess: () => { UsersList.getUsersList(); } });
+        cUser.Delete({
+            data,
+            onSuccess: () => {
+                this.getUsersList();
+            },
+            onFailed: () => { }
+        });
     }
     // dettaglio di un utente...riempie la riga col dettaglio
     onEditUser(event) {        
@@ -165,7 +171,7 @@ class UsersList extends Component {
         const { users, groups, currentUser } = this.state;
 
         return (
-            <Modal open className="users-modal modal--data modal--big" messages={({ title: this.intl.title })} header="full" footer="none">
+            <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
                 <Form className="users-modal__form" initial={initial}>
                     <div className="users-modal__container">
                         <div className="users-modal__content">
@@ -179,9 +185,9 @@ class UsersList extends Component {
                                 */}
                         </div>
                         <div className="users-modal__content">
-                            <Table className="users-modal__table" headers={this.headers} data={users} >
+                            <Table className="users-modal__table" headers={this._labels.headers} data={users} >
                                 {/*{props => <RowItem {...props} updateState={this.updateState} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}*/}
-                                {props => <RowItem {...props} updateState={() => { }} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
+                                {props => <RowItem {...props} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
                             </Table>
                         </div>
                     </div>

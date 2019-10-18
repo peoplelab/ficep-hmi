@@ -1,9 +1,21 @@
-//----------------------------------------------------------------------------------------
-// File: UserModal.view.jsx
-//
-// Desc: Widget modale, contiene le funzionalità specifiche per l'utente
-// Path: /src/components/modal/UserModal.view
-//----------------------------------------------------------------------------------------
+
+/*
+ * Componente ROWITEM. Riga dettaglio di un utente.
+ * Props:
+ * - value : utente "corrente" (da visualizzare), json composto da:
+ *                                                      - id: 0
+                                                        - firstName: "",
+                                                        - lastName: "",
+                                                        - username: "",
+                                                        - isActive: true,
+                                                        - isLocked: false,
+                                                        - creationDate: date,
+                                                        - groups: null,
+ * - index : indice di riga (non utilizzato, da vedere....)
+   - onEdit : evento "bottone Modifica cliccato" ("data" contiene l'id utente)
+   - onDelete : evento "bottone Elimina cliccato" ("data" contiene l'id utente)
+*/
+
 
 
 import React, { Component, Fragment } from 'react';
@@ -16,59 +28,73 @@ import '../../../styles/modal/UsersList.style.scss';
 
 
 class RowItem extends Component {
-    constructor(props) {
-        super(props);
 
-        this.onDetails = this.onDetails.bind(this);
-        this.onDelete = this.onDelete.bind(this);
-
-        this.intl = {
+        // etichette in lingua
+        _labels = {
             yes: window.intl.users_field_enable,
             no: window.intl.users_field_disable,
             update: window.intl.users_field_update,
             delete: window.intl.users_field_delete,
+            groups: {
+                ADMIN: window.intl.users_role_administrator,
+                SUPERUSER: window.intl.users_role_technician,
+                USER: window.intl.users_role_operator
+            },
         };
 
-        this.toText = {
-            ADMIN: window.intl.users_role_administrator,
-            SUPERUSER: window.intl.users_role_technician,
-            USER: window.intl.users_role_operator,
-        };
+    constructor(props) {
+        super(props);
+
+        //this.onDetails = this.onDetails.bind(this);
+        //this.onDelete = this.onDelete.bind(this);
+
+        //this.init = {
+        //    yes: window.intl.users_field_enable,
+        //    no: window.intl.users_field_disable,
+        //    update: window.intl.users_field_update,
+        //    delete: window.intl.users_field_delete,
+        //};
+
+        //this.toText = {
+        //    ADMIN: window.intl.users_role_administrator,
+        //    SUPERUSER: window.intl.users_role_technician,
+        //    USER: window.intl.users_role_operator,
+        //};
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps !== this.props) {
-            this.setState(nextProps);
-        }
-    }
+    //componentWillReceiveProps(nextProps) {
+    //    if (nextProps !== this.props) {
+    //        this.setState(nextProps);
+    //    }
+    //}
 
-  onDelete(event) {
-    const { onDelete } = this.props;
-    const { data } = event;
+  //onDelete(event) {
+  //  const { onDelete } = this.props;
+  //  const { data } = event;
 
-    callUsersDelete({ data, fn: onDelete });
-  }
+  //  callUsersDelete({ data, fn: onDelete });
+  //}
 
-  onDetails(prevState, dispatcher) {
-    const { updateState } = this.props;
+  //onDetails(prevState, dispatcher) {
+  //  const { updateState } = this.props;
 
-    return (event) => {
-      const { data } = event;
+  //  return (event) => {
+  //    const { data } = event;
 
-      const dispatch = (response) => {
-        const { id } = response.details || {};
+  //    const dispatch = (response) => {
+  //      const { id } = response.details || {};
 
-        updateState({ currentUser: id });
+  //      updateState({ currentUser: id });
 
-        const { firstName, lastName, groups, } = response.details;
-        const group = groups[0].code;
+  //      const { firstName, lastName, groups, } = response.details;
+  //      const group = groups[0].code;
 
-        dispatcher({ firstName, lastName, group, password: '', });
-      };
+  //      dispatcher({ firstName, lastName, group, password: '', });
+  //    };
 
-      callUsersDetails({ data, dispatch });
-    };
-  }
+  //    callUsersDetails({ data, dispatch });
+  //  };
+  //}
 
 
 
@@ -89,7 +115,7 @@ class RowItem extends Component {
 
         const [{ code }] = groups;
 
-        const active = isActive ? this.intl.yes : this.intl.no;
+        const active = isActive ? this._labels.yes : this._labels.no;
         const creation_date = creationDate.split(/T|\..*/).join(' ');
         const deletebtn_classname = "users-modal__button users-modal__button--delete " + (isLocked ? "hidden" : "show");
 
@@ -100,27 +126,27 @@ class RowItem extends Component {
                 <td className="table__cell">{userName}</td>
                 <td className="table__cell">{active}</td>
                 <td className="table__cell">{creation_date}</td>
-                <td className="table__cell">{this.toText[code]}</td>                
+                <td className="table__cell">{this._labels.groups[code]}</td>                
                 <td className="table__cell">
                     {/*
                     <SetStore event="onClick" setter={this.onDetails} >
                         <ButtonData className="users-modal__button users-modal__button--delete" data={id}>
-                            {this.intl.update}
+                            {this._labels.update}
                         </ButtonData>
                     </SetStore>
                     */}
                     <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.props.onEdit} >
-                        {this.intl.update}
+                        {this._labels.update}
                     </ButtonData>
                 </td>
                 <td className="table__cell">
                     {/*
                     <ButtonData className={deletebtn_classname} data={id} onClick={this.onDelete} >
-                        {this.intl.delete}
+                        {this._labels.delete}
                     </ButtonData>
                     */}
                     <ButtonData className={deletebtn_classname} data={id} onClick={this.props.onDelete} >
-                        {this.intl.delete}
+                        {this._labels.delete}
                     </ButtonData>
                 </td>
             </Fragment>
@@ -145,7 +171,6 @@ const shapeValue = {
 RowItem.propTypes = {
     value: PropTypes.shape(shapeValue).isRequired,
     index: PropTypes.number.isRequired,
-    updateState: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
 };

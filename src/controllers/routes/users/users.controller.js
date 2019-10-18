@@ -20,7 +20,7 @@ import history from '../../../models/history/history';
 export const User = {
     GetList: (dispatch) => { return callUsersList(dispatch); },                    // Lista Utenti
     Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },    // Dettaglio Utente
-    Delete: (data, onSuccess) => { return callUsersDelete(data, onSuccess); },     // Cancellazione Utente
+    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
     Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); } // Salvataggio Utente
 };
 
@@ -61,14 +61,21 @@ const callUsersList = async ({ dispatch }) => {
     });
 };
 
-const callUsersDelete = async ({ data, onSuccess }) => {
+const callUsersDelete = async ({ data, onSuccess, onFailed }) => {
     const params = { id: data };
 
     base({
         params,
         api: mUsers.Delete,
-        success: () => {
-            onSuccess();
+        success: (response) => {
+            // result = true => cancellazione ok
+            // result = false => cancellazione ko
+            if (response.dataprocessed.result === "true") {
+                onSuccess();
+            }
+            else {
+                onFailed();
+            }
         },
     });
 };

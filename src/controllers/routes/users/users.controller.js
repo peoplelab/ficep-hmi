@@ -57,7 +57,9 @@ const callUsersList = async ({ dispatch }) => {
 
         failure: () => {
             dispatch({ users: [] });
-        }
+        },
+
+        odata: true
     });
 };
 

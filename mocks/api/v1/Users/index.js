@@ -70,7 +70,7 @@ module.exports = {
 
 const get_response = (req, res) => {
 
-    const json_element = jsonLIST.Result[req.params.id - 1];
+    const json_element = jsonLIST[req.params.id - 1];
     const responseType = (json_element == null) ? 400 : 200;
     const errorcode = (json_element == null) ? "USER_GETDETAIL_NOTFOUND" : null;
     const result = (json_element == null) ? null : json_element;

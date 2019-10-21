@@ -40,7 +40,9 @@ const callGroupsList = async ({ dispatch }) => {
 
         failure: () => {
             dispatch({ groups: [] });
-        }
+        },
+
+        odata: true
     });
 };
 

@@ -31,7 +31,7 @@ const groupsList = async ({ headers }) => {
         headers: {
             "Content-Type": "application/json",
             ...headers,
-        },
+        }
     };
 
     return base({ url: URL_GROUPS_LIST, request });

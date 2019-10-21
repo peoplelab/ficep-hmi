@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Code": "ADMIN",
+    "Description": "ADMINISTRATORS"
+  },
+  {
+    "Id": 2,
+    "Code": "SUPERUSER",
+    "Description": "SUPER USERS"
+  },
+  {
+    "Id": 3,
+    "Code": "USER",
+    "Description": "USERS"
+  }
+]

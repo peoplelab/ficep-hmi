@@ -18,10 +18,10 @@ import history from '../../../models/history/history';
 
 // Interface
 export const User = {
-    GetList: (dispatch) => { return callUsersList(dispatch); },                    // Lista Utenti
-    Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },    // Dettaglio Utente
-    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
-    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); } // Salvataggio Utente
+    GetList: (dispatch) => { return callUsersList(dispatch); },                                         // Lista Utenti
+    Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
+    Delete:  (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
+    Save:    (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
 };
 
 

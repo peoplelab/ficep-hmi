@@ -38,9 +38,9 @@ function ConfirmModal(props) {
       onClose={onClose}
       onConfirm={onConfirm}
     >
-      <div className="error-modal__container">
-        <div className="error-modal__content">
-          <h1 className="error-modal__title modal__title--main-title">
+      <div className="warning-modal__container">
+        <div className="warning-modal__content">
+          <h1 className="warning-modal__title modal__title--main-title">
             {mapLabels().message}
           </h1>
         </div>

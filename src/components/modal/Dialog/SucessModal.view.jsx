@@ -34,9 +34,9 @@ const SucessModal = (props) => {
       footer="alert"
       onClose={onClose}
     >
-      <div className="info-modal__container">
-        <div className="info-modal__content">
-          <p className="info-modal__message">
+      <div className="success-modal__container">
+        <div className="success-modal__content">
+          <p className="success-modal__message">
             {mapLabels().message}
           </p>
         </div>

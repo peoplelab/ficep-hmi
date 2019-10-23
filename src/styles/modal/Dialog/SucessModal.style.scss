@@ -3,15 +3,15 @@
 @import '../../common/flex.scss';
 @import '../../common/text.scss';
 
-/** @define info-modal */
+/** @define success-modal */
 
 
-.info-modal {
-  .info-modal__container {
+.success-modal {
+  .success-modal__container {
     padding: 2rem;
 
-    .info-modal__content {
-      .info-modal__message {
+    .success-modal__content {
+      .success-modal__message {
         @extend %subtitle-regular;
 
         text-align: center;

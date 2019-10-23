@@ -9,7 +9,6 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-import Dialog from '../../components/modal/Dialog/Dialog.view';
 import { ConfirmModal, ErrorsModal, InfoModal, SucessModal } from '../../components/modal/index.modal';
 import Button from '../../components/layouts/Button';
 
@@ -19,52 +18,69 @@ class ModalRoute extends PureComponent {
     super(props);
 
     this.state = {
-      confirmOpen: false,
-      errorOpen: false,
-      infoOpen: false,
-      successOpen: false,
+      Component: null,
     };
 
-    this.onOpen = this.onOpen.bind(this);
-    this.onClose = this.onClose.bind(this);
+    this.confirmOpen = this.confirmOpen.bind(this);
+    this.errorOpen = this.errorOpen.bind(this);
+    this.infoOpen = this.infoOpen.bind(this);
+    this.successOpen = this.successOpen.bind(this);
+
     this.onConfirm = this.onConfirm.bind(this);
-  }
-
-  onOpen = (key) => () => {
-    this.setState({ [key]: true });
-  }
-
-  onClose = (key) => () => {
-    this.setState({ [key]: false });
+    this.onClose = this.onClose.bind(this);
   }
 
   onConfirm() {
     alert('HI!');
-    console.log('HI!');
-    this.setState({ confirmOpen: false });
+  }
+
+  onClose() {
+    this.setState({
+      Component: null,
+    });
+  }
+
+  confirmOpen() {
+    this.setState({
+      Component: (<ConfirmModal open onClose={this.onClose} onConfirm={this.onConfirm} />),
+    });
+  }
+
+  errorOpen() {
+    this.setState({
+      Component: (<ErrorsModal open onClose={this.onClose} errorCode={'TEST_GENERIC_ERROR'} errorsList={['TEST_SPECIFIC_ERROR']} />),
+    });
+  }
+
+  infoOpen() {
+    this.setState({
+      Component: (<InfoModal open onClose={this.onClose} message="TEST_INFO" />),
+    });
+  }
+
+  successOpen() {
+    this.setState({
+      Component: (<SucessModal open onClose={this.onClose} />),
+    });
   }
 
 	render() {
 
     return (
         <section className="test">
-          <Button onClick={this.onOpen('confirmOpen')} >Open modal confirm</Button>
+          <Button onClick={this.confirmOpen} >Open modal confirm</Button>
           <br />
           <br />
-          <Button onClick={this.onOpen('errorOpen')} >Open modal error</Button>
+          <Button onClick={this.errorOpen} >Open modal error</Button>
           <br />
           <br />
-          <Button onClick={this.onOpen('infoOpen')} >Open modal info</Button>
+          <Button onClick={this.infoOpen} >Open modal info</Button>
           <br />
           <br />
-          <Button onClick={this.onOpen('successOpen')} >Open modal success</Button>
+          <Button onClick={this.successOpen} >Open modal success</Button>
           <br />
           <br />
-          {/* <Dialog open={this.state.open} onClose={this.onClose} /> */}
-          <ConfirmModal open={this.state.confirmOpen} onClose={this.onClose('confirmOpen')} onConfirm={this.onConfirm} />
-          <ErrorsModal open={this.state.errorOpen} onClose={this.onClose('errorOpen')} errorCode={'TEST_GENERIC_ERROR'} errorsList={['TEST_SPECIFIC_ERROR']} />
-          <InfoModal open={this.state.infoOpen} onClose={this.onClose('infoOpen')} message="TEST_INFO" />
-          <SucessModal open={this.state.successOpen} onClose={this.onClose('successOpen')} />
+          {this.state.Component}
         </section>
     );
 	}

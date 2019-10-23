@@ -82,20 +82,6 @@ const createRoutes = () => ({
   },
 
   // Contiene la modale pubblica degli errori
-  error:
-  {
-    path: "**", // path valido per qualsiasi percorso
-    key: 'error',
-    exact: false,
-    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/ErrorsModal/ErrorsModal.controller')),
-  },
-  info:
-  {
-    path: '**/info', // path valido per qualsiasi percorso che precede /info
-    key: 'info',
-    exact: false,
-    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/InfoModal/InfoModal.view')),
-  },
 
   /* #start:dev */
   // Contiene la pagina sandbox

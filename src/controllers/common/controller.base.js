@@ -16,6 +16,7 @@
 //                error: oggetto di tipo Error tornato in caso sia stato impossibile eseguire la chimata
 //    ° params: oggetto JSON contente parametri specifici da passare all'api (la documentazione indicherà i parametri da passare e in quale formato) [ si usa per metodi GET e DELETE per il query string dell'url ]
 //    ° refresh: parametro booleano opzionale, indica se eseguire il refresh della sessione quando l'access token è scaduto
+//    ° odata: parametro booleano opzionale, indica se la chiamata all'api sarà di tipo oData oppure no (...se è di tipo oData viene gestito in modo diverso).
 //
 // Path: /src/controllers/common/controller.base
 //----------------------------------------------------------------------------------------
@@ -23,10 +24,10 @@
 import { headersHanlder } from './header.handler';
 import { errorHandler } from './error.handler';
 import { failureHandler } from './failure.handler';
-import { datarawHandler } from './dataraw.handler';
+import { DataHandler as cDataHandler } from './dataraw.handler';
 
 
-export const base = async ({ request, api, success, failure, params, refresh }) => {
+export const base = async ({ request, api, success, failure, params, refresh, odata }) => {
   // imposta gli header che verranno utilizzati per abilitare le chimate api
   const headers = headersHanlder();
 
@@ -37,14 +38,14 @@ export const base = async ({ request, api, success, failure, params, refresh }) 
   const { httpcode, contentType, dataraw, error } = await response;
 
   try {
-    if (httpcode !== 200) {
-      throw new Error();
-    }
+      if (httpcode !== 200) {
+          throw new Error();
+      }
 
     // success
 
-    // elaborazione dei dati grezzi
-    const dataprocessed = datarawHandler({ contentType, dataraw });
+    // elaborazione dei dati grezzi (con gestione del caso default o oData)
+      const dataprocessed = (odata == null) ? cDataHandler.Default({ contentType, dataraw }) : cDataHandler.Odata({ contentType, dataraw });
 
     // gestione dei casi di errore
     errorHandler({ request, contentType, dataprocessed });

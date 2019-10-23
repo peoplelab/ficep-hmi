@@ -10,7 +10,7 @@ import { base } from '../common/model.base';
 
 
 // Api urls ...
-const URL_USERS_LIST  = "/api/v1/odata/users";
+const URL_USERS_LIST  = "/api/v1/odata/users?$filter=IsSystemUser eq false";
 const URL_DELETE_USER = "/api/v1/users/user/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
 const URL_CREATE_USER = "/api/v1/users/user";

@@ -24,6 +24,8 @@ const Anchor = (props) => {
     exact,
     current,
     staticContext: _staticContext, // eslint-disable-line no-unused-vars
+    location: _location, // eslint-disable-line no-unused-vars
+    match: _match, // eslint-disable-line no-unused-vars
     ...rest
   } = props;
 
@@ -58,11 +60,14 @@ Anchor.propTypes = {
   children: PropTypes.node,
   path: PropTypes.string.isRequired,
   history : PropTypes.object.isRequired,
-  staticContext : PropTypes.any,
   replace: PropTypes.bool,
   exact: PropTypes.bool,
   current: PropTypes.bool,
   className: PropTypes.string,
+
+  staticContext : PropTypes.any,
+  location : PropTypes.any,
+  match : PropTypes.any,
 };
 
 Anchor.defaultProps = {
@@ -71,7 +76,10 @@ Anchor.defaultProps = {
   exact: false,
   current: false,
   className: '',
+
   staticContext: null,
+  location: null,
+  match: null,
 };
 
 

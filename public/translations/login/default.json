@@ -13,8 +13,10 @@
   "modal_error_code": "Error code:",
   "modal_error_details": "Details:",
   "modal_error_close": "Close",
-  "modal_error_server": "Server side error",
-  "modal_error_technical": "Technical error",
+
+
+  "MODAL_ERROR_SERVER": "Server side error",
+  "MODAL_ERROR_TECHNICAL": "Technical error",
 
   "GENERIC_VALIDATION_ERROR": "Validation error",
   "GENERIC_GETITEM_NOTFOUND": "Entity not found",

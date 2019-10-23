@@ -13,14 +13,6 @@
   "jog_tab_jog": "Jog",
   "jog_tab_commands": "Commands",
 
-  "modal_error_title": "Operation failed",
-  "modal_error_message": "An error occurred!",
-  "modal_error_code": "Error code:",
-  "modal_error_details": "Details:",
-  "modal_error_server": "Server side error",
-  "modal_error_technical": "Technical error",
-  "modal_error_close": "Close",
-
   "users_main_title": "User Management",
   "users_headers_firstname": "First name",
   "users_headers_lastname": "Last name",
@@ -52,9 +44,5 @@
   "session_expired_title": "Alert!",
   "session_expired_message": "The current session has expired, please log in again to continue",
   "session_expired_info": "*: the current session will be lost",
-  "session_expired_logout": "Logout",
-
-  "info_main_title": "Confirm operation",
-  "info_main_message": "Operation succesfully complete",
-  "info_main_close": "Close"
+  "session_expired_logout": "Logout"
 }

@@ -1,0 +1,22 @@
+{
+  "modal_error_title": "Operation failed",
+  "modal_error_message": "An error occurred!",
+  "modal_error_code": "Error code:",
+  "modal_error_details": "Details:",
+  "modal_error_server": "Server side error",
+  "modal_error_technical": "Technical error",
+  "modal_error_close": "Close",
+
+  "modal_info_title": "Confirm operation",
+  "modal_info_message": "",
+  "modal_info_close": "Close",
+
+  "modal_success_title": "Confirm operation",
+  "modal_success_message": "Operation succesfully complete",
+  "modal_success_close": "Close",
+
+  "modal_confirm_title": "Warning!",
+  "modal_confirm_message": "Continue with the process?",
+  "modal_confirm_no": "No",
+  "modal_confirm_yes": "Yes"
+}

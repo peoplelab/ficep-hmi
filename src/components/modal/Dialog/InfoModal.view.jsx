@@ -16,13 +16,13 @@ import '../../../styles/modal/Dialog/InfoModal.style.scss';
 
 const mapLabels = () => ({ // etichette in lingua
   title: window.intl.modal_info_title,
-  message: window.intl.modal_info_message,
+  subtitle: window.intl.modal_info_message,
   close: window.intl.modal_info_close,
 });
 
 
 const InfoModal = (props) => {
-  const { open, children, onClose } = props;
+  const { open, message, onClose } = props;
 
   return ReactDOM.createPortal(
     <Modal
@@ -37,11 +37,11 @@ const InfoModal = (props) => {
       <div className="info-modal__container">
         <div className="info-modal__content">
           <p className="info-modal__message">
-            {mapLabels().message}
+            {mapLabels().subtitle}
           </p>
-          {children && (
+          {message && (
             <p className="info-modal__message">
-              {children}
+              {message}
             </p>
           )}
         </div>
@@ -55,7 +55,7 @@ const InfoModal = (props) => {
  * Define component properties types
  */
 InfoModal.propTypes = {
-  children: PropTypes.node,
+  message: PropTypes.string,
   open: PropTypes.bool,
   onClose: PropTypes.func,
 };
@@ -64,7 +64,7 @@ InfoModal.propTypes = {
  * Define default value of component properties
  */
 InfoModal.defaultProps = {
-  children: null,
+  message: '',
   open: false,
   onClose: null,
 };

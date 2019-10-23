@@ -63,9 +63,7 @@ class ModalRoute extends PureComponent {
           {/* <Dialog open={this.state.open} onClose={this.onClose} /> */}
           <ConfirmModal open={this.state.confirmOpen} onClose={this.onClose('confirmOpen')} onConfirm={this.onConfirm} />
           <ErrorsModal open={this.state.errorOpen} onClose={this.onClose('errorOpen')} errorCode={'TEST_GENERIC_ERROR'} errorsList={['TEST_SPECIFIC_ERROR']} />
-          <InfoModal open={this.state.infoOpen} onClose={this.onClose('infoOpen')}>
-            TEST_INFO
-          </ InfoModal>
+          <InfoModal open={this.state.infoOpen} onClose={this.onClose('infoOpen')} message="TEST_INFO" />
           <SucessModal open={this.state.successOpen} onClose={this.onClose('successOpen')} />
         </section>
     );

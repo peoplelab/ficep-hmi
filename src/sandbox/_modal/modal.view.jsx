@@ -9,8 +9,8 @@
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root'; // Gestore dell'hot-reloading della route
-import { ConfirmModal, ErrorsModal, InfoModal, SucessModal } from '../../components/modal/index.modal';
 import Button from '../../components/layouts/Button';
+import { ModalHandler } from '../../controllers/common/modal.handler';
 
 
 class ModalRoute extends PureComponent {
@@ -21,10 +21,10 @@ class ModalRoute extends PureComponent {
       Component: null,
     };
 
-    this.confirmOpen = this.confirmOpen.bind(this);
-    this.errorOpen = this.errorOpen.bind(this);
-    this.infoOpen = this.infoOpen.bind(this);
-    this.successOpen = this.successOpen.bind(this);
+    this.confirmOpenRedux = this.confirmOpenRedux.bind(this);
+    this.errorOpenRedux = this.errorOpenRedux.bind(this);
+    this.infoOpenRedux = this.infoOpenRedux.bind(this);
+    this.successOpenRedux = this.successOpenRedux.bind(this);
 
     this.onConfirm = this.onConfirm.bind(this);
     this.onClose = this.onClose.bind(this);
@@ -34,50 +34,39 @@ class ModalRoute extends PureComponent {
     alert('HI!');
   }
 
-  onClose() {
-    this.setState({
-      Component: null,
+  confirmOpenRedux() {
+    ModalHandler.Confirm({ onConfirm: this.onConfirm });
+  }
+
+  errorOpenRedux() {
+    ModalHandler.Error({
+      errorCode: 'TEST_CODE',
+      errorsList: ['TEST_LIST'],
     });
   }
 
-  confirmOpen() {
-    this.setState({
-      Component: (<ConfirmModal open onClose={this.onClose} onConfirm={this.onConfirm} />),
-    });
+  infoOpenRedux() {
+    ModalHandler.Info({ message: 'TEST_INFO' });
   }
 
-  errorOpen() {
-    this.setState({
-      Component: (<ErrorsModal open onClose={this.onClose} errorCode={'TEST_GENERIC_ERROR'} errorsList={['TEST_SPECIFIC_ERROR']} />),
-    });
-  }
-
-  infoOpen() {
-    this.setState({
-      Component: (<InfoModal open onClose={this.onClose} message="TEST_INFO" />),
-    });
-  }
-
-  successOpen() {
-    this.setState({
-      Component: (<SucessModal open onClose={this.onClose} />),
-    });
+  successOpenRedux() {
+    ModalHandler.Success();
   }
 
 	render() {
 
     return (
         <section className="test">
-          <Button onClick={this.confirmOpen} >Open modal confirm</Button>
+          <Button onClick={this.confirmOpenRedux} >Open modal confirm (redux case)</Button>
           <br />
           <br />
-          <Button onClick={this.errorOpen} >Open modal error</Button>
+          <Button onClick={this.errorOpenRedux} >Open modal error (redux case)</Button>
           <br />
           <br />
-          <Button onClick={this.infoOpen} >Open modal info</Button>
+          <Button onClick={this.infoOpenRedux} >Open modal info (redux case)</Button>
           <br />
           <br />
-          <Button onClick={this.successOpen} >Open modal success</Button>
+          <Button onClick={this.successOpenRedux} >Open modal success (redux case)</Button>
           <br />
           <br />
           {this.state.Component}

@@ -8,6 +8,7 @@ Per creare una modale all'interno del progetto Ficep-HMI:
       . Error: visualizza la modale di errore
       . Info: visualizza la modale informativa
       . Confirm: visualizza la modale di conferma operazione
+      . Session: visualizza la modale di avviso della sessione scaduta
 
     ° Indicare il metodo di ModalHandler da eseguire
     ° La gestione della chiusura della modale è interna al componente
@@ -62,6 +63,11 @@ Comandi di gestione della modale
   // es:
   //  fnExample = () => { alert('Hello world!'); }
   //  ModalHandler.Confirm({ onConfirm: fnExample) });
+
+
+  session
+  ===============
+  ModalHandler.Session();
 
 
   close

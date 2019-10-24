@@ -18,7 +18,7 @@ import { types } from '../../store/modal.store';
 //    ° errorsList: lista dei codici di errore specifici
 const errorHanlder = ({ errorCode, errorsList }) => {
   store.dispatch({
-    type: types.OPEN_ERROR_MODAL,
+    type: types.OPEN_MODAL,
     payload: {
       target: 'error',
       data: {
@@ -32,7 +32,7 @@ const errorHanlder = ({ errorCode, errorsList }) => {
 // Gestore dell'apertura della modale di successo
 const successHanlder = () => {
   store.dispatch({
-    type: types.OPEN_SUCCESS_MODAL,
+    type: types.OPEN_MODAL,
     payload: {
       target: 'success',
     }
@@ -45,7 +45,7 @@ const successHanlder = () => {
 //    ° message: stringa delle informazioni da visualizzare
 const infoHanlder = ({ message }) => {
   store.dispatch({
-    type: types.OPEN_INFO_MODAL,
+    type: types.OPEN_MODAL,
     payload: {
       target: 'info',
       data: { message }
@@ -59,10 +59,20 @@ const infoHanlder = ({ message }) => {
 //    ° onConfirm: funzione callback da avviare all'OK dell'utente
 const confirmHanlder = ({ onConfirm }) => {
   store.dispatch({
-    type: types.OPEN_CONFIRM_MODAL,
+    type: types.OPEN_MODAL,
     payload: {
       target: 'confirm',
       data: { onConfirm }
+    }
+  });
+};
+
+// Gestore dell'apertura della modale di avviso della sessione scaduta
+const sessionHanlder = () => {
+  store.dispatch({
+    type: types.OPEN_MODAL,
+    payload: {
+      target: 'session-expired',
     }
   });
 };
@@ -82,5 +92,6 @@ export const ModalHandler = {
   Success: successHanlder,
   Info: infoHanlder,
   Confirm: confirmHanlder,
+  Session: sessionHanlder,
   Close: closeHandler,
 };

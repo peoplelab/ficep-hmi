@@ -2,7 +2,7 @@
 // File: InfoModal.view.jsx
 //
 // Desc: Componente modale, informa l'utente dello stato di un'operazione
-// Path: /src/components/modal/Dialog/InfoModal.view
+// Path: /src/components/dialog/InfoModal.view
 //----------------------------------------------------------------------------------------
 
 
@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/modal/Dialog/InfoModal.style.scss';
+import '../../styles/dialog/InfoModal.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua

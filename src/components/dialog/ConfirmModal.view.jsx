@@ -2,7 +2,7 @@
 // File: ConfirmModal.view.jsx
 //
 // Desc: Componente modale, richiede all'utente di confermare un operazione o di annullarla
-// Path: /src/components/modal/Dialog/ConfirmModal.view
+// Path: /src/components/dialog/ConfirmModal.view
 //----------------------------------------------------------------------------------------
 
 
@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/modal/Dialog/ConfirmModal.style.scss';
+import '../../styles/dialog/ConfirmModal.style.scss';
 
 
 function mapLabels(){

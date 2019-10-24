@@ -13,6 +13,7 @@ import {
 import { base } from '../../common/controller.base';
 import store from '../../../store/redux.store';
 import history from '../../../models/history/history';
+import { ModalHandler } from '../../common/modal.handler';
 
 
 
@@ -27,7 +28,7 @@ export const User = {
 
 
 
-// Private Methods 
+// Private Methods
 
 const callUsersList = async ({ dispatch }) => {
     // recupera la lista degli utenti da inviare alla view
@@ -127,10 +128,10 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
     let api = {};
     if (data.id === 0) {
         // create
-        api = { api: mUsers.Create };        
+        api = { api: mUsers.Create };
     } else {
         // update
-        api = { api: mUsers.Update };        
+        api = { api: mUsers.Update };
     }
 
     base({
@@ -139,7 +140,7 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
         success: (response) => {
             onSuccess(response);
         },
-        // onFailed non arriverà mai perché è gestito nel base.
+        // onFailed non arriverï¿½ mai perchï¿½ ï¿½ gestito nel base.
         //failure: () => {
         //    onFailed();
         //}
@@ -221,8 +222,7 @@ export const callUsersPassword = async ({ data, fn }) => {
     api: usersPassword,
     success: ({ dataprocessed }) => {
       if (dataprocessed.result) {
-        history.push('/session-expired');
-        history.push(`${history.location.pathname}/info`);
+        ModalHandler.Session();
       }
     },
   });

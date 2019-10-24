@@ -36,7 +36,9 @@ Andrea:
 ° redefinire lo standard organizzativo delle classi CSS e semplificare la gestione dello stile
 
 
-23/10/2019
+24/10/2019
 ===============
 Andrea:
 ° aggiungere, alla modale info, la gestione degli pseudo-tag indicati nella stringa passata alla proprietà message
+° definire gestione comune per la visualizzazione a video degli errori nelle form (solo classe css)
+° creazione di una map dei codici di errore relativi ai singoli campi di una form

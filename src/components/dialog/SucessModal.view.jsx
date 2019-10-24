@@ -24,7 +24,7 @@ const SucessModal = (props) => {
   const { onClose } = props;
   return (
     <Modal
-      open={open}
+      open
       className="modal--alert modal--medium success-modal"
       messages={({ title: mapLabels().title, close: mapLabels().close })}
       redirect={false}

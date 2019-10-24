@@ -25,7 +25,7 @@ const InfoModal = (props) => {
 
   return (
     <Modal
-      open={open}
+      open
       className="modal--alert modal--medium info-modal"
       messages={({ title: mapLabels().title, close: mapLabels().close })}
       redirect={false}

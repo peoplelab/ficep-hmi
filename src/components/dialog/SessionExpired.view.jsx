@@ -59,7 +59,7 @@ class SessionExpired extends PureComponent {
             </Button>
           </div>
         </div>
-      </Modalopen>
+      </Modal>
     );
   }
 }

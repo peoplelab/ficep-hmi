@@ -29,18 +29,18 @@ import '../../../styles/modal/UsersList.style.scss';
 
 class RowItem extends Component {
 
-        // etichette in lingua
-        _labels = {
-            yes: window.intl.users_field_enable,
-            no: window.intl.users_field_disable,
-            update: window.intl.users_field_update,
-            delete: window.intl.users_field_delete,
-            groups: {
-                ADMIN: window.intl.users_role_administrator,
-                SUPERUSER: window.intl.users_role_technician,
-                USER: window.intl.users_role_operator
-            },
-        };
+    // etichette in lingua
+    _labels = {
+        yes: window.intl.users_field_enable,
+        no: window.intl.users_field_disable,
+        update: window.intl.users_field_update,
+        delete: window.intl.users_field_delete,
+        groups: {
+            ADMIN: window.intl.users_role_administrator,
+            SUPERUSER: window.intl.users_role_technician,
+            USER: window.intl.users_role_operator
+        },
+    };
 
     constructor(props) {
         super(props);
@@ -68,36 +68,36 @@ class RowItem extends Component {
     //    }
     //}
 
-  //onDelete(event) {
-  //  const { onDelete } = this.props;
-  //  const { data } = event;
+    //onDelete(event) {
+    //  const { onDelete } = this.props;
+    //  const { data } = event;
 
-  //  callUsersDelete({ data, fn: onDelete });
-  //}
+    //  callUsersDelete({ data, fn: onDelete });
+    //}
 
-  //onDetails(prevState, dispatcher) {
-  //  const { updateState } = this.props;
+    //onDetails(prevState, dispatcher) {
+    //  const { updateState } = this.props;
 
-  //  return (event) => {
-  //    const { data } = event;
+    //  return (event) => {
+    //    const { data } = event;
 
-  //    const dispatch = (response) => {
-  //      const { id } = response.details || {};
+    //    const dispatch = (response) => {
+    //      const { id } = response.details || {};
 
-  //      updateState({ currentUser: id });
+    //      updateState({ currentUser: id });
 
-  //      const { firstName, lastName, groups, } = response.details;
-  //      const group = groups[0].code;
+    //      const { firstName, lastName, groups, } = response.details;
+    //      const group = groups[0].code;
 
-  //      dispatcher({ firstName, lastName, group, password: '', });
-  //    };
+    //      dispatcher({ firstName, lastName, group, password: '', });
+    //    };
 
-  //    callUsersDetails({ data, dispatch });
-  //  };
-  //}
+    //    callUsersDetails({ data, dispatch });
+    //  };
+    //}
 
 
-
+    onSelect() { console.log(this.props); }
 
 
     render() {
@@ -107,26 +107,36 @@ class RowItem extends Component {
             firstName,
             lastName,
             userName,
-            isActive,
-            isLocked,
+            //   isActive,
+            //  isLocked,
+            userStatus,
             creationDate,
             groups,
         } = value;
 
         const [{ code }] = groups;
 
-        const active = isActive ? this._labels.yes : this._labels.no;
+        // const active = isActive ? this._labels.yes : this._labels.no;
+        const active = (userStatus == 1) ? this._labels.yes : this._labels.no;
         const creation_date = creationDate.split(/T|\..*/).join(' ');
-        const deletebtn_classname = "users-modal__button users-modal__button--delete " + (isLocked ? "hidden" : "show");
-
+        // const deletebtn_classname = "users-modal__button users-modal__button--delete " + (isLocked ? "hidden" : "show");
+        const editbtn_classname = "users-modal__button users-modal__button--delete " + ((userStatus == 1 || userStatus == 2) ? "show" : "hidden");
+        const deletebtn_classname = "users-modal__button users-modal__button--delete " + (userStatus == 1 ? "show" : "hidden");
         return (
             <Fragment key={`table-row-${index}`} >
                 <td className="table__cell">{firstName}</td>
                 <td className="table__cell">{lastName}</td>
                 <td className="table__cell">{userName}</td>
-                <td className="table__cell">{active}</td>
+                {/*<td className="table__cell">{active}</td>*/}
+                <td className="table__cell">
+                    <ButtonData className="users-modal__button" data={value}  onClick = {this.props.onActive } >
+                        {active}
+
+                    </ButtonData>
+              
+                </td>
                 <td className="table__cell">{creation_date}</td>
-                <td className="table__cell">{this._labels.groups[code]}</td>                
+                <td className="table__cell">{this._labels.groups[code]}</td>
                 <td className="table__cell">
                     {/*
                     <SetStore event="onClick" setter={this.onDetails} >
@@ -135,7 +145,7 @@ class RowItem extends Component {
                         </ButtonData>
                     </SetStore>
                     */}
-                    <ButtonData className="users-modal__button users-modal__button--delete" data={id} onClick={this.props.onEdit} >
+                    <ButtonData className={editbtn_classname} data={id} onClick={this.props.onEdit} >
                         {this._labels.update}
                     </ButtonData>
                 </td>
@@ -156,12 +166,13 @@ class RowItem extends Component {
 
 
 const shapeValue = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  creationDate: PropTypes.string.isRequired,
-  groups: PropTypes.arrayOf(PropTypes.object).isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    //isActive: PropTypes.bool.isRequired,
+    userStatus: PropTypes.number.isRequired,
+    creationDate: PropTypes.string.isRequired,
+    groups: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 
@@ -171,6 +182,7 @@ const shapeValue = {
 RowItem.propTypes = {
     value: PropTypes.shape(shapeValue).isRequired,
     index: PropTypes.number.isRequired,
+    onActive: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
 };

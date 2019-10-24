@@ -20,7 +20,7 @@ import history from '../../../models/history/history';
 export const User = {
     GetList: (dispatch) => { return callUsersList(dispatch); },                                         // Lista Utenti
     Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
-    Delete:  (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
+    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
     Save:    (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
 };
 
@@ -42,8 +42,9 @@ const callUsersList = async ({ dispatch }) => {
                     firstName: user.FirstName,
                     lastName: user.LastName,
                     userName: user.UserName,
-                    isActive: user.IsActive,
-                    isLocked: user.IsLocked,
+                    //isActive: user.IsActive,
+                    //isLocked: user.IsLocked,
+                    userStatus: user.UserStatus,
                     groups: user.Groups.map(group => ({
                         id: group.Id,
                         code: group.Code,
@@ -98,8 +99,9 @@ const callUsersDetails = async ({ data, dispatch }) => {
                 firstName: user.FirstName,
                 lastName: user.LastName,
                 userName: user.UserName,
-                isActive: user.IsActive,
-                isLocked: user.IsLocked,
+               // isActive: user.IsActive,
+               // isLocked: user.IsLocked,
+                userStatus: user.UserStatus,
                 groups: user.Groups.map(group => ({
                      id: group.Id,
                 })),
@@ -147,8 +149,9 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
     function validate(data) {
         return (data.firstName.length > 0)
             && (data.lastName.length > 0)
-            && ((data.id > 0) || ((data.id === 0) && (data.password.length > 0)))
-            && ((data.id > 0) || ((data.id === 0) && (data.groups[0].id > 0)));
+        //    && ((data.id > 0) || ((data.id === 0) && (data.password.length > 0)))
+            && ((data.id > 0) || ((data.id == 0) && (data.groups[0].id > 0)))
+            && ((data.id == 0)||((data.id > 0) && (data.userStatus > 0)));
     }
 };
 
@@ -185,8 +188,9 @@ export const callEditUser = async ({ data, fn }) => {
     id: data.idUser,
     firstName: data.firstName,
     lastName: data.lastName,
-    isActive: true,
-    canBeDeleted: true
+  //  isActive: true,
+  //  canBeDeleted: true
+      userStatus: data.userStatus
   };
 
   base({

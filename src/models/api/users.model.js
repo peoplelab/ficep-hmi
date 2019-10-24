@@ -104,7 +104,8 @@ const usersUpdate = async ({ headers, params }) => {
             "id": params.id,
             "firstName": params.firstName,
             "lastName": params.lastName,
-            "isLocked": params.isLocked
+            "userStatus": params.userStatus
+          //  "isLocked": params.isLocked
         }),
     };
 

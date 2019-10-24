@@ -49,7 +49,7 @@
         "FirstName": "example",
         "LastName": "test",
         "UserName": "example.test",
-        "UserStatus": 1,
+        "UserStatus": 2,
         "Groups": [
             {
                 "Id": 1,
@@ -64,7 +64,7 @@
         "FirstName": "Luigi",
         "LastName": "Reder",
         "UserName": "luigi.reder",
-        "UserStatus": 1,
+        "UserStatus": 4,
         "Groups": [
             {
                 "Id": 2,

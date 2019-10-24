@@ -1,5 +1,8 @@
 {
   "ResponseType": 200,
   "ErrorCode": null,
-  "Result": "test001.test001"
+  "Result": {
+    "UserName": "User Name",
+    "Password": "*9h.8_.**O_s*_KG"
+  }
 }

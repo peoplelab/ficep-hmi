@@ -23,7 +23,7 @@ class EditItem extends Component {
     _labels = {
         firstName: window.intl.users_field_firstname,
         lastName: window.intl.users_field_lastname,
-        password: window.intl.users_field_password,
+       // password: window.intl.users_field_password,
         group: window.intl.users_field_role,
         groups: {            
             ADMIN: window.intl.users_role_administrator,
@@ -40,7 +40,7 @@ class EditItem extends Component {
         id: 0,
         firstName: "",
         lastName: "",
-        password: "",
+      //  password: "",
         groups: null,
         isLocked: false
     }
@@ -95,9 +95,9 @@ class EditItem extends Component {
             currentValues = { ...this.state.currentValues, "lastName": value };
         } else if (event.target.name.indexOf("firstName") >= 0) {
             currentValues = { ...this.state.currentValues, "firstName": value };
-        } else if (event.target.name.indexOf("password") >= 0) {
+        } /*else if (event.target.name.indexOf("password") >= 0) {
             currentValues = { ...this.state.currentValues, "password": value };
-        } else if (event.target.name.indexOf("group") >= 0) {
+        }*/ else if (event.target.name.indexOf("group") >= 0) {
             currentValues = { ...this.state.currentValues, "groups": [{ "id": value }] };
         } else {
             currentValues = this.state.currentValues;
@@ -118,7 +118,7 @@ class EditItem extends Component {
 
 
     render() {
-        const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
+      //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
         const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
@@ -132,9 +132,9 @@ class EditItem extends Component {
                 <div className="users-modal__field">
                     <TextInput name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
                 </div>
-                <div className={password_classname}>
+                {/*<div className={password_classname}>
                     <PasswordInput name="password" placeholder={this._labels.password} onChange={this.handleInputChange} />
-                </div>
+                </div>*/}
                 <div className="users-modal__field">
                     <select name="group" value={selectedGroup} onChange={this.handleInputChange}>
                         {this._groups}

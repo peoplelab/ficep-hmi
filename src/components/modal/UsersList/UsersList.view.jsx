@@ -27,10 +27,10 @@ import '../../../styles/modal/UsersList.style.scss';
 
 
 const initial = {
-  firstName: '',
-  lastName: '',
-  password: '',
-  group: '',
+    firstName: '',
+    lastName: '',
+    //   password: '',
+    group: '',
 };
 
 
@@ -43,12 +43,13 @@ class UsersList extends Component {
         "id": 0,
         "firstName": "",
         "lastName": "",
-        "password": "",
-        "groups": [ ],
-    }                        
+        //"password": "",
+        "userStatus": "",
+        "groups": [],
+    }
     _labels = {                 // etichette in lingua
         title: window.intl.users_main_title,
-        headers : {
+        headers: {
             firstName: window.intl.users_headers_firstname,
             lastName: window.intl.users_headers_lastname,
             userName: window.intl.users_headers_username,
@@ -126,7 +127,7 @@ class UsersList extends Component {
         });
     }
     // dettaglio di un utente...riempie la riga col dettaglio
-    onEditUser(event) {        
+    onEditUser = (event) => {
         const data = event.data;
 
         cUser.Detail({
@@ -136,26 +137,55 @@ class UsersList extends Component {
             }
         });
     }
+    // dettaglio di un utente...attivazione e disattivazione dei bottoni (modifica e elimina)
+    onActiveUser = (event) => {
+        const data = event.data;
+        if (data.userStatus == 1) {
+            data.userStatus = 2;
+
+        } else if (data.userStatus == 1) {
+            data.userStatus = 1;
+        } else {
+            data.userStatus = 1;
+        }
+
+        this._data2save.id = data.id;
+        this._data2save.firstName = data.firstName;
+        this._data2save.lastName = data.lastName;
+        this._data2save.userStatus = data.userStatus;
+        this._data2save.groups = [];
+        cUser.Save({
+            data:
+                this._data2save,
+            onSuccess: (response) => {
+                if ((response != null) && (response.dataprocessed.result == true)) {
+                    this.getUsersList();
+                }
+            },
+            onFailed: () => { }
+        });
+    }
     // salvataggio (creazione/modifica) di un utente
     onSaveUser = (data) => {
 
         this._data2save.id = data.id;
         this._data2save.firstName = data.firstName;
         this._data2save.lastName = data.lastName;
-        this._data2save.password = data.password || "";
-        this._data2save.groups = data.groups;        
+        this._data2save.userStatus = data.userStatus || "";
+        // this._data2save.password = data.password || "";
+        this._data2save.groups = data.groups;
 
         cUser.Save({
             data:
                 this._data2save,
-                onSuccess: (response) => {
-                   this.getUsersList();
-                },
-                onFailed: () => { }
+            onSuccess: (response) => {
+                this.getUsersList();
+            },
+            onFailed: (response) => { }
         });
     }
 
-     // imposta il semaforo per la lista gruppi
+    // imposta il semaforo per la lista gruppi
     setGroupList = (data) => {
         this._groupsList = data;
         this.setStateSync();
@@ -187,7 +217,7 @@ class UsersList extends Component {
                         <div className="users-modal__content">
                             <Table className="users-modal__table" headers={this._labels.headers} data={users} >
                                 {/*{props => <RowItem {...props} updateState={this.updateState} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}*/}
-                                {props => <RowItem {...props} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
+                                {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
                             </Table>
                         </div>
                     </div>

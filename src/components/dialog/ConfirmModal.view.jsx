@@ -7,11 +7,10 @@
 
 
 import React, { memo } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Modal } from '../../layouts/index.layouts';
+import { Modal } from '../layouts/index.layouts';
 
-import '../../../styles/modal/Dialog/ConfirmModal.style.scss';
+import '../../styles/modal/Dialog/ConfirmModal.style.scss';
 
 
 function mapLabels(){
@@ -25,11 +24,11 @@ function mapLabels(){
 
 
 function ConfirmModal(props) {
-  const { open, onClose, onConfirm } = props;
+  const { onConfirm, onClose } = props;
 
-  return ReactDOM.createPortal(
+  return (
     <Modal
-      open={open}
+      open
       className="modal--alert modal--medium warning-modal"
       messages={({ title: mapLabels().title, no: mapLabels().no, yes: mapLabels().yes })}
       redirect={false}
@@ -46,7 +45,7 @@ function ConfirmModal(props) {
         </div>
       </div>
     </Modal>
-  , document.getElementById('modal'));
+  );
 }
 
 
@@ -54,17 +53,14 @@ function ConfirmModal(props) {
  * Define component properties types
  */
 ConfirmModal.propTypes = {
-  open: PropTypes.bool,
-  onClose: PropTypes.func,
   onConfirm: PropTypes.func,
+  onClose: PropTypes.func.isRequired
 };
 
 /**
  * Define default value of component properties
  */
 ConfirmModal.defaultProps = {
-  open: false,
-  onClose: null,
   onConfirm: null,
 };
 

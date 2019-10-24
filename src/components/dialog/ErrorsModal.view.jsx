@@ -7,13 +7,12 @@
 
 
 import React, { memo } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Modal } from '../../layouts/index.layouts';
+import { Modal } from '../layouts/index.layouts';
 
-import intlDefault from '../../../../public/translations/login/default.json';
+import intlDefault from '../../../public/translations/login/default.json';
 
-import '../../../styles/modal/Dialog/ErrorModal.style.scss';
+import '../../styles/modal/Dialog/ErrorModal.style.scss';
 
 
 function mapLabels(){
@@ -39,14 +38,14 @@ function mapErrorsList(errorCode, index) {
 
 
 function ErrorModal(props) {
-    const { errorCode, errorsList, open, onClose } = props;
+    const { errorCode, errorsList, onClose } = props;
 
     const genericError = mapLabels().error(errorCode);
     const ItemsList = errorsList.map(mapErrorsList);
 
-  return ReactDOM.createPortal(
+  return (
     <Modal
-      open={open}
+      open
       className="modal--alert modal--medium error-modal"
       messages={({ title: mapLabels().title, close: mapLabels().close })}
       redirect={false}
@@ -78,7 +77,7 @@ function ErrorModal(props) {
         </div>
       </div>
     </Modal>
-  , document.getElementById('modal'));
+  );
 }
 
 
@@ -86,18 +85,15 @@ function ErrorModal(props) {
  * Define component properties types
  */
 ErrorModal.propTypes = {
-  open: PropTypes.bool,
-  onClose: PropTypes.func,
   errorCode: PropTypes.string,
   errorsList: PropTypes.arrayOf(PropTypes.string),
+  onClose: PropTypes.func.isRequired
 };
 
 /**
  * Define default value of component properties
  */
 ErrorModal.defaultProps = {
-  open: false,
-  onClose: null,
   errorCode: '',
   errorsList: [],
 };

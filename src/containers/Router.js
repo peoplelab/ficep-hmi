@@ -81,7 +81,13 @@ const createRoutes = () => ({
     Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
   },
 
-  // Contiene la modale pubblica degli errori
+  // Contiene la modale pubblica
+  dialog: {
+    path: '**',
+    key: 'Dialog',
+    exact: false,
+    Component: lazy(() => import(/* webpackChunkName: "Dialog" */ '../components/dialog/Dialog.container')),
+  },
 
   /* #start:dev */
   // Contiene la pagina sandbox

@@ -7,11 +7,10 @@
 
 
 import React, { memo } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Modal } from '../../layouts/index.layouts';
+import { Modal } from '../layouts/index.layouts';
 
-import '../../../styles/modal/Dialog/InfoModal.style.scss';
+import '../../styles/modal/Dialog/InfoModal.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua
@@ -22,9 +21,9 @@ const mapLabels = () => ({ // etichette in lingua
 
 
 const InfoModal = (props) => {
-  const { open, message, onClose } = props;
+  const { message, onClose } = props;
 
-  return ReactDOM.createPortal(
+  return (
     <Modal
       open={open}
       className="modal--alert modal--medium info-modal"
@@ -47,7 +46,7 @@ const InfoModal = (props) => {
         </div>
       </div>
     </Modal>
-  , document.getElementById('modal'));
+  );
 };
 
 
@@ -56,8 +55,7 @@ const InfoModal = (props) => {
  */
 InfoModal.propTypes = {
   message: PropTypes.string,
-  open: PropTypes.bool,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired
 };
 
 /**
@@ -65,8 +63,6 @@ InfoModal.propTypes = {
  */
 InfoModal.defaultProps = {
   message: '',
-  open: false,
-  onClose: null,
 };
 
 

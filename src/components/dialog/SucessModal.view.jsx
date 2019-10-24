@@ -7,11 +7,10 @@
 
 
 import React, { memo } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Modal } from '../../layouts/index.layouts';
+import { Modal } from '../layouts/index.layouts';
 
-import '../../../styles/modal/Dialog/SucessModal.style.scss';
+import '../../styles/modal/Dialog/SucessModal.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua
@@ -22,9 +21,8 @@ const mapLabels = () => ({ // etichette in lingua
 
 
 const SucessModal = (props) => {
-  const { open, onClose } = props;
-
-  return ReactDOM.createPortal(
+  const { onClose } = props;
+  return (
     <Modal
       open={open}
       className="modal--alert modal--medium success-modal"
@@ -42,7 +40,7 @@ const SucessModal = (props) => {
         </div>
       </div>
     </Modal>
-  , document.getElementById('modal'));
+  );
 };
 
 
@@ -50,16 +48,13 @@ const SucessModal = (props) => {
  * Define component properties types
  */
 SucessModal.propTypes = {
-  open: PropTypes.bool,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired
 };
 
 /**
  * Define default value of component properties
  */
 SucessModal.defaultProps = {
-  open: false,
-  onClose: null,
 };
 
 

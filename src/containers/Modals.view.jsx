@@ -36,9 +36,10 @@ const Modals = (props) => {
 
   return (
     <>
-    <Switch>
-      {isUserLogged && routes.modal.map(mapRoutes) /* Lista delle pagine private modali */}
-    </Switch>
+      <Switch>
+        {isUserLogged && routes.modal.map(mapRoutes) /* Lista delle pagine private modali */}
+      </Switch>
+      {mapRoutes(routes.dialog)}
     </>
   );
 };

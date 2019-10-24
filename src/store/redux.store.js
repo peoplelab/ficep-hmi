@@ -7,7 +7,7 @@
 
 
 import { compose, createStore, applyMiddleware } from 'redux'; // Import dei componneti di redux
-import { reducer } from './session.store';    // Import del reducer della sessione per la gestione dello store
+import reducers from './reducer.index';
 import { logger } from '../middlewares/logger.middleware'; // Log di tutte le modifiche allo stato dello store e delle action passate allo store.dispatch
 
 
@@ -33,13 +33,17 @@ const enhancer = composeEnhancers(middlewares);
 
 
 // Inizializzazione dello store
-const store = createStore(reducer, initialState, enhancer);
+const store = createStore(
+  reducers,
+  initialState,
+  enhancer
+);
 
 
 // Abilitazione dell'hot-reloading dello store
 if (module.hot) {
-  module.hot.accept('./session.store', () => {
-    store.replaceReducer(reducer);
+  module.hot.accept('./reducer.index', () => {
+    store.replaceReducer(reducers);
   });
 }
 

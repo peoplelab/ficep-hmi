@@ -11,46 +11,44 @@ import Enum from '../utils/Enum';
 
 // Lista delle tipologie di azioni applicabili allo store
 export const types = Enum.from(
-  'SET_USER_IP',
-  'SET_SESSION',
-  'RESET_SESSION',
-  // 'SET_ERROR',
-  // 'RESET_ERROR'
+  'OPEN_ERROR_MODAL',
+  'OPEN_SUCCESS_MODAL',
+  'OPEN_INFO_MODAL',
+  'OPEN_CONFIRM_MODAL',
+  'CLOSE_MODAL',
 );
 
 
 // Stato iniziale dello store (le chiavi sono copiate dalla response del servizio di login)
 const initialState = {
-  responseType: NaN,
-  ip: '',
-  username: '',
-  accessToken: '',
-  refreshToken: '',
-  culture: '',
-  groups: [],
-  permissions: [],
-  sessionId: '',
-  expiredAt: '',
-  sessionLogId: '',
-  refreshExpiredAt: '',
-  issuedAt: '',
+  target: '',
+  data: null,
 };
 
 
 // Gestore delle azioni, passate in store.dispatch, usate per poter modificare lo stato corrente dello store
 const actionHandlers = {
-  [types.SET_USER_IP]:  (state, { payload }) => ({
+  [types.OPEN_ERROR_MODAL]:  (state, { payload }) => ({
     ...state,
-    ip: payload.ip,
+    target: payload.target,
+    data: payload.data,
   }),
-	[types.SET_SESSION]: (state, { payload }) => ({
+  [types.OPEN_SUCCESS_MODAL]:  (state, { payload }) => ({
     ...state,
-    responseType: payload.responseType,
-    ...payload.result,
+    target: payload.target,
   }),
-  [types.RESET_SESSION]: (state, { payload }) => ({
-    ...initialState,
-    ip: state.ip,
+  [types.OPEN_INFO_MODAL]:  (state, { payload }) => ({
+    ...state,
+    target: payload.target,
+    data: payload.data,
+  }),
+  [types.OPEN_CONFIRM_MODAL]:  (state, { payload }) => ({
+    ...state,
+    target: payload.target,
+    data: payload.data,
+  }),
+  [types.CLOSE_MODAL]:  (state, { payload }) => ({
+    ...initialState
   }),
 };
 

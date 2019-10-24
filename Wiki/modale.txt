@@ -1,0 +1,69 @@
+DOCUMENTAZIONE MODALI
+=====================
+Per creare una modale all'interno del progetto Ficep-HMI:
+  Importare l'oggetto "ModalHandler", contenente le funzioni di gestione delle modali, dal file modal.handler.js
+
+  Per aprire una delle seguenti modali:
+      . Success: visualizza la modale di successo
+      . Error: visualizza la modale di errore
+      . Info: visualizza la modale informativa
+      . Confirm: visualizza la modale di conferma operazione
+
+    ° Indicare il metodo di ModalHandler da eseguire
+    ° La gestione della chiusura della modale è interna al componente
+    ° In caso sia necessario forzare la chiusura della modale dall'esterno è possibile usare la funzione "Close" di "ModalHandler"
+
+
+N.B.:
+  Può essere aperta una sola modale alla volta
+  (In caso di chiamate sequenziali di più modali, verrà visualizzata solo l'ultima chiamata)
+
+
+
+Import delle funzionalità
+=====================
+
+  import
+  ===============
+  import { ModalHandler } from '[path]';
+  // path relativo dalla root: './controllers/common/modal.handler'
+
+
+
+Comandi di gestione della modale
+=====================
+
+  success
+  ===============
+  ModalHandler.Success();
+
+
+  error
+  ===============
+  ModalHandler.Error({ errorCode: [string], errorsList: [Array(string)] });
+
+  // ° errorCode: codice della traduzione dell'errore generico
+  // ° errorsList: lista dei codici delle traduzioni degli errori specifici
+  // es: ModalHandler.Error({ errorCode: "GENERIC_ERROR", errorsList: ["SPECIFIC_ERROR"] });
+
+  info
+  ===============
+  ModalHandler.Info({ message: [string] });
+
+  // ° message: messaggio in chiaro da visualizzare
+  // es: ModalHandler.Info({ message: "Example info" });
+
+
+  confirm
+  ===============
+  ModalHandler.Confirm({ onConfirm: this.onConfirm });
+
+  // ° onConfirm: contiene la funzione di callback da avviare all'OK da parte dell'utente
+  // es:
+  //  fnExample = () => { alert('Hello world!'); }
+  //  ModalHandler.Confirm({ onConfirm: fnExample) });
+
+
+  close
+  ===============
+  ModalHandler.Close();

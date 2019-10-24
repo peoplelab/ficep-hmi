@@ -1,0 +1,22 @@
+{
+  "modal_error_title": "Operazione fallita",
+  "modal_error_message": "Si è verificato un errore!",
+  "modal_error_code": "Codice dell'errore:",
+  "modal_error_details": "Dettagli:",
+  "modal_error_server": "Errore lato server",
+  "modal_error_technical": "Errore tecnico",
+  "modal_error_close": "Chiudi",
+
+  "modal_info_title": "Conferma operazione",
+  "modal_info_message": "",
+  "modal_info_close": "Chiudi",
+
+  "modal_success_title": "Conferma operazione",
+  "modal_success_message": "Operazione avvenuta con successo",
+  "modal_success_close": "Chiudi",
+
+  "modal_confirm_title": "Attenzione!",
+  "modal_confirm_message": "Continuare con il processo?",
+  "modal_confirm_no": "No",
+  "modal_confirm_yes": "Sì"
+}

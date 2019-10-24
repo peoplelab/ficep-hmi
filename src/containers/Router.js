@@ -81,20 +81,12 @@ const createRoutes = () => ({
     Component: lazy(() => import(/* webpackChunkName: "Login" */ '../components/routes/login/login.view')),
   },
 
-  // Contiene la modale pubblica degli errori
-  error:
-  {
-    path: "**", // path valido per qualsiasi percorso
-    key: 'error',
+  // Contiene la modale pubblica
+  dialog: {
+    path: '**',
+    key: 'Dialog',
     exact: false,
-    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/ErrorsModal/ErrorsModal.controller')),
-  },
-  info:
-  {
-    path: '**/info', // path valido per qualsiasi percorso che precede /info
-    key: 'info',
-    exact: false,
-    Component: lazy(() => import(/* webpackChunkName: "Info" */ '../components/modal/InfoModal/InfoModal.view')),
+    Component: lazy(() => import(/* webpackChunkName: "Dialog" */ '../components/dialog/Dialog.container')),
   },
 
   /* #start:dev */

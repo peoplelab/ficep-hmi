@@ -6,7 +6,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import history from '../../models/history/history';
@@ -21,50 +21,62 @@ const headerTypes = [
   'close',
   'full',
 ];
+
 const footerTypes = [
   'none',
   'alert',
+  'dialog',
 ];
 
 const footerEnum = Enum.from(...footerTypes);
 const headerEnum = Enum.from(...headerTypes);
 
-class Modal extends PureComponent {
-  static getDerivedStateFromProps(props, state) {
-    if (props.open !== state.prevOpen) {
-      return {
-        open: props.open,
-        prevOpen: props.open,
-      };
-    }
 
-    return null;
-  }
-
+class Modal extends Component {
 	constructor(props) {
     super(props);
 
-    const { open } = props;
-
-    this.state = { open, prevOpen: open };
+    this.state = { open: props.open };
 
     this.onClick = this.onClick.bind(this);
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
     this.setFooter = this.setFooter.bind(this);
     this.setHeader = this.setHeader.bind(this);
   }
 
-  onClick(event) {
-    const { onClick, redirect } = this.props;
+  componentWillReceiveProps(nextProps) {
+    this.setState({ open: nextProps.open });
+  }
 
-    if (typeof onClick === 'function') {
-      onClick(event);
-    }
+  onClick() {
+    const { redirect } = this.props;
 
-    this.setState(prevState => ({ open: !(prevState.open) }));
+    this.setState(prevState => ({ open: false }));
 
     if (redirect) {
       history.goBack();
     }
+  }
+
+  onClose(event) {
+    const { onClose } = this.props;
+
+    if (typeof onClose === 'function') {
+      onClose(event);
+    }
+
+    this.onClick(event);
+  }
+
+  onConfirm(event) {
+    const { onConfirm } = this.props;
+
+    if (typeof onConfirm === 'function') {
+      onConfirm(event);
+    }
+
+    this.onClick(event);
   }
 
   setFooter() {
@@ -74,8 +86,20 @@ class Modal extends PureComponent {
       case footerEnum.alert: {
         return (
           <footer className="modal__footer modal__footer--alert">
-            <Button className="modal__button anchor" onClick={this.onClick}>
+            <Button className="modal__button anchor" onClick={this.onClose}>
               {messages.close}
+            </Button>
+          </footer>
+        );
+      }
+      case footerEnum.dialog: {
+        return (
+          <footer className="modal__footer modal__footer--alert">
+            <Button className="modal__button anchor YESS" onClick={this.onConfirm}>
+              {messages.yes}
+            </Button>
+            <Button className="modal__button anchor NOO" onClick={this.onClose}>
+              {messages.no}
             </Button>
           </footer>
         );
@@ -102,7 +126,7 @@ class Modal extends PureComponent {
       case headerEnum.close: {
         return (
           <header className="modal__head modal__head--close">
-            <Button className="modal__button" onClick={this.onClick}>
+            <Button className="modal__button" onClick={this.onClose}>
               <i className="modal__icon ic-close" />
             </Button>
           </header>
@@ -114,7 +138,7 @@ class Modal extends PureComponent {
             <h1 className="modal__title">
               {messages.title}
             </h1>
-            <Button className="modal__button" onClick={this.onClick}>
+            <Button className="modal__button" onClick={this.onClose}>
               <i className="modal__icon ic-close" />
             </Button>
           </header>
@@ -159,7 +183,8 @@ Modal.propTypes = {
   redirect: PropTypes.bool,
   className: PropTypes.string,
   messages : PropTypes.object,
-  onClick: PropTypes.func,
+  onClose: PropTypes.func,
+  onConfirm: PropTypes.func,
   footer: PropTypes.oneOf(footerTypes).isRequired,
   header: PropTypes.oneOf(headerTypes).isRequired,
 };
@@ -172,7 +197,8 @@ Modal.defaultProps = {
   open: false,
   redirect: true,
   className: '',
-  onClick: null,
+  onClose: null,
+  onConfirm: null,
   messages: null,
 };
 

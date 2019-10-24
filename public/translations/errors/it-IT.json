@@ -1,4 +1,8 @@
 {
+  "GENERIC_SERVER_ERROR": "Errore lato server",
+  "GENERIC_TECHNICAL_ERROR": "Errore tecnico",
+
+
   "GENERIC_VALIDATION_ERROR": "Errore di validazione",
   "GENERIC_GETITEM_NOTFOUND": "Entità non trovata",
   "GENERIC_JSON_INVALIDFORMAT": "Formato JSON non valido",

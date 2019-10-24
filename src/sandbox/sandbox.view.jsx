@@ -7,6 +7,7 @@ import Tools from './_tools/tools.view';
 import Cultures from './_cultures/cultures.view';
 import UsersRes from './_users-response/users.view';
 import UsersTab from './_users-table/users.view';
+import Modal from './_modal/modal.view';
 
 import './style/sandbox.style.scss';
 
@@ -32,6 +33,9 @@ const Sandbox = ({ match }) => (
       <Anchor className="sandbox__link" path={`${match.path}/users-tab`} exact>
         Sandbox/users-table
       </Anchor>
+      <Anchor className="sandbox__link" path={`${match.path}/modal`} exact>
+        Sandbox/modal
+      </Anchor>
     </div>
     <div className="sandbox__route-box">
       <Switch>
@@ -53,6 +57,9 @@ const Sandbox = ({ match }) => (
         </Route>
         <Route path={`${match.path}/users-tab`} exact>
           <UsersTab />
+        </Route>
+        <Route path={`${match.path}/modal`} exact>
+          <Modal />
         </Route>
       </Switch>
     </div>

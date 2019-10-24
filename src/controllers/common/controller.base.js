@@ -45,10 +45,10 @@ export const base = async ({ request, api, success, failure, params, refresh, od
     // success
 
     // elaborazione dei dati grezzi (con gestione del caso default o oData)
-      const dataprocessed = (odata == null) ? cDataHandler.Default({ contentType, dataraw }) : cDataHandler.Odata({ contentType, dataraw });
+    let dataprocessed = (odata == null) ? cDataHandler.Default({ contentType, dataraw }) : cDataHandler.Odata({ contentType, dataraw });
 
     // gestione dei casi di errore
-    errorHandler({ request, contentType, dataprocessed });
+    ({ dataprocessed } = errorHandler({ request, contentType, dataprocessed }));
 
     // gestione di tutti i casi httpcode 200
     if (typeof success === 'function' && dataprocessed.responseType === 200) {

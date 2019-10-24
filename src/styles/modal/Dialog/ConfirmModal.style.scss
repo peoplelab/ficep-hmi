@@ -1,20 +1,20 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
-@import '../common/text.scss';
+@import '../../common/colors.scss';
+@import '../../common/flex.scss';
+@import '../../common/text.scss';
 
-/** @define error-modal */
+/** @define warning-modal */
 
 
-.error-modal {
-  .error-modal__container {
+.warning-modal {
+  .warning-modal__container {
     @extend %flex-column;
 
     height: 100%;
     width: 100%;
 
-    .error-modal__content {
+    .warning-modal__content {
       overflow: hidden;
       padding: 1rem;
       width: 100%;
@@ -23,7 +23,7 @@
         border-bottom: 0.0625rem solid $border-dark-grey;
       }
 
-      .error-modal__title {
+      .warning-modal__title {
         font-weight: 600;
 
         // stylelint-disable-next-line plugin/selector-bem-pattern
@@ -34,34 +34,34 @@
         }
       }
 
-      .error-modal__text {
+      .warning-modal__text {
         color: $text-dark-grey;
 
-        &.error-modal__text--message {
+        &.warning-modal__text--message {
           @extend %paragraph-1-medium;
           margin: 0 0 1rem;
         }
-        &.error-modal__text--main {
+        &.warning-modal__text--main {
           @extend %subtitle-regular;
 
         }
-        &.error-modal__text--details {
-          @extend .error-modal__text--message;
+        &.warning-modal__text--details {
+          @extend .warning-modal__text--message;
         }
-        &.error-modal__text--description {
+        &.warning-modal__text--description {
           @extend %info-2-light;
         }
       }
 
-      .error-modal__list {
+      .warning-modal__list {
         flex: 1;
         overflow: auto;
         padding: 0.5rem;
         width: 100%;
 
-        .error-modal__item {
-          @extend .error-modal__text;
-          @extend .error-modal__text--description;
+        .warning-modal__item {
+          @extend .warning-modal__text;
+          @extend .warning-modal__text--description;
 
           margin: 0.5rem 0 0 1rem;
         }

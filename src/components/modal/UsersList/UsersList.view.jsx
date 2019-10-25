@@ -20,8 +20,6 @@ import {
 //import { callGroupList } from '../../../controllers/routes/users/groups.controller';
 
 import RowItem from './UsersList.item.row';
-import AddUserItem from './UsersList.item.addUser';
-import UpdateUserItem from './UsersList.item.updateUser';
 import EditItem from './UsersList.item.edit';
 import '../../../styles/modal/UsersList.style.scss';
 
@@ -34,19 +32,25 @@ const initial = {
 };
 
 
+const getDataForSaving_dataRequired = (dataRequired, data) => {
+  const data2save = {};
+  for (const key of dataRequired) {
+      data2save[key] = data[key];
+  }
+
+  return data2save;
+};
+
+const getDataForSaving_controller = (controller, data) => getDataForSaving_dataRequired(controller.Required, data);
+
+
+
 
 class UsersList extends Component {
 
     _groupsList = null;         // lista dei gruppi/ruoli
     _usersList = null;          // lista degli utenti
-    _data2save = {              // struct dei dati da salvare
-        "id": 0,
-        "firstName": "",
-        "lastName": "",
-        //"password": "",
-        "userStatus": "",
-        "groups": [],
-    }
+    _data2save = {}              // struct dei dati da salvare
     _labels = {                 // etichette in lingua
         title: window.intl.users_main_title,
         headers: {
@@ -143,17 +147,12 @@ class UsersList extends Component {
         if (data.userStatus == 1) {
             data.userStatus = 2;
 
-        } else if (data.userStatus == 1) {
-            data.userStatus = 1;
-        } else {
+        } else if (data.userStatus == 2) {
             data.userStatus = 1;
         }
 
-        this._data2save.id = data.id;
-        this._data2save.firstName = data.firstName;
-        this._data2save.lastName = data.lastName;
-        this._data2save.userStatus = data.userStatus;
-        this._data2save.groups = [];
+        this._data2save = getDataForSaving_controller(cUser, data);
+
         cUser.Save({
             data:
                 this._data2save,
@@ -167,17 +166,10 @@ class UsersList extends Component {
     }
     // salvataggio (creazione/modifica) di un utente
     onSaveUser = (data) => {
-
-        this._data2save.id = data.id;
-        this._data2save.firstName = data.firstName;
-        this._data2save.lastName = data.lastName;
-        this._data2save.userStatus = data.userStatus || "";
-        // this._data2save.password = data.password || "";
-        this._data2save.groups = data.groups;
+        this._data2save = getDataForSaving_controller(cUser, data);
 
         cUser.Save({
-            data:
-                this._data2save,
+            data: this._data2save,
             onSuccess: (response) => {
                 this.getUsersList();
             },

@@ -4,6 +4,7 @@ import { Field,  PasswordInput, Select, Option, Submit, Reset } from '../../form
 import TextInput from '../../forms/TextInput';
 import PropTypes from 'prop-types';
 
+
 /*
  * Componente EDITITEM. Modifica di un utente.
  * Props:
@@ -18,20 +19,19 @@ import PropTypes from 'prop-types';
    - onSave : gestore del salvataggio utente
 */
 class EditItem extends Component {
-
     // etichette in lingua
     _labels = {
         firstName: window.intl.users_field_firstname,
         lastName: window.intl.users_field_lastname,
        // password: window.intl.users_field_password,
         group: window.intl.users_field_role,
-        groups: {            
+        groups: {
             ADMIN: window.intl.users_role_administrator,
             SUPERUSER: window.intl.users_role_technician,
             USER: window.intl.users_role_operator
         },
         save: window.intl.users_field_save,
-        reset: window.intl.users_field_reset,        
+        reset: window.intl.users_field_reset,
     };
     // elenco elementi (options) del dropdown gruppi/ruoli
     _groups = [];
@@ -53,7 +53,7 @@ class EditItem extends Component {
             // valori originali
             originalValues: this._emptyValues,
             // valori modificati dall'utente
-            currentValues: this._emptyValues
+            currentValues: this._emptyValues,
         };
 
         this.handleInputChange.bind(this);
@@ -64,7 +64,7 @@ class EditItem extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // se currentUser di nextprops è null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
+        // se currentUser di nextprops ï¿½ null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
         const user = (nextProps.currentUser.firstName === null || (typeof nextProps.currentUser.firstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
 
         this._groups = this.getCodeOptions(nextProps.groups);
@@ -84,7 +84,7 @@ class EditItem extends Component {
 
         return listitems;
     }
-    
+
     // gestione modifica campi input
     handleInputChange = (event) => {
         let currentValues = {};
@@ -103,7 +103,7 @@ class EditItem extends Component {
             currentValues = this.state.currentValues;
         }
 
-        this.setState({ currentValues });        
+        this.setState({ currentValues });
     };
     // gestione click Annulla
     btnReset_click = (event) => {
@@ -113,6 +113,7 @@ class EditItem extends Component {
     // gestione click Salva
     btnSave_click = (event) => {
         event.preventDefault();
+
         this.props.onSave(this.state.currentValues);
     };
 
@@ -123,12 +124,12 @@ class EditItem extends Component {
         const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].id;
-        
+
         return (
-            <>   
+            <>
                 <div className="users-modal__field">
-                    <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} />
-                </div>               
+                    <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} required />
+                </div>
                 <div className="users-modal__field">
                     <TextInput name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
                 </div>
@@ -144,7 +145,7 @@ class EditItem extends Component {
                     <button name="btnReset" onClick={this.btnReset_click}>
                         {this._labels.reset}
                     </button>
-                </div>                
+                </div>
                 <div className="users-modal__field">
                     <button name="btnSave" onClick={this.btnSave_click}>
                         {this._labels.save}

@@ -23,6 +23,7 @@ export const User = {
     Detail:  (data, dispatch)  => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
     Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
     Save:    (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
+    Required: ['id', 'firstName', 'lastName', 'userStatus', 'groups'] // elementi obbligatori per il salvataggio
 };
 
 

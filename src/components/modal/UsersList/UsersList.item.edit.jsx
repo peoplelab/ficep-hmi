@@ -144,17 +144,17 @@ class EditItem extends Component {
                     <PasswordInput name="password" placeholder={this._labels.password} onChange={this.handleInputChange} />
                 </div>*/}
                 <div className={classGroups}>
-                    <select name="group" value={selectedGroup} onChange={this.handleInputChange}>
+                    <select className="input input__select" name="group" value={selectedGroup} onChange={this.handleInputChange}>
                         {this._groups}
                     </select>
                 </div>
-                <div className="field users-modal__field">
-                    <button name="btnReset" onClick={this.btnReset_click}>
+                <div className="field users-modal__field users-modal__field--small">
+                    <button className="input input__reset" name="btnReset" onClick={this.btnReset_click}>
                         {this._labels.reset}
                     </button>
                 </div>
-                <div className="field users-modal__field">
-                    <button name="btnSave" onClick={this.btnSave_click}>
+                <div className="field users-modal__field users-modal__field--small">
+                    <button className="input input__submit" name="btnSave" onClick={this.btnSave_click}>
                         {this._labels.save}
                     </button>
                 </div>

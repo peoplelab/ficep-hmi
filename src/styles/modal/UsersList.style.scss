@@ -29,11 +29,8 @@
 
             flex: 1;
 
-            &:nth-of-type(5){
+            &.users-modal__field--small {
               flex: 0.5;
-            }
-            &:nth-of-type(6) {
-              flex: 0.25;
             }
           }
         }

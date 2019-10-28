@@ -36,7 +36,14 @@ class SessionExpired extends PureComponent {
 
   render() {
     return (
-      <Modal open className="modal--alert modal--small session-modal" messages={({ title: mapLabels().title })} header="title" footer="none">
+      <Modal
+        open
+        className="modal--alert modal--small session-modal"
+        messages={({ title: mapLabels().title })}
+        redirect={false}
+        header="title"
+        footer="none"
+      >
         <div className="session-modal__container">
           <div className="session-modal__content">
             <p className="session-modal__message">

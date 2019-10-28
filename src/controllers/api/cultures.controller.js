@@ -13,6 +13,75 @@ import {
 } from '../../models/api/cultures.model';
 import { base } from '../common/controller.base';
 
+//import {
+//    Cultures as mCultures
+//} from '../../../models/api/cultures.model';
+
+//import { base } from '../../common/controller.base';
+
+
+
+
+
+//// richiesta per il recupero della lista delle culture da passare alla view
+//export const callCulturesGet = async ({ dispatch }) => {
+//    base({
+//        api: apiCultureGet,
+//        success: ({ dataprocessed }) => {
+//            const data = {
+//                id: dataprocessed.result.id,
+//                code: dataprocessed.result.code,
+//                description: dataprocessed.result.description,
+//            };
+
+//            dispatch({ data });
+//        },
+//        failure: () => {
+//            dispatch({ data: [] });
+//        },
+//        refresh: false
+//    });
+//};
+
+
+
+
+
+// Interface
+export const Cultures = {
+    GetList: (dispatch) => { return callCulturesGet(dispatch); }                    // Lista Gruppi
+};
+
+
+// Private methods
+const callCulturesGet = async ({ dispatch }) => {
+    // recupera la lista degli utenti da inviare alla view
+    base({
+
+        api: apiCultureGet,
+
+        success: ({ dataprocessed }) => {
+            const cultures = dataprocessed.result.map(item => ({
+                id: item.Id,
+                code: item.Code,
+                description: item.Description,
+            }));
+
+            dispatch({ cultures });
+        },
+
+        failure: () => {
+            dispatch({ cultures: [] });
+        },
+
+        odata: true
+    });
+};
+
+
+
+
+////////////Da qui in poi si puo cancellare tutto//////////////////////////////////////
 
 // Gestione e conversione dei dati grezzi della response da inviare alla view
 const dataPost = (state, payload) => {
@@ -60,26 +129,6 @@ const dataPut = (state, payload) => {
   return { ...state, data: newData };
 };
 
-
-// richiesta per il recupero della lista delle culture da passare alla view
-export const callCulturesGet = async ({ dispatch }) => {
-  base({
-    api: apiCultureGet,
-    success: ({ dataprocessed }) => {
-      const data = {
-        id: dataprocessed.result.id,
-        code: dataprocessed.result.code,
-        description: dataprocessed.result.description,
-      };
-
-      dispatch({ data });
-    },
-    failure: () => {
-      dispatch({ data: [] });
-    },
-    refresh: false
-  });
-};
 
 // richiesta per aggiungere una nuova cultura, indicata precedentemente nella view
 export const callCulturesPost = async ({ data, dispatch, state }) => {

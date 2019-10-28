@@ -55,8 +55,14 @@ class Select extends PureComponent {
 }
 
 const shapeOptions = {
-  message: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
 };
 
 

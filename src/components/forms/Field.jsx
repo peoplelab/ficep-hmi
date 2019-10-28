@@ -21,7 +21,7 @@ const Field = (props) => {
 
   // recupera l'id del campo e aggiunge una nuova classe (children deve contenere un solo componente)
   let id = undefined;
-  const newChildern = React.Children.map(children, child => {
+  const newChildren = React.Children.map(children, child => {
     if (!(React.isValidElement(child))) {
       return;
     }
@@ -41,7 +41,7 @@ const Field = (props) => {
           {label}
         </label>
       )}
-      {newChildern}
+      {newChildren}
     </div>
   );
 };

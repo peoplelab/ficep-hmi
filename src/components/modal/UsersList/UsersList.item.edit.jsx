@@ -128,9 +128,9 @@ class EditItem extends Component {
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].id;
 
-        const classFirstName = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
-        const classLastName = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
-        const classGroups = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
+        const classFirstName = "field users-modal__field" + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
+        const classLastName = "field users-modal__field" + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
+        const classGroups = "field users-modal__field" + (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
 
         return (
             <>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
-import { Field,  PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
+// import { Field,  PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
 import TextInput from '../../forms/TextInput';
 import PropTypes from 'prop-types';
 
@@ -18,6 +18,8 @@ import PropTypes from 'prop-types';
                                                         - isLocked: false
    - onSave : gestore del salvataggio utente
 */
+
+
 class EditItem extends Component {
     // etichette in lingua
     _labels = {
@@ -119,34 +121,39 @@ class EditItem extends Component {
 
 
     render() {
+      const { errorCase } = this.props;
       //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
         const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].id;
 
+        const classFirstName = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
+        const classLastName = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
+        const classGroups = "field users-modal__field" + (errorCase.include('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
+
         return (
             <>
-                <div className="users-modal__field">
+                <div className={classFirstName}>
                     <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} required />
                 </div>
-                <div className="users-modal__field">
+                <div className={classLastName}>
                     <TextInput name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
                 </div>
                 {/*<div className={password_classname}>
                     <PasswordInput name="password" placeholder={this._labels.password} onChange={this.handleInputChange} />
                 </div>*/}
-                <div className="users-modal__field">
+                <div className={classGroups}>
                     <select name="group" value={selectedGroup} onChange={this.handleInputChange}>
                         {this._groups}
                     </select>
                 </div>
-                <div className="users-modal__field">
+                <div className="field users-modal__field">
                     <button name="btnReset" onClick={this.btnReset_click}>
                         {this._labels.reset}
                     </button>
                 </div>
-                <div className="users-modal__field">
+                <div className="field users-modal__field">
                     <button name="btnSave" onClick={this.btnSave_click}>
                         {this._labels.save}
                     </button>
@@ -165,6 +172,7 @@ EditItem.propTypes = {
     groups: PropTypes.arrayOf(PropTypes.object).isRequired,
     currentUser: PropTypes.object.isRequired,
     onSave: PropTypes.func.isRequired,
+    errorCase: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 

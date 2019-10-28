@@ -75,6 +75,7 @@ class UsersList extends Component {
             users: [],
             groups: [],
             currentUser: {},
+            errorCase: [],
         };
 
         this.updateState = this.updateState.bind(this);
@@ -161,7 +162,7 @@ class UsersList extends Component {
                     this.getUsersList();
                 }
             },
-            onFailed: () => { }
+            onFailed: (response) => { }
         });
     }
     // salvataggio (creazione/modifica) di un utente
@@ -172,8 +173,14 @@ class UsersList extends Component {
             data: this._data2save,
             onSuccess: (response) => {
                 this.getUsersList();
+
+                if (this.state.errorCase.length > 0) {
+                  this.setState({ errorCase: [] });
+                }
             },
-            onFailed: (response) => { }
+            onFailed: (response) => {
+              this.setState({ errorCase: response });
+             }
         });
     }
 
@@ -190,14 +197,14 @@ class UsersList extends Component {
 
 
     render() {
-        const { users, groups, currentUser } = this.state;
+        const { users, groups, currentUser, errorCase } = this.state;
 
         return (
             <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
                 <Form className="users-modal__form" initial={initial}>
                     <div className="users-modal__container">
                         <div className="users-modal__content">
-                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} />
+                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
                             {/*
                             {!currentUser ? (
                                 <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />

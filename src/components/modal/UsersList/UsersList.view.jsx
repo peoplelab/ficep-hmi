@@ -32,7 +32,7 @@ const initial = {
 
 
 class UsersList extends Component {
-    _deleteID = 0;              // l'id da passare alla funzione onDeleteUser() 
+    _deleteID = 0;              // l'id da passare alla funzione onDeleteUser()
     _groupsList = null;         // lista dei gruppi/ruoli
     _usersList = null;          // lista degli utenti
     _data2save = {              // struct dei dati da salvare
@@ -73,6 +73,7 @@ class UsersList extends Component {
             users: [],
             groups: [],
             currentUser: {},
+            errorCase: [],
         };
 
         this.updateState = this.updateState.bind(this);
@@ -199,9 +200,14 @@ class UsersList extends Component {
                     ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.UserName, ' Password: ' + response.dataprocessed.result.Password] });
                 }
                 this.getUsersList();
+
+                if (this.state.errorCase.length > 0) {
+                  this.setState({ errorCase: [] });
+                }
             },
             onFailed: (response) => {
                 ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
+                this.setState({ errorCase: response.dataprocessed.result });
             }
         });
     }
@@ -219,14 +225,14 @@ class UsersList extends Component {
 
 
     render() {
-        const { users, groups, currentUser } = this.state;
+        const { users, groups, currentUser, errorCase } = this.state;
 
         return (
             <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
                 <Form className="users-modal__form" initial={initial}>
                     <div className="users-modal__container">
                         <div className="users-modal__content">
-                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} />
+                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
                         </div>
                         <div className="users-modal__content">
                             <Table className="users-modal__table" headers={this._labels.headers} data={users} >

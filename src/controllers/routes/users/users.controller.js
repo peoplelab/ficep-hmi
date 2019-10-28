@@ -154,8 +154,8 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
 //funzione controlla validità cdati.
 function validate(data) {
     var errorArrayList = [];
-    if (data.firstName.length <= 0) { errorArrayList.push('USER_CREATION_FIRSTNAME_EMPTY'); }
-    if (data.lastName.length <= 0) { errorArrayList.push('USER_CREATION_LASTNAME_EMPTY'); }
+    if (data.firstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
+    if (data.lastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
     try { if (!((data.id > 0) || ((data.id == 0) && (data.groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
     if ((data.id == 0) || ((data.id > 0) && (data.userStatus > 0)));
     return errorArrayList;

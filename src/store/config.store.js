@@ -11,7 +11,7 @@ import Enum from '../utils/Enum';
 
 // Lista delle tipologie di azioni applicabili allo store
 export const types = Enum.from(
-  'SET_CONFIG',
+    'SET_CONFIG'           // FILE DI CONFIGURAZIONE
 );
 
 
@@ -22,11 +22,12 @@ const initialState = {
 
 
 // Gestore delle azioni, passate in store.dispatch, usate per poter modificare lo stato corrente dello store
-const actionHandlers = {
-  [types.SET_CONFIG]:  (state, { payload }) => ({
-    ...state,
-    ...payload,
-  }),
+const actionHandlers = {   
+
+    [types.SET_CONFIG]: (state, { payload }) => ({
+        ...state,
+        ...payload,
+    }),
 };
 
 

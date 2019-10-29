@@ -95,7 +95,8 @@ class LoginRoute extends Component {
     onLogin(data, event) {
         const dispatch = this.updateState;
 
-        callLogin({ data, dispatch });
+        cLogin.LoginUser(data, dispatch);
+        //callLogin({ data, dispatch });
     }
 
     externalDispatch(prevState, dispatch) {

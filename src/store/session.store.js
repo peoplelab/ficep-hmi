@@ -11,6 +11,8 @@ import Enum from '../utils/Enum';
 
 // Lista delle tipologie di azioni applicabili allo store
 export const types = Enum.from(
+    'LOGGED_USER',           // UTENTE LOGGATO
+
   'SET_USER_IP',
   'SET_SESSION',
   'RESET_SESSION',
@@ -39,6 +41,12 @@ const initialState = {
 
 // Gestore delle azioni, passate in store.dispatch, usate per poter modificare lo stato corrente dello store
 const actionHandlers = {
+
+    [types.LOGGED_USER]: (state, { payload }) => ({
+        ...state,
+        ...payload,
+    }),
+
   [types.SET_USER_IP]:  (state, { payload }) => ({
     ...state,
     ip: payload.ip,

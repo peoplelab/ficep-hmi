@@ -31,8 +31,7 @@ const setGlobalTime = () => {
 
 const responseID = {
   ...sessionIdJSON,
-
-}
+};
 
 
 module.exports = {
@@ -43,7 +42,7 @@ module.exports = {
     const {
       Culture,
       GrantType,
-      IP,
+      MachineName,
       Password,
       RefreshToken,
       UserName,
@@ -54,7 +53,7 @@ module.exports = {
 
     switch(GrantType) {
       case 'Password': {
-        if (!Culture || !IP || !Password || !UserName) {
+        if (!Culture || !MachineName || !Password || !UserName) {
           status = 200;
           const result = ["USER_LOGIN_INVALIDINPUT"];
 
@@ -67,7 +66,7 @@ module.exports = {
           if (!Culture) {
             result.push('USER_LOGIN_CULTURE_EMPTY');
           }
-          if (!IP) {
+          if (!MachineName) {
             result.push('USER_LOGIN_IP_EMPTY');
           }
 
@@ -118,7 +117,7 @@ module.exports = {
           global.login.refreshToken = uuidv1();
 
           global.login.culture = Culture;
-          global.login.ip = IP;
+          global.login.MachineName = MachineName;
 
           setGlobalTime();
 

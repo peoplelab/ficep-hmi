@@ -24,6 +24,16 @@ module.exports = [
         "url": '/api/v1/users/user/:id',
         "api": require(`./api/v1/users/user`),
     },
+    {
+        // last logins
+        "url": `/api/v1/odata/Token/latest/:machinename`,
+        "api": require(`./api/v1/odata/Token/latest`),
+    },
+    {
+        // cultures
+        "url": '/api/v1/Cultures',
+        "api": require(`./api/v1/Cultures`),
+    },
 
   // {
   //   "url": `/api/v1/odata/tools/attributes/:toolTypeId`,
@@ -39,10 +49,6 @@ module.exports = [
   // },
 
   {
-    "url": '/api/v1/Cultures',
-    "api": require(`./api/v1/Cultures`),
-  },
-  {
     "url": `/api/v1/Cultures/:id`,
     "api": require(`./api/v1/Cultures`),
   },
@@ -54,10 +60,6 @@ module.exports = [
   {
     "url": '/api/v1/odata/groups/:id/permissions',
     "api": require(`./api/v1/odata/groups/permissions`),
-  },
-  {
-    "url": `/api/v1/odata/Token/latest`,
-    "api": require(`./api/v1/odata/Token/latest`),
   },
   {
     "url": '/api/v1/odata/tools',

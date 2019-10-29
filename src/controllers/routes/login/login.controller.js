@@ -5,13 +5,64 @@
 //----------------------------------------------------------------------------------------
 
 
-import { tokenLogin, tokenLastLogin } from '../../../models/api/token.model';
 import { apiCultureGet } from '../../../models/api/cultures.model';
 import history from '../../../models/history/history';
 import store from '../../../store/redux.store';
 import { types } from '../../../store/session.store';
 import { base } from '../../common/controller.base';
 import { callGetTranslations } from '../../api/translations.controller';
+
+
+import {
+    Token as mToken,
+    tokenLogin, 
+} from '../../../models/api/token.model';
+
+
+// Interface
+export const Login = {
+    Last: (dispatch) => { return callLastLogin(dispatch); },                                         // Lista Ultime login
+};
+
+
+
+
+// richiesta per il recupero della lista degli ultimi accessi
+const callLastLogin = async ({ dispatch }) => {
+    base({
+
+        api: mToken.LastLogins,
+
+        success: ({ dataprocessed }) => {
+
+            const usersList = dataprocessed.result.map(item => ({
+                firstName: item.FirstName,
+                lastName: item.LastName,
+                username: item.UserName,
+                groups: item.Groups,
+                issuedAt: item.IssuedAt,
+                culture: item.Culture,
+            }));
+
+            dispatch({ usersList });
+        },
+
+        failure: () => {
+            dispatch({ usersList: [] });
+        },
+
+        odata: true
+    });
+};
+
+
+
+
+
+
+
+
+
 
 
 // chimata di login e inizializzazione della sessione utente
@@ -85,34 +136,6 @@ export const callCultureGet = async ({ dispatch }) => {
   });
 };
 
-// richiesta per il recupero della lista degli ultimi accessi da passare alla view
-export const callLastLogin = async ({ dispatch }) => {
-  base({
-    api: tokenLastLogin,
-    success: ({ dataprocessed }) => {
-      const usersList = dataprocessed.result.map(item => ({
-        username: item.Username,
-        accessToken: item.AccessToken,
-        refreshToken: item.RefreshToken,
-        culture: item.Culture,
-        groups: item.Groups,
-        permissions: item.Permissions,
-        sessionId: item.SessionId,
-        expiredAt: item.ExpiredAt,
-        sessionLogId: item.SessionLogId,
-        refreshExpiredAt: item.RefreshExpiredAt,
-        issuedAt: item.IssuedAt,
-        userId: item.UserId,
-      }));
-
-      dispatch({ usersList });
-    },
-    failure: ({ dataraw, error }) => {
-      dispatch({ usersList: [], error: dataraw || error });
-    },
-    refresh: false
-  });
-};
 
 
 

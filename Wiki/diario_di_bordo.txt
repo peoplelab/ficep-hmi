@@ -34,3 +34,9 @@ Andrea: reimpostare la gestione delle traduzioni
 Andrea:
 ° reimplementare la gestione del routing con una nuova versione più semplice e performante
 ° redefinire lo standard organizzativo delle classi CSS e semplificare la gestione dello stile
+
+
+29/10/2019
+===============
+LucaM: ho aggiunto un file di configurazione all'applicazione (config.json -> cartella public)
+Bisogna ricordarsi di gestire la pubblicazione di questo file in produzione.

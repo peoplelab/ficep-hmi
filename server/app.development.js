@@ -32,6 +32,12 @@ app.use('/translations', translations({
   LOG_LEVEL: SERVER_CONFIG.LOG_LEVEL
 }));
 
+// Return CONFIG.JSON file
+app.use('/config.json', (req, res) => { 
+    const publicPath = path.resolve(__dirname, '../public');
+    res.sendFile('./config.json', { root: `${publicPath}` });
+});
+
 
 // start proxy handler
 app.use('/api', proxyMiddleware({ route: '/api', ...SERVER_CONFIG }));

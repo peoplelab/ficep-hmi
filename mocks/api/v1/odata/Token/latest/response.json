@@ -1,60 +1,102 @@
-{
-  "ResponseType": 200,
-  "ErrorCode": null,
-  "Result": [
-    {
-      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "Username": "Stephan Kuttingen",
-      "Groups": ["USER"],
-      "Culture": "en-GB"
-    },
-    {
-      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "Username": "Alfred Marakakhov",
-      "Groups": ["ADMIN"],
-      "Culture": "en-GB"
-    },
-    {
-      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "Username": "Maurizia Gambelli",
-      "Groups": ["SUPERUSER"],
-      "Culture": "it-IT"
-    },
-    {
-      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "Username": "Stephan Kuttingen",
-      "Groups": ["USER"],
-      "Culture": "de-DE"
-    },
-    {
-      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "Username": "Alfred Marakakhov",
-      "Groups": ["SUPERUSER"],
-      "Culture": "ru-RU"
-    },
-    {
-      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "Username": "Maurizia Gambelli",
-      "Groups": ["ADMIN"],
-      "Culture": "it-IT"
-    },
-    {
-      "IssuedAt": "2019-06-04T10:40:00.1234567+02:00",
-      "Username": "Alfred Marakakhov",
-      "Groups": ["SUPERUSER"],
-      "Culture": "ru-RU"
-    },
-    {
-      "IssuedAt": "2019-06-04T8:21:00.1234567+02:00",
-      "Username": "Maurizia Gambelli",
-      "Groups": ["ADMIN"],
-      "Culture": "it-IT"
-    },
-    {
-      "IssuedAt": "2019-06-05T9:35:00.1234567+02:00",
-      "Username": "Stephan Kuttingen",
-      "Groups": ["USER"],
-      "Culture": "de-DE"
-    }
-  ]
-}
+[
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-25T08:46:31.3123248",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-24T16:55:37.3796226",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-24T16:10:09.1857115",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-23T11:33:47.4748787",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-23T11:30:12.9686977",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-23T11:29:53.4021506",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-23T11:29:04.5229632",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-22T14:24:48.4964516",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-21T14:39:38.7669737",
+    "Culture": "it-IT"
+  },
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "UserName": "super",
+    "Groups": [
+      "SUPERUSER"
+    ],
+    "IssuedAt": "2019-10-21T14:28:02.1752742",
+    "Culture": "it-IT"
+  }
+]

@@ -20,11 +20,16 @@ import SetStore from '../../forms-context/SetStore';
 import ButtonForm from '../../forms-context/ButtonForm';
 import { Box, Card, Gallery } from '../../layouts/index.layouts';
 import { InputCard } from '../../forms-custom/index.form-custom';
+
 import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
 
 import intl from '../../../../public/translations/login/default.json';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
+import {
+    Login as cLogin,
+} from '../../../controllers/routes/login/login.controller';
+
 
 
 // lista dei campi obbligari
@@ -65,12 +70,13 @@ class LoginRoute extends Component {
   }
 
   // a componente carico, viene richiesta la lista delle culture e degli ultimi accessi, quindi aggiornato lo stato corrente
-  componentDidMount() {
-    const dispatch = this.updateState;
+    componentDidMount() {
+        const dispatch = this.updateState;
 
-    callCultureGet({ dispatch });
-    callLastLogin({ dispatch });
-  }
+        callCultureGet({ dispatch });
+        //callLastLogin({ dispatch });
+        cLogin.Last({ dispatch });
+    }
 
   // chimata per aggiornare lo stato corrente della pagina
   updateState(newState) {

@@ -15,7 +15,7 @@ const URL_DELETE_USER = "/api/v1/users/user/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
 const URL_CREATE_USER = "/api/v1/users/user";
 const URL_UPDATE_USER = "/api/v1/users";
-
+const URL_ChangePassword_USER = "/api/v1/users/changepassword";
 
 // Interface
 export const Users = {
@@ -23,7 +23,8 @@ export const Users = {
     Detail: (headers, params) => { return usersDetails(headers, params); },     // dettaglio utente
     Delete: (headers, params) => { return usersDelete(headers, params); },      // cancellazione utente
     Create: (headers, params) => { return usersCreate(headers, params); },      // Inserimento nuovo utente
-    Update: (headers, params) => { return usersUpdate(headers, params); }       // Modifica utente esistente
+    Update: (headers, params) => { return usersUpdate(headers, params); },       // Modifica utente esistente
+    ChangePassword: (headers, params) => { return usersChangePassword(headers, params); }       // Modifica utente esistente
 };
 
 
@@ -112,7 +113,18 @@ const usersUpdate = async ({ headers, params }) => {
     return base({ url: URL_UPDATE_USER, request });
 };
 
+export const usersChangePassword = async ({ headers, request: data }) => {
+    const request = {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+        body: JSON.stringify(data),
+    };
 
+    return base({ url: URL_ChangePassword_USER, request });
+};
 
 
 
@@ -157,6 +169,7 @@ export const usersPassword = async ({ headers, request: data }) => {
 
   return base({ url: `/api/v1/users/changepassword`, request });
 };
+
 
 // export const usersSeed = async ({ headers, request: data }) => {
 //   const request = {

@@ -23,6 +23,7 @@ export const User = {
     Detail: (data, dispatch) => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
     Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
     Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
+    ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
 };
 
 
@@ -161,7 +162,15 @@ function validate(data) {
     return errorArrayList;
 }
 
-
+function passwordValidate(data, userId) {
+    var errorArrayList = [];
+    if (userId.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_INVALIDUSERID'); }
+    if (data.oldPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED'); }
+    if (data.newPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED'); }
+    if (data.confirmPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED'); }
+    if (data.newPassword.length === data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
+    return errorArrayList;
+}
 
 
 
@@ -233,7 +242,36 @@ export const callUsersPassword = async ({ data, fn }) => {
         },
     });
 };
+//funzione cambio password.
+const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
+    const { userId } = store.getState().session;
+    const isValid = passwordValidate(data, userId);
+    if (isValid.length > 0) return onFailed({
+        "dataprocessed": {
+            "errorCode": "GENERIC_VALIDATION_ERROR",
+            "result": isValid
+        }
+    });
+    const request = {
+        userId,
+        oldPassword: data.oldPassword,
+        newPassword: data.newPassword,
+        confirmedPassword: data.confirmPassword
+    };
 
+    base({
+        request,
+        api: mUsers.ChangePassword,
+        success: (response) => {
+            onSuccess(response);
+            //
+            // da lanciare nel view
+            //            if (dataprocessed.result) {
+            //   ModalHandler.Session();
+            //}
+        }
+    });
+};
 
 // chimata per esportare i dettagli dell'utente corrente
 export const callUsersExport = async ({ dispatch }) => {

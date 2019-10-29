@@ -30,151 +30,148 @@ import {
     Login as cLogin,
 } from '../../../controllers/routes/login/login.controller';
 
-
+import {
+    Cultures as cCultures,
+} from '../../../controllers/api/cultures.controller';
 
 // lista dei campi obbligari
 const required = ['username', 'password'];
 
 // stato iniziale della form
 const initial = {
-  username: '',
-  password: '',
-  culture: 'it-IT',
-  data: null,
+    username: '',
+    password: '',
+    culture: 'it-IT',
+    data: null,
 };
 
 
 const intlCard = {
-  ADMIN: intl.login_user_administrator,
-  SUPERUSER: intl.login_user_technician,
-  USER: intl.login_user_operator,
-  lastaccess: intl.login_info_lastaccess,
+    ADMIN: intl.login_user_administrator,
+    SUPERUSER: intl.login_user_technician,
+    USER: intl.login_user_operator,
+    lastaccess: intl.login_info_lastaccess,
 };
 
 
 class LoginRoute extends Component {
 
-	constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    // inizializzazione dello stato della pagina
-    this.state = {
-      usersList: [],
-      cultureList: [],
-    };
+        // inizializzazione dello stato della pagina
+        this.state = {
+            usersList: [],
+            cultureList: [],
+            cultures: []
+        };
 
-    this.updateState = this.updateState.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-    this.SlideTemplate = this.SlideTemplate.bind(this);
-  }
+        this.updateState = this.updateState.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onLogin = this.onLogin.bind(this);
+        this.SlideTemplate = this.SlideTemplate.bind(this);
+    }
 
-  // a componente carico, viene richiesta la lista delle culture e degli ultimi accessi, quindi aggiornato lo stato corrente
+    // a componente carico, viene richiesta la lista delle culture e degli ultimi accessi, quindi aggiornato lo stato corrente
     componentDidMount() {
         const dispatch = this.updateState;
-
-        callCultureGet({ dispatch });
-        //callLastLogin({ dispatch });
+        cCultures.GetList({ dispatch });
         cLogin.Last({ dispatch });
     }
 
-  // chimata per aggiornare lo stato corrente della pagina
-  updateState(newState) {
-    this.setState(newState);
-  }
+    // chimata per aggiornare lo stato corrente della pagina
+    updateState(newState) {
+        this.setState(newState);
+    }
 
-  // metodo per la gestione dell'evento onchange di un generico campo di input
-  onChange(event) {
-    const { name, value } = event.target;
+    // metodo per la gestione dell'evento onchange di un generico campo di input
+    onChange(event) {
+        const { name, value } = event.target;
 
-    this.setState({ [name]: value });
-  }
+        this.setState({ [name]: value });
+    }
 
-  // esegue la richiesta di login
-  onLogin(data, event) {
-    const dispatch = this.updateState;
+    // esegue la richiesta di login
+    onLogin(data, event) {
+        const dispatch = this.updateState;
 
-    callLogin({ data, dispatch });
-  }
+        callLogin({ data, dispatch });
+    }
 
-  externalDispatch(prevState, dispatch) {
-    return (event) => {
-      const { value } = event.target;
+    externalDispatch(prevState, dispatch) {
+        return (event) => {
+            const { value } = event.target;
 
-      dispatch({
-        username: value.username,
-        culture: value.culture,
-      });
-    };
-  }
+            dispatch({
+                username: value.username,
+                culture: value.culture,
+            });
+        };
+    }
 
-  SlideTemplate(props) {
-    // {
-    //   issuedAt,
-    //   groups,
-    //   username,
-    //   culture,
-    // } === props;
 
-    [props.role] = props.groups;
 
-    return (
-      <SetStore event="onClick" setter={this.externalDispatch}>
-        <ButtonForm className="login__button-card" name="data" value={props}>
-          <Card
-            className="login__card card--button"
-            intl={intlCard}
-            {...props}
-          />
-        </ButtonForm>
-      </SetStore>
-    );
-  }
+    SlideTemplate(props) {
 
-  // renderizzazione della pagina
-	render() {
-    const { usersList, cultureList } = this.state;
+        [props.role] = props.groups;
 
-    const newCultureList = cultureList.map((value) => ({ value: value.code, message: value.description }));
+        return (
+            <SetStore event="onClick" setter={this.externalDispatch}>
+                <ButtonForm className="login__button-card" name="data" value={props}>
+                    <Card
+                        className="login__card card--button"
+                        intl={intlCard}
+                        {...props}
+                    />
+                </ButtonForm>
+            </SetStore>
+        );
+    }
 
-    return (
-      <section className="login">
-        <Box className="login__dialog">
-          <Form className="login__form" initial={initial}>
-            <p className="login__title">
-              {intl.login_info_title}
-            </p>
-            <Box className="login__form-box">
-              <Field className="login__field">
-                <InputCard className="login__text-input" name="data" initial={initial} intl={intlCard}>
-                  <TextInput className="login__text-input" name="username" placeholder={intl.login_form_username} />
-                </InputCard>
-              </Field>
-              <Field className="login__field">
-                <PasswordInput
-                  className="login__text-input" name="password" placeholder={intl.login_form_password}
-                />
-              </Field>
-              <Field className="login__field">
-                <Select className="login__select-input" name="culture">
-                  <Option options={newCultureList} />
-                </Select>
-              </Field>
-              <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
-                Login
-              </Submit>
-            </Box>
-            <Gallery
-              className="login__form-gallery"
-              list={usersList}
-              // eslint-disable-next-line react/no-children-prop
-              children={this.SlideTemplate}
-            />
-          </Form>
-        </Box>
-      </section>
-    );
-	}
+    // renderizzazione della pagina
+    render() {
+        const { usersList, cultures } = this.state;
+
+        return (
+            <section className="login">
+                <Box className="login__dialog">
+                    <Form className="login__form" initial={initial}>
+                        <p className="login__title">
+                            {intl.login_info_title}
+                        </p>
+                        <Box className="login__form-box">
+                            <Field className="login__field">
+                                <InputCard className="login__text-input" name="data" initial={initial} intl={intlCard}>
+                                    <TextInput className="login__text-input" name="username" placeholder={intl.login_form_username} />
+                                </InputCard>
+                            </Field>
+                            <Field className="login__field">
+                                <PasswordInput
+                                    className="login__text-input" name="password" placeholder={intl.login_form_password}
+                                />
+                            </Field>
+                            <Field className="login__field">
+                                <Select className="login__select-input" name="culture">
+                                    {cultures.map((item) =>
+                                        <option key={item.id} value={item.code}>{item.description}</option>
+                                    )}
+                                </Select>
+                            </Field>
+                            <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
+                                Login
+                            </Submit>
+                        </Box>
+                        <Gallery
+                            className="login__form-gallery"
+                            list={usersList}
+                            // eslint-disable-next-line react/no-children-prop
+                            children={this.SlideTemplate}
+                        />
+                    </Form>
+                </Box>
+            </section>
+        );
+    }
 }
 
 

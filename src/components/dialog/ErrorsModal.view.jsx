@@ -2,7 +2,7 @@
 // File: ErrorsModal.view.jsx
 //
 // Desc: Componente modale, avverte l'utente di eventuali errori tornati da un model
-// Path: /src/components/modal/Dialog/ErrorsModal.view
+// Path: /src/components/dialog/ErrorsModal.view
 //----------------------------------------------------------------------------------------
 
 
@@ -12,7 +12,7 @@ import { Modal } from '../layouts/index.layouts';
 
 import intlDefault from '../../../public/translations/login/default.json';
 
-import '../../styles/modal/Dialog/ErrorModal.style.scss';
+import '../../styles/dialog/ErrorModal.style.scss';
 
 
 function mapLabels(){

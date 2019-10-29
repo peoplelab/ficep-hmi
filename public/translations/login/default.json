@@ -15,8 +15,8 @@
   "modal_error_close": "Close",
 
 
-  "MODAL_ERROR_SERVER": "Server side error",
-  "MODAL_ERROR_TECHNICAL": "Technical error",
+  "GENERIC_SERVER_ERROR": "Server side error",
+  "GENERIC_TECHNICAL_ERROR": "Technical error",
 
   "GENERIC_VALIDATION_ERROR": "Validation error",
   "GENERIC_GETITEM_NOTFOUND": "Entity not found",

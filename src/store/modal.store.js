@@ -11,10 +11,7 @@ import Enum from '../utils/Enum';
 
 // Lista delle tipologie di azioni applicabili allo store
 export const types = Enum.from(
-  'OPEN_ERROR_MODAL',
-  'OPEN_SUCCESS_MODAL',
-  'OPEN_INFO_MODAL',
-  'OPEN_CONFIRM_MODAL',
+  'OPEN_MODAL',
   'CLOSE_MODAL',
 );
 
@@ -28,21 +25,7 @@ const initialState = {
 
 // Gestore delle azioni, passate in store.dispatch, usate per poter modificare lo stato corrente dello store
 const actionHandlers = {
-  [types.OPEN_ERROR_MODAL]:  (state, { payload }) => ({
-    ...state,
-    target: payload.target,
-    data: payload.data,
-  }),
-  [types.OPEN_SUCCESS_MODAL]:  (state, { payload }) => ({
-    ...state,
-    target: payload.target,
-  }),
-  [types.OPEN_INFO_MODAL]:  (state, { payload }) => ({
-    ...state,
-    target: payload.target,
-    data: payload.data,
-  }),
-  [types.OPEN_CONFIRM_MODAL]:  (state, { payload }) => ({
+  [types.OPEN_MODAL]:  (state, { payload }) => ({
     ...state,
     target: payload.target,
     data: payload.data,

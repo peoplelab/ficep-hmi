@@ -2,7 +2,7 @@
 // File: SucessModal.view.jsx
 //
 // Desc: Componente modale, informa l'utente dell'avvenuta conferma di successo dell'operazione richiesta
-// Path: /src/components/modal/Dialog/SucessModal.view
+// Path: /src/components/dialog/SucessModal.view
 //----------------------------------------------------------------------------------------
 
 
@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/modal/Dialog/SucessModal.style.scss';
+import '../../styles/dialog/SucessModal.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua
@@ -24,7 +24,7 @@ const SucessModal = (props) => {
   const { onClose } = props;
   return (
     <Modal
-      open={open}
+      open
       className="modal--alert modal--medium success-modal"
       messages={({ title: mapLabels().title, close: mapLabels().close })}
       redirect={false}

@@ -65,12 +65,6 @@ const createRoutes = () => ({
       exact: false,
       Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/ChangePassword/ChangePassword.view')),
     },
-    {
-      path: '/session-expired',
-      key: 'session-expired',
-      exact: true,
-      Component: lazy(() => import(/* webpackChunkName: "Modal" */ '../components/modal/SessionExpired/SessionExpired.view')),
-    },
   ],
 
   // Contiene la pagina pubblica di login

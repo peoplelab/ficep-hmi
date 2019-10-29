@@ -1,0 +1,23 @@
+
+@import '../common/colors.scss';
+@import '../common/flex.scss';
+@import '../common/text.scss';
+
+/** @define info-modal */
+
+
+.info-modal {
+    .info-modal__container {
+        padding: 2rem;
+
+        .info-modal__content {
+            .info-modal__message {
+                @extend %subtitle-regular;
+                flex: 1;
+                overflow: auto;
+                padding: 0.5rem;
+                width: 100%;
+            }
+        }
+    }
+}

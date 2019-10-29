@@ -8,7 +8,6 @@
 
 
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { Modal, Table } from '../../layouts/index.layouts';
 import { Form } from '../../forms-context/index.form';
 import {
@@ -17,33 +16,29 @@ import {
 import {
     Group as cGroup,
 } from '../../../controllers/routes/users/groups.controller';
-//import { callGroupList } from '../../../controllers/routes/users/groups.controller';
 
 import RowItem from './UsersList.item.row';
-import AddUserItem from './UsersList.item.addUser';
-import UpdateUserItem from './UsersList.item.updateUser';
 import EditItem from './UsersList.item.edit';
+import { ModalHandler } from '../../../controllers/common/modal.handler';
 import '../../../styles/modal/UsersList.style.scss';
 
 
 const initial = {
     firstName: '',
     lastName: '',
-    //   password: '',
     group: '',
 };
 
 
 
 class UsersList extends Component {
-
+    _deleteID = 0;              // l'id da passare alla funzione onDeleteUser()
     _groupsList = null;         // lista dei gruppi/ruoli
     _usersList = null;          // lista degli utenti
     _data2save = {              // struct dei dati da salvare
         "id": 0,
         "firstName": "",
         "lastName": "",
-        //"password": "",
         "userStatus": "",
         "groups": [],
     }
@@ -61,6 +56,13 @@ class UsersList extends Component {
         }
     }
 
+    _emptyValues = {
+        id: 0,
+        firstName: "",
+        lastName: "",
+        groups: null,
+        isLocked: false
+    }
 
 
     constructor(props) {
@@ -71,6 +73,7 @@ class UsersList extends Component {
             users: [],
             groups: [],
             currentUser: {},
+            errorCase: [],
         };
 
         this.updateState = this.updateState.bind(this);
@@ -115,15 +118,23 @@ class UsersList extends Component {
         cUser.GetList({ dispatch });
     }
 
+    openModalDelete = (event) => {
+        this._deleteID = event.data;
+        ModalHandler.Confirm({ onConfirm: this.onDeleteUser });
+    }
     // cancellazione di un utente
-    onDeleteUser = (event) => {
-        const data = event.data;
+    onDeleteUser = () => {
+        const data = this._deleteID;
+        this._deleteID = 0;
         cUser.Delete({
             data,
             onSuccess: () => {
+                ModalHandler.Success();
                 this.getUsersList();
             },
-            onFailed: () => { }
+            onFailed: (response) => {
+                ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
+            }
         });
     }
     // dettaglio di un utente...riempie la riga col dettaglio
@@ -159,10 +170,13 @@ class UsersList extends Component {
                 this._data2save,
             onSuccess: (response) => {
                 if ((response != null) && (response.dataprocessed.result == true)) {
+                    ModalHandler.Success();
                     this.getUsersList();
                 }
             },
-            onFailed: () => { }
+            onFailed: (response) => {
+                ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
+            }
         });
     }
     // salvataggio (creazione/modifica) di un utente
@@ -172,16 +186,29 @@ class UsersList extends Component {
         this._data2save.firstName = data.firstName;
         this._data2save.lastName = data.lastName;
         this._data2save.userStatus = data.userStatus || "";
-        // this._data2save.password = data.password || "";
         this._data2save.groups = data.groups;
 
         cUser.Save({
             data:
                 this._data2save,
             onSuccess: (response) => {
+
+                this.updateState({ currentUser: this._emptyValues });
+                if (typeof response.dataprocessed.result === "boolean") {
+                    ModalHandler.Success();
+                } else {
+                    ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.UserName, ' Password: ' + response.dataprocessed.result.Password] });
+                }
                 this.getUsersList();
+
+                if (this.state.errorCase.length > 0) {
+                  this.setState({ errorCase: [] });
+                }
             },
-            onFailed: (response) => { }
+            onFailed: (response) => {
+                ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
+                this.setState({ errorCase: response.dataprocessed.result });
+            }
         });
     }
 
@@ -198,26 +225,18 @@ class UsersList extends Component {
 
 
     render() {
-        const { users, groups, currentUser } = this.state;
+        const { users, groups, currentUser, errorCase } = this.state;
 
         return (
             <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
                 <Form className="users-modal__form" initial={initial}>
                     <div className="users-modal__container">
                         <div className="users-modal__content">
-                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} />
-                            {/*
-                            {!currentUser ? (
-                                <AddUserItem groups={groups} initial={initial} onAdd={this.getUsersList} />
-                            ) : (
-                                    <UpdateUserItem groups={groups} initial={initial} updateState={this.updateState} onUpdate={this.getUsersList} currentUser={currentUser} />
-                                )}
-                                */}
+                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
                         </div>
                         <div className="users-modal__content">
                             <Table className="users-modal__table" headers={this._labels.headers} data={users} >
-                                {/*{props => <RowItem {...props} updateState={this.updateState} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}*/}
-                                {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.onDeleteUser} onEdit={this.onEditUser} />}
+                                {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.openModalDelete} onEdit={this.onEditUser} />}
                             </Table>
                         </div>
                     </div>

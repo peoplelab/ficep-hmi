@@ -8,7 +8,6 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Option from './Option';
 
 
 class Select extends PureComponent {
@@ -22,16 +21,15 @@ class Select extends PureComponent {
     const { value, message } = data;
 
     return (
-      <Option
-        value={value}
-        message={message}
-        key={`option-${value}`}
-      />
+      <option value={value} key={`option-${value}`} >
+        {message}
+      </option>
     );
   }
 
   render() {
     const {
+      children,
       className,
       name,
       options,
@@ -49,6 +47,7 @@ class Select extends PureComponent {
         className={mergedClass}
         name={name}
       >
+        {children}
         {Options}
       </select>
     );
@@ -56,18 +55,30 @@ class Select extends PureComponent {
 }
 
 const shapeOptions = {
-  message: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
 };
 
 
 Select.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
   className: PropTypes.string,
 };
 
 Select.defaultProps = {
+  children: null,
+  options: [],
   className: '',
 };
 

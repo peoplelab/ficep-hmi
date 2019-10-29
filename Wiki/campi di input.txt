@@ -1,0 +1,198 @@
+DOCUMENTAZIONE CAMPI DI INPUT
+=============================
+
+
+
+  Componenti form per l'input di dati
+  ======================================
+
+
+    ButtonForm
+    =================
+    Componente di input per la selezione di un valore preimpostato
+
+      import
+      ======
+      import { ButtonForm } from '{path}/index.form';
+
+      Props
+      =====
+      children, // nodo figlio del componente
+      name, // nome del component
+      className, // classi di stile del component
+      value, // valore tornato dal componente
+      onClick, // evento eseguito al click del mouse sul componente; ritorna, nell'evento, il valore di value
+      ... // other props: React "button" component props (type="button")
+
+      Default CSS class
+      .input .input__button
+
+
+
+    PasswordInput
+    =================
+    Componente di input per l'inserimento di una password
+
+      import
+      ======
+      import { PasswordInput } from '{path}/index.form';
+
+      Props
+      =====
+      name, // nome del component
+      className, // classi di stile del component
+      ... // other props: React "input" component props (type='password')
+
+      Default CSS class
+      .input .input__password
+
+
+
+    RadioButton
+    =================
+    Componente di input per la selezione di un valore da un gruppo di dati
+
+      import
+      ======
+      import { RadioButton } from '{path}/index.form';
+
+      Props
+      =====
+      name, // nome del component
+      className, // classi di stile del component
+      ... // other props: React "input" component props (type='radio')
+
+      Default CSS class
+      .input .input__radio
+
+
+
+    Select
+    =================
+    Componente di input per la selezione di un valore da una lista di dati
+
+      import
+      ======
+      import { Select } from '{path}/index.form';
+
+      Props
+      =====
+      children, // elementi figli del componente
+      name, // nome del component
+      options: // lista di dati prestrutturati --> {value: [string|number], message: [string|number]}
+      className, // classi di stile del component
+      ... // other props: React "select" component props
+
+      Default CSS class
+      .input .input__select
+
+
+
+    TextInput
+    =================
+    Componente di input per l'inserimento di una stringa di testo
+
+      import
+      ======
+      import { TextInput } from '{path}/index.form';
+
+      Props
+      =====
+      name, // nome del component
+      className, // classi di stile del component
+      ... // other props: React "input" component props (type='text')
+
+      Default CSS class
+      .input .input__text
+
+
+
+
+  Componenti form di layout
+  ======================================
+
+
+    Field
+    =================
+    Contenitore dei campi di input;
+
+      import
+      ======
+      import { Field } from '{path}/index.form';
+
+      Props
+      =====
+      children, // nodo figlio del componente
+      label, // stringa di testo da visualizzare nel componente "label"
+      className, // classi di stile del component
+
+      Default CSS class
+      .field
+      .field--error // marker di errore
+
+
+
+
+  Componenti form di gestione
+  ======================================
+
+
+    Form
+    =================
+    Componente per la creazione di una sezione form
+
+      import
+      ======
+      import { Form } from '{path}/index.form';
+
+      Props
+      =====
+      children, // nodo figlio del componente
+      className, // classi di stile del component
+      onSubmit={null} // onSubmit è sempre impostato a null
+      ... // other props: React "form" component props
+
+      Default CSS class
+      .form
+
+
+
+    Reset
+    =================
+    Componente per il reset di tutti i campi di una form
+
+      import
+      ======
+      import { Reset } from '{path}/index.form';
+
+      Props
+      =====
+      children, // nodo figlio del componente
+      name, // nome del component
+      className, // classi di stile del component
+      onReset, // evento eseguito al click del mouse sul componente
+      ... // other props: React "button" component props (type="reset")
+
+      Default CSS class
+      .input .input__reset
+
+
+
+    Submit
+    =================
+    Componente per l'invio dei campi indicati di una form
+
+      import
+      ======
+      import { Submit } from '{path}/index.form';
+
+      Props
+      =====
+      children, // nodo figlio del componente
+      name, // nome del component
+      className, // classi di stile del component
+      onSubmit, // evento eseguito al click del mouse sul componente
+      ... // other props: React "button" component props (type="submit")
+
+      Default CSS class
+      .input .input__submit

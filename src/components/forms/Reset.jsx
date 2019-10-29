@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
-// File: Submit.jsx
+// File: Reset.jsx
 //
-// Desc: Pulsante form per la conferma e l'invio dei dati contenuti nella form corrente
-// Path: /src/components/forms/Submit
+// Desc: Pulsante form per il reset del valore dei campi della form corrente
+// Path: /src/components/forms/Reset
 //----------------------------------------------------------------------------------------
 
 
@@ -10,18 +10,18 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 
-class Submit extends PureComponent {
+class Reset extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
 
-  onSubmit(event) {
+  onReset(event) {
     event.preventDefault();
-    const { onSubmit } = this.props;
+    const { onReset } = this.props;
 
-    onSubmit(event);
+    onReset(event);
   }
 
   render() {
@@ -29,19 +29,19 @@ class Submit extends PureComponent {
       children,
       className,
       name,
-      onSubmit: _onSubmit, // eslint-disable-line no-unused-vars
+      onReset: _onReset, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
 
-    const mergedClass = `input input__submit ${className}`;
+    const mergedClass = `input input__reset ${className}`;
 
     return (
       <button
         {...rest}
         className={mergedClass}
-        type="submit"
+        type="reset"
         name={name}
-        onClick={this.onSubmit}
+        onClick={this.onReset}
         >
         {children}
       </button>
@@ -49,17 +49,17 @@ class Submit extends PureComponent {
   }
 }
 
-Submit.propTypes = {
+Reset.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
 };
 
-Submit.defaultProps = {
+Reset.defaultProps = {
   children: null,
   className: '',
 };
 
 
-export default Submit;
+export default Reset;

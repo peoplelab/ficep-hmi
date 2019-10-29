@@ -6,6 +6,7 @@ const Form = lazy(() => import(/* webpackChunkName: "forms" */ './Form'));
 const Option = lazy(() => import(/* webpackChunkName: "forms" */ './Option'));
 const PasswordInput = lazy(() => import(/* webpackChunkName: "forms" */ './PasswordInput'));
 const RadioButton = lazy(() => import(/* webpackChunkName: "forms" */ './RadioButton'));
+const Reset = lazy(() => import(/* webpackChunkName: "forms" */ './Reset'));
 const Select = lazy(() => import(/* webpackChunkName: "forms" */ './Select'));
 const Submit = lazy(() => import(/* webpackChunkName: "forms" */ './Submit'));
 const TextInput = lazy(() => import(/* webpackChunkName: "forms" */ './TextInput'));
@@ -17,6 +18,7 @@ export {
   Option,
   PasswordInput,
   RadioButton,
+  Reset,
   Select,
   Submit,
   TextInput,

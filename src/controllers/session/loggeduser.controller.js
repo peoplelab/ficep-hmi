@@ -23,7 +23,7 @@ export const LoggedUser = {
 
 
 // restituisce l'oggetto loggeduser contenuto nel Redux store
-const getLoggedUser = () => store.getState().loggedUser;
+const getLoggedUser = () => store.getState().session.LoggedUser;
 
 
 // imposta l'oggetto loggeduser contenuto nello store
@@ -34,6 +34,11 @@ const setLoggedUser = (loggedUser) => {
         payload: loggedUser,
     });
 
+    // da cancellare non serve, resta solo per far funzionare tutto il resto...
+    store.dispatch({
+        type: storeTypes.LOGGED_USER_TOBEDELETED,
+        payload: loggedUser,
+    });
 };
 
 

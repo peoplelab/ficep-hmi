@@ -30,11 +30,13 @@ const errorHanlder = ({ errorCode, errorsList }) => {
 };
 
 // Gestore dell'apertura della modale di successo
-const successHanlder = () => {
-  store.dispatch({
+const successHanlder = (params) => {
+    const { onSuccess } = params || {};
+    store.dispatch({
     type: types.OPEN_MODAL,
     payload: {
-      target: 'success',
+        target: 'success',
+        data: { onSuccess }
     }
   });
 };

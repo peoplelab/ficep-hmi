@@ -28,6 +28,10 @@ class SucessModal extends PureComponent {
     }
 
     onClose(event) {
+        if (typeof this.props.onSuccess === "function")
+        {
+            this.props.onSuccess(event);
+        }
         this.props.onClose(event);
     }
 
@@ -59,13 +63,15 @@ class SucessModal extends PureComponent {
  * Define component properties types
  */
 SucessModal.propTypes = {
-  onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    onSuccess: PropTypes.func,
 };
 
 /**
  * Define default value of component properties
  */
 SucessModal.defaultProps = {
+    onSuccess:null
 };
 
 

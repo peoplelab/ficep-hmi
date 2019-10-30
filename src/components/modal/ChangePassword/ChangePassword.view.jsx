@@ -100,21 +100,24 @@ class ChangePassword extends PureComponent {
         //console.log("currentUser: "+currentUser);
         //data.id= parseInt(currentUser);
        // cChangePassword({ data });
-
+      
         cUser.ChangePassword({
             data,
             onSuccess: (response) => {
-                this.setState({ showModal: false });
                 ModalHandler.Success();
-               this.setState({ showModal: true });
-                   
-                
+               // ModalHandler.Success({ onSuccess: this.closeModal });
+                  
             },
             onFailed: (response) => {
                 ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
             }
         });
     }
+    //closeModal = () => {
+    //    this.setState({ showModal: false });
+    //    this.setState({ showModal: true });
+    //}
+
        // this.onValidation = this.onValidation.bind(this);
 
 
@@ -135,9 +138,9 @@ class ChangePassword extends PureComponent {
         //    );
         //}
 
-        render() {
-          //  const { doReset } = this.state;
-            {/* <Modal open className="modal--data modal--small password-modal" messages={({ title: this.intl.title })} header="full" footer="none">
+    render() {
+        //  const { doReset } = this.state;
+        {/* <Modal open className="modal--data modal--small password-modal" messages={({ title: this.intl.title })} header="full" footer="none">
         <Form className="password-modal__form" initial={initial}>
           <ResetStore doReset={doReset} initial={initial} />
           <Validation onValidation={this.onValidation} />
@@ -164,9 +167,10 @@ class ChangePassword extends PureComponent {
         </Form>
         </Modal>*/}
 
-            return (
+        return (
 
-                <Modal open={this.state.showModal} className=" modal--data modal--small" messages={({ title: this._labels.title })} header="full" footer="none">
+         //   {  /*   <Modal open={true} className=" modal--data modal--small" messages={({ title: this._labels.title })} header="full" footer="none">*/}
+                <Modal open={true} className=" modal--data modal--small" messages={({ title: this._labels.title })} header="full" footer="none">
                     <Form className="users-modal__form" initial={initial}>
                         <div className="password-modal__container">
                             <div className="password-modal__content">

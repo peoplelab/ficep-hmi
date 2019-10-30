@@ -135,7 +135,7 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
     // data are valid
 
     let api = {};
-    if (data.id === 0) {
+    if (data.Id === 0) {
         // create
         api = { api: mUsers.Create };
     } else {

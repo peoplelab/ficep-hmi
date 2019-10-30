@@ -84,11 +84,11 @@ const usersCreate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "firstName": params.firstName,
-            "lastName": params.lastName,
-            "password": params.password,
-            "groups": [
-                params.groups[0].id
+            "FirstName": params.FirstName,
+            "LastName": params.LastName,
+            //"Password": params.Password,
+            "Groups": [
+                params.Groups[0].id
             ]
         }),
     };
@@ -105,11 +105,10 @@ const usersUpdate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "id": params.id,
-            "firstName": params.firstName,
-            "lastName": params.lastName,
-            "userStatus": params.userStatus
-          //  "isLocked": params.isLocked
+            "Id": params.id,
+            "FirstName": params.FirstName,
+            "LastName": params.LastName,
+            "UserStatus": params.UserStatus
         }),
     };
 

@@ -185,7 +185,7 @@ class UsersList extends Component {
         this._data2save.FirstName = data.FirstName;
         this._data2save.LastName = data.LastName;
         this._data2save.UserStatus = data.UserStatus || "";
-        this._data2save.Groups = data.Groups;
+        this._data2save.Groups = data.Groups; 
 
         cUser.Save({
             data:

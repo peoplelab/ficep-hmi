@@ -6,7 +6,7 @@
 //----------------------------------------------------------------------------------------
 
 
-import React, { memo } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
@@ -20,28 +20,39 @@ const mapLabels = () => ({ // etichette in lingua
 });
 
 
-const SucessModal = (props) => {
-  const { onClose } = props;
-  return (
-    <Modal
-      open
-      className="modal--alert modal--medium success-modal"
-      messages={({ title: mapLabels().title, close: mapLabels().close })}
-      redirect={false}
-      header="full"
-      footer="alert"
-      onClose={onClose}
-    >
-      <div className="success-modal__container">
-        <div className="success-modal__content">
-          <p className="success-modal__message">
-            {mapLabels().message}
-          </p>
-        </div>
-      </div>
-    </Modal>
-  );
-};
+class SucessModal extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.onClose = this.onClose.bind(this);
+    }
+
+    onClose(event) {
+        this.props.onClose(event);
+    }
+
+    render() {
+        return (
+          <Modal
+            open
+            className="modal--alert modal--medium success-modal"
+            messages={({ title: mapLabels().title, close: mapLabels().close })}
+            redirect={false}
+            header="full"
+            footer="alert"
+            onClose={this.onClose}
+          >
+            <div className="success-modal__container">
+              <div className="success-modal__content">
+                <p className="success-modal__message">
+                  {mapLabels().message}
+                </p>
+              </div>
+            </div>
+          </Modal>
+        );
+    }
+}
 
 
 /**
@@ -58,4 +69,4 @@ SucessModal.defaultProps = {
 };
 
 
-export default memo(SucessModal);
+export default SucessModal;

@@ -71,6 +71,10 @@
     }
 
     .modal__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
       .modal__button {
         @extend %paragraph-1-medium;
 
@@ -78,8 +82,8 @@
         border-radius: 0.5rem;
         cursor: pointer;
         display: block;
-        float: right;
         height: auto;
+        margin: 0 0.5rem;
         padding: 0.5rem;
         width: auto;
       }

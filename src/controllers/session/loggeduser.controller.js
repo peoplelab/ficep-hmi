@@ -23,7 +23,9 @@ export const LoggedUser = {
 
 
 // restituisce l'oggetto loggeduser contenuto nel Redux store
-const getLoggedUser = () => store.getState().loggedUser;
+const getLoggedUser = () => {
+    return store.getState().loggedUser;
+};
 
 
 // imposta l'oggetto loggeduser contenuto nello store

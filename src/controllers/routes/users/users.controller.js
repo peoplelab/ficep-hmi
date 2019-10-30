@@ -264,11 +264,6 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
         api: mUsers.ChangePassword,
         success: (response) => {
             onSuccess(response);
-            //
-            // da lanciare nel view
-            //            if (dataprocessed.result) {
-            //   ModalHandler.Session();
-            //}
         }
     });
 };

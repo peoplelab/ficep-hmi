@@ -11,9 +11,10 @@ import {
 } from '../../../models/api/users.model';
 
 import { base } from '../../common/controller.base';
-import store from '../../../store/redux.store';
 import history from '../../../models/history/history';
-import { ModalHandler } from '../../common/modal.handler';
+import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
+//import store from '../../../store/redux.store';
+//import { ModalHandler } from '../../common/modal.handler';
 
 
 
@@ -154,13 +155,48 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
         //}
     });
 };
-//funzione controlla validità cdati.
+
+const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
+    //funzione cambio password.
+
+    const { userId } = cLoggedUser.Get();
+
+    const isValid = passwordValidate(data, userId);
+    if (isValid.length > 0) return onFailed({
+        "dataprocessed": {
+            "errorCode": "GENERIC_VALIDATION_ERROR",
+            "result": isValid
+        }
+    });
+    const request = {
+        userId,
+        oldPassword: data.oldPassword,
+        newPassword: data.newPassword,
+        confirmedPassword: data.confirmPassword
+    };
+
+    base({
+        request,
+        api: mUsers.ChangePassword,
+        success: (response) => {
+            onSuccess(response);
+        }
+    });
+};
+
 function validate(data) {
+    //funzione controlla validità dati.
+
     var errorArrayList = [];
+
     if (data.firstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
+
     if (data.lastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
+
     try { if (!((data.id > 0) || ((data.id == 0) && (data.groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
+
     if ((data.id == 0) || ((data.id > 0) && (data.userStatus > 0)));
+
     return errorArrayList;
 }
 
@@ -173,6 +209,24 @@ function passwordValidate(data, userId) {
     if (data.newPassword.length === data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
     return errorArrayList;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -224,51 +278,26 @@ export const callEditUser = async ({ data, fn }) => {
 };
 
 // chimata per aggiornare la password di una utenza
-export const callUsersPassword = async ({ data, fn }) => {
-    const { userId } = store.getState().session;
+//export const callUsersPassword = async ({ data, fn }) => {
+//    const { userId } = store.getState().session;
 
-    const request = {
-        userId,
-        oldPassword: data.oldPassword,
-        newPassword: data.newPassword,
-        confirmedPassword: data.confirmPassword
-    };
+//    const request = {
+//        userId,
+//        oldPassword: data.oldPassword,
+//        newPassword: data.newPassword,
+//        confirmedPassword: data.confirmPassword
+//    };
 
-    base({
-        request,
-        api: usersPassword,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.result) {
-                ModalHandler.Session();
-            }
-        },
-    });
-};
-//funzione cambio password.
-const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
-    const { userId } = store.getState().session;
-    const isValid = passwordValidate(data, userId);
-    if (isValid.length > 0) return onFailed({
-        "dataprocessed": {
-            "errorCode": "GENERIC_VALIDATION_ERROR",
-            "result": isValid
-        }
-    });
-    const request = {
-        userId,
-        oldPassword: data.oldPassword,
-        newPassword: data.newPassword,
-        confirmedPassword: data.confirmPassword
-    };
-
-    base({
-        request,
-        api: mUsers.ChangePassword,
-        success: (response) => {
-            onSuccess(response);
-        }
-    });
-};
+//    base({
+//        request,
+//        api: usersPassword,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.result) {
+//                ModalHandler.Session();
+//            }
+//        },
+//    });
+//};
 
 // chimata per esportare i dettagli dell'utente corrente
 export const callUsersExport = async ({ dispatch }) => {

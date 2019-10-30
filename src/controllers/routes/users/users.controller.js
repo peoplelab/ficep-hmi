@@ -106,9 +106,9 @@ const callUsersDetails = async ({ data, dispatch }) => {
                 // isLocked: user.IsLocked,
                 userStatus: user.UserStatus,
                 groups: user.Groups.map(group => ({
-                    id: group.Id,
-                    code: group.Code,
-                    description: group.Description,
+                    id: group.id,
+                    code: group.code,
+                    description: group.description,
                 })),
                 creationDate: user.CreationDate,
             };

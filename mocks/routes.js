@@ -11,10 +11,6 @@ module.exports = [
     },
     {
         // create user
-        "url": '/api/v1/users/user',
-        "api": require(`./api/v1/users/user`),
-    },
-    {
         // update user
         "url": '/api/v1/users',
         "api": require(`./api/v1/users`),
@@ -22,7 +18,7 @@ module.exports = [
     {
         // delete user
         "url": '/api/v1/users/:id',
-        "api": require(`./api/v1/users/user`),
+        "api": require(`./api/v1/users`),
     },
     {
         // last logins

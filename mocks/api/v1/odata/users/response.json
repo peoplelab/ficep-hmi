@@ -1,1 +1,92 @@
-[{"Id":4,"CreationDate":"2019-10-09T16:51:14.8026612","FirstName":"Michele","LastName":"Pedron","UserName":"michele.pedron","UserStatus":1,"Groups":[{"id":1,"code":"ADMIN","description":"ADMINISTRATORS"}]},{"Id":5,"CreationDate":"2019-10-09T16:51:14.8031151","FirstName":"Giulia","LastName":"Cesare","UserName":"giulia.cesare","UserStatus":1,"Groups":[{"id":3,"code":"USER","description":"USERS"}]},{"Id":9,"CreationDate":"2019-10-30T11:28:40.4534278","FirstName":"Marco Andrea","LastName":"Rossi","UserName":"marcoandrea.rossi","UserStatus":1,"Groups":[{"id":2,"code":"SUPERUSER","description":"SUPER USERS"}]},{"Id":10,"CreationDate":"2019-10-30T13:02:22.0738456","FirstName":"test","LastName":"test1","UserName":"test.test1","UserStatus":0,"Groups":[{"id":1,"code":"ADMIN","description":"ADMINISTRATORS"}]},{"Id":11,"CreationDate":"2019-10-30T13:10:42.4836606","FirstName":"test2","LastName":"test2","UserName":"test2.test2","UserStatus":0,"Groups":[{"id":1,"code":"ADMIN","description":"ADMINISTRATORS"}]},{"Id":14,"CreationDate":"2019-10-30T15:36:22.6417351","FirstName":"Thomas","LastName":"Milian","UserName":"thomas.milian","UserStatus":1,"Groups":[{"id":3,"code":"USER","description":"USERS"}]}]
+[
+  {
+    "Id": 4,
+    "CreationDate": "2019-10-09T16:51:14.8026612",
+    "FirstName": "Michele",
+    "LastName": "Pedron",
+    "UserName": "michele.pedron",
+    "UserStatus": 1,
+    "Groups": [
+      {
+        "id": 1,
+        "code": "ADMIN",
+        "description": "ADMINISTRATORS"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "CreationDate": "2019-10-09T16:51:14.8031151",
+    "FirstName": "Giulia",
+    "LastName": "Cesare",
+    "UserName": "giulia.cesare",
+    "UserStatus": 1,
+    "Groups": [
+      {
+        "id": 3,
+        "code": "USER",
+        "description": "USERS"
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "CreationDate": "2019-10-30T11:28:40.4534278",
+    "FirstName": "Marco Andrea",
+    "LastName": "Rossi",
+    "UserName": "marcoandrea.rossi",
+    "UserStatus": 1,
+    "Groups": [
+      {
+        "id": 2,
+        "code": "SUPERUSER",
+        "description": "SUPER USERS"
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "CreationDate": "2019-10-30T13:02:22.0738456",
+    "FirstName": "test",
+    "LastName": "test1",
+    "UserName": "test.test1",
+    "UserStatus": 0,
+    "Groups": [
+      {
+        "id": 1,
+        "code": "ADMIN",
+        "description": "ADMINISTRATORS"
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "CreationDate": "2019-10-30T13:10:42.4836606",
+    "FirstName": "test2",
+    "LastName": "test2",
+    "UserName": "test2.test2",
+    "UserStatus": 0,
+    "Groups": [
+      {
+        "id": 1,
+        "code": "ADMIN",
+        "description": "ADMINISTRATORS"
+      }
+    ]
+  },
+  {
+    "Id": 14,
+    "CreationDate": "2019-10-30T15:36:22.6417351",
+    "FirstName": "Thomas",
+    "LastName": "Milian",
+    "UserName": "thomas.milian",
+    "UserStatus": 1,
+    "Groups": [
+      {
+        "id": 3,
+        "code": "USER",
+        "description": "USERS"
+      }
+    ]
+  }
+]

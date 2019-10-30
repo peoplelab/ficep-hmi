@@ -189,13 +189,13 @@ function validate(data) {
 
     var errorArrayList = [];
 
-    if (data.firstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
+    if (data.FirstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
 
-    if (data.lastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
+    if (data.LastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
 
-    try { if (!((data.id > 0) || ((data.id == 0) && (data.groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
+    try { if (!((data.Id > 0) || ((data.Id == 0) && (data.Groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
 
-    if ((data.id == 0) || ((data.id > 0) && (data.userStatus > 0)));
+    if ((data.Id == 0) || ((data.Id > 0) && (data.UserStatus > 0)));
 
     return errorArrayList;
 }

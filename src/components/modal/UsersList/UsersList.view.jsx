@@ -60,8 +60,7 @@ class UsersList extends Component {
         id: 0,
         firstName: "",
         lastName: "",
-        groups: null,
-        isLocked: false
+        groups: null
     }
 
 
@@ -200,14 +199,10 @@ class UsersList extends Component {
                     ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.Username, ' Password: ' + response.dataprocessed.result.Password] });
                 }
                 this.getUsersList();
-
-                if (this.state.errorCase.length > 0) {
-                  this.setState({ errorCase: [] });
-                }
             },
             onFailed: (response) => {
                 ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
-                this.setState({ errorCase: response.dataprocessed.result });
+                this.setState({ errorCase: response.dataprocessed.result, currentUser: this._data2save });
             }
         });
     }

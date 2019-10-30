@@ -13,7 +13,7 @@ import Form from '../../forms-context/Form';
 import TextInput from '../../forms-context/TextInput';
 import PasswordInput from '../../forms-context/PasswordInput';
 import Select from '../../forms-context/Select';
-import Option from '../../forms-context/Option';
+// import Option from '../../forms-context/Option';
 import Submit from '../../forms-context/Submit';
 import Field from '../../forms-context/Field';
 import SetStore from '../../forms-context/SetStore';
@@ -155,7 +155,7 @@ class LoginRoute extends Component {
                                 </Select>
                             </Field>
                             <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
-                                Login
+                                {intl.login_form_login}
                             </Submit>
                         </Box>
                         <Gallery

@@ -106,6 +106,8 @@ const callUsersDetails = async ({ data, dispatch }) => {
                 userStatus: user.UserStatus,
                 groups: user.Groups.map(group => ({
                     id: group.Id,
+                    code: group.Code,
+                    description: group.Description,
                 })),
                 creationDate: user.CreationDate,
             };
@@ -264,11 +266,6 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
         api: mUsers.ChangePassword,
         success: (response) => {
             onSuccess(response);
-            //
-            // da lanciare nel view
-            //            if (dataprocessed.result) {
-            //   ModalHandler.Session();
-            //}
         }
     });
 };

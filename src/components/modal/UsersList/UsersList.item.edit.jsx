@@ -135,7 +135,7 @@ class EditItem extends Component {
         return (
             <>
                 <div className={classFirstName}>
-                    <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} required />
+                    <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} />
                 </div>
                 <div className={classLastName}>
                     <TextInput name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />

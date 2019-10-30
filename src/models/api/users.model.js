@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------------------
 // File: users.model.js
 // Path: /src/model/users/users.model
-// 
+//
 // Interfacciamento con servizi Utente (Users)
 //----------------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ import { base } from '../common/model.base';
 
 // Api urls ...
 const URL_USERS_LIST  = "/api/v1/odata/users?$filter=IsSystemUser eq false";
-const URL_DELETE_USER = "/api/v1/users/user/:id";
+const URL_DELETE_USER = "/api/v1/users/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
 const URL_CREATE_USER = "/api/v1/users/user";
 const URL_UPDATE_USER = "/api/v1/users";
@@ -34,7 +34,7 @@ export const Users = {
 
 
 
-// Private Methods 
+// Private Methods
 
 const usersList = async ({ headers }) => {
     // interfaccia dell'api per ottenere la lista corrente degli utenti
@@ -241,4 +241,3 @@ export const usersExport = async ({ headers }) => {
 
   return base({ url: `/api/v1/odata/users/export`, request });
 };
-

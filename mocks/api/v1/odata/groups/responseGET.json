@@ -1,17 +1,17 @@
 [
   {
-    "Id": 1,
-    "Code": "ADMIN",
-    "Description": "ADMINISTRATORS"
+    "id": 1,
+    "code": "ADMIN",
+    "description": "ADMINISTRATORS"
   },
   {
-    "Id": 2,
-    "Code": "SUPERUSER",
-    "Description": "SUPER USERS"
+    "id": 2,
+    "code": "SUPERUSER",
+    "description": "SUPER USERS"
   },
   {
-    "Id": 3,
-    "Code": "USER",
-    "Description": "USERS"
+    "id": 3,
+    "code": "USER",
+    "description": "USERS"
   }
 ]

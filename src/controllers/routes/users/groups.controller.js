@@ -30,9 +30,9 @@ const callGroupsList = async ({ dispatch }) => {
 
         success: ({ dataprocessed }) => {
             const groups = dataprocessed.result.map(item => ({
-                id: item.Id,
-                code: item.Code,
-                description: item.Description,
+                id: item.id,
+                code: item.code,
+                description: item.description,
             }));
 
             dispatch({ groups });

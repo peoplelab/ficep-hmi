@@ -6,7 +6,6 @@
 
 
 import { base } from '../common/model.base';
-import { Config as mConfig } from '../configuration/config.model';
 
 
 // Api urls ...

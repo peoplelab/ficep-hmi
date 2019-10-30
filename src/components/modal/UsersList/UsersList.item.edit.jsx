@@ -25,7 +25,7 @@ class EditItem extends Component {
     _labels = {
         firstName: window.intl.users_field_firstname,
         lastName: window.intl.users_field_lastname,
-        // password: window.intl.users_field_password,
+       // password: window.intl.users_field_password,
         group: window.intl.users_field_role,
         groups: {
             ADMIN: window.intl.users_role_administrator,
@@ -42,7 +42,7 @@ class EditItem extends Component {
         id: 0,
         firstName: "",
         lastName: "",
-        //  password: "",
+      //  password: "",
         groups: null,
         isLocked: false
     }
@@ -121,8 +121,8 @@ class EditItem extends Component {
 
 
     render() {
-        const { errorCase } = this.props;
-        //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
+      const { errorCase } = this.props;
+      //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
         const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
         const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
@@ -135,12 +135,11 @@ class EditItem extends Component {
         return (
             <>
                 <div className={classFirstName}>
-                <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} required />
-                       </div>
+                    <TextInput name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} />
+                </div>
                 <div className={classLastName}>
                     <TextInput name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
                 </div>
-
                 {/*<div className={password_classname}>
                     <PasswordInput name="password" placeholder={this._labels.password} onChange={this.handleInputChange} />
                 </div>*/}

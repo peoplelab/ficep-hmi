@@ -196,7 +196,7 @@ class UsersList extends Component {
                 if (typeof response.dataprocessed.result === "boolean") {
                     ModalHandler.Success();
                 } else {
-                    ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.UserName, ' Password: ' + response.dataprocessed.result.Password] });
+                    ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.Username, ' Password: ' + response.dataprocessed.result.Password] });
                 }
                 this.getUsersList();
             },

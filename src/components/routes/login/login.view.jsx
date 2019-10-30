@@ -13,7 +13,7 @@ import Form from '../../forms-context/Form';
 import TextInput from '../../forms-context/TextInput';
 import PasswordInput from '../../forms-context/PasswordInput';
 import Select from '../../forms-context/Select';
-import Option from '../../forms-context/Option';
+// import Option from '../../forms-context/Option';
 import Submit from '../../forms-context/Submit';
 import Field from '../../forms-context/Field';
 import SetStore from '../../forms-context/SetStore';
@@ -21,18 +21,16 @@ import ButtonForm from '../../forms-context/ButtonForm';
 import { Box, Card, Gallery } from '../../layouts/index.layouts';
 import { InputCard } from '../../forms-custom/index.form-custom';
 
-import { callLogin, callCultureGet, callLastLogin } from '../../../controllers/routes/login/login.controller';
-
 import intl from '../../../../public/translations/login/default.json';
 
 import '../../../styles/routes/login.style.scss'; // apply Login style to this route
-import {
-    Login as cLogin,
-} from '../../../controllers/routes/login/login.controller';
 
-import {
-    Cultures as cCultures,
-} from '../../../controllers/api/cultures.controller';
+
+import { Login as cLogin } from '../../../controllers/routes/login/login.controller';
+import { Cultures as cCultures } from '../../../controllers/api/cultures.controller';
+
+
+
 
 // lista dei campi obbligari
 const required = ['username', 'password'];
@@ -62,7 +60,6 @@ class LoginRoute extends Component {
         // inizializzazione dello stato della pagina
         this.state = {
             usersList: [],
-            cultureList: [],
             cultures: []
         };
 
@@ -96,7 +93,6 @@ class LoginRoute extends Component {
         const dispatch = this.updateState;
 
         cLogin.LoginUser(data, dispatch);
-        //callLogin({ data, dispatch });
     }
 
     externalDispatch(prevState, dispatch) {
@@ -159,7 +155,7 @@ class LoginRoute extends Component {
                                 </Select>
                             </Field>
                             <Submit className="login__form-submit" required={required} onSubmit={this.onLogin} name="login-form">
-                                Login
+                                {intl.login_form_login}
                             </Submit>
                         </Box>
                         <Gallery

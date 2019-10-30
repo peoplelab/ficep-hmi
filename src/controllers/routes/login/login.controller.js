@@ -16,13 +16,14 @@ import { callGetTranslations } from '../../api/translations.controller';
 import { Token as mToken   }         from '../../../models/api/token.model';
 import { Config as cConfig }         from '../../configuration/config.controller';
 import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
-
+import { Users as mUsers } from '../../../models/api/users.model';
 
 
 // Interface
 export const Login = {
     Last: (dispatch) => { return callLastLogin(dispatch); },                    // Lista Ultime login
-    LoginUser: (data, dispatch) => { return callLogin({ data, dispatch }); }    // Login utente
+    LoginUser: (data, dispatch) => { return callLogin({ data, dispatch }); },    // Login utente
+    LogoutUser: () => { return callLogout(); },                                 // Logout utente
 };
 
 
@@ -128,5 +129,19 @@ const callLogin = async ({ data, dispatch }) => {
         },
 
         refresh: false
+    });
+};
+
+const callLogout = async () => {
+    base({
+
+        api: mUsers.Logout,
+
+        success: () => {
+            cLoggedUser.Set({});
+            //store.dispatch({ type: types.RESET_SESSION });
+            window.intl = {};
+            history.push('/login');
+        },
     });
 };

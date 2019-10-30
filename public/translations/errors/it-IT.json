@@ -59,6 +59,7 @@
   "USER_MANAGEMENT_GROUPS_NOTSPECIFIED": " Gruppo di appartenenza non specificato",
   "USER_MANAGEMENT_NOTFOUND": " Utente non trovato",
   "USER_MANAGEMENT_INVALIDINPUT": " Input non valido",
+  "USER_MANAGEMENT_LOCKED": "Impossibile eliminare, utente bloccato",
 
   "USER_CHANGEPASSWORD_INVALIDUSERID": " Cambio password - Identificativo utente non specificato",
   "USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED": " Vecchia password non specificata",

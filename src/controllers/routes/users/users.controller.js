@@ -11,7 +11,7 @@ import {
 } from '../../../models/api/users.model';
 
 import { base } from '../../common/controller.base';
-import history from '../../../models/history/history';
+//import history from '../../../models/history/history';
 import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
 //import store from '../../../store/redux.store';
 //import { ModalHandler } from '../../common/modal.handler';
@@ -20,10 +20,10 @@ import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
 
 // Interface
 export const User = {
-    GetList: (dispatch) => { return callUsersList(dispatch); },                                         // Lista Utenti
-    Detail: (data, dispatch) => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
-    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
-    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
+    GetList: (dispatch) => { return callUsersList(dispatch); },                                                   // Lista Utenti
+    Detail: (data, dispatch) => { return callUsersDetails(data, dispatch); },                                     // Dettaglio Utente
+    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },                // Cancellazione Utente
+    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },                     // Salvataggio Utente
     ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
 };
 
@@ -76,7 +76,7 @@ const callUsersDelete = async ({ data, onSuccess, onFailed }) => {
         success: (response) => {
             // result = true => cancellazione ok
             // result = false => cancellazione ko
-            if (response.dataprocessed.result === "true") {
+            if (response.dataprocessed.result === true) {
                 onSuccess();
             }
             else {
@@ -240,49 +240,49 @@ function validatePassword(data, userId) {
 // ---------------------------------------
 
 // chimata per inviare i dati di una nuova utenza
-export const callUsersAdd = async ({ data, fn }) => {
-    const request = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        password: data.password,
-        groups: [data.group],
-        CanDeleted: true,
-    };
+//export const callUsersAdd = async ({ data, fn }) => {
+//    const request = {
+//        firstName: data.firstName,
+//        lastName: data.lastName,
+//        password: data.password,
+//        groups: [data.group],
+//        CanDeleted: true,
+//    };
 
-    base({
-        request,
-        api: usersAdd,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.responseType === 200) {
-                history.push(`${history.location.pathname}/info`);
-                fn();
-            }
-        },
-    });
-};
+//    base({
+//        request,
+//        api: usersAdd,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.responseType === 200) {
+//                history.push(`${history.location.pathname}/info`);
+//                fn();
+//            }
+//        },
+//    });
+//};
 
 // chimata per aggiornare i dati di una utenza
-export const callEditUser = async ({ data, fn }) => {
-    const request = {
-        id: data.idUser,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        //  isActive: true,
-        //  canBeDeleted: true
-        userStatus: data.userStatus
-    };
+//export const callEditUser = async ({ data, fn }) => {
+//    const request = {
+//        id: data.idUser,
+//        firstName: data.firstName,
+//        lastName: data.lastName,
+//        //  isActive: true,
+//        //  canBeDeleted: true
+//        userStatus: data.userStatus
+//    };
 
-    base({
-        request,
-        api: usersEdit,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.responseType === 200) {
-                history.push(`${history.location.pathname}/info`);
-                fn();
-            }
-        },
-    });
-};
+//    base({
+//        request,
+//        api: usersEdit,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.responseType === 200) {
+//                history.push(`${history.location.pathname}/info`);
+//                fn();
+//            }
+//        },
+//    });
+//};
 
 // chimata per aggiornare la password di una utenza
 //export const callUsersPassword = async ({ data, fn }) => {

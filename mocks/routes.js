@@ -21,7 +21,7 @@ module.exports = [
     },
     {
         // delete user
-        "url": '/api/v1/users/user/:id',
+        "url": '/api/v1/users/:id',
         "api": require(`./api/v1/users/user`),
     },
     {

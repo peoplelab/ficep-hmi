@@ -38,7 +38,7 @@
   "password_main_title": "Modifica la password",
   "password_field_old": "Password precedente",
   "password_field_new": "Nuova password",
-  "password_field_confirm": "Conferma assword",
+  "password_field_confirm": "Conferma password",
   "password_action_submit": "Aggiorna",
 
   "session_expired_title": "Attenzione!",

@@ -161,7 +161,7 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
 
     const { userId } = cLoggedUser.Get();
 
-    const isValid = passwordValidate(data, userId);
+    const isValid = validatePassword(data, userId);
     if (isValid.length > 0) return onFailed({
         "dataprocessed": {
             "errorCode": "GENERIC_VALIDATION_ERROR",
@@ -200,13 +200,20 @@ function validate(data) {
     return errorArrayList;
 }
 
-function passwordValidate(data, userId) {
+function validatePassword(data, userId) {
+
     var errorArrayList = [];
+
     if (userId.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_INVALIDUSERID'); }
+
     if (data.oldPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED'); }
+
     if (data.newPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED'); }
+
     if (data.confirmPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED'); }
-    if (data.newPassword.length === data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
+
+    if (data.newPassword !== data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
+
     return errorArrayList;
 }
 

@@ -98,19 +98,17 @@ const callUsersDetails = async ({ data, dispatch }) => {
         success: ({ dataprocessed }) => {
             const user = dataprocessed.result;
             const details = {
-                id: user.Id,
-                firstName: user.FirstName,
-                lastName: user.LastName,
-                userName: user.UserName,
-                // isActive: user.IsActive,
-                // isLocked: user.IsLocked,
-                userStatus: user.UserStatus,
-                groups: user.Groups.map(group => ({
+                Id: user.Id,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                UserName: user.UserName,
+                UserStatus: user.UserStatus,
+                Groups: user.Groups.map(group => ({
                     id: group.id,
                     code: group.code,
                     description: group.description,
                 })),
-                creationDate: user.CreationDate,
+                CreationDate: user.CreationDate,
             };
 
             dispatch({ details });

@@ -181,11 +181,11 @@ class UsersList extends Component {
     // salvataggio (creazione/modifica) di un utente
     onSaveUser = (data) => {
 
-        this._data2save.Id = data.id;
-        this._data2save.FirstName = data.firstName;
-        this._data2save.LastName = data.lastName;
-        this._data2save.UserStatus = data.userStatus || "";
-        this._data2save.Groups = data.groups; 
+        this._data2save.Id = data.Id;
+        this._data2save.FirstName = data.FirstName;
+        this._data2save.LastName = data.LastName;
+        this._data2save.UserStatus = data.UserStatus || "";
+        this._data2save.Groups = data.Groups; 
 
         cUser.Save({
             data:

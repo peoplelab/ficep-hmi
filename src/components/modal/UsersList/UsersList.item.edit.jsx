@@ -39,11 +39,10 @@ class EditItem extends Component {
     _groups = [];
     // valori default (vuoti)
     _emptyValues = {
-        id: 0,
-        firstName: "",
-        lastName: "",
-      //  password: "",
-        groups: null,
+        Id: 0,
+        FirstName: "",
+        LastName: "",
+        Groups: null,
         isLocked: false
     }
 
@@ -66,8 +65,8 @@ class EditItem extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // se currentUser di nextprops � null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
-        const user = (nextProps.currentUser.firstName === null || (typeof nextProps.currentUser.firstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
+        // se currentUser di nextprops è null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
+        const user = (nextProps.currentUser.FirstName === null || (typeof nextProps.currentUser.FirstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
 
         this._groups = this.getCodeOptions(nextProps.groups);
         this.setState({ originalValues: user, currentValues: user });
@@ -94,13 +93,13 @@ class EditItem extends Component {
         const value = event.target.value;
 
         if (event.target.name.indexOf("lastName") >= 0) {
-            currentValues = { ...this.state.currentValues, "lastName": value };
+            currentValues = { ...this.state.currentValues, "LastName": value };
         } else if (event.target.name.indexOf("firstName") >= 0) {
-            currentValues = { ...this.state.currentValues, "firstName": value };
+            currentValues = { ...this.state.currentValues, "FirstName": value };
         } /*else if (event.target.name.indexOf("password") >= 0) {
             currentValues = { ...this.state.currentValues, "password": value };
         }*/ else if (event.target.name.indexOf("group") >= 0) {
-            currentValues = { ...this.state.currentValues, "groups": [{ "id": value }] };
+            currentValues = { ...this.state.currentValues, "Groups": [{ "id": value }] };
         } else {
             currentValues = this.state.currentValues;
         }
@@ -124,9 +123,10 @@ class EditItem extends Component {
       const { errorCase } = this.props;
       //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
-        const firstName = this.state.currentValues.firstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
-        const lastName = this.state.currentValues.lastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
-        const selectedGroup = (this.state.currentValues.groups == null) ? "-1" : this.state.currentValues.groups[0].id;
+        const firstName = this.state.currentValues.FirstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
+        const lastName = this.state.currentValues.LastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
+        const selectedGroup = (this.state.currentValues.Groups == null) ? "-1" : this.state.currentValues.Groups[0].id;
+        const classSelect = "input input__select " + ((this.state.currentValues.Id === 0) ? "" : "readonly");
 
         const classFirstName = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
         const classLastName = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
@@ -144,7 +144,7 @@ class EditItem extends Component {
                     <PasswordInput name="password" placeholder={this._labels.password} onChange={this.handleInputChange} />
                 </div>*/}
                 <div className={classGroups}>
-                    <select className="input input__select" name="group" value={selectedGroup} onChange={this.handleInputChange}>
+                    <select className={classSelect} name="group" value={selectedGroup} onChange={this.handleInputChange}>
                         {this._groups}
                     </select>
                 </div>

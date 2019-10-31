@@ -38,6 +38,11 @@
 			border-color : getColor('black', 50);
 			border-width : $borderWidthFocus;
 		}
+
+		&.disabled {
+			color     : getColor('black', 35);
+			background: getColor('black', 15);
+		}
 	}
 
 	// Costruzione classi

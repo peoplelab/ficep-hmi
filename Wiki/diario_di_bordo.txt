@@ -61,5 +61,5 @@ Bisogna prevedere una sorta di validazione Json in stile xml (yeap).
 Andrea:
 ° se si richiede la modifica di un'utenza, ma la si elimina senza salvare, i campi di input rimango valorizzati,
   mentre la lista degli utenti viene correttamente aggiornata; salvando l'utenza appena eliminata,
-  questa viene nuovamente aggiunta alla lista con lo stesso ID
-Caso da approfondire
+  questa viene nuovamente aggiunta alla lista con lo stesso ID. Caso da approfondire
+° inserendo un utente sbagliato e facendo login la password non si resetta. Resettare solo la password ad ogni evento di login

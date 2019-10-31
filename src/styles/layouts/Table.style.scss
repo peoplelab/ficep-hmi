@@ -1,14 +1,16 @@
+@import '../common/costanti.scss';
 @import '../common/colors.scss';
 @import '../common/flex.scss';
 @import '../common/text.scss';
 
 /** @define table */
 
+
 .table {
   @extend %flex-column;
 
   height: 100%;
-  width: 100%;
+  width : 100%;
 
   .table__head {
     flex: none;
@@ -19,11 +21,11 @@
   .table__body {
     flex: 1;
     overflow-y: scroll;
+
+		&::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
+			border-color: getColor('black', 10);
+		}
   }
-
-  // .table__foot {
-
-  // }
 
   .table__main {
     border-collapse: collapse;

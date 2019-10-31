@@ -1,0 +1,84 @@
+﻿
+// stylelint-disable plugin/selector-bem-pattern
+// -----------------------------------------------------------------------
+// NAME: costanti.less
+//
+// Definizione delle costanti per i fogli di stile dell'applicazione
+// Il file viene incluso in ogni file .LESS
+// -----------------------------------------------------------------------
+
+
+// ** IMPOSTAZIONI PRINCIPALI **
+
+// >>> Dichiarazione colori di sistema:
+	
+	// Palette base (scale di grigi):
+	$black    : #000;
+	$white    : #fff;
+
+	$blackScaleMap: ();																					// Mappa della scala di neri (gradazioni di grigio)
+	@for $id from 0 through 20 {																		// Ciclo di definizione della mappa
+		$name: 'Black_';
+		@if $id < 2 { $name: $name + '0'; }
+		$blackScaleMap: map_merge( 
+			$blackScaleMap, ( ($name + ($id * 5)): mix($black, $white, ($id * 5)) )						// Chiave: nome + _peso%; valore: peso%
+		);
+	}
+
+	$whiteScaleMap: ();																					// Mappa della scala di bianchi (complementare alla percedente)
+	@for $id from 0 through 20 {																		// Ciclo di definizione della mappa
+		$name: 'White_';
+		@if $id < 2 { $name: $name + '0'; }
+		$whiteScaleMap: map_merge( 
+			$whiteScaleMap, ( ($name + ($id * 5)): mix($white, $black, ($id * 5)) )						// Chiave: nome + _peso%; valore: peso%
+		);
+	}
+
+
+	// FUNCTION: getColor
+	//  Restituisce il colore della palette passata come argomento
+	// PARAMS:
+	//  $name : nome di identificazione della palette (mappa)
+	//  $pct  : indice della palette, definito come 'peso in percentuale' del colore  (es. "Black_35" => colore Nero al 35%)
+	// RETURN:
+	//  Valore del colore desiderato
+	@function getColor($name, $pct) {
+
+		// Dichiarazione variabili: 
+		$default: '';																					// Valore di default
+		$keyBase: '';																					// Base del nome da comporre
+		$palette: '';																					// Palette di riferimento
+
+		@if ($name == 'black') {																		// Nota => NON esiste 'switch': deve fare tutti gli @IF
+			$palette: $blackScaleMap;
+			$default: $black;
+			$keyBase: 'Black_';
+		}
+		@if ($name == 'white') {
+			$palette: $whiteScaleMap;
+			$default: $white;
+			$keyBase: 'White_';
+		}
+
+		@if ($palette != '') {																			// Se la palette è definita, ricerca il valore
+			@if ($pct < 10) { $pct: '0' + $pct; }														// Normalizza l'indice da cercare
+			$color: map_get($palette, ($keyBase + $pct));												// Prende il valore dato dalla chiave "base + peso"
+			@if ($color == null) { $color: $default; }													// Se non trova il valore, prende il default
+			@return $color;
+		} @else {
+			@return 'n.d.';
+		}
+	}
+
+
+
+
+
+// >>> Dichiarazione colori personalizzati:
+
+	$mainColorTEXT: getColor('black', 60);		// §§§ In attesa dei colori veri imposto i colori standard: grigio scuro e bianco
+	$mainColorBACK: getColor('black',  0);
+
+//	$color1 : #f00;
+//	$color2 : #00f;
+

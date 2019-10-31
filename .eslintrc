@@ -28,37 +28,38 @@
     "react",
     "react-hooks"
   ],
-  "rules": {
-    "semi": [
-      "warn",
-      "always"
-    ],
-    "no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "args": "none",
-        "ignoreRestSiblings": false
-      }
-    ],
-    "comma-dangle": "off",
-    "curly": "off",
-    "eqeqeq": "off",
-    "indent": "off",
-    "linebreak-style": "off",
-    "no-tabs": "off",
-    "no-var": "off",
-    "quotes": "off",
-    "strict": "off",
-    "react/jsx-indent": "off",
-    "react/jsx-closing-bracket-location": "off",
-    "react/jsx-closing-tag-location": "off",
-    "react/jsx-indent-props": "off",
-    "react/jsx-space-before-closing": "off",
-    "react/style-prop-object:": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
-  },
+	"rules": {
+		"no-mixed-spaces-and-tabs": "off",
+		"semi": [
+			"warn",
+			"always"
+		],
+		"no-unused-vars": [
+			"warn",
+			{
+				"vars": "all",
+				"args": "none",
+				"ignoreRestSiblings": false
+			}
+		],
+		"comma-dangle": "off",
+		"curly": "off",
+		"eqeqeq": "off",
+		"indent": "off",
+		"linebreak-style": "off",
+		"no-tabs": "off",
+		"no-var": "off",
+		"quotes": "off",
+		"strict": "off",
+		"react/jsx-indent": "off",
+		"react/jsx-closing-bracket-location": "off",
+		"react/jsx-closing-tag-location": "off",
+		"react/jsx-indent-props": "off",
+		"react/jsx-space-before-closing": "off",
+		"react/style-prop-object:": "off",
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn"
+	},
   "settings": {
     "react": {
       "pragma": "React",

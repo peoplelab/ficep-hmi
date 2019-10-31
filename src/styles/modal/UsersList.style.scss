@@ -18,6 +18,7 @@
       background-color: $bg-light-grey;
       height: 100%;
       width: 100%;
+	  padding: 0 32px 8px;
 
       .users-modal__content {
 
@@ -35,54 +36,55 @@
           }
         }
 
-        .users-modal__button {
-          border: $border-light-grey solid 0.125rem;
-          border-radius: 0.25rem;
-          color: $text-dark-grey;
-          cursor: pointer;
-          padding: 0.5rem;
+//        .users-modal__button {
+//          border: $border-light-grey solid 0.125rem;
+//          border-radius: 0.25rem;
+//          color: $text-dark-grey;
+//          cursor: pointer;
+//          padding: 0.5rem;
+//
+//          &.users-modal__button--reset {
+//            display: block;
+//            height: 2rem;
+//            margin: 0 auto;
+//            width: 2rem;
+//          }
+//
+//          .users-modal__icon {
+//            background-color: $bg-dark-grey;
+//            display: block;
+//            height: 100%;
+//            margin: 0 auto;
+//            width: 100%;
+//          }
+//
+//          &:disabled {
+//            background-color: $bg-light-grey;
+//          }
+//
+//          &:enabled {
+//            background-color: $bg-light-grey-red;
+//            cursor: pointer;
+//
+//            &:hover {
+//              background-color: $grey-red;
+//            }
+//            &:focus {
+//              border: $border-dark-grey solid 0.125rem;
+//            }
+//          }
+//        }
 
-          &.users-modal__button--reset {
-            display: block;
-            height: 2rem;
-            margin: 0 auto;
-            width: 2rem;
-          }
-
-          .users-modal__icon {
-            background-color: $bg-dark-grey;
-            display: block;
-            height: 100%;
-            margin: 0 auto;
-            width: 100%;
-          }
-
-          &:disabled {
-            background-color: $bg-light-grey;
-          }
-
-          &:enabled {
-            background-color: $bg-light-grey-red;
-            cursor: pointer;
-
-            &:hover {
-              background-color: $grey-red;
-            }
-            &:focus {
-              border: $border-dark-grey solid 0.125rem;
-            }
-          }
-        }
-
-        &:first-of-type() {
-          padding: 2rem;
-        }
+//        &:first-of-type() {
+//          padding: 0 32px 32px;
+//        }
 
         &:last-of-type() {
           flex: 1;
           overflow: hidden;
         }
       }
+
     }
   }
 }

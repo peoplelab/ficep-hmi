@@ -1,3 +1,4 @@
+@import '../common/costanti';
 @import '../common/colors.scss';
 @import '../common/flex.scss';
 @import '../common/text.scss';
@@ -8,76 +9,77 @@
 
 // stylelint-disable plugin/selector-bem-pattern
 %button {
-  &:disabled {
-    background-color: $bg-light-grey;
-  }
+	&:disabled {
+	background-color: $bg-light-grey;
+	}
 
-  &:enabled {
-    background-color: $bg-light-grey-red;
-    cursor: pointer;
+	&:enabled {
+	background-color: $bg-light-grey-red;
+	cursor: pointer;
 
-    &:hover {
-      background-color: $grey-red;
-    }
-  }
+	&:hover {
+		background-color: $grey-red;
+	}
+	}
 }
 
 %input {
-  @extend %paragraph-1-medium;
+	@extend %paragraph-1-medium;
 
-  border: $border-light-grey solid 0.125rem;
-  border-radius: 0.25rem;
-  color: $text-dark-grey;
-  height: 3.5rem;
-  padding: 0.5rem;
-  width: 100%;
+	border : $border-light-grey solid 0.125rem;
+	border-radius: 0.25rem;
+	color  : $text-dark-grey;
+	height : 3.5rem;
+	padding: 0.5rem;
+	width  : 100%;
 
-  &:focus {
-    border: $border-dark-grey solid 0.125rem;
-  }
+	&:focus {
+	//	border: getColor('black', 30) solid 0.125rem;
+		border: getColor('black', 30) solid 3px;
+	}
 }
 
 .input {
-  &.input__button {
-    @extend %input;
-    @extend %button;
-  }
+	&.input__button {
+	@extend %input;
+	@extend %button;
+	}
 
-  &.input__password {
-    @extend %input;
-  }
+	&.input__password {
+	@extend %input;
+	}
 
-  &.input__radio {
+	&.input__radio {
 
-  }
+	}
 
-  &.input__reset {
-    @extend %input;
-    @extend %button;
+	&.input__reset {
+		@extend %input;
+		@extend %button;
 
-    &.input__reset--simple {
-      background-color: transparent;
-      border: none;
+		&.input__reset--simple {
+			background-color: transparent;
+			border: none;
 
-      &:disabled,
-      &:enabled,
-      &:hover {
-        background-color: transparent;
-      }
-    }
-  }
+			&:disabled,
+			&:enabled,
+			&:hover {
+			background-color: transparent;
+			}
+		}
+	}
 
-  &.input__select {
-    @extend %input;
-  }
+//	&.input__select {
+//	@extend %input;
+//	}
 
-  &.input__submit {
-    @extend %input;
-    @extend %button;
-  }
+	&.input__submit {
+	@extend %input;
+	@extend %button;
+	}
 
-  &.input__text {
-    @extend %input;
-  }
+//	&.input__text {
+//	@extend %input;
+//	}
 }
 // stylelint-enable plugin/selector-bem-pattern

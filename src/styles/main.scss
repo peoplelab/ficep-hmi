@@ -1,56 +1,38 @@
-// Application Common style
+	// Application Common style
 
-@import './font/Saira';
-
-@import './common/media.scss';
-@import './common/icon.scss';
-@import './common/background.scss';
-
-@import './common/colors.scss';
-@import './common/flex.scss';
-// @import './common/spacing.scss';
-@import './common/text.scss';
+	// FILE OBSOLETI (da rimuovere una volta messi a posto gli altri)
+//	@import './common/spacing.scss';
+//	@import './common/media.scss';				// Serve? Si può segare?
+//	@import './font/Saira';
 
 
-// stylelint-disable-next-line plugin/selector-bem-pattern
-* {
-  border: 0;
-  box-sizing: border-box;
-  font-family: 'arial', sans-serif;
-  line-height: 1rem;
-  font-size: 1rem;
-  margin: 0;
-  outline: none;
-  padding: 0;
-}
+	@import './common/icon.scss';				// Al momento serve ancora, ma andrà segato
+	@import './common/background.scss';			// Al momento serve ancora, ma andrà segato
+	@import './common/colors.scss';				// Al momento serve ancora, ma andrà segato
+	@import './common/flex.scss';				// ???
+//	@import './common/text.scss';				// Al momento serve ancora, ma andrà segato (va rifatto completamente)
+	
+
+	// ** Nuovi .scss **
+	@import './common/tipografici.scss';
+	@import './common/strutturali.scss';
+	@import './common/controls.scss';
 
 
-:root {
-  font-size: 19px;
+	// stylelint-disable-next-line plugin/selector-bem-pattern	// ???
 
-  @media screen and (max-width: $break-medium) {
-    font-size: 13px;
-  }
+	// ANDRA' TUTTO SEGATO....
+	* {
+	  border     : 0;
+	  box-sizing : border-box;
+	  font-family: default-400;		// Font definiti in "tipografici.scss"
+	  line-height: 1rem;
+	  font-size  : 1rem;
+	  margin     : 0;
+	  outline    : none;
+	  padding    : 0;
+	}
+	:root {
+	  font-size: 16px;
 
-  @media screen and (max-width: $break-small) {
-    font-size: 11px;
-  }
-}
-
-::-webkit-scrollbar {
-  background-color: transparent;
-  width: 1rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: $bg-white;
-  box-shadow: 0 0 0 0.25rem $bg-light-grey inset;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: $bg-dark-grey;
-}
-
-::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
+	}

@@ -45,16 +45,19 @@ class UsersList extends Component {
     _labels = {                 // etichette in lingua
         title: window.intl.users_main_title,
         headers: {
-            firstName: window.intl.users_headers_firstname,
-            lastName: window.intl.users_headers_lastname,
-            userName: window.intl.users_headers_username,
-            isActive: window.intl.users_headers_isactive,
+            firstName   : window.intl.users_headers_firstname,
+            lastName    : window.intl.users_headers_lastname,
+            userName    : window.intl.users_headers_username,
+            isActive    : window.intl.users_headers_isactive,
             creationDate: window.intl.users_headers_creationdate,
-            groups: window.intl.users_headers_role,
-            update: '',
-            delete: '',
+            groups      : window.intl.users_headers_role,
+            update      : '',
+            delete      : '',
         }
     }
+
+	_colsParams = ['textLeft', 'textLeft', 'textLeft', 'textCenter', 'textCenter', 'textLeft', '', ''];
+
 
     _emptyValues = {
         id: 0,
@@ -235,7 +238,7 @@ class UsersList extends Component {
                             <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
                         </div>
                         <div className="users-modal__content">
-                            <Table className="users-modal__table" headers={this._labels.headers} data={users} >
+                            <Table className="users-modal__table" headers={this._labels.headers} settings={this._colsParams} data={users} >
                                 {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.openModalDelete} onEdit={this.onEditUser} />}
                             </Table>
                         </div>

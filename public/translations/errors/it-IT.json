@@ -4,7 +4,7 @@
 
 
   "GENERIC_VALIDATION_ERROR": "Errore di validazione",
-  "GENERIC_GETITEM_NOTFOUND": "Entità non trovata",
+  "GENERIC_GETITEM_NOTFOUND": "Elemento non trovata",
   "GENERIC_JSON_INVALIDFORMAT": "Formato JSON non valido",
 
   "SESSION_GETLATEST_INPUTNOTVALID": "Richiesta ultime sessioni input non valido",
@@ -23,6 +23,8 @@
   "USER_LOGIN_INACTIVE": "User non attivo",
   "USER_LOGIN_IP_EMPTY": "IP non specificato",
   "USER_LOGIN_IP_INVALID": "IP non valido",
+  "GENERIC_MACHINENAME_EMPTY": "MachineName non specificato",
+  "GENERIC_MACHINENAME_INVALIDLENGTH": " MachineName lung maggiore di 100",
 
   "USER_LOGIN_REFRESHTOKEN_EMPTY": "RefreshToken non specificato",
   "USER_LOGIN_REFRESHTOKEN_INVALID": "RefreshToken non valido",
@@ -60,6 +62,8 @@
   "USER_MANAGEMENT_NOTFOUND": " Utente non trovato",
   "USER_MANAGEMENT_INVALIDINPUT": " Input non valido",
   "USER_MANAGEMENT_LOCKED": "Impossibile eliminare, utente bloccato",
+  "USER_MANAGEMENT_INVALIDSTATUS": "Stato non valido",
+  "USER_MANAGEMENT_ISSYSTEMUSER": "Utente di sistema. Operazione non possibile",
 
   "USER_CHANGEPASSWORD_INVALIDUSERID": " Cambio password - Identificativo utente non specificato",
   "USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED": " Vecchia password non specificata",
@@ -71,6 +75,8 @@
   "USER_CHANGEPASSWORD_INVALIDNEWPASSWORD": " Nuova password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
   "USER_CHANGEPASSWORD_INVALIDCONFIRMEDPASSWORD": " Confirmed password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
   "USER_CHANGEPASSWORD_WRONGOLDPASSWORD": " Vecchia password non corretta",
+
+  "USER_UPDATE_INVALIDID": "Id utente non trovato",
 
   "SESSION_GETSESSION_NOTFOUND": "Sessione non trovata",
 

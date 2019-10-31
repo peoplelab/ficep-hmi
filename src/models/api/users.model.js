@@ -105,7 +105,7 @@ const usersUpdate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "Id": params.id,
+            "Id": params.Id,
             "FirstName": params.FirstName,
             "LastName": params.LastName,
             "UserStatus": params.UserStatus

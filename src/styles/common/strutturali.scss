@@ -1,0 +1,49 @@
+﻿// stylelint-disable plugin/selector-bem-pattern
+// =======================================================================
+// NAME: strutturali.scss
+//
+// Definizione gli elementi strutturali base (modali, dialog, ecc.)
+// -----------------------------------------------------------------------
+
+@import "./costanti.scss";
+@import "./tipografici.scss";
+
+
+
+// =========================
+//  Finestre modali e alert
+// -------------------------
+
+
+
+// ===================================
+//  Alert box ed elementi informativi
+// -----------------------------------
+
+
+
+// =========
+//  Tabelle
+// ---------
+
+	// §§§ DELIRIO DA SISTGEMARE NEI .JSX !!!!   Andare a prendere da styles/layouts/Table.style.scss
+	.cell {
+		
+
+	}
+	.cell-head {
+		font-size  : 16px;
+		font-family: default-700;
+		color      : $mainColorTEXT;
+		padding    : 8px;
+	}
+	.cell-std {
+		font-size: 14px;
+		color    : $mainColorTEXT;
+		padding  : 8px;
+	}
+
+// =============
+//  Validazione
+// -------------
+

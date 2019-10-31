@@ -57,7 +57,8 @@
     "react/jsx-space-before-closing": "off",
     "react/style-prop-object:": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-mixed-spaces-and-tabs": "off"
   },
   "settings": {
     "react": {

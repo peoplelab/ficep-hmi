@@ -11,75 +11,76 @@ import PropTypes from 'prop-types';
 
 
 class Select extends PureComponent {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+	super(props);
 
-    this.mapOptions = this.mapOptions.bind(this);
-  }
+	this.mapOptions = this.mapOptions.bind(this);
+	}
 
-  mapOptions(data) {
-    const { value, message } = data;
+	mapOptions(data) {
+	const { value, message } = data;
 
-    return (
-      <option value={value} key={`option-${value}`} >
-        {message}
-      </option>
-    );
-  }
+	return (
+		<option value={value} key={`option-${value}`} >
+		{message}
+		</option>
+	);
+	}
 
-  render() {
-    const {
-      children,
-      className,
-      name,
-      options,
-      ...rest
-    } = this.props;
+	render() {
+	const {
+		children,
+		className,
+		name,
+		options,
+		...rest
+	} = this.props;
 
-    const mergedClass = `input input__select ${className}`;
+//	const mergedClass = `input input__select ${className}`;
+	const mergedClass = `select ${className}`;
 
-    const Options = options.map(this.mapOptions);
+	const Options = options.map(this.mapOptions);
 
-    return (
-      <select
-        id={name}
-        {...rest}
-        className={mergedClass}
-        name={name}
-      >
-        {children}
-        {Options}
-      </select>
-    );
-  }
+	return (
+		<select
+			id={name}
+			{...rest}
+			className={mergedClass}
+			name={name}
+			>
+			{children}
+			{Options}
+		</select>
+	);
+	}
 }
 
 const shapeOptions = {
-  message: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
+	message: PropTypes.oneOfType([
+	PropTypes.string,
+	PropTypes.number,
+	]).isRequired,
+	value: PropTypes.oneOfType([
+	PropTypes.string,
+	PropTypes.number,
+	]).isRequired,
 };
 
 
 Select.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]),
-  name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
-  className: PropTypes.string,
+	children: PropTypes.oneOfType([
+	PropTypes.arrayOf(PropTypes.element),
+	PropTypes.element,
+	]),
+	name: PropTypes.string.isRequired,
+	options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
+	className: PropTypes.string,
 };
 
 Select.defaultProps = {
-  children: null,
-  options: [],
-  className: '',
+	children: null,
+	options: [],
+	className: '',
 };
 
 

@@ -17,7 +17,8 @@ const Button = (props) => {
     ...rest
   } = props;
 
-  const mergedClass = `button ${className}`;
+  //const mergedClass = `button ${className}`;
+  const mergedClass = `${className}`;
 
   return (
     <button

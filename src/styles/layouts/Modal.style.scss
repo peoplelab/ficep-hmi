@@ -1,5 +1,6 @@
 // Style of private routes template
 
+@import "../common/costanti.scss";
 @import '../common/colors.scss';
 @import '../common/flex.scss';
 @import '../common/text.scss';
@@ -8,67 +9,68 @@
 
 
 .modal {
-  background-color: rgba($color: $bg-dark-grey, $alpha: 0.65);
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 999;
+	background-color: rgba($color: $bg-dark-grey, $alpha: 0.65);
+	height: 100vh;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	z-index: 999;
 
-  .modal__container {
-    @extend %flex-column;
+	.modal__container {
+	@extend %flex-column;
 
-    background-color: $bg-light-grey;
-    box-shadow: $shadow-2;
-    left: 50%;
-    padding: 1rem;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
+//	background-color: $bg-light-grey;
+	background-color: getColor('black', 10);
+	box-shadow: $shadow-2;
+	left: 50%;
+	padding: 1rem;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 
-    .modal__head {
-      @extend %flex-row-center;
+	.modal__head {
+		@extend %flex-row-center;
 
-      margin: 0 0 0.5rem;
-      overflow: hidden;
-      padding: 1rem;
-      width: 100%;
+		margin: 0 0 0.5rem;
+		overflow: hidden;
+		padding: 1rem;
+		width: 100%;
 
-      .modal__title {
-        @extend %flex-row-full;
-        @extend %title-bold;
+		.modal__title {
+		@extend %flex-row-full;
+		@extend %title-bold;
 
-        color: $text-dark-grey;
-        flex: 1;
-      }
+		color: $text-dark-grey;
+		flex: 1;
+		}
 
-      .modal__button {
-        background-color: transparent;
-        cursor: pointer;
-        height: 1.25rem;
-        width: 1.25rem;
+		.modal__button {
+		background-color: transparent;
+		cursor: pointer;
+		height: 1.25rem;
+		width: 1.25rem;
 
-        .modal__icon {
-          background-color: $bg-dark-grey;
-          display: block;
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }
+		.modal__icon {
+			background-color: $bg-dark-grey;
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+		}
+	}
 
-    .modal__section {
-      @extend %flex-row-center;
+	.modal__section {
+		@extend %flex-row-center;
 
-      flex: 1;
-      overflow: hidden;
+		flex: 1;
+		overflow: hidden;
 
-      // stylelint-disable-next-line plugin/selector-bem-pattern
-      > * {
-        width: 100%;
-      }
-    }
+		// stylelint-disable-next-line plugin/selector-bem-pattern
+		> * {
+		width: 100%;
+		}
+	}
 
     .modal__footer {
         display: flex;
@@ -90,50 +92,50 @@
     }
   }
 
-  // stylelint-disable plugin/selector-bem-pattern
-  &.modal--small {
-    .modal__container {
-      height: auto;
-      width: 30%;
-    }
-  }
+	// stylelint-disable plugin/selector-bem-pattern
+	&.modal--small {
+	.modal__container {
+		height: auto;
+		width: 30%;
+	}
+	}
 
-  &.modal--medium {
-    .modal__container {
-      height: auto;
-      width: 50%;
-    }
-  }
+	&.modal--medium {
+	.modal__container {
+		height: auto;
+		width: 50%;
+	}
+	}
 
-  &.modal--big {
-    .modal__container {
-      height: 85%;
-      width: 85%;
-    }
-  }
+	&.modal--big {
+	.modal__container {
+		height: 85%;
+		width: 85%;
+	}
+	}
 
-  &.modal--data {
+	&.modal--data {
 
-  }
+	}
 
-  &.modal--alert {.modal__container {
-    .modal__head {
-      background-color: $bg-dark-grey;
-      border-bottom: 0.0625rem solid $border-dark-grey;
+	&.modal--alert {.modal__container {
+	.modal__head {
+		background-color: $bg-dark-grey;
+		border-bottom: 0.0625rem solid $border-dark-grey;
 
-      .modal__title {
-        @extend %title-semibold;
+		.modal__title {
+		@extend %title-semibold;
 
-        color: $text-light-grey;
-      }
+		color: $text-light-grey;
+		}
 
-      .modal__button {
-        .modal__icon {
-          background-color: $bg-light-grey;
-        }
-      }
-    }
-  }
-  }
-  // stylelint-enable plugin/selector-bem-pattern
+		.modal__button {
+		.modal__icon {
+			background-color: $bg-light-grey;
+		}
+		}
+	}
+	}
+	}
+	// stylelint-enable plugin/selector-bem-pattern
 }

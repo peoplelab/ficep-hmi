@@ -53,7 +53,7 @@ class TextInput extends PureComponent {
     } = this.props;
     const [state] = this.context;
 
-    const mergedClass = `input input__text ${className}`;
+    const mergedClass = `input yyy input__text ${className}`;
 
     return (
       <input

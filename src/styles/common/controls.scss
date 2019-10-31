@@ -1,0 +1,128 @@
+﻿// stylelint-disable plugin/selector-bem-pattern
+// =======================================================================
+// NAME: controls.scss
+//
+// Definizione dei controlli base (campi, pulsanti, ecc,)
+// -----------------------------------------------------------------------
+
+@import "./costanti.scss";
+@import "./tipografici.scss";
+
+
+// >>> Definizioni variabili e standard
+
+	$borderWidthStd  : 2px;											// Dimensione bordo standard
+	$borderWidthFocus: 3px;											// Dimensione bordo del controllo con focus
+
+	$buttonColorStd: $mainColorTEXT;	//getColor('black', 60);
+	$buttonBackStd : $mainColorBACK;	//getColor('black',  0);
+	$buttonColorInv: $mainColorBACK;	//getColor('black',  0);
+	$buttonBackInv : $mainColorTEXT;	//getColor('black', 60);
+
+
+// =========================
+//  Campi di input e select
+// -------------------------
+
+	// Definizione Placeholders
+	%inputSettings {
+		color        : $mainColorTEXT;
+		background   : $mainColorBACK;
+		font-family  : 'default-400';
+		border-color : getColor('black', 20);
+		border-width : $borderWidthStd;
+		border-style : solid;
+		border-radius: 4px;
+
+		&:focus {
+			border-color : getColor('black', 50);
+			border-width : $borderWidthFocus;
+		}
+
+		&.disabled {
+			color     : getColor('black', 35);
+			background: getColor('black', 15);
+		}
+	}
+
+	// Costruzione classi
+	.input-text {																// Tipo input: text
+		@extend %inputSettings;
+
+		&.input-large {
+			height : 48px;
+			padding: 10px;
+			width  : 100%;
+		}
+	}
+
+	.select {
+		@extend %inputSettings;
+
+		&.select-large {
+			height : 48px;
+			padding: 10px;
+			width  : 100%;
+		}
+	}
+	
+
+
+
+// ==========
+//  Pulsanti
+// ----------
+
+	// Definizione Placeholders
+	%btnSettings {
+		height        : 42px;
+		border-width  : 3px;
+		border-style  : solid;
+		border-radius : 8px;
+		font-family   : default-700;
+		text-transform: uppercase;
+		cursor        : pointer;
+
+	}
+
+	// Costruzione classi
+
+	.btn {									// Con icona o meno, grandi e piccoli
+
+		&.btn-light {					// §§§ => Togliere "std" / Se possibile elencare tutti i tipi di button e classificarli x tipo/forma/ruolo (std, large, big, dark, light, action, alert, ecc. ecc.)
+			@extend %btnSettings;
+
+			color       : $buttonColorStd;
+			background  : $buttonBackStd;
+			border-color: $buttonColorStd;
+		}
+		&.btn-dark {
+			@extend %btnSettings;
+
+			color       : $buttonColorInv;
+			background  : $buttonBackInv;
+			border-color: transparent;
+		}
+		&.btn-midGrey {
+			@extend %btnSettings;
+
+			color       : $buttonColorInv;
+			background  : getColor('black', 40);
+			border-color: $buttonColorStd;
+		}
+
+		&.btn-large {
+			font-size: 16px;
+			padding  : 10px 20px;
+			height   : 46px;
+			width    : 95%;
+		}
+
+		&.btn-std {
+			font-size: 13px;
+			padding  : 5px 20px;
+			height   : 32px;
+			width    : 95%;
+
+		}
+	}

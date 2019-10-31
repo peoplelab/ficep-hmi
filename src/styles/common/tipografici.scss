@@ -1,0 +1,158 @@
+﻿// stylelint-disable plugin/selector-bem-pattern
+// =======================================================================
+// NAME: tipografici.scss
+//
+// Definizione degli elementi tipografici base dell'applicazione
+// -----------------------------------------------------------------------
+
+@import "./costanti.scss";
+
+// ---
+//	NOTE:
+//		Per prendere il colore da una palette:
+//			getColor(<nomePalette>, <peso>)		->		es.: { color: getColor('black', 85); }
+//				
+// ---
+
+// >>> Palette standard
+	// Gradazioni di grigio: le due palette "Black" e "White" contengono gli stessi colori indicati con valori complementari [es. Nero x% = Bianco (100 -x)% ]
+	// La doppia palette risulta utile consentendo di utilizzare con più semplicità il sistema di riferimento preferito.
+	// Ad esempio: è più facile pensare "quasi bianco" con ".fcWhite_90" che con ".fcBlack_10", pur essendo lo stesso grigio.
+
+	@each $name, $value in $blackScaleMap {																// Costruzione delle classi (scala di neri):
+		$lowername: to-lower-case($name);
+		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
+		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.border#{$name} {border-color: $value;}															// Colore bordi
+	}
+
+	@each $name, $value in $whiteScaleMap {																// Costruzione delle classi (scala di bianchi):
+		$lowername: to-lower-case($name);
+		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
+		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.border#{$name} {border-color: $value;}															// Colore bordi
+	}
+
+
+
+// ===================================================
+//  Reimpostazione degli stili tipografici di default
+// ---------------------------------------------------
+	
+	// Margin e padding
+	hr, p, ul, li, 
+	h1, h2, h3, h4, h5 {
+		margin : 0px;
+		padding: 0px;
+	}
+
+	// Impostazioni comuni (default) delle barre di scorrimento
+	::-webkit-scrollbar {
+		background  : transparent;
+		width       : 16px;
+	}
+	::-webkit-scrollbar-corner {
+		background  : transparent;
+	}
+	::-webkit-scrollbar-track {
+		background  : $white;
+		border-width: 0 5px;
+		border-style: solid;
+		border-color: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background  : getColor('black', 60);
+	}
+
+
+
+
+// ====================================
+//  Visibilità, allineamenti, floating
+// ------------------------------------
+
+	// Visibilità
+	// (Nota: esistono classi equivalenti in Bootstrap, es. "d-none")
+	.hide, .hidden {		
+		display: none;
+	}
+
+	// Allineamenti 
+	.text-left, .textLeft, .text-align-left       {text-align: left;}
+	.text-right, .textRight, .text-align-right    {text-align: right;}
+	.text-center, .textCenter, .text-align-center {text-align: center;}
+
+	// Elementi float:
+	.floatLeft, .float-left   {float: left;}
+	.floatRight, .float-right {float: right;}
+
+
+	// Stili testo:
+	.bold      {font-weight: 700; }
+	.uppercase {text-transform: uppercase; }
+
+// ============================
+//  Definizione tipi carattere 
+// ----------------------------
+
+	// Definizioni di default
+	@font-face {
+		font-family: 'default-400';
+		font-style : normal;
+		font-weight: 400;
+		src: url('../../../public/font/default/arial.ttf') format('truetype');
+	}
+	@font-face {
+		font-family: 'default-700';
+		font-style : normal;
+		src: url('../../../public/font/default/arialbd.ttf') format('truetype');
+	}
+
+	
+	// Definizione pesi da importare
+	$fontWeights:(
+		'Thin'      : 100,
+		'ExtraLight': 200,
+		'Light'     : 300,
+		'Regular'   : 400,
+		'Medium'    : 500,
+		'SemiBold'  : 600,
+		'Bold'      : 700,
+		'ExtraBold' : 800,
+		'Black'     : 900,
+	);
+
+	@each $name, $weight in $fontWeights {															// Definizione famiglie font (Output: font-families "Saira-100", "Saira-200", ecc.)
+		@font-face {
+			font-family: 'Saira-' + $weight;
+			font-style : normal;
+			font-weight: $weight;
+			src: url('../../../public/font/Saira/Saira-#{$name}.ttf') format('truetype'),;			// In "/public/font" sono contenuti i file dei font
+		}
+	}
+
+
+
+// ===============================================
+//  MIXIN: generazione automatica stili calcolati
+// -----------------------------------------------
+
+	// GENERATE-TYPOGRAPHICS : generazione classi "padding", "margin"
+	@each $type in ('margin', 'padding') {
+ 		@for $size from -10 through 20 {
+
+			// Legenda composizione stili:
+			//	modo := l: left, r: right, t: top, b: bottom, h: horizontal, v: vertical, a: all sides
+			//	size := valore (pixel) 
+			.#{$type}-t-#{$size * 5} {#{$type}-top   : #{$size * 5}px !important;}
+			.#{$type}-r-#{$size * 5} {#{$type}-right : #{$size * 5}px !important;}
+			.#{$type}-b-#{$size * 5} {#{$type}-bottom: #{$size * 5}px !important;}
+			.#{$type}-l-#{$size * 5} {#{$type}-left  : #{$size * 5}px !important;}
+			.#{$type}-v-#{$size * 5} {#{$type}-top   : #{$size * 5}px !important; #{$type}-bottom: #{$size * 5}px !important;}
+			.#{$type}-h-#{$size * 5} {#{$type}-left  : #{$size * 5}px !important; #{$type}-right : #{$size * 5}px !important;}
+			.#{$type}-a-#{$size * 5} {#{$type}       : #{$size * 5}px !important;}
+		
+		}
+	}
+
+

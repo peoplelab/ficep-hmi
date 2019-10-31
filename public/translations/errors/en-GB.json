@@ -4,7 +4,7 @@
 
 
   "GENERIC_VALIDATION_ERROR": "(en-GB) Errore di validazione",
-  "GENERIC_GETITEM_NOTFOUND": "(en-GB) Entità non trovata",
+  "GENERIC_GETITEM_NOTFOUND": "(en-GB)  Elemento non trovata",
   "GENERIC_JSON_INVALIDFORMAT": "(en-GB) Formato JSON non valido",
 
   "SESSION_GETLATEST_INPUTNOTVALID": "(en-GB) Richiesta ultime sessioni input non valido",
@@ -23,6 +23,8 @@
   "USER_LOGIN_INACTIVE": "(en-GB) User non attivo",
   "USER_LOGIN_IP_EMPTY": "(en-GB) IP non specificato",
   "USER_LOGIN_IP_INVALID": "(en-GB) IP non valido",
+  "GENERIC_MACHINENAME_EMPTY": "(en-GB)  MachineName non specificato",
+  "GENERIC_MACHINENAME_INVALIDLENGTH": "(en-GB)  MachineName lung maggiore di 100",
 
   "USER_LOGIN_REFRESHTOKEN_EMPTY": "(en-GB) RefreshToken non specificato",
   "USER_LOGIN_REFRESHTOKEN_INVALID": "(en-GB) RefreshToken non valido",
@@ -59,6 +61,9 @@
   "USER_MANAGEMENT_GROUPS_NOTSPECIFIED": "(en-GB)  Gruppo di appartenenza non specificato",
   "USER_MANAGEMENT_NOTFOUND": "(en-GB)  Utente non trovato",
   "USER_MANAGEMENT_INVALIDINPUT": "(en-GB)  Input non valido",
+  "USER_MANAGEMENT_LOCKED": "(en-GB)  Impossibile eliminare, utente bloccato",
+  "USER_MANAGEMENT_INVALIDSTATUS": "(en-GB)  Stato non valido",
+  "USER_MANAGEMENT_ISSYSTEMUSER": "(en-GB)  Utente di sistema. Operazione non possibile",
 
   "USER_CHANGEPASSWORD_INVALIDUSERID": "(en-GB)  Cambio password - Identificativo utente non specificato",
   "USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED": "(en-GB)  Vecchia password non specificata",
@@ -70,6 +75,8 @@
   "USER_CHANGEPASSWORD_INVALIDNEWPASSWORD": "(en-GB)  Nuova password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
   "USER_CHANGEPASSWORD_INVALIDCONFIRMEDPASSWORD": "(en-GB)  Confirmed password non valida (deve avere lunghezza >= 8, contenere almeno una lettera maiuscola, una maiuscola ed un numero)",
   "USER_CHANGEPASSWORD_WRONGOLDPASSWORD": "(en-GB)  Vecchia password non corretta",
+
+  "USER_UPDATE_INVALIDID": "(en-GB) Id utente non trovato",
 
   "SESSION_GETSESSION_NOTFOUND": "(en-GB) Sessione non trovata",
 

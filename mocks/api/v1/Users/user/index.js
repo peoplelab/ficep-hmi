@@ -6,32 +6,11 @@
 //const moment = require('moment');
 const { base } = require('../../../../mock.base');
 //const createUserResponse = require('./createUserResponse.json');
-const responseJSONPOST_KO = require('./responsePOST_KO.json');
-const responseJSONPOST_OK = require('./responsePOST_OK.json');
-const responseJSONDELETE_KO = require('./responseDELETE_KO.json');
-const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
 
 
 //const FORMAT = 'YYYY-MM-DDTHH:mm:ss.SSSSSSS';
 
 module.exports = {
-    POST: base(
-        (req, res) => {
-            if (req.body.firstName === "pippo") {
-                return responseJSONPOST_KO;
-            }
-            return responseJSONPOST_OK;
-        }
-    ),
-
-    DELETE: base(
-        (req, res) => {
-            if (req.params.id == 0) {
-                return responseJSONDELETE_KO;
-            }
-            return responseJSONDELETE_OK;
-        }
-    )
 
   //DELETE: base(
   //    (req, res) => ({

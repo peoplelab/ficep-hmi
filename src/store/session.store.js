@@ -11,7 +11,8 @@ import Enum from '../utils/Enum';
 
 // Lista delle tipologie di azioni applicabili allo store
 export const types = Enum.from(
-    'LOGGED_USER',           // UTENTE LOGGATO
+    'LOGGED_USER',                      // UTENTE LOGGATO
+    'LOGGED_USER_TOBEDELETED',          // UTENTE LOGGATO (DA CANCELLARE)
 
   'SET_USER_IP',
   'SET_SESSION',
@@ -23,6 +24,7 @@ export const types = Enum.from(
 
 // Stato iniziale dello store (le chiavi sono copiate dalla response del servizio di login)
 const initialState = {
+    LoggedUser: {},
   responseType: NaN,
   ip: '',
   username: '',
@@ -43,6 +45,11 @@ const initialState = {
 const actionHandlers = {
 
     [types.LOGGED_USER]: (state, { payload }) => ({
+        ...state,
+        LoggedUser: payload,
+    }),
+
+    [types.LOGGED_USER_TOBEDELETED]: (state, { payload }) => ({
         ...state,
         ...payload,
     }),

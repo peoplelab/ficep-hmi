@@ -11,18 +11,19 @@ import {
 } from '../../../models/api/users.model';
 
 import { base } from '../../common/controller.base';
-import store from '../../../store/redux.store';
-import history from '../../../models/history/history';
-import { ModalHandler } from '../../common/modal.handler';
+//import history from '../../../models/history/history';
+import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
+//import store from '../../../store/redux.store';
+//import { ModalHandler } from '../../common/modal.handler';
 
 
 
 // Interface
 export const User = {
-    GetList: (dispatch) => { return callUsersList(dispatch); },                                         // Lista Utenti
-    Detail: (data, dispatch) => { return callUsersDetails(data, dispatch); },                         // Dettaglio Utente
-    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },     // Cancellazione Utente
-    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },        // Salvataggio Utente
+    GetList: (dispatch) => { return callUsersList(dispatch); },                                                   // Lista Utenti
+    Detail: (data, dispatch) => { return callUsersDetails(data, dispatch); },                                     // Dettaglio Utente
+    Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },                // Cancellazione Utente
+    Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },                     // Salvataggio Utente
     ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
 };
 
@@ -48,9 +49,9 @@ const callUsersList = async ({ dispatch }) => {
                     //isLocked: user.IsLocked,
                     userStatus: user.UserStatus,
                     groups: user.Groups.map(group => ({
-                        id: group.Id,
-                        code: group.Code,
-                        description: group.Description,
+                        id: group.id,
+                        code: group.code,
+                        description: group.description,
                     })),
                     creationDate: user.CreationDate,
                 }));
@@ -75,7 +76,7 @@ const callUsersDelete = async ({ data, onSuccess, onFailed }) => {
         success: (response) => {
             // result = true => cancellazione ok
             // result = false => cancellazione ko
-            if (response.dataprocessed.result === "true") {
+            if (response.dataprocessed.result === true) {
                 onSuccess();
             }
             else {
@@ -97,17 +98,17 @@ const callUsersDetails = async ({ data, dispatch }) => {
         success: ({ dataprocessed }) => {
             const user = dataprocessed.result;
             const details = {
-                id: user.Id,
-                firstName: user.FirstName,
-                lastName: user.LastName,
-                userName: user.UserName,
-                // isActive: user.IsActive,
-                // isLocked: user.IsLocked,
-                userStatus: user.UserStatus,
-                groups: user.Groups.map(group => ({
-                    id: group.Id,
+                Id: user.Id,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                UserName: user.UserName,
+                UserStatus: user.UserStatus,
+                Groups: user.Groups.map(group => ({
+                    id: group.id,
+                    code: group.code,
+                    description: group.description,
                 })),
-                creationDate: user.CreationDate,
+                CreationDate: user.CreationDate,
             };
 
             dispatch({ details });
@@ -132,7 +133,7 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
     // data are valid
 
     let api = {};
-    if (data.id === 0) {
+    if (data.Id === 0) {
         // create
         api = { api: mUsers.Create };
     } else {
@@ -148,104 +149,17 @@ const callUserSave = async ({ data, onSuccess, onFailed }) => {
         },
         // onFailed non arriver� mai perch� � gestito nel base.
         //failure: () => {
-        //    onFailed();
+        //    onFailed(); 
         //}
     });
 };
-//funzione controlla validità cdati.
-function validate(data) {
-    var errorArrayList = [];
-    if (data.firstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
-    if (data.lastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
-    try { if (!((data.id > 0) || ((data.id == 0) && (data.groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
-    if ((data.id == 0) || ((data.id > 0) && (data.userStatus > 0)));
-    return errorArrayList;
-}
 
-function passwordValidate(data, userId) {
-    var errorArrayList = [];
-    if (userId.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_INVALIDUSERID'); }
-    if (data.oldPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED'); }
-    if (data.newPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED'); }
-    if (data.confirmPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED'); }
-    if (data.newPassword.length === data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
-    return errorArrayList;
-}
-
-
-
-// ---------------------------------------
-
-// chimata per inviare i dati di una nuova utenza
-export const callUsersAdd = async ({ data, fn }) => {
-    const request = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        password: data.password,
-        groups: [data.group],
-        CanDeleted: true,
-    };
-
-    base({
-        request,
-        api: usersAdd,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.responseType === 200) {
-                history.push(`${history.location.pathname}/info`);
-                fn();
-            }
-        },
-    });
-};
-
-// chimata per aggiornare i dati di una utenza
-export const callEditUser = async ({ data, fn }) => {
-    const request = {
-        id: data.idUser,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        //  isActive: true,
-        //  canBeDeleted: true
-        userStatus: data.userStatus
-    };
-
-    base({
-        request,
-        api: usersEdit,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.responseType === 200) {
-                history.push(`${history.location.pathname}/info`);
-                fn();
-            }
-        },
-    });
-};
-
-// chimata per aggiornare la password di una utenza
-export const callUsersPassword = async ({ data, fn }) => {
-    const { userId } = store.getState().session;
-
-    const request = {
-        userId,
-        oldPassword: data.oldPassword,
-        newPassword: data.newPassword,
-        confirmedPassword: data.confirmPassword
-    };
-
-    base({
-        request,
-        api: usersPassword,
-        success: ({ dataprocessed }) => {
-            if (dataprocessed.result) {
-                ModalHandler.Session();
-            }
-        },
-    });
-};
-//funzione cambio password.
 const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
-    const { userId } = store.getState().session;
-    const isValid = passwordValidate(data, userId);
+    //funzione cambio password.
+
+    const { userId } = cLoggedUser.Get();
+
+    const isValid = validatePassword(data, userId);
     if (isValid.length > 0) return onFailed({
         "dataprocessed": {
             "errorCode": "GENERIC_VALIDATION_ERROR",
@@ -264,14 +178,131 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
         api: mUsers.ChangePassword,
         success: (response) => {
             onSuccess(response);
-            //
-            // da lanciare nel view
-            //            if (dataprocessed.result) {
-            //   ModalHandler.Session();
-            //}
         }
     });
 };
+
+function validate(data) {
+    //funzione controlla validità dati.
+
+    var errorArrayList = [];
+
+    if (data.FirstName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_FIRSTNAME_EMPTY'); }
+
+    if (data.LastName.length <= 0) { errorArrayList.push('USER_MANAGEMENT_LASTNAME_EMPTY'); }
+
+    try { if (!((data.Id > 0) || ((data.Id == 0) && (data.Groups[0].id > 0)))) { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); } } catch { errorArrayList.push('USER_MANAGEMENT_GROUPS_NOTSPECIFIED'); }
+
+    if ((data.Id == 0) || ((data.Id > 0) && (data.UserStatus > 0)));
+
+    return errorArrayList;
+}
+
+function validatePassword(data, userId) {
+
+    var errorArrayList = [];
+
+    if (userId.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_INVALIDUSERID'); }
+
+    if (data.oldPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_OLDPASSWORD_NOTSPECIFIED'); }
+
+    if (data.newPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTSPECIFIED'); }
+
+    if (data.confirmPassword.length <= 0) { errorArrayList.push('USER_CHANGEPASSWORD_CONFIRMEDPASSWORD_NOTSPECIFIED'); }
+
+    if (data.newPassword !== data.confirmPassword) { errorArrayList.push('USER_CHANGEPASSWORD_NEWPASSWORD_NOTEQUAL_CONFIRMED'); }
+
+    return errorArrayList;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------
+
+// chimata per inviare i dati di una nuova utenza
+//export const callUsersAdd = async ({ data, fn }) => {
+//    const request = {
+//        firstName: data.firstName,
+//        lastName: data.lastName,
+//        password: data.password,
+//        groups: [data.group],
+//        CanDeleted: true,
+//    };
+
+//    base({
+//        request,
+//        api: usersAdd,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.responseType === 200) {
+//                history.push(`${history.location.pathname}/info`);
+//                fn();
+//            }
+//        },
+//    });
+//};
+
+// chimata per aggiornare i dati di una utenza
+//export const callEditUser = async ({ data, fn }) => {
+//    const request = {
+//        id: data.idUser,
+//        firstName: data.firstName,
+//        lastName: data.lastName,
+//        //  isActive: true,
+//        //  canBeDeleted: true
+//        userStatus: data.userStatus
+//    };
+
+//    base({
+//        request,
+//        api: usersEdit,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.responseType === 200) {
+//                history.push(`${history.location.pathname}/info`);
+//                fn();
+//            }
+//        },
+//    });
+//};
+
+// chimata per aggiornare la password di una utenza
+//export const callUsersPassword = async ({ data, fn }) => {
+//    const { userId } = store.getState().session;
+
+//    const request = {
+//        userId,
+//        oldPassword: data.oldPassword,
+//        newPassword: data.newPassword,
+//        confirmedPassword: data.confirmPassword
+//    };
+
+//    base({
+//        request,
+//        api: usersPassword,
+//        success: ({ dataprocessed }) => {
+//            if (dataprocessed.result) {
+//                ModalHandler.Session();
+//            }
+//        },
+//    });
+//};
 
 // chimata per esportare i dettagli dell'utente corrente
 export const callUsersExport = async ({ dispatch }) => {

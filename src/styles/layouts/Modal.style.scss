@@ -72,21 +72,25 @@
 		}
 	}
 
-	.modal__footer {
-		.modal__button {
-		@extend %paragraph-1-medium;
+    .modal__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-		border: $border-dark-grey solid 0.225rem;
-		border-radius: 0.5rem;
-		cursor: pointer;
-		display: block;
-		float: right;
-		height: auto;
-		padding: 0.5rem;
-		width: auto;
-		}
-	}
-	}
+      .modal__button {
+        @extend %paragraph-1-medium;
+
+        border: $border-dark-grey solid 0.225rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: block;
+        height: auto;
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        width: auto;
+      }
+    }
+  }
 
 	// stylelint-disable plugin/selector-bem-pattern
 	&.modal--small {

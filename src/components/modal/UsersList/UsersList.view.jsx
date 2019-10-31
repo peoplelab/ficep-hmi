@@ -36,11 +36,11 @@ class UsersList extends Component {
     _groupsList = null;         // lista dei gruppi/ruoli
     _usersList = null;          // lista degli utenti
     _data2save = {              // struct dei dati da salvare
-        "id": 0,
-        "firstName": "",
-        "lastName": "",
-        "userStatus": "",
-        "groups": [],
+        "Id": 0,
+        "FirstName": "",
+        "LastName": "",
+        "UserStatus": "",
+        "Groups": [],
     }
     _labels = {                 // etichette in lingua
         title: window.intl.users_main_title,
@@ -60,11 +60,10 @@ class UsersList extends Component {
 
 
     _emptyValues = {
-        id: 0,
-        firstName: "",
-        lastName: "",
-        groups: null,
-        isLocked: false
+        Id: 0,
+        FirstName: "",
+        LastName: "",
+        Groups: null
     }
 
 
@@ -163,11 +162,11 @@ class UsersList extends Component {
             data.userStatus = 1;
         }
 
-        this._data2save.id = data.id;
-        this._data2save.firstName = data.firstName;
-        this._data2save.lastName = data.lastName;
-        this._data2save.userStatus = data.userStatus;
-        this._data2save.groups = [];
+        this._data2save.Id = data.id;
+        this._data2save.FirstName = data.firstName;
+        this._data2save.LastName = data.lastName;
+        this._data2save.UserStatus = data.userStatus;
+        this._data2save.Groups = [];
         cUser.Save({
             data:
                 this._data2save,
@@ -185,11 +184,11 @@ class UsersList extends Component {
     // salvataggio (creazione/modifica) di un utente
     onSaveUser = (data) => {
 
-        this._data2save.id = data.id;
-        this._data2save.firstName = data.firstName;
-        this._data2save.lastName = data.lastName;
-        this._data2save.userStatus = data.userStatus || "";
-        this._data2save.groups = data.groups;
+        this._data2save.Id = data.Id;
+        this._data2save.FirstName = data.FirstName;
+        this._data2save.LastName = data.LastName;
+        this._data2save.UserStatus = data.UserStatus || "";
+        this._data2save.Groups = data.Groups; 
 
         cUser.Save({
             data:
@@ -200,17 +199,13 @@ class UsersList extends Component {
                 if (typeof response.dataprocessed.result === "boolean") {
                     ModalHandler.Success();
                 } else {
-                    ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.UserName, ' Password: ' + response.dataprocessed.result.Password] });
+                    ModalHandler.Info({ message: ['user Name:' + response.dataprocessed.result.Username, ' Password: ' + response.dataprocessed.result.Password] });
                 }
                 this.getUsersList();
-
-                if (this.state.errorCase.length > 0) {
-                  this.setState({ errorCase: [] });
-                }
             },
             onFailed: (response) => {
                 ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
-                this.setState({ errorCase: response.dataprocessed.result });
+                this.setState({ errorCase: response.dataprocessed.result, currentUser: this._data2save });
             }
         });
     }

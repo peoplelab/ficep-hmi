@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------------------
 // File: users.model.js
 // Path: /src/model/users/users.model
-// 
+//
 // Interfacciamento con servizi Utente (Users)
 //----------------------------------------------------------------------------------------
 
@@ -11,11 +11,13 @@ import { base } from '../common/model.base';
 
 // Api urls ...
 const URL_USERS_LIST  = "/api/v1/odata/users?$filter=IsSystemUser eq false";
-const URL_DELETE_USER = "/api/v1/users/user/:id";
+const URL_DELETE_USER = "/api/v1/users/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
-const URL_CREATE_USER = "/api/v1/users/user";
+const URL_CREATE_USER = "/api/v1/users";
 const URL_UPDATE_USER = "/api/v1/users";
-const URL_ChangePassword_USER = "/api/v1/users/changepassword";
+const URL_CHANGEPASSWORD = "/api/v1/users/changepassword";
+const URL_LOGOUT_USER = "/api/v1/users/logout";
+
 
 // Interface
 export const Users = {
@@ -24,14 +26,15 @@ export const Users = {
     Delete: (headers, params) => { return usersDelete(headers, params); },      // cancellazione utente
     Create: (headers, params) => { return usersCreate(headers, params); },      // Inserimento nuovo utente
     Update: (headers, params) => { return usersUpdate(headers, params); },       // Modifica utente esistente
-    ChangePassword: (headers, params) => { return usersChangePassword(headers, params); }       // Modifica utente esistente
+    ChangePassword: (headers, params) => { return usersChangePassword(headers, params); },       // Modifica utente esistente
+    Logout: (headers) => { return usersLogout(headers); },                      // logout
 };
 
 
 
 
 
-// Private Methods 
+// Private Methods
 
 const usersList = async ({ headers }) => {
     // interfaccia dell'api per ottenere la lista corrente degli utenti
@@ -81,11 +84,11 @@ const usersCreate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "firstName": params.firstName,
-            "lastName": params.lastName,
-            "password": params.password,
-            "groups": [
-                params.groups[0].id
+            "FirstName": params.FirstName,
+            "LastName": params.LastName,
+            //"Password": params.Password,
+            "Groups": [
+                params.Groups[0].id
             ]
         }),
     };
@@ -102,18 +105,17 @@ const usersUpdate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "id": params.id,
-            "firstName": params.firstName,
-            "lastName": params.lastName,
-            "userStatus": params.userStatus
-          //  "isLocked": params.isLocked
+            "Id": params.Id,
+            "FirstName": params.FirstName,
+            "LastName": params.LastName,
+            "UserStatus": params.UserStatus
         }),
     };
 
     return base({ url: URL_UPDATE_USER, request });
 };
 
-export const usersChangePassword = async ({ headers, request: data }) => {
+const usersChangePassword = async ({ headers, request: data }) => {
     const request = {
         method: "put",
         headers: {
@@ -123,8 +125,25 @@ export const usersChangePassword = async ({ headers, request: data }) => {
         body: JSON.stringify(data),
     };
 
-    return base({ url: URL_ChangePassword_USER, request });
+    return base({ url: URL_CHANGEPASSWORD, request });
 };
+
+export const usersLogout = async ({ headers }) => {
+    // interfaccia api logout utente
+    const request = {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+    };
+
+    return base({ url: URL_LOGOUT_USER, request });
+};
+
+
+
+
 
 
 
@@ -220,17 +239,4 @@ export const usersExport = async ({ headers }) => {
   };
 
   return base({ url: `/api/v1/odata/users/export`, request });
-};
-
-// interfaccia dell'api di logout per terminare la sessione utente
-export const usersLogout = async ({ headers }) => {
-  const request = {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
-
-  return base({ url: '/api/v1/users/logout', request });
 };

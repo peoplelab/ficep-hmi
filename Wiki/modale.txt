@@ -38,6 +38,10 @@ Comandi di gestione della modale
   ===============
   ModalHandler.Success();
 
+  // ° onSuccess: contiene la funzione opzionale di callback da avviare alla chiusura della modale
+  //  fnExample = () => { alert('Hello world!'); }
+  //  ModalHandler.Confirm({ onSuccess: fnExample) });
+
 
   error
   ===============

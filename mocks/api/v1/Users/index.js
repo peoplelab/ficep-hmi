@@ -6,6 +6,10 @@ const { base } = require('../../../mock.base');
 const jsonLIST = require('../odata/users/response.json');
 const responseJSONPUT_KO = require('./responsePUT_KO.json');
 const responseJSONPUT_OK = require('./responsePUT_OK.json');
+const responseJSONPOST_KO = require('./responsePOST_KO.json');
+const responseJSONPOST_OK = require('./responsePOST_OK.json');
+const responseJSONDELETE_KO = require('./responseDELETE_KO.json');
+const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
 
 
 module.exports = {
@@ -43,28 +47,23 @@ module.exports = {
         }
     ),
 
-  DELETE: base(
-    (req, res) => {
-      const id = parseInt(req.params.id);
-      const test = id <= 4 && global.users.Result.some(item => item.Id === id);
+    POST: base(
+        (req, res) => {
+            if (req.body.firstName === "pippo") {
+                return responseJSONPOST_KO;
+            }
+            return responseJSONPOST_OK;
+        }
+    ),
 
-      if (!test) {
-        return {
-          "ResponseType": 400,
-          "ErrorCode": "USER_MANAGEMENT_NOTFOUND",
-          "Result": null
-        };
-      }
-
-      global.users.Result = global.users.Result.filter(item => item.Id !== id);
-
-      return {
-        "ResponseType": 200,
-        "ErrorCode": null,
-        "Result": true,
-      };
-    }
-  ),
+    DELETE: base(
+        (req, res) => {
+            if (req.params.id == 0) {
+                return responseJSONDELETE_KO;
+            }
+            return responseJSONDELETE_OK;
+        }
+    )
 };
 
 

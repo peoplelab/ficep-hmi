@@ -48,3 +48,18 @@ Andrea:
 ===============
 LucaM: ho aggiunto un file di configurazione all'applicazione (config.json -> cartella public)
 Bisogna ricordarsi di gestire la pubblicazione di questo file in produzione.
+
+
+31/10/2019
+===============
+LucaM: I mocks cosi come sono adesso non va bene: è necessario che controllino la sintassi del json in ingresso per rilevare eventuali campi mancanti.
+Bisogna prevedere una sorta di validazione Json in stile xml (yeap).
+
+
+31/10/2019
+===============
+Andrea:
+° se si richiede la modifica di un'utenza, ma la si elimina senza salvare, i campi di input rimango valorizzati,
+  mentre la lista degli utenti viene correttamente aggiornata; salvando l'utenza appena eliminata,
+  questa viene nuovamente aggiunta alla lista con lo stesso ID
+Caso da approfondire

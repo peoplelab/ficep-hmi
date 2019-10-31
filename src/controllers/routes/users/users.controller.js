@@ -5,14 +5,11 @@
 //----------------------------------------------------------------------------------------
 
 
-import {
-    Users as mUsers,
-    usersExport, usersAddToGroup, usersDeleteFromGroup, usersAdd, usersEdit, usersPassword,
-} from '../../../models/api/users.model';
-
+import { Users as mUsers } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
-//import history from '../../../models/history/history';
 import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
+
+//import history from '../../../models/history/history';
 //import store from '../../../store/redux.store';
 //import { ModalHandler } from '../../common/modal.handler';
 
@@ -304,59 +301,59 @@ function validatePassword(data, userId) {
 //    });
 //};
 
-// chimata per esportare i dettagli dell'utente corrente
-export const callUsersExport = async ({ dispatch }) => {
-    base({
-        api: usersExport,
-        success: ({ dataprocessed }) => {
-            dispatch({ export: dataprocessed.result });
-        },
-        failure: () => {
-            dispatch({ export: {} });
-        }
-    });
-};
+//// chimata per esportare i dettagli dell'utente corrente
+//export const callUsersExport = async ({ dispatch }) => {
+//    base({
+//        api: usersExport,
+//        success: ({ dataprocessed }) => {
+//            dispatch({ export: dataprocessed.result });
+//        },
+//        failure: () => {
+//            dispatch({ export: {} });
+//        }
+//    });
+//};
 
-// chimata per aggiungere un utente ad un gruppo
-export const callUsersAddToGroup = async ({ data, dispatch, fn }) => {
-    const params = {
-        id: data.idUser,
-        groupId: data.idGroup,
-    };
+//// chimata per aggiungere un utente ad un gruppo
+//export const callUsersAddToGroup = async ({ data, dispatch, fn }) => {
+//    const params = {
+//        id: data.idUser,
+//        groupId: data.idGroup,
+//    };
 
-    base({
-        params,
-        api: usersAddToGroup,
-        success: ({ dataprocessed }) => {
-            dispatch({ response: dataprocessed.result });
-            if (dataprocessed.result && typeof fn === 'function') {
-                fn();
-            }
-        },
-        failure: () => {
-            dispatch({ response: null });
-        }
-    });
-};
+//    base({
+//        params,
+//        api: usersAddToGroup,
+//        success: ({ dataprocessed }) => {
+//            dispatch({ response: dataprocessed.result });
+//            if (dataprocessed.result && typeof fn === 'function') {
+//                fn();
+//            }
+//        },
+//        failure: () => {
+//            dispatch({ response: null });
+//        }
+//    });
+//};
 
-// chimata per rimuovere un utente da un gruppo
-export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
-    const params = {
-        id: data.idUser,
-        groupId: data.idGroup,
-    };
+//// chimata per rimuovere un utente da un gruppo
+//export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
+//    const params = {
+//        id: data.idUser,
+//        groupId: data.idGroup,
+//    };
 
-    base({
-        params,
-        api: usersDeleteFromGroup,
-        success: ({ dataprocessed }) => {
-            dispatch({ response: dataprocessed.result });
-            if (dataprocessed.result && typeof fn === 'function') {
-                fn();
-            }
-        },
-        failure: () => {
-            dispatch({ response: null });
-        }
-    });
-};
+//    base({
+//        params,
+//        api: usersDeleteFromGroup,
+//        success: ({ dataprocessed }) => {
+//            dispatch({ response: dataprocessed.result });
+//            if (dataprocessed.result && typeof fn === 'function') {
+//                fn();
+//            }
+//        },
+//        failure: () => {
+//            dispatch({ response: null });
+//        }
+//    });
+//};

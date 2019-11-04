@@ -56,9 +56,20 @@ Lista dei comandi per la creazione di distribuzioni del progetto
 * `dist` distribuzione per la produzione
 
 ### Emulazione
+/* esecuzione in sviluppo, emula un server node, rilasciando in tempo reale le modifiche del codice */
+
 Lista dei comandi per l'emulazione in locale del progetto
 * `start` Emulazione di un rilascio `build`, i servizi puntano direttamente alle api di Mitrol
 * `start:mocks` Emulazione di un rilascio `build`, i servizi puntano al server mock locale
+
+
+### Esecuzione
+/* esecuzione in produzione e testing, avvia un server node per l'esecuzione del codice dell'applicativo */
+
+Lista dei passaggi da seguire per eseguire in locale il progetto
+* Avviare la console di Windows
+* Accedere alla cartella contenente il file `server.js`
+* lanciare il comando `node server.js` per eseguire in locale
 
 
 ## Alberatura del progetto
@@ -159,21 +170,25 @@ Es:
 
 ## Alberatura dei rilascio
 
-| files              |                                   |
-|--------------------|-----------------------------------|
-| favicon.ico        | icona dell'applicativo            |
-| index.html         | entry point dell'applicativo      |
-| server.config.json | file di configurazione del server |
-| server.js          | server client                     |
-| server.js.map      | map del server                    |
+| files              |                                         | Richiesto |
+|--------------------|-----------------------------------------|-----------|
+| config.json        | file di configurazione dell'applicativo | Sì        |
+| favicon.ico        | icona dell'applicativo                  | Sì        |
+| index.html         | entry point dell'applicativo            | Sì        |
+| server.config.json | file di configurazione del server       | Sì        |
+| server.js          | server client                           | Sì        |
+| server.js.map      | map del server                          | Sì        |
 
 <br />
 
-| folders | contenuto     |
-|---------|---------------|
-| images  | file immagine |
-| map     | file .map     |
-| scripts | file .js      |
+| folders      | contenuto                 | Richiesto |
+|--------------|---------------------------|-----------|
+| font         | file di codifica del font | Sì        |
+| images       | file immagine             | Sì        |
+| map          | file .map                 | No        |
+| scripts      | file .js                  | Sì        |
+| styles       | file .css                 | Sì        |
+| translations | liste delle traduzioni    | Sì        |
 
 
 ## Librerie

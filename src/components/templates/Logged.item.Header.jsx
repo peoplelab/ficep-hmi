@@ -50,7 +50,7 @@ class Header extends PureComponent {
         <div className="logged__header-box logged__header-box--right">
           <OuterClick className="logged__header-outerhandler" onOuterClick={this.onOuterClick}>
             <Button className="logged__header-button" onClick={this.onClick}>
-              <Card className="logged__header-card" username={username} role={role} culture={culture} intl={this.intlCard} />
+              <Card className="card--small" username={username} role={role} culture={culture} intl={this.intlCard} />
             </Button>
             <UserModal visible={openModal} onClick={this.onClick}/>
           </OuterClick>

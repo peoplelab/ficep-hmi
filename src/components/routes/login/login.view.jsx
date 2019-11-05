@@ -116,7 +116,7 @@ class LoginRoute extends Component {
             <SetStore event="onClick" setter={this.externalDispatch}>
                 <ButtonForm className="login__button-card" name="data" value={props}>
                     <Card
-                        className="login__card card--button"
+                        className="card--complete"
                         intl={intlCard}
                         {...props}
                     />

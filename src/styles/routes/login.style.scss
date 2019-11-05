@@ -74,16 +74,6 @@
       }
       // stylelint-enable plugin/selector-bem-pattern
 
-      .login__card {
-        // stylelint-disable plugin/selector-bem-pattern
-        .card__picture {
-          border-radius: 8rem;
-          height: 8rem;
-          width: 8rem;
-        }
-        // stylelint-enable plugin/selector-bem-pattern
-      }
-
       .login__button-card {
         background-color: transparent;
         border: 0;

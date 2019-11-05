@@ -93,7 +93,8 @@ Table.propTypes = {
 	className: PropTypes.string,
 	data     : PropTypes.arrayOf(PropTypes.object),
 	headers  : PropTypes.objectOf(PropTypes.string),
-	settings : PropTypes.objectOf(PropTypes.string),
+	//settings : PropTypes.objectOf(PropTypes.string),
+    settings: PropTypes.arrayOf(PropTypes.string),
 };
 
 Table.defaultProps = {

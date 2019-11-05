@@ -63,70 +63,70 @@ class EditItem extends Component {
 		this._groups = this.getCodeOptions(props.groups);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		// se currentUser di nextprops è null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
-		const user = (nextProps.currentUser.FirstName === null || (typeof nextProps.currentUser.FirstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
+    componentWillReceiveProps(nextProps) {
+        // se currentUser di nextprops è null assegno i valori dello state a emptyValues, per evitare che ci siano errori nel "render".
+        const user = (nextProps.currentUser.FirstName === null || (typeof nextProps.currentUser.FirstName === "undefined")) ? this._emptyValues : nextProps.currentUser;
 
-		this._groups = this.getCodeOptions(nextProps.groups);
-		this.setState({ originalValues: user, currentValues: user });
-	}
+        this._groups = this.getCodeOptions(nextProps.groups);
+        this.setState({ originalValues: user, currentValues: user });
+    }
 
-	// elementi drop down gruppi/ruoli
-	getCodeOptions(groups_list) {
+    // elementi drop down gruppi/ruoli
+    getCodeOptions(groups_list) {
 
-		let listitems = [];
+        let listitems = [];
 
-		listitems.push(<option key="0" value="0">{this._labels.group}</option>);
+        //	listitems.push(<option key="0" value="0">{this._labels.group}</option>);
 
-		listitems.push(groups_list.map((item) =>
-			<option key={item.code} value={item.id}>{this._labels.groups[item.code]}</option>
-		));
+        listitems = (groups_list.map((item) =>
+            <option key={item.code} value={item.id}>{this._labels.groups[item.code]}</option>
+        ));
+        listitems.unshift(<option key="0" value="0">{this._labels.group}</option>);
+        return listitems;
+    }
 
-		return listitems;
-	}
+    // gestione modifica campi input
+    handleInputChange = (event) => {
+        let currentValues = {};
 
-	// gestione modifica campi input
-	handleInputChange = (event) => {
-		let currentValues = {};
+        const value = event.target.value;
 
-		const value = event.target.value;
-
-		if (event.target.name.indexOf("lastName") >= 0) {
-			currentValues = { ...this.state.currentValues, "LastName": value };
-		} else if (event.target.name.indexOf("firstName") >= 0) {
-			currentValues = { ...this.state.currentValues, "FirstName": value };
-		} /*else if (event.target.name.indexOf("password") >= 0) {
+        if (event.target.name.indexOf("lastName") >= 0) {
+            currentValues = { ...this.state.currentValues, "LastName": value };
+        } else if (event.target.name.indexOf("firstName") >= 0) {
+            currentValues = { ...this.state.currentValues, "FirstName": value };
+        } /*else if (event.target.name.indexOf("password") >= 0) {
 			currentValues = { ...this.state.currentValues, "password": value };
 		}*/ else if (event.target.name.indexOf("group") >= 0) {
-			currentValues = { ...this.state.currentValues, "Groups": [{ "id": value }] };
-		} else {
-			currentValues = this.state.currentValues;
-		}
+            currentValues = { ...this.state.currentValues, "Groups": [{ "id": value }] };
+        } else {
+            currentValues = this.state.currentValues;
+        }
 
-		this.setState({ currentValues });
-	};
-	// gestione click Annulla
-	btnReset_click = (event) => {
-		event.preventDefault();
-		this.setState({ ...this.state, currentValues: this._emptyValues });
-	};
-	// gestione click Salva
-	btnSave_click = (event) => {
-		event.preventDefault();
+        this.setState({ currentValues });
+    };
+    // gestione click Annulla
+    btnReset_click = (event) => {
+        event.preventDefault();
+        this.setState({ ...this.state, currentValues: this._emptyValues });
+    };
+    // gestione click Salva
+    btnSave_click = (event) => {
+        event.preventDefault();
 
-		this.props.onSave(this.state.currentValues);
-	};
+        this.props.onSave(this.state.currentValues);
+    };
 
 
-	render() {
+    render() {
 
-		const { errorCase } = this.props;
-		//  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
+        const { errorCase } = this.props;
+        //  const password_classname = "users-modal__field " + ((this.state.currentValues.isLocked) ? "readonly" : "show");
 
-		const firstName     = this.state.currentValues.FirstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
-		const lastName      = this.state.currentValues.LastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
-		const selectedGroup = (this.state.currentValues.Groups == null) ? "-1" : this.state.currentValues.Groups[0].id;
-		const disableSelect = ((this.state.currentValues.Id === 0) ? "" : "disabled");
+        const firstName = this.state.currentValues.FirstName || ""; // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
+        const lastName = this.state.currentValues.LastName || "";   // || "" serve per evitare un warning di react (A component is changing an uncontrolled input of type text to be controlled).
+        const selectedGroup = (this.state.currentValues.Groups == null) ? "-1" : this.state.currentValues.Groups[0].id;
+        const disableSelect = ((this.state.currentValues.Id === 0) ? "" : "disabled");
 
 		const classFirstName = "field users-modal__field ";		// + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
 		const classLastName  = "field users-modal__field ";		// + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");

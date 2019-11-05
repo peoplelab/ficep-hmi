@@ -11,15 +11,11 @@ import React, { Component } from 'react';
 import { Modal, Table } from '../../layouts/index.layouts';
 import { Form } from '../../forms-context/index.form';
 
-import {
-    User as cUser,
-} from '../../../controllers/routes/users/users.controller';
-import {
-    Group as cGroup,
-} from '../../../controllers/routes/users/groups.controller';
-
 import RowItem from './UsersList.item.row';
 import EditItem from './UsersList.item.edit';
+
+import { User as cUser } from '../../../controllers/routes/users/users.controller';
+import { Group as cGroup } from '../../../controllers/routes/users/groups.controller';
 import { ModalHandler } from '../../../controllers/common/modal.handler';
 
 import '../../../styles/modal/UsersList.style.scss';
@@ -34,6 +30,14 @@ const initial = {
 
 
 class UsersList extends Component {
+
+    // stati utente secondo doc mitrol
+    USER_STATUS = {
+        ACTIVE : 1,
+        LOCKED: 2,
+        DISABLED: 4
+    }
+
     _deleteID = 0;              // l'id da passare alla funzione onDeleteUser()
     _groupsList = null;         // lista dei gruppi/ruoli
     _usersList = null;          // lista degli utenti
@@ -155,13 +159,14 @@ class UsersList extends Component {
     // dettaglio di un utente...attivazione e disattivazione dei bottoni (modifica e elimina)
     onActiveUser = (event) => {
         const data = event.data;
-        if (data.userStatus == 1) {
-            data.userStatus = 2;
 
-        } else if (data.userStatus == 1) {
-            data.userStatus = 1;
+        if (data.userStatus == this.USER_STATUS.ACTIVE) {
+            data.userStatus = this.USER_STATUS.LOCKED;
+
+        } else if (data.userStatus == this.USER_STATUS.LOCKED) {
+            data.userStatus = this.USER_STATUS.ACTIVE;
         } else {
-            data.userStatus = 1;
+            // lasciamo come è....
         }
 
         this._data2save.Id = data.id;

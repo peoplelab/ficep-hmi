@@ -176,18 +176,18 @@ export const usersLogout = async ({ headers }) => {
 //  // return base({ url: `/api/v1/users/user`, request });
 //};
 
-export const usersPassword = async ({ headers, request: data }) => {
-  const request = {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
+//export const usersPassword = async ({ headers, request: data }) => {
+//  const request = {
+//    method: "put",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//    body: JSON.stringify(data),
+//  };
 
-  return base({ url: `/api/v1/users/changepassword`, request });
-};
+//  return base({ url: `/api/v1/users/changepassword`, request });
+//};
 
 
 // export const usersSeed = async ({ headers, request: data }) => {
@@ -203,40 +203,40 @@ export const usersPassword = async ({ headers, request: data }) => {
 //   return base(`/api/v1/users/upload`, request);
 // };
 
-export const usersAddToGroup = async ({ headers, params, request: data }) => {
-  const request = {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
+//export const usersAddToGroup = async ({ headers, params, request: data }) => {
+//  const request = {
+//    method: "put",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//    body: JSON.stringify(data),
+//  };
 
-  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
-};
+//  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
+//};
 
-export const usersDeleteFromGroup = async ({ headers, params, request: data }) => {
-  const request = {
-    method: "delete",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(data),
-  };
+//export const usersDeleteFromGroup = async ({ headers, params, request: data }) => {
+//  const request = {
+//    method: "delete",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//    body: JSON.stringify(data),
+//  };
 
-  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
-};
+//  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
+//};
 
-export const usersExport = async ({ headers }) => {
-  const request = {
-    method: "get",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  };
+//export const usersExport = async ({ headers }) => {
+//  const request = {
+//    method: "get",
+//    headers: {
+//      "Content-Type": "application/json",
+//      ...headers,
+//    },
+//  };
 
-  return base({ url: `/api/v1/odata/users/export`, request });
-};
+//  return base({ url: `/api/v1/odata/users/export`, request });
+//};

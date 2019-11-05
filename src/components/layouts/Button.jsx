@@ -11,35 +11,31 @@ import PropTypes from 'prop-types';
 
 
 const Button = (props) => {
-  const {
-    children,
-    className,
-    ...rest
-  } = props;
+	const {
+	children,
+	className,
+	...rest
+	} = props;
 
-  //const mergedClass = `button ${className}`;
-  const mergedClass = `${className}`;
+	//const mergedClass = `button ${className}`;
+	const mergedClass = `${className}`;
 
-  return (
-    <button
-      className={mergedClass}
-      type="button"
-      {...rest}
-    >
-      {children}
-    </button>
-  );
+	return (
+	<button className={mergedClass} type="button" {...rest} >
+		{children}
+	</button>
+	);
 };
 
 
 Button.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+	children : PropTypes.node,
+	className: PropTypes.string,
 };
 
 Button.defaultProps = {
-  children: null,
-  className: '',
+	children : null,
+	className: '',
 };
 
 

@@ -128,25 +128,29 @@ class EditItem extends Component {
 		const selectedGroup = (this.state.currentValues.Groups == null) ? "-1" : this.state.currentValues.Groups[0].id;
 		const disableSelect = ((this.state.currentValues.Id === 0) ? "" : "disabled");
 
-		const classFirstName = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
-		const classLastName  = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
-		const classGroups    = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
+		const classFirstName = "field users-modal__field ";		// + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
+		const classLastName  = "field users-modal__field ";		// + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
+		const classGroups    = "field users-modal__field ";		// + (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
+
+		const errFirstName = (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY')     ? "hasError" : "");
+		const errLastName  = (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY')      ? "hasError" : "");
+		const errGroups    = (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "hasError" : "");
 
 		return (
 			<>
 				{/* Campo Cognome */}
 				<div className={classFirstName}>
-					<TextInput className="input-large" name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} />
+					<TextInput className={`input-large ${errFirstName}`} name="firstName" placeholder={this._labels.firstName} value={firstName} onChange={this.handleInputChange} />
 				</div>
 				
 				{/* Campo Nome */}
 				<div className={classLastName}>
-					<TextInput className="input-large" name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
+					<TextInput className={`input-large ${errLastName}`} name="lastName" placeholder={this._labels.lastName} value={lastName} onChange={this.handleInputChange} />
 				</div>
 				
 				{/* Campo Ruolo */}
 				<div className={classGroups}>
-					<Select className={`select-large ${disableSelect}`} name="group" value={selectedGroup} onChange={this.handleInputChange} disabled={disableSelect}>
+					<Select className={`select-large ${disableSelect} ${errGroups}`} name="group" value={selectedGroup} onChange={this.handleInputChange} disabled={disableSelect}>
 						{this._groups}
 					</Select>
 				</div>

@@ -21,8 +21,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonData } from '../../layouts/index.layouts';
-import { SetStore } from '../../forms-context/index.form';
-import { callUsersDetails, callUsersDelete } from '../../../controllers/routes/users/users.controller';
+//import { SetStore } from '../../forms-context/index.form';
+//import { callUsersDetails, callUsersDelete } from '../../../controllers/routes/users/users.controller';
 
 //import '../../../styles/modal/UsersList.style.scss';
 

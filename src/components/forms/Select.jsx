@@ -57,29 +57,29 @@ class Select extends PureComponent {
 
 const shapeOptions = {
 	message: PropTypes.oneOfType([
-	PropTypes.string,
-	PropTypes.number,
+		PropTypes.string,
+		PropTypes.number,
 	]).isRequired,
 	value: PropTypes.oneOfType([
-	PropTypes.string,
-	PropTypes.number,
+		PropTypes.string,
+		PropTypes.number,
 	]).isRequired,
 };
 
 
 Select.propTypes = {
-	children: PropTypes.oneOfType([
-	PropTypes.arrayOf(PropTypes.element),
-	PropTypes.element,
+	children : PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.element),
+		PropTypes.element,
 	]),
-	name: PropTypes.string.isRequired,
-	options: PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
+	name     : PropTypes.string.isRequired,
+	options  : PropTypes.arrayOf(PropTypes.shape(shapeOptions)),
 	className: PropTypes.string,
 };
 
 Select.defaultProps = {
-	children: null,
-	options: [],
+	children : null,
+	options  : [],
 	className: '',
 };
 

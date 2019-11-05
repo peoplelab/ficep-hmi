@@ -20,19 +20,13 @@ const TextInput = (props) => {
 	const mergedClass = `input-text ${className}`;
 
 	return (
-	<input
-		id={name}
-		{...rest}
-		className={mergedClass}
-		type="text"
-		name={name}
-	/>
+		<input id={name} className={mergedClass} type="text" name={name} {...rest} />
 	);
 };
 
 
 TextInput.propTypes = {
-	name: PropTypes.string.isRequired,
+	name     : PropTypes.string.isRequired,
 	className: PropTypes.string,
 };
 

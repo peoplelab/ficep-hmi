@@ -1,0 +1,12 @@
+DOCUMENTAZIONE schema json
+=============================
+
+
+
+function JsonValidate(schema, body) {
+    var ajv = new Ajv();
+    var validate = ajv.compile(schema);
+    var valid = validate(body);
+    var result = "";
+    if (valid) return result;
+    else return result = ajv.errorsText(validate.errors);

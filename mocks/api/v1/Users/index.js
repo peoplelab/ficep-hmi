@@ -1,7 +1,7 @@
 // Mock handler for Update User.
 
 
-const { base } = require('../../../mock.base');
+const { base, jsonValidate } = require('../../../mock.base');
 //const updateUserPUT = require('./updateUser.PUT.json');
 const jsonLIST = require('../odata/users/response.json');
 const responseJSONPUT_KO = require('./responsePUT_KO.json');
@@ -10,34 +10,53 @@ const responseJSONPOST_KO = require('./responsePOST_KO.json');
 const responseJSONPOST_OK = require('./responsePOST_OK.json');
 const responseJSONDELETE_KO = require('./responseDELETE_KO.json');
 const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
+const Ajv = require('ajv');
 
+var schema = {
 
+    "properties": {
+        "FirstName": { "type": "string" },
+        "LastName": { "type": "string" },
+        "Groups": { "type": "array" }
+    },
+    "additionalProperties": false,
+    "required": ["FirstName", "LastName", "Groups"]
+};
+//funzione di validazione del file json
+//function jsonValidate(schema, body) {
+//    var ajv = new Ajv();
+//    var validate = ajv.compile(schema);
+//    var valid = validate(body);
+//    var result = "";
+//    if (valid) return result;
+//    else return result = ajv.errorsText(validate.errors);
+//}
 module.exports = {
-  GET: base(
-      (req, res) => get_response(req, res)
+    GET: base(
+        (req, res) => get_response(req, res)
     ),
 
-  //PUT: base(
-  //  (req, res) => {
-  //    const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
+    //PUT: base(
+    //  (req, res) => {
+    //    const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
 
-  //    if (
-  //      typeof id === 'undefined'
-  //      || typeof firstName === 'undefined'
-  //      || typeof lastName === 'undefined'
-  //      || typeof isActive === 'undefined'
-  //      || typeof canBeDeleted === 'undefined'
-  //    ) {
-  //      return updateUserPUT["999"];
-  //    }
+    //    if (
+    //      typeof id === 'undefined'
+    //      || typeof firstName === 'undefined'
+    //      || typeof lastName === 'undefined'
+    //      || typeof isActive === 'undefined'
+    //      || typeof canBeDeleted === 'undefined'
+    //    ) {
+    //      return updateUserPUT["999"];
+    //    }
 
-  //    if (id === 0 || id > 7) {
-  //      return updateUserPUT["7"];
-  //    } else {
-  //      return updateUserPUT[id.toString()];
-  //    }
-  //  }
-  //),
+    //    if (id === 0 || id > 7) {
+    //      return updateUserPUT["7"];
+    //    } else {
+    //      return updateUserPUT[id.toString()];
+    //    }
+    //  }
+    //),
     PUT: base(
         (req, res) => {
             if (req.body.id === 2) {
@@ -49,10 +68,19 @@ module.exports = {
 
     POST: base(
         (req, res) => {
-            if (req.body.firstName === "pippo") {
-                return responseJSONPOST_KO;
+            const jsonValidation = jsonValidate(schema, req.body);
+            if (jsonValidation.length > 0) {
+                return {
+                    "ResponseType": 430,
+                    "ErrorCode": "JSON_VALIDATION_ERROR",
+                    "Result": [jsonValidation]
+                };
+            } else {
+                if (req.body.firstName === "pippo") {
+                    return responseJSONPOST_KO;
+                }
+                return responseJSONPOST_OK;
             }
-            return responseJSONPOST_OK;
         }
     ),
 
@@ -63,9 +91,10 @@ module.exports = {
             }
             return responseJSONDELETE_OK;
         }
-    )
-};
+    ),
 
+
+};
 
 const get_response = (req, res) => {
 

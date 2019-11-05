@@ -1,3 +1,4 @@
+const Ajv = require('ajv');
 const moment = require('moment');
 
 
@@ -50,7 +51,16 @@ const base = callback => (req, res) => {
   res.status(status).json(response);
 };
 
+function jsonValidate(schema, body) {
+    var ajv = new Ajv();
+    var validate = ajv.compile(schema);
+    var valid = validate(body);
+    var result = "";
+    if (valid) return result;
+    else return result = ajv.errorsText(validate.errors);
+}
 
 module.exports = {
-  base,
+    base,
+    jsonValidate
 };

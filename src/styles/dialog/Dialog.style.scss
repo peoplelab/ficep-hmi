@@ -4,17 +4,17 @@
 @import '../common/flex.scss';
 @import '../common/text.scss';
 
-/** @define warning-modal */
+/** @define dialog */
 
 
-.warning-modal {
-  .warning-modal__container {
+.dialog {
+  .dialog__container {
     @extend %flex-column;
 
     height: 100%;
     width: 100%;
 
-    .warning-modal__content {
+    .dialog__content {
       overflow: hidden;
       padding: 1rem;
       width: 100%;
@@ -23,7 +23,7 @@
         border-bottom: 0.0625rem solid $border-dark-grey;
       }
 
-      .warning-modal__title {
+      .dialog__title {
         font-weight: 600;
 
         // stylelint-disable-next-line plugin/selector-bem-pattern
@@ -34,38 +34,46 @@
         }
       }
 
-      .warning-modal__text {
+      .dialog__text {
         color: $text-dark-grey;
 
-        &.warning-modal__text--message {
+        &.dialog__text--message {
           @extend %paragraph-1-medium;
           margin: 0 0 1rem;
         }
-        &.warning-modal__text--main {
+        &.dialog__text--main {
           @extend %subtitle-regular;
 
         }
-        &.warning-modal__text--details {
-          @extend .warning-modal__text--message;
+        &.dialog__text--details {
+          @extend .dialog__text--message;
         }
-        &.warning-modal__text--description {
+        &.dialog__text--description {
           @extend %info-2-light;
         }
       }
 
-      .warning-modal__list {
+      .dialog__list {
         flex: 1;
         overflow: auto;
         padding: 0.5rem;
         width: 100%;
 
-        .warning-modal__item {
-          @extend .warning-modal__text;
-          @extend .warning-modal__text--description;
+        .dialog__item {
+          @extend .dialog__text;
+          @extend .dialog__text--description;
 
           margin: 0.5rem 0 0 1rem;
         }
       }
+
+      .dialog__message {
+        @extend %subtitle-regular;
+        flex: 1;
+        overflow: auto;
+        padding: 0.5rem;
+        width: 100%;
+    }
     }
   }
 }

@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/dialog/ConfirmModal.style.scss';
+import '../../styles/dialog/Dialog.style.scss';
 
 
 function mapLabels(){
@@ -29,7 +29,7 @@ function ConfirmModal(props) {
   return (
     <Modal
       open
-      className="modal--alert modal--medium warning-modal"
+      className="modal--alert modal--medium dialog"
       messages={({ title: mapLabels().title, no: mapLabels().no, yes: mapLabels().yes })}
       redirect={false}
       header="full"
@@ -37,9 +37,9 @@ function ConfirmModal(props) {
       onClose={onClose}
       onConfirm={onConfirm}
     >
-      <div className="warning-modal__container">
-        <div className="warning-modal__content">
-          <h1 className="warning-modal__title modal__title--main-title">
+      <div className="dialog__container">
+        <div className="dialog__content">
+          <h1 className="dialog__title modal__title--main-title">
             {mapLabels().message}
           </h1>
         </div>

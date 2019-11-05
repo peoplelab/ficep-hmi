@@ -12,7 +12,7 @@ import { Modal } from '../layouts/index.layouts';
 
 import intlDefault from '../../../public/translations/login/default.json';
 
-import '../../styles/dialog/ErrorModal.style.scss';
+import '../../styles/dialog/Dialog.style.scss';
 
 
 function mapLabels(){
@@ -46,32 +46,32 @@ function ErrorModal(props) {
   return (
     <Modal
       open
-      className="modal--alert modal--medium error-modal"
+      className="modal--alert modal--medium dialog"
       messages={({ title: mapLabels().title, close: mapLabels().close })}
       redirect={false}
       header="full"
       footer="alert"
       onClose={onClose}
     >
-      <div className="error-modal__container">
-        <div className="error-modal__content">
-          <h1 className="error-modal__title modal__title--main-title">
+      <div className="dialog__container">
+        <div className="dialog__content">
+          <h1 className="dialog__title modal__title--main-title">
             {mapLabels().message}
           </h1>
         </div>
-        <div className="error-modal__content">
-          <p className="error-modal__text error-modal__text--message">
+        <div className="dialog__content">
+          <p className="dialog__text dialog__text--message">
             {mapLabels().code}
           </p>
-          <p className="error-modal__text error-modal__text--main">
+          <p className="dialog__text dialog__text--main">
             {genericError}
           </p>
         </div>
-        <div className="error-modal__content">
-          <p className="error-modal__text error-modal__text--details">
+        <div className="dialog__content">
+          <p className="dialog__text dialog__text--details">
             {mapLabels().details}
           </p>
-          <ul className="error-modal__list">
+          <ul className="dialog__list">
             {ItemsList}
           </ul>
         </div>

@@ -10,9 +10,7 @@ const responseJSONPOST_KO = require('./responsePOST_KO.json');
 const responseJSONPOST_OK = require('./responsePOST_OK.json');
 const responseJSONDELETE_KO = require('./responseDELETE_KO.json');
 const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
-const Ajv = require('ajv');
-
-var schema = {
+var schemaPOST = {
 
     "properties": {
         "FirstName": { "type": "string" },
@@ -22,15 +20,7 @@ var schema = {
     "additionalProperties": false,
     "required": ["FirstName", "LastName", "Groups"]
 };
-//funzione di validazione del file json
-//function jsonValidate(schema, body) {
-//    var ajv = new Ajv();
-//    var validate = ajv.compile(schema);
-//    var valid = validate(body);
-//    var result = "";
-//    if (valid) return result;
-//    else return result = ajv.errorsText(validate.errors);
-//}
+
 module.exports = {
     GET: base(
         (req, res) => get_response(req, res)
@@ -68,20 +58,12 @@ module.exports = {
 
     POST: base(
         (req, res) => {
-            const jsonValidation = jsonValidate(schema, req.body);
-            if (jsonValidation.length > 0) {
-                return {
-                    "ResponseType": 430,
-                    "ErrorCode": "JSON_VALIDATION_ERROR",
-                    "Result": [jsonValidation]
-                };
-            } else {
-                if (req.body.firstName === "pippo") {
-                    return responseJSONPOST_KO;
-                }
-                return responseJSONPOST_OK;
+
+            if (req.body.firstName === "pippo") {
+                return responseJSONPOST_KO;
             }
-        }
+            return responseJSONPOST_OK;
+        }, schemaPOST
     ),
 
     DELETE: base(

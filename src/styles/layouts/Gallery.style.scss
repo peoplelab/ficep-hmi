@@ -1,16 +1,21 @@
 /** @define gallery */
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
+
+
+$localColorBackInv:   getColor('black', 0);
+
 
 .gallery {
-  @extend %flex-row-center;
-
+  align-items: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
 
   .gallery__box-arrow {
-    @extend %flex-row-center;
-
+    align-items: center;
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 3rem;
 
@@ -23,7 +28,7 @@
     // }
 
     .gallery__button {
-      background-color: $bg-white;
+      background-color: $localColorBackInv;
       cursor: pointer;
       flex: none;
       height: 3rem;

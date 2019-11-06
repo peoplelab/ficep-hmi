@@ -9,10 +9,6 @@ import { Users as mUsers } from '../../../models/api/users.model';
 import { base } from '../../common/controller.base';
 import { LoggedUser as cLoggedUser } from '../../session/loggeduser.controller';
 
-//import history from '../../../models/history/history';
-//import store from '../../../store/redux.store';
-//import { ModalHandler } from '../../common/modal.handler';
-
 
 
 // Interface
@@ -22,6 +18,7 @@ export const User = {
     Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },                // Cancellazione Utente
     Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },                     // Salvataggio Utente
     ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
+    ResetPassword: (data, onSuccess, onFailed) => { return callUserResetPassword(data, onSuccess, onFailed); },   // reset password
 };
 
 
@@ -179,6 +176,21 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
     });
 };
 
+const callUserResetPassword = async ({ data, onSuccess, onFailed }) => {
+
+    base({
+        api: mUsers.ResetPassword,
+        params: data,
+        success: (response) => {
+            onSuccess(response);
+        },
+        // onFailed non arriverà mai perché é gestito nel base.
+        //failure: () => {
+        //    onFailed(); 
+        //}
+    });
+};
+
 function validate(data) {
     //funzione controlla validità dati.
 
@@ -215,145 +227,3 @@ function validatePassword(data, userId) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------------------------
-
-// chimata per inviare i dati di una nuova utenza
-//export const callUsersAdd = async ({ data, fn }) => {
-//    const request = {
-//        firstName: data.firstName,
-//        lastName: data.lastName,
-//        password: data.password,
-//        groups: [data.group],
-//        CanDeleted: true,
-//    };
-
-//    base({
-//        request,
-//        api: usersAdd,
-//        success: ({ dataprocessed }) => {
-//            if (dataprocessed.responseType === 200) {
-//                history.push(`${history.location.pathname}/info`);
-//                fn();
-//            }
-//        },
-//    });
-//};
-
-// chimata per aggiornare i dati di una utenza
-//export const callEditUser = async ({ data, fn }) => {
-//    const request = {
-//        id: data.idUser,
-//        firstName: data.firstName,
-//        lastName: data.lastName,
-//        //  isActive: true,
-//        //  canBeDeleted: true
-//        userStatus: data.userStatus
-//    };
-
-//    base({
-//        request,
-//        api: usersEdit,
-//        success: ({ dataprocessed }) => {
-//            if (dataprocessed.responseType === 200) {
-//                history.push(`${history.location.pathname}/info`);
-//                fn();
-//            }
-//        },
-//    });
-//};
-
-// chimata per aggiornare la password di una utenza
-//export const callUsersPassword = async ({ data, fn }) => {
-//    const { userId } = store.getState().session;
-
-//    const request = {
-//        userId,
-//        oldPassword: data.oldPassword,
-//        newPassword: data.newPassword,
-//        confirmedPassword: data.confirmPassword
-//    };
-
-//    base({
-//        request,
-//        api: usersPassword,
-//        success: ({ dataprocessed }) => {
-//            if (dataprocessed.result) {
-//                ModalHandler.Session();
-//            }
-//        },
-//    });
-//};
-
-//// chimata per esportare i dettagli dell'utente corrente
-//export const callUsersExport = async ({ dispatch }) => {
-//    base({
-//        api: usersExport,
-//        success: ({ dataprocessed }) => {
-//            dispatch({ export: dataprocessed.result });
-//        },
-//        failure: () => {
-//            dispatch({ export: {} });
-//        }
-//    });
-//};
-
-//// chimata per aggiungere un utente ad un gruppo
-//export const callUsersAddToGroup = async ({ data, dispatch, fn }) => {
-//    const params = {
-//        id: data.idUser,
-//        groupId: data.idGroup,
-//    };
-
-//    base({
-//        params,
-//        api: usersAddToGroup,
-//        success: ({ dataprocessed }) => {
-//            dispatch({ response: dataprocessed.result });
-//            if (dataprocessed.result && typeof fn === 'function') {
-//                fn();
-//            }
-//        },
-//        failure: () => {
-//            dispatch({ response: null });
-//        }
-//    });
-//};
-
-//// chimata per rimuovere un utente da un gruppo
-//export const callUsersDeleteFromGroup = async ({ data, dispatch, fn }) => {
-//    const params = {
-//        id: data.idUser,
-//        groupId: data.idGroup,
-//    };
-
-//    base({
-//        params,
-//        api: usersDeleteFromGroup,
-//        success: ({ dataprocessed }) => {
-//            dispatch({ response: dataprocessed.result });
-//            if (dataprocessed.result && typeof fn === 'function') {
-//                fn();
-//            }
-//        },
-//        failure: () => {
-//            dispatch({ response: null });
-//        }
-//    });
-//};

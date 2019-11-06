@@ -10,7 +10,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/dialog/InfoModal.style.scss';
+import '../../styles/dialog/Dialog.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua
@@ -24,7 +24,7 @@ const mapLabels = () => ({ // etichette in lingua
 function mapDataList(messagelist, index) {
 
     return (
-        <p className="info-modal__message" key={'info-' + index}>
+        <p className="dialog__message" key={'info-' + index}>
             {messagelist}
         </p>
 
@@ -37,16 +37,16 @@ const InfoModal = (props) => {
     return (
         <Modal
             open
-            className="modal--alert modal--medium info-modal"
+            className="modal--alert modal--medium dialog"
             messages={({ title: mapLabels().title, close: mapLabels().close })}
             redirect={false}
             header="full"
             footer="alert"
             onClose={onClose}
         >
-            <div className="info-modal__container">
-                <div className="info-modal__content">
-                    <p className="info-modal__message">
+            <div className="dialog__container rows full-size">
+                <div className="dialog__content full-width">
+                    <p className="dialog__message">
                         {mapLabels().subtitle}
                     </p>
 

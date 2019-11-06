@@ -45,16 +45,16 @@ class Header extends PureComponent {
     const { openModal } = this.state;
 
     return (
-      <header className="logged__header">
+      <header className="logged__header columns flex-top full-width">
         <div className="logged__header-box logged__header-box--left">HEADER</div>
-        <div className="logged__header-box logged__header-box--right">
+        <div className="logged__header-box logged__header-box--right columns flex-between">
           <OuterClick className="logged__header-outerhandler" onOuterClick={this.onOuterClick}>
             <Button className="logged__header-button" onClick={this.onClick}>
-              <Card className="logged__header-card" username={username} role={role} culture={culture} intl={this.intlCard} />
+              <Card className="card--small columns flex-between fill" username={username} role={role} culture={culture} intl={this.intlCard} />
             </Button>
             <UserModal visible={openModal} onClick={this.onClick}/>
           </OuterClick>
-          <Clock className="logged__header-clock" />
+          <Clock className="logged__header-clock fill text-cc" />
         </div>
       </header>
     );

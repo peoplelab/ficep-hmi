@@ -41,7 +41,7 @@ const Card = (props) => {
     intl,
   } = props;
 
-  const mergedClass = `card ${className}`;
+  const mergedClass = `card full-size ${className}`;
 
   const lastAccess = issuedAt && getTime(issuedAt);
 
@@ -55,7 +55,7 @@ const Card = (props) => {
   ) && (
     <div className={mergedClass}>
       <div className="card__box">
-        <div className="card__picture">
+        <div className="card__picture text-cc">
           <img className="card__picture-icon" src={toIcon[role]} alt={role} />
         </div>
       </div>

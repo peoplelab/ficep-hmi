@@ -20,7 +20,7 @@ const Link = (props) => {
     ...rest
   } = props;
 
-  const mergedClass = `link ${className}`;
+  const mergedClass = `link columns flex-between btn btn-transparent ${className}`;
 
   return (
     <Button className={mergedClass} {...rest} >

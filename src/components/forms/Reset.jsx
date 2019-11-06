@@ -33,7 +33,7 @@ class Reset extends PureComponent {
       ...rest
     } = this.props;
 
-    const mergedClass = `input input__reset ${className}`;
+    const mergedClass = `btn ${className}`;
 
     return (
       <button

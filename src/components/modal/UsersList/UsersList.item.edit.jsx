@@ -128,9 +128,9 @@ class EditItem extends Component {
         const selectedGroup = (this.state.currentValues.Groups == null) ? "-1" : this.state.currentValues.Groups[0].id;
         const disableSelect = ((this.state.currentValues.Id === 0) ? "" : "disabled");
 
-        const classFirstName = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
-        const classLastName = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
-        const classGroups = "field users-modal__field " + (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
+        const classFirstName = "field users-modal__field columns flex-center " + (errorCase.includes('USER_MANAGEMENT_FIRSTNAME_EMPTY') ? "field--error" : "");
+        const classLastName = "field users-modal__field columns flex-center " + (errorCase.includes('USER_MANAGEMENT_LASTNAME_EMPTY') ? "field--error" : "");
+        const classGroups = "field users-modal__field columns flex-center " + (errorCase.includes('USER_MANAGEMENT_GROUPS_NOTSPECIFIED') ? "field--error" : "");
 
         return (
             <>
@@ -152,12 +152,12 @@ class EditItem extends Component {
                 </div>
 
                 {/* Pulsante Annulla */}
-                <div className="field users-modal__field users-modal__field--small">
+                <div className="field users-modal__field users-modal__field--small columns flex-center">
                     <button className="btn btn-light btn-large" name="btnReset" onClick={this.btnReset_click}>
                         {this._labels.reset}
                     </button>
                 </div>
-                <div className="field users-modal__field users-modal__field--small">
+                <div className="field users-modal__field users-modal__field--small columns flex-center">
                     <button className="btn btn-dark btn-large" name="btnSave" onClick={this.btnSave_click}>
                         {this._labels.save}
                     </button>
@@ -169,7 +169,7 @@ class EditItem extends Component {
 
 
 
-// 
+//
 // ** Define component properties types **
 //
 EditItem.propTypes = {

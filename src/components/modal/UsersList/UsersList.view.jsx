@@ -166,7 +166,7 @@ class UsersList extends Component {
         } else if (data.userStatus == this.USER_STATUS.LOCKED) {
             data.userStatus = this.USER_STATUS.ACTIVE;
         } else {
-            // lasciamo come è....
+            // lasciamo come ï¿½....
         }
 
         this._data2save.Id = data.id;
@@ -195,7 +195,7 @@ class UsersList extends Component {
         this._data2save.FirstName = data.FirstName;
         this._data2save.LastName = data.LastName;
         this._data2save.UserStatus = data.UserStatus || "";
-        this._data2save.Groups = data.Groups; 
+        this._data2save.Groups = data.Groups;
 
         cUser.Save({
             data:
@@ -234,12 +234,12 @@ class UsersList extends Component {
 
         return (
             <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
-                <Form className="users-modal__form" initial={initial}>
-                    <div className="users-modal__container">
-                        <div className="users-modal__content">
+                <Form className="users-modal__form full-size" initial={initial}>
+                    <div className="users-modal__container rows full-size">
+                        <div className="users-modal__content columns">
                             <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
                         </div>
-                        <div className="users-modal__content">
+                        <div className="users-modal__content columns">
                             <Table className="users-modal__table" headers={this._labels.headers} settings={this._colsParams} data={users} >
                                 {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.openModalDelete} onEdit={this.onEditUser} />}
                             </Table>

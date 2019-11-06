@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../layouts/index.layouts';
 
-import '../../styles/dialog/SucessModal.style.scss';
+import '../../styles/dialog/Dialog.style.scss';
 
 
 const mapLabels = () => ({ // etichette in lingua
@@ -39,16 +39,16 @@ class SucessModal extends PureComponent {
         return (
           <Modal
             open
-            className="modal--alert modal--medium success-modal"
+            className="modal--alert modal--medium dialog"
             messages={({ title: mapLabels().title, close: mapLabels().close })}
             redirect={false}
             header="full"
             footer="alert"
             onClose={this.onClose}
           >
-            <div className="success-modal__container">
-              <div className="success-modal__content">
-                <p className="success-modal__message">
+            <div className="dialog__container rows full-size">
+              <div className="dialog__content full-width">
+                <p className="dialog__message">
                   {mapLabels().message}
                 </p>
               </div>

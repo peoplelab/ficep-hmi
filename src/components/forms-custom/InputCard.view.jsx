@@ -39,7 +39,7 @@ const InputCard = (props) => {
 
   return (
     <div className={mergedClass}>
-      <Card {...data} intl={intl} className="card--input columns flex-between flex-wrap" />
+      <Card {...data} intl={intl} className="card--input columns flex-between flex-wrap fill full-height" />
       <Reset className="input-card__reset input__reset--simple btn btn-tansparent btn-icon" initial={initial} name={name}>
         <img className="input-card__reset-icon full-width" src={resetIcon} alt="reset" />
       </Reset>

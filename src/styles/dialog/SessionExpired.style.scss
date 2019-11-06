@@ -6,8 +6,6 @@
 .session-modal {
   .session-modal__container {
     .session-modal__content {
-      @extend %flex-column-center;
-
       .session-modal__message {
         margin: 1rem;
         word-wrap: normal;

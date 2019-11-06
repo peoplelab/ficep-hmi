@@ -31,7 +31,7 @@ const Tools = ({ match }) => (
       </div>
     </Route>
     <Route path={match.path}>
-      <div className="bg-tools-macchina tools">
+      <div className="bg-tools-macchina tools columns flex-top">
         <Anchor className="tools__anchor text-cc" exact path={match.path}>
           {window.intl.tools_tab_machine}
         </Anchor>

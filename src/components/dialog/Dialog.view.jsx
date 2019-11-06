@@ -42,7 +42,7 @@ const Dialog = (props) => {
 
   return ReactDOM.createPortal(
     Component && <Component {...data} onClose={ModalHandler.Close} />
-  , document.getElementById('modal'));
+  , document.getElementById('dialog'));
 };
 
 

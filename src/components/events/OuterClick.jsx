@@ -17,25 +17,39 @@ class OuterClick extends Component {
     // Inizializzazione dell'oggetto puntatore all'elemento HTML target
     this.childRef = React.createRef();
 
-    this.onOuterClick = this.onOuterClick.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+
+    this._isOuterClick = false;
   }
 
   // Avvia l'ascolto
   componentDidMount() {
-    document.addEventListener('mousedown', this.onOuterClick);
+    document.addEventListener('mousedown', this.onMouseDown);
+    document.addEventListener('mouseup', this.onMouseUp);
   }
 
   // Ferma l'ascolto
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.onOuterClick);
+    document.removeEventListener('mousedown', this.onMouseDown);
+    document.removeEventListener('mouseup', this.onMouseUp);
+  }
+
+  // Verifica se il click è esterno all'elemento HTML indicato
+  onMouseDown(event) {
+    if (this.childRef.current && !this.childRef.current.contains(event.target)) {
+      this._isOuterClick = true;
+    }
   }
 
   // Esegue la funzione indicata solo se il click è esterno all'elemento HTML indicato
-  onOuterClick(event) {
-    if (this.childRef.current && !this.childRef.current.contains(event.target)) {
+  onMouseUp(event) {
+    if (this._isOuterClick) {
       this.props.onOuterClick(event);
+      this._isOuterClick = false;
     }
   }
+
 
   // render dell'handler
   render() {

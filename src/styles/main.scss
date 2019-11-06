@@ -1,4 +1,7 @@
-	// Application Common style
+// stylelint-disable plugin/selector-bem-pattern
+
+
+// Application Common style
 
 	// FILE OBSOLETI (da rimuovere una volta messi a posto gli altri)
 //	@import './common/spacing.scss';
@@ -16,8 +19,6 @@
 	@import './common/controls.scss';
 	@import './common/layout.scss';
 
-
-	// stylelint-disable-next-line plugin/selector-bem-pattern	// ???
 
 	// ANDRA' TUTTO SEGATO....
 	* {

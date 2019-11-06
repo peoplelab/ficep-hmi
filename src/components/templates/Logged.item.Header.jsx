@@ -52,7 +52,7 @@ class Header extends PureComponent {
             <Button className="logged__header-button" onClick={this.onClick}>
               <Card className="card--small columns flex-between fill" username={username} role={role} culture={culture} intl={this.intlCard} />
             </Button>
-            <UserModal visible={openModal} onClick={this.onClick}/>
+            <UserModal open={openModal} onClose={this.onClick}/>
           </OuterClick>
           <Clock className="logged__header-clock fill text-cc" />
         </div>

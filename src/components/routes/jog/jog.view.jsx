@@ -19,11 +19,11 @@ const Jog = ({ match }) => (
   <Switch>
     <Route path={`${match.path}/commands`}>
       <div className="bg-commands-comandi jog">
-        <div className="jog__container">
-          <Anchor className="jog__anchor" exact path={match.path}>
+        <div className="jog__container columns flex-top">
+          <Anchor className="jog__anchor text-cc" exact path={match.path}>
             {window.intl.jog_tab_jog}
           </Anchor>
-          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>
+          <Anchor className="jog__anchor text-cc" exact path={`${match.path}/commands`}>
             {window.intl.jog_tab_commands}
           </Anchor>
         </div>
@@ -31,11 +31,11 @@ const Jog = ({ match }) => (
     </Route>
     <Route path={match.path}>
       <div className="bg-commands-jog jog">
-        <div className="jog__container">
-          <Anchor className="jog__anchor" exact path={match.path}>
+        <div className="jog__container columns flex-top">
+          <Anchor className="jog__anchor text-cc" exact path={match.path}>
             {window.intl.jog_tab_jog}
           </Anchor>
-          <Anchor className="jog__anchor" exact path={`${match.path}/commands`}>
+          <Anchor className="jog__anchor text-cc" exact path={`${match.path}/commands`}>
             {window.intl.jog_tab_commands}
           </Anchor>
         </div>

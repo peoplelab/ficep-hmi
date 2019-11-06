@@ -2,24 +2,14 @@
 
 
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
 
 
 /** @define login */
 
 .login {
-  height: 100vh;
-  display: block;
-  width: 100vw;
-
   .login__dialog {
-    left: 50%;
     padding: 4rem;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
   }
 
   .login__form {
@@ -34,10 +24,6 @@
     }
 
     .login__form-box {
-      @extend %flex-row-full;
-
-      justify-content: space-around;
-      width: 100%;
       margin: 0 0 3rem;
       padding: 0 3rem;
 

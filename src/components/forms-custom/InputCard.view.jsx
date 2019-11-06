@@ -33,15 +33,15 @@ const InputCard = (props) => {
     return children;
   }
 
-  const mergedClass = `input-card ${className}`;
+  const mergedClass = `input-card columns flex-between full-width ${className}`;
 
   [data.role] = data.groups;
 
   return (
     <div className={mergedClass}>
-      <Card {...data} intl={intl} className="card--input" />
-      <Reset className="input-card__reset input__reset--simple" initial={initial} name={name}>
-        <img className="input-card__reset-icon" src={resetIcon} alt="reset" />
+      <Card {...data} intl={intl} className="card--input columns flex-between flex-wrap" />
+      <Reset className="input-card__reset input__reset--simple btn btn-tansparent btn-icon" initial={initial} name={name}>
+        <img className="input-card__reset-icon full-width" src={resetIcon} alt="reset" />
       </Reset>
     </div>
   );

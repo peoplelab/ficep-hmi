@@ -1,25 +1,17 @@
 /** @define input-card */
 
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 
 .input-card {
-    @extend %flex-row-full;
-
     background-color: $bg-light-grey;
     border-radius: 0.25rem;
     height: 3.5rem;
-    width: 100%;
 
     .input-card__reset {
-      background-color: transparent;
-      cursor: pointer;
-      flex: none;
       padding: 0 0.5rem;
-      width: 2.5rem;
 
-      .input-card__reset-icon {
-        width: 100%;
-      }
+    //   .input-card__reset-icon {
+    //
+    //   }
     }
   }

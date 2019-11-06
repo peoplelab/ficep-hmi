@@ -67,11 +67,11 @@ function ErrorModal(props) {
             {genericError}
           </p>
         </div>
-        <div className="dialog__content is-1 rows flex-start">
+        <div className="dialog__content fill rows flex-start">
           <p className="dialog__text dialog__text--details">
             {mapLabels().details}
           </p>
-          <div className="dialog__list-container bgBlack_15 is-1 full-width">
+          <div className="dialog__list-container bgBlack_15 fill full-width">
             <ul className="dialog__list full-size">
                 {ItemsList}
             </ul>

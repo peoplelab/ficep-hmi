@@ -116,7 +116,7 @@ class LoginRoute extends Component {
             <SetStore event="onClick" setter={this.externalDispatch}>
                 <ButtonForm className="login__button-card" name="data" value={props}>
                     <Card
-                        className="card--complete"
+                        className="card--complete rows flex-between"
                         intl={intlCard}
                         {...props}
                     />
@@ -130,13 +130,13 @@ class LoginRoute extends Component {
         const { usersList, cultures } = this.state;
 
         return (
-            <section className="login">
-                <Box className="login__dialog">
+            <section className="login full-screen">
+                <Box className="login__dialog absolute-cc full-width">
                     <Form className="login__form" initial={initial}>
                         <p className="login__title">
                             {intl.login_info_title}
                         </p>
-                        <Box className="login__form-box">
+                        <Box className="login__form-box columns flex-around full-width">
                             <Field className="login__field">
                                 <InputCard className="login__text-input" name="data" initial={initial} intl={intlCard}>
                                     <TextInput className="login__text-input" name="username" placeholder={intl.login_form_username} />

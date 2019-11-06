@@ -1,16 +1,11 @@
 /** @define anchor */
 
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
 
 /** @define link */
 
 .link {
-  @extend %flex-row-full;
-
-  background: transparent;
-  cursor: pointer;
   padding-right: 0.6rem;
 
   .link__section{

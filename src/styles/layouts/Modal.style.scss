@@ -2,7 +2,6 @@
 
 @import '../common/costanti.scss';
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
 
 /** @define modal */
@@ -51,9 +50,9 @@ $colorBackInv: getColor('black', 10);
 		}
 	}
 
-    .modal__footer {
+    // .modal__footer {
 
-    }
+    // }
   }
 
 	// stylelint-disable plugin/selector-bem-pattern
@@ -78,9 +77,9 @@ $colorBackInv: getColor('black', 10);
 	}
 	}
 
-	&.modal--data {
+	// &.modal--data {
 
-	}
+	// }
 
 	&.modal--alert {.modal__container {
 	.modal__head {

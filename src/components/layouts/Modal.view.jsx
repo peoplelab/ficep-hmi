@@ -117,7 +117,7 @@ class Modal extends Component {
       case headerEnum.title: {
         return (
           <header className="modal__head columns flex-start full-width">
-            <h1 className="modal__title is-1">
+            <h1 className="modal__title fill">
               {messages.title}
             </h1>
           </header>
@@ -135,7 +135,7 @@ class Modal extends Component {
       case headerEnum.full: {
         return (
           <header className="modal__head columns flex-between full-width">
-            <h1 className="modal__title is-1">
+            <h1 className="modal__title fill">
               {messages.title}
             </h1>
             <Button className="modal__button btn-icon btn-transparent" onClick={this.onClose}>
@@ -163,7 +163,7 @@ class Modal extends Component {
       <div className={mergedClass}>
         <div className="modal__container rows absolute-cc">
           {Header}
-          <section className="modal__section is-1 rows full-width">
+          <section className="modal__section fill rows full-width">
             {children}
           </section>
           {Footer}

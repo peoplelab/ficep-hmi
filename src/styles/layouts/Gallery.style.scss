@@ -1,16 +1,17 @@
 /** @define gallery */
 
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 
 .gallery {
-  @extend %flex-row-center;
-
+  align-items: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
 
   .gallery__box-arrow {
-    @extend %flex-row-center;
-
+    align-items: center;
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 3rem;
 

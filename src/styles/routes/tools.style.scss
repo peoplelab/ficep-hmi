@@ -1,16 +1,12 @@
 // Style own of tools route
 
 @import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
 
 /** @define tools */
 
 .tools {
-  @extend %flex-row-top;
-
   .tools__anchor {
-    @extend %flex-row-center;
     @extend %info-1-semibold;
 
     border: $border-dark-grey solid 0.225rem;

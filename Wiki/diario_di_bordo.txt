@@ -76,3 +76,9 @@ Andrea:
             ...
         </div>
     </section>
+
+
+05/11/2019
+Andrea
+° rivedere la gestione dello stile delle scrollbar per i casi dei componenti generici (es: Table),
+  dove non è possible inserire direttamente la classe css

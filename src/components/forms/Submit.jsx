@@ -33,7 +33,7 @@ class Submit extends PureComponent {
       ...rest
     } = this.props;
 
-    const mergedClass = `input input__submit ${className}`;
+    const mergedClass = `btn ${className}`;
 
     return (
       <button

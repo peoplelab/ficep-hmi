@@ -2,21 +2,19 @@
 
 	// FILE OBSOLETI (da rimuovere una volta messi a posto gli altri)
 //	@import './common/spacing.scss';
-//	@import './common/media.scss';				// Serve? Si può segare?
+//	@import './common/media.scss';				// Serve? Si puï¿½ segare?
 //	@import './font/Saira';
 
 
-	@import './common/icon.scss';				// Al momento serve ancora, ma andrà segato
-	@import './common/background.scss';			// Al momento serve ancora, ma andrà segato
-	@import './common/colors.scss';				// Al momento serve ancora, ma andrà segato
-	@import './common/flex.scss';				// ???
-//	@import './common/text.scss';				// Al momento serve ancora, ma andrà segato (va rifatto completamente)
-	
+	@import './common/icon.scss';				// Al momento serve ancora, ma andrï¿½ segato
+	@import './common/background.scss';			// Al momento serve ancora, ma andrï¿½ segato
+
 
 	// ** Nuovi .scss **
 	@import './common/tipografici.scss';
 	@import './common/strutturali.scss';
 	@import './common/controls.scss';
+	@import './common/layout.scss';
 
 
 	// stylelint-disable-next-line plugin/selector-bem-pattern	// ???

@@ -1,10 +1,17 @@
 /** @define anchor */
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+$localColorTextInv:   getColor('black', 0);
+$localColorBackInv:   getColor('black', 0);
+
 
 .anchor {
-  background-color: $bg-white;
-  color: $text-dark-grey;
+  background-color: $localColorBackInv;
+  color: $localColorTextStd;
   display: block;
   height: 100%;
   position: relative;
@@ -13,7 +20,7 @@
 
   .anchor__icon {
     display: block;
-    background: $bg-dark-grey;
+    background: $localColorBackStd;
     height: 100%;
     left: 50%;
     position: absolute;
@@ -25,11 +32,11 @@
   // stylelint-disable plugin/selector-bem-pattern
   &:hover,
   &.anchor--active {
-    background-color: $bg-dark-grey;
-    color: $text-light-grey;
+    background-color: $localColorBackStd;
+    color: $localColorTextInv;
 
     .anchor__icon {
-      background: $bg-white;
+      background: $localColorBackInv;
     }
   }
 

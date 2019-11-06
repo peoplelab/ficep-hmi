@@ -74,7 +74,7 @@ class HomeRoute extends PureComponent {
         <i className="user-modal__back-icon ic-arrow-link" />
         </Button>
         <Anchor
-          className="user-modal__button anchor"
+          className="user-modal__button anchor text-cc"
           current
           path="/password"
           onClick={this.onClick}
@@ -95,7 +95,7 @@ class HomeRoute extends PureComponent {
               {window.intl.user_info_details}
             </Link>
             <Anchor
-              className="user-modal__button-2 anchor"
+              className="user-modal__button-2 anchor text-cc"
               current
               path="/users"
               onClick={this.onClick}
@@ -103,7 +103,7 @@ class HomeRoute extends PureComponent {
               {window.intl.user_info_management}
             </Anchor>
             <Button
-              className="user-modal__button anchor"
+              className="user-modal__button anchor text-cc"
               onClick={this.onLogout}
             >
             { window.intl.user_action_logout}
@@ -117,7 +117,7 @@ class HomeRoute extends PureComponent {
               {window.intl.user_info_details}
             </Link>
             <Button
-              className="user-modal__button anchor"
+              className="user-modal__button anchor text-cc"
               onClick={this.onLogout}
             >
               {window.intl.user_action_logout}

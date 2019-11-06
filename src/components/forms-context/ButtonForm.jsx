@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, types } from '../../store/form.store';
 
-import '../../styles/forms-context/input.scss';
+// import '\.\./\.\./styles/forms-context/input\.scss';
 
 
 class ButtonForm extends PureComponent {

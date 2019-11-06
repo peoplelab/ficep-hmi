@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext } from '../../store/form.store';
 
-import '../../styles/forms-context/input.scss';
+// import '\.\./\.\./styles/forms-context/input\.scss';
 
 
 class Submit extends PureComponent {
@@ -53,7 +53,7 @@ class Submit extends PureComponent {
     const [state] = this.context;
     const { validity, ...fields } = state;
 
-    const mergedClass = `input input__submit ${className}`;
+    const mergedClass = `btn btn-large btn-dark ${className}`;
 
     const disabled = required.reduce((acc, key) => (
       acc || fields[key] === undefined || fields[key] === null || fields[key] === ''

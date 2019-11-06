@@ -17,7 +17,7 @@ const PasswordInput = (props) => {
     ...rest
   } = props;
 
-  const mergedClass = `input input__password ${className}`;
+  const mergedClass = `input-password ${className}`;
 
   return (
     <input

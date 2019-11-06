@@ -1,32 +1,26 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorBackInv:   getColor('black', 10);
+
 
 /** @define users-modal */
 
 
 .users-modal {
   .users-modal__form {
-    height: 100%;
-    width: 100%;
 
     .users-modal__container {
-      @extend %flex-column;
-
-      background-color: $bg-light-grey;
-      height: 100%;
-      width: 100%;
+      background-color: $localColorBackInv;
 	  padding: 0 32px 8px;
 
       .users-modal__content {
 
         &:first-of-type {
-          @extend %flex-row;
-
           .users-modal__field {
-            @extend %flex-row-center;
 
             flex: 1;
 

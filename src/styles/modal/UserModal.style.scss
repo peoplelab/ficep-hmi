@@ -1,13 +1,20 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorBorderStd: getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+$localColorBackInv:   getColor('black', 10);
+
+$shadow: 0 0.125rem 0.125rem 0 rgba(getColor('black', 100), 0.5);
+
 
 /** @define user-modal */
 
 .user-modal {
-  background-color: $bg-light-grey;
+  background-color: $localColorBackInv;
   box-shadow: $shadow;
   border-radius: 1.7rem;
   height: 31rem;
@@ -18,7 +25,7 @@
   width: 16.5rem;
 
   &::before {
-    background-color: $bg-light-grey;
+    background-color: $localColorBackInv;
     border-radius: 1.5rem;
     content: '';
     height: 1.5rem;
@@ -59,7 +66,7 @@
     transform: rotate(180deg);
 
     .user-modal__back-icon {
-      background-color: $bg-dark-grey;
+      background-color: $localColorBackStd;
       display: block;
       height: 1.3rem;
       width: 1.3rem;
@@ -67,10 +74,9 @@
   }
 
   .user-modal__button {
-    @extend %flex-row-center;
     @extend %paragraph-1-semibold;
 
-    border: $border-dark-grey solid 0.225rem;
+    border: $localColorBorderStd solid 0.225rem;
     border-radius: 0.5rem;
     bottom: 1rem;
     cursor: pointer;

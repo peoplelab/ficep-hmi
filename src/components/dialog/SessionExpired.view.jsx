@@ -44,8 +44,8 @@ class SessionExpired extends PureComponent {
         header="title"
         footer="none"
       >
-        <div className="session-modal__container">
-          <div className="session-modal__content">
+        <div className="session-modal__container rows flex-between full-size">
+          <div className="session-modal__content rows flex-center full-width">
             <p className="session-modal__message">
               {mapLabels().message}
             </p>
@@ -53,8 +53,8 @@ class SessionExpired extends PureComponent {
               {mapLabels().info}
             </p>
           </div>
-          <div className="session-modal__content">
-            <Button className="session-modal__button anchor" onClick={this.onClick}>
+          <div className="session-modal__content rows flex-center full-width">
+            <Button className="session-modal__button anchor text-cc" onClick={this.onClick}>
               {mapLabels().logout}
             </Button>
           </div>

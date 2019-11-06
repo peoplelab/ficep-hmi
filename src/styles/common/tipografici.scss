@@ -95,6 +95,10 @@
 		background  : getColor('black', 60);
 	}
 
+    ::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
+        border-color: getColor('black', 10);
+    }
+
 
 
 

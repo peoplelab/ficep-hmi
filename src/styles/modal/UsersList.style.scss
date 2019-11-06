@@ -1,7 +1,11 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorBackInv:   getColor('black', 10);
+
 
 /** @define users-modal */
 
@@ -10,7 +14,7 @@
   .users-modal__form {
 
     .users-modal__container {
-      background-color: $bg-light-grey;
+      background-color: $localColorBackInv;
 	  padding: 0 32px 8px;
 
       .users-modal__content {

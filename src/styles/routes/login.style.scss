@@ -1,8 +1,11 @@
 // Style own of login route
 
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
 
 
 /** @define login */
@@ -18,7 +21,7 @@
     .login__title {
       @extend %title-bold;
 
-      color: $text-dark-grey;
+      color: $localColorTextStd;
       margin: 0 0 1rem;
       padding: 0 3rem;
     }

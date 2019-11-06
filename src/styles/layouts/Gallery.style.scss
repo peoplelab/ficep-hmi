@@ -1,6 +1,10 @@
 /** @define gallery */
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
+
+
+$localColorBackInv:   getColor('black', 0);
+
 
 .gallery {
   align-items: center;
@@ -24,7 +28,7 @@
     // }
 
     .gallery__button {
-      background-color: $bg-white;
+      background-color: $localColorBackInv;
       cursor: pointer;
       flex: none;
       height: 3rem;

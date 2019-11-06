@@ -1,7 +1,11 @@
 // Style own of jog route
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorBorderStd: getColor('black', 60);
+
 
 /** @define jog */
 
@@ -13,7 +17,7 @@
     .jog__anchor {
       @extend %info-1-semibold;
 
-      border: $border-dark-grey solid 0.225rem;
+      border: $localColorBorderStd solid 0.225rem;
       height: 2.9rem;
       position: relative;
       text-transform: uppercase;

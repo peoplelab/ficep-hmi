@@ -1,7 +1,10 @@
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
 
 /** @define session-modal */
+
+$localColorBorderStd: getColor('black', 60);
+
 
 .session-modal {
   .session-modal__container {
@@ -18,7 +21,7 @@
       .session-modal__button {
         @extend %paragraph-1-semibold;
 
-        border: $border-dark-grey solid 0.225rem;
+        border: $localColorBorderStd solid 0.225rem;
         border-radius: 0.5rem;
         cursor: pointer;
         height: 3rem;

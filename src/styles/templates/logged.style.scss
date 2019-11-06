@@ -1,7 +1,20 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBorderStd: getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+$localColorTextInv:   getColor('black', 10);
+$localColorBorderInv: getColor('black', 10);
+$localColorBackInv:   getColor('black', 10);
+$localColorBackWhite:   getColor('black', 0);
+
+$shadow: 0 0.125rem 0.125rem 0 rgba(getColor('black', 100), 0.5);
+$shadow-2: 0.125rem 0.25rem 0.5rem 0 rgba(getColor('black', 100), 0.5);
+
 
 /** @define logged */
 
@@ -16,8 +29,8 @@
     z-index: 2;
 
     .logged__header-box {
-      background-color: $bg-white;
-      border: $border-dark-grey 0.125rem solid;
+      background-color: $localColorBackWhite;
+      border: $localColorBorderStd 0.125rem solid;
       box-shadow: $shadow;
       height: 5.1rem;
       padding: 0.75rem;
@@ -61,7 +74,7 @@
     z-index: 1;
 
     .logged__navbar {
-      background-color: $bg-light-grey;
+      background-color: $localColorBackInv;
       height: 39.5rem;
       padding-top: 0.7rem;
       width: 6rem;
@@ -93,7 +106,7 @@
 
         .logged__reverse-icon {
           display: block;
-          background: $bg-dark-grey;
+          background: $localColorBackStd;
           height: calc(100% - 4rem);
           left: 50%;
           position: absolute;
@@ -134,7 +147,7 @@
     z-index: 3;
 
     .logged__anchor {
-      background-color: $bg-light-grey;
+      background-color: $localColorBackInv;
       box-shadow: $shadow-2;
 
       // stylelint-disable-next-line plugin/selector-bem-pattern
@@ -146,7 +159,7 @@
       // stylelint-disable-next-line plugin/selector-bem-pattern
       &:hover,
       &.anchor--active {
-        background-color: $bg-dark-grey;
+        background-color: $localColorBackStd;
       }
     }
   }

@@ -8,9 +8,8 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import PasswordInput from '../../forms-context/PasswordInput';
-import { Modal, Table } from '../../layouts/index.layouts';
-import { Form } from '../../forms-context/index.form';
+import { Modal } from '../../layouts/index.layouts';
+import { Form, PasswordInput } from '../../forms/index.form';
 import { User as cUser} from '../../../controllers/routes/users/users.controller';
 import { ModalHandler } from '../../../controllers/common/modal.handler';
 import history from '../../../models/history/history';
@@ -23,7 +22,7 @@ const initial = {
   confirmPassword: '',
 };
 
-const required = ['oldPassword', 'newPassword', 'confirmPassword'];
+// const required = ['oldPassword', 'newPassword', 'confirmPassword'];
 
 
 class ChangePassword extends PureComponent {
@@ -110,13 +109,13 @@ class ChangePassword extends PureComponent {
                         <div className="password-modal__container">
                             <div className="password-modal__content">
                                 <div className="password-modal__field">
-                                    <PasswordInput name="oldPassword" placeholder={this._labels.oldPassword} onChange={this.handleInputChange} />
+                                    <PasswordInput className="input-large" name="oldPassword" placeholder={this._labels.oldPassword} onChange={this.handleInputChange} />
                                 </div>
                                 <div className="password-modal__field">
-                                    <PasswordInput name="newPassword" placeholder={this._labels.newPassword} onChange={this.handleInputChange} />
+                                    <PasswordInput className="input-large" name="newPassword" placeholder={this._labels.newPassword} onChange={this.handleInputChange} />
                                 </div>
                                 <div className="password-modal__field">
-                                    <PasswordInput name="confirmPassword" placeholder={this._labels.confirmPassword} onChange={this.handleInputChange} />
+                                    <PasswordInput className="input-large" name="confirmPassword" placeholder={this._labels.confirmPassword} onChange={this.handleInputChange} />
                                 </div>
                             </div>
                             <div className="password-modal__content">

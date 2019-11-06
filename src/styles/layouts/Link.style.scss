@@ -1,9 +1,15 @@
 /** @define anchor */
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
 
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+
+
 /** @define link */
+
 
 .link {
   padding-right: 0.6rem;
@@ -12,7 +18,7 @@
     flex: 1;
 
     .link__icon {
-      background-color: $bg-dark-grey;
+      background-color: $localColorBackStd;
       display: block;
       height: 1.3rem;
       width: 1.3rem;
@@ -21,7 +27,7 @@
     &:first-of-type {
       @extend %link-sembold;
 
-      color: $text-dark-grey;
+      color: $localColorTextStd;
       text-align: left;
     }
 

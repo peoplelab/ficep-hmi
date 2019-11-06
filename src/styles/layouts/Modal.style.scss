@@ -1,25 +1,25 @@
 // Style of private routes template
 
 @import '../common/costanti.scss';
-@import '../common/colors.scss';
 @import '../common/text.scss';
 
 /** @define modal */
 
 // Costanti
-$colorTextStd: getColor('black', 60);
-$colorBackStd: getColor('black', 60);
-$colorTextInv: getColor('black', 10);
-$colorBackInv: getColor('black', 10);
+$localColorTextStd: getColor('black', 60);
+$localColorBackStd: getColor('black', 60);
+$localColorTextInv: getColor('black', 10);
+$localColorBackInv: getColor('black', 10);
+$shadow-2: 0.125rem 0.25rem 0.5rem 0 rgba(getColor('black', 100), 0.5);
 
 
 .modal {
-	background-color: rgba($color: $colorBackStd, $alpha: 0.65);
+	background-color: rgba($color: $localColorBackStd, $alpha: 0.65);
 	z-index: 999;
 
 	.modal__container {
 //	background-color: $bg-light-grey;
-	background-color: $colorBackInv;
+	background-color: $localColorBackInv;
 	box-shadow: $shadow-2;
 	padding: 1rem;
 
@@ -31,12 +31,12 @@ $colorBackInv: getColor('black', 10);
 		.modal__title {
             @extend %title-bold;
 
-            color: $colorTextStd;
+            color: $localColorTextStd;
 		}
 
 		.modal__button {
             .modal__icon {
-                background-color: $colorBackStd;
+                background-color: $localColorBackStd;
             }
 		}
 	}
@@ -58,7 +58,7 @@ $colorBackInv: getColor('black', 10);
 	// stylelint-disable plugin/selector-bem-pattern
 	&.modal--small {
 	.modal__container {
-		height: 30%;
+		height: auto;
 		width: 30%;
 	}
 	}
@@ -83,17 +83,17 @@ $colorBackInv: getColor('black', 10);
 
 	&.modal--alert {.modal__container {
 	.modal__head {
-		background-color: $colorBackStd;
+		background-color: $localColorBackStd;
 
 		.modal__title {
             @extend %title-semibold;
 
-            color: $colorTextInv;
+            color: $localColorTextInv;
 		}
 
 		.modal__button {
             .modal__icon {
-                background-color: $colorBackInv;
+                background-color: $localColorBackInv;
             }
 		}
 	}

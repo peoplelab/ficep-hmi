@@ -1,9 +1,13 @@
 /** @define input-card */
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
+
+
+$localColorBackInv: getColor('black', 10);
+
 
 .input-card {
-    background-color: $bg-light-grey;
+    background-color: $localColorBackInv;
     border-radius: 0.25rem;
     height: 3.5rem;
 

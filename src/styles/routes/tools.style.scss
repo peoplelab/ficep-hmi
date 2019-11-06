@@ -1,7 +1,13 @@
 // Style own of tools route
 
-@import '../common/colors.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBorderStd: getColor('black', 60);
+$localColorBackInv:   getColor('black', 0);
+
 
 /** @define tools */
 
@@ -9,7 +15,7 @@
   .tools__anchor {
     @extend %info-1-semibold;
 
-    border: $border-dark-grey solid 0.225rem;
+    border: $localColorBorderStd solid 0.225rem;
     height: 2.9rem;
     text-transform: uppercase;
     width: 33.2%;
@@ -29,8 +35,8 @@
     border-radius: 0 !important;
 
     &:hover {
-      background-color: $bg-white;
-      color: $text-dark-grey;
+      background-color: $localColorBackInv;
+      color: $localColorTextStd;
     }
   }
 }

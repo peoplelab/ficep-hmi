@@ -6,9 +6,9 @@
 /** @define dialog */
 
 // Costanti
-$colorTextStd: getColor('black', 60);
-$colorBackStd: getColor('black', 60);
-$colorBackInv: getColor('black', 15);
+$localColorTextStd: getColor('black', 60);
+$localColorBackStd: getColor('black', 60);
+$localColorBackInv: getColor('black', 15);
 
 
 .dialog {
@@ -18,7 +18,7 @@ $colorBackInv: getColor('black', 15);
       padding: 1rem;
 
       &:nth-of-type(1) {
-        border-bottom: 0.0625rem solid $colorBackStd;
+        border-bottom: 0.0625rem solid $localColorBackStd;
       }
 
       .dialog__title {
@@ -26,7 +26,7 @@ $colorBackInv: getColor('black', 15);
       }
 
       .dialog__text {
-        color: $colorTextStd;
+        color: $localColorTextStd;
 
         &.dialog__text--message {
           @extend %paragraph-1-medium;

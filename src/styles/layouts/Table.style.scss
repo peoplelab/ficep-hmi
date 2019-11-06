@@ -1,6 +1,10 @@
 @import '../common/costanti.scss';
-@import '../common/colors.scss';
 @import '../common/text.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBorderInv: getColor('black', 10);
+
 
 /** @define table */
 
@@ -23,7 +27,7 @@
     overflow-y: scroll;
 
 		&::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
-			border-color: getColor('black', 10);
+			border-color: $localColorBorderInv;
 		}
   }
 
@@ -36,7 +40,7 @@
       .table__cell {
         @extend %info-1-light;
 
-        color: $text-dark-grey;
+        color: $localColorTextStd;
         padding: 0.5rem;
         text-align: center;
         word-wrap: normal;

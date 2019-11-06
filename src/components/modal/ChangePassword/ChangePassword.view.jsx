@@ -86,12 +86,12 @@ class ChangePassword extends PureComponent {
 
         event.preventDefault();
         let data = this.state.currentValues;
-      
+
         cUser.ChangePassword({
             data,
             onSuccess: (response) => {
                 ModalHandler.Success({ onSuccess: this.closeModal });
-                  
+
             },
             onFailed: (response) => {
                 ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });
@@ -121,7 +121,7 @@ class ChangePassword extends PureComponent {
                             </div>
                             <div className="password-modal__content">
                                     <div className="field users-modal__field users-modal__field--small">
-                                    <button className="input input__submit" name="btnSave" onClick={this.onUpdate}>
+                                    <button className="btn btn-large btn-dark" name="btnSave" onClick={this.onUpdate}>
                                             {this._labels.save}
                                         </button>
                                 </div>

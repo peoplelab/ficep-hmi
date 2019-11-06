@@ -53,9 +53,9 @@ function ErrorModal(props) {
       footer="alert"
       onClose={onClose}
     >
-      <div className="dialog__container">
-        <div className="dialog__content">
-          <h1 className="dialog__title modal__title--main-title">
+      <div className="dialog__container rows full-size">
+        <div className="dialog__content full-width">
+          <h1 className="dialog__title">
             {mapLabels().message}
           </h1>
         </div>
@@ -67,13 +67,15 @@ function ErrorModal(props) {
             {genericError}
           </p>
         </div>
-        <div className="dialog__content">
+        <div className="dialog__content is-1 rows flex-start">
           <p className="dialog__text dialog__text--details">
             {mapLabels().details}
           </p>
-          <ul className="dialog__list">
-            {ItemsList}
-          </ul>
+          <div className="dialog__list-container bgBlack_15 is-1 full-width">
+            <ul className="dialog__list full-size">
+                {ItemsList}
+            </ul>
+          </div>
         </div>
       </div>
     </Modal>

@@ -41,7 +41,7 @@ class ButtonForm extends PureComponent {
       ...rest
     } = this.props;
 
-    const mergedClass = `input input__button ${className}`;
+    const mergedClass = `btn ${className}`;
 
     return name && (
       <button

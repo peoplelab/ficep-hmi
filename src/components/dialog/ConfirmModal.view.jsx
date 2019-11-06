@@ -37,9 +37,9 @@ function ConfirmModal(props) {
       onClose={onClose}
       onConfirm={onConfirm}
     >
-      <div className="dialog__container">
-        <div className="dialog__content">
-          <h1 className="dialog__title modal__title--main-title">
+      <div className="dialog__container rows full-size">
+        <div className="dialog__content full-width">
+          <h1 className="dialog__title">
             {mapLabels().message}
           </h1>
         </div>

@@ -17,7 +17,7 @@ const RadioButton = (props) => {
       ...rest
     } = props;
 
-    const mergedClass = `input input__radio ${className}`;
+    const mergedClass = `input-radio ${className}`;
 
     return (
       <input

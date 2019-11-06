@@ -85,8 +85,8 @@ class Modal extends Component {
     switch(footer) {
       case footerEnum.alert: {
         return (
-          <footer className="modal__footer modal__footer--alert">
-            <Button className="modal__button anchor" onClick={this.onClose}>
+          <footer className="modal__footer columns flex-end full-width">
+            <Button className="btn-flex btn-dark" onClick={this.onClose}>
               {messages.close}
             </Button>
           </footer>
@@ -94,11 +94,11 @@ class Modal extends Component {
       }
       case footerEnum.dialog: {
         return (
-          <footer className="modal__footer modal__footer--alert">
-            <Button className="modal__button anchor YESS" onClick={this.onConfirm}>
+          <footer className="modal__footer columns flex-end full-width">
+            <Button className="btn-flex btn-light YESS margin-r-10" onClick={this.onConfirm}>
               {messages.yes}
             </Button>
-            <Button className="modal__button anchor NOO" onClick={this.onClose}>
+            <Button className="btn-flex btn-dark NOO margin-l-10" onClick={this.onClose}>
               {messages.no}
             </Button>
           </footer>
@@ -116,8 +116,8 @@ class Modal extends Component {
     switch(header) {
       case headerEnum.title: {
         return (
-          <header className="modal__head modal__head--title">
-            <h1 className="modal__title">
+          <header className="modal__head columns flex-start full-width">
+            <h1 className="modal__title is-1">
               {messages.title}
             </h1>
           </header>
@@ -125,8 +125,8 @@ class Modal extends Component {
       }
       case headerEnum.close: {
         return (
-          <header className="modal__head modal__head--close">
-            <Button className="modal__button" onClick={this.onClose}>
+          <header className="modal__head columns flex-end full-width">
+            <Button className="modal__button btn-icon btn-transparent" onClick={this.onClose}>
               <i className="modal__icon ic-close" />
             </Button>
           </header>
@@ -134,11 +134,11 @@ class Modal extends Component {
       }
       case headerEnum.full: {
         return (
-          <header className="modal__head modal__head--full">
-            <h1 className="modal__title">
+          <header className="modal__head columns flex-between full-width">
+            <h1 className="modal__title is-1">
               {messages.title}
             </h1>
-            <Button className="modal__button" onClick={this.onClose}>
+            <Button className="modal__button btn-icon btn-transparent" onClick={this.onClose}>
               <i className="modal__icon ic-close" />
             </Button>
           </header>
@@ -154,16 +154,16 @@ class Modal extends Component {
     const { children, className } = this.props;
     const { open } = this.state;
 
-    const mergedClass = `modal ${className}`;
+    const mergedClass = `modal full-screen fixed-tl ${className}`;
 
     const Header = this.setHeader();
     const Footer = this.setFooter();
 
     return open && (
       <div className={mergedClass}>
-        <div className="modal__container">
+        <div className="modal__container rows absolute-cc">
           {Header}
-          <section className="modal__section">
+          <section className="modal__section is-1 rows full-width">
             {children}
           </section>
           {Footer}

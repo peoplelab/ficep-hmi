@@ -46,8 +46,8 @@ class SucessModal extends PureComponent {
             footer="alert"
             onClose={this.onClose}
           >
-            <div className="dialog__container">
-              <div className="dialog__content">
+            <div className="dialog__container rows full-size">
+              <div className="dialog__content full-width">
                 <p className="dialog__message">
                   {mapLabels().message}
                 </p>

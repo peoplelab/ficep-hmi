@@ -10,7 +10,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormContext, types } from '../../store/form.store';
 
-import '../../styles/forms-context/input.scss';
+// import '\.\./\.\./styles/forms-context/input\.scss';
 
 
 class Reset extends PureComponent {
@@ -57,7 +57,7 @@ class Reset extends PureComponent {
       ...rest
     } = this.props;
 
-    const mergedClass = `input input__reset ${className}`;
+    const mergedClass = `btn btn-transparent btn-large ${className}`;
 
     return name && (
       <button

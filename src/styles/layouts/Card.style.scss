@@ -1,11 +1,18 @@
 // stylelint-disable plugin/selector-bem-pattern
 
-@import '../common/colors.scss';
 @import '../common/flex.scss';
 @import '../common/text.scss';
 
+@import '../common/costanti.scss';
+@import '../common/tipografici.scss';
+
+
+$cardBackStd:  getColor('white', 90);
+$cardTextStd:  $mainColorTEXT;         //getColor('black', 60);
+$cardBackIcon: getColor('white', 100);
+
 .card {
-    background-color: $bg-light-grey;
+    background-color: $cardBackStd;
     height : 100%;
     width: 100%;
 
@@ -16,7 +23,7 @@
     .card__picture {
         @extend %flex-row-center;
 
-        background-color: $bg-white;
+        background-color: $cardBackIcon;
         margin: 0 auto;
         overflow: hidden;
 
@@ -27,7 +34,7 @@
     }
 
     .card__paragraph {
-        color: $dark-grey;
+        color: $cardTextStd;
         text-align: center;
 
         &--user {
@@ -82,7 +89,7 @@
     }
 
     &.card--small {
-    @extend %flex-row-full;
+        @extend %flex-row-full;
         border-radius: 3.5rem;
         flex: 1;
         height: 100%;

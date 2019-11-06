@@ -7,11 +7,42 @@
 
 @import "./costanti.scss";
 
+
+// ===================================================
+//  Reimpostazione lo stile delle scrollbar
+// ---------------------------------------------------
+@mixin scrollbar($trackColor) {
+
+	// Impostazioni comuni (default) delle barre di scorrimento
+	&::-webkit-scrollbar {
+		background  : transparent;
+		width       : 16px;
+	}
+	&::-webkit-scrollbar-corner {
+		background  : transparent;
+	}
+	&::-webkit-scrollbar-track {
+		background  : $white;
+		border-width: 0 5px;
+		border-style: solid;
+		border-color: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background  : getColor('black', 60);
+	}
+
+    &::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
+        border-color: $trackColor;
+    }
+}
+
+
+
 // ---
 //	NOTE:
 //		Per prendere il colore da una palette:
 //			getColor(<nomePalette>, <peso>)		->		es.: { color: getColor('black', 85); }
-//				
+//
 // ---
 
 // >>> Palette standard
@@ -22,14 +53,14 @@
 	@each $name, $value in $blackScaleMap {																// Costruzione delle classi (scala di neri):
 		$lowername: to-lower-case($name);
 		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
-		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.bg#{$name}     {background  : $value; @include scrollbar($value)}															// Colore sfondo (background)
 		.border#{$name} {border-color: $value;}															// Colore bordi
 	}
 
 	@each $name, $value in $whiteScaleMap {																// Costruzione delle classi (scala di bianchi):
 		$lowername: to-lower-case($name);
 		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
-		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.bg#{$name}     {background  : $value; @include scrollbar($value)}															// Colore sfondo (background)
 		.border#{$name} {border-color: $value;}															// Colore bordi
 	}
 
@@ -38,9 +69,9 @@
 // ===================================================
 //  Reimpostazione degli stili tipografici di default
 // ---------------------------------------------------
-	
+
 	// Margin e padding
-	hr, p, ul, li, 
+	hr, p, ul, li,
 	h1, h2, h3, h4, h5 {
 		margin : 0px;
 		padding: 0px;
@@ -73,11 +104,11 @@
 
 	// Visibilità
 	// (Nota: esistono classi equivalenti in Bootstrap, es. "d-none")
-	.hide, .hidden {		
+	.hide, .hidden {
 		display: none;
 	}
 
-	// Allineamenti 
+	// Allineamenti
 	.text-left, .textLeft, .text-align-left       {text-align: left;}
 	.text-right, .textRight, .text-align-right    {text-align: right;}
 	.text-center, .textCenter, .text-align-center {text-align: center;}
@@ -92,7 +123,7 @@
 	.uppercase {text-transform: uppercase; }
 
 // ============================
-//  Definizione tipi carattere 
+//  Definizione tipi carattere
 // ----------------------------
 
 	// Definizioni di default
@@ -108,7 +139,7 @@
 		src: url('../../../public/font/default/arialbd.ttf') format('truetype');
 	}
 
-	
+
 	// Definizione pesi da importare
 	$fontWeights:(
 		'Thin'      : 100,
@@ -143,7 +174,7 @@
 
 			// Legenda composizione stili:
 			//	modo := l: left, r: right, t: top, b: bottom, h: horizontal, v: vertical, a: all sides
-			//	size := valore (pixel) 
+			//	size := valore (pixel)
 			.#{$type}-t-#{$size * 5} {#{$type}-top   : #{$size * 5}px !important;}
 			.#{$type}-r-#{$size * 5} {#{$type}-right : #{$size * 5}px !important;}
 			.#{$type}-b-#{$size * 5} {#{$type}-bottom: #{$size * 5}px !important;}
@@ -151,8 +182,6 @@
 			.#{$type}-v-#{$size * 5} {#{$type}-top   : #{$size * 5}px !important; #{$type}-bottom: #{$size * 5}px !important;}
 			.#{$type}-h-#{$size * 5} {#{$type}-left  : #{$size * 5}px !important; #{$type}-right : #{$size * 5}px !important;}
 			.#{$type}-a-#{$size * 5} {#{$type}       : #{$size * 5}px !important;}
-		
+
 		}
 	}
-
-

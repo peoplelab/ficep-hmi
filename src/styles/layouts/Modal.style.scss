@@ -1,108 +1,72 @@
 // Style of private routes template
 
-@import "../common/costanti.scss";
+@import '../common/costanti.scss';
 @import '../common/colors.scss';
 @import '../common/flex.scss';
 @import '../common/text.scss';
 
 /** @define modal */
 
+// Costanti
+$colorTextStd: getColor('black', 60);
+$colorBackStd: getColor('black', 60);
+$colorTextInv: getColor('black', 10);
+$colorBackInv: getColor('black', 10);
+
 
 .modal {
-	background-color: rgba($color: $bg-dark-grey, $alpha: 0.65);
-	height: 100vh;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100vw;
+	background-color: rgba($color: $colorBackStd, $alpha: 0.65);
 	z-index: 999;
 
 	.modal__container {
-	@extend %flex-column;
-
 //	background-color: $bg-light-grey;
-	background-color: getColor('black', 10);
+	background-color: $colorBackInv;
 	box-shadow: $shadow-2;
-	left: 50%;
 	padding: 1rem;
-	position: absolute;
-	top: 50%;
-	transform: translate(-50%, -50%);
 
 	.modal__head {
-		@extend %flex-row-center;
-
 		margin: 0 0 0.5rem;
 		overflow: hidden;
 		padding: 1rem;
-		width: 100%;
 
 		.modal__title {
-		@extend %flex-row-full;
-		@extend %title-bold;
+            @extend %title-bold;
 
-		color: $text-dark-grey;
-		flex: 1;
+            color: $colorTextStd;
 		}
 
 		.modal__button {
-		background-color: transparent;
-		cursor: pointer;
-		height: 1.25rem;
-		width: 1.25rem;
-
-		.modal__icon {
-			background-color: $bg-dark-grey;
-			display: block;
-			height: 100%;
-			width: 100%;
-		}
+            .modal__icon {
+                background-color: $colorBackStd;
+            }
 		}
 	}
 
 	.modal__section {
-		@extend %flex-row-center;
-
-		flex: 1;
 		overflow: hidden;
 
 		// stylelint-disable-next-line plugin/selector-bem-pattern
 		> * {
-		width: 100%;
+		    width: 100%;
 		}
 	}
 
     .modal__footer {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
 
-      .modal__button {
-        @extend %paragraph-1-medium;
-
-        border: $border-dark-grey solid 0.225rem;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        display: block;
-        height: auto;
-        margin: 0 0.5rem;
-        padding: 0.5rem;
-        width: auto;
-      }
     }
   }
 
 	// stylelint-disable plugin/selector-bem-pattern
 	&.modal--small {
 	.modal__container {
-		height: auto;
+		height: 30%;
 		width: 30%;
 	}
 	}
 
 	&.modal--medium {
 	.modal__container {
-		height: auto;
+		height: 50%;
 		width: 50%;
 	}
 	}
@@ -120,19 +84,18 @@
 
 	&.modal--alert {.modal__container {
 	.modal__head {
-		background-color: $bg-dark-grey;
-		border-bottom: 0.0625rem solid $border-dark-grey;
+		background-color: $colorBackStd;
 
 		.modal__title {
-		@extend %title-semibold;
+            @extend %title-semibold;
 
-		color: $text-light-grey;
+            color: $colorTextInv;
 		}
 
 		.modal__button {
-		.modal__icon {
-			background-color: $bg-light-grey;
-		}
+            .modal__icon {
+                background-color: $colorBackInv;
+            }
 		}
 	}
 	}

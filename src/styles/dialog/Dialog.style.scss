@@ -1,41 +1,32 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
+@import '../common/costanti.scss';
 
 /** @define dialog */
+
+// Costanti
+$colorTextStd: getColor('black', 60);
+$colorBackStd: getColor('black', 60);
+$colorBackInv: getColor('black', 15);
 
 
 .dialog {
   .dialog__container {
-    @extend %flex-column;
-
-    height: 100%;
-    width: 100%;
-
     .dialog__content {
       overflow: hidden;
       padding: 1rem;
-      width: 100%;
 
       &:nth-of-type(1) {
-        border-bottom: 0.0625rem solid $border-dark-grey;
+        border-bottom: 0.0625rem solid $colorBackStd;
       }
 
       .dialog__title {
         font-weight: 600;
-
-        // stylelint-disable-next-line plugin/selector-bem-pattern
-        &.modal__title--sub-title {
-          @extend %subtitle-semibold;
-
-          color: $text-light-grey;
-        }
       }
 
       .dialog__text {
-        color: $text-dark-grey;
+        color: $colorTextStd;
 
         &.dialog__text--message {
           @extend %paragraph-1-medium;
@@ -53,17 +44,18 @@
         }
       }
 
-      .dialog__list {
-        flex: 1;
+      .dialog__list-container {
         overflow: auto;
-        padding: 0.5rem;
-        width: 100%;
 
-        .dialog__item {
-          @extend .dialog__text;
-          @extend .dialog__text--description;
+        .dialog__list {
+          padding: 0.5rem;
 
-          margin: 0.5rem 0 0 1rem;
+          .dialog__item {
+            @extend .dialog__text;
+            @extend .dialog__text--description;
+
+            margin: 0.5rem 0 0 1rem;
+          }
         }
       }
 
@@ -72,7 +64,6 @@
         flex: 1;
         overflow: auto;
         padding: 0.5rem;
-        width: 100%;
     }
     }
   }

@@ -1,7 +1,7 @@
 // Mock handler for Update User.
 
 
-const { base, jsonValidate } = require('../../../mock.base');
+const { base } = require('../../../mock.base');
 //const updateUserPUT = require('./updateUser.PUT.json');
 const jsonLIST = require('../odata/users/response.json');
 const responseJSONPUT_KO = require('./responsePUT_KO.json');
@@ -10,16 +10,7 @@ const responseJSONPOST_KO = require('./responsePOST_KO.json');
 const responseJSONPOST_OK = require('./responsePOST_OK.json');
 const responseJSONDELETE_KO = require('./responseDELETE_KO.json');
 const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
-var schemaPOST = {
 
-    "properties": {
-        "FirstName": { "type": "string" },
-        "LastName": { "type": "string" },
-        "Groups": { "type": "array" }
-    },
-    "additionalProperties": false,
-    "required": ["FirstName", "LastName", "Groups"]
-};
 
 module.exports = {
     GET: base(
@@ -63,7 +54,7 @@ module.exports = {
                 return responseJSONPOST_KO;
             }
             return responseJSONPOST_OK;
-        }, schemaPOST
+        }
     ),
 
     DELETE: base(

@@ -21,16 +21,17 @@ import '../../../styles/modal/UserModal.style.scss';
 import Enum from '../../../utils/Enum';
 
 
+
+// Enumeratore dei componenti view della modale
 const COMPONENT = Enum.from('MAIN', 'DETAILS');
 
 
-const getTime = (time) => {
-    const [year, month, day, hours, minutes] = time.split(/-|:|T/g);
-
-    return `${hours}:${minutes} ${day}/${month}/${year}`;
-};
-
-
+/*
+	Container UserModal. Modale per la gestione del profilo utente.
+	Props:
+	- open : gestore per l'apertura e chiusura della modale
+	- onClose : callback da eseguire durante la chiusura
+*/
 class UserModal extends Component {
 	constructor(props) {
         super(props);
@@ -92,7 +93,7 @@ class UserModal extends Component {
                     firstname: data.FirstName,
                     lastname: data.LastName,
                     group: data.groups,
-                    issueat: getTime(data.issuedAt)
+                    username: data.username
                 };
 
                 Component = <UserDetails onGoBack={this.onChangeComponent(COMPONENT.MAIN)} onChangePassword={this.onClose} details={details} />;

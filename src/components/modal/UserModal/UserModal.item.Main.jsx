@@ -19,6 +19,13 @@ const mapLabels = () => ({ // etichette in lingua
 });
 
 
+/*
+	Componente UserModalMain. Componente principale del profilo utente.
+	Props:
+	- onUserDetails : callback eseguita al cambio di stato per visualizzare i dettagli del profilo utente
+	- onUsersList: callback eseguita all'apertura della modale per la gestione delle utenze
+	- onLogout : callback eseguita durante il logout
+*/
 const UserModalMain = (props) => {
 
     return (

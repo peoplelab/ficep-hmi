@@ -10,6 +10,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
+/*
+	Componente OuterModalClick. Intercetta tutti gli eventi di tipo click esterni ad una modale
+	Props:
+	- children : componenti figli
+	- className : classi css aggiuntive
+	- onOuterClick : callback da eseguire al click "esterno"
+*/
 class OuterModalClick extends Component {
   constructor(props) {
     super(props);

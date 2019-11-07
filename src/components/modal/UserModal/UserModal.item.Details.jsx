@@ -14,19 +14,13 @@ import * as admin from '../../../../public/icons/ic-user-admin.svg';
 import * as technical from '../../../../public/icons/ic-user-technical.svg';
 import * as operator from '../../../../public/icons/ic-user-operator.svg';
 
-// icon handler
+// converter group to icon
 const toIcon = {
   ADMIN: admin,
   SUPERUSER: technical,
   USER: operator,
 };
 
-
-// const getTime = (time) => {
-//   const [year, month, day, hours, minutes] = time.split(/-|:|T/g);
-
-//   return `${hours}:${minutes} ${day}/${month}/${year}`;
-// };
 
 const mapLabels = () => ({ // etichette in lingua
     password: window.intl.user_action_password,
@@ -36,10 +30,21 @@ const mapLabels = () => ({ // etichette in lingua
     ADMIN: window.intl.user_info_administrator,
     SUPERUSER: window.intl.user_info_technician,
     USER: window.intl.user_info_operator,
-    issueat: window.intl.user_info_issueat,
+    username: window.intl.user_info_username,
 });
 
 
+/*
+	Componente UserModalDetails. Componente per la visualizzazione dei dettagli utente e la gestione del profilo.
+	Props:
+	- onGoBack : callback eseguita al cambio di stato per tornare alla vista principale
+	- onChangePassword: callback eseguita all'apertura della modale per il cambio password
+    - details : oggetto contente i dettagli del profilo utente
+        .username
+        .firstname
+        .lastname
+        .group
+*/
 const UserModalDetails = (props) => {
 
     const { onGoBack, onChangePassword, details } = props;
@@ -66,6 +71,9 @@ const UserModalDetails = (props) => {
                         <img className="user-modal__icon-profile" src={toIcon[role]} />
                     </div>
                     <p className="user-modal__info">
+                        <span>{mapLabels().username}</span>{' '}<span>{details.username}</span>
+                    </p>
+                    <p className="user-modal__info">
                         <span>{mapLabels().firstname}</span>{' '}<span>{details.firstname}</span>
                     </p>
                     <p className="user-modal__info">
@@ -73,9 +81,6 @@ const UserModalDetails = (props) => {
                     </p>
                     <p className="user-modal__info">
                         <span>{mapLabels().group}</span>{' '}<span>{mapLabels()[role]}</span>
-                    </p>
-                    <p className="user-modal__info">
-                        <span>{mapLabels().issueat}</span>{' '}<span>{details.issueat}</span>
                     </p>
                 </div>
 
@@ -100,7 +105,7 @@ const shapeDetails = {
     firstname: PropTypes.string.isRequired,
     lastname: PropTypes.string.isRequired,
     group: PropTypes.arrayOf(PropTypes.string).isRequired,
-    issueat: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
 };
 
 

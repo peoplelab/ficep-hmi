@@ -15,6 +15,7 @@
     "user_info_technician": "Tecnico",
     "user_info_operator": "Operartore",
     "user_info_issueat": "Accesso effettuato:",
+    "user_info_username": "Username:",
 
   "tools_tab_machine": "Utensili macchina",
   "tools_tab_database": "Database utensili",

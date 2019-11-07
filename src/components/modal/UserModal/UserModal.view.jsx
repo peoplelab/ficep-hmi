@@ -7,13 +7,14 @@
 
 
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 // import { Button, Anchor, Link } from '../layouts/index.layouts';
 import UserDetails from './UserModal.item.Details';
 import UserMain from './UserModal.item.Main';
 import { callLogout } from '../../../controllers/api/logout.controller';
 import { LoggedUser as cLoggedUser } from '../../../controllers/session/loggeduser.controller';
+import { OuterModalClick } from '../../events/index.events';
 
 
 import '../../../styles/modal/UserModal.style.scss';
@@ -95,8 +96,8 @@ class UserModal extends Component {
             }
         }
 
-        return Component;
-        // return ReactDOM.createPortal(Component, document.getElementById('modal'));
+        // return Component;
+        return ReactDOM.createPortal(<OuterModalClick onOuterClick={this.onClose} >{Component}</OuterModalClick>, document.getElementById('modal'));
 	}
 }
 

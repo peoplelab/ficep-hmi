@@ -8,7 +8,6 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { OuterClick } from '../events/index.events';
 import { Button, Card, Clock } from '../layouts/index.layouts';
 import { UserModal } from '../modal/index.modal';
 
@@ -48,13 +47,11 @@ class Header extends PureComponent {
       <header className="logged__header columns flex-top full-width">
         <div className="logged__header-box logged__header-box--left">HEADER</div>
         <div className="logged__header-box logged__header-box--right columns flex-between">
-          <OuterClick className="logged__header-outerhandler" onOuterClick={this.onOuterClick}>
             <Button className="logged__header-button" onClick={this.onClick}>
-              <Card className="card--small columns flex-between fill" username={username} role={role} culture={culture} intl={this.intlCard} />
+                <Card className="card--small columns flex-between fill" username={username} role={role} culture={culture} intl={this.intlCard} />
             </Button>
             <UserModal open={openModal} onClose={this.onClick}/>
-          </OuterClick>
-          <Clock className="logged__header-clock fill text-cc" />
+            <Clock className="logged__header-clock fill text-cc" />
         </div>
       </header>
     );

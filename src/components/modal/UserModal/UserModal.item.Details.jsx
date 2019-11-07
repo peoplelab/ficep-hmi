@@ -90,8 +90,6 @@ const UserModalDetails = (props) => {
                         {mapLabels().password}
                     </Anchor>
                 </div>
-                {/*
-                 */}
             </section>
         </>
     );

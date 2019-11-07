@@ -15,11 +15,13 @@
     .fixed-tl {
         @extend %tl;
         position: fixed;
+        z-index: 99;
     }
 
     .fixed-cc {
         @extend %cc;
         position: fixed;
+        z-index: 99;
     }
 
     .absolute-cc {

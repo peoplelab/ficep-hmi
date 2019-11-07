@@ -82,3 +82,12 @@ Andrea:
 Andrea
 ° rivedere la gestione dello stile delle scrollbar per i casi dei componenti generici (es: Table),
   dove non è possible inserire direttamente la classe css
+
+
+07/11/2019
+==================
+LucaM: creata la cartella Widgets che dovrà sostituire la cartella "components" e che dovrà contenere tutti i componenti custom.
+
+07/11/2019
+==================
+DA MITROL: per riempire lo spazione vuoto del dettaglio utente va bene mettere una pic del gruppo lo username (eventualmente il nome completo) ed il ruolo

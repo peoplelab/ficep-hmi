@@ -71,16 +71,24 @@ const UserModalDetails = (props) => {
                         <img className="user-modal__icon-profile" src={toIcon[role]} />
                     </div>
                     <p className="user-modal__info">
-                        <span>{mapLabels().username}</span>{' '}<span>{details.username}</span>
+                        <span>{mapLabels().username}</span>
+                        <br/>
+                        <span className="margin-l-10">{'\t' + details.username}</span>
                     </p>
                     <p className="user-modal__info">
-                        <span>{mapLabels().firstname}</span>{' '}<span>{details.firstname}</span>
+                        <span>{mapLabels().firstname}</span>
+                        <br/>
+                        <span className="margin-l-10">{'\t' + details.firstname}</span>
                     </p>
                     <p className="user-modal__info">
-                        <span>{mapLabels().lastname}</span>{' '}<span>{details.lastname}</span>
+                        <span>{mapLabels().lastname}</span>
+                        <br/>
+                        <span className="margin-l-10">{'\t' + details.lastname}</span>
                     </p>
                     <p className="user-modal__info">
-                        <span>{mapLabels().group}</span>{' '}<span>{mapLabels()[role]}</span>
+                        <span>{mapLabels().group}</span>
+                        <br/>
+                        <span className="margin-l-10">{'\t' + mapLabels()[role]}</span>
                     </p>
                 </div>
 

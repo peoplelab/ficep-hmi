@@ -16,7 +16,7 @@ class ResetPassword extends Component {
 
     // etichette in lingua
     _labels = {
-        button: "testReserButton",
+        button: window.intl.reset_password_message,
     };
 
     _userId = 0;    // id utente

@@ -18,14 +18,6 @@ import { ModalHandler } from '../../../controllers/common/modal.handler';
 import '../../../styles/modal/UsersList.style.scss';
 
 
-const initial = {
-    firstName: '',
-    lastName: '',
-    group: '',
-};
-
-
-
 class UsersList extends Component {
 
     // stati utente secondo doc mitrol
@@ -54,6 +46,7 @@ class UsersList extends Component {
             isActive    : window.intl.users_headers_isactive,
             creationDate: window.intl.users_headers_creationdate,
             groups      : window.intl.users_headers_role,
+            resetPassword      : '',
             update      : '',
             delete      : '',
         }

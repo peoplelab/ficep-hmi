@@ -54,5 +54,7 @@
   "session_expired_title": "Alert!",
   "session_expired_message": "The current session has expired, please log in again to continue",
   "session_expired_info": "*: the current session will be lost",
-  "session_expired_logout": "Logout"
+  "session_expired_logout": "Logout",
+
+  "reset_password_message": "RESET PASSWORD"
 }

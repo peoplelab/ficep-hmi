@@ -21,8 +21,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonData } from '../../layouts/index.layouts';
-import { SetStore } from '../../forms-context/index.form';
-import { callUsersDetails, callUsersDelete } from '../../../controllers/routes/users/users.controller';
+import { ModalHandler } from '../../../controllers/common/modal.handler';
+import  ResetPassword  from '../../../widgets/common/ResetPassword';
 
 //import '../../../styles/modal/UsersList.style.scss';
 
@@ -47,8 +47,11 @@ class RowItem extends Component {
     }
 
     onSelect() { console.log(this.props); }
-
-
+    onSuccess = (response) => {
+        console.log(response.newPassword);
+        ModalHandler.Info({ message: [' Password: ' + response.newPassword] });
+    }
+    onFailed = (response) => { ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });}
     render() {
         const { value, index } = this.props;
         const {
@@ -63,6 +66,7 @@ class RowItem extends Component {
             groups,
         } = value;
 
+       
         const [{ code }] = groups;
 
         // const active = isActive ? this._labels.yes : this._labels.no;
@@ -90,6 +94,11 @@ class RowItem extends Component {
                 <td className="cell-std textCenter">{creation_date}</td>
                 {/* Ruolo */}
                 <td className="cell-std">{this._labels.groups[code]}</td>
+                {/* Pulsante "ResetPassword" */}
+                <td className="cell-std">
+                    <ResetPassword className="" data={id} onSuccess={this.onSuccess} onFailed={this.onFailed}/>
+                </td>
+
                 {/* Pulsante "Modifica" */}
                 <td className="cell-std">
                     <ButtonData className={editbtn_classname} data={id} onClick={this.props.onEdit} >

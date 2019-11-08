@@ -16,7 +16,7 @@ class ResetPassword extends Component {
 
     // etichette in lingua
     _labels = {
-        button: window.intl.resetPassword,
+        button: "testReserButton",
     };
 
     _userId = 0;    // id utente
@@ -27,16 +27,17 @@ class ResetPassword extends Component {
 
         this.resetPassword.bind(this);
 
-        this._userId = this.props.userId;
+        this._userId = props.data;
     }
 
     resetPassword = () => {
 
-        cUser.ResetPassword({
-            data: this._userId,
-            onSuccess: (response) => this.onSuccess({ newPassword: response.result }),
-            onFailed: (response) => this.onFailed(response)
-        });
+        cUser.ResetPassword(
+            this.props.data,
+            (response) => this.props.onSuccess(
+                { newPassword: response.dataprocessed.result }),
+            (response) => this.props.onFailed(response)
+        );
 
     }
 
@@ -44,10 +45,10 @@ class ResetPassword extends Component {
     render() {
 
         return (
-            <button onClick={this.resetPassword}>
+            <button onClick={this.resetPassword} className={this.props.className}>
                 {this._labels.button}
             </button>
-            );
+        );
     }
 }
 
@@ -55,8 +56,11 @@ class ResetPassword extends Component {
 // ** Define component properties types **
 //
 ResetPassword.propTypes = {
-    userId: PropTypes.object.isRequired
+    data: PropTypes.number.isRequired,
+    onSuccess: PropTypes.func.isRequired,
+    onFailed: PropTypes.func.isRequired,
+    className: PropTypes.string
 };
 
-
+ResetPassword.defaultProps = { className: "" };
 export default ResetPassword;

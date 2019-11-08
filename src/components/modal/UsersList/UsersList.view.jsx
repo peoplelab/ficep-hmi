@@ -9,11 +9,8 @@
 
 import React, { Component } from 'react';
 import { Modal, Table } from '../../layouts/index.layouts';
-import { Form } from '../../forms-context/index.form';
-
 import RowItem from './UsersList.item.row';
 import EditItem from './UsersList.item.edit';
-
 import { User as cUser } from '../../../controllers/routes/users/users.controller';
 import { Group as cGroup } from '../../../controllers/routes/users/groups.controller';
 import { ModalHandler } from '../../../controllers/common/modal.handler';
@@ -234,7 +231,7 @@ class UsersList extends Component {
 
         return (
             <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
-                <Form className="users-modal__form full-size" initial={initial}>
+                <section className="users-modal__form full-size" >
                     <div className="users-modal__container rows full-size">
                         <div className="users-modal__content columns">
                             <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
@@ -245,7 +242,7 @@ class UsersList extends Component {
                             </Table>
                         </div>
                     </div>
-                </Form>
+                </section>
             </Modal>
         );
     }

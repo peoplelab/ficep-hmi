@@ -17,7 +17,7 @@ const URL_CREATE_USER = "/api/v1/users";
 const URL_UPDATE_USER = "/api/v1/users";
 const URL_LOGOUT_USER = "/api/v1/users/logout";
 const URL_PASSWORDCHANGE = "/api/v1/users/changepassword";
-const URL_PASSWORDRESET = "/api/v1/users/{userId}/resetpassword";
+const URL_PASSWORDRESET = "/api/v1/users/:id/resetpassword";
 
 
 
@@ -29,7 +29,7 @@ export const Users = {
     Create: (headers, params) => { return usersCreate(headers, params); },                      // Inserimento nuovo utente
     Update: (headers, params) => { return usersUpdate(headers, params); },                      // Modifica utente esistente
     ChangePassword: (headers, params) => { return usersChangePassword(headers, params); },      // Modifica password utente 
-    ResetPassword: (headers, params) => { return usersResetPassword(headers, params); },        // Reset password utente
+    ResetPassword: (headers,params) => { return usersResetPassword(headers, params); },        // Reset password utente
     Logout: (headers) => { return usersLogout(headers); },                                      // logout
 };
 
@@ -108,9 +108,9 @@ const usersUpdate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "Id": params.Id,
-            "FirstName": params.FirstName,
-            "LastName": params.LastName,
+            "id": params.Id,
+            "firstName": params.FirstName,
+            "lastName": params.LastName,
             "UserStatus": params.UserStatus
         }),
     };
@@ -131,17 +131,16 @@ const usersChangePassword = async ({ headers, request: data }) => {
     return base({ url: URL_PASSWORDCHANGE, request });
 };
 
-const usersResetPassword = async ({ headers, request: data }) => {
+const usersResetPassword = async ({ headers, params }) => {
     const request = {
         method: "put",
         headers: {
             "Content-Type": "application/json",
             ...headers,
         },
-        body: JSON.stringify(data),
     };
 
-    return base({ url: URL_PASSWORDRESET, request });
+    return base({ url: URL_PASSWORDRESET, request,params });
 };
 
 export const usersLogout = async ({ headers }) => {

@@ -18,7 +18,7 @@ export const User = {
     Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },                // Cancellazione Utente
     Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },                     // Salvataggio Utente
     ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
-    ResetPassword: (data, onSuccess, onFailed) => { return callUserResetPassword(data, onSuccess, onFailed); },   // reset password
+    ResetPassword: (userId, onSuccess, onFailed) => { return callUserResetPassword(userId, onSuccess, onFailed); },   // reset password
 };
 
 
@@ -176,12 +176,18 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
     });
 };
 
-const callUserResetPassword = async ({ data, onSuccess, onFailed }) => {
+const callUserResetPassword = async ( userId, onSuccess, onFailed ) => {
+
+    const params = {
+        id: userId,
+    };
 
     base({
         api: mUsers.ResetPassword,
-        params: data,
+        params,
         success: (response) => {
+            console.log("Controller ResetPassword " );
+            console.log(response);
             onSuccess(response);
         },
         // onFailed non arriverà mai perché é gestito nel base.

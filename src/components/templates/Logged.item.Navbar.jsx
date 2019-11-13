@@ -19,8 +19,8 @@ const Navbar = (props) => {
   const reverseClass = `logged__reverse-icon ${reverse ? 'ic-to-right' : 'ic-to-left'}`;
 
   return (
-    <nav className="logged__navbar">
-      <ul className="logged__list">
+    <nav className="logged__navbar rows">
+      <ul className="logged__list fill full-width">
         <li className="logged__item">
           <Anchor className="logged__anchor anchor--tile" exact path="/dashboard">
             <i className="anchor__icon ic-dashboard" />

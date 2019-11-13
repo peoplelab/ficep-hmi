@@ -15,19 +15,22 @@ const URL_DELETE_USER = "/api/v1/users/:id";
 const URL_DETAIL_USER = "/api/v1/users/:id";
 const URL_CREATE_USER = "/api/v1/users";
 const URL_UPDATE_USER = "/api/v1/users";
-const URL_CHANGEPASSWORD = "/api/v1/users/changepassword";
 const URL_LOGOUT_USER = "/api/v1/users/logout";
+const URL_PASSWORDCHANGE = "/api/v1/users/changepassword";
+const URL_PASSWORDRESET = "/api/v1/users/:id/resetpassword";
+
 
 
 // Interface
 export const Users = {
-    List  : (headers)         => { return usersList(headers); },                // lista degli utenti
-    Detail: (headers, params) => { return usersDetails(headers, params); },     // dettaglio utente
-    Delete: (headers, params) => { return usersDelete(headers, params); },      // cancellazione utente
-    Create: (headers, params) => { return usersCreate(headers, params); },      // Inserimento nuovo utente
-    Update: (headers, params) => { return usersUpdate(headers, params); },       // Modifica utente esistente
-    ChangePassword: (headers, params) => { return usersChangePassword(headers, params); },       // Modifica utente esistente
-    Logout: (headers) => { return usersLogout(headers); },                      // logout
+    List  : (headers)         => { return usersList(headers); },                                // lista degli utenti
+    Detail: (headers, params) => { return usersDetails(headers, params); },                     // dettaglio utente
+    Delete: (headers, params) => { return usersDelete(headers, params); },                      // cancellazione utente
+    Create: (headers, params) => { return usersCreate(headers, params); },                      // Inserimento nuovo utente
+    Update: (headers, params) => { return usersUpdate(headers, params); },                      // Modifica utente esistente
+    ChangePassword: (headers, params) => { return usersChangePassword(headers, params); },      // Modifica password utente 
+    ResetPassword: (headers,params) => { return usersResetPassword(headers, params); },        // Reset password utente
+    Logout: (headers) => { return usersLogout(headers); },                                      // logout
 };
 
 
@@ -105,9 +108,9 @@ const usersUpdate = async ({ headers, params }) => {
             ...headers,
         },
         body: JSON.stringify({
-            "Id": params.Id,
-            "FirstName": params.FirstName,
-            "LastName": params.LastName,
+            "id": params.Id,
+            "firstName": params.FirstName,
+            "lastName": params.LastName,
             "UserStatus": params.UserStatus
         }),
     };
@@ -125,7 +128,19 @@ const usersChangePassword = async ({ headers, request: data }) => {
         body: JSON.stringify(data),
     };
 
-    return base({ url: URL_CHANGEPASSWORD, request });
+    return base({ url: URL_PASSWORDCHANGE, request });
+};
+
+const usersResetPassword = async ({ headers, params }) => {
+    const request = {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+    };
+
+    return base({ url: URL_PASSWORDRESET, request,params });
 };
 
 export const usersLogout = async ({ headers }) => {
@@ -141,102 +156,3 @@ export const usersLogout = async ({ headers }) => {
     return base({ url: URL_LOGOUT_USER, request });
 };
 
-
-
-
-
-
-
-
-
-//export const usersAdd = async ({ headers, request: data }) => {
-//  const request = {
-//    method: "post",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//    body: JSON.stringify(data),
-//  };
-
-//  return base({ url: `/api/v1/users/user`, request });
-//};
-
-//export const usersEdit = async ({ headers, request: data }) => {
-//  const request = {
-//    method: "put",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//    body: JSON.stringify(data),
-//  };
-
-//  return base({ url: `/api/v1/users`, request });
-//  // return base({ url: `/api/v1/users/user`, request });
-//};
-
-//export const usersPassword = async ({ headers, request: data }) => {
-//  const request = {
-//    method: "put",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//    body: JSON.stringify(data),
-//  };
-
-//  return base({ url: `/api/v1/users/changepassword`, request });
-//};
-
-
-// export const usersSeed = async ({ headers, request: data }) => {
-//   const request = {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//       ...headers,
-//     },
-//     body: JSON.stringify(data),
-//   };
-
-//   return base(`/api/v1/users/upload`, request);
-// };
-
-//export const usersAddToGroup = async ({ headers, params, request: data }) => {
-//  const request = {
-//    method: "put",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//    body: JSON.stringify(data),
-//  };
-
-//  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
-//};
-
-//export const usersDeleteFromGroup = async ({ headers, params, request: data }) => {
-//  const request = {
-//    method: "delete",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//    body: JSON.stringify(data),
-//  };
-
-//  return base({ url: `/api/v1/users/user/:id/:groupId`, request, params });
-//};
-
-//export const usersExport = async ({ headers }) => {
-//  const request = {
-//    method: "get",
-//    headers: {
-//      "Content-Type": "application/json",
-//      ...headers,
-//    },
-//  };
-
-//  return base({ url: `/api/v1/odata/users/export`, request });
-//};

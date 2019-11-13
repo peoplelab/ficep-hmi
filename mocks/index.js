@@ -2,7 +2,6 @@ require('./global');
 
 const routes = require('./routes');
 
-
 module.exports = (app) => {
   routes.map((route) => {
     const { url, api } = route;
@@ -11,7 +10,7 @@ module.exports = (app) => {
     const appRoute = app.route(url);
 
     if ('GET' in handler) {
-      appRoute.get(handler.GET);
+        appRoute.get(handler.GET);
     }
 
     if ('POST' in handler) {
@@ -19,8 +18,8 @@ module.exports = (app) => {
     }
 
     if ('PUT' in handler) {
-      appRoute.put(handler.PUT);
-    }
+        appRoute.put(handler.PUT);
+      }
 
     if ('PATCH' in handler) {
       appRoute.patch(handler.PATCH);

@@ -8,24 +8,13 @@
 
 import React, { Component } from 'react';
 import { Modal, Table } from '../../layouts/index.layouts';
-import { Form } from '../../forms-context/index.form';
-
 import RowItem from './UsersList.item.row';
 import EditItem from './UsersList.item.edit';
-
 import { User as cUser } from '../../../controllers/routes/users/users.controller';
 import { Group as cGroup } from '../../../controllers/routes/users/groups.controller';
 import { ModalHandler } from '../../../controllers/common/modal.handler';
 
 import '../../../styles/modal/UsersList.style.scss';
-
-
-const initial = {
-	firstName: '',
-	lastName : '',
-	group    : '',
-};
-
 
 
 class UsersList extends Component {
@@ -37,29 +26,30 @@ class UsersList extends Component {
 		DISABLED: 4
 	}
 
-	_deleteID   = 0;				// l'id da passare alla funzione onDeleteUser()
-	_groupsList = null;				// lista dei gruppi/ruoli
-	_usersList  = null;				// lista degli utenti
-	_data2save  = {					// struct dei dati da salvare
-		"Id": 0,
-		"FirstName": "",
-		"LastName": "",
-		"UserStatus": "",
-		"Groups": [],
-	}
-	_labels = {                 // etichette in lingua
-		title: window.intl.users_main_title,
-		headers: {
-			firstName   : window.intl.users_headers_firstname,
-			lastName    : window.intl.users_headers_lastname,
-			userName    : window.intl.users_headers_username,
-			isActive    : window.intl.users_headers_isactive,
-			creationDate: window.intl.users_headers_creationdate,
-			groups      : window.intl.users_headers_role,
-			update      : '',
-			delete      : '',
-		}
-	}
+    _deleteID = 0;              // l'id da passare alla funzione onDeleteUser()
+    _groupsList = null;         // lista dei gruppi/ruoli
+    _usersList = null;          // lista degli utenti
+    _data2save = {              // struct dei dati da salvare
+        "Id": 0,
+        "FirstName": "",
+        "LastName": "",
+        "UserStatus": "",
+        "Groups": [],
+    }
+    _labels = {                 // etichette in lingua
+        title: window.intl.users_main_title,
+        headers: {
+            firstName   : window.intl.users_headers_firstname,
+            lastName    : window.intl.users_headers_lastname,
+            userName    : window.intl.users_headers_username,
+            isActive    : window.intl.users_headers_isactive,
+            creationDate: window.intl.users_headers_creationdate,
+            groups      : window.intl.users_headers_role,
+            resetPassword      : '',
+            update      : '',
+            delete      : '',
+        }
+    }
 
 	_colsParams = ['textLeft', 'textLeft', 'textLeft', 'textCenter', 'textCenter', 'textLeft', '', ''];
 
@@ -165,7 +155,7 @@ class UsersList extends Component {
 		} else if (data.userStatus == this.USER_STATUS.LOCKED) {
 			data.userStatus = this.USER_STATUS.ACTIVE;
 		} else {
-			// lasciamo come è....
+			// lasciamo come Ã¨....
 		}
 
 		this._data2save.Id         = data.id;
@@ -231,23 +221,23 @@ class UsersList extends Component {
 	render() {
 		const { users, groups, currentUser, errorCase } = this.state;
 
-		return (
-			<Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
-				<Form className="users-modal__form" initial={initial}>
-					<div className="users-modal__container">
-						<div className="users-modal__content">
-							<EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
-						</div>
-						<div className="users-modal__content">
-							<Table className="users-modal__table" headers={this._labels.headers} settings={this._colsParams} data={users} >
-								{props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.openModalDelete} onEdit={this.onEditUser} />}
-							</Table>
-						</div>
-					</div>
-				</Form>
-			</Modal>
-		);
-	}
+        return (
+            <Modal open className="users-modal modal--data modal--big" messages={({ title: this._labels.title })} header="full" footer="none">
+                <section className="users-modal__form full-size" >
+                    <div className="users-modal__container rows full-size">
+                        <div className="users-modal__content columns">
+                            <EditItem currentUser={currentUser} groups={groups} onSave={this.onSaveUser} errorCase={errorCase} />
+                        </div>
+                        <div className="users-modal__content columns">
+                            <Table className="users-modal__table" headers={this._labels.headers} settings={this._colsParams} data={users} >
+                                {props => <RowItem {...props} onActive={this.onActiveUser} onDelete={this.openModalDelete} onEdit={this.onEditUser} />}
+                            </Table>
+                        </div>
+                    </div>
+                </section>
+            </Modal>
+        );
+    }
 }
 
 

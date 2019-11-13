@@ -1,0 +1,35 @@
+{
+  "schemaPUTusers": {
+
+    "properties": {
+      "id": { "type": "number" },
+      "firstName": { "type": "string" },
+      "lastName": { "type": "string" },
+      "UserStatus": { "type": "number" }
+    },
+    "additionalProperties": false,
+    "required": [ "id", "firstName", "lastName", "UserStatus" ]
+
+  },
+  "schemaPUTchangepassword": {
+
+    "properties": {
+      "userId": { "type": "number" },
+      "oldPassword": { "type": "string" },
+      "newPassword": { "type": "string" },
+      "confirmedPassword": { "type": "string" }
+    },
+    "additionalProperties": false,
+    "required": [ "userId", "oldPassword", "newPassword", "confirmedPassword" ]
+  },
+  "schemaPOSTusers": {
+
+    "properties": {
+      "FirstName": { "type": "string" },
+      "LastName": { "type": "string" },
+      "Groups": { "type": "array" }
+    },
+    "additionalProperties": false,
+    "required": [ "FirstName", "LastName", "Groups" ]
+  }
+}

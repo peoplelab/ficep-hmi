@@ -1,65 +1,104 @@
-/** @define card */
+// stylelint-disable plugin/selector-bem-pattern
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
 @import '../common/text.scss';
 
+@import '../common/costanti.scss';
+@import '../common/tipografici.scss';
+
+
+$cardBackStd:  getColor('white', 90);
+$cardTextStd:  $mainColorTEXT;         //getColor('black', 60);
+$cardBackIcon: getColor('white', 100);
+
 .card {
-  @extend %flex-row-full;
+    background-color: $cardBackStd;
 
-  background-color: $bg-light-grey;
-  height : 100%;
-  width: 100%;
+    // .card__box {
 
-  .card__box {
-    flex: none;
-  }
+    // }
 
-  .card__picture {
-    @extend %flex-row-center;
+    .card__picture {
+        background-color: $cardBackIcon;
+        margin: 0 auto;
+        overflow: hidden;
 
-    background-color: $bg-white;
-    margin: 0 auto;
-    overflow: hidden;
-
-    .card__picture-icon {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-
-  .card__paragraph {
-    color: $dark-grey;
-    text-align: center;
-
-    &--user {
-      @extend %subtitle-semibold;
+        .card__picture-icon {
+            max-width: 100%;
+            max-height: 100%;
+        }
     }
 
-    &--role {
-      @extend %paragraph-1-medium;
+    .card__paragraph {
+        color: $cardTextStd;
+        text-align: center;
+
+        &--user {
+            @extend %subtitle-semibold;
+        }
+
+        &--role {
+            @extend %paragraph-1-medium;
+        }
+
+        &--text {
+            @extend %info-2-light;
+        }
+
+        &--last-access {
+            @extend %info-1-semibold;
+        }
     }
 
-    &--text {
-      @extend %info-2-light;
+    &.card--complete {
+        padding: 2rem;
+
+        .card__picture {
+            border-radius: 8rem;
+            height: 8rem;
+            width: 8rem;
+        }
     }
 
-    &--last-access {
-      @extend %info-1-semibold;
+    &.card--input {
+        padding: 0.5rem;
+
+        .card__box {
+            .card__picture {
+              border-radius: 2.5rem;
+              height: 2.5rem;
+              width: 2.5rem;
+            }
+
+            &:nth-of-type(2) {
+              flex: 1;
+            }
+
+            &:nth-of-type(3) {
+              margin: 0.5rem 1.25rem 0;
+              width: 100%;
+            }
+        }
     }
-  }
 
-  &--button {
-    flex-direction: column;
-    padding: 2rem;
-  }
+    &.card--small {
+        border-radius: 3.5rem;
+        height: 100%;
+        padding: 0.5rem;
+        width: 16.5rem;
 
-  &--input {
-    flex-wrap: wrap;
-    padding: 0.5rem;
-  }
-
-  &--header {
-    padding: 0.5rem;
-  }
+        .card__picture {
+            border-radius: 2.5rem;
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+        .card__box:nth-of-type(2) {
+            flex: 1;
+        }
+        .card__paragraph--user {
+            @extend %paragraph-2-semibold;
+        }
+        .card__paragraph--role {
+            @extend %info-1-regular;
+        }
+    }
 }

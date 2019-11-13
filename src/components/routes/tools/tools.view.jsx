@@ -18,27 +18,27 @@ import '../../../styles/routes/tools.style.scss';
 const Tools = ({ match }) => (
   <Switch>
     <Route path={`${match.path}/materials`}>
-      <div className="bg-tools-materiali tools">
-        <Anchor className="tools__anchor" exact path={match.path}>
+      <div className="bg-tools-materiali tools columns flex-top">
+        <Anchor className="tools__anchor text-cc" exact path={match.path}>
           {window.intl.tools_tab_machine}
         </Anchor>
-        <p className="anchor tools__anchor" >
+        <p className="anchor tools__anchor text-cc" >
           {window.intl.tools_tab_database}
         </p>
-        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>
+        <Anchor className="tools__anchor text-cc" exact path={`${match.path}/materials`}>
           {window.intl.tools_tab_materials}
         </Anchor>
       </div>
     </Route>
     <Route path={match.path}>
-      <div className="bg-tools-macchina tools">
-        <Anchor className="tools__anchor" exact path={match.path}>
+      <div className="bg-tools-macchina tools columns flex-top">
+        <Anchor className="tools__anchor text-cc" exact path={match.path}>
           {window.intl.tools_tab_machine}
         </Anchor>
-        <p className="anchor tools__anchor" >
+        <p className="anchor tools__anchor text-cc" >
           {window.intl.tools_tab_database}
         </p>
-        <Anchor className="tools__anchor" exact path={`${match.path}/materials`}>
+        <Anchor className="tools__anchor text-cc" exact path={`${match.path}/materials`}>
           {window.intl.tools_tab_materials}
         </Anchor>
       </div>

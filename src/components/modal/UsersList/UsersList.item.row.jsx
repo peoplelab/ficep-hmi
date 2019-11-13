@@ -21,8 +21,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonData } from '../../layouts/index.layouts';
-//import { SetStore } from '../../forms-context/index.form';
-//import { callUsersDetails, callUsersDelete } from '../../../controllers/routes/users/users.controller';
+import { ModalHandler } from '../../../controllers/common/modal.handler';
+import  ResetPassword  from '../../../widgets/common/ResetPassword';
 
 //import '../../../styles/modal/UsersList.style.scss';
 
@@ -46,24 +46,28 @@ class RowItem extends Component {
 		super(props);
 	}
 
-	onSelect() { console.log(this.props); }
+    onSelect() { console.log(this.props); }
+    onSuccess = (response) => {
+        console.log(response.newPassword);
+        ModalHandler.Info({ message: [' Password: ' + response.newPassword] });
+    }
+    onFailed = (response) => { ModalHandler.Error({ errorCode: response.dataprocessed.errorCode, errorsList: response.dataprocessed.result });}
+    render() {
+        const { value, index } = this.props;
+        const {
+            id,
+            firstName,
+            lastName,
+            userName,
+            //   isActive,
+            //  isLocked,
+            userStatus,
+            creationDate,
+            groups,
+        } = value;
 
-
-	render() {
-		const { value, index } = this.props;
-		const {
-			id,
-			firstName,
-			lastName,
-			userName,
-		//	isActive,
-		//	isLocked,
-			userStatus,
-			creationDate,
-			groups,
-		} = value;
-
-		const [{ code }] = groups;
+       
+        const [{ code }] = groups;
 
 	//	const active = isActive ? this._labels.yes : this._labels.no;
 		const active = (userStatus == 1) ? this._labels.yes : this._labels.no;

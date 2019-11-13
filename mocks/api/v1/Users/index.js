@@ -13,31 +13,31 @@ const responseJSONDELETE_OK = require('./responseDELETE_OK.json');
 
 
 module.exports = {
-  GET: base(
-      (req, res) => get_response(req, res)
+    GET: base(
+        (req, res) => get_response(req, res)
     ),
 
-  //PUT: base(
-  //  (req, res) => {
-  //    const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
+    //PUT: base(
+    //  (req, res) => {
+    //    const {id, firstName, lastName, isActive, canBeDeleted } = req.body;
 
-  //    if (
-  //      typeof id === 'undefined'
-  //      || typeof firstName === 'undefined'
-  //      || typeof lastName === 'undefined'
-  //      || typeof isActive === 'undefined'
-  //      || typeof canBeDeleted === 'undefined'
-  //    ) {
-  //      return updateUserPUT["999"];
-  //    }
+    //    if (
+    //      typeof id === 'undefined'
+    //      || typeof firstName === 'undefined'
+    //      || typeof lastName === 'undefined'
+    //      || typeof isActive === 'undefined'
+    //      || typeof canBeDeleted === 'undefined'
+    //    ) {
+    //      return updateUserPUT["999"];
+    //    }
 
-  //    if (id === 0 || id > 7) {
-  //      return updateUserPUT["7"];
-  //    } else {
-  //      return updateUserPUT[id.toString()];
-  //    }
-  //  }
-  //),
+    //    if (id === 0 || id > 7) {
+    //      return updateUserPUT["7"];
+    //    } else {
+    //      return updateUserPUT[id.toString()];
+    //    }
+    //  }
+    //),
     PUT: base(
         (req, res) => {
             if (req.body.id === 2) {
@@ -49,6 +49,7 @@ module.exports = {
 
     POST: base(
         (req, res) => {
+
             if (req.body.firstName === "pippo") {
                 return responseJSONPOST_KO;
             }
@@ -63,9 +64,10 @@ module.exports = {
             }
             return responseJSONDELETE_OK;
         }
-    )
-};
+    ),
 
+
+};
 
 const get_response = (req, res) => {
 

@@ -1,45 +1,48 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorTextStd:   getColor('black', 60);
+$localColorBorderStd: getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+$localColorTextInv:   getColor('black', 10);
+$localColorBorderInv: getColor('black', 10);
+$localColorBackInv:   getColor('black', 10);
+$localColorBackWhite:   getColor('black', 0);
+
+$shadow: 0 0.125rem 0.125rem 0 rgba(getColor('black', 100), 0.5);
+$shadow-2: 0.125rem 0.25rem 0.5rem 0 rgba(getColor('black', 100), 0.5);
+
 
 /** @define logged */
 
 .logged {
-  @extend %flex-column;
-
-  height: 100vh;
   overflow: hidden;
-  width: 100%;
 
   .logged__header {
-    @extend %flex-row-top;
-
     background: url('../../../public/background/header.png') no-repeat left top;
     background-size: 100vw 5.3rem;
     height: 5.5rem;
     margin: 0 0 1.5rem;
-    width: 100%;
     z-index: 2;
 
     .logged__header-box {
-      background-color: $bg-white;
-      border: $border-dark-grey 0.125rem solid;
+      background-color: $localColorBackWhite;
+      border: $localColorBorderStd 0.125rem solid;
       box-shadow: $shadow;
       height: 5.1rem;
       padding: 0.75rem;
 
-      &--left {
+      &.logged__header-box--left {
         border-top-right-radius: 5rem;
         border-bottom-right-radius: 5rem;
         opacity: 0;
         width: 50%;
       }
 
-      &--right {
-        @extend %flex-row-full;
-
+      &.logged__header-box--right {
         border-top-left-radius: 5rem;
         border-bottom-left-radius: 5rem;
         padding-left: 1.3rem;
@@ -59,56 +62,25 @@
       width: 16.5rem;
     }
 
-    .logged__header-card {
-      border-radius: 3.5rem;
-      padding: 0.5rem;
-      width: 16.5rem;
-
-      // stylelint-disable plugin/selector-bem-pattern
-      .card__picture {
-        border-radius: 2.5rem;
-        height: 2.5rem;
-        width: 2.5rem;
-      }
-      .card__box:nth-of-type(2) {
-        flex: 1;
-      }
-      .card__paragraph--user {
-        @extend %paragraph-2-semibold;
-      }
-      .card__paragraph--role {
-        @extend %info-1-regular;
-      }
-      // stylelint-enable plugin/selector-bem-pattern
-    }
 
     .logged__header-clock {
-      @extend %flex-row-center;
       @extend %higlighted-light;
 
-      flex: 1;
       margin-left: 1rem;
     }
   }
 
   .logged__container {
-    @extend %flex-row;
-
-    flex: 1;
     z-index: 1;
 
     .logged__navbar {
-      @extend %flex-column;
-
-      background-color: $bg-light-grey;
+      background-color: $localColorBackInv;
       height: 39.5rem;
       padding-top: 0.7rem;
       width: 6rem;
       z-index: 2;
 
       .logged__list {
-        flex: 1;
-        width: 100%;
 
         .logged__item {
           display: table;
@@ -134,7 +106,7 @@
 
         .logged__reverse-icon {
           display: block;
-          background: $bg-dark-grey;
+          background: $localColorBackStd;
           height: calc(100% - 4rem);
           left: 50%;
           position: absolute;
@@ -175,7 +147,7 @@
     z-index: 3;
 
     .logged__anchor {
-      background-color: $bg-light-grey;
+      background-color: $localColorBackInv;
       box-shadow: $shadow-2;
 
       // stylelint-disable-next-line plugin/selector-bem-pattern
@@ -187,7 +159,7 @@
       // stylelint-disable-next-line plugin/selector-bem-pattern
       &:hover,
       &.anchor--active {
-        background-color: $bg-dark-grey;
+        background-color: $localColorBackStd;
       }
     }
   }

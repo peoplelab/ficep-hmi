@@ -1,0 +1,31 @@
+DOCUMENTAZIONE schema json
+=============================
+
+
+
+///
+link: https://ajv.js.org/
+///
+
+function JsonValidate(schema, body) {
+    var ajv = new Ajv();
+    var validate = ajv.compile(schema);
+    var valid = validate(body);
+    var result = "";
+    if (valid) return result;
+    else return result = ajv.errorsText(validate.errors);
+	}
+
+
+//// schema da usare
+
+var schemaPOST = {
+
+    "properties": {
+        "FirstName": { "type": "string" },///il tipo da aspettare per ogni nome
+        "LastName": { "type": "string" },
+        "Groups": { "type": "array" }
+    },
+    "additionalProperties": false,///non i nomi devono essere identici.
+    "required": ["FirstName", "LastName", "Groups"]///i nomi richiesti nelkla request
+};

@@ -1,26 +1,17 @@
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
 
 /** @define session-modal */
 
+$localColorBorderStd: getColor('black', 60);
+
+
 .session-modal {
   .session-modal__container {
-    @extend %flex-column-full;
-
-    height: auto;
-    width: 100%;
-
     .session-modal__content {
-      @extend %flex-column-center;
-
       .session-modal__message {
-        @extend %paragraph-1-medium;
-
-        display: block;
         margin: 1rem;
         word-wrap: normal;
-        width: 100%;
 
         &.session-modal__message--info {
           @extend %info-1-light;
@@ -28,10 +19,9 @@
       }
 
       .session-modal__button {
-        @extend %flex-row-center;
         @extend %paragraph-1-semibold;
 
-        border: $border-dark-grey solid 0.225rem;
+        border: $localColorBorderStd solid 0.225rem;
         border-radius: 0.5rem;
         cursor: pointer;
         height: 3rem;

@@ -1,24 +1,33 @@
 // Style of private routes template
 
-@import '../common/colors.scss';
-@import '../common/flex.scss';
+@import '../common/costanti.scss';
 @import '../common/text.scss';
+
+
+$localColorBorderStd: getColor('black', 60);
+$localColorBackStd:   getColor('black', 60);
+$localColorBackInv:   getColor('black', 10);
+$localColorBackWhite:   getColor('black', 0);
+
+$shadow: 0 0.125rem 0.125rem 0 rgba(getColor('black', 100), 0.5);
+
 
 /** @define user-modal */
 
 .user-modal {
-  background-color: $bg-light-grey;
+  background-color: $localColorBackInv;
   box-shadow: $shadow;
   border-radius: 1.7rem;
   height: 31rem;
-  left: 40%;
+  left: 87.2%;
   position: absolute;
   transform: translate(-50%, 0);
   top: 7.4rem;
   width: 16.5rem;
+  z-index: 99;
 
   &::before {
-    background-color: $bg-light-grey;
+    background-color: $localColorBackInv;
     border-radius: 1.5rem;
     content: '';
     height: 1.5rem;
@@ -50,27 +59,20 @@
   }
 
   .user-modal__go-back {
-    background: transparent;
-    cursor: pointer;
-    display: block;
-    left: 5%;
-    position: absolute;
-    top: 5%;
-    transform: rotate(180deg);
-
+      margin: 16px;
     .user-modal__back-icon {
-      background-color: $bg-dark-grey;
+      background-color: $localColorBackStd;
       display: block;
       height: 1.3rem;
       width: 1.3rem;
+      transform: rotate(180deg);
     }
   }
 
   .user-modal__button {
-    @extend %flex-row-center;
     @extend %paragraph-1-semibold;
 
-    border: $border-dark-grey solid 0.225rem;
+    border: $localColorBorderStd solid 0.225rem;
     border-radius: 0.5rem;
     bottom: 1rem;
     cursor: pointer;
@@ -97,4 +99,30 @@
     }
   }
   // stylelint-enable plugin/selector-bem-pattern
+
+  .user-modal__icon-box {
+      background-color: $localColorBackWhite;
+      border-radius: 100%;
+      height: 84px;
+      margin: 0 auto;
+      overflow: hidden;
+      width: 84px;
+
+    .user-modal__icon-profile {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
+  }
+  .user-modal__info {
+        margin: 16px;
+
+        :first-child {
+            @extend %paragraph-1-semibold;
+        }
+
+        :last-child {
+            @extend %paragraph-1-regular;
+        }
+  }
 }

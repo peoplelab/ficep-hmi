@@ -1,10 +1,3 @@
-import React, { Component } from 'react';
-//import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
-// import { Field,  PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
-import TextInput from '../../forms/TextInput';
-import Select    from '../../forms/Select';
-import PropTypes from 'prop-types';
-
 
 /*
 	Componente EDITITEM. Modifica di un utente.
@@ -19,6 +12,13 @@ import PropTypes from 'prop-types';
 		- isLocked: false
 	- onSave : gestore del salvataggio utente
 */
+
+import React, { Component } from 'react';
+//import { Field, TextInput, PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
+// import { Field,  PasswordInput, Select, Option, Submit, Reset } from '../../forms-context/index.form';
+import TextInput from '../../forms/TextInput';
+import Select    from '../../forms/Select';
+import PropTypes from 'prop-types';
 
 
 class EditItem extends Component {

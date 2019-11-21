@@ -1,14 +1,14 @@
 //----------------------------------------------------------------------------------------
 // File: SucessModal.view.jsx
-//
 // Desc: Componente modale, informa l'utente dell'avvenuta conferma di successo dell'operazione richiesta
+//
 // Path: /src/components/dialog/SucessModal.view
 //----------------------------------------------------------------------------------------
 
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from '../layouts/index.layouts';
+import { Modal } from '../../layouts/index.layouts';
 
 //import '../../styles/dialog/Dialog.style.scss';
 

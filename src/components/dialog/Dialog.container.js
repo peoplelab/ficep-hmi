@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import Dialog from './Dialog.view';
+//import Dialog from './Dialog.view';
+import Dialog from '../dialogBoxes/view/Dialog.view';
 
 
 const mapStateToProps = (state) => ({

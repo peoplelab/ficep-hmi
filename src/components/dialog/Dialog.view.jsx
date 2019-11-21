@@ -6,7 +6,8 @@ import ErrorsModal from './ErrorsModal.view';
 import InfoModal from './InfoModal.view';
 import SucessModal from './SucessModal.view';
 import SessionExpired from './SessionExpired.view';
-import { ModalHandler } from '../../controllers/common/modal.handler';
+//import { ModalHandler } from '../../controllers/common/modal.handler';
+import { ModalHandler } from '../dialogBoxes/controller/dialog.controller';
 
 
 const Dialog = (props) => {

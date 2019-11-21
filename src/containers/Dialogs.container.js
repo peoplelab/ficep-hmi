@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------------------
-// File: Modals.container.js
-// Desc: Gestore della comunicazione tra lo store globale e il componente per la gestione delle pagine
+// File: Dialog.container.js
+// Desc: Container delle dialog boxes
 //
-// Path: /src/container/Main.container
+// Path: /src/container/Dialog.container
 //----------------------------------------------------------------------------------------------------
 
 

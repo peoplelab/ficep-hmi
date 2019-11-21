@@ -26,9 +26,6 @@ $localColorBorderInv: getColor('black', 10);
     flex: 1;
     overflow-y: scroll;
 
-		&::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
-			border-color: $localColorBorderInv;
-		}
   }
 
   .table__main {

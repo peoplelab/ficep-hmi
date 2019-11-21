@@ -1,37 +1,23 @@
-// stylelint-disable plugin/selector-bem-pattern
+﻿// stylelint-disable plugin/selector-bem-pattern
 
 
 // Application Common style
 
-	// FILE OBSOLETI (da rimuovere una volta messi a posto gli altri)
+// FILE OBSOLETI (da rimuovere una volta messi a posto gli altri)
 //	@import './common/spacing.scss';
-//	@import './common/media.scss';				// Serve? Si pu� segare?
+//	@import './common/media.scss';				// Serve? Si può segare?
 //	@import './font/Saira';
 
 
-	@import './common/icon.scss';				// Al momento serve ancora, ma andr� segato
-	@import './common/background.scss';			// Al momento serve ancora, ma andr� segato
+	@import './common/icon.scss';					// Al momento serve ancora, ma andrà segato
+	@import './common/background.scss';				// Al momento serve ancora, ma andrà segato
 
 
-	// ** Nuovi .scss **
-	@import './common/tipografici.scss';
-	@import './common/strutturali.scss';
-	@import './common/controls.scss';
+	// ** Nuovi .scss **							// Ordine di caricamento:
+	@import "./common/costanti.scss";				// 1 - Definizione delle costanti per i fogli di stile dell'applicazione
+	@import './common/tipografici.scss';			// 2 - Definizione degli elementi tipografici base dell'applicazione
+	@import './common/strutturali.scss';			// 3 - Definizione gli elementi strutturali base (modali, dialog, ecc.)
+	@import './common/controls.scss';				// 4 - Definizione dei controlli base (campi, pulsanti, ecc,)
+
 	@import './common/layout.scss';
 
-
-	// ANDRA' TUTTO SEGATO....
-	* {
-	  border     : 0;
-	  box-sizing : border-box;
-	  font-family: default-400;		// Font definiti in "tipografici.scss"
-	  line-height: 1rem;
-	  font-size  : 1rem;
-	  margin     : 0;
-	  outline    : none;
-	  padding    : 0;
-	}
-	:root {
-	  font-size: 16px;
-
-	}

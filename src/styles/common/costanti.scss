@@ -1,20 +1,16 @@
-﻿
-// stylelint-disable plugin/selector-bem-pattern
-// -----------------------------------------------------------------------
-// NAME: costanti.less
+﻿// stylelint-disable plugin/selector-bem-pattern
+// =======================================================================
+// NAME: costanti.scss
 //
 // Definizione delle costanti per i fogli di stile dell'applicazione
-// Il file viene incluso in ogni file .LESS
 // -----------------------------------------------------------------------
 
-
-// ** IMPOSTAZIONI PRINCIPALI **
 
 // >>> Dichiarazione colori di sistema:
 	
 	// Palette base (scale di grigi):
-	$black    : #000;
-	$white    : #fff;
+	$black: #000;
+	$white: #fff;
 
 	$blackScaleMap: ();																					// Mappa della scala di neri (gradazioni di grigio)
 	@for $id from 0 through 20 {																		// Ciclo di definizione della mappa
@@ -73,12 +69,8 @@
 
 
 
-
 // >>> Dichiarazione colori personalizzati:
 
 	$mainColorTEXT: getColor('black', 60);		// §§§ In attesa dei colori veri imposto i colori standard: grigio scuro e bianco
 	$mainColorBACK: getColor('black',  0);
-
-//	$color1 : #f00;
-//	$color2 : #00f;
 

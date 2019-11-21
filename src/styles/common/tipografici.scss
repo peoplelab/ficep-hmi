@@ -5,38 +5,6 @@
 // Definizione degli elementi tipografici base dell'applicazione
 // -----------------------------------------------------------------------
 
-@import "./costanti.scss";
-
-
-// ===================================================
-//  Reimpostazione lo stile delle scrollbar
-// ---------------------------------------------------
-@mixin scrollbar($trackColor) {
-
-	// Impostazioni comuni (default) delle barre di scorrimento
-	&::-webkit-scrollbar {
-		background  : transparent;
-		width       : 16px;
-	}
-	&::-webkit-scrollbar-corner {
-		background  : transparent;
-	}
-	&::-webkit-scrollbar-track {
-		background  : $white;
-		border-width: 0 5px;
-		border-style: solid;
-		border-color: transparent;
-	}
-	&::-webkit-scrollbar-thumb {
-		background  : getColor('black', 60);
-	}
-
-    &::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
-        border-color: $trackColor;
-    }
-}
-
-
 
 // ---
 //	NOTE:
@@ -45,23 +13,25 @@
 //
 // ---
 
-// >>> Palette standard
-	// Gradazioni di grigio: le due palette "Black" e "White" contengono gli stessi colori indicati con valori complementari [es. Nero x% = Bianco (100 -x)% ]
+// >>> Palette "system"
+	// Gradazioni di grigio: le due palette "Black" e "White" contengono gli stessi colori indicati con valori complementari [es. "Nero x%" = "Bianco (100 -x)%" ]
 	// La doppia palette risulta utile consentendo di utilizzare con più semplicità il sistema di riferimento preferito.
-	// Ad esempio: è più facile pensare "quasi bianco" con ".fcWhite_90" che con ".fcBlack_10", pur essendo lo stesso grigio.
+	// Ad esempio: è più facile pensare "quasi bianco" con ".bgWhite_90" che con ".bgBlack_10", pur essendo lo stesso grigio.
 
-	@each $name, $value in $blackScaleMap {																// Costruzione delle classi (scala di neri):
+	@each $name, $value in $blackScaleMap {																// Costruzione delle classi della scala di neri:
 		$lowername: to-lower-case($name);
 		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
-		.bg#{$name}     {background  : $value; @include scrollbar($value)}															// Colore sfondo (background)
 		.border#{$name} {border-color: $value;}															// Colore bordi
+		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.bg#{$name} *::-webkit-scrollbar-track {border-color: $value;}									// Colore bordo delle scrollbar uguale allo sfondo
 	}
 
-	@each $name, $value in $whiteScaleMap {																// Costruzione delle classi (scala di bianchi):
+	@each $name, $value in $whiteScaleMap {																// Costruzione delle classi della scala di bianchi:
 		$lowername: to-lower-case($name);
 		.#{$lowername}  {color       : $value;}															// Colore testo (foreground)
-		.bg#{$name}     {background  : $value; @include scrollbar($value)}															// Colore sfondo (background)
 		.border#{$name} {border-color: $value;}															// Colore bordi
+		.bg#{$name}     {background  : $value;}															// Colore sfondo (background)
+		.bg#{$name} *::-webkit-scrollbar-track {border-color: $value;}									// Colore bordo delle scrollbar uguale allo sfondo
 	}
 
 
@@ -70,14 +40,20 @@
 //  Reimpostazione degli stili tipografici di default
 // ---------------------------------------------------
 
-	// Margin e padding
-	hr, p, ul, li,
-	h1, h2, h3, h4, h5 {
-		margin : 0px;
-		padding: 0px;
+	// Impostazioni di default per tutti gli elementi
+	* {
+		margin     : 0;
+		padding    : 0;
+		border     : none;
+		outline    : none;
+		box-sizing : border-box;
+		font-family: default-400;																		// Font definiti in "tipografici.scss"
+		font-size  : 16px;
+		line-height: 16px;
 	}
 
-	// Impostazioni comuni (default) delle barre di scorrimento
+
+// >>> Impostazioni delle barre di scorrimento
 	::-webkit-scrollbar {
 		background  : transparent;
 		width       : 16px;
@@ -85,20 +61,21 @@
 	::-webkit-scrollbar-corner {
 		background  : transparent;
 	}
+
 	::-webkit-scrollbar-track {
-		background  : $white;
 		border-width: 0 5px;
 		border-style: solid;
-		border-color: transparent;
-	}
-	::-webkit-scrollbar-thumb {
-		background  : getColor('black', 60);
 	}
 
-    ::-webkit-scrollbar-track {						// Esempio da seguire per gli altri container
-        border-color: getColor('black', 10);
-    }
-
+	// Definizione colori
+	.scrollbar-light {																					// Colori scrollbar per sfondi chiari
+		*::-webkit-scrollbar-track {background: getColor('black',  0);}
+		*::-webkit-scrollbar-thumb {background: getColor('black', 60);}
+	}
+	.scrollbar-dark {																					// Colori scrollbar per sfondi scuri
+		*::-webkit-scrollbar-track {background: getColor('black', 10);}
+		*::-webkit-scrollbar-thumb {background: getColor('black',  0);}
+	}
 
 
 
@@ -126,21 +103,25 @@
 	.bold      {font-weight: 700; }
 	.uppercase {text-transform: uppercase; }
 
+
 // ============================
 //  Definizione tipi carattere
 // ----------------------------
 
 	// Definizioni di default
+	$fontPath       : '../../../public/font';															// Path dei font dell'applicazione
+	$fontPathDefault: $fontPath + '/default';															// Font di default (in attesa di specifiche)
+
 	@font-face {
 		font-family: 'default-400';
 		font-style : normal;
 		font-weight: 400;
-		src: url('../../../public/font/default/arial.ttf') format('truetype');
+		src: url('#{$fontPathDefault}/arial.ttf') format('truetype');
 	}
 	@font-face {
 		font-family: 'default-700';
 		font-style : normal;
-		src: url('../../../public/font/default/arialbd.ttf') format('truetype');
+		src: url('#{$fontPathDefault}/arialbd.ttf') format('truetype');
 	}
 
 
@@ -157,12 +138,12 @@
 		'Black'     : 900,
 	);
 
-	@each $name, $weight in $fontWeights {															// Definizione famiglie font (Output: font-families "Saira-100", "Saira-200", ecc.)
+	@each $name, $weight in $fontWeights {																// Definizione famiglie font (Output: font-families "Saira-100", "Saira-200", ecc.)
 		@font-face {
 			font-family: 'Saira-' + $weight;
 			font-style : normal;
 			font-weight: $weight;
-			src: url('../../../public/font/Saira/Saira-#{$name}.ttf') format('truetype'),;			// In "/public/font" sono contenuti i file dei font
+			src: url('#{$fontPath}/Saira/Saira-#{$name}.ttf') format('truetype'),;						// In "/public/font" sono contenuti i file dei font
 		}
 	}
 

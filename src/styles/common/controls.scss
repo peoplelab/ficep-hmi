@@ -5,14 +5,11 @@
 // Definizione dei controlli base (campi, pulsanti, ecc,)
 // -----------------------------------------------------------------------
 
-@import "./costanti.scss";
-@import "./tipografici.scss";
-
 
 // >>> Definizioni variabili e standard
 
-	$borderWidthStd  : 2px;											// Dimensione bordo standard
-	$borderWidthFocus: 3px;											// Dimensione bordo del controllo con focus
+	$borderWidthStd  : 2px;														// Dimensione bordo standard
+	$borderWidthFocus: 3px;														// Dimensione bordo del controllo con focus
 
 	$buttonColorStd: $mainColorTEXT;	//getColor('black', 60);
 	$buttonBackStd : $mainColorBACK;	//getColor('black',  0);
@@ -87,7 +84,7 @@
 
 	// Definizione Placeholders
 	%btnSettings {
-		// height        : 42px;
+	//	height        : 42px;
 		border-width  : 3px;
 		border-style  : solid;
 		border-radius : 8px;
@@ -101,59 +98,71 @@
 
 	.btn {									// Con icona o meno, grandi e piccoli
 
-		&.btn-light {					// §§§ => Togliere "std" / Se possibile elencare tutti i tipi di button e classificarli x tipo/forma/ruolo (std, large, big, dark, light, action, alert, ecc. ecc.)
+		&.btn-light {
 			@extend %btnSettings;
-
 			color       : $buttonColorStd;
 			background  : $buttonBackStd;
 			border-color: $buttonColorStd;
 		}
+
 		&.btn-dark {
 			@extend %btnSettings;
-
 			color       : $buttonColorInv;
 			background  : $buttonBackInv;
 			border-color: transparent;
 		}
+
 		&.btn-midGrey {
 			@extend %btnSettings;
-
 			color       : $buttonColorInv;
 			background  : getColor('black', 40);
 			border-color: $buttonColorStd;
 		}
+
 		&.btn-transparent {
 			@extend %btnSettings;
-
 			color       : $buttonColorStd;
 			background  : transparent;
 			border-color: transparent;
 		}
 
-		&.btn-large {
+		&.btn-large, &.btn-large-full {
 			font-size: 16px;
-			padding  : 10px 20px;
 			height   : 46px;
-			width    : 100%;
+
+			&:not(.btn-large-full) {
+				padding: 0 20px;
+			}
+			&:not(.btn-large) {
+				width: 100%;
+			}
 		}
 
-		&.btn-std {
+		&.btn-std, &.btn-std-full {
 			font-size: 13px;
-			padding  : 5px 20px;
 			height   : 32px;
-			width    : 100%;
+
+			&:not(.btn-std-full) {
+				padding: 0 20px;
+			}
+			&:not(.btn-std) {
+				width: 100%;
+			}
 		}
+
+
+		// §§§§§§§§§§§§§§§§§§
 
 		&.btn-flex {
 			font-size: 13px;
-			padding  : 5px 20px;
+			padding  : 0px 20px;
 			height   : 46px;
 			width    : initial;
 		}
 
 		&.btn-icon {
 			padding  : 0;
-			height   : 46px;
-			width    : 46px;
+			height   : 32px;	//46px;
+			width    : 32px;	//46px;
 		}
 	}

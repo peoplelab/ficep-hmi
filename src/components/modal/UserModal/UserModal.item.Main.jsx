@@ -45,7 +45,7 @@ const UserModalMain = (props) => {
                     >
                         {mapLabels().management}
                     </Anchor>
-                    <Button className="user-modal__button anchor text-cc" onClick={props.onLogout}>
+                    <Button className="user-modal__button anchor text-cc" pippo="123" dev="xyz" onClick={props.onLogout}>
                         {mapLabels().logout}
                     </Button>
                 </section>

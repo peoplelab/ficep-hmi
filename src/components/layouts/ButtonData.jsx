@@ -9,44 +9,69 @@
 
 	import React, {PureComponent} from 'react';
 	import PropTypes              from 'prop-types';
-	import Button                 from './Button';
 
 
 	// ** Definizione componente **
 	class ButtonData extends PureComponent {
 
-		constructor(props) {																			// Costruttore (In questo caso non serve. Perché?)
-			super(props);
-
-			this.onClick = this.onClick.bind(this);														// Binding degli eventi gestiti
+		constructor(props) {																			// Costruttore
+			super(props);																				// Invoca il costruttore del parent passandogli le Props - Obbligatorio:
+																										//	[«...a child class constructor cannot make use of "this." until "super()" has been called...» ] [«...When you pass props to "super()", the props get assigned to "this." ...» ]
+			this.onLocalClick = this.onLocalClick.bind(this);											// Binding degli eventi gestiti
+			this.onLocalMouseOver = this.onLocalMouseOver.bind(this);											// Binding degli eventi gestiti
 		}
 
-		onClick(event) {
-			const { onClick, data } = this.props;
-			const newEvent = { ...event, data };
+		onLocalClick(event) {																				// Handler dell'evento onClick del componente
+			const {onClick, ...attr} = this.props;
+			const newEvent = {event, attr};
 			onClick(newEvent);
 		}
 
+		onLocalMouseOver(event) {																				// Handler dell'evento onClick del componente
+			const {onMouseOver, ...attr} = this.props;
+			const newEvent = {event, attr};
+			onMouseOver(newEvent);
+		}
+
 		render() {
-			const {
-				data: _data,			// eslint-disable-line no-unused-vars
-				onClick: _onClick,		// eslint-disable-line no-unused-vars
+			const {																						// ** NOTA: non rimuovere (per ora) i due commenti sotto "eslint-..."
+				onClick,
+				onMouseOver,
+				children,
+				className,
 				...rest
 			} = this.props;
 
+			const mergedClass = `btn ${className}`;														// Definizione del set di classi attribuite al componente
+
 			return (
-				<Button onClick={this.onClick} {...rest} />
+				<button 
+					type="button" 
+					className={mergedClass}
+					onClick={this.onLocalClick} 
+					onMouseOver={this.onLocalMouseOver}
+					on
+					{...rest}
+				>
+					{children}
+				</button>
 			);
 		}
 	}
 
-	ButtonData.propTypes = {
-		data: PropTypes.any.isRequired,
-		onClick: PropTypes.func.isRequired,
+
+	// ** Definizioni delle Props **
+	ButtonData.propTypes = {																			// Definizione dei tipi delle Props del componente
+		onClick    : PropTypes.func.isRequired,
+		onMouseOver: PropTypes.func,
+		children   : PropTypes.node,
+		className  : PropTypes.string,
 	};
 
-	ButtonData.defaultProps = {
+	ButtonData.defaultProps = {																			// Definizione valori di default delle Props componente
+		onMouseOver: function(){ return 0;},
+		children   : null,
+		className  : '',
 	};
 
-
-	export default ButtonData;
+	export default ButtonData;																			// Dichiarazione finale di export della classe componente

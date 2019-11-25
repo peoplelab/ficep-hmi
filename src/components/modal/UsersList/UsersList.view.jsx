@@ -117,9 +117,11 @@ class UsersList extends Component {
 	}
 
 	openModalDelete = (event) => {
-		this._deleteID = event.data;
+	//	this._deleteID = event.data;
+		this._deleteID = event.attr.data;
 		ModalHandler.Confirm({ onConfirm: this.onDeleteUser });
 	}
+
 	// cancellazione di un utente
 	onDeleteUser = () => {
 		const data = this._deleteID;
@@ -137,7 +139,8 @@ class UsersList extends Component {
 	}
 	// dettaglio di un utente...riempie la riga col dettaglio
 	onEditUser = (event) => {
-		const data = event.data;
+	//	const data = event.data;
+		const data = event.attr.data;
 
 		cUser.Detail({
 			data,
@@ -148,7 +151,9 @@ class UsersList extends Component {
 	}
 	// dettaglio di un utente...attivazione e disattivazione dei bottoni (modifica e elimina)
 	onActiveUser = (event) => {
-		const data = event.data;
+		
+	//	const data = event.data;
+		const data = event.attr.data;
 
 		if (data.userStatus == this.USER_STATUS.ACTIVE) {
 			data.userStatus = this.USER_STATUS.LOCKED;

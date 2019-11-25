@@ -6,7 +6,8 @@
 //--------------------------------------------------------------------------
 
 	// ** Scheda Componente **
-	// NAME : Rowitem > Riga dettaglio di un utente
+	// COMPONENT NAME: Rowitem
+	//	Riga dettaglio di un utente
 	// PROPS:
 	//	value    : utente "corrente" (da visualizzare), json composto da:
 	//    .id           : 0
@@ -27,7 +28,6 @@
 	import React, { Component, Fragment } from 'react';													// Basic: import React
 
 	import PropTypes      from 'prop-types';
-//	import { ButtonData } from '../../layouts/index.layouts';
 	import ButtonData     from '../../layouts/ButtonData';
 	import {ModalHandler} from '../../../controllers/common/modal.handler';
 	import ResetPassword  from '../../../widgets/common/ResetPassword';
@@ -70,6 +70,9 @@
 			});
 		}
 		
+		onHover = (event) => {
+			console.log('Sei sopra a:', event.attr.data);
+		}
 		
 		// ** Funzione di Render del componente **
 		render() {
@@ -130,7 +133,7 @@
 					</td>
 					{/* Pulsante "Elimina" */}
 					<td className="cell-std">
-						<ButtonData className={deletebtn_classname} data={id} onClick={this.props.onDelete} >
+						<ButtonData className={deletebtn_classname} data={id} onClick={this.props.onDelete} xyz={'abc-123-' + id} onMouseOver={this.onHover} pippo={id * 10} >
 							{this._labels.delete}
 						</ButtonData>
 					</td>

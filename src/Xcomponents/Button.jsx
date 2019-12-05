@@ -1,18 +1,28 @@
 //----------------------------------------------------------------------------------------
-// File: ButtonData.jsx
-// Desc: Pulsante per l'esecuzione di azioni e l'invio di dati
-//       Indicati dei dati, questi verranno inviati tramite l'evento dell'azione
+// File: Button.jsx
+// Desc: Pulsante custom generico per la gestione eventi e restituzione dei valori associati
 //
-// Path: /src/components/layouts/ButtonData
+// Path: /src/Xcomponent/common
+//----------------------------------------------------------------------------------------
+//	** Scheda Componente **
+//	COMPONENT NAME: Button
+//		Pulsante custom generico
+//	PROPS:
+//		onClick      : callback associata all'evento onClick
+//		onMouseOver  : callback associata all'evento onMouseOver
+//		onMouseLeave : callback associata all'evento onMouseLeave
+//		className    : set classi attribuite al componente
+//		children     : content del pulsante
 //----------------------------------------------------------------------------------------
 
 
+	// ** Definizione import **
 	import React, {PureComponent} from 'react';
 	import PropTypes              from 'prop-types';
 
 
 	// ** Definizione componente **
-	class ButtonData extends PureComponent {
+	class Button extends PureComponent {
 
 		constructor(props) {																			// Costruttore
 			super(props);																				// Invoca il costruttore del parent passandogli le Props - Obbligatorio:
@@ -61,7 +71,7 @@
 					onMouseLeave={this.onLocalMouseLeave}
 					{...rest}																			// Render delle props non gestite
 				>
-					{children}
+					** {children}
 				</button>
 			);
 		}
@@ -69,7 +79,7 @@
 
 
 	// ** Definizioni delle Props **
-	ButtonData.propTypes = {																			// Definizione dei tipi delle Props del componente
+	Button.propTypes = {																			// Definizione dei tipi delle Props del componente
 		onClick     : PropTypes.func.isRequired,
 		onMouseOver : PropTypes.func,
 		onMouseLeave: PropTypes.func,
@@ -77,11 +87,11 @@
 		className   : PropTypes.string,
 	};
 
-	ButtonData.defaultProps = {																			// Definizione valori di default delle Props componente
+	Button.defaultProps = {																			// Definizione valori di default delle Props componente
 		onMouseLeave: function(){ return 0;},
 		onMouseOver : function(){ return 0;},
 		children    : null,
 		className   : '',
 	};
 
-	export default ButtonData;																			// Dichiarazione finale di export della classe componente
+	export default Button;																			// Dichiarazione finale di export della classe componente

@@ -17,8 +17,8 @@
 	// ** Definizione import **
 	import React, {Component} from 'react';
 	import PropTypes          from 'prop-types';
-	import {User as cUser}    from '../../controllers/routes/users/users.controller';
-//	import {User as cUser}    from '../../user/controller/users.controller';
+//	import {User as cUser}    from '../../controllers/routes/users/users.controller';
+	import {User as cUser}    from 'userController';
 
 
 	// ** Definizione componente **
@@ -38,19 +38,13 @@
 		}
 
 		resetPassword = () => {
-			
-		//	cUser.ResetPassword(
-		//		this.props.data,
-		//		(response) => this.props.onSuccess(
-		//			{ newPassword: response.dataprocessed.result }),
-		//		(response) => this.props.onFailed(response)
-		//	);
 
-			cUser.ResetPassword({
-				id       : this.props.data,
-				onSuccess: (response) => this.props.onSuccess( { newPassword: response.dataprocessed.result }),
-				onFailed : (response) => this.props.onFailed(response),
-			});
+			cUser.ResetPassword(
+				this.props.data,
+				(response) => this.props.onSuccess(
+					{ newPassword: response.dataprocessed.result }),
+				(response) => this.props.onFailed(response)
+			);
 
 		}
 

@@ -1,8 +1,8 @@
 //----------------------------------------------------------------------------------------
 // File: users.model.js
-// Path: /src/model/users/users.model
+// Desc: Model di innterfacciamento con servizi del modulo "Utente" (Users)
 //
-// Interfacciamento con servizi Utente (Users)
+// Path: /src/user/model/
 //----------------------------------------------------------------------------------------
 
 import { base } from '../common/model.base';
@@ -118,8 +118,6 @@ const usersUpdate = async ({ headers, params }) => {
     return base({ url: URL_UPDATE_USER, request });
 };
 
-
-
 const usersChangePassword = async ({ headers, request: data }) => {
     const request = {
         method: "put",
@@ -133,8 +131,6 @@ const usersChangePassword = async ({ headers, request: data }) => {
     return base({ url: URL_PASSWORDCHANGE, request });
 };
 
-
-
 const usersResetPassword = async ({ headers, params }) => {
     const request = {
         method: "put",
@@ -146,8 +142,6 @@ const usersResetPassword = async ({ headers, params }) => {
 
     return base({ url: URL_PASSWORDRESET, request,params });
 };
-
-
 
 export const usersLogout = async ({ headers }) => {
     // interfaccia api logout utente

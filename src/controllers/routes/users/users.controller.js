@@ -18,7 +18,9 @@ export const User = {
 	Delete: (data, onSuccess, onFailed) => { return callUsersDelete(data, onSuccess, onFailed); },                // Cancellazione Utente
 	Save: (data, onSuccess, onFailed) => { return callUserSave(data, onSuccess, onFailed); },                     // Salvataggio Utente
 	ChangePassword: (data, onSuccess, onFailed) => { return callUserChangePassword(data, onSuccess, onFailed); }, // cambio password
-	ResetPassword: (userId, onSuccess, onFailed) => { return callUserResetPassword(userId, onSuccess, onFailed); },   // reset password
+//	ResetPassword: (userId, onSuccess, onFailed) => { return callUserResetPassword(userId, onSuccess, onFailed); },   // reset password
+//	ResetPassword: (params) => { return callUserResetPassword(params); },   // reset password
+	ResetPassword: ({id, onSuccess, onFailed}) => { return callUserResetPassword({id, onSuccess, onFailed}); },   // reset password
 };
 
 
@@ -42,12 +44,12 @@ const callUsersList = async ({ dispatch }) => {
 					//isActive: user.IsActive,
 					//isLocked: user.IsLocked,
 					userStatus: user.UserStatus,
+					creationDate: user.CreationDate,
 					groups: user.Groups.map(group => ({
 						id: group.id,
 						code: group.code,
 						description: group.description,
 					})),
-					creationDate: user.CreationDate,
 				}));
 
 			dispatch({ users });
@@ -176,26 +178,39 @@ const callUserChangePassword = async ({ data, onSuccess, onFailed }) => {
 	});
 };
 
-const callUserResetPassword = async ( userId, onSuccess, onFailed ) => {
+//	const callUserResetPassword = async ( userId, onSuccess, onFailed ) => {
+//	
+//		const params = {
+//			id: userId,
+//		};
+//	
+//		base({
+//			api: mUsers.ResetPassword,
+//			params,
+//			success: (response) => {
+//				console.log("Controller ResetPassword " );
+//				console.log(response);
+//				onSuccess(response);
+//			},
+//			// onFailed non arriverà mai perché é gestito nel base.
+//			//failure: () => {
+//			//    onFailed(); 
+//			//}
+//		});
+//	};
 
-	const params = {
-		id: userId,
+
+	const callUserResetPassword = async ({ id, onSuccess, onFailed}) => {
+		base({
+			api    : mUsers.ResetPassword,
+			id     : id,
+			success: (response) => { onSuccess(response); },
+		});
 	};
 
-	base({
-		api: mUsers.ResetPassword,
-		params,
-		success: (response) => {
-			console.log("Controller ResetPassword " );
-			console.log(response);
-			onSuccess(response);
-		},
-		// onFailed non arriverà mai perché é gestito nel base.
-		//failure: () => {
-		//    onFailed(); 
-		//}
-	});
-};
+
+
+
 
 function validate(data) {
 	//funzione controlla validità dati.
